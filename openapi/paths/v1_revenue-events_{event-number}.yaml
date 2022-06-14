@@ -86,19 +86,7 @@ get:
                     accountingPeriodStartDate: '2013-10-01'
                     accountingPeriodEndDate: '2013-10-31'
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_revenue-events_{event-number}/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_revenue-events_{event-number}/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_revenue-events_{event-number}/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_revenue-events_{event-number}/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_revenue-events_{event-number}/getundefined
+        $ref: ../code_samples/cURL/v1_revenue-events_{event-number}/getundefined

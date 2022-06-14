@@ -124,24 +124,8 @@ post:
                   version: 0.0.1
                   type: Workflow::Setup
                   status: Active
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
         $ref: >-
-          ../code_samples/Curl/workflows_{workflow_id}_versions_import/postundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/workflows_{workflow_id}_versions_import/postundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/workflows_{workflow_id}_versions_import/postundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/workflows_{workflow_id}_versions_import/postundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/workflows_{workflow_id}_versions_import/postundefined
+          ../code_samples/cURL/workflows_{workflow_id}_versions_import/postundefined

@@ -67,19 +67,7 @@ get:
   parameters:
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_paymentgateways/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_paymentgateways/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_paymentgateways/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_paymentgateways/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_paymentgateways/getundefined
+        $ref: ../code_samples/cURL/v1_paymentgateways/getundefined

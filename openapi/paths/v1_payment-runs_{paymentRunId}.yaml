@@ -99,22 +99,10 @@ put:
                 updatedDate: '2017-09-22 12:37:22'
                 updatedById: 402881e522cf4f9b0122cf5d82860002
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_payment-runs_{paymentRunId}/putundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_payment-runs_{paymentRunId}/putundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_payment-runs_{paymentRunId}/putundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_payment-runs_{paymentRunId}/putundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_payment-runs_{paymentRunId}/putundefined
+        $ref: ../code_samples/cURL/v1_payment-runs_{paymentRunId}/putundefined
 get:
   summary: Retrieve a payment run
   operationId: GET_PaymentRun
@@ -200,22 +188,10 @@ get:
                 updatedDate: '2017-12-28 09:00:06'
                 updatedById: 2c92c0f958fffd7d015914aeefc71a5d
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_payment-runs_{paymentRunId}/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_payment-runs_{paymentRunId}/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_payment-runs_{paymentRunId}/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_payment-runs_{paymentRunId}/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_payment-runs_{paymentRunId}/getundefined
+        $ref: ../code_samples/cURL/v1_payment-runs_{paymentRunId}/getundefined
 delete:
   summary: Delete a payment run
   operationId: DELETE_PaymentRun
@@ -286,19 +262,7 @@ delete:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_payment-runs_{paymentRunId}/deleteundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_payment-runs_{paymentRunId}/deleteundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_payment-runs_{paymentRunId}/deleteundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_payment-runs_{paymentRunId}/deleteundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_payment-runs_{paymentRunId}/deleteundefined
+        $ref: ../code_samples/cURL/v1_payment-runs_{paymentRunId}/deleteundefined

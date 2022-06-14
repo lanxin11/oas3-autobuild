@@ -92,22 +92,10 @@ post:
                 parentId: 8a808255557baba1015580e12fa5083a
                 tenantId: '6398'
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_entities/postundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_entities/postundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_entities/postundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_entities/postundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_entities/postundefined
+        $ref: ../code_samples/cURL/v1_entities/postundefined
 get:
   summary: 'Multi-entity: List entities'
   operationId: GET_Entities
@@ -260,19 +248,7 @@ get:
                     parentId: 8a80825556ff28a4015708ba29312ecc
                     tenantId: '6398'
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_entities/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_entities/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_entities/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_entities/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_entities/getundefined
+        $ref: ../code_samples/cURL/v1_entities/getundefined

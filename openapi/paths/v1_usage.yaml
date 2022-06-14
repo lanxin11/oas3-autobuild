@@ -171,7 +171,7 @@ post:
                 success: true
                 size: 316
                 checkImportStatus: /v1/usage/2c92c8f83dcbd8b1013dcce1159900cc/status
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_usage/postundefined
+        $ref: ../code_samples/cURL/v1_usage/postundefined

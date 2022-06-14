@@ -348,22 +348,10 @@ put:
                   "code":"500",
                   "message":"A temporary problem in the service occurred, you can retry later."
                 }
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/notifications_email-templates_{id}/putundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/notifications_email-templates_{id}/putundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/notifications_email-templates_{id}/putundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/notifications_email-templates_{id}/putundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/notifications_email-templates_{id}/putundefined
+        $ref: ../code_samples/cURL/notifications_email-templates_{id}/putundefined
 get:
   summary: Retrieve an email template
   operationId: GET_Get_Email_Template
@@ -735,22 +723,10 @@ get:
                   "code":"500",
                   "message":"A temporary problem in the service occurred, you can retry later."
                 }
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/notifications_email-templates_{id}/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/notifications_email-templates_{id}/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/notifications_email-templates_{id}/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/notifications_email-templates_{id}/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/notifications_email-templates_{id}/getundefined
+        $ref: ../code_samples/cURL/notifications_email-templates_{id}/getundefined
 delete:
   summary: Delete an email template
   operationId: DELETE_Delete_Email_Template
@@ -1090,23 +1066,8 @@ delete:
                   "code":"500",
                   "message":"A temporary problem in the service occurred, you can retry later."
                 }
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
         $ref: >-
-          ../code_samples/Curl/notifications_email-templates_{id}/deleteundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/notifications_email-templates_{id}/deleteundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/notifications_email-templates_{id}/deleteundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/notifications_email-templates_{id}/deleteundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/notifications_email-templates_{id}/deleteundefined
+          ../code_samples/cURL/notifications_email-templates_{id}/deleteundefined

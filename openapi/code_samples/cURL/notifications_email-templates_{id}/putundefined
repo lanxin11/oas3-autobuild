@@ -1,0 +1,19 @@
+curl -X PUT -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3" -H "Content-Type: application/json" -d '{
+    "active": true,
+    "bccEmailAddress": "user@example.com",
+    "ccEmailAddress": "user@example.com",
+    "ccEmailType": "SpecificEmails",
+    "description": "Email when an account is edited",
+    "emailBody": "Dear user,<p>the account <Account.Name> has been edited. <p>Example Co. Ltd.",
+    "emailSubject": "Account <Account.Number> has been edited",
+    "encodingType": "UTF8",
+    "fromEmailAddress": null,
+    "fromEmailType": "TenantEmail",
+    "fromName": "Example Co. Ltd.",
+    "isHtml": true,
+    "name": "Account Edit Email",
+    "replyToEmailAddress": null,
+    "replyToEmailType": "TenantEmail",
+    "toEmailAddress": null,
+    "toEmailType": "BillToContact"
+}' "https://rest.zuora.com/notifications/email-templates/{id}"

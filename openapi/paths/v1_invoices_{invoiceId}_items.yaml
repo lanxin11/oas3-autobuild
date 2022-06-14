@@ -142,19 +142,7 @@ get:
                           taxRateDescription: ''
                           taxRateType: Percentage
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_invoices_{invoiceId}_items/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_invoices_{invoiceId}_items/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_invoices_{invoiceId}_items/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_invoices_{invoiceId}_items/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_invoices_{invoiceId}_items/getundefined
+        $ref: ../code_samples/cURL/v1_invoices_{invoiceId}_items/getundefined

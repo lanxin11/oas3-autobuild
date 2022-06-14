@@ -128,19 +128,7 @@ delete:
                   - code: invalid
                     status: 403
                     title: Cannot delete the active version of a workflow.
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/versions_{version_id}/deleteundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/versions_{version_id}/deleteundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/versions_{version_id}/deleteundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/versions_{version_id}/deleteundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/versions_{version_id}/deleteundefined
+        $ref: ../code_samples/cURL/versions_{version_id}/deleteundefined

@@ -82,24 +82,8 @@ post:
           $ref: >-
             ../components/schemas/POSTBillingDocumentFilesDeletionJobRequest.yaml
     required: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
         $ref: >-
-          ../code_samples/Curl/v1_accounts_billing-documents_files_deletion-jobs/postundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_accounts_billing-documents_files_deletion-jobs/postundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_accounts_billing-documents_files_deletion-jobs/postundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_accounts_billing-documents_files_deletion-jobs/postundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_accounts_billing-documents_files_deletion-jobs/postundefined
+          ../code_samples/cURL/v1_accounts_billing-documents_files_deletion-jobs/postundefined

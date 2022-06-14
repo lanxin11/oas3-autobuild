@@ -147,22 +147,10 @@ post:
         schema:
           $ref: ../components/schemas/POSTBulkDebitMemosRequestType.yaml
     required: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_debitmemos_bulk/postundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_debitmemos_bulk/postundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_debitmemos_bulk/postundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_debitmemos_bulk/postundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_debitmemos_bulk/postundefined
+        $ref: ../code_samples/cURL/v1_debitmemos_bulk/postundefined
 put:
   description: >
     **Note:** This operation is only available if you have [Invoice
@@ -313,19 +301,7 @@ put:
         schema:
           $ref: ../components/schemas/PUTBulkDebitMemosRequestType.yaml
     required: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_debitmemos_bulk/putundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_debitmemos_bulk/putundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_debitmemos_bulk/putundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_debitmemos_bulk/putundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_debitmemos_bulk/putundefined
+        $ref: ../code_samples/cURL/v1_debitmemos_bulk/putundefined

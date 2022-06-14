@@ -97,22 +97,10 @@ put:
         schema:
           $ref: ../components/schemas/PUTTaxationItemType.yaml
     required: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_taxationitems_{id}/putundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_taxationitems_{id}/putundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_taxationitems_{id}/putundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_taxationitems_{id}/putundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_taxationitems_{id}/putundefined
+        $ref: ../code_samples/cURL/v1_taxationitems_{id}/putundefined
 get:
   description: |
     Retrieves the information about a specific taxation item by ID.
@@ -207,22 +195,10 @@ get:
         The unique ID of a taxation item.
       schema:
         type: string
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_taxationitems_{id}/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_taxationitems_{id}/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_taxationitems_{id}/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_taxationitems_{id}/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_taxationitems_{id}/getundefined
+        $ref: ../code_samples/cURL/v1_taxationitems_{id}/getundefined
 delete:
   description: |
     Deletes a specific taxation item by ID.
@@ -293,19 +269,7 @@ delete:
         The unique ID of a taxation item.
       schema:
         type: string
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_taxationitems_{id}/deleteundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_taxationitems_{id}/deleteundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_taxationitems_{id}/deleteundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_taxationitems_{id}/deleteundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_taxationitems_{id}/deleteundefined
+        $ref: ../code_samples/cURL/v1_taxationitems_{id}/deleteundefined

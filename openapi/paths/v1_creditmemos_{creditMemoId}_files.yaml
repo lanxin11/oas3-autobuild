@@ -107,7 +107,7 @@ post:
               value:
                 success: true
                 fileId: 40289f466463d683016463ef8b7301a4
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_creditmemos_{creditMemoId}_files/postundefined
+        $ref: ../code_samples/cURL/v1_creditmemos_{creditMemoId}_files/postundefined

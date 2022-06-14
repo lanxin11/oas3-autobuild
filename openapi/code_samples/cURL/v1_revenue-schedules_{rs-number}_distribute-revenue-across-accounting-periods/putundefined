@@ -1,0 +1,15 @@
+curl -X PUT -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3" -H "Content-Type: application/json" -d '{
+    "eventType": "Revenue Distributed",
+    "eventTypeSystemId": "RevenueDistributed__z",
+    "notes": "Manually distribute revenue for Phase 1",
+    "revenueDistributions": [
+        {
+            "accountingPeriodName": "Jan'\''2013",
+            "newAmount": "500"
+        },
+        {
+            "accountingPeriodName": "Feb'\''2013",
+            "newAmount": "600"
+        }
+    ]
+}' "https://rest.zuora.com/v1/revenue-schedules/{rs-number}/distribute-revenue-across-accounting-periods"

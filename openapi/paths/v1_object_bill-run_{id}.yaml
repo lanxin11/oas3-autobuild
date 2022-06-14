@@ -221,22 +221,10 @@ get:
                 records: {}
                 size: 0
                 done: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_object_bill-run_{id}/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_object_bill-run_{id}/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_object_bill-run_{id}/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_object_bill-run_{id}/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_object_bill-run_{id}/getundefined
+        $ref: ../code_samples/cURL/v1_object_bill-run_{id}/getundefined
 put:
   summary: 'CRUD: Post or cancel a bill run'
   operationId: Object_PUTBillRun
@@ -427,22 +415,10 @@ put:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_object_bill-run_{id}/putundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_object_bill-run_{id}/putundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_object_bill-run_{id}/putundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_object_bill-run_{id}/putundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_object_bill-run_{id}/putundefined
+        $ref: ../code_samples/cURL/v1_object_bill-run_{id}/putundefined
 delete:
   summary: 'CRUD: Delete a bill run'
   operationId: Object_DELETEBillRun
@@ -588,19 +564,7 @@ delete:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_object_bill-run_{id}/deleteundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_object_bill-run_{id}/deleteundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_object_bill-run_{id}/deleteundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_object_bill-run_{id}/deleteundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_object_bill-run_{id}/deleteundefined
+        $ref: ../code_samples/cURL/v1_object_bill-run_{id}/deleteundefined

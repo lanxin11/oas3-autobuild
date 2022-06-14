@@ -133,22 +133,10 @@ put:
         schema:
           $ref: ../components/schemas/PUTCreditMemoType.yaml
     required: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_creditmemos_{creditMemoId}/putundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_creditmemos_{creditMemoId}/putundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_creditmemos_{creditMemoId}/putundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_creditmemos_{creditMemoId}/putundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_creditmemos_{creditMemoId}/putundefined
+        $ref: ../code_samples/cURL/v1_creditmemos_{creditMemoId}/putundefined
 get:
   description: >
     **Note:** This operation is only available if you have [Invoice
@@ -269,22 +257,10 @@ get:
       required: true
       schema:
         type: string
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_creditmemos_{creditMemoId}/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_creditmemos_{creditMemoId}/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_creditmemos_{creditMemoId}/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_creditmemos_{creditMemoId}/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_creditmemos_{creditMemoId}/getundefined
+        $ref: ../code_samples/cURL/v1_creditmemos_{creditMemoId}/getundefined
 delete:
   description: >
     **Note:** This operation is only available if you have [Invoice
@@ -373,19 +349,7 @@ delete:
       required: true
       schema:
         type: string
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_creditmemos_{creditMemoId}/deleteundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_creditmemos_{creditMemoId}/deleteundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_creditmemos_{creditMemoId}/deleteundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_creditmemos_{creditMemoId}/deleteundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_creditmemos_{creditMemoId}/deleteundefined
+        $ref: ../code_samples/cURL/v1_creditmemos_{creditMemoId}/deleteundefined

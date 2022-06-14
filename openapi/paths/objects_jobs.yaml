@@ -201,22 +201,10 @@ post:
               value:
                 code: 71012514
                 message: User does not have permission to delete custom objects.
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/objects_jobs/postundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/objects_jobs/postundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/objects_jobs/postundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/objects_jobs/postundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/objects_jobs/postundefined
+        $ref: ../code_samples/cURL/objects_jobs/postundefined
 get:
   summary: List all custom object bulk jobs
   description: |
@@ -303,19 +291,7 @@ get:
         application/json; charset=utf-8:
           schema:
             $ref: ../components/schemas/CustomObjectBulkJobResponseCollection.yaml
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/objects_jobs/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/objects_jobs/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/objects_jobs/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/objects_jobs/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/objects_jobs/getundefined
+        $ref: ../code_samples/cURL/objects_jobs/getundefined

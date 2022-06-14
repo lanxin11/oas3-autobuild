@@ -85,19 +85,7 @@ get:
                 errorCount: 1
                 successCount: 2
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_bulk_{bulk-key}/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_bulk_{bulk-key}/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_bulk_{bulk-key}/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_bulk_{bulk-key}/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_bulk_{bulk-key}/getundefined
+        $ref: ../code_samples/cURL/v1_bulk_{bulk-key}/getundefined

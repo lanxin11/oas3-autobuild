@@ -128,24 +128,8 @@ get:
                     updatedOn: '2016-05-02 13:09:17'
                     updatedBy: 4028e487327fd45a0132829ebb673ff9
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
         $ref: >-
-          ../code_samples/Curl/v1_attachments_{object-type}_{object-key}/getundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_attachments_{object-type}_{object-key}/getundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_attachments_{object-type}_{object-key}/getundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_attachments_{object-type}_{object-key}/getundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_attachments_{object-type}_{object-key}/getundefined
+          ../code_samples/cURL/v1_attachments_{object-type}_{object-key}/getundefined

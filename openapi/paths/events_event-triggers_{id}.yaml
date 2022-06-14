@@ -195,22 +195,10 @@ get:
                     }
                   ]
                 }
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/events_event-triggers_{id}/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/events_event-triggers_{id}/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/events_event-triggers_{id}/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/events_event-triggers_{id}/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/events_event-triggers_{id}/getundefined
+        $ref: ../code_samples/cURL/events_event-triggers_{id}/getundefined
 put:
   description: ''
   tags:
@@ -415,22 +403,10 @@ put:
                     }
                   ]
                 }
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/events_event-triggers_{id}/putundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/events_event-triggers_{id}/putundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/events_event-triggers_{id}/putundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/events_event-triggers_{id}/putundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/events_event-triggers_{id}/putundefined
+        $ref: ../code_samples/cURL/events_event-triggers_{id}/putundefined
 delete:
   description: ''
   tags:
@@ -609,19 +585,7 @@ delete:
                     }
                   ]
                 }
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/events_event-triggers_{id}/deleteundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/events_event-triggers_{id}/deleteundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/events_event-triggers_{id}/deleteundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/events_event-triggers_{id}/deleteundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/events_event-triggers_{id}/deleteundefined
+        $ref: ../code_samples/cURL/events_event-triggers_{id}/deleteundefined

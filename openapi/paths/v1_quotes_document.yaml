@@ -91,19 +91,7 @@ post:
                 success: true
                 file: >-
                   https://rest.zuora.com/v1/file/2c92c09447f1ca410147f7bfed8c5a87
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_quotes_document/postundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_quotes_document/postundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_quotes_document/postundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_quotes_document/postundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_quotes_document/postundefined
+        $ref: ../code_samples/cURL/v1_quotes_document/postundefined

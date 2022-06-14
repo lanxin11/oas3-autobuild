@@ -96,24 +96,8 @@ get:
                     updatedDate: '2018-01-02 11:41:38'
                     updatedById: 402881e522cf4f9b0122cf5d82860002
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
         $ref: >-
-          ../code_samples/Curl/v1_debitmemos_{debitMemoId}_application-parts/getundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_debitmemos_{debitMemoId}_application-parts/getundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_debitmemos_{debitMemoId}_application-parts/getundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_debitmemos_{debitMemoId}_application-parts/getundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_debitmemos_{debitMemoId}_application-parts/getundefined
+          ../code_samples/cURL/v1_debitmemos_{debitMemoId}_application-parts/getundefined

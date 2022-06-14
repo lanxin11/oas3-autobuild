@@ -357,22 +357,10 @@ post:
                   "code":"500",
                   "message":"A temporary problem in the service occurred, you can retry later."
                 }
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/notifications_email-templates/postundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/notifications_email-templates/postundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/notifications_email-templates/postundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/notifications_email-templates/postundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/notifications_email-templates/postundefined
+        $ref: ../code_samples/cURL/notifications_email-templates/postundefined
 get:
   summary: List email templates
   operationId: GET_Query_Email_Templates
@@ -755,19 +743,7 @@ get:
                   "code":"500",
                   "message":"A temporary problem in the service occurred, you can retry later."
                 }
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/notifications_email-templates/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/notifications_email-templates/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/notifications_email-templates/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/notifications_email-templates/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/notifications_email-templates/getundefined
+        $ref: ../code_samples/cURL/notifications_email-templates/getundefined

@@ -101,24 +101,8 @@ get:
                         type: Credit
                         amount: 100
                         homeCurrencyAmount: 100
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
         $ref: >-
-          ../code_samples/Curl/v1_journal-entries_journal-runs_{jr-number}/getundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_journal-entries_journal-runs_{jr-number}/getundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_journal-entries_journal-runs_{jr-number}/getundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_journal-entries_journal-runs_{jr-number}/getundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_journal-entries_journal-runs_{jr-number}/getundefined
+          ../code_samples/cURL/v1_journal-entries_journal-runs_{jr-number}/getundefined

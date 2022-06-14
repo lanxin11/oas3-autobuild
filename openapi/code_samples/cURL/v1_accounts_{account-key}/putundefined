@@ -1,0 +1,7 @@
+curl -X PUT -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3" -H "Content-Type: application/json" -d '{
+    "additionalEmailAddresses": [
+        "contact3@example.com",
+        "contact4@example.com"
+    ],
+    "paymentGateway": "TestGateway"
+}' "https://rest.zuora.com/v1/accounts/{account-key}"

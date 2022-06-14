@@ -107,24 +107,8 @@ post:
                 refundTransactionTime: null
                 financeInformation: null
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
         $ref: >-
-          ../code_samples/Curl/v1_gateway-settlement_payments_{payment-id}_chargeback/postundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_gateway-settlement_payments_{payment-id}_chargeback/postundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_gateway-settlement_payments_{payment-id}_chargeback/postundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_gateway-settlement_payments_{payment-id}_chargeback/postundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_gateway-settlement_payments_{payment-id}_chargeback/postundefined
+          ../code_samples/cURL/v1_gateway-settlement_payments_{payment-id}_chargeback/postundefined

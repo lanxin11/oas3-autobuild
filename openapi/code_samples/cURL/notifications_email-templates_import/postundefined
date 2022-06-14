@@ -1,0 +1,44 @@
+curl -X POST -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3" -H "Content-Type: application/json" -d '{
+    "allowPartialSuccess": true,
+    "emailTemplates": [
+        {
+            "active": true,
+            "bccEmailAddress": "user@example.com",
+            "ccEmailAddress": "user@example.com",
+            "ccEmailType": "SpecificEmails",
+            "description": "Email when an account is edited",
+            "emailBody": "Dear user,<p>the account <Account.Name> has been edited. </p><p>Example Co. Ltd.</p>",
+            "emailSubject": "Account <Account.Number> has been edited",
+            "encodingType": "UTF8",
+            "eventTypeName": "AccountEdit",
+            "fromEmailType": "TenantEmail",
+            "fromName": "Example Co. Ltd.",
+            "id": "8500105b9a1045019474652bd81c7ce5",
+            "isHtml": true,
+            "name": "Account Edit Email",
+            "replyToEmailType": "TenantEmail",
+            "toEmailAddress": "DummyEmailAddress@example.com",
+            "toEmailType": "SpecificEmails"
+        },
+        {
+            "active": true,
+            "bccEmailAddress": "",
+            "ccEmailAddress": "user@example.com",
+            "ccEmailType": "SpecificEmails",
+            "description": "Updated Description",
+            "emailBody": "Dear <BillToContact.FirstName> <BillToContact.LastName>,\r\n\r\nA refund of <Refund.Amount> <Account.Currency> was processed against your credit memo on <Refund.Date>.\r\n\r\nYour new account unapplied credit memo amount is <Account.UnappliedCreditMemoAmount> <Account.Currency> and your account balance is <Account.Balance> <Account.Currency>.\r\n\r\nThank you for your business!",
+            "emailSubject": "Your credit memo refund was successfully processed",
+            "encodingType": "UTF8",
+            "eventCategory": 2830,
+            "fromEmailAddress": "support@zuora.com",
+            "fromEmailType": "SpecificEmail",
+            "fromName": "Admin",
+            "isHtml": true,
+            "name": "Credit Memo Refund Processed Default Email Template",
+            "replyToEmailAddress": "support@zuora.com",
+            "replyToEmailType": "SpecificEmail",
+            "toEmailAddress": "",
+            "toEmailType": "BillToContact"
+        }
+    ]
+}' "https://rest.zuora.com/notifications/email-templates/import"

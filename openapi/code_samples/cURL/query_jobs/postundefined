@@ -1,0 +1,8 @@
+curl -X POST -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3" -H "Content-Type: application/json" -d '{
+    "compression": "NONE",
+    "output": {
+        "target": "S3"
+    },
+    "outputFormat": "JSON",
+    "query": "SELECT accountnumber, balance FROM Account WHERE Account.balance > 100"
+}' "https://rest.zuora.com/query/jobs"

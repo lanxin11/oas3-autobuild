@@ -1,0 +1,41 @@
+curl -X POST -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3" -H "Content-Type: application/json" -d '{
+    "entityId": "",
+    "fields": [
+        {
+            "checksum": true,
+            "defaultValue": null,
+            "description": "The Token value",
+            "editable": true,
+            "index": 1,
+            "label": "AmazonToken",
+            "maxLength": 100,
+            "minLength": 1,
+            "name": "AmazonToken",
+            "representer": true,
+            "required": true,
+            "type": "string",
+            "visible": true
+        },
+        {
+            "checksum": true,
+            "defaultValue": null,
+            "description": "The Type of Token, e.g. GoCardlessToken",
+            "editable": true,
+            "index": 2,
+            "label": "Amazon TokenType",
+            "maxLength": 100,
+            "minLength": 1,
+            "name": "AmazonTokenType",
+            "representer": true,
+            "required": true,
+            "type": "string",
+            "visible": true
+        }
+    ],
+    "internalName": "AmazonPay",
+    "label": "ZuoraQA Amazon Pay",
+    "methodReferenceIdField": "AmazonToken",
+    "subTypeField": "AmazonTokenType",
+    "tenantId": "9",
+    "userReferenceIdField": ""
+}' "https://rest.zuora.com/open-payment-method-types"

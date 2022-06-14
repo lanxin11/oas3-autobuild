@@ -95,24 +95,8 @@ get:
                     invoiceFiles: >-
                       https://rest.zuora.com/v1/invoices/8a88818e66bdd34d0166be4589b60031/files
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
         $ref: >-
-          ../code_samples/Curl/v1_transactions_invoices_accounts_{account-key}/getundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_transactions_invoices_accounts_{account-key}/getundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_transactions_invoices_accounts_{account-key}/getundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_transactions_invoices_accounts_{account-key}/getundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_transactions_invoices_accounts_{account-key}/getundefined
+          ../code_samples/cURL/v1_transactions_invoices_accounts_{account-key}/getundefined

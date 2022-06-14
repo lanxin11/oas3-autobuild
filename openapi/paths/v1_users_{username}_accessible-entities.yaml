@@ -112,24 +112,8 @@ get:
                     parentId: 8a80825555a3c7a10155b460f53858e6
                     tenantId: '6398'
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
         $ref: >-
-          ../code_samples/Curl/v1_users_{username}_accessible-entities/getundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_users_{username}_accessible-entities/getundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_users_{username}_accessible-entities/getundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_users_{username}_accessible-entities/getundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_users_{username}_accessible-entities/getundefined
+          ../code_samples/cURL/v1_users_{username}_accessible-entities/getundefined

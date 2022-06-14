@@ -151,24 +151,8 @@ post:
                 a00000000000000000000000000000001:
                   code: ObjectNotFound
                   message: Callout history does not exist.
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
         $ref: >-
-          ../code_samples/Curl/notifications_callout-histories_resend/postundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/notifications_callout-histories_resend/postundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/notifications_callout-histories_resend/postundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/notifications_callout-histories_resend/postundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/notifications_callout-histories_resend/postundefined
+          ../code_samples/cURL/notifications_callout-histories_resend/postundefined

@@ -1,0 +1,10 @@
+curl -X PUT -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3" -H "Content-Type: application/json" -d '{
+    "revenueItems": [
+        {
+            "accountingPeriodName": "Oct'\''2014"
+        },
+        {
+            "accountingPeriodName": "Nov'\''2014"
+        }
+    ]
+}' "https://rest.zuora.com/v1/revenue-items/revenue-schedules/{rs-number}"

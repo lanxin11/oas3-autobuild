@@ -1,0 +1,11 @@
+curl -X PUT -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3" -H "Content-Type: application/json" -d '{
+    "cardHolderName": "Leo",
+    "expirationMonth": 8,
+    "expirationYear": 2015,
+    "gatewayOptions": {
+        "Comments": "Updated comments",
+        "IPAddress": "172.112.1.1"
+    },
+    "numConsecutiveFailures": 5,
+    "securityCode": "111"
+}' "https://rest.zuora.com/v1/payment-methods/credit-cards/{payment-method-id}"

@@ -75,22 +75,10 @@ post:
               value:
                 id: 8a8081ae547aac1e01547efb61f20140
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_accounting-codes/postundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_accounting-codes/postundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_accounting-codes/postundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_accounting-codes/postundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_accounting-codes/postundefined
+        $ref: ../code_samples/cURL/v1_accounting-codes/postundefined
 get:
   summary: List all accounting codes
   operationId: GET_AllAccountingCodes
@@ -181,19 +169,7 @@ get:
                     updatedOn: '2014-09-27 22:11:07'
                     updatedBy: e20b074746ec48f40147140f51e30a1a
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_accounting-codes/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_accounting-codes/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_accounting-codes/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_accounting-codes/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_accounting-codes/getundefined
+        $ref: ../code_samples/cURL/v1_accounting-codes/getundefined

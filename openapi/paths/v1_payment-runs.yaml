@@ -94,22 +94,10 @@ post:
                 updatedDate: '2017-12-28 09:00:06'
                 updatedById: 2c92c0f958fffd7d015914aeefc71a5d
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_payment-runs/postundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_payment-runs/postundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_payment-runs/postundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_payment-runs/postundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_payment-runs/postundefined
+        $ref: ../code_samples/cURL/v1_payment-runs/postundefined
 get:
   description: >
     Retrieves the information about all payment runs. You can define filterable
@@ -315,19 +303,7 @@ get:
                     updatedById: 2c92c0f956bc8fcb0156f8eee04b4d54
                 nextPage: /payment-runs?page=2
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_payment-runs/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_payment-runs/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_payment-runs/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_payment-runs/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_payment-runs/getundefined
+        $ref: ../code_samples/cURL/v1_payment-runs/getundefined

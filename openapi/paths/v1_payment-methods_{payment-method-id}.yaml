@@ -102,27 +102,11 @@ put:
               value:
                 id: 2c92c0f86c99b4eb016cae1ee301728f
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
         $ref: >-
-          ../code_samples/Curl/v1_payment-methods_{payment-method-id}/putundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_payment-methods_{payment-method-id}/putundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_payment-methods_{payment-method-id}/putundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_payment-methods_{payment-method-id}/putundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_payment-methods_{payment-method-id}/putundefined
+          ../code_samples/cURL/v1_payment-methods_{payment-method-id}/putundefined
 get:
   summary: Retrieve a payment method
   operationId: GET_PaymentMethod
@@ -244,27 +228,11 @@ get:
                 updatedBy: 402881e522cf4f9b0122cf5d82860002
                 AA_PICKLIST__c: null
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
         $ref: >-
-          ../code_samples/Curl/v1_payment-methods_{payment-method-id}/getundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_payment-methods_{payment-method-id}/getundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_payment-methods_{payment-method-id}/getundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_payment-methods_{payment-method-id}/getundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_payment-methods_{payment-method-id}/getundefined
+          ../code_samples/cURL/v1_payment-methods_{payment-method-id}/getundefined
 delete:
   summary: Delete a payment method
   operationId: DELETE_PaymentMethods
@@ -348,24 +316,8 @@ delete:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
         $ref: >-
-          ../code_samples/Curl/v1_payment-methods_{payment-method-id}/deleteundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_payment-methods_{payment-method-id}/deleteundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_payment-methods_{payment-method-id}/deleteundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_payment-methods_{payment-method-id}/deleteundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_payment-methods_{payment-method-id}/deleteundefined
+          ../code_samples/cURL/v1_payment-methods_{payment-method-id}/deleteundefined

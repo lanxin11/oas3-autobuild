@@ -110,24 +110,8 @@ post:
         application/json; charset=utf-8:
           schema:
             $ref: ../components/schemas/POSTAuthorizeResponse.yaml
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
         $ref: >-
-          ../code_samples/Curl/v1_payment-methods_{payment-method-id}_authorize/postundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_payment-methods_{payment-method-id}_authorize/postundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_payment-methods_{payment-method-id}_authorize/postundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_payment-methods_{payment-method-id}_authorize/postundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_payment-methods_{payment-method-id}_authorize/postundefined
+          ../code_samples/cURL/v1_payment-methods_{payment-method-id}_authorize/postundefined

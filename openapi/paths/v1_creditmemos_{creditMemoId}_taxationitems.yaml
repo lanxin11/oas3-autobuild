@@ -109,24 +109,8 @@ post:
         schema:
           $ref: ../components/schemas/POSTTaxationItemListForCMType.yaml
     required: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
         $ref: >-
-          ../code_samples/Curl/v1_creditmemos_{creditMemoId}_taxationitems/postundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_creditmemos_{creditMemoId}_taxationitems/postundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_creditmemos_{creditMemoId}_taxationitems/postundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_creditmemos_{creditMemoId}_taxationitems/postundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_creditmemos_{creditMemoId}_taxationitems/postundefined
+          ../code_samples/cURL/v1_creditmemos_{creditMemoId}_taxationitems/postundefined

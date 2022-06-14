@@ -88,19 +88,7 @@ get:
         4028905f5a87c0ff015a889e590e00c9.
       schema:
         type: string
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_refunds_{refundId}_parts/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_refunds_{refundId}_parts/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_refunds_{refundId}_parts/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_refunds_{refundId}_parts/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_refunds_{refundId}_parts/getundefined
+        $ref: ../code_samples/cURL/v1_refunds_{refundId}_parts/getundefined

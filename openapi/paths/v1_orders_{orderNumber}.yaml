@@ -252,22 +252,10 @@ get:
                       customFields:
                         orderLineItemCF__c: olinumber-023
                   customFields: {}
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_orders_{orderNumber}/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_orders_{orderNumber}/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_orders_{orderNumber}/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_orders_{orderNumber}/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_orders_{orderNumber}/getundefined
+        $ref: ../code_samples/cURL/v1_orders_{orderNumber}/getundefined
 delete:
   tags:
     - Orders
@@ -388,19 +376,7 @@ delete:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_orders_{orderNumber}/deleteundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_orders_{orderNumber}/deleteundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_orders_{orderNumber}/deleteundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_orders_{orderNumber}/deleteundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_orders_{orderNumber}/deleteundefined
+        $ref: ../code_samples/cURL/v1_orders_{orderNumber}/deleteundefined

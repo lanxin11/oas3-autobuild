@@ -95,22 +95,10 @@ post:
               value:
                 id: 7b7181ae547aac1e01547efb61f20162
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_accounting-periods/postundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_accounting-periods/postundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_accounting-periods/postundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_accounting-periods/postundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_accounting-periods/postundefined
+        $ref: ../code_samples/cURL/v1_accounting-periods/postundefined
 get:
   summary: List all accounting periods
   operationId: GET_AllAccountingPeriods
@@ -274,19 +262,7 @@ get:
                     updatedOn: '2016-03-16 23:23:29'
                     updatedBy: e20b074746ec48f40147140f51e30a1a
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_accounting-periods/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_accounting-periods/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_accounting-periods/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_accounting-periods/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_accounting-periods/getundefined
+        $ref: ../code_samples/cURL/v1_accounting-periods/getundefined

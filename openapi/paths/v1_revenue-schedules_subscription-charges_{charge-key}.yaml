@@ -81,27 +81,11 @@ post:
               value:
                 revenueScheduleNumber: rs-00000001
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
         $ref: >-
-          ../code_samples/Curl/v1_revenue-schedules_subscription-charges_{charge-key}/postundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_revenue-schedules_subscription-charges_{charge-key}/postundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_revenue-schedules_subscription-charges_{charge-key}/postundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_revenue-schedules_subscription-charges_{charge-key}/postundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_revenue-schedules_subscription-charges_{charge-key}/postundefined
+          ../code_samples/cURL/v1_revenue-schedules_subscription-charges_{charge-key}/postundefined
 get:
   summary: List revenue schedules by subscription charge key
   operationId: GET_RSforSubscCharge
@@ -235,24 +219,8 @@ get:
                 nextPage: >-
                   https://rest.zuora.com/v1/revenue-schedules/subscription-charges/2c92c0f943977b4f0143b23487ed432e?page=2&pageSize=8
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
         $ref: >-
-          ../code_samples/Curl/v1_revenue-schedules_subscription-charges_{charge-key}/getundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_revenue-schedules_subscription-charges_{charge-key}/getundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_revenue-schedules_subscription-charges_{charge-key}/getundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_revenue-schedules_subscription-charges_{charge-key}/getundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_revenue-schedules_subscription-charges_{charge-key}/getundefined
+          ../code_samples/cURL/v1_revenue-schedules_subscription-charges_{charge-key}/getundefined

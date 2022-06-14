@@ -82,19 +82,7 @@ post:
                       - code: 59210020
                         message: Only invoices with Draft status can be posted.
                     id: ff808081804f25b001804f2d8971079f
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_invoices_bulk-post/postundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_invoices_bulk-post/postundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_invoices_bulk-post/postundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_invoices_bulk-post/postundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_invoices_bulk-post/postundefined
+        $ref: ../code_samples/cURL/v1_invoices_bulk-post/postundefined

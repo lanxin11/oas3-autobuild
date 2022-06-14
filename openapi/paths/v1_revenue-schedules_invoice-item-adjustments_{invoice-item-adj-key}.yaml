@@ -100,27 +100,11 @@ get:
                     deferredRevenueAccountingCodeType: null
                     deferredRevenueAccountingCode: null
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
         $ref: >-
-          ../code_samples/Curl/v1_revenue-schedules_invoice-item-adjustments_{invoice-item-adj-key}/getundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_revenue-schedules_invoice-item-adjustments_{invoice-item-adj-key}/getundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_revenue-schedules_invoice-item-adjustments_{invoice-item-adj-key}/getundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_revenue-schedules_invoice-item-adjustments_{invoice-item-adj-key}/getundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_revenue-schedules_invoice-item-adjustments_{invoice-item-adj-key}/getundefined
+          ../code_samples/cURL/v1_revenue-schedules_invoice-item-adjustments_{invoice-item-adj-key}/getundefined
 post:
   summary: >-
     Create a revenue schedule for an invoice item adjustment (manual
@@ -206,24 +190,8 @@ post:
               value:
                 revenueScheduleNumber: rs-00000002
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
         $ref: >-
-          ../code_samples/Curl/v1_revenue-schedules_invoice-item-adjustments_{invoice-item-adj-key}/postundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_revenue-schedules_invoice-item-adjustments_{invoice-item-adj-key}/postundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_revenue-schedules_invoice-item-adjustments_{invoice-item-adj-key}/postundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_revenue-schedules_invoice-item-adjustments_{invoice-item-adj-key}/postundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_revenue-schedules_invoice-item-adjustments_{invoice-item-adj-key}/postundefined
+          ../code_samples/cURL/v1_revenue-schedules_invoice-item-adjustments_{invoice-item-adj-key}/postundefined

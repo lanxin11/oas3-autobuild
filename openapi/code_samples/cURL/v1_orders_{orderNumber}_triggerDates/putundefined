@@ -1,0 +1,24 @@
+curl -X PUT -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3" -H "Content-Type: application/json" -d '{
+    "subscriptions": [
+        {
+            "orderActions": [
+                {
+                    "charges": [
+                        {
+                            "chargeNumber": "C-0000001",
+                            "specificTriggerDate": "2016-09-01"
+                        }
+                    ],
+                    "sequence": 0,
+                    "triggerDates": [
+                        {
+                            "name": "CustomerAcceptance",
+                            "triggerDate": "2016-09-01"
+                        }
+                    ]
+                }
+            ],
+            "subscriptionNumber": "A-S00000009"
+        }
+    ]
+}' "https://rest.zuora.com/v1/orders/{orderNumber}/triggerDates"

@@ -86,24 +86,8 @@ put:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
         $ref: >-
-          ../code_samples/Curl/v1_subscriptions_{subscriptionNumber}_customFields/putundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_subscriptions_{subscriptionNumber}_customFields/putundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_subscriptions_{subscriptionNumber}_customFields/putundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_subscriptions_{subscriptionNumber}_customFields/putundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_subscriptions_{subscriptionNumber}_customFields/putundefined
+          ../code_samples/cURL/v1_subscriptions_{subscriptionNumber}_customFields/putundefined

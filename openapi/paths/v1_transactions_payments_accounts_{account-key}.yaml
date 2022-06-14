@@ -106,24 +106,8 @@ get:
                     type: Electronic
                     accountNumber: A00001115
                     amount: 5
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
         $ref: >-
-          ../code_samples/Curl/v1_transactions_payments_accounts_{account-key}/getundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_transactions_payments_accounts_{account-key}/getundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_transactions_payments_accounts_{account-key}/getundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_transactions_payments_accounts_{account-key}/getundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_transactions_payments_accounts_{account-key}/getundefined
+          ../code_samples/cURL/v1_transactions_payments_accounts_{account-key}/getundefined

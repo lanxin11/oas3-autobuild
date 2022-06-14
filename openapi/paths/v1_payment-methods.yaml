@@ -316,19 +316,7 @@ post:
               value:
                 id: 2c92a09650a7a80a0150ab50a5b746bd
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_payment-methods/postundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_payment-methods/postundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_payment-methods/postundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_payment-methods/postundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_payment-methods/postundefined
+        $ref: ../code_samples/cURL/v1_payment-methods/postundefined

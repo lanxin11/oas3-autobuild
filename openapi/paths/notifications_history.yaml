@@ -191,19 +191,7 @@ delete:
                         }
                     ]
                 }
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/notifications_history/deleteundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/notifications_history/deleteundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/notifications_history/deleteundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/notifications_history/deleteundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/notifications_history/deleteundefined
+        $ref: ../code_samples/cURL/notifications_history/deleteundefined

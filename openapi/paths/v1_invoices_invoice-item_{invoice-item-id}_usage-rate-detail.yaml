@@ -112,24 +112,8 @@ get:
                     Tier 3: 21-30, $2.00 Flat Fee
                     Tier 4: >=31, 15 Each(s) x $3.00/Each = $45.00
                     Total = $58.00
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
         $ref: >-
-          ../code_samples/Curl/v1_invoices_invoice-item_{invoice-item-id}_usage-rate-detail/getundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_invoices_invoice-item_{invoice-item-id}_usage-rate-detail/getundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_invoices_invoice-item_{invoice-item-id}_usage-rate-detail/getundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_invoices_invoice-item_{invoice-item-id}_usage-rate-detail/getundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_invoices_invoice-item_{invoice-item-id}_usage-rate-detail/getundefined
+          ../code_samples/cURL/v1_invoices_invoice-item_{invoice-item-id}_usage-rate-detail/getundefined

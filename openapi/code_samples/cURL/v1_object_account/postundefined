@@ -1,0 +1,13 @@
+curl -X POST -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3" -H "Content-Type: application/json" -d '{
+    "AccountNumber": "AN_1476935163869",
+    "AutoPay": false,
+    "Batch": "Batch1",
+    "BillCycleDay": 1,
+    "CrmId": "crmid",
+    "Currency": "USD",
+    "InvoiceTemplateId": "2c93808457d787030157e03208864f97",
+    "Name": "AC_1476935163869",
+    "Notes": "this is notes",
+    "PaymentTerm": "Due Upon Receipt",
+    "Status": "Draft"
+}' "https://rest.zuora.com/v1/object/account"

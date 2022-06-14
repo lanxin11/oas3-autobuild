@@ -1,0 +1,19 @@
+curl -X POST -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3" -H "Content-Type: application/json" -d '{
+    "AccountId": "2c93808457d787030157e03190e748ea",
+    "Amount": 1.1,
+    "Comment": "this is comments",
+    "PaymentId": "2c93808457d787030157e03197714910",
+    "ReasonCode": "Standard Refund",
+    "RefundInvoicePaymentData": {
+        "RefundInvoicePayment": [
+            {
+                "InvoiceId": "2c93808457d787030157e03195604902",
+                "RefundAmount": 1.1
+            }
+        ]
+    },
+    "SoftDescriptor": "thisSD",
+    "SoftDescriptorPhone": "contact@example.com",
+    "SourceType": "Payment",
+    "Type": "Electronic"
+}' "https://rest.zuora.com/v1/object/refund"

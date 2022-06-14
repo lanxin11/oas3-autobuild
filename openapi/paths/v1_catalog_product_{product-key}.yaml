@@ -94,19 +94,7 @@ get:
                 productRatePlans: >-
                   https://rest.zuora.com/v1/rateplan/40289f466463d683016463ef8b7301a0/productRatePlan
                 success: true
-  x-code-samples:
-    - lang: Curl
+  x-codeSamples:
+    - lang: cURL
       source:
-        $ref: ../code_samples/Curl/v1_catalog_product_{product-key}/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_catalog_product_{product-key}/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_catalog_product_{product-key}/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_catalog_product_{product-key}/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_catalog_product_{product-key}/getundefined
+        $ref: ../code_samples/cURL/v1_catalog_product_{product-key}/getundefined
