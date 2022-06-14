@@ -4,9 +4,9 @@ apis:
     root: openapi/openapi.yaml
 lint:
   extends:
-    - recommended
+    - minimal
   rules:
-    no-unused-components: error
+    no-unused-components: warn
 features.openapi:
   showConsole: true
   htmlTemplate: ./docs/index.html
