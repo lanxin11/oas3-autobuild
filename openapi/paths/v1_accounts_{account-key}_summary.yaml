@@ -277,19 +277,7 @@ get:
                   id: 2c92a0f9391832b10139183e27940043
                   workPhone: '5555551212'
                   city: San Jose
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_accounts_{account-key}_summary/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_accounts_{account-key}_summary/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_accounts_{account-key}_summary/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_accounts_{account-key}_summary/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_accounts_{account-key}_summary/getundefined

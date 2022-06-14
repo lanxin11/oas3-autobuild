@@ -91,23 +91,8 @@ post:
         application/json; charset=utf-8:
           schema:
             $ref: ../components/schemas/CreateOrUpdateEmailTemplatesResponse.yaml
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: >-
           ../code_samples/cURL/notifications_email-templates_import/postundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/notifications_email-templates_import/postundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/notifications_email-templates_import/postundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/notifications_email-templates_import/postundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/notifications_email-templates_import/postundefined

@@ -138,7 +138,7 @@ post:
                 success: true
                 id: 402880ea536ff494015372a7ea17001f
                 fileId: 402880ea536ff494015372a7ea12001e
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_attachments/postundefined

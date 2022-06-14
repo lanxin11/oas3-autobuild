@@ -121,20 +121,7 @@ put:
       required: true
       schema:
         type: string
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_creditmemos_{creditMemoId}_cancel/putundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_creditmemos_{creditMemoId}_cancel/putundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_creditmemos_{creditMemoId}_cancel/putundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_creditmemos_{creditMemoId}_cancel/putundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_creditmemos_{creditMemoId}_cancel/putundefined

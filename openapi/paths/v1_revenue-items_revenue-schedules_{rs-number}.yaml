@@ -83,27 +83,11 @@ get:
                     deferredRevenueAccountingCodeType: null
                     deferredRevenueAccountingCode: null
                 success: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: >-
           ../code_samples/cURL/v1_revenue-items_revenue-schedules_{rs-number}/getundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_revenue-items_revenue-schedules_{rs-number}/getundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_revenue-items_revenue-schedules_{rs-number}/getundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_revenue-items_revenue-schedules_{rs-number}/getundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_revenue-items_revenue-schedules_{rs-number}/getundefined
 put:
   summary: Update custom fields on revenue items by revenue schedule number
   operationId: PUT_CustomFieldsonRevenueItemsByRevenueSchedule
@@ -183,24 +167,8 @@ put:
             response:
               value:
                 success: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: >-
           ../code_samples/cURL/v1_revenue-items_revenue-schedules_{rs-number}/putundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_revenue-items_revenue-schedules_{rs-number}/putundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_revenue-items_revenue-schedules_{rs-number}/putundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_revenue-items_revenue-schedules_{rs-number}/putundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_revenue-items_revenue-schedules_{rs-number}/putundefined

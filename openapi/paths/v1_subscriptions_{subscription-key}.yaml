@@ -170,23 +170,10 @@ put:
                 subscriptionId: 4028bb83510f8ed7015114a503cf0373
                 totalDeltaMrr: 100
                 totalDeltaTcv: 4867.7419355
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_subscriptions_{subscription-key}/putundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_subscriptions_{subscription-key}/putundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_subscriptions_{subscription-key}/putundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_subscriptions_{subscription-key}/putundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_subscriptions_{subscription-key}/putundefined
 get:
   summary: Retrieve a subscription by key
   operationId: GET_SubscriptionsByKey
@@ -448,20 +435,7 @@ get:
                         tcv: 0
                         dtcv: 0
                         description: ''
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_subscriptions_{subscription-key}/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_subscriptions_{subscription-key}/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_subscriptions_{subscription-key}/getundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_subscriptions_{subscription-key}/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_subscriptions_{subscription-key}/getundefined

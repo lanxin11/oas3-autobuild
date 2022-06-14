@@ -147,19 +147,7 @@ get:
                     - id: bd78c052-2adf-42c2-aa0f-ccacc997fa20
                       itemNumber: '116'
                 success: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_async-jobs_{jobId}/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_async-jobs_{jobId}/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_async-jobs_{jobId}/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_async-jobs_{jobId}/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_async-jobs_{jobId}/getundefined

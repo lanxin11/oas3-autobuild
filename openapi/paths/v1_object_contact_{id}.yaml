@@ -218,22 +218,10 @@ get:
                 records: {}
                 size: 0
                 done: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_object_contact_{id}/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_object_contact_{id}/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_object_contact_{id}/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_object_contact_{id}/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_object_contact_{id}/getundefined
 put:
   summary: 'CRUD: Update a contact'
   operationId: Object_PUTContact
@@ -387,22 +375,10 @@ put:
             response:
               value:
                 message: Authentication error
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_object_contact_{id}/putundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_object_contact_{id}/putundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_object_contact_{id}/putundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_object_contact_{id}/putundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_object_contact_{id}/putundefined
 delete:
   summary: 'CRUD: Delete a contact'
   operationId: Object_DELETEContact
@@ -542,19 +518,7 @@ delete:
             response:
               value:
                 message: Authentication error
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_object_contact_{id}/deleteundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_object_contact_{id}/deleteundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_object_contact_{id}/deleteundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_object_contact_{id}/deleteundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_object_contact_{id}/deleteundefined

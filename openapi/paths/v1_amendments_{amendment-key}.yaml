@@ -91,19 +91,7 @@ get:
                 baseRatePlanId: null
                 destinationAccountId: 402896a9529bc3dc01529bcba7120023
                 destinationInvoiceOwnerId: 402896a9529bc3dc01529bcba7120023
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_amendments_{amendment-key}/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_amendments_{amendment-key}/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_amendments_{amendment-key}/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_amendments_{amendment-key}/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_amendments_{amendment-key}/getundefined

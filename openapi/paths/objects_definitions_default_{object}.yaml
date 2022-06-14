@@ -120,23 +120,10 @@ get:
         application/json; charset=utf-8:
           schema:
             $ref: ../components/schemas/CommonErrorResponse.yaml
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/objects_definitions_default_{object}/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/objects_definitions_default_{object}/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/objects_definitions_default_{object}/getundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/objects_definitions_default_{object}/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/objects_definitions_default_{object}/getundefined
 delete:
   summary: Delete a custom object definition
   description: >
@@ -219,24 +206,8 @@ delete:
             description: The URI of the deleted custom object definition
             format: uri
             example: /objects/definitions/default/test_custom_object
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: >-
           ../code_samples/cURL/objects_definitions_default_{object}/deleteundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/objects_definitions_default_{object}/deleteundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/objects_definitions_default_{object}/deleteundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/objects_definitions_default_{object}/deleteundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/objects_definitions_default_{object}/deleteundefined

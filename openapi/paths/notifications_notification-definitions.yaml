@@ -358,27 +358,11 @@ post:
                   "code":"500",
                   "message":"A temporary problem in the service occurred, you can retry later."
                 }
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: >-
           ../code_samples/cURL/notifications_notification-definitions/postundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/notifications_notification-definitions/postundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/notifications_notification-definitions/postundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/notifications_notification-definitions/postundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/notifications_notification-definitions/postundefined
 get:
   summary: List notification definitions
   operationId: GET_Query_Notification_Definitions
@@ -716,24 +700,8 @@ get:
                   "code":"500",
                   "message":"A temporary problem in the service occurred, you can retry later."
                 }
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: >-
           ../code_samples/cURL/notifications_notification-definitions/getundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/notifications_notification-definitions/getundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/notifications_notification-definitions/getundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/notifications_notification-definitions/getundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/notifications_notification-definitions/getundefined

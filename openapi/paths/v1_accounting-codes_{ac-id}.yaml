@@ -79,22 +79,10 @@ delete:
             response:
               value:
                 success: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_accounting-codes_{ac-id}/deleteundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_accounting-codes_{ac-id}/deleteundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_accounting-codes_{ac-id}/deleteundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_accounting-codes_{ac-id}/deleteundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_accounting-codes_{ac-id}/deleteundefined
 get:
   summary: Retrieve an accounting code
   operationId: GET_AccountingCode
@@ -177,22 +165,10 @@ get:
                 updatedOn: '2016-05-05 20:07:38'
                 updatedBy: e20b074746ec48f40147140f51e30a1a
                 success: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_accounting-codes_{ac-id}/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_accounting-codes_{ac-id}/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_accounting-codes_{ac-id}/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_accounting-codes_{ac-id}/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_accounting-codes_{ac-id}/getundefined
 put:
   summary: Update an accounting code
   operationId: PUT_AccountingCode
@@ -276,19 +252,7 @@ put:
             response:
               value:
                 success: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_accounting-codes_{ac-id}/putundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_accounting-codes_{ac-id}/putundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_accounting-codes_{ac-id}/putundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_accounting-codes_{ac-id}/putundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_accounting-codes_{ac-id}/putundefined

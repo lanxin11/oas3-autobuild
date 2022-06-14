@@ -94,24 +94,8 @@ put:
                 success: true
                 termEndDate: '2014-05-01'
                 subscriptionId: 2c92c8f83dcbd8b1013dcce0f09100a5
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: >-
           ../code_samples/cURL/v1_subscriptions_{subscription-key}_renew/putundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_subscriptions_{subscription-key}_renew/putundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_subscriptions_{subscription-key}_renew/putundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_subscriptions_{subscription-key}_renew/putundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_subscriptions_{subscription-key}_renew/putundefined

@@ -90,27 +90,11 @@ post:
         schema:
           $ref: ../components/schemas/POSTDmiRevenueScheduleByTransactionType.yaml
     required: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: >-
           ../code_samples/cURL/v1_revenue-schedules_debit-memo-items_{dmi-id}/postundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_revenue-schedules_debit-memo-items_{dmi-id}/postundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_revenue-schedules_debit-memo-items_{dmi-id}/postundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_revenue-schedules_debit-memo-items_{dmi-id}/postundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_revenue-schedules_debit-memo-items_{dmi-id}/postundefined
 get:
   description: >
     **Note:** This operation is only available if you have [Invoice
@@ -225,24 +209,8 @@ get:
       required: true
       schema:
         type: string
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: >-
           ../code_samples/cURL/v1_revenue-schedules_debit-memo-items_{dmi-id}/getundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_revenue-schedules_debit-memo-items_{dmi-id}/getundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_revenue-schedules_debit-memo-items_{dmi-id}/getundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_revenue-schedules_debit-memo-items_{dmi-id}/getundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_revenue-schedules_debit-memo-items_{dmi-id}/getundefined

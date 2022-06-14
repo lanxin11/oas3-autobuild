@@ -101,24 +101,8 @@ get:
         8a8082e65b27f6c3015b89e4344c16b1.
       schema:
         type: string
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: >-
           ../code_samples/cURL/v1_payments_{paymentId}_parts_{partid}/getundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_payments_{paymentId}_parts_{partid}/getundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_payments_{paymentId}_parts_{partid}/getundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_payments_{paymentId}_parts_{partid}/getundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_payments_{paymentId}_parts_{partid}/getundefined

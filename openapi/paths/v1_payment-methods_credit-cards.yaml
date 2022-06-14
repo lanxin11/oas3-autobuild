@@ -89,19 +89,7 @@ post:
               value:
                 paymentMethodId: 2c92c8f83dcbd8b1013dcce1d6a60
                 success: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_payment-methods_credit-cards/postundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_payment-methods_credit-cards/postundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_payment-methods_credit-cards/postundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_payment-methods_credit-cards/postundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_payment-methods_credit-cards/postundefined

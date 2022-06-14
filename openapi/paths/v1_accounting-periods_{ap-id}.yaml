@@ -95,22 +95,10 @@ get:
                 updatedOn: '2015-09-28 00:53:13'
                 updatedBy: e20b074746ec48f40147140f51e30a1a
                 success: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_accounting-periods_{ap-id}/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_accounting-periods_{ap-id}/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_accounting-periods_{ap-id}/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_accounting-periods_{ap-id}/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_accounting-periods_{ap-id}/getundefined
 put:
   summary: Update an accounting period
   operationId: PUT_UpdateAccountingPeriod
@@ -229,22 +217,10 @@ put:
             response:
               value:
                 success: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_accounting-periods_{ap-id}/putundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_accounting-periods_{ap-id}/putundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_accounting-periods_{ap-id}/putundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_accounting-periods_{ap-id}/putundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_accounting-periods_{ap-id}/putundefined
 delete:
   summary: Delete an accounting period
   operationId: DELETE_AccountingPeriod
@@ -339,19 +315,7 @@ delete:
             response:
               value:
                 success: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_accounting-periods_{ap-id}/deleteundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_accounting-periods_{ap-id}/deleteundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_accounting-periods_{ap-id}/deleteundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_accounting-periods_{ap-id}/deleteundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_accounting-periods_{ap-id}/deleteundefined

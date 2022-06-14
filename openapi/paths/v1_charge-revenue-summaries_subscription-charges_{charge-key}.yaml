@@ -149,24 +149,8 @@ get:
                     accountingPeriodStartDate: '2014-03-12'
                     accountingPeriodEndDate: null
                 success: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: >-
           ../code_samples/cURL/v1_charge-revenue-summaries_subscription-charges_{charge-key}/getundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_charge-revenue-summaries_subscription-charges_{charge-key}/getundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_charge-revenue-summaries_subscription-charges_{charge-key}/getundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_charge-revenue-summaries_subscription-charges_{charge-key}/getundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_charge-revenue-summaries_subscription-charges_{charge-key}/getundefined

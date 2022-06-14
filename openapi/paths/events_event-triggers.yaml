@@ -344,22 +344,10 @@ post:
                     }
                   ]
                 }
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/events_event-triggers/postundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/events_event-triggers/postundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/events_event-triggers/postundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/events_event-triggers/postundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/events_event-triggers/postundefined
 get:
   tags:
     - Event Triggers
@@ -606,19 +594,7 @@ get:
                     }
                   ]
                 }
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/events_event-triggers/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/events_event-triggers/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/events_event-triggers/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/events_event-triggers/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/events_event-triggers/getundefined

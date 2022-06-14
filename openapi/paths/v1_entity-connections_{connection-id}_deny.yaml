@@ -79,24 +79,8 @@ put:
             response:
               value:
                 success: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: >-
           ../code_samples/cURL/v1_entity-connections_{connection-id}_deny/putundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_entity-connections_{connection-id}_deny/putundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_entity-connections_{connection-id}_deny/putundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_entity-connections_{connection-id}_deny/putundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_entity-connections_{connection-id}_deny/putundefined

@@ -95,7 +95,7 @@ post:
               value:
                 success: true
                 fileId: 40289f466463d683016463ef8b7301a2
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_invoices_{invoiceId}_files/postundefined
@@ -198,19 +198,7 @@ get:
                     versionNumber: 1524041544112
                     pdfFileUrl: /v1/files/2c98901f62d7d83d0162d7f490f22624
                 success: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_invoices_{invoiceId}_files/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_invoices_{invoiceId}_files/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_invoices_{invoiceId}_files/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_invoices_{invoiceId}_files/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_invoices_{invoiceId}_files/getundefined

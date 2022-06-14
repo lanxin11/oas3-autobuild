@@ -201,19 +201,7 @@ get:
                 records: {}
                 size: 0
                 done: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_object_rate-plan_{id}/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_object_rate-plan_{id}/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_object_rate-plan_{id}/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_object_rate-plan_{id}/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_object_rate-plan_{id}/getundefined

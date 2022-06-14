@@ -98,19 +98,7 @@ get:
                     timezone: null
                     type: Workflow::Setup
                     updatedAt: '2019-06-03T21:02:26.694Z'
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/workflows_{workflow_id}_versions/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/workflows_{workflow_id}_versions/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/workflows_{workflow_id}_versions/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/workflows_{workflow_id}_versions/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/workflows_{workflow_id}_versions/getundefined

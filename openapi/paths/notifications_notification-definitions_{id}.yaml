@@ -351,27 +351,11 @@ put:
                   "code":"500",
                   "message":"A temporary problem in the service occurred, you can retry later."
                 }
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: >-
           ../code_samples/cURL/notifications_notification-definitions_{id}/putundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/notifications_notification-definitions_{id}/putundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/notifications_notification-definitions_{id}/putundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/notifications_notification-definitions_{id}/putundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/notifications_notification-definitions_{id}/putundefined
 get:
   summary: Retrieve a notification definition
   operationId: GET_Get_Notification_Definition
@@ -661,27 +645,11 @@ get:
                   "code":"500",
                   "message":"A temporary problem in the service occurred, you can retry later."
                 }
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: >-
           ../code_samples/cURL/notifications_notification-definitions_{id}/getundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/notifications_notification-definitions_{id}/getundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/notifications_notification-definitions_{id}/getundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/notifications_notification-definitions_{id}/getundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/notifications_notification-definitions_{id}/getundefined
 delete:
   summary: Delete a notification definition
   operationId: DELETE_Delete_Notification_Definition
@@ -1024,24 +992,8 @@ delete:
                   "code":"500",
                   "message":"A temporary problem in the service occurred, you can retry later."
                 }
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: >-
           ../code_samples/cURL/notifications_notification-definitions_{id}/deleteundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/notifications_notification-definitions_{id}/deleteundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/notifications_notification-definitions_{id}/deleteundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/notifications_notification-definitions_{id}/deleteundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/notifications_notification-definitions_{id}/deleteundefined

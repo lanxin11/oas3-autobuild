@@ -181,19 +181,7 @@ get:
                     accountId: 4028905f5e4feb3833b50af9aa002d1
                     status: Posted
                 success: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_billing-documents/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_billing-documents/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_billing-documents/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_billing-documents/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_billing-documents/getundefined

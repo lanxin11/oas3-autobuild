@@ -97,24 +97,8 @@ put:
                 totalDeltaMrr: 0
                 totalDeltaTcv: -703.2258065
                 invoiceId: 8a8082c453cd2a620153e426c7eb78b3
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: >-
           ../code_samples/cURL/v1_subscriptions_{subscription-key}_cancel/putundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_subscriptions_{subscription-key}_cancel/putundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_subscriptions_{subscription-key}_cancel/putundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_subscriptions_{subscription-key}_cancel/putundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_subscriptions_{subscription-key}_cancel/putundefined

@@ -192,19 +192,7 @@ get:
                 success: true
                 nextPage: >-
                   https://rest.zuora.com/v1/usage/accounts/A00001115?page=2&pageSize=10
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_usage_accounts_{account-key}/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_usage_accounts_{account-key}/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_usage_accounts_{account-key}/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_usage_accounts_{account-key}/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_usage_accounts_{account-key}/getundefined

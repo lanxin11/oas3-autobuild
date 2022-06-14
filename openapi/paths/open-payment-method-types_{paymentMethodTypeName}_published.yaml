@@ -106,24 +106,8 @@ get:
                     visible: true
                     representer: true
                     editable: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: >-
           ../code_samples/cURL/open-payment-method-types_{paymentMethodTypeName}_published/getundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/open-payment-method-types_{paymentMethodTypeName}_published/getundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/open-payment-method-types_{paymentMethodTypeName}_published/getundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/open-payment-method-types_{paymentMethodTypeName}_published/getundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/open-payment-method-types_{paymentMethodTypeName}_published/getundefined

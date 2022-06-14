@@ -195,24 +195,8 @@ get:
                         tcv: 24
                         dtcv: 24
                         description: ''
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: >-
           ../code_samples/cURL/v1_subscriptions_{subscription-key}_versions_{version}/getundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_subscriptions_{subscription-key}_versions_{version}/getundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_subscriptions_{subscription-key}_versions_{version}/getundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_subscriptions_{subscription-key}_versions_{version}/getundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_subscriptions_{subscription-key}_versions_{version}/getundefined

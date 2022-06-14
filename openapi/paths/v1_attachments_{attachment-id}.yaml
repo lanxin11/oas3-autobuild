@@ -86,22 +86,10 @@ get:
                 updatedOn: '2016-05-02 13:09:17'
                 updatedBy: 4028e487327fd45a0132829ebb673ff9
                 success: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_attachments_{attachment-id}/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_attachments_{attachment-id}/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_attachments_{attachment-id}/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_attachments_{attachment-id}/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_attachments_{attachment-id}/getundefined
 put:
   summary: Update an attachment
   operationId: PUT_Attachments
@@ -189,22 +177,10 @@ put:
             response:
               value:
                 success: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_attachments_{attachment-id}/putundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_attachments_{attachment-id}/putundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_attachments_{attachment-id}/putundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_attachments_{attachment-id}/putundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_attachments_{attachment-id}/putundefined
 delete:
   summary: Delete an attachment
   operationId: DELETE_Attachments
@@ -284,19 +260,7 @@ delete:
             response:
               value:
                 success: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_attachments_{attachment-id}/deleteundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_attachments_{attachment-id}/deleteundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_attachments_{attachment-id}/deleteundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_attachments_{attachment-id}/deleteundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_attachments_{attachment-id}/deleteundefined

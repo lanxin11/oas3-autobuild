@@ -87,19 +87,7 @@ get:
               value:
                 code: 71013040
                 message: Not Found.
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/objects_jobs_{id}_errors/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/objects_jobs_{id}_errors/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/objects_jobs_{id}_errors/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/objects_jobs_{id}_errors/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/objects_jobs_{id}_errors/getundefined

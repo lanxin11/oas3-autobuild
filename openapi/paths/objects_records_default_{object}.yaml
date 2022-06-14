@@ -259,22 +259,10 @@ post:
         application/json; charset=utf-8:
           schema:
             $ref: ../components/schemas/CustomObjectRecordsThrottledResponse.yaml
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/objects_records_default_{object}/postundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/objects_records_default_{object}/postundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/objects_records_default_{object}/postundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/objects_records_default_{object}/postundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/objects_records_default_{object}/postundefined
 get:
   summary: List records for a custom object
   description: >
@@ -402,19 +390,7 @@ get:
         application/json; charset=utf-8:
           schema:
             $ref: ../components/schemas/QueryCustomObjectRecordsResponse.yaml
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/objects_records_default_{object}/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/objects_records_default_{object}/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/objects_records_default_{object}/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/objects_records_default_{object}/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/objects_records_default_{object}/getundefined

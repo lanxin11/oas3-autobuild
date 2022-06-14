@@ -171,22 +171,10 @@ get:
                 reasons:
                   - code: SystemError
                     message: internal server error
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/events_scheduled-events_{id}/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/events_scheduled-events_{id}/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/events_scheduled-events_{id}/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/events_scheduled-events_{id}/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/events_scheduled-events_{id}/getundefined
 delete:
   tags:
     - Scheduled Events
@@ -356,19 +344,7 @@ delete:
                 reasons:
                   - code: SystemError
                     message: internal server error
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/events_scheduled-events_{id}/deleteundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/events_scheduled-events_{id}/deleteundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/events_scheduled-events_{id}/deleteundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/events_scheduled-events_{id}/deleteundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/events_scheduled-events_{id}/deleteundefined

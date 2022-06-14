@@ -261,22 +261,10 @@ post:
                 orderLineItems:
                   - id: bd78c052-2adf-42c2-aa0f-ccacc997fa20
                     itemNumber: '116'
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_orders/postundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_orders/postundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_orders/postundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_orders/postundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_orders/postundefined
 get:
   summary: List orders
   operationId: GET_AllOrders
@@ -570,19 +558,7 @@ get:
                             customFields:
                               order_cf_date__c: '2017-01-01'
                     success: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_orders/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_orders/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_orders/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_orders/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_orders/getundefined

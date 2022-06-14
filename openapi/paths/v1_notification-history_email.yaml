@@ -152,19 +152,7 @@ get:
                 nextPage: >-
                   https://localhost:8080/apps/v1/notification-history/email?page=2&pageSize=1&startTime=2015-01-12T00:00:00&endTime=2015-01-15T00:00:00&failedOnly=false&eventCategory=1000
                 success: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_notification-history_email/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_notification-history_email/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_notification-history_email/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_notification-history_email/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_notification-history_email/getundefined

@@ -186,19 +186,7 @@ get:
                   page: 1
                   page_length: 1
                   next_page: https://rest.zuora.com/workflows?page=2&page_length=1
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/workflows/getundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/workflows/getundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/workflows/getundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/workflows/getundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/workflows/getundefined

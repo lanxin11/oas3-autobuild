@@ -97,24 +97,8 @@ put:
                 termEndDate: '2020-02-01'
                 totalDeltaTcv: -896.6666667
                 invoiceId: 8a8082c453bb061f0153c529bc921b4b
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: >-
           ../code_samples/cURL/v1_subscriptions_{subscription-key}_suspend/putundefined
-    - lang: PHP
-      source:
-        $ref: >-
-          ../code_samples/PHP/v1_subscriptions_{subscription-key}_suspend/putundefined
-    - lang: Java
-      source:
-        $ref: >-
-          ../code_samples/Java/v1_subscriptions_{subscription-key}_suspend/putundefined
-    - lang: Python
-      source:
-        $ref: >-
-          ../code_samples/Python/v1_subscriptions_{subscription-key}_suspend/putundefined
-    - lang: Ruby
-      source:
-        $ref: >-
-          ../code_samples/Ruby/v1_subscriptions_{subscription-key}_suspend/putundefined

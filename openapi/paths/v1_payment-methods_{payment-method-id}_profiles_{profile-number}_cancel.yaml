@@ -28,7 +28,7 @@ post:
         method.
       schema:
         type: integer
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: >-

@@ -93,19 +93,7 @@ post:
           schema:
             $ref: >-
               ../components/schemas/MigrationUpdateCustomObjectDefinitionsResponse.yaml
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/objects_migrations/postundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/objects_migrations/postundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/objects_migrations/postundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/objects_migrations/postundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/objects_migrations/postundefined

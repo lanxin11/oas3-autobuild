@@ -171,19 +171,7 @@ post:
                     processingType: Discount
                     appliedToItemId: cf6326638f3c4ddda3722734aebd7ba7
                 success: true
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_operations_billing-preview/postundefined
-    - lang: PHP
-      source:
-        $ref: ../code_samples/PHP/v1_operations_billing-preview/postundefined
-    - lang: Java
-      source:
-        $ref: ../code_samples/Java/v1_operations_billing-preview/postundefined
-    - lang: Python
-      source:
-        $ref: ../code_samples/Python/v1_operations_billing-preview/postundefined
-    - lang: Ruby
-      source:
-        $ref: ../code_samples/Ruby/v1_operations_billing-preview/postundefined

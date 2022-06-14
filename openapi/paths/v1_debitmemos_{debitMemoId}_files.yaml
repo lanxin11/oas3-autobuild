@@ -107,7 +107,7 @@ post:
               value:
                 success: true
                 fileId: 40289f466463d683016463ef8b7301a3
-  x-codeSamples:
+  x-code-samples:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_debitmemos_{debitMemoId}_files/postundefined
