@@ -89,6 +89,18 @@ post:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_catalog-groups/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_catalog-groups/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_catalog-groups/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_catalog-groups/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_catalog-groups/postundefined
 get:
   summary: List all catalog groups
   operationId: GET_ListAllCatalogGroups
@@ -178,3 +190,15 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_catalog-groups/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_catalog-groups/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_catalog-groups/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_catalog-groups/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_catalog-groups/getundefined

@@ -1,0 +1,184 @@
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('https://rest.zuora.com/objects/definitions/default');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'content-type' => 'application/json',
+  'Authorization' => 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+));
+
+$request->setBody('{
+    "definitions": {
+        "Delivery": {
+            "description": "Delivery schedule for shipping products based on customer\'s subscription.",
+            "filterable": [
+                "Quantity__c",
+                "ProductName__c",
+                "Cancelled__c",
+                "ShippingStatus__c"
+            ],
+            "label": "Delivery",
+            "object": "Delivery",
+            "properties": {
+                "CancellationTime__c": {
+                    "description": "The time at which customer cancelled this particular shipment.",
+                    "format": "date-time",
+                    "label": "Cancellation Time",
+                    "type": "string"
+                },
+                "Cancelled__c": {
+                    "default": false,
+                    "description": "Indicator is true when the customer has cancelled this particular shipment.",
+                    "label": "Shipment Cancelled",
+                    "type": "boolean"
+                },
+                "ContactEmail__c": {
+                    "description": "The customer\'s email address.",
+                    "label": "Customer Email",
+                    "maxLength": 128,
+                    "type": "string"
+                },
+                "ContactId__c": {
+                    "description": "The customer contact who will receive the shipment.",
+                    "format": "uuid",
+                    "label": "Ship To Customer",
+                    "type": "string"
+                },
+                "ProductName__c": {
+                    "description": "The name of the product that is being shipped to customer.",
+                    "label": "Product Name",
+                    "type": "string"
+                },
+                "Quantity__c": {
+                    "description": "The quantity of product that is being shipped to customer.",
+                    "label": "Quantity",
+                    "maximum": 20,
+                    "minimum": 1,
+                    "type": "integer"
+                },
+                "ShippingDate__c": {
+                    "description": "The date the product will be sent to shipping vendor for delivery.",
+                    "format": "date",
+                    "label": "Shipping Date",
+                    "type": "string"
+                },
+                "ShippingStatus__c": {
+                    "default": "Pending",
+                    "description": "The status of the shipment - e.g. Pending, Preparing shipment, Waiting for tracking information, or Shipped.",
+                    "enum": [
+                        "Pending",
+                        "Preparing shipment",
+                        "Waiting for tracking information",
+                        "Shipped"
+                    ],
+                    "label": "Shipping Status",
+                    "type": "string"
+                },
+                "SubscriptionId__c": {
+                    "description": "The subscription that is associated with the shipment record.",
+                    "format": "uuid",
+                    "label": "Subscription",
+                    "type": "string"
+                },
+                "TotalWeight__c": {
+                    "description": "The total weight of the product and packaging that is being shipped to customer.",
+                    "label": "Total Weight (lbs.)",
+                    "minimum": 0,
+                    "type": "number"
+                }
+            },
+            "relationships": [
+                {
+                    "cardinality": "manyToOne",
+                    "fields": {
+                        "SubscriptionId__c": "Id"
+                    },
+                    "namespace": "com_zuora",
+                    "object": "subscription",
+                    "recordConstraints": {
+                        "create": {
+                            "enforceValidMapping": false
+                        }
+                    }
+                },
+                {
+                    "cardinality": "manyToOne",
+                    "fields": {
+                        "ContactId__c": "Id"
+                    },
+                    "namespace": "com_zuora",
+                    "object": "contact",
+                    "recordConstraints": {
+                        "create": {
+                            "enforceValidMapping": false
+                        }
+                    }
+                }
+            ],
+            "required": [
+                "SubscriptionId__c",
+                "ContactId__c",
+                "ProductName__c",
+                "Quantity__c",
+                "ShippingDate__c"
+            ]
+        },
+        "birth_place_custom_object": {
+            "filterable": [
+                "city__c"
+            ],
+            "label": "Birth Place Custom Object",
+            "object": "birth_place_custom_object",
+            "properties": {
+                "ContactId__c": {
+                    "format": "uuid",
+                    "label": "Contact",
+                    "type": "string"
+                },
+                "city__c": {
+                    "label": "city label",
+                    "type": "string"
+                },
+                "country__c": {
+                    "label": "country label",
+                    "type": "string"
+                },
+                "state__c": {
+                    "label": "state label",
+                    "type": "string"
+                }
+            },
+            "relationships": [
+                {
+                    "cardinality": "manyToOne",
+                    "fields": {
+                        "ContactId__c": "Id"
+                    },
+                    "namespace": "com_zuora",
+                    "object": "contact",
+                    "recordConstraints": {
+                        "create": {
+                            "enforceValidMapping": false
+                        }
+                    }
+                }
+            ],
+            "required": [
+                "city__c",
+                "state__c",
+                "country__c"
+            ],
+            "type": "object"
+        }
+    }
+}');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}

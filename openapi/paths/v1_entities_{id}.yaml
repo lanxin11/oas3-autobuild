@@ -104,6 +104,18 @@ put:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_entities_{id}/putundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_entities_{id}/putundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_entities_{id}/putundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_entities_{id}/putundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_entities_{id}/putundefined
 get:
   summary: 'Multi-entity: Retrieve an entity'
   operationId: GET_EntityById
@@ -197,6 +209,18 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_entities_{id}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_entities_{id}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_entities_{id}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_entities_{id}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_entities_{id}/getundefined
 delete:
   summary: 'Multi-entity: Delete an entity'
   operationId: DELETE_Entities
@@ -284,3 +308,15 @@ delete:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_entities_{id}/deleteundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_entities_{id}/deleteundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_entities_{id}/deleteundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_entities_{id}/deleteundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_entities_{id}/deleteundefined

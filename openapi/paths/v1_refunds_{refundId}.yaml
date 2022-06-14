@@ -129,6 +129,18 @@ put:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_refunds_{refundId}/putundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_refunds_{refundId}/putundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_refunds_{refundId}/putundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_refunds_{refundId}/putundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_refunds_{refundId}/putundefined
 get:
   description: >
     **Note:** This operation is only available if you have [Invoice
@@ -254,6 +266,18 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_refunds_{refundId}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_refunds_{refundId}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_refunds_{refundId}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_refunds_{refundId}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_refunds_{refundId}/getundefined
 delete:
   description: >
     **Note:** This operation is only available if you have [Invoice
@@ -344,3 +368,15 @@ delete:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_refunds_{refundId}/deleteundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_refunds_{refundId}/deleteundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_refunds_{refundId}/deleteundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_refunds_{refundId}/deleteundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_refunds_{refundId}/deleteundefined

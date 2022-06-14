@@ -176,6 +176,18 @@ post:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/events_scheduled-events/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/events_scheduled-events/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/events_scheduled-events/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/events_scheduled-events/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/events_scheduled-events/postundefined
 get:
   tags:
     - Scheduled Events
@@ -367,3 +379,15 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/events_scheduled-events/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/events_scheduled-events/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/events_scheduled-events/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/events_scheduled-events/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/events_scheduled-events/getundefined

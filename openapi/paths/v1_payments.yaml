@@ -158,6 +158,18 @@ post:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_payments/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_payments/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_payments/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_payments/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_payments/postundefined
 get:
   description: >
     **Note:** This operation is only available if you have [Invoice
@@ -487,3 +499,15 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_payments/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_payments/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_payments/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_payments/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_payments/getundefined

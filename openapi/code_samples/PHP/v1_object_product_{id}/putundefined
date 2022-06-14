@@ -1,0 +1,27 @@
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('https://rest.zuora.com/v1/object/product/{id}');
+$request->setMethod(HTTP_METH_PUT);
+
+$request->setHeaders(array(
+  'content-type' => 'application/json',
+  'Authorization' => 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+));
+
+$request->setBody('{
+    "Description": "Create product via API_new",
+    "EffectiveEndDate": "2066-10-20",
+    "EffectiveStartDate": "1966-10-20",
+    "Id": "2c93808457d787030157e02e7be22210",
+    "Name": "P_1476934925293_new",
+    "SKU": "API-SKU1476934925293"
+}');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}

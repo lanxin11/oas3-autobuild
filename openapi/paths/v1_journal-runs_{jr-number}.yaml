@@ -84,6 +84,18 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_journal-runs_{jr-number}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_journal-runs_{jr-number}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_journal-runs_{jr-number}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_journal-runs_{jr-number}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_journal-runs_{jr-number}/getundefined
 delete:
   summary: Delete a journal run
   operationId: DELETE_JournalRun
@@ -163,3 +175,15 @@ delete:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_journal-runs_{jr-number}/deleteundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_journal-runs_{jr-number}/deleteundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_journal-runs_{jr-number}/deleteundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_journal-runs_{jr-number}/deleteundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_journal-runs_{jr-number}/deleteundefined

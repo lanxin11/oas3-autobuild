@@ -236,3 +236,15 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/workflows_tasks/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/workflows_tasks/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/workflows_tasks/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/workflows_tasks/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/workflows_tasks/getundefined

@@ -1,0 +1,81 @@
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('https://rest.zuora.com/v1/invoices');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'content-type' => 'application/json',
+  'Authorization' => 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+));
+
+$request->setBody('{
+    "accountId": "2c9890207863df710178642433c407a5",
+    "autoPay": false,
+    "comments": "comments",
+    "invoiceDate": "2020-02-01",
+    "invoiceItems": [
+        {
+            "amount": 300,
+            "bookingReference": "bookingReference",
+            "chargeDate": "2020-02-01 11:00:00",
+            "chargeName": "charge with tax amount 9",
+            "description": "description",
+            "discountItems": [
+                {
+                    "amount": -10,
+                    "bookingReference": "discountBookingReference",
+                    "chargeDate": "2020-02-01 11:00:00",
+                    "chargeName": "discount",
+                    "description": "description",
+                    "sku": "SKU-0002",
+                    "taxItems": [
+                        {
+                            "exemptAmount": 0,
+                            "jurisdiction": "jurisdiction",
+                            "locationCode": "locationCode",
+                            "name": "country tax",
+                            "taxAmount": -1,
+                            "taxCode": "country tax code",
+                            "taxCodeDescription": "country tax code, tax rate 10%",
+                            "taxDate": "2021-02-08",
+                            "taxMode": "TaxExclusive",
+                            "taxRate": 0.1,
+                            "taxRateDescription": "country tax",
+                            "taxRateType": "Percentage"
+                        }
+                    ]
+                }
+            ],
+            "excludeItemBillingFromRevenueAccounting": true,
+            "quantity": 2,
+            "serviceEndDate": "2020-02-10",
+            "serviceStartDate": "2020-02-01",
+            "taxItems": [
+                {
+                    "exemptAmount": 0,
+                    "jurisdiction": "juristiction",
+                    "locationCode": "locationCode",
+                    "name": "country tax",
+                    "taxAmount": 9,
+                    "taxCode": "tax code",
+                    "taxCodeDescription": "tax code description",
+                    "taxDate": "2020-02-01",
+                    "taxMode": "TaxExclusive",
+                    "taxRate": 0.03,
+                    "taxRateDescription": "tax rate description",
+                    "taxRateType": "Percentage"
+                }
+            ]
+        }
+    ],
+    "invoiceNumber": "6LU5F8NW00001"
+}');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}

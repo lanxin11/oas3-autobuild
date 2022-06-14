@@ -1,0 +1,26 @@
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('https://rest.zuora.com/v1/object/unit-of-measure');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'content-type' => 'application/json',
+  'Authorization' => 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+));
+
+$request->setBody('{
+    "Active": true,
+    "DecimalPlaces": 9,
+    "DisplayedAs": "name_display_name_1476935033519",
+    "RoundingMode": "UP",
+    "UomName": "name_1476935033519"
+}');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}

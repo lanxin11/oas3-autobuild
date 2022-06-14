@@ -107,6 +107,22 @@ put:
       source:
         $ref: >-
           ../code_samples/cURL/v1_payment-methods_{payment-method-id}/putundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_payment-methods_{payment-method-id}/putundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_payment-methods_{payment-method-id}/putundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_payment-methods_{payment-method-id}/putundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_payment-methods_{payment-method-id}/putundefined
 get:
   summary: Retrieve a payment method
   operationId: GET_PaymentMethod
@@ -233,6 +249,22 @@ get:
       source:
         $ref: >-
           ../code_samples/cURL/v1_payment-methods_{payment-method-id}/getundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_payment-methods_{payment-method-id}/getundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_payment-methods_{payment-method-id}/getundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_payment-methods_{payment-method-id}/getundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_payment-methods_{payment-method-id}/getundefined
 delete:
   summary: Delete a payment method
   operationId: DELETE_PaymentMethods
@@ -321,3 +353,19 @@ delete:
       source:
         $ref: >-
           ../code_samples/cURL/v1_payment-methods_{payment-method-id}/deleteundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_payment-methods_{payment-method-id}/deleteundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_payment-methods_{payment-method-id}/deleteundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_payment-methods_{payment-method-id}/deleteundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_payment-methods_{payment-method-id}/deleteundefined

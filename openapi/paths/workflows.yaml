@@ -190,3 +190,15 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/workflows/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/workflows/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/workflows/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/workflows/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/workflows/getundefined

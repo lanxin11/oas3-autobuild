@@ -87,3 +87,19 @@ get:
       source:
         $ref: >-
           ../code_samples/cURL/v1_revenue-recognition-rules_product-charges_{charge-key}/getundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_revenue-recognition-rules_product-charges_{charge-key}/getundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_revenue-recognition-rules_product-charges_{charge-key}/getundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_revenue-recognition-rules_product-charges_{charge-key}/getundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_revenue-recognition-rules_product-charges_{charge-key}/getundefined

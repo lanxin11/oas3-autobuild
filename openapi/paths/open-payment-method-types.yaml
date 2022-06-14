@@ -74,3 +74,15 @@ post:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/open-payment-method-types/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/open-payment-method-types/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/open-payment-method-types/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/open-payment-method-types/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/open-payment-method-types/postundefined

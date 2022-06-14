@@ -136,6 +136,18 @@ post:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/query_jobs/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/query_jobs/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/query_jobs/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/query_jobs/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/query_jobs/postundefined
 get:
   operationId: GET_DataQueryJobs
   summary: List data query jobs
@@ -251,3 +263,15 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/query_jobs/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/query_jobs/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/query_jobs/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/query_jobs/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/query_jobs/getundefined

@@ -1,0 +1,30 @@
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('https://rest.zuora.com/v1/object/payment');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'content-type' => 'application/json',
+  'Authorization' => 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+));
+
+$request->setBody('{
+    "AccountId": "2c93808457d787030157e03190e748ea",
+    "Amount": 2,
+    "AppliedCreditBalanceAmount": 0,
+    "AppliedInvoiceAmount": 2,
+    "EffectiveDate": "2016-10-20",
+    "InvoiceId": "2c93808457d787030157e03195604902",
+    "PaymentMethodId": "2c93808457d787030157e03196d1490e",
+    "Status": "Processed",
+    "Type": "Electronic"
+}');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}

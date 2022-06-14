@@ -130,6 +130,18 @@ post:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_sequence-sets/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_sequence-sets/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_sequence-sets/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_sequence-sets/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_sequence-sets/postundefined
 get:
   summary: List sequence sets
   operationId: GET_SequenceSets
@@ -274,3 +286,15 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_sequence-sets/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_sequence-sets/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_sequence-sets/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_sequence-sets/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_sequence-sets/getundefined

@@ -96,3 +96,19 @@ post:
       source:
         $ref: >-
           ../code_samples/cURL/v1_revenue-schedules_debit-memo-items_{dmi-id}_distribute-revenue-with-date-range/postundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_revenue-schedules_debit-memo-items_{dmi-id}_distribute-revenue-with-date-range/postundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_revenue-schedules_debit-memo-items_{dmi-id}_distribute-revenue-with-date-range/postundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_revenue-schedules_debit-memo-items_{dmi-id}_distribute-revenue-with-date-range/postundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_revenue-schedules_debit-memo-items_{dmi-id}_distribute-revenue-with-date-range/postundefined

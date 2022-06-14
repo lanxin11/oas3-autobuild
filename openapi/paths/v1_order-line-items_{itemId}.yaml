@@ -135,6 +135,18 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_order-line-items_{itemId}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_order-line-items_{itemId}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_order-line-items_{itemId}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_order-line-items_{itemId}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_order-line-items_{itemId}/getundefined
 put:
   summary: Update an order line item
   operationId: PUT_OrderLineItem
@@ -252,3 +264,15 @@ put:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_order-line-items_{itemId}/putundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_order-line-items_{itemId}/putundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_order-line-items_{itemId}/putundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_order-line-items_{itemId}/putundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_order-line-items_{itemId}/putundefined

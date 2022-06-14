@@ -1,0 +1,55 @@
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('https://rest.zuora.com/v1/invoices/{invoiceId}/debitmemos');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'content-type' => 'application/json',
+  'Authorization' => 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+));
+
+$request->setBody('{
+    "autoPay": true,
+    "comment": "the comment",
+    "effectiveDate": "2017-11-30",
+    "items": [
+        {
+            "amount": 1,
+            "autoPost": false,
+            "comment": "This is comment!",
+            "invoiceItemId": "402890555a7d4022015a7dadb3b700a6",
+            "quantity": 1,
+            "serviceEndDate": "2017-11-30",
+            "serviceStartDate": "2017-11-01",
+            "skuName": "SKU-30",
+            "taxItems": [
+                {
+                    "amount": 0.01,
+                    "jurisdiction": "CALIFORNIA",
+                    "locationCode": "06",
+                    "sourceTaxItemId": "402890555a7d4022015a7dadb39b00a1",
+                    "taxCode": null,
+                    "taxCodeDescription": null,
+                    "taxDate": "2017-11-30",
+                    "taxExemptAmount": 0.0,
+                    "taxName": "STATE TAX",
+                    "taxRate": 0.0625,
+                    "taxRateDescription": "This is tax rate description!",
+                    "taxRateType": "Percentage"
+                }
+            ],
+            "taxMode": "TaxExclusive",
+            "unitOfMeasure": "Test_UOM"
+        }
+    ],
+    "reasonCode": "Charge Dispute"
+}');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}

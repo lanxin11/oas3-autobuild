@@ -128,3 +128,15 @@ post:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/settings_batch-requests/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/settings_batch-requests/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/settings_batch-requests/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/settings_batch-requests/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/settings_batch-requests/postundefined

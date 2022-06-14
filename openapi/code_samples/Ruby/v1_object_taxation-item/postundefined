@@ -1,0 +1,16 @@
+require 'uri'
+require 'net/http'
+
+url = URI("https://rest.zuora.com/v1/object/taxation-item")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["Authorization"] = 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+request["content-type"] = 'application/json'
+request.body = "{\n    \"AccountingCode\": \"Usage Revenue\",\n    \"ExemptAmount\": 50,\n    \"InvoiceItemId\": \"2c93808457d787030157e0306cd43a88\",\n    \"Jurisdiction\": \"test\",\n    \"LocationCode\": \"code - 001\",\n    \"Name\": \"test\",\n    \"TaxAmount\": 3,\n    \"TaxCode\": \"taxcode\",\n    \"TaxCodeDescription\": \"description\",\n    \"TaxDate\": \"2016-10-20\",\n    \"TaxMode\": \"TaxExclusive\",\n    \"TaxRate\": 3,\n    \"TaxRateDescription\": \"test\",\n    \"TaxRateType\": \"FlatFee\"\n}"
+
+response = http.request(request)
+puts response.read_body

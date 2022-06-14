@@ -79,6 +79,18 @@ post:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_accounting-codes/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_accounting-codes/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_accounting-codes/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_accounting-codes/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_accounting-codes/postundefined
 get:
   summary: List all accounting codes
   operationId: GET_AllAccountingCodes
@@ -173,3 +185,15 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_accounting-codes/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_accounting-codes/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_accounting-codes/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_accounting-codes/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_accounting-codes/getundefined

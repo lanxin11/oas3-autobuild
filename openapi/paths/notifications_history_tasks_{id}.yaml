@@ -146,3 +146,15 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/notifications_history_tasks_{id}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/notifications_history_tasks_{id}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/notifications_history_tasks_{id}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/notifications_history_tasks_{id}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/notifications_history_tasks_{id}/getundefined

@@ -1,0 +1,17 @@
+import http.client
+
+conn = http.client.HTTPSConnection("https://rest.zuora.com/")
+
+payload = "{\n    \"data\": [\n        {\n            \"action_type\": \"If\",\n            \"call_type\": \"SOAP\",\n            \"concurrent_limit\": 9999999,\n            \"id\": 2771,\n            \"name\": \"If\",\n            \"object\": null,\n            \"object_id\": null,\n            \"status\": \"Success\",\n            \"tags\": [],\n            \"workflow_id\": 476\n        }\n    ]\n}"
+
+headers = {
+    'Authorization': "Bearer 6d151216ef504f65b8ff6e9e9e8356d3",
+    'content-type': "application/json",
+    }
+
+conn.request("PUT", "/workflows/tasks/batch_update", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))

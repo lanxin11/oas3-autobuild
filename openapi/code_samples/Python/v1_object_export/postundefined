@@ -1,0 +1,17 @@
+import http.client
+
+conn = http.client.HTTPSConnection("https://rest.zuora.com/")
+
+payload = "{\n    \"Format\": \"csv\",\n    \"Name\": \"test_Export_1476935164445\",\n    \"Query\": \"select * from account\",\n    \"Status\": \"Processing\",\n    \"Zip\": true\n}"
+
+headers = {
+    'Authorization': "Bearer 6d151216ef504f65b8ff6e9e9e8356d3",
+    'content-type': "application/json",
+    }
+
+conn.request("POST", "/v1/object/export", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))

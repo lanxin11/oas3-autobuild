@@ -87,6 +87,18 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/objects_definitions_default/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/objects_definitions_default/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/objects_definitions_default/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/objects_definitions_default/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/objects_definitions_default/getundefined
 post:
   summary: Create custom object definitions
   operationId: POST_CustomObjectDefinitions
@@ -214,3 +226,15 @@ post:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/objects_definitions_default/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/objects_definitions_default/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/objects_definitions_default/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/objects_definitions_default/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/objects_definitions_default/postundefined

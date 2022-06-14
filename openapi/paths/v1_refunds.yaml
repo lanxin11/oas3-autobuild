@@ -302,3 +302,15 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_refunds/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_refunds/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_refunds/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_refunds/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_refunds/getundefined

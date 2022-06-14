@@ -111,3 +111,15 @@ post:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/workflows_import/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/workflows_import/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/workflows_import/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/workflows_import/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/workflows_import/postundefined

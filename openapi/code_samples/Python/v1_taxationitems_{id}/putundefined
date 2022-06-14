@@ -1,0 +1,17 @@
+import http.client
+
+conn = http.client.HTTPSConnection("https://rest.zuora.com/")
+
+payload = "{\n    \"exemptAmount\": 0.0,\n    \"financeInformation\": {\n        \"onAccountAccountingCode\": \"Check\",\n        \"salesTaxPayableAccountingCode\": \"\"\n    },\n    \"jurisdiction\": \"CALIFORNIA\",\n    \"locationCode\": \"06\",\n    \"name\": \"STATE TAX\",\n    \"taxAmount\": 1.0,\n    \"taxCode\": \"ServiceTaxCode\",\n    \"taxCodeDescription\": \"This is tax code description!\",\n    \"taxDate\": \"2016-06-05\",\n    \"taxRate\": 0.0625,\n    \"taxRateDescription\": \"This is tax rate description!\",\n    \"taxRateType\": \"Percentage\"\n}"
+
+headers = {
+    'Authorization': "Bearer 6d151216ef504f65b8ff6e9e9e8356d3",
+    'content-type': "application/json",
+    }
+
+conn.request("PUT", "/v1/taxationitems/{id}", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))

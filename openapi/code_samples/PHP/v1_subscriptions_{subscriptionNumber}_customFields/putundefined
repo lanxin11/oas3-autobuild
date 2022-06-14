@@ -1,0 +1,40 @@
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('https://rest.zuora.com/v1/subscriptions/{subscriptionNumber}/customFields');
+$request->setMethod(HTTP_METH_PUT);
+
+$request->setHeaders(array(
+  'content-type' => 'application/json',
+  'Authorization' => 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+));
+
+$request->setBody('{
+    "customFields": {
+        "sub_cf__c": "subscription custom field"
+    },
+    "ratePlans": [
+        {
+            "charges": [
+                {
+                    "chargeNumber": "C-00000016",
+                    "customFields": {
+                        "sub_rpc__c": "rate plan charge custom field"
+                    }
+                }
+            ],
+            "customFields": {
+                "sub_rate_plan__c": "rate plan custom field"
+            },
+            "ratePlanId": "8a8081085d834928015da220da08207f"
+        }
+    ]
+}');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}

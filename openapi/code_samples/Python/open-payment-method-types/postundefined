@@ -1,0 +1,17 @@
+import http.client
+
+conn = http.client.HTTPSConnection("https://rest.zuora.com/")
+
+payload = "{\n    \"entityId\": \"\",\n    \"fields\": [\n        {\n            \"checksum\": true,\n            \"defaultValue\": null,\n            \"description\": \"The Token value\",\n            \"editable\": true,\n            \"index\": 1,\n            \"label\": \"AmazonToken\",\n            \"maxLength\": 100,\n            \"minLength\": 1,\n            \"name\": \"AmazonToken\",\n            \"representer\": true,\n            \"required\": true,\n            \"type\": \"string\",\n            \"visible\": true\n        },\n        {\n            \"checksum\": true,\n            \"defaultValue\": null,\n            \"description\": \"The Type of Token, e.g. GoCardlessToken\",\n            \"editable\": true,\n            \"index\": 2,\n            \"label\": \"Amazon TokenType\",\n            \"maxLength\": 100,\n            \"minLength\": 1,\n            \"name\": \"AmazonTokenType\",\n            \"representer\": true,\n            \"required\": true,\n            \"type\": \"string\",\n            \"visible\": true\n        }\n    ],\n    \"internalName\": \"AmazonPay\",\n    \"label\": \"ZuoraQA Amazon Pay\",\n    \"methodReferenceIdField\": \"AmazonToken\",\n    \"subTypeField\": \"AmazonTokenType\",\n    \"tenantId\": \"9\",\n    \"userReferenceIdField\": \"\"\n}"
+
+headers = {
+    'Authorization': "Bearer 6d151216ef504f65b8ff6e9e9e8356d3",
+    'content-type': "application/json",
+    }
+
+conn.request("POST", "/open-payment-method-types", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))

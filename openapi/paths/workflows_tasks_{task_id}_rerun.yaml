@@ -145,3 +145,15 @@ post:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/workflows_tasks_{task_id}_rerun/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/workflows_tasks_{task_id}_rerun/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/workflows_tasks_{task_id}_rerun/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/workflows_tasks_{task_id}_rerun/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/workflows_tasks_{task_id}_rerun/postundefined

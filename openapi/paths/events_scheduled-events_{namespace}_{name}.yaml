@@ -182,6 +182,22 @@ get:
       source:
         $ref: >-
           ../code_samples/cURL/events_scheduled-events_{namespace}_{name}/getundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/events_scheduled-events_{namespace}_{name}/getundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/events_scheduled-events_{namespace}_{name}/getundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/events_scheduled-events_{namespace}_{name}/getundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/events_scheduled-events_{namespace}_{name}/getundefined
 delete:
   tags:
     - Scheduled Events
@@ -362,3 +378,19 @@ delete:
       source:
         $ref: >-
           ../code_samples/cURL/events_scheduled-events_{namespace}_{name}/deleteundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/events_scheduled-events_{namespace}_{name}/deleteundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/events_scheduled-events_{namespace}_{name}/deleteundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/events_scheduled-events_{namespace}_{name}/deleteundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/events_scheduled-events_{namespace}_{name}/deleteundefined

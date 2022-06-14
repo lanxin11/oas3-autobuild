@@ -1,0 +1,16 @@
+require 'uri'
+require 'net/http'
+
+url = URI("https://rest.zuora.com/objects/records/default/{object}/{id}")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Put.new(url)
+request["Authorization"] = 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+request["content-type"] = 'application/json'
+request.body = "{\n    \"age__c\": 32,\n    \"email__c\": \"smith123@example.com\",\n    \"home_address__c\": \"59b38ad1-27d4-40e8-af66-8c138bc382ee\",\n    \"last_name__c\": \"Smith\",\n    \"marital_status__c\": \"Married\",\n    \"work_address__c\": \"8a19f16a-2b5e-4a26-bb20-c79cd6984714\"\n}"
+
+response = http.request(request)
+puts response.read_body

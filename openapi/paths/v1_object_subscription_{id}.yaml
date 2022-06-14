@@ -228,6 +228,18 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_object_subscription_{id}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_object_subscription_{id}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_object_subscription_{id}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_object_subscription_{id}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_object_subscription_{id}/getundefined
 put:
   summary: 'CRUD: Update a subscription'
   operationId: Object_PUTSubscription
@@ -377,6 +389,18 @@ put:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_object_subscription_{id}/putundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_object_subscription_{id}/putundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_object_subscription_{id}/putundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_object_subscription_{id}/putundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_object_subscription_{id}/putundefined
 delete:
   summary: 'CRUD: Delete a subscription'
   operationId: Object_DELETESubscription
@@ -519,3 +543,15 @@ delete:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_object_subscription_{id}/deleteundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_object_subscription_{id}/deleteundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_object_subscription_{id}/deleteundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_object_subscription_{id}/deleteundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_object_subscription_{id}/deleteundefined

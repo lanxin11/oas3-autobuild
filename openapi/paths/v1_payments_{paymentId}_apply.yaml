@@ -151,3 +151,15 @@ put:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_payments_{paymentId}_apply/putundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_payments_{paymentId}_apply/putundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_payments_{paymentId}_apply/putundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_payments_{paymentId}_apply/putundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_payments_{paymentId}_apply/putundefined

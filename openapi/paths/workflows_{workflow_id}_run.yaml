@@ -291,3 +291,15 @@ post:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/workflows_{workflow_id}_run/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/workflows_{workflow_id}_run/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/workflows_{workflow_id}_run/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/workflows_{workflow_id}_run/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/workflows_{workflow_id}_run/postundefined

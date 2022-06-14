@@ -1,0 +1,17 @@
+import http.client
+
+conn = http.client.HTTPSConnection("https://rest.zuora.com/")
+
+payload = "{\n    \"AccountNumber\": \"AN_1476935163869\",\n    \"AutoPay\": false,\n    \"Batch\": \"Batch1\",\n    \"BillCycleDay\": 1,\n    \"CrmId\": \"crmid\",\n    \"Currency\": \"USD\",\n    \"InvoiceTemplateId\": \"2c93808457d787030157e03208864f97\",\n    \"Name\": \"AC_1476935163869\",\n    \"Notes\": \"this is notes\",\n    \"PaymentTerm\": \"Due Upon Receipt\",\n    \"Status\": \"Draft\"\n}"
+
+headers = {
+    'Authorization': "Bearer 6d151216ef504f65b8ff6e9e9e8356d3",
+    'content-type': "application/json",
+    }
+
+conn.request("POST", "/v1/object/account", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))

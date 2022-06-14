@@ -106,6 +106,18 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_journal-entries_{je-number}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_journal-entries_{je-number}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_journal-entries_{je-number}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_journal-entries_{je-number}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_journal-entries_{je-number}/getundefined
 delete:
   summary: Delete a summary journal entry
   operationId: DELETE_SummaryJournalEntry
@@ -187,3 +199,15 @@ delete:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_journal-entries_{je-number}/deleteundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_journal-entries_{je-number}/deleteundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_journal-entries_{je-number}/deleteundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_journal-entries_{je-number}/deleteundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_journal-entries_{je-number}/deleteundefined

@@ -170,3 +170,15 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_ramps_{rampNumber}_ramp-metrics/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_ramps_{rampNumber}_ramp-metrics/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_ramps_{rampNumber}_ramp-metrics/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_ramps_{rampNumber}_ramp-metrics/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_ramps_{rampNumber}_ramp-metrics/getundefined

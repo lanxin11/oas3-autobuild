@@ -1,0 +1,16 @@
+require 'uri'
+require 'net/http'
+
+url = URI("https://rest.zuora.com/v1/payment-methods/{payment-method-id}/voidAuthorize")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["Authorization"] = 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+request["content-type"] = 'application/json'
+request.body = "{\n    \"accountId\": \"402881e861bd8a7e0161c6a453750026\",\n    \"accountNumber\": \"A00000004\",\n    \"gatewayOrderId\": \"A001\",\n    \"transactionId\": \"5205213224866613203009\"\n}"
+
+response = http.request(request)
+puts response.read_body

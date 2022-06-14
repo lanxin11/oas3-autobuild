@@ -137,3 +137,15 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/objects_jobs_{id}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/objects_jobs_{id}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/objects_jobs_{id}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/objects_jobs_{id}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/objects_jobs_{id}/getundefined

@@ -102,6 +102,22 @@ put:
       source:
         $ref: >-
           ../code_samples/cURL/v1_document-properties_{documentPropertiesId}/putundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_document-properties_{documentPropertiesId}/putundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_document-properties_{documentPropertiesId}/putundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_document-properties_{documentPropertiesId}/putundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_document-properties_{documentPropertiesId}/putundefined
 delete:
   summary: Delete document properties
   operationId: DELETE_DocumentProperties
@@ -196,3 +212,19 @@ delete:
       source:
         $ref: >-
           ../code_samples/cURL/v1_document-properties_{documentPropertiesId}/deleteundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_document-properties_{documentPropertiesId}/deleteundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_document-properties_{documentPropertiesId}/deleteundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_document-properties_{documentPropertiesId}/deleteundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_document-properties_{documentPropertiesId}/deleteundefined

@@ -145,3 +145,15 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/workflows_tasks_{task_id}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/workflows_tasks_{task_id}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/workflows_tasks_{task_id}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/workflows_tasks_{task_id}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/workflows_tasks_{task_id}/getundefined

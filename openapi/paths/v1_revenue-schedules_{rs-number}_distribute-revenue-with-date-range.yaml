@@ -85,3 +85,19 @@ put:
       source:
         $ref: >-
           ../code_samples/cURL/v1_revenue-schedules_{rs-number}_distribute-revenue-with-date-range/putundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_revenue-schedules_{rs-number}_distribute-revenue-with-date-range/putundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_revenue-schedules_{rs-number}_distribute-revenue-with-date-range/putundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_revenue-schedules_{rs-number}_distribute-revenue-with-date-range/putundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_revenue-schedules_{rs-number}_distribute-revenue-with-date-range/putundefined

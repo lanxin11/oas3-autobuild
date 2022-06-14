@@ -1,0 +1,17 @@
+import http.client
+
+conn = http.client.HTTPSConnection("https://rest.zuora.com/")
+
+payload = "{\n    \"gatewayOptions\": {\n        \"Comments\": \"test\",\n        \"IPAddress\": \"192.168.1.1\"\n    },\n    \"items\": [\n        {\n            \"amount\": 7,\n            \"creditMemoItemId\": \"4028905f5a890526015a8d73f74b0016\"\n        },\n        {\n            \"amount\": 0.1,\n            \"creditTaxItemId\": \"4028905f5a890526015a8d73f90c0018\"\n        }\n    ],\n    \"methodType\": \"CreditCard\",\n    \"refundDate\": \"2017-03-02\",\n    \"totalAmount\": 7.1,\n    \"type\": \"External\"\n}"
+
+headers = {
+    'Authorization': "Bearer 6d151216ef504f65b8ff6e9e9e8356d3",
+    'content-type': "application/json",
+    }
+
+conn.request("POST", "/v1/creditmemos/{creditmemoId}/refunds", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))

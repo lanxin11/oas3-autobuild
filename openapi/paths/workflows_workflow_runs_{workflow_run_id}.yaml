@@ -97,3 +97,19 @@ get:
       source:
         $ref: >-
           ../code_samples/cURL/workflows_workflow_runs_{workflow_run_id}/getundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/workflows_workflow_runs_{workflow_run_id}/getundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/workflows_workflow_runs_{workflow_run_id}/getundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/workflows_workflow_runs_{workflow_run_id}/getundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/workflows_workflow_runs_{workflow_run_id}/getundefined

@@ -96,6 +96,18 @@ post:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_entities/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_entities/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_entities/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_entities/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_entities/postundefined
 get:
   summary: 'Multi-entity: List entities'
   operationId: GET_Entities
@@ -252,3 +264,15 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_entities/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_entities/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_entities/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_entities/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_entities/getundefined

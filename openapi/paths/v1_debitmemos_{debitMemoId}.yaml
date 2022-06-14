@@ -134,6 +134,18 @@ put:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_debitmemos_{debitMemoId}/putundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_debitmemos_{debitMemoId}/putundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_debitmemos_{debitMemoId}/putundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_debitmemos_{debitMemoId}/putundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_debitmemos_{debitMemoId}/putundefined
 get:
   description: >
     **Note:** This operation is only available if you have [Invoice
@@ -251,6 +263,18 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_debitmemos_{debitMemoId}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_debitmemos_{debitMemoId}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_debitmemos_{debitMemoId}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_debitmemos_{debitMemoId}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_debitmemos_{debitMemoId}/getundefined
 delete:
   description: >
     **Note:** This operation is only available if you have [Invoice
@@ -343,3 +367,15 @@ delete:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_debitmemos_{debitMemoId}/deleteundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_debitmemos_{debitMemoId}/deleteundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_debitmemos_{debitMemoId}/deleteundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_debitmemos_{debitMemoId}/deleteundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_debitmemos_{debitMemoId}/deleteundefined

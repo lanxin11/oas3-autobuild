@@ -1,0 +1,17 @@
+import http.client
+
+conn = http.client.HTTPSConnection("https://rest.zuora.com/")
+
+payload = "{\n    \"effectiveDate\": \"2017-03-02\",\n    \"invoices\": [\n        {\n            \"amount\": 1,\n            \"invoiceId\": \"4028905f5a87c0ff015a87d3f8f10043\",\n            \"items\": [\n                {\n                    \"amount\": 0.9,\n                    \"creditMemoItemId\": \"4028905f5a890526015a8d73f74b0016\",\n                    \"invoiceItemId\": \"4028905f5a87c0ff015a87d3f90c0045\"\n                },\n                {\n                    \"amount\": 0.1,\n                    \"creditTaxItemId\": \"4028905f5a890526015a8d73f90c0018\",\n                    \"taxItemId\": \"4028905f5a87c0ff015a87d3f884003f\"\n                }\n            ]\n        }\n    ]\n}"
+
+headers = {
+    'Authorization': "Bearer 6d151216ef504f65b8ff6e9e9e8356d3",
+    'content-type': "application/json",
+    }
+
+conn.request("PUT", "/v1/creditmemos/{creditMemoId}/apply", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))

@@ -132,6 +132,21 @@ get:
       source:
         $ref: >-
           ../code_samples/cURL/objects_records_default_{object}_{id}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/objects_records_default_{object}_{id}/getundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/objects_records_default_{object}_{id}/getundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/objects_records_default_{object}_{id}/getundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/objects_records_default_{object}_{id}/getundefined
 put:
   summary: Update a custom object record
   description: |
@@ -287,6 +302,21 @@ put:
       source:
         $ref: >-
           ../code_samples/cURL/objects_records_default_{object}_{id}/putundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/objects_records_default_{object}_{id}/putundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/objects_records_default_{object}_{id}/putundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/objects_records_default_{object}_{id}/putundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/objects_records_default_{object}_{id}/putundefined
 patch:
   summary: Partially update a custom object record
   operationId: Patch_PartialUpdateCustomObjectRecord
@@ -531,3 +561,19 @@ delete:
       source:
         $ref: >-
           ../code_samples/cURL/objects_records_default_{object}_{id}/deleteundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/objects_records_default_{object}_{id}/deleteundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/objects_records_default_{object}_{id}/deleteundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/objects_records_default_{object}_{id}/deleteundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/objects_records_default_{object}_{id}/deleteundefined

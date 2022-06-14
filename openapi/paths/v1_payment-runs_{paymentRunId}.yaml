@@ -103,6 +103,18 @@ put:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_payment-runs_{paymentRunId}/putundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_payment-runs_{paymentRunId}/putundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_payment-runs_{paymentRunId}/putundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_payment-runs_{paymentRunId}/putundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_payment-runs_{paymentRunId}/putundefined
 get:
   summary: Retrieve a payment run
   operationId: GET_PaymentRun
@@ -192,6 +204,18 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_payment-runs_{paymentRunId}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_payment-runs_{paymentRunId}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_payment-runs_{paymentRunId}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_payment-runs_{paymentRunId}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_payment-runs_{paymentRunId}/getundefined
 delete:
   summary: Delete a payment run
   operationId: DELETE_PaymentRun
@@ -266,3 +290,15 @@ delete:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_payment-runs_{paymentRunId}/deleteundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_payment-runs_{paymentRunId}/deleteundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_payment-runs_{paymentRunId}/deleteundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_payment-runs_{paymentRunId}/deleteundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_payment-runs_{paymentRunId}/deleteundefined

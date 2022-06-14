@@ -230,6 +230,18 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_object_rate-plan-charge_{id}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_object_rate-plan-charge_{id}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_object_rate-plan-charge_{id}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_object_rate-plan-charge_{id}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_object_rate-plan-charge_{id}/getundefined
 put:
   summary: 'CRUD: Update a rate plan charge'
   operationId: Object_PUTRatePlanCharge
@@ -379,3 +391,15 @@ put:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_object_rate-plan-charge_{id}/putundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_object_rate-plan-charge_{id}/putundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_object_rate-plan-charge_{id}/putundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_object_rate-plan-charge_{id}/putundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_object_rate-plan-charge_{id}/putundefined

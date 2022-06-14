@@ -1,0 +1,13 @@
+OkHttpClient client = new OkHttpClient();
+
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"autoPay\": true,\n    \"comment\": \"the comment\",\n    \"effectiveDate\": \"2017-11-30\",\n    \"items\": [\n        {\n            \"amount\": 1,\n            \"autoPost\": false,\n            \"comment\": \"This is comment!\",\n            \"invoiceItemId\": \"402890555a7d4022015a7dadb3b700a6\",\n            \"quantity\": 1,\n            \"serviceEndDate\": \"2017-11-30\",\n            \"serviceStartDate\": \"2017-11-01\",\n            \"skuName\": \"SKU-30\",\n            \"taxItems\": [\n                {\n                    \"amount\": 0.01,\n                    \"jurisdiction\": \"CALIFORNIA\",\n                    \"locationCode\": \"06\",\n                    \"sourceTaxItemId\": \"402890555a7d4022015a7dadb39b00a1\",\n                    \"taxCode\": null,\n                    \"taxCodeDescription\": null,\n                    \"taxDate\": \"2017-11-30\",\n                    \"taxExemptAmount\": 0.0,\n                    \"taxName\": \"STATE TAX\",\n                    \"taxRate\": 0.0625,\n                    \"taxRateDescription\": \"This is tax rate description!\",\n                    \"taxRateType\": \"Percentage\"\n                }\n            ],\n            \"taxMode\": \"TaxExclusive\",\n            \"unitOfMeasure\": \"Test_UOM\"\n        }\n    ],\n    \"reasonCode\": \"Charge Dispute\"\n}");
+Request request = new Request.Builder()
+  .url("https://rest.zuora.com/v1/invoices/{invoiceId}/debitmemos")
+  .post(body)
+  .addHeader("Authorization", "Bearer 6d151216ef504f65b8ff6e9e9e8356d3")
+  .addHeader("content-type", "application/json")
+  .addHeader("cache-control", "no-cache")
+  .build();
+
+Response response = client.newCall(request).execute();

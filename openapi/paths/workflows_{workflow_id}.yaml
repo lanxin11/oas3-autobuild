@@ -96,6 +96,18 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/workflows_{workflow_id}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/workflows_{workflow_id}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/workflows_{workflow_id}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/workflows_{workflow_id}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/workflows_{workflow_id}/getundefined
 delete:
   summary: Delete a workflow
   operationId: DELETE_Workflow
@@ -233,6 +245,18 @@ delete:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/workflows_{workflow_id}/deleteundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/workflows_{workflow_id}/deleteundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/workflows_{workflow_id}/deleteundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/workflows_{workflow_id}/deleteundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/workflows_{workflow_id}/deleteundefined
 patch:
   summary: Update a workflow
   operationId: PATCH_UpdateWorkflow

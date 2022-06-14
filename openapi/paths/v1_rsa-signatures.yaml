@@ -96,3 +96,15 @@ post:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_rsa-signatures/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_rsa-signatures/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_rsa-signatures/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_rsa-signatures/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_rsa-signatures/postundefined

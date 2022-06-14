@@ -1,0 +1,30 @@
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('https://rest.zuora.com/v1/revenue-schedules/debit-memo-items/{dmi-id}/distribute-revenue-with-date-range');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'content-type' => 'application/json',
+  'Authorization' => 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+));
+
+$request->setBody('{
+    "distributionType": "daily distribution",
+    "notes": "notes",
+    "recognitionEnd": "2016-12-31",
+    "recognitionStart": "2016-01-01",
+    "revenueEvent": {
+        "eventType": "Debit Memo Posted",
+        "eventTypeSystemId": "DebitMemoPosted__z",
+        "notes": "some notes"
+    }
+}');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}

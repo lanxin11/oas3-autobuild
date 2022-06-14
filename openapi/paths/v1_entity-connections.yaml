@@ -114,6 +114,18 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_entity-connections/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_entity-connections/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_entity-connections/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_entity-connections/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_entity-connections/getundefined
 post:
   summary: 'Multi-entity: Initiate a connection request'
   operationId: POST_EntityConnections
@@ -198,3 +210,15 @@ post:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_entity-connections/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_entity-connections/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_entity-connections/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_entity-connections/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_entity-connections/postundefined

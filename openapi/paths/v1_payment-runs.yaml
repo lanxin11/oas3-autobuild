@@ -98,6 +98,18 @@ post:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_payment-runs/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_payment-runs/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_payment-runs/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_payment-runs/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_payment-runs/postundefined
 get:
   description: >
     Retrieves the information about all payment runs. You can define filterable
@@ -307,3 +319,15 @@ get:
     - lang: cURL
       source:
         $ref: ../code_samples/cURL/v1_payment-runs/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_payment-runs/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_payment-runs/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_payment-runs/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_payment-runs/getundefined
