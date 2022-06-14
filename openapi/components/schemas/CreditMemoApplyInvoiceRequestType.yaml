@@ -1,0 +1,21 @@
+properties:
+  amount:
+    description: |
+      The credit memo amount to be applied to the invoice.
+    format: double
+    type: number
+  invoiceId:
+    description: |
+      The unique ID of the invoice that the credit memo is applied to.
+    type: string
+  items:
+    description: |
+      Container for items. The maximum number of items is 1,000.
+    items:
+      $ref: ./CreditMemoApplyInvoiceItemRequestType.yaml
+    type: array
+required:
+  - amount
+  - invoiceId
+title: invoices
+type: object

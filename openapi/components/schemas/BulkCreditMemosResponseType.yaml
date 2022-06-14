@@ -1,0 +1,15 @@
+allOf:
+  - properties:
+      memos:
+        description: |
+          The container for a list of credit memos.
+        items:
+          $ref: ./GETCreditMemoType.yaml
+        maxItems: 50
+        title: memos
+        type: array
+      success:
+        description: |
+          Returns `true` if the request was processed successfully.
+        type: boolean
+    type: object

@@ -1,0 +1,5 @@
+curl -X PUT -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3" -H "Content-Type: application/json" -d '{
+    "DMCustomField__c": "Custom fields",
+    "comment": "Comments about the debit memo.",
+    "memoDate": "2022-05-05"
+}' "https://rest.zuora.com/v1/creditmemos/{creditMemoId}/write-off"

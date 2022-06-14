@@ -1,0 +1,302 @@
+get:
+  summary: Retrieve an attachment
+  operationId: GET_Attachments
+  description: >
+    Use the View Attachment REST request to retrieve information about an
+    attachment document.
+
+
+    You can only use this operation if you have a Billing role that includes the
+    Manage Attachments permission.
+
+    For more information, see [Billing
+    roles](https://knowledgecenter.zuora.com/Billing/Tenant_Management/A_Administrator_Settings/User_Roles/d_Billing_Roles).
+
+    To change your Billing role, contact your Zuora platform administrator.
+  tags:
+    - Attachments
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: attachment-id
+      in: path
+      description: Id of the attachment you want to view.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETAttachmentResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: 8a8083e1545b706a01547316d93f4401
+                fileName: AttachTest.txt
+                description: ''
+                fileId: 8a8083e1545b706a01547316d9094400
+                fileContentType: text/plain
+                createdOn: '2016-05-02 13:09:17'
+                createdBy: 4028e487327fd45a0132829ebb673ff9
+                updatedOn: '2016-05-02 13:09:17'
+                updatedBy: 4028e487327fd45a0132829ebb673ff9
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_attachments_{attachment-id}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_attachments_{attachment-id}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_attachments_{attachment-id}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_attachments_{attachment-id}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_attachments_{attachment-id}/getundefined
+put:
+  summary: Update an attachment
+  operationId: PUT_Attachments
+  description: >
+    Use the Edit Attachment REST request to make changes to the descriptive
+    fields of an attachment, such as the description and the file name. You
+    cannot change the actual content of the attached file in Zuora. If you need
+    to change the actual content, you need to delete the attachment and add the
+    updated file as a new attachment.
+
+
+    You can only use this operation if you have a Billing role that includes the
+    Manage Attachments permission.
+
+    For more information, see [Billing
+    roles](https://knowledgecenter.zuora.com/Billing/Tenant_Management/A_Administrator_Settings/User_Roles/d_Billing_Roles).
+
+    To change your Billing role, contact your Zuora platform administrator.
+  tags:
+    - Attachments
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: attachment-id
+      in: path
+      required: true
+      description: Id of the attachment to be updated.
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/PUTAttachmentType.yaml
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_attachments_{attachment-id}/putundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_attachments_{attachment-id}/putundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_attachments_{attachment-id}/putundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_attachments_{attachment-id}/putundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_attachments_{attachment-id}/putundefined
+delete:
+  summary: Delete an attachment
+  operationId: DELETE_Attachments
+  description: >
+    Use the Delete Attachment REST request to delete an attachment from a Zuora
+    object.
+
+
+    You can only use this operation if you have a Billing role that includes the
+    Manage Attachments permission and the Delete Attachments permission.
+
+    For more information, see [Billing
+    roles](https://knowledgecenter.zuora.com/Billing/Tenant_Management/A_Administrator_Settings/User_Roles/d_Billing_Roles).
+
+    To change your Billing role, contact your Zuora platform administrator.
+  tags:
+    - Attachments
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: attachment-id
+      in: path
+      required: true
+      description: Id of the attachment to be deleted.
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_attachments_{attachment-id}/deleteundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_attachments_{attachment-id}/deleteundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_attachments_{attachment-id}/deleteundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_attachments_{attachment-id}/deleteundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_attachments_{attachment-id}/deleteundefined

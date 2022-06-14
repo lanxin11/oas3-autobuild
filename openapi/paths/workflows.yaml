@@ -1,0 +1,204 @@
+get:
+  summary: List workflows
+  operationId: GET_Workflows
+  description: >
+    Retrieves a list of workflows available in your Zuora tenant.
+
+
+    ## User Access Permission
+
+    You must be assigned the **Workflow View Access** permission to run this
+    operation.   
+  tags:
+    - Workflows
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - name: callout_trigger
+      in: query
+      required: false
+      description: >
+        If set to true, the operation retrieves workflows that have the callout
+        trigger enabled. If set to false, the operation retrieves workflows that
+        have the callout trigger disabled. If not specified, the operation will
+        not use this filter.
+      schema:
+        type: boolean
+    - name: interval
+      in: query
+      required: false
+      description: >
+        A CRON expession that specifies a schedule (for example, `0 0 * * *`).
+        If specified, the operation retrieves the workflow that is run based on
+        the specified schedule.
+      schema:
+        type: string
+    - name: name
+      in: query
+      required: false
+      description: >
+        If specified, the operation retrieves the workflow that is in the
+        specified name.
+      schema:
+        type: string
+    - name: ondemand_trigger
+      in: query
+      required: false
+      description: >
+        If set to true, the operation retrieves workflows that have the ondemand
+        trigger enabled. If set to false, the operation retrieves workflows that
+        have the ondemand trigger disabled. If not specified, the operation will
+        not use this filter.
+      schema:
+        type: boolean
+    - name: scheduled_trigger
+      in: query
+      required: false
+      description: >
+        If set to true, the operation retrieves workflows that have the
+        scheduled trigger enabled. If set to false, the operation retrieves
+        workflows that have the scheduled trigger disabled. If not specfied, the
+        operation will not use this filter.
+      schema:
+        type: boolean
+    - name: page
+      in: query
+      required: false
+      description: >
+        If you want to retrieve only the workflows on a specific page, you can
+        specify the `page` number in the query.
+      schema:
+        type: integer
+        default: 1
+    - name: page_length
+      in: query
+      required: false
+      description: >
+        The number of workflows shown in a single call. If the `page` parameter
+        is not specified, the operation will return only the first page of
+        results. If there are multiple pages of results, use it with the `page`
+        parameter to get the results on subsequent pages. The maximum value is
+        50.
+      schema:
+        type: integer
+        default: 20
+  responses:
+    '200':
+      description: OK
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GetWorkflowsResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                data:
+                  - id: 48
+                    interval: null
+                    calloutTrigger: true
+                    createdAt: '2019-05-31T14:52:38.171Z'
+                    description: ''
+                    name: New test workflow
+                    ondemandTrigger: true
+                    scheduledTrigger: false
+                    timezone: null
+                    status: Active
+                    updatedAt: '2019-06-03T21:02:26.694Z'
+                    active_version:
+                      id: 49
+                      description: ''
+                      version: 0.0.1
+                      type: Workflow::Setup
+                      status: Active
+                    latest_inactive_verisons:
+                      - id: 50
+                        name: test
+                        description: ''
+                        version: 0.0.2
+                        type: Workflow::Setup
+                        ondemandTrigger: true
+                        calloutTrigger: true
+                        scheduledTrigger: false
+                        interval: ''
+                        timezone: Sydney
+                        createdAt: '2021-09-22T19:30:52.350Z'
+                        updatedAt: '2021-09-22T19:30:52.350Z'
+                        priority: Medium
+                        status: Inactive
+                      - id: 51
+                        name: test
+                        description: ''
+                        version: 0.0.3
+                        type: Workflow::Setup
+                        ondemandTrigger: true
+                        calloutTrigger: true
+                        scheduledTrigger: false
+                        interval: ''
+                        timezone: Sydney
+                        createdAt: '2021-09-22T19:30:52.350Z'
+                        updatedAt: '2021-09-22T19:30:52.350Z'
+                        priority: Medium
+                        status: Inactive
+                pagination:
+                  page: 1
+                  page_length: 1
+                  next_page: https://rest.zuora.com/workflows?page=2&page_length=1
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/workflows/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/workflows/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/workflows/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/workflows/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/workflows/getundefined

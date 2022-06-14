@@ -1,0 +1,29 @@
+properties:
+  context:
+    description: The context where this setting item is effective.
+    enum:
+      - Tenant
+      - Entity
+      - User
+      - None
+    type: string
+  description:
+    description: The description of the setting item as you see from Zuora UI.
+    type: string
+  httpOperations:
+    description: >-
+      An array of HTTP operation methods that are supported on this setting
+      endpoint.
+    items:
+      $ref: ./SettingItemHttpOperation.yaml
+    type: array
+  key:
+    description: The unique key to distinguish the setting item.
+    type: string
+  pathPattern:
+    description: >-
+      The path pattern of the setting endpoint, relative to `/settings`. For
+      example, `/billing-rules`.
+    type: string
+title: settingItem
+type: object

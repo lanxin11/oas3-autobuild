@@ -1,0 +1,224 @@
+post:
+  summary: Query
+  operationId: Action_POSTquery
+  description: >
+    The query call sends a query expression by specifying the object to query,
+    the fields to retrieve from that object, and any filters to determine
+    whether a given object should be queried.
+
+
+
+    You can use [Zuora Object Query
+    Language](https://knowledgecenter.zuora.com/DC_Developers/K_Zuora_Object_Query_Language)
+    (ZOQL) to construct those queries, passing them through the `queryString`.
+
+
+
+    Once the call is made, the API executes the query against the specified
+    object and returns a query response object to your application. Your
+    application can then iterate through rows in the query response to retrieve
+    information.
+
+
+    ## Limitations 
+
+
+    This call has the following limitations:
+
+
+    * All [ZOQL
+    limitations](https://knowledgecenter.zuora.com/Central_Platform/Query/ZOQL#ZOQL_Limitations)
+    apply.
+
+    * All ZOQL keywords must be in lower case.
+
+    * The number of records returned is limited to 2000 records.
+
+    * The Invoice Settlement feature is not supported. This feature includes
+    Unapplied Payments, Credit and Debit Memo, and Invoice Item Settlement.
+
+    * The Orders feature is not supported, which means that the objects listed
+    in [Orders Object
+    Model](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/BA_Orders_Object_Model)
+    are not supported.
+
+    * The default WSDL version for Actions is 79. To query objects or fields
+    according to a different WSDL version, set the `X-Zuora-WSDL-Version`
+    header. To find out in which WSDL version a particular object or field was
+    introduced, see [Zuora SOAP API Version
+    History](https://knowledgecenter.zuora.com/DC_Developers/G_SOAP_API/Zuora_SOAP_API_Version_History).
+  tags:
+    - Actions
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_REQUEST_rejectUnknownFields.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_X_Zuora_WSDL_Version.yaml
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/ProxyActionqueryRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: ''
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/ProxyActionqueryResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                records:
+                  - AdjustmentNumber: IIA-00000001
+                    ServiceEndDate: '2016-10-20'
+                    Id: 2c93808457d787030157e0324aea5158
+                    AccountingCode: Accounts Receivable
+                    UpdatedDate: '2016-10-20T05:46:14.000+02:00'
+                    AccountId: 2c93808457d787030157e032485b5131
+                    Comment: this is comments
+                    InvoiceNumber: INV00000001
+                    InvoiceId: 2c93808457d787030157e03248c75142
+                    ServiceStartDate: '2016-10-20'
+                    CreatedById: 2c93808457d787030157e032283c4fb2
+                    CreatedDate: '2016-10-20T05:46:14.000+02:00'
+                    InvoiceItemName: OneTime_Flat Fee Pricing1476935174089
+                    UpdatedById: 2c93808457d787030157e032283c4fb2
+                    Amount: 1.2
+                    AdjustmentDate: '2016-10-20'
+                    SourceId: 2c93808457d787030157e03248c95144
+                    SourceType: InvoiceDetail
+                    Status: Processed
+                    Type: Credit
+                    ReferenceId: refid-1476935174845
+                    ReasonCode: Standard Adjustment
+                size: 1
+                done: true
+    '401':
+      description: ''
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+        WWW-Authenticate:
+          description: >
+            The value of this header is:
+
+
+            ```
+
+            Basic realm=Zuora API, ZSession realm=Zuora API, Bearer realm=Zuora
+            API
+
+            ```
+          schema:
+            type: string
+            enum:
+              - >-
+                Basic realm=Zuora API, ZSession realm=Zuora API, Bearer
+                realm=Zuora API
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/ProxyUnauthorizedResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                message: Authentication error
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_action_query/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_action_query/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_action_query/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_action_query/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_action_query/postundefined

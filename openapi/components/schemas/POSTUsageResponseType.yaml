@@ -1,0 +1,20 @@
+properties:
+  checkImportStatus:
+    description: >
+      The path for checking the status of the import.
+
+
+      The possible status values at this path are `Pending`, `Processing`,
+      `Completed`, `Canceled`, and `Failed`. Only `Completed` indicates that the
+      file contents were imported successfully.
+    type: string
+  size:
+    description: |
+      The size of the uploaded file in bytes.
+    format: int64
+    type: integer
+  success:
+    description: |
+      Indicates whether the call succeeded.
+    type: boolean
+type: object

@@ -1,0 +1,12 @@
+name: cursor
+in: query
+description: >
+  The cursor indicator of the data page you want to retrieve. By default, the
+  first page of data is returned in the response. If more data pages are
+  available, the operation returns `true` in the `hasMore` response body field.
+  The `cursor` response body field specifies the cursor indicator of the next
+  page of data. If there is no data after the current page, the value of
+  `cursor` is `null`.
+required: false
+schema:
+  type: string

@@ -1,0 +1,106 @@
+allOf:
+  - properties:
+      appliedAmount:
+        description: |
+          The applied amount of the taxation item.
+        format: double
+        type: number
+      exemptAmount:
+        description: |
+          The calculated tax amount excluded due to the exemption.
+        format: double
+        type: number
+      financeInformation:
+        description: |
+          Container for the finance information related to the taxation item.
+        properties:
+          onAccountAccountingCode:
+            description: >
+              The accounting code that maps to an on account in your accounting
+              system.
+            type: string
+          onAccountAccountingCodeType:
+            description: >
+              The type of the accounting code that maps to an on account in your
+              accounting system.
+            type: string
+          salesTaxPayableAccountingCode:
+            description: |
+              The accounting code for the sales taxes payable.
+            type: string
+          salesTaxPayableAccountingCodeType:
+            description: |
+              The type of the accounting code for the sales taxes payable.
+            type: string
+        type: object
+      id:
+        description: |
+          The ID of the taxation item.
+        type: string
+      jurisdiction:
+        description: >
+          The jurisdiction that applies the tax or VAT. This value is typically
+          a state, province, county, or city.
+        type: string
+      locationCode:
+        description: >
+          The identifier for the location based on the value of the `taxCode`
+          field.
+        type: string
+      name:
+        description: |
+          The name of the taxation item.
+        type: string
+      refundAmount:
+        description: |
+          The amount of the refund on the taxation item.
+        format: double
+        type: number
+      sourceTaxItemId:
+        description: |
+          The ID of the source taxation item.
+        type: string
+      taxAmount:
+        description: |
+          The amount of taxation.
+        format: double
+        type: number
+      taxCode:
+        description: >
+          The tax code identifies which tax rules and tax rates to apply to a
+          specific credit memo.
+        type: string
+      taxCodeDescription:
+        description: |
+          The description of the tax code.
+        type: string
+      taxDate:
+        description: >
+          The date that the tax is applied to the credit memo, in `yyyy-mm-dd`
+          format.
+        format: date
+        type: string
+      taxRate:
+        description: |
+          The tax rate applied to the credit memo.
+        format: double
+        type: number
+      taxRateDescription:
+        description: |
+          The description of the tax rate.
+        type: string
+      taxRateType:
+        description: |
+          The type of the tax rate.
+        enum:
+          - Percentage
+          - FlatFee
+        type: string
+      unappliedAmount:
+        description: |
+          The unapplied amount of the taxation item.
+        format: double
+        type: number
+    type: object
+  - $ref: ./CreditTaxationItemObjectCustomFields.yaml
+title: data

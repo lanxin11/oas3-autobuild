@@ -1,0 +1,36 @@
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('https://rest.zuora.com/v1/object/payment-method');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'content-type' => 'application/json',
+  'Authorization' => 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+));
+
+$request->setBody('{
+    "AccountId": "2c93808457d787030157e0321fdf4fab",
+    "CreditCardAddress1": "312 2nd Ave W",
+    "CreditCardCity": "Seattle",
+    "CreditCardCountry": "United States",
+    "CreditCardExpirationMonth": 12,
+    "CreditCardExpirationYear": 2020,
+    "CreditCardHolderName": "Somebody",
+    "CreditCardNumber": "4111111111111111",
+    "CreditCardPostalCode": "98119",
+    "CreditCardState": "Washington",
+    "CreditCardType": "Visa",
+    "MaxConsecutivePaymentFailures": 10,
+    "NumConsecutiveFailures": 3,
+    "PaymentRetryWindow": 3,
+    "Type": "CreditCard"
+}');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}

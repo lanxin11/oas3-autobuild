@@ -1,0 +1,16 @@
+require 'uri'
+require 'net/http'
+
+url = URI("https://rest.zuora.com/v1/invoices/{invoiceId}/creditmemos")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["Authorization"] = 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+request["content-type"] = 'application/json'
+request.body = "{\n    \"autoApplyToInvoiceUponPosting\": false,\n    \"autoPost\": false,\n    \"comment\": \"the comment\",\n    \"effectiveDate\": \"2016-11-30\",\n    \"excludeFromAutoApplyRules\": false,\n    \"items\": [\n        {\n            \"amount\": 1,\n            \"comment\": \"This is comment!\",\n            \"invoiceItemId\": \"4028905558b483220158b48983dd0015\",\n            \"quantity\": 1,\n            \"serviceEndDate\": \"2016-11-30\",\n            \"serviceStartDate\": \"2016-11-01\",\n            \"skuName\": \"SKU-30\",\n            \"taxItems\": [\n                {\n                    \"amount\": 0.01,\n                    \"jurisdiction\": \"CALIFORNIA\",\n                    \"locationCode\": \"06\",\n                    \"sourceTaxItemId\": \"4028905558b483220158b48983150010\",\n                    \"taxCode\": null,\n                    \"taxCodeDescription\": \"This is tax code description!\",\n                    \"taxDate\": \"2016-11-30\",\n                    \"taxExemptAmount\": 0.0,\n                    \"taxName\": \"STATE TAX\",\n                    \"taxRate\": 0.0625,\n                    \"taxRateDescription\": \"This is tax rate description!\",\n                    \"taxRateType\": \"Percentage\"\n                }\n            ],\n            \"taxMode\": \"TaxExclusive\",\n            \"unitOfMeasure\": \"Test_UOM\"\n        }\n    ],\n    \"reasonCode\": \"Write-off\"\n}"
+
+response = http.request(request)
+puts response.read_body

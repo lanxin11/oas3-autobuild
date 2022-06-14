@@ -1,0 +1,259 @@
+allOf:
+  - properties:
+      amount:
+        description: >
+          The amount of the credit memo item. For tax-inclusive credit memo
+          items, the amount indicates the credit memo item amount including tax.
+          For tax-exclusive credit memo items, the amount indicates the credit
+          memo item amount excluding tax.
+        format: double
+        type: number
+      amountWithoutTax:
+        description: |
+          The credit memo item amount excluding tax.
+        format: double
+        type: number
+      appliedAmount:
+        description: |
+          The applied amount of the credit memo item.
+        format: double
+        type: number
+      appliedToItemId:
+        description: >
+          The unique ID of the credit memo item that the discount charge is
+          applied to.
+        type: string
+      comment:
+        description: >
+          Comments about the credit memo item.
+
+
+          **Note**: This field is not available if you set the `zuora-version`
+          request header to `257.0` or later.
+        type: string
+      createdById:
+        description: |
+          The ID of the Zuora user who created the credit memo item.
+        type: string
+      createdDate:
+        description: >
+          The date and time when the credit memo item was created, in
+          `yyyy-mm-dd hh:mm:ss` format. For example, 2017-03-01 15:31:10.
+        format: date-time
+        type: string
+      creditFromItemId:
+        description: |
+          The ID of the credit from item.
+        type: string
+      creditFromItemSource:
+        description: |
+          The type of the credit from item.
+        enum:
+          - InvoiceItem
+          - CreditMemoItem
+        type: string
+      creditTaxItems:
+        description: >
+          Container for the taxation items of the credit memo item. 
+
+
+          **Note**: This field is not available if you set the `zuora-version`
+          request header to `239.0` or later.
+        items:
+          $ref: ./GETCMTaxItemType.yaml
+        type: array
+      description:
+        description: >
+          The description of the credit memo item.
+
+
+          **Note**: This field is only available if you set the `zuora-version`
+          request header to `257.0` or later.
+        type: string
+      excludeItemBillingFromRevenueAccounting:
+        description: >
+          The flag to exclude the credit memo item from revenue accounting.
+
+
+          **Note**: This field is only available if you have the Billing -
+          Revenue Integration feature enabled. 
+        type: boolean
+      financeInformation:
+        description: |
+          Container for the finance information related to the credit memo item.
+        properties:
+          deferredRevenueAccountingCode:
+            description: >
+              The accounting code for the deferred revenue, such as Monthly
+              Recurring Liability.
+            type: string
+          deferredRevenueAccountingCodeType:
+            description: >
+              The type of the deferred revenue accounting code, such as Deferred
+              Revenue.'
+            type: string
+          onAccountAccountingCode:
+            description: >
+              The accounting code that maps to an on account in your accounting
+              system.
+            type: string
+          onAccountAccountingCodeType:
+            description: >
+              The type of the accounting code that maps to an on account in your
+              accounting system.
+            type: string
+          recognizedRevenueAccountingCode:
+            description: >
+              The accounting code for the recognized revenue, such as Monthly
+              Recurring Charges or Overage Charges.
+            type: string
+          recognizedRevenueAccountingCodeType:
+            description: >
+              The type of the recognized revenue accounting code, such as Sales
+              Revenue or Sales Discount.
+            type: string
+          revenueRecognitionRuleName:
+            description: >
+              The name of the revenue recognition rule governing the revenue
+              schedule.
+            type: string
+          revenueScheduleNumber:
+            description: >
+              Revenue schedule number. The revenue schedule number is always
+              prefixed with "RS", for example, RS-00000001.
+            type: string
+        type: object
+      id:
+        description: |
+          The ID of the credit memo item.
+        type: string
+      processingType:
+        description: >
+          The kind of the charge for the credit memo item. Its possible values
+          are `Charge` and `Discount`. 
+        type: string
+      quantity:
+        description: |
+          The number of units for the credit memo item.
+        format: double
+        type: number
+      refundAmount:
+        description: |
+          The amount of the refund on the credit memo item.
+        format: double
+        type: number
+      serviceEndDate:
+        description: |
+          The service end date of the credit memo item.
+        format: date
+        type: string
+      serviceStartDate:
+        description: >
+          The service start date of the credit memo item. If the associated
+          charge is a one-time fee, this date is the date of that charge.
+        format: date
+        type: string
+      sku:
+        description: |
+          The SKU for the product associated with the credit memo item.
+        type: string
+      skuName:
+        description: |
+          The name of the SKU.
+        type: string
+      sourceItemId:
+        description: >
+          The ID of the source item.
+
+
+          - If the value of the `sourceItemType` field is
+          `SubscriptionComponent` , the value of this field is the ID of the
+          corresponding rate plan charge.
+
+          - If the value of the `sourceItemType` field is `InvoiceDetail`, the
+          value of this field is the ID of the corresponding invoice item.
+
+          - If the value of the `sourceItemType` field is
+          `ProductRatePlanCharge` , the value of this field is the ID of the
+          corresponding product rate plan charge.
+        type: string
+      sourceItemType:
+        description: >
+          The type of the source item.
+
+
+          - If a credit memo is not created from an invoice or a product rate
+          plan charge, the value of this field is `SubscriptionComponent`.
+
+          - If a credit memo is created from an invoice, the value of this field
+          is `InvoiceDetail`.
+
+          - If a credit memo is created from a product rate plan charge, the
+          value of this field is `ProductRatePlanCharge`.
+        enum:
+          - SubscriptionComponent
+          - InvoiceDetail
+          - ProductRatePlanCharge
+        type: string
+      subscriptionId:
+        description: |
+          The ID of the subscription associated with the credit memo item.
+        type: string
+      success:
+        description: Returns `true` if the request was processed successfully.
+        type: boolean
+      taxMode:
+        description: >
+          The tax mode of the credit memo item, indicating whether the amount of
+          the credit memo item includes tax.
+        enum:
+          - TaxExclusive
+          - TaxInclusive
+        type: string
+      taxationItems:
+        description: >
+          Container for the taxation items of the credit memo item. 
+
+
+          **Note**: This field is only available if you set the `zuora-version`
+          request header to `239.0` or later.
+        properties:
+          data:
+            description: |
+              List of taxation items.
+            items:
+              $ref: ./GETCMTaxItemTypeNew.yaml
+            type: array
+          nextPage:
+            description: >
+              URL to retrieve the next page of the response if it exists;
+              otherwise absent.
+            format: URL
+            type: string
+        type: object
+      unappliedAmount:
+        description: |
+          The unapplied amount of the credit memo item.
+        format: double
+        type: number
+      unitOfMeasure:
+        description: |
+          The units to measure usage.
+        type: string
+      unitPrice:
+        description: |
+          The per-unit price of the credit memo item.
+        format: double
+        type: number
+      updatedById:
+        description: |
+          The ID of the Zuora user who last updated the credit memo item.
+        type: string
+      updatedDate:
+        description: >
+          The date and time when the credit memo item was last updated, in
+          `yyyy-mm-dd hh:mm:ss` format. For example, 2017-03-02 15:36:10.
+        format: date-time
+        type: string
+    type: object
+  - $ref: ./CreditMemoItemObjectCustomFields.yaml

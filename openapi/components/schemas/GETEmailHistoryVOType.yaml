@@ -1,0 +1,52 @@
+properties:
+  accountId:
+    description: |
+      ID of an account.
+    type: string
+  bcc:
+    description: |
+      Blind carbon copy recipients of the email.
+    type: string
+  cc:
+    description: |
+      Carbon Copy recipients of the email.
+    type: string
+  errorMessage:
+    description: >
+      null if the content of result is "OK". A description of the error if the
+      content of result is not "OK".
+    type: string
+  eventCategory:
+    description: |
+      The event category of the email.
+    type: string
+  fromEmail:
+    description: |
+      The sender of the email.
+    type: string
+  notification:
+    description: |
+      The name of the notification.
+    type: string
+  replyTo:
+    description: |
+      The reply-to address as configured in the email template.
+    type: string
+  result:
+    description: |
+      The result from the mail server of sending the email.
+    type: string
+  sendTime:
+    description: |
+      The date and time the email was sent.
+    type: string
+  subject:
+    description: |
+      The subject of the email.
+    type: string
+  toEmail:
+    description: |
+      The intended recipient of the email.
+    type: string
+title: emailHistories
+type: object

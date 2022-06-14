@@ -1,0 +1,43 @@
+properties:
+  AmountWithoutTax:
+    description: |
+      The credit memo item amount excluding tax.
+    format: double
+    type: number
+  ChargeName:
+    description: |
+      Name of this credit memo item.
+    type: string
+  Description:
+    description: |
+      Description of this credit memo item.
+    type: string
+  ProductRatePlanChargeId:
+    description: |
+      ID of the product rate plan charge associated with this credit memo item.
+    type: string
+  Quantity:
+    description: |
+      Quantity of the charge associated with this credit memo item.
+    type: integer
+  ServiceEndDate:
+    description: |
+      End date of the service period for this credit memo item, as yyyy-mm-dd.
+    format: date
+    type: string
+  ServiceStartDate:
+    description: |
+      Service start date of this credit memo item, as yyyy-mm-dd.
+    format: date
+    type: string
+  TaxAmount:
+    description: |
+      The tax amount of the credit memo item.
+    format: double
+    type: number
+  UnitOfMeasure:
+    description: |
+      Unit used to measure consumption.
+    type: string
+title: CreditMemoItem
+type: object

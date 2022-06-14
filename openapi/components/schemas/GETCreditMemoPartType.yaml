@@ -1,0 +1,42 @@
+properties:
+  amount:
+    description: |
+      The amount of the credit memo part.
+    format: double
+    type: number
+  createdById:
+    description: |
+      The ID of the Zuora user who created the credit memo part.
+    type: string
+  createdDate:
+    description: >
+      The date and time when the credit memo part was created, in `yyyy-mm-dd
+      hh:mm:ss` format. For example, 2017-03-01 15:31:10.
+    format: date-time
+    type: string
+  debitMemoId:
+    description: |
+      The ID of the debit memo associated with the credit memo part.
+    type: string
+  id:
+    description: |
+      The ID of the credit memo part.
+    type: string
+  invoiceId:
+    description: |
+      The ID of the invoice associated with the credit memo part.
+    type: string
+  success:
+    description: Returns `true` if the request was processed successfully.
+    type: boolean
+  updatedById:
+    description: |
+      The ID of the Zuora user who last updated the credit memo part.
+    type: string
+  updatedDate:
+    description: >
+      The date and time when the credit memo part was last upated, in
+      `yyyy-mm-dd hh:mm:ss` format. For example, 2017-03-02 15:36:10.
+    format: date-time
+    type: string
+type: object

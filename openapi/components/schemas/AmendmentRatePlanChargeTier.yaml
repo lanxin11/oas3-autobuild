@@ -1,0 +1,24 @@
+properties:
+  PriceFormat:
+    description: |2-
+       Indicates if the price is a flat fee or is per unit.
+
+
+      **Character limit**: 8
+
+
+      **Values**: `Flat Fee`, `Per Unit` 
+    type: string
+  RatePlanChargeId:
+    description: |2-
+       The ID of the subscription or amendment rate plan charge associated with this tier. You can't create an unassociated tier.
+
+
+      **Character limit**: 32
+
+
+      **Values**: inherited from `RatePlanCharge`.`Id` 
+    type: string
+required:
+  - RatePlanChargeId
+type: object

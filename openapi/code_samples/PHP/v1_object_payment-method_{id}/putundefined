@@ -1,0 +1,23 @@
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('https://rest.zuora.com/v1/object/payment-method/{id}');
+$request->setMethod(HTTP_METH_PUT);
+
+$request->setHeaders(array(
+  'content-type' => 'application/json',
+  'Authorization' => 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+));
+
+$request->setBody('{
+    "CreditCardAddress1": "312 2nd Ave W_new",
+    "Id": "2c93808457d787030157e02fced332a2"
+}');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}

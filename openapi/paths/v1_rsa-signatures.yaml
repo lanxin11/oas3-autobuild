@@ -1,0 +1,110 @@
+post:
+  summary: Generate an RSA signature
+  operationId: POST_RSASignatures
+  description: >
+    The REST API used in Payment Pages 2.0 are CORS (Cross-Origin Resource
+    Sharing) enabled and therefore requires a digital signature. The POST
+    rsa_signatures call generates and returns the required digital signature and
+    token for a Payment Pages 2.0 form. You need to pass the generated signature
+    to your client for it to access Payment Pages 2.0. 
+        
+    This REST service should be used only when you implement Payment Pages 2.0. 
+
+
+    **Note:** To avoid potential credit card fraud attacks, you should secure
+    your Payment Pages from being accessed by fraudulent users before you issue
+    client-side digital signatures and tokens. See [Manage Token
+    Issuance](https://knowledgecenter.zuora.com/CB_Billing/LA_Hosted_Payment_Pages/B_Payment_Pages_2.0/F_Generate_the_Digital_Signature_for_Payment_Pages_2.0#Manage_Token_Issuance)
+    for more information.
+
+
+    After you use this operation to generate an RSA signature, if `signature`
+    returns `null` but `token` is successfully returned, please limit the number
+    of the fields in your request to make sure that the maximum length supported
+    by the RSA signature algorithm is not exceeded.
+  tags:
+    - RSA Signatures
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/POSTRSASignatureType.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/POSTRSASignatureResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                signature: >-
+                  VpCAFL2hHC2irxbhWYGLJmdBigjARsCStwHZiQ78z5LyVuBCFr2lkie0db/7E8n38MXaq12Ng5As5Qj+9Nhz6RBsSEWLod7c7hvwNI28OcgBZtcV/wscbWU69EP/+/XrQnF3ZUbHbqmcmhE8C/zNnc2zvHckfArroDW2HxxmATfMJS0xKUm5TrHi4tiILZVMYY1KIUqQTyuXV6uRWYzkqMkFkZDNCxSxf0XwzuBI/VOgTCmFZb0c3+bk/q6+7d/azFCrrg8C3dquCNJRfUeaBou+SLUa4TW3hV4rGd2zpvSrD/425x4qFNGV6JQ7wvIleIdrXU4qbh9nCmYoApMODA==
+                token: E2BJEle7YrAlw93SjkaKthTmzMvXF341
+                tenantId: '12270'
+                key: >-
+                  MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmWRFTwxQOqaG4JDZSQF/NJWvCDoSXm3TYilNzoN8nBbuvhKa7SZBBS+VP6rFqcbIU38Fu+Rf09vqyYOxuasPJe7yhqeOiStWB/aCPLhwXBeKt37L/qkwpNOKb1FETtUgrc+UjbtT0pnl55wCfi+Ik//X5SQi0B+c0ei1DQv99qmPJJErrhnBtdxeaWAT0EYAo42AOQ5cp0UWDY6OdOYL6+RyFOUFIs1yEgtfg4VMMSpSOKBOhYclQYuSC7nBF5Cc18ydtzsBpf7l49gCLTFzG45NCDAocada8KihFNpGXbauV9V4EPRD4lofaXdsXJ5Tw8/+KCsrUlvIQI3vcEv9LQIDAQAB
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_rsa-signatures/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_rsa-signatures/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_rsa-signatures/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_rsa-signatures/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_rsa-signatures/postundefined

@@ -1,0 +1,189 @@
+post:
+  summary: Execute
+  operationId: Action_POSTexecute
+  description: >
+    Use the execute call to execute a process to split an invoice into multiple
+    invoices. The original invoice must be in draft status. The resulting
+    invoices are called split invoices.
+
+
+    To access this feature, see [Enable Splitting
+    Invoices](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/IA_Invoices/Splitting_Invoices#Enable_Splitting_Invoices)
+    for steps. 
+
+
+    To split a draft invoice into multiple split invoices:
+
+
+    1. Use the create call to create a separate InvoiceSplitItem object for each
+    split invoice that you want to create from the original draft invoice.
+
+    2. Use the create call to create a single InvoiceSplit object to collect all
+    of the InvoiceSplitItem objects.
+
+    3. Use the execute call to split the draft invoice into multiple split
+    invoices.
+
+
+    You need to create InvoiceSplitItem objects and an InvoiceSplit object
+    before you can use the execute call. 
+
+
+    * Supported objects: InvoiceSplit
+
+    * Asynchronous process: yes
+  tags:
+    - Actions
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_REQUEST_rejectUnknownFields.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_X_Zuora_WSDL_Version.yaml
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/ProxyActionexecuteRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: ''
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            description: ''
+            type: array
+            items:
+              $ref: ../components/schemas/ExecuteResult.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                - Success: true
+                  Id: 2c93808457d787030157e031d5844c53
+    '401':
+      description: ''
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+        WWW-Authenticate:
+          description: >
+            The value of this header is:
+
+
+            ```
+
+            Basic realm=Zuora API, ZSession realm=Zuora API, Bearer realm=Zuora
+            API
+
+            ```
+          schema:
+            type: string
+            enum:
+              - >-
+                Basic realm=Zuora API, ZSession realm=Zuora API, Bearer
+                realm=Zuora API
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/ProxyUnauthorizedResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                message: Authentication error
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_action_execute/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_action_execute/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_action_execute/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_action_execute/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_action_execute/postundefined

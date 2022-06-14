@@ -1,0 +1,184 @@
+get:
+  description: >
+    **Note**: This operation is only available if you have the Ramps feature
+    enabled. The
+    [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
+    feature must be enabled before you can access the
+    [Ramps](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Ramps_and_Ramp_Metrics/A_Overview_of_Ramps_and_Ramp_Metrics)
+    feature. The Ramps feature is available for customers with Enterprise and
+    Nine editions by default. If you are a Growth customer, see [Zuora
+    Editions](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/C_Zuora_Editions)
+    for pricing information coming October 2020.
+
+
+    Retrieves key metrics about a specified ramp, including the following
+    metrics:
+
+
+    * TCB, TCV in the Ramp level
+
+    * TCB, TCV in the Interval level
+
+    * TCB, TCV, Quantity, and MRR in Interval Metrics
+
+    * Delta TCB, Delta TCV, Delta Quantity, and Delta MRR in Interval Delta
+    Metrics
+
+
+    See [Key metrics for
+    Ramps](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Ramps_and_Ramp_Metrics/F_Key_metrics_for_Ramps)
+    for more information.
+  summary: List all ramp metrics of a ramp
+  operationId: GET_RampMetricsByRampNumber
+  tags:
+    - Ramps
+  responses:
+    '200':
+      headers:
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETRampMetricsByRampNumberResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+                rampMetrics:
+                  name: Two Years Ramp
+                  number: R-00000268
+                  description: ''
+                  grossTcb: 240
+                  netTcb: 240
+                  discountTcb: 0
+                  grossTcv: 240
+                  netTcv: 240
+                  discountTcv: 0
+                  intervals:
+                    - name: Year 1
+                      startDate: '2020-01-01'
+                      endDate: '2020-12-31'
+                      description: ''
+                      grossTcb: 120
+                      netTcb: 120
+                      discountTcb: 0
+                      grossTcv: 120
+                      netTcv: 120
+                      discountTcv: 0
+                      intervalMetrics:
+                        - subscriptionNumber: A-S00000287
+                          chargeNumber: C-00000202
+                          ratePlanChargeId: 40289f7b7321f5ce0173229d792c00c8
+                          productRatePlanChargeId: 40289f7b7115832f0171158e6dd906cd
+                          startDate: '2020-01-01'
+                          endDate: '2020-12-31'
+                          grossTcb: 120
+                          netTcb: 120
+                          discountTcb: 0
+                          grossTcv: 120
+                          netTcv: 120
+                          discountTcv: 0
+                          quantity: 1
+                          mrr:
+                            - gross: 10
+                              net: 10
+                              discount: 0
+                              startDate: '2020-01-01'
+                              endDate: '2020-12-31'
+                    - name: Year 2
+                      startDate: '2021-01-01'
+                      endDate: '2021-12-31'
+                      description: ''
+                      grossTcb: 120
+                      netTcb: 120
+                      discountTcb: 0
+                      grossTcv: 120
+                      netTcv: 120
+                      discountTcv: 0
+                      intervalMetrics:
+                        - subscriptionNumber: A-S00000287
+                          chargeNumber: C-00000202
+                          ratePlanChargeId: 40289f7b7321f5ce0173229d792c00c8
+                          productRatePlanChargeId: 40289f7b7115832f0171158e6dd906cd
+                          startDate: '2021-01-01'
+                          endDate: '2021-12-31'
+                          grossTcb: 120
+                          netTcb: 120
+                          discountTcb: 0
+                          grossTcv: 120
+                          netTcv: 120
+                          discountTcv: 0
+                          quantity: 1
+                          mrr:
+                            - gross: 10
+                              net: 10
+                              discount: 0
+                              startDate: '2021-01-01'
+                              endDate: '2021-12-31'
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - in: path
+      description: |
+        The automatically generated number of a ramp. For example, R-00000268.
+      name: rampNumber
+      required: true
+      schema:
+        type: string
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_ramps_{rampNumber}_ramp-metrics/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_ramps_{rampNumber}_ramp-metrics/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_ramps_{rampNumber}_ramp-metrics/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_ramps_{rampNumber}_ramp-metrics/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_ramps_{rampNumber}_ramp-metrics/getundefined

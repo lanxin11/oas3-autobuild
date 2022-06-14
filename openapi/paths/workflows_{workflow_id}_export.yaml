@@ -1,0 +1,304 @@
+get:
+  summary: Export a workflow version
+  operationId: GET_WorkflowExport
+  description: >
+
+    Exports a workflow version into a JSON file. This file can be used to create
+    a copy of this workflow version.
+
+
+    ## User Access Permission
+
+    You must be assigned the **Workflow View Access** permission to run this
+    operation.
+  tags:
+    - Workflows
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - name: workflow_id
+      in: path
+      required: true
+      description: The ID of the workflow to export.
+      schema:
+        type: integer
+    - name: version
+      in: query
+      required: false
+      description: >
+        Default result is the active version of the workflow definition. Version
+        number and 'latest' can be used to export a specific version of the
+        workflow definition. 
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: OK
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/ExportWorkflowVersionResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                workflow:
+                  id: 286
+                  name: Call Echo
+                  description: ''
+                  parameters: {}
+                  data: {}
+                  original_workflow_id: null
+                  type: Workflow::Setup
+                  ondemand_trigger: true
+                  callout_trigger: true
+                  scheduled_trigger: false
+                  interval: null
+                  timezone: null
+                  status: null
+                  finished_at: null
+                  css:
+                    top: 40px
+                    left: 30px
+                  notifications: {}
+                  started_at: null
+                  call_type: null
+                  priority: Medium
+                  sync_trigger: false
+                  delete_ttl: 60
+                  task_summary: {}
+                  version: 0.0.1
+                tasks:
+                  - id: 849
+                    name: Call Echo
+                    parameters:
+                      url: http://scooterlabs.com/echo
+                      datas:
+                        - key: ''
+                          value: ''
+                      method: GET
+                      headers:
+                        - key: ''
+                          value: ''
+                      raw_body: ''
+                      body_type: raw
+                      validation:
+                        zuora_call: 'false'
+                        status_codes:
+                          - ''
+                          - '200'
+                      retry_rules:
+                        retry_count: '0'
+                        retry_window: '30'
+                        current_retry_count: '0'
+                      authorization:
+                        type: none
+                      strict_variables: 'true'
+                      validate_response: 'false'
+                      validation_scheme: ''
+                      include_response_code: 'true'
+                    action_type: Callout
+                    object: null
+                    object_id: null
+                    call_type: SOAP
+                    task_id: null
+                    original_task_id: null
+                    original_workflow_id: null
+                    status: null
+                    error: null
+                    error_details: null
+                    process_id: null
+                    css:
+                      top: 160px
+                      left: 470px
+                    concurrent_limit: 9999999
+                    iterate_row_reference: null
+                    error_class: null
+                    object_batched_reference: null
+                    tags:
+                      - ''
+                    priority: Medium
+                    assignment: []
+                linkages:
+                  - source_workflow_id: 286
+                    source_task_id: null
+                    target_task_id: 849
+                    linkage_type: Start
+    '400':
+      description: The input of version is invalid.
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            type: object
+            properties:
+              errors:
+                type: array
+                description: The list of errors returned from the workflow
+                items:
+                  $ref: ../components/schemas/WorkflowError.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                errors:
+                  - status: 400
+                    code: invalid
+                    title: The input of version '1' is invalid.
+    '404':
+      description: Workflow version is not found.
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            type: object
+            properties:
+              errors:
+                type: array
+                description: The list of errors returned from the workflow
+                items:
+                  $ref: ../components/schemas/WorkflowError.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                errors:
+                  - status: 400
+                    code: invalid
+                    title: Workflow version '1' is not found.
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/workflows_{workflow_id}_export/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/workflows_{workflow_id}_export/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/workflows_{workflow_id}_export/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/workflows_{workflow_id}_export/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/workflows_{workflow_id}_export/getundefined

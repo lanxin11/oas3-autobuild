@@ -1,0 +1,31 @@
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('https://rest.zuora.com/v1/journal-runs');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'content-type' => 'application/json',
+  'Authorization' => 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+));
+
+$request->setBody('{
+    "accountingPeriodName": "Nov-2014",
+    "journalEntryDate": "2014-11-04",
+    "transactionTypes": [
+        {
+            "type": "Invoice Item"
+        },
+        {
+            "type": "Revenue Event Item"
+        }
+    ]
+}');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}

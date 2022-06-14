@@ -1,0 +1,97 @@
+post:
+  summary: Create a summary journal entry
+  operationId: POST_SummaryJournalEntry
+  description: >
+    This REST API reference describes how to manually create a summary journal
+    entry. Request and response field descriptions and sample code are provided.
+
+    ## Requirements
+
+    1.The sum of debits must equal the sum of credits in the summary journal
+    entry.
+
+
+    2.The following applies only if you use foreign currency conversion:
+      * If you have configured Aggregate transactions with different currencies during a Journal Run to "Yes", the value of the **currency** field must be the same as your tenant's home currency. That is, you must create journal entries using your home currency.
+      * All journal entries in an accounting period must either all be aggregated or all be unaggregated. You cannot have a mix of aggregated and unaggregated journal entries in the same accounting period.
+  tags:
+    - Summary Journal Entries
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/POSTJournalEntryType.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/POSTJournalEntryResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+                journalEntryNumber: JE-00000001
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_journal-entries/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_journal-entries/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_journal-entries/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_journal-entries/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_journal-entries/postundefined

@@ -1,0 +1,135 @@
+example:
+  accountID: 402891a25a02e11c015a02f3c6100003
+  integrationType: ApplePay
+  invoiceId: INV000000005
+  merchantID: merchant.CN.com.zuora.services416
+  mitConsentAgreementSrc: External
+  mitProfileAction: Activate
+  mitProfileType: Recurring
+  paymentGateway: CyberSourceOPG
+  paymentToken:
+    data: xGc......JDxuYz1gug0KZRrGXJQ=
+    header:
+      ephemeralPublicKey: MFkwEw......TMbLoojKBA==
+      publicKeyHash: HuLvfqvLon......9jEyX0w=
+      transactionId: abbadd18818baea1f37b40844c9e09afa9733b0eccb373905b811da43cf1753b
+    signature: MIAGCSqGSIb......AEtrLSv7hE9gAAAAAAAA==
+    version: EC_v1
+  processPayment: true
+properties:
+  accountID:
+    description: >-
+      The ID of the customer account associated with this payment method.
+
+      To create an orphan payment method that is not associated with any
+      customer account, you do not need to specify this field during creation.
+      However, you must associate the orphan payment method with a customer
+      account within 10 days. Otherwise, this orphan payment method will be
+      deleted.
+    type: string
+  cardHolderInfo:
+    $ref: ./CreatePaymentMethodCardholderInfo.yaml
+  integrationType:
+    description: |+
+      Field to identify the token decryption type.
+
+      **Note:** The only value at this time is `ApplePay`.
+
+    type: string
+  invoiceId:
+    description: >
+      The id of invoice this payment will apply to.
+
+
+      **Note:** When `processPayment` is `true`, this field is required.
+
+      Only one invoice can be paid; for scenarios where you want to pay for
+      multiple invoices, set `processPayment` to `false` and call payment API
+      separately.
+    type: string
+  merchantID:
+    description: >
+      The Merchant ID that was configured for use with Apple Pay in the Apple
+      iOS Developer Center.
+    type: string
+  mitConsentAgreementSrc:
+    description: >
+      Required if you set the `mitProfileAction` field. This field is only
+      available for CyberSource v2.0 integration.
+    enum:
+      - External
+    type: string
+  mitProfileAction:
+    description: >
+      If you set this field, Zuora creates a stored credential profile within
+      the payment method. This field is only available for CyberSource v2.0
+      integration.
+          
+      - `Activate` - Use this value if you are creating the stored credential
+      profile after receiving the customer's consent.
+          
+        Zuora will create the stored credential profile then send a cardholder-initiated transaction (CIT) to the payment gateway to validate the stored credential profile. If the CIT succeeds, the status of the stored credential profile will be `Active`. If the CIT does not succeed, Zuora will not create a stored credential profile.
+            
+        If the payment gateway does not support the stored credential transaction framework, the status of the stored credential profile will be `Agreed`.
+
+          
+      - `Persist` - Use this value if the stored credential profile represents a
+      stored credential profile in an external system. The status of the payment
+      method's stored credential profile will be `Active`.
+          
+    enum:
+      - Activate
+      - Persist
+    type: string
+  mitProfileType:
+    description: >
+      Required if you set the `mitProfileAction` field. Indicates the type of
+      the stored credential profile to process recurring or unsecheduled
+      transactions. This field is only available for CyberSource v2.0
+      integration.
+          
+    enum:
+      - Recurring
+      - Unscheduled
+    type: string
+  paymentGateway:
+    description: >
+      The label name of the gateway instance configured in Zuora that should
+      process the payment. When creating a Payment, this must be a valid gateway
+      instance ID and this gateway must support the specific payment method. If
+      not specified, the default gateway of your Zuora customer account will be
+      used.
+
+
+      **Note:** When `processPayment` is `true`, this field is required. When
+      `processPayment` is `false`, the default payment gateway of your Zuora
+      customer account will be used no matter whether a payment gateway instance
+      is specified in the `paymentGateway` field.
+    type: string
+  paymentToken:
+    description: >+
+      The complete JSON Object representing the encrypted payment token payload
+      returned in the response from the Apple Pay session.
+
+    type: object
+  processPayment:
+    description: >
+      A boolean flag to control whether a payment should be processed after
+      creating payment method. The payment amount will be equivalent to the
+      amount the merchant supplied in the ApplePay session. Default is false.
+
+
+      If this field is set to `true`, you must specify the `paymentGateway`
+      field with the payment gateway instance name.
+
+
+      If this field is set to `false`:
+        - The default payment gateway of your Zuora customer account will be used no matter whether a payment gateway instance is specified in the `paymentGateway` field. 
+        - You must select the **Verify new credit card** check box on the gateway instance settings page. Otherwise, the cryptogram will not be sent to the gateway.
+        - A separate subscribe or payment API call is required after this payment method creation call.
+    type: boolean
+required:
+  - integrationType
+  - merchantID
+  - paymentToken
+type: object

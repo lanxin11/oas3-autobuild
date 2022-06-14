@@ -1,0 +1,11 @@
+allOf:
+  - $ref: ./PriceChangeParams.yaml
+  - properties:
+      quantity:
+        minimum: 0
+        type: number
+      tiers:
+        items:
+          $ref: ./ChargeTier.yaml
+        type: array
+    type: object

@@ -1,0 +1,35 @@
+example:
+  action: settle
+  actionDate: '2020-10-25 11:11:11'
+  gatewayReconciliationReason: refund_paid
+  gatewayReconciliationStatus: paid
+  payoutId: PAYOUT123
+properties:
+  action:
+    description: |
+      The action of the refund reconciliation.
+        - `settle`: Sets Gateway State to "Settled" and returns the refund object as response.
+        - `reject`: Sets Gateway State to "FailedToSettle" and handle the event according to the settings configured in the Gateway Reconciliation Configuration in Payments Settings through Zuora UI. See [Configure how to handle refund rejected events](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/M_Payment_Gateways/Gateway_Reconciliation#Configure_how_to_handle_refund_rejected_events) for details.
+    enum:
+      - settle
+      - reject
+    type: string
+  actionDate:
+    description: >
+      The date and time of the refund reconciliation action, in `yyyy-mm-dd
+      hh:mm:ss` format.
+    format: datetime
+    type: string
+  gatewayReconciliationReason:
+    description: |
+      The reason of gateway reconciliation.
+    type: string
+  gatewayReconciliationStatus:
+    description: |
+      The status of gateway reconciliation.
+    type: string
+  payoutId:
+    description: |
+      The payout ID of the refund from the gateway side.
+    type: string
+type: object

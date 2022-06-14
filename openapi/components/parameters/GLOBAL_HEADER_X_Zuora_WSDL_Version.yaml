@@ -1,0 +1,8 @@
+name: X-Zuora-WSDL-Version
+in: header
+required: false
+description: |
+  Zuora WSDL version number.
+schema:
+  type: string
+  default: 79

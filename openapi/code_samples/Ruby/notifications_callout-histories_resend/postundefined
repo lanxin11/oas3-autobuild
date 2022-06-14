@@ -1,0 +1,16 @@
+require 'uri'
+require 'net/http'
+
+url = URI("https://rest.zuora.com/notifications/callout-histories/resend")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["Authorization"] = 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+request["content-type"] = 'application/json'
+request.body = "[\n    \"a02ea6d76931475bb73fcd339b5f6ht8g\",\n    \"40dbbc5f2cfb4e2fa236db11ea1dfghht\",\n    \"a3fd8e81c20a4ac0a1eb3747339asdfef\",\n    \"a00000000000000000000000000000000\"\n]"
+
+response = http.request(request)
+puts response.read_body

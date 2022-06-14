@@ -1,0 +1,13 @@
+description: Filters to determine which records to be deleted in the bulk delete operation.
+properties:
+  conditions:
+    description: >-
+      Group of field filter conditions that are evaluated in conjunction with
+      each other using the AND operator. The minimum number of conditions is 1
+      and the maximum is 2.
+    items:
+      $ref: ./CustomObjectBulkDeleteFilterCondition.yaml
+    type: array
+required:
+  - conditions
+type: object

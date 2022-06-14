@@ -1,0 +1,43 @@
+description: >
+  Container of the ramp definitions. It is used to create, update, or remove the
+  ramp definition for the new subscription.
+properties:
+  charges:
+    description: >
+      Container for the rate plan charges that are considered as part of the
+      ramp deal.
+
+
+      * If this field is not specified, all the one-time and recurring regular
+      charges of the new subscription are automatically considered as part of
+      the ramp deal.
+
+      * If this field is specified, either 'chargeNumber' or 'uniqueToken' must
+      be specified.
+    items:
+      $ref: ./RampChargeRequest.yaml
+    type: array
+  delete:
+    description: >
+      Whether to remove the ramp definition from the new subscription. If you
+      want to remove the ramp definition, this field is the only required field
+      for the `ramp` object.  
+    type: boolean
+  description:
+    description: The short description of the ramp.
+    type: string
+  intervals:
+    description: >
+      Container for the intervals that the ramp is split into in its timeline. 
+
+
+      It is required when you want to create or update the ramp definition. The
+      ramp intervals cannot have any overlap or gap between each other.
+    items:
+      $ref: ./RampIntervalRequest.yaml
+    type: array
+  name:
+    description: The name of the ramp.
+    type: string
+title: Ramp
+type: object

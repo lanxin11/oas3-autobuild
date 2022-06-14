@@ -1,0 +1,36 @@
+example:
+  customFields:
+    sub_cf__c: subscription custom field
+  ratePlans:
+    - charges:
+        - chargeNumber: C-00000016
+          customFields:
+            sub_rpc__c: rate plan charge custom field
+      customFields:
+        sub_rate_plan__c: rate plan custom field
+      ratePlanId: 8a8081085d834928015da220da08207f
+properties:
+  customFields:
+    $ref: ./SubscriptionObjectCustomFields.yaml
+  ratePlans:
+    items:
+      properties:
+        charges:
+          items:
+            properties:
+              chargeNumber:
+                type: string
+              customFields:
+                $ref: ./RatePlanChargeObjectCustomFields.yaml
+            type: object
+          type: array
+        customFields:
+          $ref: ./RatePlanObjectCustomFields.yaml
+        ratePlanId:
+          description: >-
+            The rate plan id in any version of the subscription. This will be
+            linked to the only one rate plan in the current version.
+          type: string
+      type: object
+    type: array
+type: object

@@ -1,0 +1,15 @@
+description: |
+  The task usage of a particular day.
+properties:
+  date:
+    description: |
+      The date when the usage record is created.
+    type: string
+  values:
+    properties:
+      taskCount:
+        description: |
+          The amount of task runs that have been used.
+        type: integer
+    type: object
+type: object

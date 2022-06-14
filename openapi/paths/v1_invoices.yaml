@@ -1,0 +1,174 @@
+post:
+  description: >
+    Creates a standalone invoice for selling physical goods, services or other
+    items on a non-recurring basis to your subscription customers.
+
+
+    To use this operation, you must have the "Create Standalone Invoice" and
+    "Modify Invoice" user permissions. See [Billing
+    Roles](https://knowledgecenter.zuora.com/CF_Users_and_Administrators/A_Administrator_Settings/User_Roles/d_Billing_Roles)
+    for more information. As of Zuora Release 2022.03.R5, newly created standard
+    Billing users have the “Create Standalone Invoice” permission enabled by
+    default.
+  summary: Create a standalone invoice
+  operationId: POST_StandaloneInvoice
+  tags:
+    - Invoices
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/PostInvoiceType.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/PostInvoiceResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: 2c9890247abd5bcd017ac87ddf8f0011
+                invoiceNumber: 6LU5F8NW00001
+                accountId: 2c9890247abd5bcd017ac878dbf80002
+                amount: 309
+                amountWithoutTax: 300
+                invoiceDate: '2020-02-01'
+                dueDate: '2020-03-02'
+                autoPay: false
+                comments: comments
+                status: Draft
+                taxAmount: 9
+                taxExemptAmount: 0
+                discount: 0
+                transferredToAccounting: null
+                excludeItemBillingFromRevenueAccounting: true
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_invoices/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_invoices/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_invoices/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_invoices/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_invoices/postundefined
+put:
+  description: |
+    Updates multiple invoices in batches with one call. 
+
+    ## Limitations 
+    This operation has the following limitations:
+    * You can update a maximum of 50 invoices by one call.
+  summary: Update invoices
+  operationId: PUT_BatchUpdateInvoices
+  tags:
+    - Invoices
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/PutBatchInvoiceType.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_invoices/putundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_invoices/putundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_invoices/putundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_invoices/putundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_invoices/putundefined

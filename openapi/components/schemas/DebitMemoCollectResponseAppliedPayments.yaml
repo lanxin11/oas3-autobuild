@@ -1,0 +1,21 @@
+allOf:
+  - properties:
+      appliedAmount:
+        description: |
+          The applied amount of the payment to the debit memo.
+        format: double
+        type: number
+      id:
+        description: |
+          The unique ID of the payment.
+        type: string
+      number:
+        description: |
+          The unique identification number of the payment.
+        type: string
+      unappliedAmount:
+        description: |
+          The unapplied amount of the payment after applied to the debit memo.
+        format: double
+        type: number
+    type: object

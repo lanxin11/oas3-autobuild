@@ -1,0 +1,179 @@
+post:
+  summary: Preview a subscription
+  operationId: POST_PreviewSubscription
+  description: >
+    The REST API reference describes how to create a new subscription in preview
+    mode. This call does not require a valid customer account. It can be used to
+    show potential new customers a preview of a subscription with complete
+    details and charges before creating an account, or to let existing customers
+    preview a subscription with all charges before committing.
+
+
+    ## Notes
+
+    - The response of the Preview Subscription call is based on the REST API
+    minor version you set in the request header. The response structure might be
+    different if you use different minor version numbers. 
+
+
+    - If you have the Invoice Settlement feature enabled, we recommend that you
+    set the `zuora-version` parameter to `207.0` or later. Otherwise, an error
+    is returned.
+
+
+
+    - Default values for **customerAcceptanceDate** and
+    **serviceActivationDate** are set as follows.
+
+
+    |        | serviceActivationDate (SA) specified          |
+    serviceActivationDate (SA) NOT specified  |
+
+    | ------------- |:-------------:| -----:|
+
+    | customerAcceptanceDate (CA) specified      | SA uses value in the request
+    call; CA uses value in the request call| CA uses value in the request
+    call;SA uses CE as default |
+
+    | customerAcceptanceDate (CA) NOT specified      | SA uses value in the
+    request call; CA uses SA as default |   SA and CA use CE as default |
+  tags:
+    - Subscriptions
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: zuora-version
+      in: header
+      required: false
+      description: >
+
+        The minor version of the Zuora REST API. 
+
+
+        You need to set this parameter if you use the following fields:
+
+        * targetDate
+
+        * includeExistingDraftDocItems
+
+        * previewType
+
+        * taxationItems
+
+
+
+        If you have the Invoice Settlement feature enabled, you need to specify
+        this parameter. Otherwise, an error is returned.
+
+
+
+        See [Zuora REST API
+        Versions](https://www.zuora.com/developer/api-reference/#section/API-Versions)
+        for more information. 
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/POSTSubscriptionPreviewType.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/POSTSubscriptionPreviewResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+                contractedMrr: 100
+                amount: 100
+                amountWithoutTax: 90
+                taxAmount: 10
+                invoiceTargetDate: '2021-12-31'
+                invoice:
+                  amount: 100
+                  amountWithoutTax: 90
+                  taxAmount: 10
+                  invoiceItems:
+                    - serviceStartDate: '2021-08-04'
+                      serviceEndDate: '2021-08-31'
+                      chargeAmount: 90
+                      chargeDescription: Recurring Flat Fee Pricing
+                      chargeName: Recurring_Flat Fee Pricing1628472350306
+                      productName: P_1628472348863
+                      productRatePlanChargeId: 402881547b216168017b2884182f12e7
+                      quantity: 1
+                      taxAmount: 10
+                      taxationItems:
+                        - exemptAmount: 0
+                          jurisdiction: Country
+                          locationCode: 000-1
+                          name: taxName1
+                          taxAmount: 10
+                          taxCode: TAXCODE-1628472348524123456789012345678901234567890
+                          taxCodeDescription: null
+                          taxDate: '2021-10-08'
+                          taxRateDescription: taxRateDescription1
+                          taxRateType: FlatFee
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_subscriptions_preview/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_subscriptions_preview/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_subscriptions_preview/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_subscriptions_preview/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_subscriptions_preview/postundefined

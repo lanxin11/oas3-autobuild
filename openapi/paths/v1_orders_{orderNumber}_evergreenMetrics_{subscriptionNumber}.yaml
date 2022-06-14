@@ -1,0 +1,275 @@
+get:
+  summary: List order metrics for an evergreen subscription
+  operationId: GET_OrderMetricsforEvergreenSubscription
+  description: >
+    **Note:** This feature is only available if you have the [Order
+    Metrics](https://knowledgecenter.zuora.com/BC_Subscription_Management/Orders/AA_Overview_of_Orders#Order_Metrics)
+    feature enabled. As of Zuora Billing Release 284, Orders is generally
+    available and the Order Metrics feature is no longer available as a
+    standalone feature. If you are an existing Subscribe and Amend customer and
+    want Order Metrics only, you must turn on [Orders
+    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization).
+    You can still keep the existing Subscribe and Amend API integrations to
+    create and manage subscriptions.
+
+
+    **Note:** As of Zuora Billing Release 306, Zuora has upgraded the
+    methodologies for calculating metrics in
+    [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders).
+    The new methodologies are reflected in the following Order Delta Metrics
+    objects. 
+
+    * [Order Delta
+    Mrr](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Delta_Metrics/Order_Delta_Mrr)
+
+    * [Order Delta
+    Tcv](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Delta_Metrics/Order_Delta_Tcv)
+
+    * [Order Delta
+    Tcb](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Delta_Metrics/Order_Delta_Tcb)
+
+
+    It is recommended that all customers use the new [Order Delta
+    Metrics](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Delta_Metrics/AA_Overview_of_Order_Delta_Metrics).
+    If you are an existing [Order
+    Metrics](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders/Key_Metrics_for_Orders)
+    customer and want to migrate to Order Delta Metrics, submit a request at
+    [Zuora Global Support](https://support.zuora.com/).
+
+
+    Whereas new customers, and existing customers not currently on [Order
+    Metrics](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders/Key_Metrics_for_Orders),
+    will no longer have access to Order Metrics, existing customers currently
+    using Order Metrics will continue to be supported.
+
+
+    **Note:** As of Zuora Billing Release 306, any new customers who onboard on
+    [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
+    or [Orders
+    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
+    will no longer get this operation.
+
+
+
+    Retrieves the metrics of an evergreen subscription in a specified order.
+  tags:
+    - Orders
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: orderNumber
+      in: path
+      description: |
+        The order number.
+      required: true
+      schema:
+        type: string
+        format: string
+    - name: subscriptionNumber
+      in: path
+      description: |
+        The subscription number you want to get the metrics for.
+      required: true
+      schema:
+        type: string
+    - name: startDate
+      in: query
+      description: >
+        The start date of the date range for which you want to get the metrics.
+        The date must be in yyyy-mm-dd format. For example, 2017-12-03.
+      required: true
+      schema:
+        type: string
+        format: date
+    - name: endDate
+      in: query
+      description: >
+        The end date of the date range for which you want to get the metrics.
+        The date must be in yyyy-mm-dd format. For example, 2017-12-03.
+      required: true
+      schema:
+        type: string
+        format: date
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GetOrderResponseForEvergreen.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+                order:
+                  orderNumber: OR-00015
+                  orderDate: '2017-01-01'
+                  createdDate: '2017-08-02'
+                  createdBy: 8a8081085d834928015d837c3c4e0037
+                  updatedDate: '2017-08-02'
+                  updatedBy: 8a8081085d834928015d837c3c4e0037
+                  existingAccountNumber: A-00002
+                  currency: USD
+                  status: Completed
+                  description: This is a description for the Order.
+                  subscriptions:
+                    - subscriptionNumber: S-00004
+                      customFields: {}
+                      baseVersion: null
+                      newVersion: 1
+                      orderActions:
+                        - type: CreateSubscription
+                          sequence: 0
+                          triggerDates:
+                            - triggerDate: '2017-01-01'
+                              name: ServiceActivation
+                            - triggerDate: '2017-01-01'
+                              name: CustomerAcceptance
+                          createSubscription:
+                            subscriptionOwnerAccountNumber: null
+                            terms:
+                              autoRenew: null
+                              renewalSetting: null
+                              initialTerm:
+                                startDate: '2017-01-01'
+                                period: null
+                                periodType: null
+                                termType: EVERGREEN
+                              renewalTerms:
+                                - period: null
+                                  periodType: null
+                            invoiceSeparately: null
+                            notes: null
+                            subscribeToRatePlans:
+                              - productRatePlanId: 8a8081085d834928015d9c54e67f0aa9
+                                newRatePlanId: 8a8081085d834928015da1e36fdd2061
+                                uniqueToken: Sugar-free Monthly
+                                chargeOverrides:
+                                  - description: null
+                                    chargeNumber: C-00000015
+                                    productRateplanChargeId: 8a8081085d834928015d9c55d45f0aac
+                                    uniqueToken: Sugar-free Membership Monthly Charge
+                                    pricing:
+                                      recurringPerUnit:
+                                        listPrice: null
+                                        priceChangeOption: null
+                                        priceIncreasePercentage: null
+                                    startDate:
+                                      specificTriggerDate: null
+                                    endDate:
+                                      endDateCondition: null
+                                      specificEndDate: null
+                                      upToPeriods: null
+                                      upToPeriodsType: null
+                                    billing:
+                                      billCycleDay: null
+                                      billingPeriod: null
+                                      billCycleType: null
+                                      billingTiming: null
+                                      billingPeriodAlignment: null
+                                      specificBillingPeriod: null
+                                      weeklyBillCycleDay: null
+                                    customFields: {}
+                                customFields: {}
+                          customFields: {}
+                          orderMetrics:
+                            - productRatePlanChargeId: 8a8081085d834928015d9c55d45f0aac
+                              originRatePlanId: 8a8081085d834928015da1e36fdd2061
+                              tcb:
+                                - subscriptionOwner: A-00002
+                                  invoiceOwner: A-00002
+                                  amount: 36.129032258
+                                  endDate: '2017-02-28'
+                                  termNumber: 1
+                                  tax: 0
+                                  type: Regular
+                                  startDate: '2017-01-07'
+                              quantity:
+                                - subscriptionOwner: A-00002
+                                  invoiceOwner: A-00002
+                                  amount: 10
+                                  endDate: '2017-02-28'
+                                  termNumber: 1
+                                  startDate: '2017-01-07'
+                              productRatePlanId: 8a8081085d834928015da1e36fd9205e
+                              tcv:
+                                - subscriptionOwner: A-00002
+                                  invoiceOwner: A-00002
+                                  amount: 35.714285714
+                                  endDate: '2017-02-28'
+                                  termNumber: 1
+                                  type: Regular
+                                  startDate: '2017-01-07'
+                              chargeNumber: C-00000015
+                              mrr:
+                                - subscriptionOwner: A-00002
+                                  invoiceOwner: A-00002
+                                  amount: 20
+                                  endDate: '2017-02-28'
+                                  termNumber: 1
+                                  type: Regular
+                                  startDate: '2017-01-07'
+                  customFields: {}
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/v1_orders_{orderNumber}_evergreenMetrics_{subscriptionNumber}/getundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_orders_{orderNumber}_evergreenMetrics_{subscriptionNumber}/getundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_orders_{orderNumber}_evergreenMetrics_{subscriptionNumber}/getundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_orders_{orderNumber}_evergreenMetrics_{subscriptionNumber}/getundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_orders_{orderNumber}_evergreenMetrics_{subscriptionNumber}/getundefined

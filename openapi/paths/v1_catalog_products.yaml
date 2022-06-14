@@ -1,0 +1,113 @@
+get:
+  summary: List all products
+  operationId: GET_Catalog
+  description: >
+    Retrieves the entire product catalog, including all products, features, and
+    their corresponding product rate plans, charges. Products are returned in
+    reverse chronological order on the `UpdatedDate` field. 
+
+
+    For each product, this operation returns a maximum of 300 product rate plans
+    and 300 product rate plan charges across all product rate plans in the
+    response. 
+
+
+    For a use case of this operation, see [Retrieve the product
+    catalog](https://www.zuora.com/developer/api-guides/#Retrieve-the-product-catalog).
+  tags:
+    - Catalog
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize_catalog.yaml
+    - name: zuora-version
+      in: header
+      required: false
+      description: >
+        The minor version of the Zuora REST API. 
+
+
+        You only need to set this parameter if you use the `productRatePlans`
+        field.
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETCatalogType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                products:
+                  - id: 8a8082c45aa81b51015ad5a2d07d0e89
+                    sku: SKU-00000987
+                    name: ABC
+                    description: ''
+                    category: Base Products
+                    effectiveStartDate: '2017-01-01'
+                    effectiveEndDate: '2020-01-01'
+                    productRatePlans: >-
+                      https://rest.zuora.com/v1/rateplan/40289f466463d683016463ef8b7301a0/productRatePlan
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_catalog_products/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_catalog_products/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_catalog_products/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_catalog_products/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_catalog_products/getundefined

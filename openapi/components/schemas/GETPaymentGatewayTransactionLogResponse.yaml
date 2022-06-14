@@ -1,0 +1,11 @@
+properties:
+  data:
+    description: |
+      Container for the payment gateway transaction log records.
+    items:
+      $ref: ./GETPaymentGatewayTransactionLogElementResponse.yaml
+    type: array
+  success:
+    description: |
+      Returns `true` if the request was processed successfully.
+    type: boolean

@@ -1,0 +1,18 @@
+properties:
+  emailHistories:
+    description: |
+      A container for email histories.
+    items:
+      $ref: ./GETEmailHistoryVOType.yaml
+    type: array
+  nextPage:
+    description: >
+      URL to retrieve the next page of the response if it exists; otherwise
+      absent.
+    format: URL
+    type: string
+  success:
+    description: |
+      Returns `true` if the request was processed successfully.
+    type: boolean
+type: object

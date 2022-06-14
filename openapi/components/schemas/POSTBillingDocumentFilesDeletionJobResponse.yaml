@@ -1,0 +1,15 @@
+properties:
+  id:
+    description: |
+      The unique ID of the billing document file deletion job.
+    type: string
+  status:
+    description: |
+      The status of the billing document file deletion job.
+    enum:
+      - Pending
+    type: string
+  success:
+    description: Returns `true` if the request was processed successfully.
+    type: boolean
+type: object

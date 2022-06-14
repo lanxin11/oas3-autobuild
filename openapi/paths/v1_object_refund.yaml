@@ -1,0 +1,230 @@
+post:
+  summary: 'CRUD: Create a refund'
+  operationId: Object_POSTRefund
+  description: >
+    Creates a refund. 
+
+
+    If you have the Invoice Settlement feature enabled, you can use this
+    operation to unapply the payment from an invoice or multiple invoices, and
+    refund the payment. 
+
+
+    If the unapplied payment is left in the following scenarios, you have to
+    reapply the unapplied payment to the original invoices:
+
+
+    - An electronic refund in Processing status is handled to change to Error.
+    An unapplied payment is left. 
+
+    - An electronic refund gets to Error, and payment reapplying fails due to
+    the concurrent issue. 
+
+    - The refund canceling operation updates the status of a refund from
+    Processed to Canceled. When it is successful, an unapplied payment is left.
+  tags:
+    - Refunds
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_REQUEST_rejectUnknownFields.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/ProxyCreateRefund.yaml
+    required: true
+  responses:
+    '200':
+      description: ''
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/ProxyCreateOrModifyResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                Success: true
+                Id: 2c93808457d787030157e03198c84918
+    '400':
+      description: ''
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/ProxyBadRequestResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                Errors:
+                  - Code: INVALID_VALUE
+                    Message: The account number 123xProxy is invalid.
+                Success: false
+    '401':
+      description: ''
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+        WWW-Authenticate:
+          description: >
+            The value of this header is:
+
+
+            ```
+
+            Basic realm=Zuora API, ZSession realm=Zuora API, Bearer realm=Zuora
+            API
+
+            ```
+          schema:
+            type: string
+            enum:
+              - >-
+                Basic realm=Zuora API, ZSession realm=Zuora API, Bearer
+                realm=Zuora API
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/ProxyUnauthorizedResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                message: Authentication error
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_object_refund/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_object_refund/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_object_refund/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_object_refund/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_object_refund/postundefined

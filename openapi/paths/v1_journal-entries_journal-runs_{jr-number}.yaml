@@ -1,0 +1,124 @@
+get:
+  summary: List all summary journal entries in a journal run
+  operationId: GET_AllSummaryJournalEntries
+  description: >
+
+    This REST API reference describes how to retrieve information about all
+    summary journal entries in a journal run.
+  tags:
+    - Summary Journal Entries
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize_finance_revenue.yaml
+    - name: jr-number
+      in: path
+      description: Journal run number.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETJournalEntriesInJournalRunType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+                journalEntries:
+                  - number: JE-00000006
+                    status: Created
+                    journalEntryDate: '2016-12-31'
+                    currency: USD
+                    homeCurrency: USD
+                    aggregateCurrency: true
+                    transactionType: Invoice Item
+                    accountingPeriodName: Dec'16
+                    timePeriodStart: '2016-12-01'
+                    timePeriodEnd: '2016-12-31'
+                    transferredToAccounting: 'No'
+                    notes: note
+                    segments:
+                      - segmentName: Seg1
+                        segmentValue: seg value
+                    journalEntryItems:
+                      - accountingCodeType: AccountsReceivable
+                        accountingCodeName: Accounts Receivable
+                        glAccountName: Accounts Receivable
+                        glAccountNumber: 10-001-000-1234
+                        type: Debit
+                        amount: 100
+                        homeCurrencyAmount: 100
+                      - accountingCodeType: SalesRevenue
+                        accountingCodeName: Sales Revenue
+                        glAccountName: Sales Revenue
+                        glAccountNumber: 10-001-000-1000
+                        type: Credit
+                        amount: 100
+                        homeCurrencyAmount: 100
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/v1_journal-entries_journal-runs_{jr-number}/getundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_journal-entries_journal-runs_{jr-number}/getundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_journal-entries_journal-runs_{jr-number}/getundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_journal-entries_journal-runs_{jr-number}/getundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_journal-entries_journal-runs_{jr-number}/getundefined

@@ -1,0 +1,77 @@
+description: |
+  Information about an order action of type `Resume`.
+properties:
+  extendsTerm:
+    description: >
+      Specifies whether to extend the subscription term by the length of time
+      the suspension is in effect. Note this field is not applicable in a Resume
+      order action auto-created by the Order Metrics migration.
+    type: boolean
+  resumeDate:
+    description: |
+      The resume date when the resumption takes effect.
+    format: date
+    type: string
+  resumePeriods:
+    description: >
+      This field is applicable only when the `resumePolicy` field is set to
+      `FixedPeriodsFromToday` or `FixedPeriodsFromSuspendDate`. It must be used
+      together with the `resumePeriodsType` field. Note this field is not
+      applicable in a Resume order action auto-created by the Order Metrics
+      migration.
+
+
+      The total number of the periods used to specify when a subscription
+      resumption takes effect. The subscription resumption will take place after
+      the specified time frame (`suspendPeriods` multiplied by
+      `suspendPeriodsType`) from today's date. 
+    type: integer
+  resumePeriodsType:
+    description: >
+      This field is applicable only when the `resumePolicy` field is set to
+      `FixedPeriodsFromToday` or `FixedPeriodsFromSuspendDate`. It must be used
+      together with the `resumePeriods` field. Note this field is not applicable
+      in a Resume order action auto-created by the Order Metrics migration.
+
+
+      The period type used to specify when a subscription resumption takes
+      effect. The subscription suspension will take place after the specified
+      time frame (`suspendPeriods` multiplied by `suspendPeriodsType`) from
+      today's date. 
+    enum:
+      - Day
+      - Week
+      - Month
+      - Year
+    type: string
+  resumePolicy:
+    description: >
+      Resume methods. Specify a way to resume a subscription. See [Resume
+      Date](https://knowledgecenter.zuora.com/BC_Subscription_Management/Subscriptions/Resume_a_Subscription#Resume_Date)
+      for more information. Note this field is not applicable in a Resume order
+      action auto-created by the Order Metrics migration.
+
+
+      If `SuspendDate` is specfied, the resumption will take place on the same
+      day as the suspension. 
+    enum:
+      - Today
+      - FixedPeriodsFromSuspendDate
+      - FixedPeriodsFromToday
+      - SpecificDate
+      - SuspendDate
+    type: string
+  resumeSpecificDate:
+    description: >
+      This field is applicable only when the `resumePolicy` field is set to
+      `SpecificDate`. Note this field is not applicable in a Resume order action
+      auto-created by the Order Metrics migration.
+
+
+      A specific date when the subscription resumption takes effect, in
+      YYYY-MM-DD format. The value should not be earlier than the subscription
+      suspension date.
+    format: date
+    type: string
+title: Resume
+type: object

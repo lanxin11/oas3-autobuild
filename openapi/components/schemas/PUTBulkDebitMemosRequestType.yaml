@@ -1,0 +1,62 @@
+allOf:
+  - properties:
+      memos:
+        description: >
+          The container for a list of debit memos. The maximum number of debit
+          memos is 50.
+        items:
+          $ref: ./PUTDebitMemoWithIdType.yaml
+        maxItems: 50
+        title: memos
+        type: array
+    type: object
+example:
+  memos:
+    - autoPay: true
+      comment: new comment
+      dueDate: '2017-05-20'
+      effectiveDate: '2017-04-17'
+      id: 4028905f5a890526015a8db30954007a
+      items:
+        - amount: 1
+          comment: This is comment!
+          id: 402890555b797b57015b7986fc1a001c
+          quantity: 1
+          serviceEndDate: '2016-11-30'
+          serviceStartDate: '2016-11-01'
+          skuName: SKU-1
+          taxItems:
+            - amount: 0.03
+              id: 402890555b797b57015b7986fc3c001d
+              jurisdiction: CALIFORNIA
+              locationCode: '06'
+              taxCode: null
+              taxCodeDescription: This is tax code description!
+              taxDate: '2016-11-30'
+              taxExemptAmount: 0
+              taxName: STATE TAX1
+              taxRate: 0.0625
+              taxRateDescription: This is tax rate description!
+              taxRateType: Percentage
+          unitOfMeasure: Test_UOM
+        - amount: 2
+          comment: This is comment!
+          id: 402890555b797b57015b7986fc41001e
+          serviceEndDate: '2016-11-30'
+          serviceStartDate: '2016-11-01'
+          skuName: SKU-2
+          taxItems:
+            - amount: 0.06
+              id: 402890555b797b57015b7986fc4c001f
+              jurisdiction: CALIFORNIA
+              locationCode: '06'
+              taxCode: null
+              taxCodeDescription: This is tax code description!
+              taxDate: '2016-11-30'
+              taxExemptAmount: 0
+              taxName: STATE TAX2
+              taxRate: 0.0625
+              taxRateDescription: This is tax rate description!
+              taxRateType: Percentage
+          unitOfMeasure: Test_UOM
+      reasonCode: Correcting invoice error

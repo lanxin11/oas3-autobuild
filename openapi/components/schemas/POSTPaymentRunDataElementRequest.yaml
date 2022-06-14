@@ -1,0 +1,140 @@
+allOf:
+  - properties:
+      accountId:
+        description: >
+          A valid account ID associated with the payment run.
+
+
+          If `consolidatedPayment` is set to `true`, this field is used in
+          processing a single payment for invoices/debit memos due on an
+          account.
+        type: string
+      accountNumber:
+        description: >
+          The number of the customer account associated with the payment run,
+          such as `A00000001`.
+
+
+          You can specify either `accountNumber` or `accountId` for a customer
+          account, but not both of them.
+
+
+          If `consolidatedPayment` is set to `true`, this field is used in
+          processing a single payment for invoices, debit memos, and standalone
+          payments due on an account.
+        type: string
+      amount:
+        description: >
+          The amount to be collected for the specified invoice/debit memo.
+          `amount` must be a positive numeric value no more than the balance of
+          the specified invoice/debit memo.
+
+
+          This field is only available when `documentId` is specified. If
+          `amount` is not specified, whole balance of the invoice/debit memo is
+          collected.
+        type: number
+      comment:
+        description: |
+          Additional comments.
+        type: string
+      currency:
+        description: >
+          Note: This field is only available if support for standalone payments
+          is enabled.
+
+
+          The currency of the standalone payment. Specify this field only if the
+          `standalone` field is `true`. The currency of the standalone payment
+          can be different from the payment currency defined in the customer
+          account settings.
+        type: string
+      documentId:
+        description: >
+          The ID of a billing document associated with the payment run.
+          `documentId` must be valid and match with `documentType`.
+
+
+          You must either specify both `documentId` and `documentType`, or
+          specify neither of them.
+
+
+          If neither of `documentType` and `documentId` is specified, all
+          invoices/debit memos with open balance of the account are collected.
+        type: string
+      documentType:
+        description: >
+          The type of a billing document associated with the payment run. The
+          value can be `Invoice` or `DebitMemo`, but `DebitMemo` is only
+          supported if the Invoice Settlement feature is enabled.
+
+
+          You must either specify both `documentType` and `documentId`, or
+          specify neither of them.
+
+
+          If neither of `documentType` and `documentId` is specified, all
+          invoices/debit memos with open balance of the account are collected.
+        enum:
+          - Invoice
+          - DebitMemo
+        type: string
+      paymentGatewayId:
+        description: >
+          The ID of the payment gateway for collecting invoices/debit memos. The
+          specified payment gateway must be valid and active. If it is not
+          specified, the default payment gateway of the account is used. If no
+          payment gateway is configured for the account, the default payment
+          gateway of the tenant is used.
+
+
+          If `consolidatedPayment` is set to `true`, this field is used in
+          processing a single payment for invoices/debit memos due on an
+          account.
+        type: string
+      paymentMethodId:
+        description: >
+          The ID of the payment method for collecting invoices/debit memos. The
+          specified payment method must be a valid non-system payment method. If
+          it is not specified, the default payment method of the account is used
+          regardless of the `autoPay` value of the account.
+
+
+          If `processPaymentWithClosedPM` is set to `false`, the payment method
+          cannot be closed.
+
+
+          If the payment retry rules are enabled, the payment method must meet
+          the rules.
+
+
+          If `consolidatedPayment` is set to `true`, this field is used in
+          processing a single payment for invoices/debit memos due on an
+          account.
+
+
+          For a specified credit card payment method, it is recommended that
+          [the support for stored credential
+          transactions](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/L_Payment_Methods/Stored_credential_transactions)
+          for this payment method is already enabled.
+        type: string
+      standalone:
+        default: false
+        description: >
+          Note: This field is only available if support for standalone payments
+          is enabled.
+
+
+          Specify `true` to indicate that this is a standalone payment that will
+          be created and processed in Zuora through Zuora gateway integration
+          but will be settled outside of Zuora. When `standalone` is set to
+          `true`:
+            - `accountId` or `accountNumber` is required.
+            - `amount` is required. 
+            - The amount will not be summed up into the account balance and key metrics regardless of the payment currency.
+            - No settlement data will be created.
+            - Either the applied amount or the unapplied amount of the payment is zero.
+            - The standalone payment cannot be applied, unapplied, or transferred.
+        type: boolean
+    type: object
+  - $ref: ./PaymentObjectCustomFields.yaml

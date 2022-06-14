@@ -1,0 +1,18 @@
+properties:
+  nextPage:
+    description: >
+      URL to retrieve the next page of the response if it exists; otherwise
+      absent.
+    format: URL
+    type: string
+  success:
+    description: |
+      Returns `true` if the request was processed successfully.
+    type: boolean
+  usage:
+    description: |
+      Contains one or more usage items.
+    items:
+      $ref: ./GETUsageType.yaml
+    type: array
+type: object

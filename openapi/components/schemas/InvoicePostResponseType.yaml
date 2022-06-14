@@ -1,0 +1,11 @@
+allOf:
+  - properties:
+      id:
+        description: |
+          The ID of the invoice that was posted.
+        type: string
+      success:
+        description: |
+          Returns `true` if the invoice was posted successfully.
+        type: boolean
+    type: object

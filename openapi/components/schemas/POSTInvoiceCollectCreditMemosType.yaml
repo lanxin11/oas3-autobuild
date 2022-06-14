@@ -1,0 +1,16 @@
+properties:
+  id:
+    description: |
+      The ID of the credit memo.
+    type: string
+  memoAmount:
+    description: |
+      The amount of the credit memo.
+    format: decimal
+    type: string
+  memoNumber:
+    description: |
+      The unique identification number of the credit memo.
+    type: string
+title: creditMemos
+type: object

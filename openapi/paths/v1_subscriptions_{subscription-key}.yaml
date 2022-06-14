@@ -1,0 +1,467 @@
+put:
+  summary: Update a subscription
+  operationId: PUT_Subscription
+  description: >
+    Use this call to make the following kinds of changes to a subscription:
+      * Add a note
+      * Change the renewal term or auto-renewal flag
+      * Change the term length or change between evergreen and termed
+      * Add a new product rate plan
+      * Remove an existing subscription rate plan
+      * Change the quantity or price of an existing subscription rate plan
+
+    ## Notes
+
+    * The "Update a subscription" call creates a new subscription object that
+    has a new version number and to which the subscription changes are applied.
+    The new subscription object has the same subscription name but a new,
+    different, subscription ID. The `Status` field of the new subscription
+    object will be set to `Active` unless the change applied was a cancelation
+    or suspension in which case the status reflects that. The `Status` field of
+    the originating subscription object changes from `Active` to `Expired`. A
+    status of `Expired` does not imply that the subscription itself has expired
+    or ended, merely that this subscription object is no longer the most recent.
+
+    * In one request, this call can make:
+      * Up to 9 combined add, update, and remove changes
+      * No more than 1 change to terms & conditions
+    * Updates are performed in the following sequence:
+      1. First change the notes on the existing subscription, if requested.
+      2. Then change the terms and conditions, if requested.
+      3. Then perform the remaining amendments based upon the effective dates specified. If multiple amendments have the same contract-effective dates, then execute adds before updates, and updates before removes.
+    * The update operation is atomic. If any of the updates fails, the entire
+    operation is rolled back.
+
+    * The response of the Update Subscription call is based on the REST API
+    minor version you set in the request header. The response structure might be
+    different if you use different minor version numbers. 
+
+    * If you have the Invoice Settlement feature enabled, it is best practice to
+    set the `zuora-version` parameter to `211.0` or later. Otherwise, an error
+    occurs.
+
+
+    ## Override a Tiered Price
+
+    There are two ways you override a tiered price:
+
+
+    * Override a specific tier number
+
+    For example: `tiers[{tier:1,price:8},{tier:2,price:6}]`
+
+
+    * Override the entire tier structure
+
+    For example: 
+    `tiers[{tier:1,price:8,startingUnit:1,endingUnit:100,priceFormat:"FlatFee"},
+
+    {tier:2,price:6,startingUnit:101,priceFormat:"FlatFee"}]`
+
+
+    If you just override a specific tier, do not include the `startingUnit`
+    field in the request.
+  tags:
+    - Subscriptions
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: zuora-version
+      in: header
+      required: false
+      description: >
+
+        The minor version of the Zuora REST API. 
+
+
+        You need to set this parameter if you use the following fields:
+
+        * collect
+
+        * invoice
+
+        * includeExistingDraftDocItems
+
+        * previewType
+
+        * runBilling
+
+        * targetDate
+
+        * taxationItems
+
+
+
+        If you have the Invoice Settlement feature enabled, you need to specify
+        this parameter. Otherwise, an error is returned.
+
+
+
+        See [Zuora REST API
+        Versions](https://www.zuora.com/developer/api-reference/#section/API-Versions)
+        for more information.
+      schema:
+        type: string
+    - name: subscription-key
+      in: path
+      required: true
+      description: Subscription number or ID.
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/PUTSubscriptionType.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/PUTSubscriptionResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+                subscriptionId: 4028bb83510f8ed7015114a503cf0373
+                totalDeltaMrr: 100
+                totalDeltaTcv: 4867.7419355
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_subscriptions_{subscription-key}/putundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_subscriptions_{subscription-key}/putundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_subscriptions_{subscription-key}/putundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_subscriptions_{subscription-key}/putundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_subscriptions_{subscription-key}/putundefined
+get:
+  summary: Retrieve a subscription by key
+  operationId: GET_SubscriptionsByKey
+  description: >
+    This REST API reference describes how to retrieve detailed information about
+    a specified subscription in the latest version.
+  tags:
+    - Subscriptions
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: subscription-key
+      in: path
+      description: |
+        Possible values are:
+          * a subscription number
+          * a subscription ID
+      required: true
+      schema:
+        type: string
+    - name: charge-detail
+      in: query
+      description: >
+
+        The segmented rate plan charges. When an amendment results in a change
+        to a charge, Zuora creates a segmented rate plan charge. Use this field
+        to track segment charges.
+
+
+        Possible values are:
+
+         * __last-segment__: (Default) The last rate plan charge on the subscription. The last rate plan charge is the last one in the order of time on the subscription rather than the most recent changed charge on the subscription.
+         * __current-segment__: The segmented charge that is active on today’s date (effectiveStartDate <= today’s date < effectiveEndDate).
+         
+         * __all-segments__: All the segmented charges. The `chargeSegments` field is returned in the response. The `chargeSegments` field contains an array of the charge information for all the charge segments.
+
+         * __specific-segment&as-of-date=date__: The segmented charge that is active on a date you specified ((specific date = effectiveStartDate) OR (effectiveStartDate < specific date < effectiveEndDate)). The format of the date is yyyy-mm-dd.
+      required: false
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETSubscriptionTypeWithSuccess.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+                id: 8a8082c45aa81b51015ad68743ec0fdb
+                accountId: 8a8082c45aa81b51015ad64396090f5c
+                accountNumber: A00002641
+                accountName: ABCD
+                version: 1
+                revision: '1.0'
+                invoiceOwnerAccountId: 8a8082c45aa81b51015ad64396090f5c
+                invoiceOwnerAccountNumber: A00002641
+                invoiceOwnerAccountName: ABCD
+                subscriptionNumber: A-S00007412
+                termType: TERMED
+                invoiceSeparately: false
+                contractEffectiveDate: '2017-01-01'
+                serviceActivationDate: '2017-01-01'
+                customerAcceptanceDate: '2017-01-01'
+                subscriptionStartDate: '2017-01-01'
+                termStartDate: '2017-01-01'
+                termEndDate: '2018-01-01'
+                initialTerm: 12
+                initialTermPeriodType: Month
+                currentTerm: 12
+                currentTermPeriodType: Month
+                autoRenew: true
+                renewalSetting: RENEW_WITH_SPECIFIC_TERM
+                renewalTerm: 12
+                renewalTermPeriodType: Month
+                contractedMrr: 8.33
+                totalContractedValue: 100
+                notes: ''
+                status: Active
+                paymentTerm: Net 30
+                billToContact:
+                  address1: ''
+                  address2: ''
+                  city: ''
+                  country: null
+                  county: null
+                  fax: ''
+                  firstName: Test
+                  homePhone: ''
+                  id: 2c9081a03c6d7b51013c6d7e46c80a17
+                  lastName: Test
+                  mobilePhone: ''
+                  nickname: ''
+                  otherPhone: ''
+                  otherPhoneType: null
+                  personalEmail: ''
+                  state: ''
+                  taxRegion: null
+                  workEmail: contact@example.com
+                  workPhone: ''
+                  zipCode: ''
+                ratePlans:
+                  - id: 8a8082c45aa81b51015ad68744030fe3
+                    productId: 8a8082c45aa81b51015ad5a2d07d0e89
+                    productName: ABC
+                    productSku: SKU-00000987
+                    productRatePlanId: 8a8082c45aa81b51015ad5a473fb0e8d
+                    ratePlanName: RatePlan 1
+                    ratePlanCharges:
+                      - id: 8a8082c45aa81b51015ad68744160fe4
+                        originalChargeId: 8a8082c45aa81b51015ad68744160fe4
+                        productRatePlanChargeId: 8a8082c45aa81b51015ad5a655c00e8f
+                        number: C-00032238
+                        name: Annual Charge
+                        type: Recurring
+                        model: FlatFee
+                        uom: null
+                        version: 1
+                        pricingSummary: USD100
+                        priceChangeOption: NoChange
+                        priceIncreasePercentage: null
+                        currency: USD
+                        price: 100
+                        tiers: null
+                        includedUnits: null
+                        overagePrice: null
+                        discountPercentage: null
+                        discountAmount: null
+                        applyDiscountTo: null
+                        discountLevel: null
+                        discountClass: null
+                        discountApplyDetails: []
+                        billingDay: DefaultFromCustomer
+                        listPriceBase: Per_Billing_Period
+                        billingPeriod: Annual
+                        specificBillingPeriod: null
+                        billingTiming: IN_ADVANCE
+                        billingPeriodAlignment: AlignToCharge
+                        quantity: 1
+                        smoothingModel: null
+                        numberOfPeriods: null
+                        overageCalculationOption: null
+                        overageUnusedUnitsCreditOption: null
+                        unusedUnitsCreditRates: null
+                        usageRecordRatingOption: null
+                        segment: 1
+                        effectiveStartDate: '2017-01-01'
+                        effectiveEndDate: '2018-01-01'
+                        processedThroughDate: null
+                        chargedThroughDate: null
+                        done: false
+                        triggerDate: null
+                        triggerEvent: ContractEffective
+                        endDateCondition: Subscription_End
+                        upToPeriodsType: null
+                        upToPeriods: null
+                        specificEndDate: null
+                        mrr: 8.333333
+                        dmrc: 8.333333
+                        tcv: 100
+                        dtcv: 100
+                        description: ''
+                      - id: 8a8082c45aa81b51015ad68744240fe5
+                        originalChargeId: 8a8082c45aa81b51015ad68744240fe5
+                        productRatePlanChargeId: 8a8082c45aa81b51015ad683bc590fd8
+                        number: C-00032239
+                        name: Discount-Fixed 10
+                        type: Recurring
+                        model: DiscountFixedAmount
+                        uom: null
+                        version: 1
+                        pricingSummary: USD10 fixed amount discount
+                        priceChangeOption: null
+                        priceIncreasePercentage: null
+                        currency: USD
+                        price: null
+                        tiers: null
+                        includedUnits: null
+                        overagePrice: null
+                        discountPercentage: null
+                        discountAmount: 10
+                        applyDiscountTo: ONETIMERECURRINGUSAGE
+                        discountLevel: subscription
+                        discountClass: VIP Discount
+                        discountApplyDetails:
+                          - appliedProductRatePlanId: 8a8082c45aa81b51015ad5a473fb0e8d
+                            appliedProductRatePlanChargeId: 8a8082c45aa81b51015ad5a655c00e8f
+                        billingDay: DefaultFromCustomer
+                        listPriceBase: null
+                        billingPeriod: Month
+                        specificBillingPeriod: null
+                        billingTiming: null
+                        billingPeriodAlignment: AlignToCharge
+                        quantity: null
+                        smoothingModel: null
+                        numberOfPeriods: null
+                        overageCalculationOption: null
+                        overageUnusedUnitsCreditOption: null
+                        unusedUnitsCreditRates: null
+                        usageRecordRatingOption: null
+                        segment: 1
+                        effectiveStartDate: '2017-01-01'
+                        effectiveEndDate: '2018-01-01'
+                        processedThroughDate: null
+                        chargedThroughDate: null
+                        done: false
+                        triggerDate: null
+                        triggerEvent: ContractEffective
+                        endDateCondition: Subscription_End
+                        upToPeriodsType: null
+                        upToPeriods: null
+                        specificEndDate: null
+                        mrr: 0
+                        dmrc: 0
+                        tcv: 0
+                        dtcv: 0
+                        description: ''
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_subscriptions_{subscription-key}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_subscriptions_{subscription-key}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_subscriptions_{subscription-key}/getundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_subscriptions_{subscription-key}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_subscriptions_{subscription-key}/getundefined

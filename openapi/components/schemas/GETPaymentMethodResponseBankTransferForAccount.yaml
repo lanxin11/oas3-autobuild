@@ -1,0 +1,32 @@
+properties:
+  IBAN:
+    description: >
+      The International Bank Account Number used to create the SEPA payment
+      method. The value is masked.
+    type: string
+  accountNumber:
+    description: |
+      The number of the customer's bank account and it is masked.
+    type: string
+  bankCode:
+    description: >
+      The sort code or number that identifies the bank. This is also known as
+      the sort code.         
+    type: string
+  bankTransferType:
+    description: |
+      The type of the Bank Transfer payment method. For example, `SEPA`.
+    type: string
+  branchCode:
+    description: |
+      The branch code of the bank used for Direct Debit.
+    type: string
+  businessIdentificationCode:
+    description: |
+      The BIC code used for SEPA. The value is masked.       
+    type: string
+  identityNumber:
+    description: |
+      The identity number used for Bank Transfer.        
+    type: string
+type: object

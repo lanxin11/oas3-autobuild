@@ -1,0 +1,103 @@
+put:
+  summary: Distribute revenue in a recognition period
+  operationId: PUT_RevenueByRecognitionStartandEndDates
+  description: >
+    Distributes revenue by specifying the recognition start and end dates.
+    Request and response field descriptions and sample code are provided.
+  tags:
+    - Revenue Schedules
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: rs-number
+      in: path
+      required: true
+      description: >
+        Revenue schedule number. Specify the revenue schedule whose revenue you
+        want to distribute.
+          
+        The revenue schedule number is always prefixed with "RS", for example,
+        "RS-00000001".
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/PUTRSTermType.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/PUTRevenueScheduleResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                revenueEventNumber: RE-00000326
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/v1_revenue-schedules_{rs-number}_distribute-revenue-with-date-range/putundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_revenue-schedules_{rs-number}_distribute-revenue-with-date-range/putundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_revenue-schedules_{rs-number}_distribute-revenue-with-date-range/putundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_revenue-schedules_{rs-number}_distribute-revenue-with-date-range/putundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_revenue-schedules_{rs-number}_distribute-revenue-with-date-range/putundefined

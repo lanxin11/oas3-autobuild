@@ -1,0 +1,105 @@
+put:
+  summary: Stop a mass action
+  operationId: PUT_MassUpdater
+  description: >
+    Describes how to stop a mass action through the REST API. You can stop a
+    mass action when its status is Pending or Processing. After you have stopped
+    a mass action, you can get the mass action result to see details of the mass
+    action.
+
+
+    - If you stop a mass action when its status is Pending, no response file is
+    generated because no records have been processed.
+
+
+    - If you stop a mass action when its status is Processing, a response file
+    is generated. You can check the response file to see which records have been
+    processed and which have not. In the response file, the **Success** column
+    has the value `Y` (successful) or `N` (failed) for processed records, and a
+    blank value for unprocessed records.
+
+
+    Records that have already been processed when a mass action is stopped are
+    not rolled back.
+  tags:
+    - Mass Updater
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: bulk-key
+      in: path
+      required: true
+      description: >
+        String of 32 characters that identifies a mass action. You get the
+        bulk-key after performing a mass action through the REST API.
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_bulk_{bulk-key}_stop/putundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_bulk_{bulk-key}_stop/putundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_bulk_{bulk-key}_stop/putundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_bulk_{bulk-key}_stop/putundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_bulk_{bulk-key}_stop/putundefined

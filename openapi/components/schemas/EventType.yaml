@@ -1,0 +1,21 @@
+properties:
+  description:
+    description: The description of the event type.
+    maxLength: 1000
+    type: string
+  displayName:
+    description: The display name for the event type.
+    maxLength: 500
+    minLength: 1
+    type: string
+  name:
+    description: >-
+      The name of the event. Should be unique, contain no space, and be in the
+      pattern: ^[A-Za-z]{1,}[\\w\\-]*$
+    maxLength: 200
+    minLength: 1
+    type: string
+required:
+  - name
+  - displayName
+type: object

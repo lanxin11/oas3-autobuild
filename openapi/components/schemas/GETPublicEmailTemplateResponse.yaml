@@ -1,0 +1,143 @@
+properties:
+  active:
+    description: The status of the email template.
+    type: boolean
+  bccEmailAddress:
+    description: Email BCC address.
+    format: email
+    type: string
+  ccEmailAddress:
+    description: Email CC address.
+    type: string
+  ccEmailType:
+    default: SpecificEmails
+    description: Email cc type.
+    enum:
+      - BillToContact
+      - SoldToContact
+      - SpecificEmails
+      - TenantAdmin
+      - BillToAndSoldToContacts
+      - RunOwner
+      - AllContacts
+      - InvoiceOwnerBillToContact
+      - InvoiceOwnerSoldToContact
+      - InvoiceOwnerBillToAndSoldToContacts
+      - InvoiceOwnerAllContacts
+    type: string
+  createdBy:
+    description: The ID of the user who created the email template.
+    format: uuid
+    type: string
+  createdOn:
+    description: >-
+      The time when the email template was created. Specified in the UTC
+      timezone in the ISO860 format (YYYY-MM-DDThh:mm:ss.sTZD). E.g.
+      1997-07-16T19:20:30.45+00:00
+    format: date-time
+    type: string
+  description:
+    description: The description of the email template.
+    maxLength: 255
+    type: string
+  emailBody:
+    description: >-
+      The email body. You can add merge fields in the email object using angle
+      brackets. 
+
+      User can also embed html tags if `isHtml` is `true`.
+    type: string
+  emailSubject:
+    description: >-
+      The email subject. You can add merge fields in the email subject using
+      angle brackets.
+    type: string
+  encodingType:
+    description: The endcode type of the email body.
+    enum:
+      - UTF8
+      - Shift_JIS
+      - ISO_2022_JP
+      - EUC_JP
+      - X_SJIS_0213
+    type: string
+  eventCategory:
+    description: >-
+      The event category code for a standard event. See [Standard Event
+      Categories](https://knowledgecenter.zuora.com/Central_Platform/Notifications/A_Standard_Events/Standard_Event_Category_Code_for_Notification_Histories_API)
+      for all event category codes.
+    type: number
+  eventTypeName:
+    description: The name of the custom event or custom scheduled event.
+    minLength: 1
+    type: string
+  eventTypeNamespace:
+    description: >
+      The namespace of the `eventTypeName` field for custom events and custom
+      scheduled events. 
+    type: string
+  fromEmailAddress:
+    description: If formEmailType is SpecificEmail, this field is required.
+    type: string
+  fromEmailType:
+    description: The from email type.
+    enum:
+      - TenantEmail
+      - RunOwner
+      - SpecificEmail
+    type: string
+  fromName:
+    description: The name of email sender.
+    maxLength: 50
+    type: string
+  id:
+    description: The email template ID.
+    format: uuid
+    type: string
+  isHtml:
+    description: Indicates whether the style of email body is HTML.
+    type: boolean
+  name:
+    description: The name of the email template.
+    maxLength: 255
+    type: string
+  replyToEmailAddress:
+    description: If replyToEmailType is SpecificEmail, this field is required
+    type: string
+  replyToEmailType:
+    description: The reply email type.
+    enum:
+      - TenantEmail
+      - RunOwner
+      - SpecificEmail
+    type: string
+  toEmailAddress:
+    description: If `toEmailType` is `SpecificEmail`, this field is required.
+    type: string
+  toEmailType:
+    description: Email receive type.
+    enum:
+      - BillToContact
+      - SoldToContact
+      - SpecificEmails
+      - TenantAdmin
+      - BillToAndSoldToContacts
+      - RunOwner
+      - AllContacts
+      - InvoiceOwnerBillToContact
+      - InvoiceOwnerSoldToContact
+      - InvoiceOwnerBillToAndSoldToContacts
+      - InvoiceOwnerAllContacts
+    type: string
+  updatedBy:
+    description: The ID of the user who updated the email template.
+    format: uuid
+    type: string
+  updatedOn:
+    description: >-
+      The time when the email template was updated. Specified in the UTC
+      timezone in the ISO860 format (YYYY-MM-DDThh:mm:ss.sTZD). E.g.
+      1997-07-16T19:20:30.45+00:00
+    format: date-time
+    type: string
+type: object

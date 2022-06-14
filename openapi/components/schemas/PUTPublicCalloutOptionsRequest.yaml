@@ -1,0 +1,23 @@
+example:
+  confirmSucFromResContent: false
+  intervalTime: 30
+  retryNumber: 3
+properties:
+  confirmSucFromResContent:
+    description: >-
+      If the value is `false`, callout is successful when response code is 200.
+      If value is `true`, when the response code is 200, and ONLY when response
+      `Content-Type` is `application/json` and body payload is `{success:true}`,
+      the callout is succesful.
+    type: boolean
+  intervalTime:
+    description: The interval, in minutes, between callout retries.
+    format: int32
+    minimum: 1
+    type: integer
+  retryNumber:
+    description: The number of retries when the callout fails.
+    format: int32
+    minimum: 1
+    type: integer
+type: object

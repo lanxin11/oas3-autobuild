@@ -1,0 +1,13 @@
+properties:
+  Errors:
+    description: ''
+    items:
+      $ref: ./ActionsErrorResponse.yaml
+    type: array
+  Id:
+    description: ''
+    type: string
+  Success:
+    description: ''
+    type: boolean
+type: object

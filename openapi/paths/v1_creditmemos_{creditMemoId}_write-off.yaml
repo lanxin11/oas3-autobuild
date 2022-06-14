@@ -1,0 +1,117 @@
+put:
+  description: >
+    **Note:** This operation is only available if you have [Invoice
+    Settlement](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement)
+    enabled. The Invoice Settlement feature is generally available as of Zuora
+    Billing Release 296 (March 2021). This feature includes Unapplied Payments,
+    Credit and Debit Memo, and Invoice Item Settlement. If you want to enable
+    Invoice Settlement, see [Invoice Settlement Enablement and Checklist
+    Guide](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement/Invoice_Settlement_Migration_Checklist_and_Guide)
+    for more information. 
+
+
+    Write off a fully unapplied credit memo. When writing off a credit memo, a
+    debit memo is automatically created, and then the credit memo to be written
+    off is fully applied to the debit memo.
+
+
+    Note that this operation only supports writing off credit memos that are
+    fully unapplied. Credit memos that are not fully unapplied cannot be written
+    off by this operation. 
+  summary: Write off a credit memo
+  operationId: PUT_WriteOffCreditMemo
+  tags:
+    - Credit Memos
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/PUTCreditMemoWriteOffResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                debitMemo:
+                  id: 4028905f5a87c0ff015a87e49e6b0062
+                success: true
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - in: path
+      name: creditMemoId
+      description: >
+        The unique ID of a credit memo. For example,
+        8a8082e65b27f6c3015ba45ff82c7172.
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/PUTCreditMemoWriteOff.yaml
+    required: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/v1_creditmemos_{creditMemoId}_write-off/putundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_creditmemos_{creditMemoId}_write-off/putundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_creditmemos_{creditMemoId}_write-off/putundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_creditmemos_{creditMemoId}_write-off/putundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_creditmemos_{creditMemoId}_write-off/putundefined

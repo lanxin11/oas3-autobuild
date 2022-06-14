@@ -1,0 +1,201 @@
+allOf:
+  - properties:
+      accountId:
+        description: |
+          The ID of the customer account associated with the debit memo.
+        type: string
+      amount:
+        description: |
+          The total amount of the debit memo.
+        format: double
+        type: number
+      autoPay:
+        description: >
+          Whether debit memos are automatically picked up for processing in the
+          corresponding payment run. 
+
+
+          By default, debit memos are automatically picked up for processing in
+          the corresponding payment run.      
+        type: boolean
+      balance:
+        description: |
+          The balance of the debit memo.
+        format: double
+        type: number
+      beAppliedAmount:
+        description: |
+          The applied amount of the debit memo.
+        format: double
+        type: number
+      billToContactId:
+        description: >
+          The ID of the bill-to contact associated with the debit memo.
+
+
+          The value of this field is `null` if you have the [Flexible
+          Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+          feature disabled.
+        type: string
+      cancelledById:
+        description: |
+          The ID of the Zuora user who cancelled the debit memo.
+        type: string
+      cancelledOn:
+        description: >
+          The date and time when the debit memo was cancelled, in `yyyy-mm-dd
+          hh:mm:ss` format.
+        format: date-time
+        type: string
+      comment:
+        description: |
+          Comments about the debit memo.
+        type: string
+      createdById:
+        description: |
+          The ID of the Zuora user who created the debit memo.
+        type: string
+      createdDate:
+        description: >
+          The date and time when the debit memo was created, in `yyyy-mm-dd
+          hh:mm:ss` format. For example, 2017-03-01 15:31:10.
+        format: date-time
+        type: string
+      debitMemoDate:
+        description: >
+          The date when the debit memo takes effect, in `yyyy-mm-dd` format. For
+          example, 2017-05-20.
+        format: date
+        type: string
+      dueDate:
+        description: >
+          The date by which the payment for the debit memo is due, in
+          `yyyy-mm-dd` format.
+        format: date
+        type: string
+      id:
+        description: |
+          The unique ID of the debit memo.
+        type: string
+      latestPDFFileId:
+        description: |
+          The ID of the latest PDF file generated for the debit memo.
+        type: string
+      number:
+        description: |
+          The unique identification number of the debit memo.
+        type: string
+      paymentTerm:
+        description: >
+          The name of the payment term assoicated with the debit memo.
+
+
+          The value of this field is `null` if you have the [Flexible
+          Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+          feature disabled.
+        type: string
+      postedById:
+        description: |
+          The ID of the Zuora user who posted the debit memo.
+        type: string
+      postedOn:
+        description: >
+          The date and time when the debit memo was posted, in `yyyy-mm-dd
+          hh:mm:ss` format.
+        format: date-time
+        type: string
+      reasonCode:
+        description: >
+          A code identifying the reason for the transaction. The value must be
+          an existing reason code or empty.
+        type: string
+      referredCreditMemoId:
+        description: |
+          The ID of the credit memo from which the debit memo was created.
+        type: string
+      referredInvoiceId:
+        description: |
+          The ID of a referred invoice.
+        type: string
+      sourceType:
+        description: |
+          The type of the debit memo source.
+        enum:
+          - Subscription
+          - Standalone
+          - Order
+          - Consolidation
+          - Invoice
+          - CreditMemo
+        type: string
+      status:
+        description: |
+          The status of the debit memo. 
+        enum:
+          - Draft
+          - Posted
+          - Canceled
+          - Error
+          - PendingForTax
+          - Generating
+          - CancelInProgress
+        type: string
+      targetDate:
+        description: >
+          The target date for the debit memo, in `yyyy-mm-dd` format. For
+          example, 2017-07-20.
+        format: date
+        type: string
+      taxAmount:
+        description: |
+          The amount of taxation.
+        format: double
+        type: number
+      taxMessage:
+        description: >
+          The message about the status of tax calculation related to the debit
+          memo. If tax calculation fails in one debit memo, this field displays
+          the reason for the failure.
+        type: string
+      taxStatus:
+        description: >
+          The status of tax calculation related to the debit memo.
+
+
+          **Note**: This field is only applicable to tax calculation by
+          third-party tax engines.
+        enum:
+          - Complete
+          - Error
+        type: string
+      totalTaxExemptAmount:
+        description: |
+          The calculated tax amount excluded due to the exemption.
+        format: double
+        type: number
+      transferredToAccounting:
+        description: >
+          Whether the debit memo was transferred to an external accounting
+          system. Use this field for integration with accounting systems, such
+          as NetSuite. 
+        enum:
+          - Processing
+          - 'Yes'
+          - 'No'
+          - Error
+          - Ignore
+        type: string
+      updatedById:
+        description: |
+          The ID of the Zuora user who last updated the debit memo.
+        type: string
+      updatedDate:
+        description: >
+          The date and time when the debit memo was last updated, in `yyyy-mm-dd
+          hh:mm:ss` format. For example, 2017-03-02 15:31:10.
+        format: date-time
+        type: string
+    type: object
+  - $ref: ./DebitMemoObjectNSFields.yaml
+  - $ref: ./DebitMemoObjectCustomFields.yaml
+title: debitmemos

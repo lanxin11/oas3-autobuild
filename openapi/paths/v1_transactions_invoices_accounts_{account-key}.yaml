@@ -1,0 +1,118 @@
+get:
+  summary: List all invoices for an account
+  operationId: GET_TransactionInvoice
+  description: >
+    Retrieves invoices for a specified account. 
+
+    Invoices are returned in reverse chronological order by **updatedDate**.
+
+
+    For a use case of this operation, see [View
+    invoices](https://www.zuora.com/developer/api-guides/#View-invoices).
+  tags:
+    - Transactions
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
+    - name: account-key
+      in: path
+      description: |
+        Account number or account ID.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETInvoiceFileWrapper.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                invoices:
+                  - id: 8a88818e66bdd34d0166be4589b60031
+                    accountId: 2c9891b06661f78c01667bc6dc090202
+                    accountNumber: AN_1539674921782
+                    accountName: AC_AC_15396749217821539674921782
+                    invoiceDate: '2018-10-29'
+                    invoiceNumber: INV00000001
+                    dueDate: '2018-10-29'
+                    invoiceTargetDate: '2018-10-29'
+                    amount: 9.68
+                    balance: 9.68
+                    creditBalanceAdjustmentAmount: 0
+                    createdBy: 2c9891b06661f78c01667bc6c7600068
+                    status: Draft
+                    reversed: false
+                    body: null
+                    invoiceItems: >-
+                      https://rest.zuora.com/v1/invoices/8a88818e66bdd34d0166be4589b60031/items
+                    invoiceFiles: >-
+                      https://rest.zuora.com/v1/invoices/8a88818e66bdd34d0166be4589b60031/files
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/v1_transactions_invoices_accounts_{account-key}/getundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_transactions_invoices_accounts_{account-key}/getundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_transactions_invoices_accounts_{account-key}/getundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_transactions_invoices_accounts_{account-key}/getundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_transactions_invoices_accounts_{account-key}/getundefined

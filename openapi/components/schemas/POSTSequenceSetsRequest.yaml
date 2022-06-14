@@ -1,0 +1,44 @@
+description: ''
+example:
+  sequenceSets:
+    - creditMemo:
+        prefix: FCM
+        startNumber: 10
+      debitMemo:
+        prefix: FDM
+        startNumber: 10
+      invoice:
+        prefix: FINV
+        startNumber: 10
+      name: FR
+      payment:
+        prefix: FP-
+        startNumber: 10
+      refund:
+        prefix: FR-
+        startNumber: 10
+    - creditMemo:
+        prefix: ICM
+        startNumber: 10
+      debitMemo:
+        prefix: IDM
+        startNumber: 10
+      invoice:
+        prefix: IINV
+        startNumber: 10
+      name: ITA
+      payment:
+        prefix: IP-
+        startNumber: 10
+      refund:
+        prefix: IR-
+        startNumber: 10
+properties:
+  sequenceSets:
+    description: >
+      Array of sequence sets configured for billing documents, payments, and
+      refunds.
+    items:
+      $ref: ./POSTSequenceSetRequest.yaml
+    type: array
+type: object

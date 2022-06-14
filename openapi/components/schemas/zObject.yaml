@@ -1,0 +1,4 @@
+additionalProperties:
+  description: |
+    Field of the object.
+type: object

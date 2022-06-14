@@ -1,0 +1,10 @@
+allOf:
+  - $ref: ./PriceChangeParams.yaml
+  - properties:
+      overagePrice:
+        type: number
+      tiers:
+        items:
+          $ref: ./ChargeTier.yaml
+        type: array
+    type: object

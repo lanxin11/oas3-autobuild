@@ -1,0 +1,216 @@
+properties:
+  accountId:
+    description: |
+      The ID of the customer account that the payment is for.
+    type: string
+  amount:
+    description: |
+      The total amount of the payment.
+    format: double
+    type: number
+  cancelledOn:
+    description: >
+      The date and time when the payment was cancelled, in `yyyy-mm-dd hh:mm:ss`
+      format.
+    format: date-time
+    type: string
+  comment:
+    description: |
+      Comments about the payment.
+    type: string
+  createdById:
+    description: |
+      The ID of the Zuora user who created the refund.
+    type: string
+  createdDate:
+    description: >
+      The date and time when the chargeback is created, in `yyyy-mm-dd hh:mm:ss`
+      format. For example, 2019-03-01 15:31:10.
+    format: date-time
+    type: string
+  creditMemoId:
+    description: |
+      The ID of the credit memo that is refunded.
+    type: string
+  financeInformation:
+    description: |
+      Container for the finance information related to the refund.
+    properties:
+      bankAccountAccountingCode:
+        description: >
+          The accounting code that maps to a bank account in your accounting
+          system.
+        maxLength: 100
+        minLength: 0
+        type: string
+      bankAccountAccountingCodeType:
+        description: >
+          The type of the accounting code that maps to a bank account in your
+          accounting system.
+            
+        type: string
+      transferredToAccounting:
+        description: >
+          Whether the refund was transferred to an external accounting system.
+          Use this field for integration with accounting systems, such as
+          NetSuite. 
+        enum:
+          - Processing
+          - 'Yes'
+          - 'No'
+          - Error
+          - Ignore
+        type: string
+      unappliedPaymentAccountingCode:
+        description: |
+          The accounting code for the unapplied payment.
+        maxLength: 100
+        minLength: 0
+        type: string
+      unappliedPaymentAccountingCodeType:
+        description: |
+          The type of the accounting code for the unapplied payment.
+            
+        type: string
+    type: object
+  gatewayId:
+    description: |
+      The ID of the gateway instance that processes the payment.
+    type: string
+  gatewayResponse:
+    description: >
+      The message returned from the payment gateway for the payment. This
+      message is gateway-dependent.
+    type: string
+  gatewayResponseCode:
+    description: >
+      The code returned from the payment gateway for the payment. This code is
+      gateway-dependent.
+    type: string
+  gatewayState:
+    description: >
+      The status of the payment in the gateway; specifically used for
+      reconciliation.
+    enum:
+      - Submitted
+      - NotSubmitted
+      - Settled
+      - FailedToSettle
+    type: string
+  id:
+    description: |
+      The ID of the payment chargeback.
+    type: string
+  markedForSubmissionOn:
+    description: >
+      The date and time when a charge was marked and waiting for batch
+      submission to the payment process, in `yyyy-mm-dd hh:mm:ss` format.
+    format: date-time
+    type: string
+  methodType:
+    description: |
+      How an external refund was issued to a customer. 
+    enum:
+      - ACH
+      - Cash
+      - Check
+      - CreditCard
+      - PayPal
+      - WireTransfer
+      - DebitCard
+      - CreditCardReferenceTransaction
+      - BankTransfer
+      - Other
+    type: string
+  number:
+    description: |
+      The unique identification number of the payment. For example, P-00000001.
+    type: string
+  paymentId:
+    description: |
+      The ID of the payment that is refunded.
+    type: string
+  paymentMethodId:
+    description: >
+      The unique ID of the payment method that the customer used to make the
+      payment.
+    type: string
+  paymentMethodSnapshotId:
+    description: >
+      The unique ID of the payment method snapshot which is a copy of the
+      particular Payment Method used in a transaction.
+    type: string
+  reasonCode:
+    description: |
+      A code identifying the reason for the transaction.   
+    type: string
+  referenceId:
+    description: >
+      The transaction ID returned by the payment gateway for an electronic
+      refund. Use this field to reconcile refunds between your gateway and Zuora
+      Payments.
+    type: string
+  refundDate:
+    description: >
+      The date when the refund takes effect, in `yyyy-mm-dd` format. For
+      example, 2017-03-01.
+    format: date
+    type: string
+  refundTransactionTime:
+    description: >
+      The date and time when the refund was issued, in `yyyy-mm-dd hh:mm:ss`
+      format.
+    format: date-time
+    type: string
+  secondRefundReferenceId:
+    description: >
+      The transaction ID returned by the payment gateway if there is an
+      additional refund. 
+    type: string
+  settledOn:
+    description: >
+      The date and time when the transaction is settled, in `yyyy-mm-dd
+      hh:mm:ss` format.
+    format: date-time
+    type: string
+  softDescriptor:
+    description: |
+      A payment gateway-specific field that maps Zuora to other gateways.
+    type: string
+  softDescriptorPhone:
+    description: >
+      A payment gateway-specific field that maps Zuora to other
+      gateways.          
+    type: string
+  status:
+    description: |
+      The status of the payment.
+    type: string
+  submittedOn:
+    description: >
+      The date and time when the payment was submitted, in yyyy-mm-dd hh:mm:ss
+      format.
+    format: date-time
+    type: string
+  success:
+    description: |
+      Returns `true` if the request was processed successfully.
+    type: boolean
+  type:
+    description: |
+      The type of the payment.
+    enum:
+      - External
+      - Electronic
+    type: string
+  updatedById:
+    description: |
+      The ID of the Zuora user who last updated the payment.
+    type: string
+  updatedDate:
+    description: >
+      The date and time when the payment was last updated, in `yyyy-mm-dd
+      hh:mm:ss` format. For example, 2019-03-02 15:36:10.
+    format: date-time
+    type: string
+type: object

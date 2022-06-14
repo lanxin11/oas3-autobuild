@@ -1,0 +1,228 @@
+allOf:
+  - properties:
+      accountingCode:
+        description: |
+          The accounting code associated with the invoice item.
+        type: string
+      adjustmentLiabilityAccountingCode:
+        description: >
+          The accounting code for adjustment liability. 
+                
+          **Note**: This field is only available if you have the Billing -
+          Revenue Integration feature enabled. 
+        type: string
+      adjustmentRevenueAccountingCode:
+        description: >
+          The accounting code for adjustment revenue. 
+                
+          **Note**: This field is only available if you have the Billing -
+          Revenue Integration feature enabled. 
+        type: string
+      amount:
+        description: >
+          The amount of the invoice item. 
+
+
+          - For tax-inclusive invoice items, the amount indicates the invoice
+          item amount including tax. 
+
+          - For tax-exclusive invoice items, the amount indicates the invoice
+          item amount excluding tax.
+        format: number
+        type: string
+      bookingReference:
+        description: |
+          The booking reference of the invoice item.
+        type: string
+      chargeDate:
+        description: >
+          The date when the invoice item is charged, in `yyyy-mm-dd hh:mm:ss`
+          format.
+        format: date-time
+        type: string
+      chargeName:
+        description: >
+          The name of the charge associated with the invoice item. 
+
+
+          This field is required if the `productRatePlanChargeId` field is not
+          specified in the request.
+        type: string
+      contractAssetAccountingCode:
+        description: >
+          The accounting code for contract asset. 
+                
+          **Note**: This field is only available if you have the Billing -
+          Revenue Integration feature enabled. 
+        type: string
+      contractLiabilityAccountingCode:
+        description: >
+          The accounting code for contract liability. 
+                
+          **Note**: This field is only available if you have the Billing -
+          Revenue Integration feature enabled. 
+        type: string
+      contractRecognizedRevenueAccountingCode:
+        description: >
+          The accounting code for contract recognized revenue. 
+                
+          **Note**: This field is only available if you have the Billing -
+          Revenue Integration feature enabled. 
+        type: string
+      deferredRevenueAccountingCode:
+        description: >
+          The accounting code for the deferred revenue, such as Monthly
+          Recurring Liability.
+
+
+          **Note:** This field is only available if you have Zuora Finance
+          enabled.
+        type: string
+      description:
+        description: |
+          The description of the invoice item.
+        type: string
+      discountItems:
+        description: >
+          Container for discount items. The maximum number of discount items is
+          10.
+        items:
+          $ref: ./PostDiscountItemType.yaml
+        type: array
+      itemType:
+        description: |
+          The type of the invoice item.
+        type: string
+      productRatePlanChargeId:
+        description: >
+          The ID of the product rate plan charge that the invoice item is
+          created from.
+
+
+          If you specify a value for the `productRatePlanChargeId` field in the
+          request, Zuora directly copies the values of the following fields from
+          the corresponding product rate plan charge, regardless of the values
+          specified in the request body:
+
+          - `chargeName`
+
+          - `sku`
+
+          - `uom`
+
+          - `taxCode`
+
+          - `taxMode`
+
+          - `accountingCode`
+
+          - `deferredRevenueAccountingCode` 
+
+          - `recognizedRevenueAccountingCode`
+        type: string
+      purchaseOrderNumber:
+        description: |
+          The purchase order number associated with the invoice item.
+        type: string
+      quantity:
+        default: '1'
+        description: |
+          The number of units for the invoice item.
+        format: number
+        type: string
+      recognizedRevenueAccountingCode:
+        description: >
+          The accounting code for the recognized revenue, such as Monthly
+          Recurring Charges or Overage Charges.
+
+
+          **Note:** This field is only available if you have Zuora Finance
+          enabled.
+        type: string
+      revRecCode:
+        description: |
+          The revenue recognition code.
+        type: string
+      revRecTriggerCondition:
+        description: |
+          The date when revenue recognition is triggered.
+        enum:
+          - ContractEffectiveDate
+          - ServiceActivationDate
+          - CustomerAcceptanceDate
+        type: string
+      revenueRecognitionRuleName:
+        description: >
+          The name of the revenue recognition rule governing the revenue
+          schedule.
+
+
+          **Note:** This field is only available if you have Zuora Finance
+          enabled.
+        type: string
+      serviceEndDate:
+        description: |
+          The service end date of the invoice item.
+        format: date
+        type: string
+      serviceStartDate:
+        description: |
+          The service start date of the invoice item.
+        format: date
+        type: string
+      sku:
+        description: >
+          The SKU of the invoice item. The SKU of the invoice item must be
+          different from the SKU of any existing product.
+        type: string
+      taxCode:
+        description: >
+          The tax code identifies which tax rules and tax rates to apply to the
+          invoice item.
+
+
+          **Note**: This field is only available only if you have Taxation
+          enabled.
+        type: string
+      taxItems:
+        description: >
+          Container for taxation items. The maximum number of taxation items is
+          5.
+        items:
+          $ref: ./PostTaxationItemType.yaml
+        type: array
+      taxMode:
+        description: >
+          The tax mode of the invoice item, indicating whether the amount of the
+          invoice item includes tax.
+
+
+          **Note**: This field is only available only if you have Taxation
+          enabled.
+        enum:
+          - TaxInclusive
+          - TaxExclusive
+        type: string
+      unbilledReceivablesAccountingCode:
+        description: >
+          The accounting code for unbilled receivables. 
+                
+          **Note**: This field is only available if you have the Billing -
+          Revenue Integration feature enabled. 
+        type: string
+      unitPrice:
+        description: |
+          The per-unit price of the invoice item.
+        format: number
+        type: string
+      uom:
+        description: |
+          The unit of measure.
+        type: string
+    required:
+      - amount
+      - serviceStartDate
+    title: invoiceItems
+    type: object
+  - $ref: ./InvoiceItemObjectNSFields.yaml
+  - $ref: ./InvoiceItemObjectCustomFields.yaml

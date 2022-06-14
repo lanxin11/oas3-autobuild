@@ -1,0 +1,11 @@
+allOf:
+  - properties:
+      id:
+        description: >
+          The unique ID of the product rate plan to be removed from the catalog
+          group.
+        type: string
+    type: object
+example:
+  id: 4028e5ab7f1b600c017f1b787d5d01cf
+title: remove

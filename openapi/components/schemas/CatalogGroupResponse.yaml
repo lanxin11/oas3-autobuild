@@ -1,0 +1,32 @@
+properties:
+  catalogGroupNumber:
+    description: >
+      The automatically generated number of the catalog group with the CG-
+      perfix. For example, CG-00000001.
+    type: string
+  description:
+    description: |
+      The description of the catalog group.
+    type: string
+  id:
+    description: |
+      The ID of the catalog group.
+    type: string
+  name:
+    description: |
+      The name of the catalog group.
+    type: string
+  productRatePlans:
+    description: |
+      The list of product rate plans in the catalog group.
+    items:
+      $ref: ./GETCatalogGroupProductRatePlanResponse.yaml
+    type: array
+  type:
+    description: |
+      The type of the catalog group.
+    enum:
+      - Grading
+      - Display
+    type: string
+title: catalogGroups

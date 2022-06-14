@@ -1,0 +1,49 @@
+properties:
+  accountId:
+    description: The ID of the customer account associated with the billing document.
+    format: uuid
+    type: string
+  amount:
+    description: |
+      The total amount of the billing document.
+    format: double
+    type: number
+  balance:
+    description: |
+      The balance of the billing document.
+    format: double
+    type: number
+  documentDate:
+    description: >
+      The date of the billing document. The date can be the invoice date for
+      invoices, credit memo date for credit memos, or debit memo date for debit
+      memos.
+    format: date
+    type: string
+  documentNumber:
+    description: |
+      The number of the billing document.
+    type: string
+  documentType:
+    description: |
+      The type of the billing document.
+    enum:
+      - Invoice
+      - CreditMemo
+      - DebitMemo
+    type: string
+  id:
+    description: |
+      The ID of the billing document.
+    type: string
+  status:
+    description: |
+      The current status of the billing document.
+    enum:
+      - Draft
+      - Posted
+      - Canceled
+      - Error
+    type: string
+title: documents
+type: object

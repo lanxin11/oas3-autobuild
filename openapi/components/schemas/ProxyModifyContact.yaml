@@ -1,0 +1,122 @@
+allOf:
+  - properties:
+      AccountId:
+        description: |2-
+           The Zuora account ID associated with this contact. This field is not required when you use the Subscribe call. This field is required for all other calls.
+          **Character limit: **32 **Values: **a valid account ID 
+        type: string
+      Address1:
+        description: >2-
+           The first line of the contact's address, which is often a street address or business name.
+          **Character limit**: 255 **Values**: a string of 255 characters or
+          fewer 
+        type: string
+      Address2:
+        description: >2-
+           The second line of the contact's address.
+          **Character limit**: 255 **Values**: a string of 255 characters or
+          fewer 
+        type: string
+      City:
+        description: >2-
+           The city of the contact's address.
+          **Character limit**: 40 **Values: **a string of 40 characters or
+          fewer 
+        type: string
+      Country:
+        description: ' The country of the contact''s address. '
+        type: string
+      County:
+        description: >2-
+           The county. May optionally be used by Zuora Tax to calculate county tax.
+          **Character limit**: 32 **Values**: a string of 32 characters or
+          fewer 
+        type: string
+      Description:
+        description: >2-
+           A description for the contact.
+          **Character limit**: 100 **Values**: a string of 100 characters or
+          fewer 
+        type: string
+      Fax:
+        description: >2-
+           The contact's fax number.
+          **Character limit**: 40 **Values**: a string of 40 characters or
+          fewer 
+        type: string
+      FirstName:
+        description: >2-
+           The contact's first name.
+          **Character limit**: 100 **Values**: a string of the contact's first
+          name 
+        type: string
+      HomePhone:
+        description: >2-
+           The contact's home phone number.
+          **Character limit**: 40 **Values**: a string of 40 characters or
+          fewer 
+        type: string
+      LastName:
+        description: >2-
+           The contact's last name.
+          **Character limit**: 100 **Values**: a string of 100 characters or
+          fewer 
+        type: string
+      MobilePhone:
+        description: >2-
+           The contact's mobile phone number.
+          **Character limit**: 40 **Values**: a string of 40 characters or
+          fewer 
+        type: string
+      NickName:
+        description: >2-
+           A nickname for the contact.
+          **Character limit**: 100 **Values**: a string of 100 characters or
+          fewer 
+        type: string
+      OtherPhone:
+        description: >2-
+           An additional phone number for the contact.
+          **Character limit**: 40 **Values**: a string of 40 characters or
+          fewer 
+        type: string
+      OtherPhoneType:
+        description: >-
+          The type of the `OtherPhone`. **Character limit**: 20 **Values**:
+          `Work`, `Mobile`, `Home`, `Other` 
+        type: string
+      PersonalEmail:
+        description: >2-
+           The contact's personal email address.
+          **Character limit**: 80 **Values**: a string of 80 characters or
+          fewer 
+        type: string
+      PostalCode:
+        description: >2-
+           The zip code for the contact's address.
+          **Character limit:** 20 **Values: **a string of 20 characters or
+          fewer 
+        type: string
+      State:
+        description: ' The state or province of the contact''s address. '
+        type: string
+      TaxRegion:
+        description: 'If using Zuora Tax rules '
+        type: string
+      WorkEmail:
+        description: >2-
+           The contact's business email address.
+          **Character limit**: 80 **Values**: a string of 80 characters or
+          fewer 
+        type: string
+      WorkPhone:
+        description: >2-
+           The contact's business phone number.
+          **Character limit**: 40 **notes**: -- **Values**: a string of 40
+          characters or fewer 
+        type: string
+    type: object
+  - $ref: ./ContactObjectCustomFields.yaml
+example:
+  FirstName: FN1476934918260_new
+  Id: 2c93808457d787030157e02e606e2095

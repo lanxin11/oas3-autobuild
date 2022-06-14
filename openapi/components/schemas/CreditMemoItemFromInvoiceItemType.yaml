@@ -1,0 +1,112 @@
+allOf:
+  - properties:
+      amount:
+        description: |
+          The amount of the credit memo item.
+        format: double
+        type: number
+      comment:
+        description: >
+          Comments about the credit memo item.
+
+          **Note**: This field is not available if you set the `zuora-version`
+          request header to `257.0` or later.
+        type: string
+      description:
+        description: >
+          The description of the credit memo item.
+
+          **Note**: This field is only available if you set the `zuora-version`
+          request header to `257.0` or later.
+        type: string
+      financeInformation:
+        description: |
+          Container for the finance information related to the credit memo item.
+        properties:
+          deferredRevenueAccountingCode:
+            description: >
+              The accounting code for the deferred revenue, such as Monthly
+              Recurring Liability.
+            maxLength: 100
+            minLength: 0
+            type: string
+          onAccountAccountingCode:
+            description: >
+              The accounting code that maps to an on account in your accounting
+              system.
+            maxLength: 100
+            minLength: 0
+            type: string
+          recognizedRevenueAccountingCode:
+            description: >
+              The accounting code for the recognized revenue, such as Monthly
+              Recurring Charges or Overage Charges.
+            maxLength: 100
+            minLength: 0
+            type: string
+          revenueRecognitionRuleName:
+            description: >
+              The name of the revenue recognition rule governing the revenue
+              schedule.
+            maxLength: 100
+            minLength: 0
+            type: string
+        type: object
+      invoiceItemId:
+        description: |
+          The ID of the invoice item.
+        type: string
+      quantity:
+        description: |
+          The number of units for the credit memo item.
+        format: double
+        type: number
+      serviceEndDate:
+        description: |
+          The service end date of the credit memo item.
+        format: date
+        type: string
+      serviceStartDate:
+        description: |
+          The service start date of the credit memo item.
+        format: date
+        type: string
+      skuName:
+        description: |
+          The name of the charge associated with the invoice.
+        type: string
+      taxItems:
+        description: |
+          Container for taxation items.
+        items:
+          $ref: ./CreditMemoTaxItemFromInvoiceTaxItemType.yaml
+        type: array
+      taxMode:
+        default: TaxExclusive
+        description: >
+          The tax mode of the credit memo item, indicating whether the amount of
+          the credit memo item includes tax.
+
+
+          **Note**: You can set this field to `TaxInclusive` only if the
+          `taxAutoCalculation` field is set to `true`.
+
+
+          If you set `taxMode` to `TaxInclusive`, you cannot input tax amounts
+          for credit memo items. The corresponding invoice item must use the
+          same tax engine as the credit memo item to calculate tax amounts.
+        enum:
+          - TaxExclusive
+          - TaxInclusive
+        type: string
+      unitOfMeasure:
+        description: |
+          The definable unit that you measure when determining charges.
+        type: string
+    required:
+      - skuName
+      - amount
+      - invoiceItemId
+    type: object
+  - $ref: ./CreditMemoItemObjectCustomFields.yaml
+title: items

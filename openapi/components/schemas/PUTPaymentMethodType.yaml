@@ -1,0 +1,94 @@
+allOf:
+  - properties:
+      addressLine1:
+        description: |
+          First address line, 255 characters or less.
+        type: string
+      addressLine2:
+        description: |
+          Second address line, 255 characters or less.
+        type: string
+      cardHolderName:
+        description: >
+          The full name as it appears on the card, e.g., "John J Smith", 50
+          characters or less.
+        type: string
+      city:
+        description: |
+          City, 40 characters or less.
+        type: string
+      country:
+        description: |
+          Country; must be a valid country name or abbreviation.
+        type: string
+      defaultPaymentMethod:
+        description: >
+          Specify "true" to make this card the default payment method;
+          otherwise, omit this parameter to keep the current default payment
+          method.
+        type: boolean
+      email:
+        description: |
+          Card holder's email address, 80 characters or less.
+        type: string
+      expirationMonth:
+        description: |
+          One or two digit(s) expiration month (1-12).
+        type: integer
+      expirationYear:
+        description: |
+          Four-digit expiration year.
+        type: integer
+      gatewayOptions:
+        description: >
+          The field used to pass gateway-specific parameters and parameter
+          values.
+        properties:
+          key:
+            description: |
+              The name of a gateway-specific parameter.
+            type: string
+          value:
+            description: |
+              The value of the gateway-specific parameter.
+            type: string
+        type: object
+      numConsecutiveFailures:
+        description: >
+          The number of consecutive failed payments for this payment method. It
+          is reset to `0` upon successful payment. 
+        format: int32
+        maximum: 100
+        minimum: 0
+        type: integer
+      phone:
+        description: |
+          Phone number, 40 characters or less.
+        type: string
+      securityCode:
+        description: >+
+          The CVV or CVV2 security code for the credit card or debit card. Only
+          required if changing expirationMonth, expirationYear, or
+          cardHolderName. To ensure PCI compliance, this value isn't stored and
+          can't be queried.
+
+        type: string
+      state:
+        description: |
+          State; must be a valid state name or 2-character abbreviation.
+        type: string
+      zipCode:
+        description: |
+          Zip code, 20 characters or less.
+        type: string
+    type: object
+  - $ref: ./PaymentMethodObjectCustomFields.yaml
+example:
+  cardHolderName: Leo
+  expirationMonth: 8
+  expirationYear: 2015
+  gatewayOptions:
+    Comments: Updated comments
+    IPAddress: 172.112.1.1
+  numConsecutiveFailures: 5
+  securityCode: '111'

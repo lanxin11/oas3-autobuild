@@ -1,0 +1,33 @@
+properties:
+  endingUnit:
+    description: |
+      End number of a range of units for the tier.
+    type: number
+  price:
+    description: >
+      Price of the tier if the charge is a flat fee, or the price of each unit
+      in the tier if the charge model is tiered pricing.
+    type: number
+  priceFormat:
+    description: |
+      Indicates if pricing is a flat fee or is per unit.
+
+      Values:
+
+      * `FlatFee`
+      * `PerUnit`
+    type: string
+  startingUnit:
+    description: |
+      Starting number of a range of units for the tier.
+    type: number
+  tier:
+    description: |
+      Unique number that identifies the tier that the price applies to.
+    format: int64
+    type: integer
+required:
+  - tier
+  - price
+title: tiers
+type: object

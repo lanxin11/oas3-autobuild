@@ -1,0 +1,17 @@
+import http.client
+
+conn = http.client.HTTPSConnection("https://rest.zuora.com/")
+
+payload = "{\n    \"additionalEmailAddresses\": [\n        \"contact1@example.com\",\n        \"contact2@example.com\"\n    ],\n    \"autoPay\": false,\n    \"billCycleDay\": 0,\n    \"billToContact\": {\n        \"address1\": \"1051 E Hillsdale Blvd\",\n        \"city\": \"Foster City\",\n        \"country\": \"United States\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Smith\",\n        \"state\": \"CA\",\n        \"workEmail\": \"smith@example.com\",\n        \"zipCode\": \"94404\"\n    },\n    \"creditMemoReasonCode\": \"Unsatisfactory service\",\n    \"currency\": \"USD\",\n    \"hpmCreditCardPaymentMethodId\": \"2c92c0f93cf64d94013cfe2d20db61a7\",\n    \"invoiceDeliveryPrefsEmail\": true,\n    \"invoiceDeliveryPrefsPrint\": false,\n    \"name\": \"Zuora Test Account\",\n    \"notes\": \"This account is for demo purposes.\",\n    \"paymentTerm\": \"Due Upon Receipt\",\n    \"subscription\": {\n        \"autoRenew\": true,\n        \"contractEffectiveDate\": \"2016-01-01\",\n        \"initialTerm\": 12,\n        \"notes\": \"This is a trial subscription for POST account demo.\",\n        \"renewalTerm\": 12,\n        \"subscribeToRatePlans\": [\n            {\n                \"chargeOverrides\": [\n                    {\n                        \"price\": 1000,\n                        \"productRatePlanChargeId\": \"2c92c0f94ac8307f014ae5d4a5156b28\"\n                    },\n                    {\n                        \"price\": 1000,\n                        \"productRatePlanChargeId\": \"2c92c0f94ac8307f014ae5dbe2947851\"\n                    }\n                ],\n                \"productRatePlanId\": \"2c92c0f94ac8307f014ae5d3d1d469e2\"\n            },\n            {\n                \"chargeOverrides\": [\n                    {\n                        \"price\": 1000,\n                        \"productRatePlanChargeId\": \"2c92c0f83cf64298013d027725a67b7b\"\n                    }\n                ],\n                \"productRatePlanId\": \"2c92c0f93cf64d94013d027681560341\"\n            }\n        ],\n        \"termType\": \"TERMED\"\n    }\n}"
+
+headers = {
+    'Authorization': "Bearer 6d151216ef504f65b8ff6e9e9e8356d3",
+    'content-type': "application/json",
+    }
+
+conn.request("POST", "/v1/accounts", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))

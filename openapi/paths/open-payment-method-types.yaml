@@ -1,0 +1,88 @@
+post:
+  summary: Create a draft custom payment method type
+  operationId: POST_CreateDraftOpenPaymentMethodType
+  description: |
+    Creates a draft version of a custom payment method type.
+  tags:
+    - Custom Payment Method Types
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/POSTCreateOpenPaymentMethodTypeRequest.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/POSTCreateOpenPaymentMethodTypeResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                status: Draft
+                paymentMethodType: AmazonPay__C_12368
+                revision: 1
+                publishDate: ''
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/open-payment-method-types/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/open-payment-method-types/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/open-payment-method-types/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/open-payment-method-types/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/open-payment-method-types/postundefined

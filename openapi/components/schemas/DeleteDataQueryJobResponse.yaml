@@ -1,0 +1,4 @@
+properties:
+  data:
+    $ref: ./DataQueryJobCancelled.yaml
+type: object

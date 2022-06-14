@@ -1,0 +1,89 @@
+properties:
+  totalValueOfCreditBalance:
+    description: >
+      **Note:** This field is only available if you have the Credit Balance
+      feature enabled.
+
+
+      The total amount of credit balance after the payment run is completed.
+    type: string
+  totalValueOfCreditMemos:
+    description: >
+      **Note:** This field is only available if you have the Invoice Settlement
+      feature enabled.
+
+
+      The total amount of credit memos that are successfully processed in the
+      payment run.
+    type: string
+  totalValueOfDebitMemos:
+    description: >
+      **Note:** This field is only available if you have the Invoice Settlement
+      feature enabled.
+
+
+      The total amount of debit memos that are picked up for processing in the
+      payment run.
+    type: string
+  totalValueOfErrors:
+    description: >
+      The total amount of receivables associated with the payments with the
+      status of `Error` and `Processing`.
+    type: string
+  totalValueOfInvoices:
+    description: >
+      **Note:** This field is only available if you have the Invoice Settlement
+      feature enabled.
+
+
+      The total amount of invoices that are picked up for processing in the
+      payment run.
+    type: string
+  totalValueOfPayments:
+    description: >
+      The total amount of payments that are successfully processed in the
+      payment run.
+    type: string
+  totalValueOfReceivables:
+    description: >
+      The total amount of receivables associated with the payment run.
+
+
+      The value of this field is the sum of the value of the
+      `totalValueOfInvoices` field and that of the `totalValueOfDebitMemos`
+      field.
+    type: string
+  totalValueOfUnappliedPayments:
+    description: >
+      **Note:** This field is only available if you have the Invoice Settlement
+      feature enabled.
+
+
+      The total amount of unapplied payments that are successfully processed in
+      the payment run.
+    type: integer
+  totalValueOfUnprocessedDebitMemos:
+    description: >
+      **Note:** This field is only available if you have the Invoice Settlement
+      feature enabled.
+
+
+      The total amount of debit memos with remaining positive balances after the
+      payment run is completed.
+    type: string
+  totalValueOfUnprocessedInvoices:
+    description: >
+      **Note:** This field is only available if you have the Invoice Settlement
+      feature enabled.
+
+
+      The total amount of invoices with remaining positive balances after the
+      payment run is completed.
+    type: string
+  totalValueOfUnprocessedReceivables:
+    description: >
+      The total amount of receivables with remaining positive balances after the
+      payment run is completed.
+    type: string
+title: totalValues
+type: object

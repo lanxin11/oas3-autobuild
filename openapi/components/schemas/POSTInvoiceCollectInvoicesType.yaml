@@ -1,0 +1,16 @@
+properties:
+  invoiceAmount:
+    description: |
+      The amount of the invoice.
+    format: decimal
+    type: string
+  invoiceId:
+    description: |
+      The ID of the invoice.
+    type: string
+  invoiceNumber:
+    description: |
+      The unique identification number of the invoice.
+    type: string
+title: invoices
+type: object

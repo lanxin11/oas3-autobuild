@@ -1,0 +1,16 @@
+curl -X PUT -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3" -H "Content-Type: application/json" -d '{
+    "data": [
+        {
+            "action_type": "If",
+            "call_type": "SOAP",
+            "concurrent_limit": 9999999,
+            "id": 2771,
+            "name": "If",
+            "object": null,
+            "object_id": null,
+            "status": "Success",
+            "tags": [],
+            "workflow_id": 476
+        }
+    ]
+}' "https://rest.zuora.com/workflows/tasks/batch_update"

@@ -1,0 +1,16 @@
+example:
+  error:
+    code: 710125XX
+    details:
+      - code: 710125XX
+        message: Field [age__c] is an integer field but received a string value.
+        record:
+          Id: 64edb2a5-2796-4e95-9559-846f8636a01b
+          age__c: 19
+          name__c: elba43
+          person_id__c: 30c52793-8f06-41c6-b623-04829710d7a
+    message: Unabled to update object records due to invalid request.
+properties:
+  error:
+    $ref: ./CustomObjectRecordsErrorResponse.yaml
+type: object

@@ -1,0 +1,330 @@
+get:
+  summary: Retrieve a catalog group
+  operationId: GET_RetrieveCatalogGroup
+  description: >
+    **Note**: This operation is in the Early Adopter phase. We are actively
+    soliciting feedback from a small set of early adopters before releasing it
+    as generally available. If you want to join this early adopter program,
+    submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+
+    Retrieves basic information about a catalog group.
+  tags:
+    - Catalog Groups
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: catalog-group-key
+      in: path
+      description: |
+        The unique number or ID of the catalog group to be retrieved.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CatalogGroupResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: 4028e5ab7f1b600c017f1b7a5e8901d2
+                name: test
+                description: some description
+                catalogGroupNumber: CG-00000001
+                type: Grading
+                productRatePlans:
+                  - id: 4028e5ab7f1b600c017f1b787d5d01cf
+                    status: Active
+                    name: '222'
+                    description: null
+                    effectiveStartDate: '2022-02-21'
+                    effectiveEndDate: '2023-02-21'
+                    grade: 1
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/v1_catalog-groups_{catalog-group-key}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_catalog-groups_{catalog-group-key}/getundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_catalog-groups_{catalog-group-key}/getundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_catalog-groups_{catalog-group-key}/getundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_catalog-groups_{catalog-group-key}/getundefined
+put:
+  summary: Update a catalog group
+  operationId: PUT_UpdateCatalogGroup
+  description: >
+    **Note**: This operation is in the Early Adopter phase. We are actively
+    soliciting feedback from a small set of early adopters before releasing it
+    as generally available. If you want to join this early adopter program,
+    submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+
+    Updates a catalog group by its unique number or ID.
+
+
+    ## Notes
+
+    - It is best practice to only specify the fields that you want to change in
+    the request body.
+
+    - If you specify an empty value for a field in the request body, the
+    corresponding field in the catalog group is emptied.
+
+    - The catalog group type cannot be changed.
+  tags:
+    - Catalog Groups
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: catalog-group-key
+      in: path
+      required: true
+      description: |
+        The unique number or ID of the catalog group to be updated. 
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/PUTCatalogGroup.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CatalogGroupResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: 4028e5ab7f1b600c017f1b7a5e8901d2
+                name: test
+                description: some description
+                catalogGroupNumber: CG-00000001
+                type: Grading
+                productRatePlans:
+                  - id: 4028e5ab7f1b600c017f1b787d5d01cf
+                    status: Active
+                    name: '222'
+                    description: null
+                    effectiveStartDate: '2022-02-21'
+                    effectiveEndDate: '2023-02-21'
+                    grade: 1
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/v1_catalog-groups_{catalog-group-key}/putundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_catalog-groups_{catalog-group-key}/putundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_catalog-groups_{catalog-group-key}/putundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_catalog-groups_{catalog-group-key}/putundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_catalog-groups_{catalog-group-key}/putundefined
+delete:
+  summary: Delete a catalog group
+  operationId: DELETE_CatalogGroup
+  description: >
+    **Note**: This operation is in the Early Adopter phase. We are actively
+    soliciting feedback from a small set of early adopters before releasing it
+    as generally available. If you want to join this early adopter program,
+    submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+
+    Deletes a catalog group.
+  tags:
+    - Catalog Groups
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: catalog-group-key
+      in: path
+      description: |
+        The unique number or ID of the catalog group to be deleted.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: 'true'
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/v1_catalog-groups_{catalog-group-key}/deleteundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_catalog-groups_{catalog-group-key}/deleteundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_catalog-groups_{catalog-group-key}/deleteundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_catalog-groups_{catalog-group-key}/deleteundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_catalog-groups_{catalog-group-key}/deleteundefined

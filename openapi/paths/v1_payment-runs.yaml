@@ -1,0 +1,333 @@
+post:
+  description: >
+    Creates a payment run. You can create a payment run to be executed
+    immediately after it is created, or a scheduled payment run to be executed
+    in future.
+
+
+    To filter the payments to be collected for a payment run, you can use either
+    of the following methods but not both:
+
+      - Use the `accountId`, `batch`, `billCycleDay`, `currency`, `paymentGatewayId`, and `billingRunId` fields to define the billing documents to be collected.
+      - Use the `data` field to specify the records of accounts and billing documents to be collected, in a more flexible manner. See [Create custom payment runs through Zuora REST API](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/K_Payment_Operations/CA_Payment_Runs/Create_custom_payment_runs_through_Zuora_REST_API) for more information.
+
+    If no filter criteria are specified in the request body, the payment run
+    collects payments for all accounts.
+  summary: Create a payment run
+  operationId: POST_PaymentRun
+  tags:
+    - Payment Runs
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/POSTPaymentRunRequest.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETPaymentRunType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: 2c92c0856078bbcb0160957bbb8f0b32
+                number: PR-00002120
+                targetDate: '2017-12-28'
+                runDate: null
+                status: Completed
+                executedOn: '2017-12-28 09:00:06'
+                completedOn: '2017-12-28 09:00:06'
+                applyCreditBalance: false
+                consolidatedPayment: false
+                processPaymentWithClosedPM: false
+                collectPayment: true
+                createdDate: '2017-12-27 09:00:02'
+                createdById: 2c92c0f958fffd7d015914aeefc71a5d
+                updatedDate: '2017-12-28 09:00:06'
+                updatedById: 2c92c0f958fffd7d015914aeefc71a5d
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_payment-runs/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_payment-runs/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_payment-runs/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_payment-runs/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_payment-runs/postundefined
+get:
+  description: >
+    Retrieves the information about all payment runs. You can define filterable
+    fields to restrict the data returned in the response.
+
+
+    ### Filtering
+
+
+    You can use query parameters to restrict the data returned in the response.
+    Each query parameter corresponds to one field in the response body.
+
+
+    If the value of a filterable field is string, you can set the corresponding
+    query parameter to `null` when filtering. Then, you can get the response
+    data with this field value being `null`. 
+
+
+    Examples:
+
+
+    - /v1/payment-runs?status=Processed
+
+
+    - /v1/payment-runs?targetDate=2017-10-10&status=Pending
+
+
+    - /v1/payment-runs?status=Completed&sort=+updatedDate
+  summary: List payment runs
+  operationId: GET_PaymentRuns
+  tags:
+    - Payment Runs
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
+    - name: createdById
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `createdById` field.
+      schema:
+        type: string
+    - name: createdDate
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `createdDate` field.
+      schema:
+        type: string
+        format: date-time
+    - name: status
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `status` field.
+      schema:
+        type: string
+        enum:
+          - Pending
+          - Processing
+          - Completed
+          - Error
+          - Canceled
+    - name: targetDate
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `targetDate` field.
+      schema:
+        type: string
+        format: date
+    - name: updatedById
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `updatedById` field.
+      schema:
+        type: string
+    - name: updatedDate
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `updatedDate` field.
+      schema:
+        type: string
+        format: date-time
+    - name: sort
+      in: query
+      required: false
+      description: >
+        This parameter restricts the order of the data returned in the response.
+        You can use this parameter to supply a dimension you want to sort on.
+
+
+        A sortable field uses the following form: 
+
+
+        *operator* *field_name*
+
+
+        You can use at most two sortable fields in one URL path. Use a comma to
+        separate sortable fields. For example:  *operator* *field_name*,
+        *operator* *field_name*  
+
+
+        *operator* is used to mark the order of sequencing. The operator is
+        optional. If you only specify the sortable field without any operator,
+        the response data is sorted in descending order by this field.
+
+          - The `-` operator indicates an ascending order.
+          - The `+` operator indicates a descending order.
+
+        By default, the response data is displayed in descending order by
+        payment run number.
+
+
+        *field_name* indicates the name of a sortable field. The supported
+        sortable fields of this operation are as below:
+
+          - targetDate
+          - status
+          - createdDate
+          - createdById
+          - updatedDate
+          - updatedById
+
+        Examples:
+
+
+        - /v1/payment-runs?sort=+createdDate
+
+
+        - /v1/payment-runs?status=Processing&sort=-createdById,+targetDate
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/GETPaymentRunCollectionType.yaml
+          examples:
+            response:
+              value:
+                paymentRuns:
+                  - id: 2c92c0856078bbcb016096576ccb75ca
+                    number: PR-00002121
+                    targetDate: '2017-12-28'
+                    runDate: null
+                    status: Completed
+                    executedOn: '2017-12-28 13:00:00'
+                    completedOn: '2017-12-28 13:00:00'
+                    applyCreditBalance: false
+                    consolidatedPayment: false
+                    processPaymentWithClosedPM: false
+                    collectPayment: true
+                    createdDate: '2017-12-27 13:00:00'
+                    createdById: 2c92c0f956bc8fcb0156f8eee04b4d54
+                    updatedDate: '2017-12-28 13:00:00'
+                    updatedById: 2c92c0f956bc8fcb0156f8eee04b4d54
+                nextPage: /payment-runs?page=2
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_payment-runs/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_payment-runs/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_payment-runs/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_payment-runs/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_payment-runs/getundefined

@@ -1,0 +1,13 @@
+OkHttpClient client = new OkHttpClient();
+
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"Description\": \"Create product via API_new\",\n    \"EffectiveEndDate\": \"2066-10-20\",\n    \"EffectiveStartDate\": \"1966-10-20\",\n    \"Id\": \"2c93808457d787030157e02e7be22210\",\n    \"Name\": \"P_1476934925293_new\",\n    \"SKU\": \"API-SKU1476934925293\"\n}");
+Request request = new Request.Builder()
+  .url("https://rest.zuora.com/v1/object/product/{id}")
+  .put(body)
+  .addHeader("Authorization", "Bearer 6d151216ef504f65b8ff6e9e9e8356d3")
+  .addHeader("content-type", "application/json")
+  .addHeader("cache-control", "no-cache")
+  .build();
+
+Response response = client.newCall(request).execute();

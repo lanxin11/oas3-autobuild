@@ -1,0 +1,52 @@
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('https://rest.zuora.com/v1/journal-entries');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'content-type' => 'application/json',
+  'Authorization' => 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+));
+
+$request->setBody('{
+    "accountingPeriodName": "Nov-2014",
+    "currency": "USD",
+    "journalEntryDate": "2014-09-09",
+    "journalEntryItems": [
+        {
+            "accountingCodeName": "Accounts Receivable",
+            "accountingCodeType": "Deferred Revenue",
+            "amount": "400.9",
+            "homeCurrencyAmount": "801.8",
+            "type": "Credit"
+        },
+        {
+            "accountingCodeName": "Subscription Revenue",
+            "accountingCodeType": "Sales Revenue",
+            "amount": "400.9",
+            "homeCurrencyAmount": "801.8",
+            "type": "Debit"
+        }
+    ],
+    "notes": "my account",
+    "segments": [
+        {
+            "segmentName": "billToCountry",
+            "segmentValue": "United States"
+        },
+        {
+            "segmentName": "billToState",
+            "segmentValue": "California"
+        }
+    ],
+    "transferredToAccounting": "No"
+}');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}

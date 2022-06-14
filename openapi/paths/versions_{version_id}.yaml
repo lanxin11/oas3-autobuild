@@ -1,0 +1,146 @@
+delete:
+  summary: Delete a workflow version
+  operationId: DELETE_WorkflowVersion
+  description: >
+    Delete a workflow version based on the version id. 
+
+
+    ## User Access Permission
+
+    You must be assigned the **Workflow Manage Access** permission to run this
+    operation.
+  tags:
+    - Workflows
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - name: version_id
+      in: path
+      required: true
+      description: The unique id of the workflow version.
+      schema:
+        type: integer
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: OK
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/DeleteWorkflowSuccess.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+                id: 113
+    '403':
+      description: Cannot delete the active version of a workflow.
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/DeleteWorkflowError.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                errors:
+                  - code: invalid
+                    status: 403
+                    title: Cannot delete the active version of a workflow.
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/versions_{version_id}/deleteundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/versions_{version_id}/deleteundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/versions_{version_id}/deleteundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/versions_{version_id}/deleteundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/versions_{version_id}/deleteundefined

@@ -1,0 +1,103 @@
+get:
+  summary: List all results of a mass action
+  operationId: GET_MassUpdater
+  description: >
+    Describes how to get information about the result of a mass action through
+    the REST API. 
+  tags:
+    - Mass Updater
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: bulk-key
+      in: path
+      description: >
+        String of 32 characters that identifies a mass action. You get the
+        bulk-key after performing a mass action through the REST API.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETMassUpdateType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                actionType: UpdateAccountingCode
+                inputSize: 354
+                uploadedBy: smith@example.com
+                uploadedOn: '2015-04-07 14:22:09'
+                status: Completed
+                startedOn: '2015-04-07 14:22:11'
+                endedOn: '2015-04-07 14:32:01'
+                outputSize: 350
+                outputURL: >-
+                  https://rest.zuora.com/v1/files/402892c84c9285b1014c9293f5320007
+                outputType: (url:.csv.zip)
+                totalCount: 3
+                processedCount: 3
+                errorCount: 1
+                successCount: 2
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_bulk_{bulk-key}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_bulk_{bulk-key}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_bulk_{bulk-key}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_bulk_{bulk-key}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_bulk_{bulk-key}/getundefined

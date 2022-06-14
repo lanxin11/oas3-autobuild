@@ -1,0 +1,406 @@
+get:
+  summary: Retrieve an order
+  operationId: GET_Order
+  description: >
+    **Note:** This feature is only available if you have the [Order
+    Metrics](https://knowledgecenter.zuora.com/BC_Subscription_Management/Orders/AA_Overview_of_Orders#Order_Metrics)
+    feature enabled. As of Zuora Billing Release 284, Orders is generally
+    available and the Order Metrics feature is no longer available as a
+    standalone feature. If you are an existing Subscribe and Amend customer and
+    want Order Metrics only, you must turn on [Orders
+    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization).
+    You can still keep the existing Subscribe and Amend API integrations to
+    create and manage subscriptions.
+
+
+    **Note:** The [Order Line
+    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/AA_Overview_of_Order_Line_Items)
+    feature is now generally available to all Zuora customers. You need to
+    enable the
+    [Orders](https://knowledgecenter.zuora.com/BC_Subscription_Management/Orders/AA_Overview_of_Orders#Orders)
+    feature to access the [Order Line
+    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/AA_Overview_of_Order_Line_Items)
+    feature. As of Zuora Billing Release 313 (November 2021), new customers who
+    onboard on
+    [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
+    will have the [Order Line
+    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
+    feature enabled by default. If you are a new customer who onboard on [Orders
+    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
+    and want to enable the [Order Line
+    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
+    feature, submit a request at [Zuora Global
+    Support](https://support.zuora.com/). If you are an existing
+    [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
+    or [Orders
+    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
+    customer and want to enable the [Order Line
+    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
+    feature, submit a request at [Zuora Global
+    Support](https://support.zuora.com/).        
+
+
+    Retrieves the detailed information about a specified order.
+  tags:
+    - Orders
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: orderNumber
+      in: path
+      description: The order number to be retrieved.
+      required: true
+      schema:
+        type: string
+        format: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GetOrderResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+                order:
+                  orderNumber: O-00000282
+                  orderDate: '2018-10-01'
+                  createdDate: '2018-12-13 17:21:43'
+                  createdBy: 402881e522cf4f9b0122cf5d82860002
+                  updatedDate: '2018-12-13 17:21:45'
+                  updatedBy: 402881e522cf4f9b0122cf5d82860002
+                  existingAccountNumber: A00000101
+                  currency: USD
+                  status: Completed
+                  description: This is a description for the Order.
+                  subscriptions:
+                    - subscriptionNumber: A-S00000100
+                      subscriptionOwnerAccountNumber: A00000001
+                      externallyManagedBy: null
+                      customFields: {}
+                      baseVersion: 1
+                      newVersion: 2
+                      orderActions:
+                        - type: UpdateProduct
+                          sequence: 0
+                          triggerDates:
+                            - triggerDate: '2018-12-01'
+                              name: ContractEffective
+                            - triggerDate: '2018-12-01'
+                              name: ServiceActivation
+                            - triggerDate: '2018-12-01'
+                              name: CustomerAcceptance
+                          updateProduct:
+                            ratePlanId: 2c98919c67a5ae9d0167a68f8eb20262
+                            uniqueToken: null
+                            specificUpdateDate: null
+                            newRatePlanId: 2c98919c67a5ae9d0167a6df3011036e
+                            chargeUpdates:
+                              - description: null
+                                chargeNumber: C-00000210
+                                uniqueToken: null
+                                newRatePlanChargeId: 2c98919c67a5ae9d0167a6df304b0372
+                                pricing:
+                                  recurringPerUnit:
+                                    listPrice: 20
+                                    quantity: null
+                                    priceChangeOption: null
+                                    priceIncreasePercentage: null
+                                effectiveDate:
+                                  specificTriggerDate: null
+                                billing:
+                                  billingPeriodAlignment: null
+                                customFields: {}
+                            customFields: {}
+                          customFields: {}
+                    - subscriptionNumber: A-S00000101
+                      subscriptionOwnerAccountNumber: A00000001
+                      externallyManagedBy: null
+                      customFields: {}
+                      baseVersion: 1
+                      newVersion: 2
+                      orderActions:
+                        - type: Suspend
+                          sequence: 0
+                          triggerDates:
+                            - triggerDate: '2018-12-01'
+                              name: ContractEffective
+                            - triggerDate: '2018-12-01'
+                              name: ServiceActivation
+                            - triggerDate: '2018-12-01'
+                              name: CustomerAcceptance
+                          suspend:
+                            suspendPolicy: Today
+                            suspendPeriods: null
+                            suspendPeriodsType: null
+                            suspendSpecificDate: null
+                            suspendDate: '2018-12-13'
+                          customFields: {}
+                    - subscriptionNumber: A-S00000102
+                      subscriptionOwnerAccountNumber: A00000001
+                      externallyManagedBy: null
+                      customFields: {}
+                      baseVersion: 2
+                      newVersion: 3
+                      orderActions:
+                        - type: Resume
+                          sequence: 0
+                          triggerDates:
+                            - triggerDate: '2018-12-12'
+                              name: ContractEffective
+                            - triggerDate: '2018-12-12'
+                              name: ServiceActivation
+                            - triggerDate: '2018-12-12'
+                              name: CustomerAcceptance
+                          resume:
+                            resumePolicy: FixedPeriodsFromSuspendDate
+                            resumePeriods: 10
+                            resumePeriodsType: Day
+                            resumeSpecificDate: null
+                            extendsTerm: true
+                            resumeDate: '2018-12-23'
+                          customFields: {}
+                        - type: TermsAndConditions
+                          sequence: 1
+                          triggerDates:
+                            - triggerDate: '2018-12-12'
+                              name: ContractEffective
+                            - triggerDate: '2018-12-12'
+                              name: ServiceActivation
+                            - triggerDate: '2018-12-12'
+                              name: CustomerAcceptance
+                          termsAndConditions:
+                            autoRenew: null
+                            renewalSetting: null
+                            initialTerm:
+                              startDate: null
+                              period: 375
+                              periodType: Day
+                              termType: null
+                            renewalTerms:
+                              - period: null
+                                periodType: null
+                          customFields: {}
+                  orderLineItems:
+                    - id: 4028fc827a0e48c1017a0e4dccc60002
+                      orderId: 4028fc827a0e48c1017a0e58b9330014
+                      itemName: webcam
+                      itemNumber: '1'
+                      itemState: Executing
+                      itemType: Product
+                      description: >-
+                        With Dual Stereo Microphones, HD 1080p, Black,USB
+                        connectivity for ease of use.
+                      purchaseOrderNumber: 960-000764
+                      productCode: C9201
+                      amount: 10000
+                      amountWithoutTax: 10000
+                      quantity: 2
+                      amountPerUnit: 5000
+                      listPricePerUnit: 59
+                      listPrice: 118
+                      billTargetDate: null
+                      transactionStartDate: '2021-02-01'
+                      transactionEndDate: '2021-02-01'
+                      accountingCode: null
+                      UOM: null
+                      productRatePlanChargeId: null
+                      customFields:
+                        orderLineItemCF__c: olinumber-023
+                  customFields: {}
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_orders_{orderNumber}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_orders_{orderNumber}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_orders_{orderNumber}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_orders_{orderNumber}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_orders_{orderNumber}/getundefined
+delete:
+  tags:
+    - Orders
+  summary: Delete an order
+  description: >
+    **Note:** This operation is only available if you have the
+    [Orders](https://knowledgecenter.zuora.com/BC_Subscription_Management/Orders/AA_Overview_of_Orders#Orders)
+    feature enabled. Orders is now generally available as of Zuora Billing
+    Release 284 (August 2020). If you are an existing Zuora Subscribe and Amend
+    customer and want to adopt Orders, see [What is Orders
+    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization#What_is_Orders_Harmonization.3F)
+    and join the [Orders Harmonization community
+    group](https://community.zuora.com/t5/Orders-Harmonization/gp-p/Orders-Harmonization)
+    for more information. If you want to enable Orders, submit a request at
+    [Zuora Global Support](https://support.zuora.com/).
+
+
+    **Note:** The [Order Line
+    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/AA_Overview_of_Order_Line_Items)
+    feature is now generally available to all Zuora customers. You need to
+    enable the
+    [Orders](https://knowledgecenter.zuora.com/BC_Subscription_Management/Orders/AA_Overview_of_Orders#Orders)
+    feature to access the [Order Line
+    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/AA_Overview_of_Order_Line_Items)
+    feature. As of Zuora Billing Release 313 (November 2021), new customers who
+    onboard on
+    [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
+    will have the [Order Line
+    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
+    feature enabled by default. If you are a new customer who onboard on [Orders
+    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
+    and want to enable the [Order Line
+    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
+    feature, submit a request at [Zuora Global
+    Support](https://support.zuora.com/). If you are an existing
+    [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
+    or [Orders
+    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
+    customer and want to enable the [Order Line
+    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
+    feature, submit a request at [Zuora Global
+    Support](https://support.zuora.com/).        
+
+
+    Deletes a specified order. 
+
+
+    * All the subscriptions changed by this order are deleted. After the
+    deletion, the subscriptions are rolled back to the previous version. 
+
+
+    * All the order line items created in this order are deleted.
+
+
+    You are not allowed to delete an order if the charges that are affected by
+    this order are invoiced.
+  operationId: DELETE_Order
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: orderNumber
+      in: path
+      description: The number of the order to be deleted.
+      required: true
+      schema:
+        type: string
+        format: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_orders_{orderNumber}/deleteundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_orders_{orderNumber}/deleteundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_orders_{orderNumber}/deleteundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_orders_{orderNumber}/deleteundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_orders_{orderNumber}/deleteundefined

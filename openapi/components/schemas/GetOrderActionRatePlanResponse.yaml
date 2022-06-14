@@ -1,0 +1,52 @@
+allOf:
+  - $ref: ./CommonResponseType.yaml
+  - properties:
+      amendment:
+        $ref: ./OrderActionRatePlanAmendment.yaml
+      externallyManagedPlanId:
+        description: >
+          The unique identifier for the rate plan purchased on a third-party
+          store. This field is used to represent a subscription rate plan
+          created through third-party stores.
+        type: string
+      id:
+        description: Unique subscription rate-plan ID.
+        type: string
+      lastChangeType:
+        description: |
+          Latest change type. Possible values are:
+
+          - New
+          - Update
+          - Remove
+        type: string
+      order:
+        $ref: ./OrderActionRatePlanOrder.yaml
+      productId:
+        description: |
+          Product ID
+        type: string
+      productName:
+        description: |
+          The name of the product.
+        type: string
+      productRatePlanId:
+        description: |
+          Product rate plan ID
+        type: string
+      productSku:
+        description: |
+          The unique SKU for the product.
+        type: string
+      ratePlanName:
+        description: |
+          The name of the rate plan.
+        type: string
+      subscriptionId:
+        description: |
+          Subscription ID.
+        type: string
+      subscriptionVersion:
+        description: |
+          The version of the subscription.
+    type: object

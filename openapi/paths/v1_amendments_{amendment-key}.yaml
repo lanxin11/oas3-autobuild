@@ -1,0 +1,109 @@
+get:
+  summary: Retrieve an amendment
+  operationId: GET_AmendmentsByKey
+  description: Retrieves detailed information about the specified subscription amendment.
+  tags:
+    - Amendments
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: amendment-key
+      in: path
+      description: Can be the amendment ID or the amendment code.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETAmendmentType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+                id: 402896a9529c100a01529c30e26a0018
+                code: A-AM00000002
+                name: testAmendment
+                type: TermsAndConditions
+                description: just for test
+                status: Completed
+                contractEffectiveDate: '2016-02-01'
+                serviceActivationDate: '2016-02-01'
+                customerAcceptanceDate: '2016-02-01'
+                effectiveDate: '2016-02-01'
+                newSubscriptionId: 402896a9529c100a01529c311930001d
+                baseSubscriptionId: 402896a9529c100a01529c2f2cc30010
+                termType: TERMED
+                currentTerm: 2
+                currentTermPeriodType: Month
+                termStartDate: '2015-12-31'
+                renewalSetting: RENEW_WITH_SPECIFIC_TERM
+                renewalTerm: 1
+                renewalTermPeriodType: Month
+                autoRenew: false
+                specificUpdateDate: null
+                newRatePlanId: null
+                baseRatePlanId: null
+                destinationAccountId: 402896a9529bc3dc01529bcba7120023
+                destinationInvoiceOwnerId: 402896a9529bc3dc01529bcba7120023
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_amendments_{amendment-key}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_amendments_{amendment-key}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_amendments_{amendment-key}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_amendments_{amendment-key}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_amendments_{amendment-key}/getundefined

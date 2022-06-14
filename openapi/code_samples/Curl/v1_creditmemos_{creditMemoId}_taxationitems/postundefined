@@ -1,0 +1,23 @@
+curl -X POST -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3" -H "Content-Type: application/json" -d '{
+    "taxationItems": [
+        {
+            "exemptAmount": 0.0,
+            "financeInformation": {
+                "onAccountAccountingCode": "Check",
+                "salesTaxPayableAccountingCode": "Check"
+            },
+            "jurisdiction": "CALIFORNIA",
+            "locationCode": "06",
+            "memoItemId": "402890555a7e9791015a879f064d0055",
+            "name": "STATE TAX",
+            "sourceTaxItemId": "402890555a7d4022015a7db254e200c1",
+            "taxAmount": 0.1,
+            "taxCode": "ServiceTaxCode",
+            "taxCodeDescription": "This is tax code description!",
+            "taxDate": "2016-09-30",
+            "taxRate": 0.0625,
+            "taxRateDescription": "This is tax rate description!",
+            "taxRateType": "Percentage"
+        }
+    ]
+}' "https://rest.zuora.com/v1/creditmemos/{creditMemoId}/taxationitems"

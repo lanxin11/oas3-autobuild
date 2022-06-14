@@ -1,0 +1,27 @@
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('https://rest.zuora.com/objects/records/default/{object}/{id}');
+$request->setMethod(HTTP_METH_PUT);
+
+$request->setHeaders(array(
+  'content-type' => 'application/json',
+  'Authorization' => 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+));
+
+$request->setBody('{
+    "age__c": 32,
+    "email__c": "smith123@example.com",
+    "home_address__c": "59b38ad1-27d4-40e8-af66-8c138bc382ee",
+    "last_name__c": "Smith",
+    "marital_status__c": "Married",
+    "work_address__c": "8a19f16a-2b5e-4a26-bb20-c79cd6984714"
+}');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}

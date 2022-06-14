@@ -1,0 +1,275 @@
+post:
+  summary: Upload a file for a custom object bulk job
+  description: >
+    Uploads a file to a create custom object bulk job. Only one file is allowed
+    per job. The job must be in `pending` status when you upload the file to it.
+    The job will start creating records once the upload is finished.
+
+
+    Only the users that have the "Edit Custom Objects" permission can upload
+    files to custom object bulk jobs. See [Platform
+    Permissions](https://knowledgecenter.zuora.com/Billing/Tenant_Management/A_Administrator_Settings/User_Roles/h_Platform_Roles#Platform_Permissions)
+    for more information.
+  operationId: POST_UploadFileForCustomObjectBulkJob
+  tags:
+    - Custom Object Jobs
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
+    - name: Zuora-Version
+      in: header
+      required: false
+      description: >-
+        API version that determines the response schema. The default version is
+        used if this parameter is not included. Specify `Zuora-Version` in the
+        request header if you expect a specific response schema.
+      schema:
+        type: string
+        format: date
+    - name: Content-Type
+      in: header
+      required: true
+      description: The `Content-Type` of the request must be `text/csv`.
+      schema:
+        type: string
+    - name: id
+      in: path
+      description: The ID of the custom object bulk job that the file is uploaded to.
+      required: true
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    content:
+      text/csv:
+        schema:
+          type: string
+          description: The CSV file to be uploaded. The file size limit is 15 MB.
+    required: true
+  responses:
+    '200':
+      description: OK
+      headers:
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CustomObjectBulkJobResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                Id: 5112347a-f7a1-4373-99df-c082984de7be
+                CreatedById: 2c92c0f96a07409d016a0a58ab1172ec
+                UpdatedById: 2c92c0f96a07409d016a0a58ab1172ec
+                CreatedDate: '2021-03-10T00:05:54.207Z'
+                UpdatedDate: '2021-03-10T00:08:15.539Z'
+                operation: create
+                namespace: default
+                object: vehicle
+                status: in_progress
+                processingTime: 0
+                recordsProcessed: 0
+    '400':
+      description: Bad request
+      headers:
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonErrorResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                code: 71013620
+                message: Bad Request
+    '403':
+      description: Unauthorized
+      headers:
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonErrorResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                code: 71012515
+                message: User does not have permission to create custom objects.
+    '404':
+      description: Job not found
+      headers:
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonErrorResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                code: 71013040
+                message: Not Found.
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/objects_jobs_{id}_files/postundefined

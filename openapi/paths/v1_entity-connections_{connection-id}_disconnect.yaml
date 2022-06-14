@@ -1,0 +1,106 @@
+put:
+  summary: 'Multi-entity: Disconnect a connection'
+  operationId: PUT_EntityConnectionsDisconnect
+  tags:
+    - Entity Connections
+  description: >
+    **Note:** The Multi-entity feature is in **Limited Availability**. If you
+    wish to have access to the feature, submit a request at [Zuora Global
+    Support](http://support.zuora.com/).
+
+
+    Disconnects an established connection. If you have shared objects from a
+    global entity to a target entity, disconnecting the connection will break
+    the mapping relationship between these entities and cannot be recovered
+    later.
+
+
+    ## User Access Permission
+
+    You must make the call as an administrator of the target entity or source
+    entity.
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: connection-id
+      in: path
+      required: true
+      description: |
+        The ID of the connection that you want to disconnect.
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: >-
+              ../components/schemas/PUTEntityConnectionsDisconnectResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/v1_entity-connections_{connection-id}_disconnect/putundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_entity-connections_{connection-id}_disconnect/putundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_entity-connections_{connection-id}_disconnect/putundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_entity-connections_{connection-id}_disconnect/putundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_entity-connections_{connection-id}_disconnect/putundefined

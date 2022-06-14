@@ -1,0 +1,15 @@
+properties:
+  body:
+    $ref: ./BodyInSettingValueReponse.yaml
+  errorMessages:
+    description: |
+      An array of error messages if errors occur when executing the request.
+    items:
+      type: string
+    type: array
+  status:
+    description: |
+      User readable response status, for example, 502 BAD_GATEWAY.
+    type: string
+title: settingsValueResponse
+type: object

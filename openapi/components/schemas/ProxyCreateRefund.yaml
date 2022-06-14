@@ -1,0 +1,169 @@
+allOf:
+  - properties:
+      AccountId:
+        description: |2-
+           The ID of the account associated with this refund. This field is only required if you create a non-referenced refund. Don't specify a value for any other type of refund; Zuora associates the refund automatically with the account from the associated payment.
+          **Character limit**: 32 **Values**: a valid account ID 
+        type: string
+      Amount:
+        description: " The amount of the refund. The amount can't exceed the amount of the associated payment. If the original payment was applied to a single invoice,\_you can create a partial refund by specifying an amount in this field or through the UI. If the payment was applied\_to multiple invoices, you can create a partial refund by using the `RefundInvoicePaymentData`\_field of this operation or through the UI.\n**Character limit**: 16 **Values**: a valid currency amount "
+        format: double
+        type: number
+      Comment:
+        description: >2-
+           Use this field to record comments about the refund.
+          **Character limit**: 255 **Values**: a string of 255 characters or
+          fewer 
+        type: string
+      GatewayOptionData:
+        description: >
+          A field used to pass gateway options. Zuora allows you to pass in
+          special gateway-specific parameters for payments through the [gateway
+          integrations that support gateway
+          options](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/LA_Hosted_Payment_Pages/B_Payment_Pages_2.0/J_Client_Parameters_for_Payment_Pages_2.0#Gateway_Options).
+
+
+          For each of these special parameters, you supply the name-value pair
+          and Zuora passes it to the gateway. This allows you to add
+          functionality that's supported by a specific gateway but currently not
+          supported by Zuora.
+        properties:
+          GatewayOption:
+            description: ''
+            items:
+              $ref: ./GatewayOption.yaml
+            maxItems: 200
+            minItems: 0
+            type: array
+        required:
+          - GatewayOption
+        type: object
+      GatewayState:
+        description: |2-
+           The status of the payment in the gateway.
+          **Character limit**: 19 **Values**: automatically generated 
+        type: string
+      MethodType:
+        description: |2
+           Indicates how an external refund was issued to a customer. This field is only required if the `Type` field is set to ` External`. You can issue an external refund on an electronic payment. **Character limit**: 30 **Values**:
+
+          - `ACH`
+          - `Cash`
+          - `Check`
+          - `CreditCard`
+          - `Other`
+          - `PayPal`
+          - `WireTransfer`
+          - `DebitCard`
+          - `CreditCardReferenceTransaction`
+        type: string
+      PaymentId:
+        description: |2-
+           The unique ID of the payment associated with this refund. Don't specify a value for this field if you're creating an electronic non-referenced refund.
+          **Character limit**: 32 **Values**: a valid payment ID 
+        type: string
+      PaymentMethodId:
+        description: |2-
+           The unique ID of the payment method that the customer used to make the payment. This field is only required if you create a non-referenced refund.
+          **Character limit**: 32 **V****alues**: a valid payment method ID 
+        type: string
+      ReasonCode:
+        description: |2-
+           A code identifying the reason for the transaction. Must be an existing reason code or empty. If you do not specify a value, Zuora uses the default reason code.
+          **Character limit**: 32 **V****alues**: a valid reason code 
+        type: string
+      RefundDate:
+        description: >
+          The date of the refund, in `yyyy-mm-dd` format. The date of the refund
+          cannot be before the payment date. This field is only required if the
+          `Type` field is set to ` External`. Zuora automatically generates this
+          field for electronic refunds.
+
+
+          With the Future Dated Credit Balance Adjustment feature enabled, you
+          can create a non-referenced refund with a refund date. 
+
+          * For external refunds, you can specify any date.
+
+          * For electronic refunds, you can only set the date to the date when
+          the API operation is called or one day later.
+        format: date
+        maxLength: 29
+        type: string
+      RefundInvoicePaymentData:
+        description: >
+          Container for the refund invoice payment data. This field is only
+          required if you apply a full or partical refund against a payment
+          attached to muliple invoices.
+        properties:
+          RefundInvoicePayment:
+            description: ''
+            items:
+              $ref: ./RefundInvoicePayment.yaml
+            maxItems: 200
+            minItems: 0
+            type: array
+        required:
+          - RefundInvoicePayment
+        type: object
+      SoftDescriptor:
+        description: |2
+           A payment gateway-specific field that maps Zuora to other gateways . **Character limit**: 35 **Values**:
+
+          - 3-byte company identifier &quot;*&quot; 18-byte descriptor
+          - 7-byte company identifier &quot;*&quot; 14-byte descriptor
+          - 12-byte company identifier &quot;*&quot; 9-byte descriptor
+        type: string
+      SoftDescriptorPhone:
+        description: >2
+           A payment gateway-specific field that maps Zuora to other gateways . **Character limit**: 20 **Values**:
+
+          - Customer service phone number formatted as: `NNN-NNN-NNNN` or
+          `NNN-AAAAAAA`
+
+          - URL (non-e-Commerce): Transactions sent with a URL do not qualify
+          for the best interchange rate
+
+          - Email address
+        type: string
+      SourceType:
+        description: >2
+           Specifies whether the refund is a refund payment or a credit balance. This field is only required if you create a non-referenced refund. If you creating an non-referenced refund, then set this value to `CreditBalance`.
+          **Note**: If you have the Invoice Settlement feature enabled, the
+          value of this field can only be set to `Payment`.
+
+          **Character limit**: 13 **Values**:
+
+
+          - `Payment`
+
+          - `CreditBalance`
+        type: string
+      Type:
+        description: |2
+           Specifies if the refund is electronic or external.
+          **Character limit**: 10 **Values**:
+
+          - `Electronic`
+          - `External`
+        type: string
+    required:
+      - Amount
+      - Type
+    type: object
+  - $ref: ./RefundObjectNSFields.yaml
+  - $ref: ./RefundObjectCustomFields.yaml
+example:
+  AccountId: 2c93808457d787030157e03190e748ea
+  Amount: 1.1
+  Comment: this is comments
+  PaymentId: 2c93808457d787030157e03197714910
+  ReasonCode: Standard Refund
+  RefundInvoicePaymentData:
+    RefundInvoicePayment:
+      - InvoiceId: 2c93808457d787030157e03195604902
+        RefundAmount: 1.1
+  SoftDescriptor: thisSD
+  SoftDescriptorPhone: contact@example.com
+  SourceType: Payment
+  Type: Electronic

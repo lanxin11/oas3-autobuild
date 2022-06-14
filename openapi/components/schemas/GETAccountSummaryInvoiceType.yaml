@@ -1,0 +1,36 @@
+properties:
+  amount:
+    description: |
+      Invoice amount before adjustments, discounts, and similar items.
+    type: number
+  balance:
+    description: |
+      Balance due on the invoice.
+    format: decimal
+    type: string
+  dueDate:
+    description: |
+      Due date as `yyyy-mm-dd`.
+    format: date
+    type: string
+  id:
+    description: |
+      Invoice ID.
+    type: string
+  invoiceDate:
+    description: |
+      Invoice date as `yyyy-mm-dd`.
+    format: date
+    type: string
+  invoiceNumber:
+    description: |
+      Invoice number.
+    type: string
+  status:
+    description: >
+      Invoice status - not the payment status of the invoice, just the status of
+      the invoice itself. Possible values are: `Posted`, `Draft`, `Canceled`,
+      `Error`.
+    type: string
+title: invoices
+type: object

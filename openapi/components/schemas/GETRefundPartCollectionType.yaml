@@ -1,0 +1,11 @@
+properties:
+  parts:
+    description: |
+      Container for refund parts.
+    items:
+      $ref: ./RefundPartResponseTypewithSuccess.yaml
+    type: array
+  success:
+    description: Returns `true` if the request was processed successfully.
+    type: boolean
+type: object

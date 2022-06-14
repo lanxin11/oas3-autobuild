@@ -1,0 +1,38 @@
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('https://rest.zuora.com/v1/orders/{orderNumber}/customFields');
+$request->setMethod(HTTP_METH_PUT);
+
+$request->setHeaders(array(
+  'content-type' => 'application/json',
+  'Authorization' => 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+));
+
+$request->setBody('{
+    "customFields": {
+        "order_cf__c": "order custom fields"
+    },
+    "subscriptions": [
+        {
+            "orderActions": [
+                {
+                    "customFields": {
+                        "order_action_cf__c": "Order action custom fields",
+                        "order_action_undex__c": "Order action custom fields"
+                    },
+                    "sequence": 0
+                }
+            ],
+            "subscriptionNumber": "S-00005"
+        }
+    ]
+}');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}

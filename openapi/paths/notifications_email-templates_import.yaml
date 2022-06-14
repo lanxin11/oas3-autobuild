@@ -1,0 +1,113 @@
+post:
+  summary: Create or update email templates
+  operationId: POST_CreateOrUpdateEmailTemplates
+  tags:
+    - Notifications
+  description: >
+    Creates email templates for standard or custom events if you do not specify
+    email template IDs, or updates existing email templates if you specify valid
+    email template IDs.
+
+
+    For each email template when you are creating email templates, whether the
+    template is created for a standard event, a custom event, or a custom
+    scheduled event is dependent on whether you specify the `eventCategory` or
+    `eventTypeName` field.
+
+
+    - If you specify the `eventCategory` field, the email template is created
+    based on a standard event. See [Standard Event
+    Categories](https://knowledgecenter.zuora.com/Central_Platform/Notifications/A_Standard_Events/Standard_Event_Category_Code_for_Notification_Histories_API)
+    for all standard event category codes.
+
+    - If you specify the `eventTypeName` field, the email template is created
+    based on the corresponding custom event or custom scheduled event. See
+    [Event
+    triggers](https://www.zuora.com/developer/api-reference/#tag/Event-Triggers)
+    for more information about custom events, and [Scheduled
+    events](https://www.zuora.com/developer/api-reference/#tag/Scheduled-Events)
+    for more information about custom scheduled events.
+
+
+    The maximum number of email templates that you can create or update by one
+    call is 1,000.
+  parameters:
+    - $ref: >-
+        ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_Notifications.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/POSTCreateOrUpdateEmailTemplateRequest.yaml
+    description: The request body to import or update email templates.
+    required: true
+  responses:
+    '200':
+      description: OK
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CreateOrUpdateEmailTemplatesResponse.yaml
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/notifications_email-templates_import/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/notifications_email-templates_import/postundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/notifications_email-templates_import/postundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/notifications_email-templates_import/postundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/notifications_email-templates_import/postundefined

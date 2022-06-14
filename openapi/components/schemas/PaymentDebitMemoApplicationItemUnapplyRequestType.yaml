@@ -1,0 +1,19 @@
+properties:
+  amount:
+    description: >
+      The amount of the payment that is unapplied from the specific debit mem or
+      taxation item.
+    format: double
+    type: number
+  debitMemoItemId:
+    description: |
+      The ID of the specific debit memo item.
+    type: string
+  taxItemId:
+    description: |
+      The ID of the specific taxation item.
+    type: string
+required:
+  - amount
+title: items
+type: object

@@ -1,0 +1,96 @@
+allOf:
+  - properties:
+      amount:
+        description: >
+          The amount of the credit memo item. For tax-inclusive credit memo
+          items, the amount indicates the credit memo item amount including tax.
+          For tax-exclusive credit memo items, the amount indicates the credit
+          memo item amount excluding tax
+        format: double
+        type: number
+      comment:
+        description: |
+          Comments about the credit memo item.
+        type: string
+      excludeItemBillingFromRevenueAccounting:
+        default: false
+        description: >
+          The flag to exclude the credit memo item from revenue accounting.
+
+
+          **Note**: This field is only available if you have the Billing -
+          Revenue Integration feature enabled. 
+        type: boolean
+      financeInformation:
+        description: |
+          Container for the finance information related to the credit memo item.
+        properties:
+          deferredRevenueAccountingCode:
+            description: >
+              The accounting code for the deferred revenue, such as Monthly
+              Recurring Liability.
+            maxLength: 100
+            minLength: 0
+            type: string
+          onAccountAccountingCode:
+            description: >
+              The accounting code that maps to an on account in your accounting
+              system.
+            maxLength: 100
+            minLength: 0
+            type: string
+          recognizedRevenueAccountingCode:
+            description: >
+              The accounting code for the recognized revenue, such as Monthly
+              Recurring Charges or Overage Charges.
+            maxLength: 100
+            minLength: 0
+            type: string
+          revenueRecognitionRuleName:
+            description: >
+              The name of the revenue recognition rule governing the revenue
+              schedule.
+            maxLength: 100
+            minLength: 0
+            type: string
+        type: object
+      id:
+        description: |
+          The ID of the credit memo item.
+        maxLength: 32
+        minLength: 32
+        type: string
+      quantity:
+        description: |
+          The number of units for the credit memo item.
+        format: double
+        type: number
+      serviceEndDate:
+        description: |
+          The service end date of the credit memo item.
+        format: date
+        type: string
+      serviceStartDate:
+        description: |
+          The service start date of the credit memo item.
+        format: date
+        type: string
+      skuName:
+        description: |
+          The name of the SKU.
+        type: string
+      taxItems:
+        description: |
+          Container for credit memo taxation items.
+        items:
+          $ref: ./PutCreditMemoTaxItemType.yaml
+        type: array
+      unitOfMeasure:
+        description: |
+          The definable unit that you measure when determining charges.
+        type: string
+    required:
+      - id
+    type: object
+  - $ref: ./CreditMemoItemObjectCustomFields.yaml
+title: items

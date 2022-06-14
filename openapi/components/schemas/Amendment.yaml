@@ -1,0 +1,363 @@
+properties:
+  AutoRenew:
+    description: |2-
+       Determines whether the subscription is automatically renewed, or whether it expires at the end of the term and needs to be manually renewed. For amendment of type `TermsAndConditions`, this field is only required if you change the automatic renewal status of a subscription.
+
+
+      **Values**: true, false 
+    type: boolean
+  Code:
+    description: |2
+       A unique alphanumeric string that identifies the amendment.
+
+
+      **Character limit**: 50
+
+      **Values**: automatically generated
+    type: string
+  ContractEffectiveDate:
+    description: |2
+       The date when the amendment's changes become effective for billing purposes.
+    format: date
+    type: string
+  CreatedById:
+    description: |2-
+       The user ID of the person who created the amendment.
+
+
+      **Character limit**: 32
+
+      **Values**: automatically generated 
+    type: string
+  CreatedDate:
+    description: |2-
+       The date when the amendment was created.
+
+
+      **Values**: automatically generated 
+    format: date-time
+    type: string
+  CurrentTerm:
+    description: >2-
+       The length of the period for the current subscription term. This field can be updated when Status is `Draft`.
+
+      This field is only required if the `Type` field is set to
+      `TermsAndConditions` and `TermType` is set to `TERMED`. This field is not
+      required if `TermType` is set to `EVERGREEN`.
+
+
+
+      **Values**: a valid number 
+    format: int64
+    type: integer
+  CurrentTermPeriodType:
+    description: >2
+       The period type for the current subscription term. This field is only required if the `Type` field is set to `TermsAndConditions` and `TermType` is set to `TERMED`. This field is not required if `TermType` is set to `EVERGREEN`.
+
+      **Values**:
+
+
+      - `Month` (default)
+
+      - `Year`
+
+      - `Day`
+
+      - `Week`
+
+
+
+      **Note**:
+
+
+      - This field can be updated when Status is `Draft`.
+
+      - This field is used with the CurrentTerm field to specify the current
+      subscription term.
+    type: string
+  CustomerAcceptanceDate:
+    description: >
+      The date when the customer accepts the amendment's changes to the
+      subscription.
+
+
+      This field is only required if [Zuora is configured to require customer
+      acceptance in
+      Z-Billing](https://knowledgecenter.zuora.com/CB_Billing/W_Billing_and_Payments_Settings/Define_Default_Subscription_Settings)
+      and the subscription is currently in the Pending Acceptance status (the
+      value of the `Status` field is currently `PendingAcceptance`).
+
+
+      Use this field together with the `Status` field. When you set a date in
+      this field as a customer acceptance date, you should also set the `Status`
+      field as `Completed`.
+    format: date
+    type: string
+  Description:
+    description: |2-
+       A description of the amendment.
+
+
+      **Character limit**: 500
+
+      **Values**: maximum 500 characters 
+    type: string
+  DestinationAccountId:
+    description: |2-
+       The ID of the subscription owner that the subscription is being transferred to.
+
+
+      **Character limit**: 32
+
+      **Values**: a valid account ID 
+    type: string
+  DestinationInvoiceOwnerId:
+    description: |2-
+       The ID of the invoice owner that the subscription is being transferred to.
+
+
+      **Character limit**: 32
+
+      **Values**: a valid invoice ID 
+    type: string
+  EffectiveDate:
+    description: |2+
+       The date when the amendment's changes take effective. This field validates that the amendment's changes are within valid ranges of products and product rate plans.
+      This field is only required if the `Type` field is set to `Cancellation`.
+
+    format: date
+    type: string
+  ExternallyManagedBy:
+    description: >
+      An enum field on the Subscription object to indicate the name of a
+      third-party store. This field is used to represent subscriptions created
+      through third-party stores.
+    enum:
+      - Amazon
+      - Apple
+      - Google
+      - Roku
+    type: string
+  Name:
+    description: |2-
+       The name of the amendment.
+
+
+      **Character limit**: 100
+
+      **Values**: a string of 100 characters or fewer 
+    type: string
+  RatePlanData:
+    description: >
+      A container for one `RatePlanData`. This field is only required if the
+      `Type` field is set to `NewProduct`, `RemoveProduct`, or `UpdateProduct`.
+    properties:
+      RatePlan:
+        $ref: ./RatePlan.yaml
+      RatePlanChargeData:
+        description: ''
+        items:
+          $ref: ./RatePlanChargeDataInRatePlanData.yaml
+        type: array
+      SubscriptionProductFeatureList:
+        $ref: ./SubscriptionProductFeatureList.yaml
+    required:
+      - RatePlan
+    type: object
+  RenewalSetting:
+    description: |2-
+       Specifies whether a termed subscription will remain termed or change to evergreen when it is renewed.
+
+      This field is only required if the `TermType` field is set to `Termed`.
+
+
+      **Values**: RENEW_WITH_SPECIFIC_TERM (default), RENEW_TO_EVERGREEN 
+    type: string
+  RenewalTerm:
+    description: >2-
+       The term of renewal for the amended subscription. This field can be updated when Status is `Draft`.
+      This field is only required if the `Type` field is set to
+      `TermsAndConditions`.
+
+
+
+      **Values:** a valid number 
+    format: int64
+    type: integer
+  RenewalTermPeriodType:
+    description: >2
+       The period type for the subscription renewal term. This field can be updated when Status is `Draft`.
+      **Required**: Only if the value of the Type field is set to
+      `TermsAndConditions`. This field is used with the RenewalTerm field to
+      specify the subscription renewal term.
+
+
+
+      **Values**:
+
+
+      - `Month` (default)
+
+      - `Year`
+
+      - `Day`
+
+      - `Week`
+    type: string
+  ResumeDate:
+    description: >
+      The date when the subscription resumption takes effect. See [Resume
+      Date](https://knowledgecenter.zuora.com/BC_Subscription_Management/Subscriptions/Resume_a_Subscription#Resume_Date)
+      for more information.
+
+
+      This field is only required if you resume a suspended subscription.
+    format: date
+    type: string
+  ServiceActivationDate:
+    description: >
+      The date when service is activated.
+
+
+      This field is only required if [Zuora is configured to require service
+      activation in
+      Z-Billing](https://knowledgecenter.zuora.com/CB_Billing/W_Billing_and_Payments_Settings/Define_Default_Subscription_Settings)
+      and the subscription is currently in the Pending Activation status (the
+      value of the `Status` field is currently `PendingActivation`).
+
+
+      Use this field together with the `Status` field. When you set a date in
+      this field as a service activation date, you should also set the `Status`
+      field as the expected next phase status: `Completed` or
+      `PendingAcceptance`.
+    format: date
+    type: string
+  SpecificUpdateDate:
+    description: >
+      The date when the UpdateProduct amendment takes effect. This field is only
+      applicable if there is already a future-dated UpdateProduct amendment on
+      the subscription.
+
+
+
+      For the UpdateProduct amendments, this field is only required if there is
+      already a future-dated UpdateProduct amendment on the subscription.
+    format: date
+    type: string
+  Status:
+    description: |2
+       The status of the amendment. Type: string (enum)
+
+
+
+      **Values**: one of the following:
+
+      - Draft (default, if left null)
+      - Pending Activation
+      - Pending Acceptance
+      - Completed
+    type: string
+  SubscriptionId:
+    description: |2-
+       The ID of the subscription that the amendment changes.
+
+
+      **Character limit**: 32
+
+      **Values**: a valid subscription ID 
+    type: string
+  SuspendDate:
+    description: >
+      The date when the subscription suspension takes effect. See [Suspend
+      Date](https://knowledgecenter.zuora.com/BC_Subscription_Management/Subscriptions/Suspend_a_Subscription#Suspend_Date)
+      for more information.
+
+
+      This field is only required if you suspend an active subscription.
+    format: date
+    type: string
+  TermStartDate:
+    description: >2
+       The date when the new terms and conditions take effect.
+      This field is only required if the `Type` field is set to
+      `TermsAndConditions`.
+    format: date
+    type: string
+  TermType:
+    description: >2-
+       Indicates if the subscription isTERMED or EVERGREEN.
+
+      - A TERMED subscription has an expiration date, and must be manually
+      renewed.
+
+      - An EVERGREEN subscription doesn't have an expiration date, and must be
+      manually ended.
+
+
+      When as part of an amendment of type `TermsAndConditions`, this field is
+      required to change the term type of a subscription.
+
+
+
+      **Character limit**: 9
+
+
+      **Values**: TERMED, EVERGREEN 
+    type: string
+  Type:
+    description: >2
+       The type of amendment.
+
+
+      **Character limit**: 20
+
+
+
+
+      **Values**: one of the following:
+
+
+      - Cancellation
+
+      - NewProduct
+
+      - OwnerTransfer (If this value is chosen, the `ContractEffectiveDate`,
+      `ServiceActivationDate`, and `CustomerAcceptanceDate` fields will all be
+      automatically set to today's date, and any values passed from the API are
+      ignored.)
+
+      - RemoveProduct
+
+      - Renewal
+
+      - UpdateProduct
+
+      - TermsAndConditions
+
+      - SuspendSubscription
+
+      - ResumeSubscription
+    type: string
+  UpdatedById:
+    description: |2-
+       The ID of the user who last updated the amendment.
+
+
+      **Character limit**: 32
+
+      **Values**: automatically generated 
+    type: string
+  UpdatedDate:
+    description: |2-
+       The date when the amendment was last updated.
+
+
+      **Values**: automatically generated 
+    format: date-time
+    type: string
+required:
+  - SubscriptionId
+  - Type
+  - ContractEffectiveDate
+  - Name
+type: object

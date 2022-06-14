@@ -1,0 +1,116 @@
+get:
+  summary: List all versions of a workflow definition
+  operationId: GET_WorkflowVersions
+  description: >
+    Return a list of all workflow versions under a workflow definition
+
+
+    ## User Access Permission
+
+    You must be assigned the **Workflow View Access** permission to run this
+    operation.
+  tags:
+    - Workflows
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - name: workflow_id
+      in: path
+      required: true
+      description: >-
+        The unique id of the workflow definition to import a workflow version
+        under.
+      schema:
+        type: integer
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: OK
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GetVersionsResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                data:
+                  - calloutTrigger: true
+                    createdAt: '2019-05-31T14:52:38.171Z'
+                    description: ''
+                    id: 48
+                    interval: null
+                    version: 0.0.1
+                    name: New test workflow
+                    ondemandTrigger: true
+                    scheduledTrigger: false
+                    timezone: null
+                    type: Workflow::Setup
+                    updatedAt: '2019-06-03T21:02:26.694Z'
+                  - calloutTrigger: true
+                    createdAt: '2019-05-31T14:52:38.171Z'
+                    description: ''
+                    id: 49
+                    interval: null
+                    version: 0.0.2
+                    name: New test workflow
+                    ondemandTrigger: true
+                    scheduledTrigger: false
+                    timezone: null
+                    type: Workflow::Setup
+                    updatedAt: '2019-06-03T21:02:26.694Z'
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/workflows_{workflow_id}_versions/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/workflows_{workflow_id}_versions/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/workflows_{workflow_id}_versions/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/workflows_{workflow_id}_versions/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/workflows_{workflow_id}_versions/getundefined

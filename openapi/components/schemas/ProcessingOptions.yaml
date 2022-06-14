@@ -1,0 +1,10 @@
+description: Processing options for invoice generation.
+properties:
+  billingOptions:
+    $ref: ./BillingOptions.yaml
+  runBilling:
+    description: >-
+      Indicates if the current request needs to generate an invoice. The invoice
+      will be generated against all Order Line Items included in this order.
+    type: boolean
+type: object

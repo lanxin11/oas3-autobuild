@@ -1,0 +1,122 @@
+post:
+  summary: 'Multi-entity: Share a product with an entity'
+  operationId: POST_Catalog
+  description: >
+    **Note:** The Multi-entity feature is in **Limited Availability**. If you
+    wish to have access to the feature, submit a request at [Zuora Global
+    Support](http://support.zuora.com/).
+
+
+    Shares a product with a target entity. Zuora synchronizes the shared
+    products to the target entity after sharing. For more information about
+    product sharing, see [Products Sharing Across
+    Entities](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Multi-entity/C_Business_Objects_Sharing_Across_Entities/B_Products_Sharing_Across_Entities).
+
+
+    Note that:
+
+
+    - You must finish all the
+    [prerequisites](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Multi-entity/C_Business_Objects_Sharing_Across_Entities/B_Products_Sharing_Across_Entities/Share_Products)
+    before sharing products with other entities. 
+
+
+    - Only source entity administrators have permission to share products with
+    other entities. You must make the call as a source entity administrator.
+
+
+    - Currently, you can only share a product with one entity at a time. An
+    error occurs if you try to share a product to more than one entity.
+  tags:
+    - Catalog
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: product-id
+      in: path
+      description: >-
+        The unique ID of the product you want to share. For example,
+        8a808255575bdae4015774e9602e16fe.
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/POSTCatalogType.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/v1_catalog_products_{product-id}_share/postundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_catalog_products_{product-id}_share/postundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_catalog_products_{product-id}_share/postundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_catalog_products_{product-id}_share/postundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_catalog_products_{product-id}_share/postundefined

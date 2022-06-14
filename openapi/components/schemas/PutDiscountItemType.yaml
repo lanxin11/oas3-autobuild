@@ -1,0 +1,156 @@
+allOf:
+  - properties:
+      accountingCode:
+        description: |
+          The accounting code associated with the discount item.
+        type: string
+      adjustmentLiabilityAccountingCode:
+        description: >
+          The accounting code for adjustment liability.
+
+          **Note**: This field is only available if you have the Billing -
+          Revenue Integration feature enabled.
+        type: string
+      adjustmentRevenueAccountingCode:
+        description: >
+          The accounting code for adjustment revenue.
+
+          **Note**: This field is only available if you have the Billing -
+          Revenue Integration feature enabled.
+        type: string
+      amount:
+        description: >
+          The amount of the discount item.
+
+          - Should be a negative number. For example, `-10`.
+
+          - Always a fixed amount no matter whether the discount charge
+          associated with the discount item uses the [fixed-amount model or
+          percentage
+          model](https://knowledgecenter.zuora.com/Billing/Subscriptions/Product_Catalog/B_Charge_Models/B_Discount_Charge_Models#Fixed_amount_model_and_percentage_model).
+
+          - For tax-exclusive discount items, this amount indicates the discount
+          item amount excluding tax.
+
+          - For tax-inclusive discount items, this amount indicates the discount
+          item amount including tax.
+        format: number
+        type: string
+      bookingReference:
+        description: |
+          The booking reference of the discount item.
+        type: string
+      chargeDate:
+        description: >
+          The date when the discount item is charged, in `yyyy-mm-dd hh:mm:ss`
+          format.
+        format: date-time
+        type: string
+      chargeName:
+        description: >
+          The name of the charge associated with the discount item.
+
+          This field is required if the `productRatePlanChargeId` field is not
+          specified in the request.
+        type: string
+      contractAssetAccountingCode:
+        description: >
+          The accounting code for contract asset.
+
+          **Note**: This field is only available if you have the Billing -
+          Revenue Integration feature enabled.
+        type: string
+      contractLiabilityAccountingCode:
+        description: >
+          The accounting code for contract liability.
+
+          **Note**: This field is only available if you have the Billing -
+          Revenue Integration feature enabled.
+        type: string
+      contractRecognizedRevenueAccountingCode:
+        description: >
+          The accounting code for contract recognized revenue.
+
+          **Note**: This field is only available if you have the Billing -
+          Revenue Integration feature enabled.
+        type: string
+      deferredRevenueAccountingCode:
+        description: >
+          The accounting code for the deferred revenue, such as Monthly
+          Recurring Liability.
+
+          **Note:** This field is only available if you have Zuora Finance
+          enabled.
+        type: string
+      description:
+        description: |
+          The description of the discount item.
+        type: string
+      id:
+        description: |
+          The unique ID of the discount item.
+        type: string
+      itemType:
+        description: |
+          The type of the discount item.
+        type: string
+      purchaseOrderNumber:
+        description: |
+          The purchase order number associated with the discount item.
+        type: string
+      recognizedRevenueAccountingCode:
+        description: >
+          The accounting code for the recognized revenue, such as Monthly
+          Recurring Charges or Overage Charges.
+
+          **Note:** This field is only available if you have Zuora Finance
+          enabled.
+        type: string
+      revRecCode:
+        description: |
+          The revenue recognition code.
+        type: string
+      revRecTriggerCondition:
+        description: |
+          The date when revenue recognition is triggered.
+        enum:
+          - ContractEffectiveDate
+          - ServiceActivationDate
+          - CustomerAcceptanceDate
+        type: string
+      revenueRecognitionRuleName:
+        description: >
+          The name of the revenue recognition rule governing the revenue
+          schedule.
+
+          **Note:** This field is only available if you have Zuora Finance
+          enabled.
+        type: string
+      sku:
+        description: >
+          The SKU of the invoice item. The SKU of the discount item must be
+          different from the SKU of any existing product.
+        type: string
+      unbilledReceivablesAccountingCode:
+        description: >
+          The accounting code for unbilled receivables.
+
+          **Note**: This field is only available if you have the Billing -
+          Revenue Integration feature enabled.
+        type: string
+      unitPrice:
+        description: >
+          The per-unit price of the discount item.
+
+          If the discount charge associated with the discount item uses the
+          percentage model, the unit price will display as a percentage amount
+          in PDF. For example: if unit price is 5.00, it will display as 5.00%
+          in PDF.
+        format: number
+        type: string
+    required:
+      - amount
+    title: invoiceItems
+    type: object
+  - $ref: ./DiscountItemObjectNSFields.yaml
+  - $ref: ./DiscountItemObjectCustomFields.yaml

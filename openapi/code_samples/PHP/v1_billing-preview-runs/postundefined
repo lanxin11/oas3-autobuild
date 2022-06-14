@@ -1,0 +1,27 @@
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('https://rest.zuora.com/v1/billing-preview-runs');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'content-type' => 'application/json',
+  'Authorization' => 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+));
+
+$request->setBody('{
+    "assumeRenewal": "None",
+    "batches": "Batch1, Batch2",
+    "chargeTypeToExclude": "",
+    "includingDraftItems": "false",
+    "includingEvergreenSubscription": "true",
+    "targetDate": "2017-01-10"
+}');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}

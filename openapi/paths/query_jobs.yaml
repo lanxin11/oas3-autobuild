@@ -1,0 +1,277 @@
+post:
+  operationId: POST_DataQueryJob
+  summary: Submit a data query
+  description: >
+    Submits a [data
+    query](https://knowledgecenter.zuora.com/DC_Developers/BA_Data_Query) to be
+    performed by Zuora and creates a query job. You can use [Retrieve a data
+    query job](#operation/GET_DataQueryJob) to track the status of the query job
+    and obtain the URL of the query results.
+  tags:
+    - Data Queries
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/SubmitDataQueryRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/SubmitDataQueryResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                data:
+                  id: 3a3e85c4-96e7-486b-ae02-827120104301
+                  query: >-
+                    SELECT accountnumber, balance FROM Account WHERE
+                    Account.balance > 100
+                  queryStatus: accepted
+                  remainingRetries: 3
+                  updatedOn: '2018-08-17T13:14:18.204Z'
+    '400':
+      description: Bad Request
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/DataQueryErrorResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                code: 400
+                message: Unable to process JSON
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/query_jobs/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/query_jobs/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/query_jobs/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/query_jobs/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/query_jobs/postundefined
+get:
+  operationId: GET_DataQueryJobs
+  summary: List data query jobs
+  description: >
+    Returns a list of [data
+    query](https://knowledgecenter.zuora.com/DC_Developers/BA_Data_Query) jobs
+    that have been created in your Zuora tenant. You can filter the list by
+    status.
+
+
+    If you are an administrator, you can retrieve all the query jobs in your
+    tenant. Otherwise, you can only retrieve your own query jobs.
+  tags:
+    - Data Queries
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - name: queryStatus
+      in: query
+      required: false
+      description: |
+        Filters the list of query jobs by status.
+      schema:
+        type: string
+        enum:
+          - accepted
+          - in_progress
+          - completed
+          - failed
+          - cancelled
+    - name: pageSize
+      in: query
+      required: false
+      description: |
+        Specifies the maximum number of query jobs to return.
+      schema:
+        type: integer
+        maximum: 100
+        default: 20
+  responses:
+    '200':
+      description: OK
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GetDataQueryJobsResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                data:
+                  - id: bf3b5640-ddd1-4b4f-9a81-906ec2b84a89
+                    query: >-
+                      SELECT s.id FROM Subscription s JOIN RatePlan rp ON s.id =
+                      rp.subscriptionid WHERE rp.name = 'Premium Monthly'
+                    queryStatus: in_progress
+                    remainingRetries: 3
+                    updatedOn: '2018-08-17T13:14:38.855Z'
+                  - id: 3a3e85c4-96e7-486b-ae02-827120104301
+                    query: >-
+                      SELECT accountnumber, balance FROM Account WHERE
+                      Account.balance > 100
+                    queryStatus: completed
+                    dataFile: >-
+                      https://example.s3.us-west-2.amazonaws.com/3a3e85c4-96e7-486b-ae02-827120104301_24921638725108715.json?X-Amz-Security-Token=...
+                    outputRows: 24516
+                    processingTime: 9212
+                    remainingRetries: 3
+                    updatedOn: '2018-08-17T13:14:19.17Z'
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/query_jobs/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/query_jobs/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/query_jobs/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/query_jobs/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/query_jobs/getundefined

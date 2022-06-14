@@ -1,0 +1,23 @@
+description: Used to represent the relationship between workflow tasks
+properties:
+  linkage_type:
+    enum:
+      - Start
+      - Success
+      - Failure
+      - Iterate
+      - 'True'
+      - 'False'
+      - Approve
+      - Reject
+    type: string
+  source_task_id:
+    description: the task that spawned the target task
+    type: integer
+  source_workflow_id:
+    description: the workflow the target task is associated with
+    type: integer
+  target_task_id:
+    description: the task that the source task is linked to.
+    type: integer
+type: object

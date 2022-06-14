@@ -1,0 +1,3 @@
+curl -X POST -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3" -H "Content-Type: application/json" -d '{
+    "resend": "true"
+}' "https://rest.zuora.com/v1/bill-runs/{billRunId}/emails"

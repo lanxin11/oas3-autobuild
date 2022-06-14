@@ -1,0 +1,510 @@
+get:
+  summary: Retrieve a workflow
+  operationId: GET_Workflow
+  description: >
+    Retrieves information about a specific workflow by its ID.
+
+
+    ## User Access Permission
+
+    You must be assigned the **Workflow View Access** permission to run this
+    operation.
+  tags:
+    - Workflows
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - name: workflow_id
+      in: path
+      required: true
+      description: |
+        The unique ID of a workflow. For example, 19080.
+      schema:
+        type: string
+  responses:
+    '200':
+      description: ''
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/WorkflowDefinition.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: 2
+                name: test
+                description: ''
+                ondemandTrigger: true
+                calloutTrigger: true
+                scheduledTrigger: false
+                interval: ''
+                timezone: Sydney
+                createdAt: '2021-09-22T19:30:52.350Z'
+                updatedAt: '2021-09-22T19:30:52.350Z'
+                priority: Medium
+                status: Active
+                active_version:
+                  id: 49
+                  description: ''
+                  version: 0.0.1
+                  type: Workflow::Setup
+                  status: Active
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/workflows_{workflow_id}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/workflows_{workflow_id}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/workflows_{workflow_id}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/workflows_{workflow_id}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/workflows_{workflow_id}/getundefined
+delete:
+  summary: Delete a workflow
+  operationId: DELETE_Workflow
+  description: >
+    Deletes a specific workflow by its ID.
+
+
+    ## User Access Permission
+
+    You must be assigned the **Workflow Manage Access** permission to run this
+    operation.
+  tags:
+    - Workflows
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - name: workflow_id
+      in: path
+      required: true
+      description: |
+        The unique ID of a workflow. For example, 19080.
+      schema:
+        type: string
+  responses:
+    '200':
+      description: ''
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/DeleteWorkflowSuccess.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+                id: 19080
+    '404':
+      description: The workflow for the given id does not exist
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/DeleteWorkflowError.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                errors:
+                  - >-
+                    Invalid ID / Multiple objects returned - SchemaId: 2
+                    InstanceId: 2 ObjectId: 19080
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/workflows_{workflow_id}/deleteundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/workflows_{workflow_id}/deleteundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/workflows_{workflow_id}/deleteundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/workflows_{workflow_id}/deleteundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/workflows_{workflow_id}/deleteundefined
+patch:
+  summary: Update a workflow
+  operationId: PATCH_UpdateWorkflow
+  description: >
+    Updates a specific workflow by its ID, which allows you to [configure the
+    settings of a
+    workflow](https://knowledgecenter.zuora.com/CE_Workflow/Using_Workflow/B_Configure_a_Workflow)
+    via API.
+
+
+    ## User Access Permission
+
+    You must be assigned the **Workflow Manage Access** permission to run this
+    operation.
+  tags:
+    - Workflows
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
+    - name: workflow_id
+      in: path
+      required: true
+      description: |
+        The unique ID of a workflow. For example, 19080.
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: |
+                The name of the workflow definition
+            description:
+              type: string
+              description: |
+                The description of the workflow defintion
+            active_workflow_version_id:
+              type: integer
+              description: >
+                The id of a version. This version will then be set to the active
+                version of the workflow definition.
+            status:
+              type: string
+              description: >
+                Can be `Active` or `Inactive`. Active workfow definitions run
+                like normal. Inactive workflow definitions cannot be run.
+  responses:
+    '200':
+      description: OK
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/WorkflowDefinition.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: 2
+                name: Bill Customers
+                description: This is my special workflow! It bills everybody
+                ondemandTrigger: true
+                calloutTrigger: true
+                scheduledTrigger: true
+                interval: 0 0 /1 /1 * *
+                timezone: Eastern Time (US & Canada)
+                createdAt: '2021-03-24T19:52:37.254Z'
+                updatedAt: '2021-04-05T18:35:52.781Z'
+                priority: Low
+                status: Inactive
+                active_version:
+                  id: 49
+                  description: ''
+                  version: 0.0.1
+                  type: Workflow::Setup
+                  status: Active
+    '404':
+      description: The workflow for the given id does not exist
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/DeleteWorkflowError.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                errors:
+                  - >-
+                    Invalid ID / Multiple objects returned - SchemaId: 2
+                    InstanceId: 2 ObjectId: 19080
+    '422':
+      description: >
+        Bad Request for one of the following reasons:
+
+        * The name or description fields are not strings.
+
+        * The ondemand_trigger, callout_trigger, or scheduled_trigger fields are
+        not booleans.
+
+        * The timezone does not match one of the valid values in [this spread
+        sheet](https://docs.google.com/spreadsheets/d/1skhepi-q5l9LyaMUPZjU_V9gzTphNMqNyV6ST5mygEo/edit?usp=sharing).
+
+        * The priority is not one of High, Medium, or Low.
+
+        * The status is not one of Active or Inactive.
+
+        * The scheduled_trigger is set to true but a valid timezone and interval
+        were not passed.
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/ValidationErrors.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: false
+                reasons:
+                  - fieldName: status
+                    title: on is not a valid status. Choose from Active or Inactive
+                  - fieldName: interval
+                    title: >-
+                      The entered cron interval is not valid, rebuild schedule
+                      and submit again.
+  x-code-samples: []

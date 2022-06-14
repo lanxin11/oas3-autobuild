@@ -1,0 +1,6 @@
+allOf:
+  - $ref: ./CommonResponseType.yaml
+  - properties:
+      previewResult:
+        $ref: ./PreviewResult.yaml
+    type: object

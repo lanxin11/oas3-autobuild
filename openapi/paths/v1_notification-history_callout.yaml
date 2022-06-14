@@ -1,0 +1,195 @@
+get:
+  summary: List callout notification histories
+  operationId: GET_CalloutHistory
+  description: |
+    Describes how to get a notification history for callouts.
+  tags:
+    - Notifications
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
+    - name: endTime
+      in: query
+      description: >-
+        The final date and time of records to be returned. Defaults to now. Use
+        format yyyy-MM-ddTHH:mm:ss.
+      required: false
+      schema:
+        type: string
+        format: date-time
+    - name: startTime
+      in: query
+      description: >-
+        The initial date and time of records to be returned. Defaults to (end
+        time - 1 day). Use format yyyy-MM-ddTHH:mm:ss.
+      required: false
+      schema:
+        type: string
+        format: date-time
+    - name: objectId
+      in: query
+      description: |
+        The ID of an object that triggered a callout notification. 
+      required: false
+      schema:
+        type: string
+    - name: failedOnly
+      in: query
+      description: >
+        If `true`, only return failed records. If `false`, return all records in
+        the given date range. The default value is `true`.
+      required: false
+      schema:
+        type: boolean
+    - name: eventCategory
+      in: query
+      description: >
+        Category of records to be returned by event category.
+
+
+        The following formats are supported:
+
+        * `{Event Type Namespace}:{Event Type Name}` if the Custom Events
+        feature is enabled in your tenant. For example:
+        `user.notification:NewSubscriptionCreated`.
+
+        * Numeric code of the event category if the Custom Events feature is not
+        enabled in your tenant. For example, `1210`. See [Event Category
+        Code](https://knowledgecenter.zuora.com/DC_Developers/AA_REST_API/Event_Categories_for_Notification_Histories)
+        for more information.
+      required: false
+      schema:
+        type: string
+    - name: includeResponseContent
+      in: query
+      description: ''
+      required: false
+      schema:
+        type: boolean
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETCalloutHistoryVOsType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                calloutHistories:
+                  - responseCode: 405
+                    requestUrl: https://www.google.com
+                    requestMethod: POST
+                    eventCategory: 1210
+                    notification: New Subscription Created
+                    attemptedNum: 3
+                    createTime: '2015-01-13T03:33:51'
+                    eventContext:
+                      <Account.Currency>: USD
+                      <Subscription.SubscriptionDetailTable>:
+                        Charge Name: recurringcharge
+                        Charge Type: Recurring
+                        Effective Start Date: 01 / 01 / 2016
+                        Unit Price: 50
+                        QTY: 5
+                        Total: 250
+                      <Account.CurrencySymbol>: $
+                      <BillToContact.FirstName>: Mary
+                      <Subscription.ServiceActivation>: 01/01/2016
+                      <Subscription.InitialTerm>: '50'
+                      <Subscription.RenewalTerm>: '0'
+                      <Subscription.CustomerAcceptance>: 01/01/2016
+                      <Account.Name>: test
+                      <Subscription.SubscriptionName>: A-S00000003
+                      <Account.ID>: 402881e54ade80c8014ade884c48000b
+                      <BillToContact.WorkEmail>: smith@example.com
+                      <Account.Number>: A00000001
+                      <Subscription.TermStartDate>: 01/01/2016
+                      <Event.Timestamp>: 2015-01-13T22:31:43.248+0800
+                      <Subscription.AutoRenew>: 'No'
+                      <Notification>:
+                        id: 402892fa47866fe701478674a5c100eb
+                        EmailTemplate: New Subscription Created Default Email Template
+                        Event: New Subscription Created
+                        Profile: Default Profile
+                        emailAction: true
+                        calloutAction: true
+                        updatedOn: 01/12/2015 03:23:08
+                        updatedBy: 402892fa47866fe7014786749d9b0002
+                      <BillToContact.LastName>: Smith
+                      <Object.ID>: 402881e54ae37f31014ae3b514e100fd
+                      <Subscription.ContractEffective>: 01/01/2016
+                      <Subscription.TCV>: $12,500.00
+                      <Contact.ID>: 402881e54ade80c8014ade884c51000c
+                      <Subscription.CMRR>: $250.00
+                      <BillToContact.ID>: 402881e54ade80c8014ade884c51000c
+                      <Event.Category>: SubscriptionCreated
+                      <Subscription.TermSetting>: termed
+                      <BillingAccount.ID>: 402881e54ade80c8014ade884c48000b
+                      <Subscription.CreateDate>: 01/13/2015
+                      <Subscription.TermEndDate>: 03/01/2020
+                      <Subscription.ID>: 402881e54ae37f31014ae3b514e100fd
+                      <Event.ID>: 402892fa47866fe701478674a4ff0093
+                      <Subscription.CreatedBy>: smith@example.com
+                nextPage: >-
+                  https://localhost:8080/apps/v1/notification-history/callout?page=2&pageSize=1&startTime=2015-01-12T00:00:00&endTime=2015-01-15T00:00:00&failedOnly=false&eventCategory=1000
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_notification-history_callout/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_notification-history_callout/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_notification-history_callout/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_notification-history_callout/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_notification-history_callout/getundefined

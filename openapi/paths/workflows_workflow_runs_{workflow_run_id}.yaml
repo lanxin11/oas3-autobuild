@@ -1,0 +1,115 @@
+get:
+  summary: Retrieve a workflow run
+  operationId: GET_Workflow_Run
+  description: >
+    Retrieves information about a specific workflow run by its ID.
+
+
+    ## User Access Permission
+
+    You must be assigned the **Workflow View Access** permission to run this
+    operation.
+  tags:
+    - Workflows
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - name: workflow_run_id
+      in: path
+      required: true
+      description: |
+        The unique ID of a workflow run. For example, 19080.
+      schema:
+        type: string
+  responses:
+    '200':
+      description: ''
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GetWorkflowResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: 19063
+                name: WF-19027-00000032
+                originalWorkflowId: 19027
+                type: Workflow::Instance
+                status: Finished
+                tasks:
+                  total: 4
+                  queued: 0
+                  processing: 0
+                  pending: 0
+                  stopped: 0
+                  success: 4
+                  error: 0
+                runTime: 64.513026
+                cpuTime: '19:01:04'
+                finishedAt: 2019-09-10 19:33:34 UTC
+                createdAt: 2019-09-10 19:32:21 UTC
+                updatedAt: 2019-09-10 19:33:34 UTC
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/workflows_workflow_runs_{workflow_run_id}/getundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/workflows_workflow_runs_{workflow_run_id}/getundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/workflows_workflow_runs_{workflow_run_id}/getundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/workflows_workflow_runs_{workflow_run_id}/getundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/workflows_workflow_runs_{workflow_run_id}/getundefined

@@ -1,0 +1,145 @@
+allOf:
+  - properties:
+      accountId:
+        description: >
+          The ID of the account associated with the invoice. 
+
+
+          You must specify either `accountNumber` or `accountId` for a customer
+          account. If both of them are specified, they must refer to the same
+          customer account.
+        type: string
+      accountNumber:
+        description: >
+          The Number of the account associated with the invoice.
+
+          You must specify either `accountNumber` or `accountId` for a customer
+          account. If both of them are specified, they must refer to the same
+          customer account.
+        type: string
+      autoPay:
+        default: false
+        description: >
+          Whether invoices are automatically picked up for processing in the
+          corresponding payment run.
+        type: boolean
+      comments:
+        description: |
+          Comments about the invoice.
+        type: string
+      dueDate:
+        description: >
+          The date by which the payment for this invoice is due, in `yyyy-mm-dd`
+          format.
+        format: date
+        type: string
+      excludeItemBillingFromRevenueAccounting:
+        description: >
+          The flag to exclude the invoice item from revenue accounting.
+
+
+          **Note**: This field is only available if you have the Billing -
+          Revenue Integration feature enabled. 
+        type: boolean
+      invoiceDate:
+        description: >
+          The date that appears on the invoice being created, in `yyyy-mm-dd`
+          format. The value cannot fall in a closed accounting period.
+        format: date
+        type: string
+      invoiceItems:
+        description: >
+          Container for invoice items. The maximum number of invoice items is
+          1,000.
+        items:
+          $ref: ./PostInvoiceItemType.yaml
+        type: array
+      invoiceNumber:
+        description: >
+          A customized invoice number with the following format requirements:
+
+          - Max length: 16 characters
+
+          - Acceptable characters: a-z,A-Z,0-9,-,_,
+
+
+          The value must be unique in the system, otherwise it may cause issues
+          with bill runs and subscribe/amend. Check out [things to note and
+          troubleshooting
+          steps](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/IA_Invoices/Unified_Invoicing/Import_external_invoices_as_standalone_invoices?#Customizing_invoice_number). 
+        type: string
+      status:
+        default: Draft
+        description: >
+          The status of invoice. By default, the invoice status is Draft.
+
+
+          When creating an invoice, if you set this field to `Posted`, the
+          invoice is created and posted directly.
+        enum:
+          - Draft
+          - Posted
+        type: string
+      transferredToAccounting:
+        enum:
+          - Processing
+          - Error
+          - Ignore
+          - 'Yes'
+          - 'No'
+        type: string
+    required:
+      - invoiceDate
+    title: invoices
+    type: object
+  - $ref: ./InvoiceObjectNSFields.yaml
+  - $ref: ./InvoiceObjectCustomFields.yaml
+example:
+  accountId: 2c9890207863df710178642433c407a5
+  autoPay: false
+  comments: comments
+  invoiceDate: '2020-02-01'
+  invoiceItems:
+    - amount: 300
+      bookingReference: bookingReference
+      chargeDate: '2020-02-01 11:00:00'
+      chargeName: charge with tax amount 9
+      description: description
+      discountItems:
+        - amount: -10
+          bookingReference: discountBookingReference
+          chargeDate: '2020-02-01 11:00:00'
+          chargeName: discount
+          description: description
+          sku: SKU-0002
+          taxItems:
+            - exemptAmount: 0
+              jurisdiction: jurisdiction
+              locationCode: locationCode
+              name: country tax
+              taxAmount: -1
+              taxCode: country tax code
+              taxCodeDescription: country tax code, tax rate 10%
+              taxDate: '2021-02-08'
+              taxMode: TaxExclusive
+              taxRate: 0.1
+              taxRateDescription: country tax
+              taxRateType: Percentage
+      excludeItemBillingFromRevenueAccounting: true
+      quantity: 2
+      serviceEndDate: '2020-02-10'
+      serviceStartDate: '2020-02-01'
+      taxItems:
+        - exemptAmount: 0
+          jurisdiction: juristiction
+          locationCode: locationCode
+          name: country tax
+          taxAmount: 9
+          taxCode: tax code
+          taxCodeDescription: tax code description
+          taxDate: '2020-02-01'
+          taxMode: TaxExclusive
+          taxRate: 0.03
+          taxRateDescription: tax rate description
+          taxRateType: Percentage
+  invoiceNumber: 6LU5F8NW00001

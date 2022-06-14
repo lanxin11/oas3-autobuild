@@ -1,0 +1,108 @@
+put:
+  tags:
+    - Orders
+  summary: Update order custom fields
+  description: >
+    **Note:** This feature is only available if you have the [Order
+    Metrics](https://knowledgecenter.zuora.com/BC_Subscription_Management/Orders/AA_Overview_of_Orders#Order_Metrics)
+    feature enabled. As of Zuora Billing Release 284, Orders is generally
+    available and the Order Metrics feature is no longer available as a
+    standalone feature. If you are an existing Subscribe and Amend customer and
+    want Order Metrics only, you must turn on [Orders
+    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization).
+    You can still keep the existing Subscribe and Amend API integrations to
+    create and manage subscriptions.
+
+
+    **Note:** To update the custom fields of an order line item, you must use
+    the "Update an order line item" or "Update order line items" operation.
+
+
+    Updates the custom fields of a specified order.
+  operationId: PUT_UpdateOrderCustomFields
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: orderNumber
+      in: path
+      description: The order number.
+      required: true
+      schema:
+        type: string
+        format: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/PUTOrderPatchRequestType.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_orders_{orderNumber}_customFields/putundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_orders_{orderNumber}_customFields/putundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_orders_{orderNumber}_customFields/putundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_orders_{orderNumber}_customFields/putundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_orders_{orderNumber}_customFields/putundefined

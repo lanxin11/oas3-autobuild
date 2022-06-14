@@ -1,0 +1,18 @@
+example:
+  revenueItems:
+    - accountingPeriodName: Oct'2014
+    - accountingPeriodName: Nov'2014
+properties:
+  revenueItems:
+    description: >
+      Revenue items are listed in ascending order by the accounting period start
+      date.
+
+
+      Include at least one custom field.
+    items:
+      $ref: ./RevenueScheduleItemType.yaml
+    type: array
+required:
+  - revenueItems
+type: object

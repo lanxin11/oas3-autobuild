@@ -1,0 +1,8 @@
+allOf:
+  - properties:
+      rampMetrics:
+        items:
+          $ref: ./OrderRampMetrics.yaml
+        type: array
+    type: object
+  - $ref: ./CommonResponseType.yaml

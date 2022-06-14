@@ -1,0 +1,119 @@
+post:
+  summary: Create a billing preview run
+  operationId: POST_BillingPreviewRun
+  description: >
+    Creates a billing preview run for multiple customer accounts.
+
+
+    You can run up to 20 billing preview runs in batches concurrently. A single
+    batch of customer accounts can only have one billing preview run at a time.
+    So you can have up to 20 batches running at the same time. If you create a
+    billing preview run for all customer batches, you cannot create another
+    billing preview run until this preview run is completed.
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: zuora-version
+      in: header
+      required: false
+      description: >
+
+        The minor version of the Zuora REST API. See [Minor
+        Version](https://www.zuora.com/developer/api-reference/#section/API-Versions/Minor-Version)
+        for information about REST API version control. 
+
+
+        This header affects the availability of the following request fields:
+
+        * `batch`
+
+        * `batches`        
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/PostBillingPreviewRunParam.yaml
+    required: true
+  tags:
+    - Billing Preview Run
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                description: |
+                  Returns `true` if the request was processed successfully.
+              billingPreviewRunId:
+                type: string
+                description: |
+                  Id of the billing preview run.
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+                billingPreviewRunId: 402890b757d1ec1b0157d5aa3d6802aa
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_billing-preview-runs/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_billing-preview-runs/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_billing-preview-runs/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_billing-preview-runs/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_billing-preview-runs/postundefined

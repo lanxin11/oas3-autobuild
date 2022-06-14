@@ -1,0 +1,4 @@
+additionalProperties:
+  $ref: ./PostCustomObjectDefinitionFieldDefinitionRequest.yaml
+title: customObjectCustomFieldDefinitions
+type: object

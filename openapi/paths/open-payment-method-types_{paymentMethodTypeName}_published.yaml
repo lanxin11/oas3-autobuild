@@ -1,0 +1,129 @@
+get:
+  summary: Retrieve a published custom payment method type
+  operationId: GET_OpenPaymentMethodTypePublish
+  description: |
+    Retrieves a published custom payment method type.
+  tags:
+    - Custom Payment Method Types
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: paymentMethodTypeName
+      in: path
+      required: true
+      description: >
+        The API name of the custom payment method type, such as
+        `AmazonPay__c_12368`.
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: >-
+              ../components/schemas/GETOpenPaymentMethodTypeRevisionResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                internalName: AmazonPay
+                label: ZuoraQA Amazon Pay
+                revision: 1
+                version: '2021-11-22'
+                status: Published
+                tenantId: '9'
+                entityId: f707d981-3ad2-4484-9c24-a93bf6b83411
+                methodReferenceIdField: AmazonToken
+                userReferenceIdField: AmazonAccount
+                subTypeField: AmazonTokenType
+                fields:
+                  - name: AmazonToken
+                    type: string
+                    description: The Token value
+                    defaultValue: null
+                    label: AmazonToken
+                    index: 1
+                    maxLength: 100
+                    minLength: 1
+                    checksum: true
+                    required: true
+                    visible: true
+                    representer: true
+                    editable: true
+                  - name: AmazonTokenType
+                    type: string
+                    description: The Type of Token, e.g. GoCardlessToken
+                    defaultValue: null
+                    label: Amazon TokenType
+                    index: 2
+                    maxLength: 100
+                    minLength: 1
+                    checksum: true
+                    required: true
+                    visible: true
+                    representer: true
+                    editable: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/open-payment-method-types_{paymentMethodTypeName}_published/getundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/open-payment-method-types_{paymentMethodTypeName}_published/getundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/open-payment-method-types_{paymentMethodTypeName}_published/getundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/open-payment-method-types_{paymentMethodTypeName}_published/getundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/open-payment-method-types_{paymentMethodTypeName}_published/getundefined

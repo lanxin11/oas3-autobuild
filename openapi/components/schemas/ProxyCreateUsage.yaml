@@ -1,0 +1,90 @@
+allOf:
+  - properties:
+      AccountId:
+        description: |2-
+           The ID of the account associated with the usage data. This field is only required if no value is specified for the `AccountNumber` field.
+          **Character limit**: 32 **Values**: a valid account ID. 
+        type: string
+      AccountNumber:
+        description: |2-
+           The number of the account associated with the usage data. This field is only required if no value is specified for the `AccountId` field.
+          **Character limit**: 50 **Values**: a valid account number. 
+        type: string
+      ChargeId:
+        description: ' The OrginalId of the rate plan charge related to the usage record, e.g., `2c9081a03c63c94c013c6873357a0117` **Character limit**: 32 **Values**: a valid rate plan charge OriginalID. '
+        type: string
+      ChargeNumber:
+        description: >
+          A unique number for the rate plan charge related to the usage record.
+          For example, C-00000007.
+        maxLength: 50
+        type: string
+      Description:
+        description: |
+          A description of the usage record.
+        maxLength: 200
+        type: string
+      EndDateTime:
+        description: |2-
+           The end date and time of a range of time when usage is tracked. Use this field for reporting; this field doesn't affect usage calculation.
+          **Character limit**: 29 **Values**: a valid date and time value. 
+        format: date-time
+        type: string
+      Quantity:
+        description: >2-
+           Indicates the number of units used.
+          **Character limit**: 16 **Values**: a valid decimal amount equal to or
+          greater than 0 
+        format: double
+        type: number
+      StartDateTime:
+        description: |2-
+           The start date and time of a range of time when usage is tracked. Zuora uses this field value to determine the usage date. Unlike the `EndDateTime`, the `StartDateTime` field does affect usage calculation.
+          **Character limit**: 29 **Values**: a valid date and time value 
+        format: date-time
+        type: string
+      SubmissionDateTime:
+        description: |2-
+           The date when usage was submitted.
+          **Character limit**: 29 **Values**: automatically generated 
+        format: date-time
+        type: string
+      SubscriptionId:
+        description: >
+          The original ID of the subscription that contains the fees related to
+          the usage data. 
+
+
+          The ID of a subscription might change when you create amendments to
+          the subscription. It is good practice to use the unique subscription
+          number that you can specify in the `SubscriptionNumber` field.
+        maxLength: 32
+        type: string
+      SubscriptionNumber:
+        description: >
+          The unique identifier number of the subscription that contains the
+          fees related to the usage data.
+
+
+          It is good practice to use this field when creating usage records.
+        maxLength: 100
+        type: string
+      UOM:
+        description: |2-
+           Specifies the units to measure usage. Units of measure are configured in the web-based UI. Your values depend on your configuration in **Billing Settings**.
+          **Character limit**: **Values**: a valid unit of measure 
+        type: string
+    required:
+      - Quantity
+      - StartDateTime
+      - UOM
+    type: object
+  - $ref: ./UsageObjectCustomFields.yaml
+example:
+  AccountId: 2c92c0f956bc8fb40156d502fc3718b1
+  ChargeNumber: C-00000229
+  Description: test
+  Quantity: 9
+  StartDateTime: '2017-12-01T16:41:36.000+01:00'
+  SubscriptionNumber: A-S00000100
+  UOM: Each

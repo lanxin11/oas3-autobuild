@@ -1,0 +1,19 @@
+properties:
+  amount:
+    description: >
+      The amount of the payment associated with the specific invoice or taxation
+      item.
+    format: double
+    type: number
+  invoiceItemId:
+    description: |
+      The ID of the specific invoice item.
+    type: string
+  taxItemId:
+    description: |
+      The ID of the specific taxation item.
+    type: string
+required:
+  - amount
+title: items
+type: object

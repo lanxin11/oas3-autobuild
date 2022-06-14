@@ -1,0 +1,127 @@
+example:
+  compression: NONE
+  output:
+    target: S3
+  outputFormat: JSON
+  query: SELECT accountnumber, balance FROM Account WHERE Account.balance > 100
+properties:
+  columnSeparator:
+    description: |
+      The column separator. Only applicable if the `outputFormat` is `DSV`.
+    type: string
+  compression:
+    description: |
+      Specifies whether Zuora compresses the query results.
+    enum:
+      - NONE
+      - GZIP
+      - ZIP
+    type: string
+  encryptionKey:
+    description: >
+      Base-64 encoded public key of an RSA key-pair. 
+
+
+      Note that Data Query only supports 1024-bit RSA keys.
+
+
+      If you set this field, Zuora encrypts the query results using the provided
+      public key. You must use the corresponding private key to decrypt the
+      query results.
+    format: byte
+    type: string
+  output:
+    description: |
+      Additional information about the query results.
+    properties:
+      target:
+        description: |
+          Set this field to `S3`.
+        enum:
+          - S3
+        type: string
+    required:
+      - target
+    type: object
+  outputFormat:
+    description: >
+      Specifies the format of the query results.
+
+
+      * `JSON` - Each row in the query results will be a JSON object. The format
+      of the query result file is [JSON Lines](http://jsonlines.org/).
+
+      * `CSV` - Each row in the query results will be a comma-separated list of
+      values.
+
+      * `TSV` - Each row in the query results will be a tab-separated list of
+      values.
+
+      * `DSV` - Pass any character as your custom delimiter into the
+      `columnSeparator` field.
+    enum:
+      - JSON
+      - CSV
+      - TSV
+      - DSV
+    type: string
+  query:
+    description: >
+      The query to perform. See [SQL Queries in Data
+      Query](https://knowledgecenter.zuora.com/DC_Developers/BA_Data_Query/BA_SQL_Queries_in_Data_Query)
+      for more information.
+    type: string
+  readDeleted:
+    default: false
+    description: >
+      Indicates whether the query will retrieve only the deleted record. If
+      `readDeleted` is set to `false` or it is not included in the request body,
+      the query will retrieve only the non-deleted records. If it is set to
+      `true`, only the deleted records will be retrieved.
+
+
+      Note that Data Query is subject to Zuora Data Retention Policy. The
+      retention period of deleted data is 30 days. You can only retrieve deleted
+      data for 30 days through Data Query.
+    type: boolean
+  sourceData:
+    description: >
+      Specifiy that data queries run against the live transactional databases at
+      Zuora (Data Query Live), or run against the optimized, replicated database
+      at 12 hours freshness for high volume extraction (Data Query Unlimited).
+
+
+      **Note**: Data Query Unlimited is an Early Adopter feature.  If you want
+      to have access to the feature, submit a request at [Zuora Global
+      Support](http://support.zuora.com/). 
+
+
+      * `DATAHUB` - Data queries run against the optimized, replicated database
+      at 12 hours freshness for high volume extraction (Data Query Unlimited).
+      Data Query Unlimited is an Early Adopter feature.  If you want to have
+      access to the feature, submit a request at [Zuora Global
+      Support](http://support.zuora.com/). 
+
+      * `LIVE` - Data queries run against the live transactional databases at
+      Zuora (Data Query Live).
+
+
+      The default value is `LIVE`.
+    enum:
+      - DATAHUB
+      - LIVE
+    type: string
+  useIndexJoin:
+    description: >-
+      Indicates whether to use Index Join. Index join is useful when you have a
+      specific reference value in your WHERE clause to index another large table
+      by. See [Use Index
+      Join](https://knowledgecenter.zuora.com/DC_Developers/BA_Data_Query/Best_practices_of_Data_Query#Use_Index_Join)
+      for more information.
+    type: boolean
+required:
+  - query
+  - outputFormat
+  - compression
+  - output
+type: object

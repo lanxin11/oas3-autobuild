@@ -1,0 +1,304 @@
+get:
+  summary: List payment methods of an account
+  operationId: GET_AcountPaymentMethods
+  description: >
+    Retrieves the payment methods of the specified customer account.
+
+
+    **Note:** This operation also supports retrieving custom payment methods
+    created through the [Open Payment
+    Method](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/MB_Set_up_custom_payment_gateways_and_payment_methods)
+    service.
+  tags:
+    - Accounts
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: account-key
+      in: path
+      description: Account number or account ID.
+      required: true
+      schema:
+        type: string
+    - name: isDefaultOnly
+      in: query
+      required: false
+      description: >-
+        Indicates whether to only retrieve the default payment method of the
+        account. The default value is `false`. If this parameter is set to
+        `true`, only the default payment method is retrieved.
+      schema:
+        type: boolean
+    - name: isActiveOnly
+      in: query
+      required: false
+      description: >-
+        Indicates whether to only retrieve the active payment methods of the
+        account. The default value is `false`. If this parameter is set to
+        `true`, only the active payment methods are retrieved.
+      schema:
+        type: boolean
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETAccountPaymentMethodType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                defaultPaymentMethodId: 4028839f7d26a155017d26af16ef0001
+                paymentGateway: null
+                creditcard:
+                  - cardNumber: '************1111'
+                    expirationMonth: 11
+                    expirationYear: 2027
+                    creditCardType: Visa
+                    accountHolderInfo:
+                      accountHolderName: John Smith
+                      phone: '86123456789'
+                      email: example@google.com
+                      addressLine1: ABC
+                      addressLine2: EFT
+                      zipCode: '123456'
+                      city: Example City
+                      country: United States
+                      state: Example State
+                    mandateInfo:
+                      mitProfileAction: null
+                      mitProfileType: null
+                      mitConsentAgreementSrc: null
+                      mitConsentAgreementRef: null
+                      mitTransactionId: null
+                      mitProfileAgreedOn: null
+                    id: 4028839f7d26a155017d26af16ef0001
+                    type: CreditCard
+                    isDefault: true
+                    accountKey: 4028839f7ca29000017ca29c1ce8003f
+                    status: Active
+                    lastTransaction: Approved
+                    useDefaultRetryRule: true
+                    bankIdentificationNumber: '411111'
+                    deviceSessionId: null
+                    existingMandate: null
+                    ipAddress: null
+                    lastFailedSaleTransactionDate: null
+                    lastTransactionDateTime: '2021-11-15 18:59:08'
+                    lastTransactionStatus: Approved
+                    maxConsecutivePaymentFailures: null
+                    numConsecutiveFailures: 0
+                    paymentRetryWindow: null
+                    totalNumberOfProcessedPayments: 0
+                    totalNumberOfErrorPayments: 0
+                    createdDate: '2021-11-15 18:59:08'
+                    updatedDate: '2021-11-15 18:59:08'
+                    createdBy: 402881e522cf4f9b0122cf5d82860002
+                    updatedBy: 402881e522cf4f9b0122cf5d82860002
+                    AA_PICKLIST__c: null
+                debitcard:
+                  - cardNumber: '************8888'
+                    expirationMonth: 11
+                    expirationYear: 2021
+                    creditCardType: Electron
+                    accountHolderInfo:
+                      accountHolderName: John Smith
+                      phone: ''
+                      email: smith@example.com
+                      addressLine1: 1051 E Hillsdale Blvd
+                      addressLine2: ''
+                      zipCode: '45101'
+                      city: Tynan
+                      country: United States
+                      state: California
+                    mandateInfo:
+                      mitProfileAction: null
+                      mitProfileType: null
+                      mitConsentAgreementSrc: null
+                      mitConsentAgreementRef: null
+                      mitTransactionId: null
+                      mitProfileAgreedOn: null
+                    id: 4028839f7cd92a6b017cda4defd00006
+                    type: CreditCard
+                    isDefault: false
+                    accountKey: 4028839f7ca29000017ca29c1ce8003f
+                    status: Active
+                    lastTransaction: Approved
+                    useDefaultRetryRule: true
+                    bankIdentificationNumber: '588888'
+                    deviceSessionId: null
+                    existingMandate: null
+                    ipAddress: null
+                    lastFailedSaleTransactionDate: null
+                    lastTransactionDateTime: '2021-11-01 00:01:53'
+                    lastTransactionStatus: Approved
+                    maxConsecutivePaymentFailures: null
+                    numConsecutiveFailures: 0
+                    paymentRetryWindow: null
+                    totalNumberOfProcessedPayments: 0
+                    totalNumberOfErrorPayments: 0
+                    createdDate: '2021-11-01 00:01:52'
+                    updatedDate: '2021-11-01 00:01:52'
+                    createdBy: 402881e522cf4f9b0122cf5d82860002
+                    updatedBy: 402881e522cf4f9b0122cf5d82860002
+                    AA_PICKLIST__c: null
+                creditcardreferencetransaction:
+                  - tokenId: ABCE
+                    secondTokenId: FGDSDF
+                    id: 4028839f7ce8c530017ce9725e2c0003
+                    type: CreditCardReferenceTransaction
+                    isDefault: false
+                    accountKey: 4028839f7ca29000017ca29c1ce8003f
+                    status: Active
+                    lastTransaction: Approved
+                    useDefaultRetryRule: true
+                    bankIdentificationNumber: null
+                    deviceSessionId: null
+                    existingMandate: null
+                    ipAddress: null
+                    lastFailedSaleTransactionDate: null
+                    lastTransactionDateTime: '2021-11-03 22:35:59'
+                    lastTransactionStatus: Approved
+                    maxConsecutivePaymentFailures: null
+                    numConsecutiveFailures: 0
+                    paymentRetryWindow: null
+                    totalNumberOfProcessedPayments: 0
+                    totalNumberOfErrorPayments: 0
+                    createdDate: '2021-11-03 22:35:59'
+                    updatedDate: '2021-11-03 22:35:59'
+                    createdBy: 402881e522cf4f9b0122cf5d82860002
+                    updatedBy: 402881e522cf4f9b0122cf5d82860002
+                    AA_PICKLIST__c: null
+                    cardNumber: null
+                    expirationMonth: 11
+                    expirationYear: 2021
+                    creditCardType: Visa
+                    accountHolderInfo:
+                      accountHolderName: ''
+                      phone: null
+                      email: ''
+                      addressLine1: ''
+                      addressLine2: ''
+                      zipCode: ''
+                      city: ''
+                      country: null
+                      state: ''
+                    mandateInfo:
+                      mitProfileAction: null
+                      mitProfileType: null
+                      mitConsentAgreementSrc: null
+                      mitConsentAgreementRef: null
+                      mitTransactionId: null
+                      mitProfileAgreedOn: null
+                ach:
+                  - bankABACode: '110000000'
+                    bankAccountNumber: '********6789'
+                    bankAccountType: Checking
+                    bankName: Chase
+                    bankAccountName: Test
+                    accountHolderInfo:
+                      accountHolderName: null
+                      phone: '2554444'
+                      email: test@test.com
+                      addressLine1: DSDFD
+                      addressLine2: ''
+                      zipCode: '123456'
+                      city: Example City
+                      country: United States
+                      state: Example State
+                    mandateInfo:
+                      mandateId: null
+                      mandateReceivedStatus: null
+                      existingMandateStatus: null
+                      mandateCreationDate: null
+                      mandateUpdateDate: null
+                      mandateStatus: null
+                      mandateReason: null
+                    id: 4028839f7cc14262017cc1bca9eb0008
+                    type: ACH
+                    isDefault: false
+                    accountKey: 4028839f7ca29000017ca29c1ce8003f
+                    status: Active
+                    lastTransaction: Approved
+                    useDefaultRetryRule: true
+                    bankIdentificationNumber: null
+                    deviceSessionId: null
+                    existingMandate: null
+                    ipAddress: null
+                    lastFailedSaleTransactionDate: null
+                    lastTransactionDateTime: '2021-10-27 05:32:19'
+                    lastTransactionStatus: Approved
+                    maxConsecutivePaymentFailures: null
+                    numConsecutiveFailures: 0
+                    paymentRetryWindow: null
+                    totalNumberOfProcessedPayments: 0
+                    totalNumberOfErrorPayments: 0
+                    createdDate: '2021-10-27 05:32:19'
+                    updatedDate: '2021-11-10 00:50:12'
+                    createdBy: 402881e522cf4f9b0122cf5d82860002
+                    updatedBy: 402881e522cf4f9b0122cf5d82860002
+                    AA_PICKLIST__c: null
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/v1_accounts_{account-key}_payment-methods/getundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_accounts_{account-key}_payment-methods/getundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_accounts_{account-key}_payment-methods/getundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_accounts_{account-key}_payment-methods/getundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_accounts_{account-key}_payment-methods/getundefined

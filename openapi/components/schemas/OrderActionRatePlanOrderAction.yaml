@@ -1,0 +1,21 @@
+description: Represents the processed order action.
+properties:
+  addProduct:
+    $ref: ./OrderActionRatePlanRatePlanOverride.yaml
+  customFields:
+    $ref: ./OrderActionRatePlanOrderActionObjectCustomFields.yaml
+  id:
+    description: The Id of the order action processed in the order.
+    type: string
+  removeProduct:
+    $ref: ./OrderActionRatePlanRemoveProduct.yaml
+  type:
+    description: Type of the order action.
+    enum:
+      - AddProduct
+      - UpdateProduct
+      - RemoveProduct
+    type: string
+  updateProduct:
+    $ref: ./OrderActionRatePlanRatePlanUpdate.yaml
+type: object

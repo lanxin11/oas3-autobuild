@@ -1,0 +1,708 @@
+post:
+  description: >
+    **Note:** This operation is only available if you have [Invoice
+    Settlement](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement)
+    enabled. The Invoice Settlement feature is generally available as of Zuora
+    Billing Release 296 (March 2021). This feature includes Unapplied Payments,
+    Credit and Debit Memo, and Invoice Item Settlement. If you want to enable
+    Invoice Settlement, see [Invoice Settlement Enablement and Checklist
+    Guide](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement/Invoice_Settlement_Migration_Checklist_and_Guide)
+    for more information. 
+
+
+    Creates an ad-hoc debit memo from a product rate plan charge. Zuora supports
+    the creation of debit memos from any type of product rate plan charge. The
+    charges can also have any amount and any charge model, except for discout
+    charge models.
+
+
+    When debit memos are created from product rate plan charges, the specified
+    amount with decimal places is now validated based on the decimal places
+    supported by each currency.
+
+
+    You can create a debit memo only if you have the user permission. See
+    [Billing
+    Roles](https://knowledgecenter.zuora.com/CF_Users_and_Administrators/A_Administrator_Settings/User_Roles/d_Billing_Roles)
+    for more information.
+  summary: Create a debit memo from a charge
+  operationId: POST_DebitMemoFromPrpc
+  tags:
+    - Debit Memos
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETDebitMemoType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: 402890555a87d7f5015a892f2ba10057
+                number: DM00000006
+                accountId: 402890555a7e9791015a7f15fe44001c
+                debitMemoDate: '2017-10-17'
+                targetDate: null
+                dueDate: '2017-11-16'
+                postedOn: null
+                postedById: null
+                status: Draft
+                sourceType: Standalone
+                amount: 50
+                taxAmount: 0
+                totalTaxExemptAmount: 0
+                balance: 50
+                beAppliedAmount: 0
+                autoPay: true
+                comment: the comment
+                referredInvoiceId: null
+                referredCreditMemoId: null
+                transferredToAccounting: 'No'
+                reasonCode: Correcting invoice error
+                excludeItemBillingFromRevenueAccounting: true
+                createdDate: '2017-03-01 17:24:14'
+                createdById: 402881e522cf4f9b0122cf5d82860002
+                updatedDate: '2017-03-01 17:24:14'
+                updatedById: 402881e522cf4f9b0122cf5d82860002
+                cancelledOn: null
+                cancelledById: null
+                latestPDFFileId: null
+                taxStatus: null
+                taxMessage: null
+                billToContactId: null
+                paymentTerm: null
+                success: true
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: zuora-version
+      in: header
+      required: false
+      description: >
+
+        The minor version of the Zuora REST API. See [Minor
+        Version](https://www.zuora.com/developer/api-reference/#section/API-Versions/Minor-Version)
+        for information about REST API version control. 
+
+
+        This header affects the availability of the following request fields:
+
+        * `charges` > `amount`
+
+        * `charges` > `memoItemAmount`
+
+        * `charges` > `chargeId`
+
+        * `charges` > `productRatePlanChargeId`       
+
+        * `charges` > `comment`
+
+        * `charges` > `description`
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/DebitMemoFromChargeType.yaml
+    required: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_debitmemos/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_debitmemos/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_debitmemos/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_debitmemos/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_debitmemos/postundefined
+put:
+  description: >
+    **Note:** This operation is only available if you have [Invoice
+    Settlement](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement)
+    enabled. The Invoice Settlement feature is generally available as of Zuora
+    Billing Release 296 (March 2021). This feature includes Unapplied Payments,
+    Credit and Debit Memo, and Invoice Item Settlement. If you want to enable
+    Invoice Settlement, see [Invoice Settlement Enablement and Checklist
+    Guide](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement/Invoice_Settlement_Migration_Checklist_and_Guide)
+    for more information.
+
+
+    Updates the due date for multiple debit memos in one single request. 
+
+
+    This API operation will be deprecated. You can use the [Update debit
+    memos](https://www.zuora.com/developer/api-reference/#operation/PUT_BulkUpdateDebitMemos)
+    instead, which provides more flexible functionality.
+  summary: Update due dates for debit memos
+  operationId: PUT_UpdateDebitMemosDueDates
+  tags:
+    - Debit Memos
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/PUTBatchDebitMemosRequest.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_debitmemos/putundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_debitmemos/putundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_debitmemos/putundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_debitmemos/putundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_debitmemos/putundefined
+get:
+  description: >
+    **Note:** This operation is only available if you have [Invoice
+    Settlement](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement)
+    enabled. The Invoice Settlement feature is generally available as of Zuora
+    Billing Release 296 (March 2021). This feature includes Unapplied Payments,
+    Credit and Debit Memo, and Invoice Item Settlement. If you want to enable
+    Invoice Settlement, see [Invoice Settlement Enablement and Checklist
+    Guide](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement/Invoice_Settlement_Migration_Checklist_and_Guide)
+    for more information.
+
+
+    Retrieves the information about all debit memos associated with all customer
+    accounts.
+
+
+    ### Filtering
+
+
+    You can use query parameters to restrict the data returned in the response.
+    Each query parameter corresponds to one field in the response body.
+
+
+    If the value of a filterable field is string, you can set the corresponding
+    query parameter to `null` when filtering. Then, you can get the response
+    data with this field value being `null`. 
+
+
+    Examples:
+
+
+    - /v1/debitmemos?status=Posted
+
+
+    - /v1/debitmemos?referredInvoiceId=null&status=Draft
+
+
+    - /v1/debitmemos?status=Posted&type=External&sort=+number
+  summary: List debit memos
+  operationId: GET_DebitMemos
+  tags:
+    - Debit Memos
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETDebitMemoCollectionType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                debitmemos:
+                  - id: 402890555a87d7f5015a892f2ba10057
+                    number: DM00000006
+                    accountId: 402890555a7e9791015a7f15fe44001c
+                    debitMemoDate: '2017-10-17'
+                    targetDate: null
+                    dueDate: '2017-11-16'
+                    postedOn: null
+                    postedById: null
+                    status: Draft
+                    sourceType: Standalone
+                    amount: 50
+                    taxAmount: 0
+                    totalTaxExemptAmount: 0
+                    balance: 50
+                    beAppliedAmount: 0
+                    autoPay: true
+                    comment: the comment
+                    referredInvoiceId: null
+                    transferredToAccounting: 'No'
+                    reasonCode: Correcting invoice error
+                    createdDate: '2017-03-01 17:24:14'
+                    createdById: 402881e522cf4f9b0122cf5d82860002
+                    updatedDate: '2017-03-01 17:24:14'
+                    updatedById: 402881e522cf4f9b0122cf5d82860002
+                    cancelledOn: null
+                    cancelledById: null
+                    latestPDFFileId: 402890555a87d7f5015a892f2c5c0060
+                    taxStatus: null
+                    taxMessage: null
+                    billToContactId: null
+                    paymentTerm: null
+                  - id: 402890555a87d7f5015a89251edc0045
+                    number: DM00000003
+                    accountId: 402890555a7d4022015a7dabf5f60088
+                    debitMemoDate: '2017-11-30'
+                    targetDate: null
+                    dueDate: '2017-12-30'
+                    postedOn: null
+                    postedById: null
+                    status: Draft
+                    sourceType: Standalone
+                    amount: 0.01
+                    taxAmount: 0.01
+                    totalTaxExemptAmount: 0
+                    balance: 0.01
+                    beAppliedAmount: 0
+                    autoPay: true
+                    comment: the comment
+                    referredInvoiceId: 402890555a7d4022015a7dadb3b300a4
+                    transferredToAccounting: 'No'
+                    reasonCode: Charge Dispute
+                    createdDate: '2017-03-01 17:13:15'
+                    createdById: 402881e522cf4f9b0122cf5d82860002
+                    updatedDate: '2017-03-01 17:13:15'
+                    updatedById: 402881e522cf4f9b0122cf5d82860002
+                    cancelledOn: null
+                    cancelledById: null
+                    latestPDFFileId: null
+                    taxStatus: null
+                    taxMessage: null
+                    billToContactId: null
+                    paymentTerm: null
+                  - id: 402890555a87d7f5015a8919e4fe002e
+                    number: DM00000002
+                    accountId: 402890555a7d4022015a7dabf5f60088
+                    debitMemoDate: '2017-03-01'
+                    targetDate: null
+                    dueDate: '2017-03-31'
+                    postedOn: null
+                    postedById: null
+                    status: Draft
+                    sourceType: Standalone
+                    amount: 9
+                    taxAmount: 8
+                    totalTaxExemptAmount: 0
+                    balance: 9
+                    beAppliedAmount: 0
+                    autoPay: true
+                    comment: ''
+                    referredInvoiceId: 402890555a7d4022015a7dadb3b300a4
+                    referredCreditMemoId: null
+                    transferredToAccounting: 'No'
+                    reasonCode: Correcting invoice error
+                    createdDate: '2017-03-01 17:01:00'
+                    createdById: 402881e522cf4f9b0122cf5d82860002
+                    updatedDate: '2017-03-01 17:01:00'
+                    updatedById: 402881e522cf4f9b0122cf5d82860002
+                    cancelledOn: null
+                    cancelledById: null
+                    latestPDFFileId: 402890555a87d7f5015a8919e95d003a
+                    taxStatus: null
+                    taxMessage: null
+                    billToContactId: null
+                    paymentTerm: null
+                  - id: 402890555a7e9791015a87b082940067
+                    number: DM00000001
+                    accountId: 402890555a7e9791015a7f15fe44001c
+                    debitMemoDate: '2017-03-01'
+                    targetDate: null
+                    dueDate: '2017-03-31'
+                    postedOn: null
+                    postedById: null
+                    status: Draft
+                    sourceType: Standalone
+                    amount: 8.02
+                    taxAmount: 0.02
+                    totalTaxExemptAmount: 0
+                    balance: 8.02
+                    beAppliedAmount: 0
+                    autoPay: true
+                    comment: ''
+                    referredInvoiceId: 402890555a7e9791015a7f1756aa0035
+                    referredCreditMemoId: null
+                    transferredToAccounting: 'No'
+                    reasonCode: Correcting invoice error
+                    createdDate: '2017-03-01 10:26:16'
+                    createdById: 402881e522cf4f9b0122cf5d82860002
+                    updatedDate: '2017-03-01 10:45:03'
+                    updatedById: 402881e522cf4f9b0122cf5d82860002
+                    cancelledOn: null
+                    cancelledById: null
+                    latestPDFFileId: 402890555a7e9791015a87b083f00072
+                    taxStatus: null
+                    taxMessage: null
+                    billToContactId: null
+                    paymentTerm: null
+                success: true
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
+    - name: accountId
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `accountId` field.
+      schema:
+        type: string
+    - name: amount
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `amount` field.
+      schema:
+        type: number
+        format: double
+    - name: balance
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `balance` field.
+      schema:
+        type: number
+        format: double
+    - name: beAppliedAmount
+      in: query
+      required: false
+      description: >
+        This parameter filters the response based on the `beAppliedAmount`
+        field.
+      schema:
+        type: number
+        format: double
+    - name: createdById
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `createdById` field.
+      schema:
+        type: string
+    - name: createdDate
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `createdDate` field.
+      schema:
+        type: string
+        format: date-time
+    - name: currency
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `currency` field.
+      schema:
+        type: string
+    - name: debitMemoDate
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `debitMemoDate` field.
+      schema:
+        type: string
+        format: date
+    - name: dueDate
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `dueDate` field.
+      schema:
+        type: string
+        format: date
+    - name: number
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `number` field.
+      schema:
+        type: string
+    - name: referredInvoiceId
+      in: query
+      required: false
+      description: >
+        This parameter filters the response based on the `referredInvoiceId`
+        field.
+      schema:
+        type: string
+    - name: status
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `status` field.
+      schema:
+        type: string
+        enum:
+          - Draft
+          - Posted
+          - Canceled
+          - Error
+          - PendingForTax
+          - Generating
+          - CancelInProgress
+    - name: targetDate
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `targetDate` field.
+      schema:
+        type: string
+        format: date
+    - name: taxAmount
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `taxAmount` field.
+      schema:
+        type: number
+        format: double
+    - name: totalTaxExemptAmount
+      in: query
+      required: false
+      description: >
+        This parameter filters the response based on the `totalTaxExemptAmount`
+        field.
+      schema:
+        type: number
+        format: double
+    - name: updatedById
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `updatedById` field.
+      schema:
+        type: string
+    - name: updatedDate
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `updatedDate` field.
+      schema:
+        type: string
+        format: date-time
+    - name: sort
+      in: query
+      required: false
+      description: >
+        This parameter restricts the order of the data returned in the response.
+        You can use this parameter to supply a dimension you want to sort on.
+
+
+        A sortable field uses the following form: 
+
+
+        *operator* *field_name*
+
+
+        You can use at most two sortable fields in one URL path. Use a comma to
+        separate sortable fields. For example:  *operator* *field_name*,
+        *operator* *field_name*  
+
+
+        *operator* is used to mark the order of sequencing. The operator is
+        optional. If you only specify the sortable field without any operator,
+        the response data is sorted in descending order by this field.
+
+          - The `-` operator indicates an ascending order.
+          - The `+` operator indicates a descending order.
+
+        By default, the response data is displayed in descending order by debit
+        memo number.
+
+
+        *field_name* indicates the name of a sortable field. The supported
+        sortable fields of this operation are as below:
+
+          - number
+          - accountId
+          - debitMemoDate
+          - targetDate
+          - dueDate
+          - amount
+          - taxAmount
+          - totalTaxExemptAmount
+          - balance
+          - beAppliedAmount
+          - referredInvoiceId
+          - createdDate
+          - createdById
+          - updatedDate
+          - updatedById
+
+          
+        Examples:
+
+
+        - /v1/debitmemos?sort=+number
+
+
+        - /v1/debitmemos?status=Processed&sort=-number,+amount
+      schema:
+        type: string
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_debitmemos/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_debitmemos/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_debitmemos/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_debitmemos/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_debitmemos/getundefined

@@ -1,0 +1,119 @@
+put:
+  summary: Close an accounting period
+  operationId: PUT_CloseAccountingPeriod
+  description: >-
+    Close an accounting period by accounting period ID.
+
+
+    Prerequisites
+
+    -------------
+
+    You must have Zuora Finance enabled on your tenant. You must have the Manage
+    Close Process and Run Trial Balance user permissions.
+
+
+    Limitations
+
+    -----------
+
+    * The accounting period cannot already be closed.
+
+    * The accounting period cannot be in the process of running a trial balance.
+
+    * All earlier accounting periods must be closed.
+
+    * There must be no required action items for the accounting period. See
+    Reconcile Transactions Before Closing an Accounting Period for more
+    information.
+
+
+    Notes
+
+    -----
+
+    When you close an accounting period in Zuora, a trial balance is
+    automatically run for that period. A successful response means only that the
+    accounting period is now closed, but does not mean that the trial balance
+    has successfully completed.
+  tags:
+    - Accounting Periods
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: ap-id
+      in: path
+      description: ID of the accounting period you want to close.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_accounting-periods_{ap-id}_close/putundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_accounting-periods_{ap-id}_close/putundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_accounting-periods_{ap-id}_close/putundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_accounting-periods_{ap-id}_close/putundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_accounting-periods_{ap-id}_close/putundefined

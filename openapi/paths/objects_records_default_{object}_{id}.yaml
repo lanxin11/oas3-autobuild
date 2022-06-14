@@ -1,0 +1,579 @@
+get:
+  summary: Retrieve a custom object record
+  description: |
+    Retrieves a record of a given type by ID.
+  operationId: GET_CustomObjectRecordByID
+  tags:
+    - Custom Object Records
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
+    - name: Zuora-Version
+      in: header
+      required: false
+      description: >-
+        API version that determines the response schema. The default version is
+        used if this parameter is not included. Specify `Zuora-Version` in the
+        request header if you expect a specific response schema.
+      schema:
+        type: string
+        format: date
+    - name: object
+      in: path
+      required: true
+      description: Specifies the custom object's API name as object. It is case-sensitive.
+      schema:
+        type: string
+    - name: id
+      in: path
+      required: true
+      description: Id identifier in uuid form
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '200':
+      description: OK
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CustomObjectRecordWithAllFields.yaml
+    '404':
+      description: Not exist
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonErrorResponse.yaml
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/objects_records_default_{object}_{id}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/objects_records_default_{object}_{id}/getundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/objects_records_default_{object}_{id}/getundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/objects_records_default_{object}_{id}/getundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/objects_records_default_{object}_{id}/getundefined
+put:
+  summary: Update a custom object record
+  description: |
+    Updates a record of the given type and ID.
+
+    ## Limitations 
+
+    * The storage of empty strings in records is not supported.
+    * Null values must be formatted as the following example: 
+      ```
+      {
+        "records": [
+          {
+            "fieldName__c": null
+          }
+        ]
+      }
+      ```
+  operationId: PUT_CustomObjectRecord
+  tags:
+    - Custom Object Records
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_If_Match.yaml
+    - name: Zuora-Version
+      in: header
+      required: false
+      description: >-
+        API version that determines the response schema. The default version is
+        used if this parameter is not included. Specify `Zuora-Version` in the
+        request header if you expect a specific response schema.
+      schema:
+        type: string
+        format: date
+    - name: object
+      in: path
+      required: true
+      description: Specifies the custom object's API name as object. It is case-sensitive.
+      schema:
+        type: string
+    - name: id
+      in: path
+      required: true
+      description: Id identifier in uuid form
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/CustomObjectRecordWithOnlyCustomFields.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CustomObjectRecordWithAllFields.yaml
+    '404':
+      description: Object record does not exist
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonErrorResponse.yaml
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/objects_records_default_{object}_{id}/putundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/objects_records_default_{object}_{id}/putundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/objects_records_default_{object}_{id}/putundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/objects_records_default_{object}_{id}/putundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/objects_records_default_{object}_{id}/putundefined
+patch:
+  summary: Partially update a custom object record
+  operationId: Patch_PartialUpdateCustomObjectRecord
+  description: >
+    Updates one or many fields of a custom object record. Patch update uses JSON
+    Merge Patch as specified in [RFC 7386](https://tools.ietf.org/html/rfc7386).
+
+
+    ## Limitations 
+
+
+    * The storage of empty strings in records is not supported.
+
+    * Null values must be formatted as the following example: 
+      ```
+      {
+        "records": [
+          {
+            "fieldName__c": null
+          }
+        ]
+      }
+      ```
+  tags:
+    - Custom Object Records
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
+    - name: Zuora-Version
+      in: header
+      required: false
+      description: >-
+        API version that determines the response schema. The default version is
+        used if this parameter is not included. Specify `Zuora-Version` in the
+        request header if you expect a specific response schema.
+      schema:
+        type: string
+        format: date
+    - name: object
+      in: path
+      required: true
+      description: Specifies the custom object's API name as object. It is case-sensitive.
+      schema:
+        type: string
+    - name: id
+      in: path
+      required: true
+      description: Id identifier in uuid form
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    content:
+      application/merge-patch+json:
+        schema:
+          $ref: ../components/schemas/CustomObjectRecordWithOnlyCustomFields.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CustomObjectRecordWithAllFields.yaml
+    '404':
+      description: Object record does not exist
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonErrorResponse.yaml
+  x-code-samples: []
+delete:
+  summary: Delete a custom object record
+  description: "Deletes a custom object record of the given type and ID.\n\nNote that 200 response will be returned under either of the following conditions:\n* The record is identified and successfully deleted\n* The record could not be found\n\nNote that\_the record is deleted immediately and, therefore, will not be retained upon successful deletion.\n"
+  operationId: Delete_CustomObjectRecordByID
+  tags:
+    - Custom Object Records
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
+    - name: Zuora-Version
+      in: header
+      required: false
+      description: >-
+        API version that determines the response schema. The default version is
+        used if this parameter is not included. Specify `Zuora-Version` in the
+        request header if you expect a specific response schema.
+      schema:
+        type: string
+        format: date
+    - name: object
+      in: path
+      required: true
+      description: Specifies the custom object's API name as object. It is case-sensitive.
+      schema:
+        type: string
+    - name: id
+      in: path
+      required: true
+      description: Id identifier in uuid form
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '200':
+      description: OK
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            type: string
+            description: The URI of the deleted custom object record.
+            format: uri
+            example: >-
+              /objects/records/default/test_custom_object/3a437f0b-fa7a-45bf-a9a5-2187a5a13ec0
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/objects_records_default_{object}_{id}/deleteundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/objects_records_default_{object}_{id}/deleteundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/objects_records_default_{object}_{id}/deleteundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/objects_records_default_{object}_{id}/deleteundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/objects_records_default_{object}_{id}/deleteundefined

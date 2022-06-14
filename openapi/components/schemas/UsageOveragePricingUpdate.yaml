@@ -1,0 +1,11 @@
+allOf:
+  - $ref: ./PriceChangeParams.yaml
+  - properties:
+      includedUnits:
+        description: >
+          A certain quantity of units for free in the overage charge model. It
+          cannot be negative. It must be 0 and above. Decimals are allowed.
+        type: number
+      overagePrice:
+        type: number
+    type: object

@@ -1,0 +1,189 @@
+post:
+  summary: Generate a billing preview
+  operationId: POST_BillingPreview
+  description: >
+
+    Generates a preview of future invoice items for one customer account. Use
+    the BillingPreview call to calculate how much a single customer will be
+    invoiced from the most recent invoice to a specific end of term date in the
+    future.
+
+
+    Additionally, you can use the BillingPreview service to access real-time
+    data on an individual customer's usage consumption. 
+
+
+    The BillingPreview call only calculates taxes for charges in the
+    subscription if you use [Zuora
+    Tax](https://knowledgecenter.zuora.com/Billing/Taxes/A_Zuora_Tax) and the
+    product rate plan charge associated with the invoice item uses the [tax
+    inclusive
+    mode](https://knowledgecenter.zuora.com/Billing/Taxes/A_Zuora_Tax/D_Associate_tax_codes_with_product_charges_and_set_the_tax_mode);
+    otherwise, this call does not calculate taxes.
+
+
+    If you have the Invoice Settlement feature enabled, you can also generate a
+    preview of future credit memo items for one customer account. The Invoice
+    Settlement feature is generally available as of Zuora Billing Release 296
+    (March 2021). This feature includes Unapplied Payments, Credit and Debit
+    Memo, and Invoice Item Settlement. If you want to enable Invoice Settlement,
+    see [Invoice Settlement Enablement and Checklist
+    Guide](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement/Invoice_Settlement_Migration_Checklist_and_Guide)
+    for more information. 
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/PostBillingPreviewParam.yaml
+    required: true
+  tags:
+    - Operations
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/BillingPreviewResult.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                accountId: 402890b75972406c0159724cd4d00011
+                invoiceItems:
+                  - id: 93ac165212294c1a8bef1c8f99121461
+                    subscriptionName: A-S00000001
+                    subscriptionId: 402890b75972406c0159724e2e810029
+                    subscriptionNumber: A-S00000001
+                    serviceStartDate: '2017-05-01'
+                    serviceEndDate: '2017-05-31'
+                    chargeAmount: 100
+                    chargeDescription: ''
+                    chargeName: positive-charge
+                    chargeNumber: C-00000001
+                    chargeId: 402890b75972406c0159724e2eec0031
+                    productName: FA-freshAir
+                    quantity: 1
+                    taxAmount: 0
+                    unitOfMeasure: License
+                    chargeDate: '2017-01-06 16:38:26'
+                    chargeType: Recurring
+                    processingType: Charge
+                    appliedToItemId: null
+                  - id: 3e28d61d442f433797e268e2b7c11eeb
+                    subscriptionName: A-S00000001
+                    subscriptionId: c2d9a5768db440cbbf2709a55c614bed
+                    subscriptionNumber: A-S00000001
+                    serviceStartDate: '2017-05-01'
+                    serviceEndDate: '2017-05-31'
+                    chargeAmount: 10
+                    chargeDescription: ''
+                    chargeName: discount-charge
+                    chargeNumber: C-00000003
+                    chargeId: 402890b75972406c0159724e2eec0031
+                    productName: FA-freshAir
+                    quantity: 0
+                    taxAmount: 0
+                    unitOfMeasure: ''
+                    chargeDate: '2017-01-06 16:38:26'
+                    chargeType: Recurring
+                    processingType: Discount
+                    appliedToItemId: 93ac165212294c1a8bef1c8f99121461
+                creditMemoItems:
+                  - id: cf6326638f3c4ddda3722734aebd7ba7
+                    subscriptionId: 402890b75972406c0159724e2e810029
+                    amount: 50
+                    amountWithoutTax: 50
+                    comment: ''
+                    sku: SKU-00000001
+                    skuName: negative_charge
+                    serviceStartDate: '2017-05-01'
+                    serviceEndDate: '2017-05-31'
+                    unitOfMeasure: License
+                    ratePlanChargeId: 402890b75972406c0159724e2ef10032
+                    quantity: 1
+                    chargeDate: '2017-01-06 16:38:26'
+                    chargeType: Recurring
+                    processingType: Charge
+                    subscriptionNumber: A-S00000001
+                    chargeNumber: C-00000002
+                  - id: 3e28d61d442f433797e268e2b7c11eeb
+                    subscriptionName: A-S00000001
+                    subscriptionId: c2d9a5768db440cbbf2709a55c614bed
+                    subscriptionNumber: A-S00000001
+                    serviceStartDate: '2017-05-01'
+                    serviceEndDate: '2017-05-31'
+                    chargeAmount: 5
+                    chargeDescription: ''
+                    chargeName: discount-charge
+                    chargeNumber: C-00000003
+                    chargeId: 402890b75972406c0159724e2eec0031
+                    productName: FA-freshAir
+                    quantity: 0
+                    taxAmount: 0
+                    unitOfMeasure: ''
+                    chargeDate: '2017-01-06 16:38:26'
+                    chargeType: Recurring
+                    processingType: Discount
+                    appliedToItemId: cf6326638f3c4ddda3722734aebd7ba7
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_operations_billing-preview/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_operations_billing-preview/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_operations_billing-preview/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_operations_billing-preview/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_operations_billing-preview/postundefined

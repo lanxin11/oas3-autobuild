@@ -1,0 +1,141 @@
+get:
+  summary: Retrieve the default payment method of an account
+  operationId: GET_AcountDefaultPaymentMethod
+  description: >
+    Retrieves the default payment method of the specified customer account.
+
+
+    **Note:** This operation also supports retrieving the custom payment method
+    created through the [Open Payment
+    Method](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/MB_Set_up_custom_payment_gateways_and_payment_methods)
+    service.
+  tags:
+    - Accounts
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: account-key
+      in: path
+      description: Account number or account ID.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETPaymentMethodResponseForAccount.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                cardNumber: '************1111'
+                expirationMonth: 11
+                expirationYear: 2027
+                creditCardType: Visa
+                accountHolderInfo:
+                  accountHolderName: John Smith
+                  phone: '86123456789'
+                  email: example@google.com
+                  addressLine1: ABC
+                  addressLine2: EFT
+                  zipCode: '844000'
+                  city: Example City
+                  country: United States
+                  state: Example State
+                mandateInfo:
+                  mitProfileAction: null
+                  mitProfileType: null
+                  mitConsentAgreementSrc: null
+                  mitConsentAgreementRef: null
+                  mitTransactionId: null
+                  mitProfileAgreedOn: null
+                id: 4028839f7d26a155017d26af16ef0001
+                type: CreditCard
+                isDefault: true
+                accountKey: 4028839f7ca29000017ca29c1ce8003f
+                status: Active
+                lastTransaction: Approved
+                useDefaultRetryRule: true
+                bankIdentificationNumber: '411111'
+                deviceSessionId: null
+                existingMandate: null
+                ipAddress: null
+                lastFailedSaleTransactionDate: null
+                lastTransactionDateTime: '2021-11-15 18:59:08'
+                lastTransactionStatus: Approved
+                maxConsecutivePaymentFailures: null
+                numConsecutiveFailures: 0
+                paymentRetryWindow: null
+                totalNumberOfProcessedPayments: 0
+                totalNumberOfErrorPayments: 0
+                createdDate: '2021-11-15 18:59:08'
+                updatedDate: '2021-11-15 18:59:08'
+                createdBy: 402881e522cf4f9b0122cf5d82860002
+                updatedBy: 402881e522cf4f9b0122cf5d82860002
+                AA_PICKLIST__c: null
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/v1_accounts_{account-key}_payment-methods_default/getundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_accounts_{account-key}_payment-methods_default/getundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_accounts_{account-key}_payment-methods_default/getundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_accounts_{account-key}_payment-methods_default/getundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_accounts_{account-key}_payment-methods_default/getundefined

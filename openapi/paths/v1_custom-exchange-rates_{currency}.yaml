@@ -1,0 +1,135 @@
+get:
+  summary: List custom exchange rates by currency
+  operationId: GET_CustomExchangeRates
+  description: >
+    This feature is in **Limited Availability**. If you wish to have access to
+    the feature, submit a request at [Zuora Global
+    Support](http://support.zuora.com/). 
+
+
+    This reference describes how to query custom foreign exchange rates from
+    Zuora. You can use this API method to query exchange rates only if you use a
+    custom exchange rate provider and upload rates with the Import Foreign
+    Exchange Rates mass action. 
+  tags:
+    - Custom Exchange Rates
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: currency
+      in: path
+      description: >
+        The target base currency of the tenant. The exchange rates in the
+        response are calculated in relation to the target currency.
+
+
+        The value must be a three-letter currency code, for example, USD. 
+      required: true
+      schema:
+        type: string
+    - name: startDate
+      in: query
+      description: >
+        Start date of the date range for which you want to get exchange rates.
+
+
+        The date must be in yyyy-mm-dd format, for example, 2016-01-15. The
+        start date cannot be later than the end date.
+      required: true
+      schema:
+        type: string
+    - name: endDate
+      in: query
+      description: >
+        End date of the date range for which you want to get exchange rates.
+
+
+        The date must be in yyyy-mm-dd format, for example, 2016-01-16. The end
+        date can be a maximum of 90 days after the start date.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETCustomExchangeRatesType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+                inverse: false
+                rates:
+                  '2019-04-28':
+                    providerExchangeRateDate: '2019-04-28'
+                    GBP: 1.135239621
+                    USD: 0.889028445
+                  '2019-04-29':
+                    providerExchangeRateDate: '2019-04-29'
+                    GBP: 1.134623962
+                    USD: 0.892140244
+                  '2019-04-30':
+                    providerExchangeRateDate: '2019-04-30'
+                    GBP: 1.134589832
+                    USD: 0.892243287
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_custom-exchange-rates_{currency}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_custom-exchange-rates_{currency}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_custom-exchange-rates_{currency}/getundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_custom-exchange-rates_{currency}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_custom-exchange-rates_{currency}/getundefined

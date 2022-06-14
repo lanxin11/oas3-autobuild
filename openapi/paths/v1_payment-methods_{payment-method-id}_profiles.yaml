@@ -1,0 +1,233 @@
+post:
+  description: >
+    Creates a stored credential profile within a payment method.
+
+
+    The stored credential profile represents a consent agreement that you have
+    established with a customer. When you use the payment method in a
+    transaction, Zuora may include information from the stored credential
+    profile to inform the payment processor that the transaction is related to
+    your pre-existing consent agreement with the customer.
+  summary: Create a stored credential profile
+  operationId: POST_CreateStoredCredentialProfile
+  tags:
+    - Payment Methods
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: payment-method-id
+      in: path
+      required: true
+      description: |
+        ID of a payment method.
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/CreateStoredCredentialProfileRequest.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/ModifiedStoredCredentialProfileResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+                paymentMethodId: 402881836953a3c7016953aec290000d
+                number: 3
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/v1_payment-methods_{payment-method-id}_profiles/postundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_payment-methods_{payment-method-id}_profiles/postundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_payment-methods_{payment-method-id}_profiles/postundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_payment-methods_{payment-method-id}_profiles/postundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_payment-methods_{payment-method-id}_profiles/postundefined
+get:
+  description: |
+    Retrieves the stored credential profiles within a payment method.
+  summary: List stored credential profiles of a payment method
+  operationId: GET_StoredCredentialProfiles
+  tags:
+    - Payment Methods
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: payment-method-id
+      in: path
+      required: true
+      description: |
+        ID of a payment method.
+      schema:
+        type: string
+    - name: includeAll
+      in: query
+      description: >
+        Specifies whether to retrieve all the stored credential profiles within
+        the payment method.
+
+
+        By default, Zuora returns only the stored credential profiles with
+        `Agreed` or `Active` status. If you set this parameter to `true`, Zuora
+        returns all the stored credential profiles.
+      schema:
+        type: boolean
+        default: false
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GetStoredCredentialProfilesResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                profiles:
+                  - paymentMethodId: 402881836953a3c7016953aec290000d
+                    number: 1
+                    brand: Visa
+                    status: Cancelled
+                    type: Recurring
+                    consentAgreementSrc: External
+                    consentAgreementRef: ACCT1338AgreementV1.pdf
+                    agreedOn: '2019-03-06 07:45:55'
+                    activatedOn: '2019-03-06 07:45:55'
+                    cancelledOn: '2019-03-13 07:52:16'
+                    expiredOn: null
+                  - paymentMethodId: 402881836953a3c7016953aec290000d
+                    number: 2
+                    brand: Visa
+                    status: Active
+                    type: Recurring
+                    consentAgreementSrc: External
+                    consentAgreementRef: ACCT1338AgreementV2.pdf
+                    agreedOn: '2019-03-13 07:55:08'
+                    activatedOn: '2019-03-13 07:55:08'
+                    cancelledOn: null
+                    expiredOn: null
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/v1_payment-methods_{payment-method-id}_profiles/getundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_payment-methods_{payment-method-id}_profiles/getundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_payment-methods_{payment-method-id}_profiles/getundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_payment-methods_{payment-method-id}_profiles/getundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_payment-methods_{payment-method-id}_profiles/getundefined

@@ -1,0 +1,58 @@
+example:
+  allowPartialSuccess: true
+  emailTemplates:
+    - active: true
+      bccEmailAddress: user@example.com
+      ccEmailAddress: user@example.com
+      ccEmailType: SpecificEmails
+      description: Email when an account is edited
+      emailBody: >-
+        Dear user,<p>the account <Account.Name> has been edited. </p><p>Example
+        Co. Ltd.</p>
+      emailSubject: Account <Account.Number> has been edited
+      encodingType: UTF8
+      eventTypeName: AccountEdit
+      fromEmailType: TenantEmail
+      fromName: Example Co. Ltd.
+      id: 8500105b9a1045019474652bd81c7ce5
+      isHtml: true
+      name: Account Edit Email
+      replyToEmailType: TenantEmail
+      toEmailAddress: DummyEmailAddress@example.com
+      toEmailType: SpecificEmails
+    - active: true
+      bccEmailAddress: ''
+      ccEmailAddress: user@example.com
+      ccEmailType: SpecificEmails
+      description: Updated Description
+      emailBody: "Dear <BillToContact.FirstName> <BillToContact.LastName>,\r\n\r\nA refund of <Refund.Amount> <Account.Currency> was processed against your credit memo on <Refund.Date>.\r\n\r\nYour new account unapplied credit memo amount is <Account.UnappliedCreditMemoAmount> <Account.Currency> and your account balance is <Account.Balance> <Account.Currency>.\r\n\r\nThank you for your business!"
+      emailSubject: Your credit memo refund was successfully processed
+      encodingType: UTF8
+      eventCategory: 2830
+      fromEmailAddress: support@zuora.com
+      fromEmailType: SpecificEmail
+      fromName: Admin
+      isHtml: true
+      name: Credit Memo Refund Processed Default Email Template
+      replyToEmailAddress: support@zuora.com
+      replyToEmailType: SpecificEmail
+      toEmailAddress: ''
+      toEmailType: BillToContact
+properties:
+  allowPartialSuccess:
+    description: >
+      When set to `false`, the call will fail if one or multiple instances fail
+      to import, and a `200` response is returned if all email templates have
+      been successfully updated.
+
+      When set to `true`, a success (`200`) response is returned if one or more
+      instances have imported successfully. All failed instances are also
+      returned in the response.
+    type: boolean
+  emailTemplates:
+    description: |
+      A container for email templates.
+    items:
+      $ref: ./POSTCreateOrUpdateEmailTemplateRequestFormat.yaml
+    type: array
+type: object

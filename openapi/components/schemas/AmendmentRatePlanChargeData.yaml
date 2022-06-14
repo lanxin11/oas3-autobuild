@@ -1,0 +1,11 @@
+properties:
+  RatePlanCharge:
+    $ref: ./AmendmentRatePlanChargeDataRatePlanCharge.yaml
+  RatePlanChargeTier:
+    description: ''
+    items:
+      $ref: ./AmendmentRatePlanChargeTier.yaml
+    type: array
+required:
+  - RatePlanCharge
+type: object

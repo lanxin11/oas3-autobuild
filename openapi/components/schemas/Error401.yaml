@@ -1,0 +1,9 @@
+properties:
+  code:
+    example: 7101251X
+    format: Int32
+    type: integer
+  message:
+    example: Unauthorized Action
+    type: string
+type: object

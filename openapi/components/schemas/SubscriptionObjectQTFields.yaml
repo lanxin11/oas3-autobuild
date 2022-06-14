@@ -1,0 +1,52 @@
+description: |
+  Container for Subscription fields provided by Zuora Quotes.
+properties:
+  CpqBundleJsonId__QT:
+    description: >
+      The Bundle product structures from Zuora Quotes if you utilize Bundling in
+      Salesforce. Do not change the value in this field.
+    maxLength: 32
+    type: string
+  OpportunityCloseDate__QT:
+    description: >
+      The closing date of the Opportunity. This field is used in Zuora data
+      sources to report on Subscription metrics. If the subscription originated
+      from Zuora Quotes, the value is populated with the value from Zuora
+      Quotes.
+    format: date
+    type: string
+  OpportunityName__QT:
+    description: >
+      The unique identifier of the Opportunity. This field is used in Zuora data
+      sources to report on Subscription metrics. If the subscription originated
+      from Zuora Quotes, the value is populated with the value from Zuora
+      Quotes.
+    maxLength: 100
+    type: string
+  QuoteBusinessType__QT:
+    description: >
+      The specific identifier for the type of business transaction the Quote
+      represents such as New, Upsell, Downsell, Renewal or Churn. This field is
+      used in Zuora data sources to report on Subscription metrics. If the
+      subscription originated from Zuora Quotes, the value is populated with the
+      value from Zuora Quotes.
+    maxLength: 32
+    type: string
+  QuoteNumber__QT:
+    description: >
+      The unique identifier of the Quote. This field is used in Zuora data
+      sources to report on Subscription metrics. If the subscription originated
+      from Zuora Quotes, the value is populated with the value from Zuora
+      Quotes.
+    maxLength: 32
+    type: string
+  QuoteType__QT:
+    description: >
+      The Quote type that represents the subscription lifecycle stage such as
+      New, Amendment, Renew or Cancel. This field is used in Zuora data sources
+      to report on Subscription metrics. If the subscription originated from
+      Zuora Quotes, the value is populated with the value from Zuora Quotes.
+    maxLength: 32
+    type: string
+title: subscriptionFieldsQT
+type: object

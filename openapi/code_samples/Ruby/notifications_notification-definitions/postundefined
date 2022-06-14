@@ -1,0 +1,16 @@
+require 'uri'
+require 'net/http'
+
+url = URI("https://rest.zuora.com/notifications/notification-definitions")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["Authorization"] = 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+request["content-type"] = 'application/json'
+request.body = "{\n    \"active\": true,\n    \"associatedAccount\": \"ParentAccount.Id\",\n    \"callout\": {\n        \"active\": true,\n        \"calloutAuth\": {\n            \"domain\": \"example_domain\",\n            \"password\": \"example_password\",\n            \"preemptive\": true,\n            \"username\": \"example_user\"\n        },\n        \"calloutBaseurl\": \"https://www.example.com/callout/AccountEdit\",\n        \"calloutParams\": {\n            \"AccountName\": \"<Account.Name>\",\n            \"AccountNumber\": \"<Account.AccountNumber>\"\n        },\n        \"calloutRetry\": true,\n        \"description\": \"Callout when an account is edited\",\n        \"eventTypeName\": \"AccountEdit\",\n        \"httpMethod\": \"POST\",\n        \"name\": \"Callout for Account Edited\",\n        \"requiredAuth\": true\n    },\n    \"calloutActive\": true,\n    \"communicationProfileId\": \"6e569e1e05f040eda51a927b140c0ac5\",\n    \"description\": \"Notification sent out when an account is edited\",\n    \"emailActive\": true,\n    \"emailTemplateId\": \"6e569e1e05f040eda51a927b140c0ac6\",\n    \"eventTypeName\": \"AccountEdit\",\n    \"filterRule\": {\n        \"condition\": \"Account.Balance >= _VIP_BALANCE_AMOUNT && Account.Status == _ACCOUNT_STATUS\",\n        \"description\": \"Filter rule to test if an account is a VIP account\",\n        \"parameters\": {\n            \"_ACCOUNT_STATUS\": {\n                \"description\": \"The status of the VIP Account\",\n                \"displayName\": \"VIP Account Status\",\n                \"options\": [\n                    \"Draft\",\n                    \"Active\",\n                    \"Canceled\"\n                ],\n                \"valueType\": \"STRING\"\n            },\n            \"_VIP_BALANCE_AMOUNT\": {\n                \"description\": \"The minimum account balance\",\n                \"displayName\": \"VIP Account Balance\",\n                \"options\": null,\n                \"valueType\": \"BIG_DECIMAL\"\n            }\n        }\n    },\n    \"filterRuleParams\": {\n        \"_ACCOUNT_STATUS\": \"Active\",\n        \"_VIP_ACCOUNT_BALANCE\": \"100000\"\n    },\n    \"name\": \"Account Edit Notification\"\n}"
+
+response = http.request(request)
+puts response.read_body

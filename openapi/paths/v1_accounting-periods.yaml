@@ -1,0 +1,292 @@
+post:
+  summary: Create an accounting period
+  operationId: POST_AccountingPeriod
+  description: >-
+    Creates an accounting period.
+
+    Prerequisites
+
+    -------------
+
+    * You must have Zuora Finance enabled on your tenant.
+
+    * You must have the Create Accounting Period user permission.
+
+
+    Limitations
+
+    -----------
+
+    * When creating the first accounting period on your tenant, the start date
+    must be equal to or earlier than the date of the earliest transaction on the
+    tenant.
+
+    * Start and end dates of accounting periods must be contiguous. For example,
+    if one accounting period ends on January 31, the next period must start on
+    February 1.
+
+    * If you have the Revenue Recognition Package and have enabled the "Monthly
+    recognition over time" revenue recognition model, the accounting period
+    start date and end date must be on the first day and last day of the month,
+    respectively. Note that the start and end dates do not necessarily have to
+    be in the same month.
+  tags:
+    - Accounting Periods
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/POSTAccountingPeriodType.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/POSTAccountingPeriodResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: 7b7181ae547aac1e01547efb61f20162
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_accounting-periods/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_accounting-periods/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_accounting-periods/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_accounting-periods/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_accounting-periods/postundefined
+get:
+  summary: List all accounting periods
+  operationId: GET_AllAccountingPeriods
+  description: Retrieves all accounting periods on your tenant.
+  tags:
+    - Accounting Periods
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize_finance_accounting.yaml
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETAccountingPeriodsType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                accountingPeriods:
+                  - id: 8a8081ae5374904f01538338b66e1005
+                    name: Mar 2016
+                    startDate: '2016-03-01'
+                    endDate: '2016-03-31'
+                    status: Open
+                    runTrialBalanceStatus: Error
+                    runTrialBalanceStart: '2016-03-16 23:25:22'
+                    runTrialBalanceEnd: null
+                    runTrialBalanceErrorMessage: >-
+                      Error creating the trial balance: exchange rate from USD
+                      to GBP on 08/03/2015 is not available.  Please import the
+                      rate and run trial balance again.
+                    fiscalYear: 2016
+                    notes: ''
+                    fileIds:
+                      unprocessedChargesFileId: null
+                      accountsReceivableInvoiceAgingDetailExportFileId: 8a8081ae5374904f01538340273013f3
+                      accountsReceivableAccountAgingDetailExportFileId: 8a8081ae5374904f01538340274a13f4
+                      revenueDetailExcelFileId: 8a8081ae5374904f0153834032e41417
+                      revenueDetailCsvFileId: 8a8081ae5374904f0153834033221418
+                      arRollForwardDetailExportFileId: null
+                      fxRealizedGainAndLossDetailExportFileId: null
+                      fxUnrealizedGainAndLossDetailExportFileId: null
+                    createdOn: '2016-03-16 23:17:25'
+                    createdBy: e20b074746ec48f40147140f51e30a1a
+                    updatedOn: '2016-03-16 23:25:22'
+                    updatedBy: e20b074746ec48f40147140f51e30a1a
+                  - id: 8a8081ae5374904f0153833918af1007
+                    name: Apr 2016
+                    startDate: '2016-04-01'
+                    endDate: '2016-04-30'
+                    status: Open
+                    runTrialBalanceStatus: Error
+                    runTrialBalanceStart: '2016-03-16 23:23:40'
+                    runTrialBalanceEnd: null
+                    runTrialBalanceErrorMessage: null
+                    fiscalYear: 2016
+                    notes: ''
+                    fileIds:
+                      unprocessedChargesFileId: null
+                      accountsReceivableInvoiceAgingDetailExportFileId: 8a8081ae5374904f0153833e9a651363
+                      accountsReceivableAccountAgingDetailExportFileId: 8a8081ae5374904f0153833e9a7a1364
+                      revenueDetailExcelFileId: 8a8081ae5374904f0153833ea2c813ae
+                      revenueDetailCsvFileId: 8a8081ae5374904f0153833ea2d613af
+                      arRollForwardDetailExportFileId: null
+                      fxRealizedGainAndLossDetailExportFileId: null
+                      fxUnrealizedGainAndLossDetailExportFileId: null
+                    createdOn: '2016-03-16 23:17:50'
+                    createdBy: e20b074746ec48f40147140f51e30a1a
+                    updatedOn: '2016-03-16 23:23:40'
+                    updatedBy: e20b074746ec48f40147140f51e30a1a
+                  - id: 8a8081ae5374904f0153833e4590132d
+                    name: May 2016
+                    startDate: '2016-05-01'
+                    endDate: '2016-05-31'
+                    status: Open
+                    runTrialBalanceStatus: Error
+                    runTrialBalanceStart: '2016-05-18 01:42:30'
+                    runTrialBalanceEnd: null
+                    runTrialBalanceErrorMessage: null
+                    fiscalYear: 2016
+                    notes: ''
+                    fileIds:
+                      unprocessedChargesFileId: null
+                      accountsReceivableInvoiceAgingDetailExportFileId: null
+                      accountsReceivableAccountAgingDetailExportFileId: null
+                      revenueDetailExcelFileId: 8a8081ae54c2eabb0154c307e27e0033
+                      revenueDetailCsvFileId: 8a8081ae54c2eabb0154c307e2920034
+                      arRollForwardDetailExportFileId: null
+                      fxRealizedGainAndLossDetailExportFileId: null
+                      fxUnrealizedGainAndLossDetailExportFileId: null
+                    createdOn: '2016-03-16 23:23:29'
+                    createdBy: e20b074746ec48f40147140f51e30a1a
+                    updatedOn: '2016-05-18 01:42:30'
+                    updatedBy: e20b074746ec48f40147140f51e30a1a
+                  - id: e20b0747478025a1014780e489a60002
+                    name: Open-Ended
+                    startDate: '2016-06-01'
+                    endDate: null
+                    status: Open
+                    runTrialBalanceStatus: Pending
+                    runTrialBalanceStart: null
+                    runTrialBalanceEnd: null
+                    runTrialBalanceErrorMessage: null
+                    fiscalYear: 0
+                    notes: null
+                    fileIds:
+                      unprocessedChargesFileId: null
+                      accountsReceivableInvoiceAgingDetailExportFileId: null
+                      accountsReceivableAccountAgingDetailExportFileId: null
+                      revenueDetailExcelFileId: null
+                      revenueDetailCsvFileId: null
+                      arRollForwardDetailExportFileId: null
+                      fxRealizedGainAndLossDetailExportFileId: null
+                      fxUnrealizedGainAndLossDetailExportFileId: null
+                    createdOn: '2014-07-28 23:52:46'
+                    createdBy: 402881e522cf4f9b0122cf5d82860002
+                    updatedOn: '2016-03-16 23:23:29'
+                    updatedBy: e20b074746ec48f40147140f51e30a1a
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_accounting-periods/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_accounting-periods/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_accounting-periods/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_accounting-periods/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_accounting-periods/getundefined

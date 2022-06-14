@@ -1,0 +1,36 @@
+description: The batch action on custom object records
+properties:
+  allowPartialSuccess:
+    default: false
+    description: >
+      Indicates whether the records that pass the schema validation should be
+      updated when not all records in the request pass the schema validation.
+
+
+      This field is applicable only to the batch update actions.
+    example: true
+    type: boolean
+  ids:
+    description: >-
+      Ids of the custom object records that you want to delete. Only applicable
+      when `type` is `delete`.
+    example:
+      - 64edb2a5-2796-4e95-9559-846f8636a01b
+      - dbfb35a3-dd2b-42c9-b8f7-eb36fed1a1e1
+      - 2c2a1810-bfef-4150-84de-50e769978e42
+    items:
+      format: uuid
+      type: string
+    type: array
+  records:
+    $ref: ./CustomObjectRecordBatchUpdateMapping.yaml
+  type:
+    description: The type of the batch action
+    enum:
+      - delete
+      - update
+    type: string
+required:
+  - type
+title: updateDeleteBatchAction
+type: object

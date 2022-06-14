@@ -1,0 +1,142 @@
+post:
+  tags:
+    - Settings
+  summary: Submit settings requests
+  description: >
+    Submit a batch of settings requests by this single API operation.
+
+
+    By default, one batch settings request can contain a maximum of 100 single
+    operation requests, including: 
+
+    * All the single requests in the process batch settings request.
+
+    * All the children requests of the single requests.
+
+
+    This maximum value is configurable.
+  operationId: POST_ProcessSettingsBatchRequest
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/SettingsBatchRequest.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/SettingsBatchResponse.yaml
+          examples:
+            response:
+              value:
+                responses:
+                  - id: '1'
+                    method: GET
+                    url: /billing-rules
+                    children: []
+                    response:
+                      status: 200 OK
+                      body:
+                        oneTimeCreditBack: false
+                        proratePeriodOfRecurringCharge: true
+                        prorateRecurringWeeklyCharges: true
+                        prorateRecurringMonthlyCharges: true
+                        prorateUsageMonthlyCharges: true
+                        prorateUsageWeeklyCharges: true
+                        daysInMonth: UseActualDays
+                        prorationUnit: ProrateByDay
+                        allowAutoPostBillRun: true
+                        autoPostBillRunDefaultValue: true
+                        includeNegativeInvoice: true
+                        includeChildUsage: true
+                        rateUsageIndividually: true
+                        transactionOnSubscription: true
+                        taxAddressOwner: SubscriptionOwner
+                        takeContactSnapshot: true
+                        taxInclusiveRoundingRule: RoundingNetAmount
+                        legalDocumentGeneratingRule: GroupByOriginalSRPC
+                        recurringChargeStyle: Advanced
+                        preGenerateInvoicePdf: false
+                        timeOfDailyInvoice: 0
+                        notSendZeroItemsForTax: false
+                        taxRateChangeOption: OneTaxItem
+                        availableToCreditValidationLevel: HeaderLevel
+                        invoicePastEndOfTerm: false
+                        billToTermEndWhenAutoRenew: true
+                        zuoraTaxRoundingDiffDispersion: false
+                  - id: '2'
+                    method: GET
+                    url: /accounting-rules
+                    children: []
+                    response:
+                      status: 200 OK
+                      body:
+                        allowBlankAccountingCodes: true
+                        allowCreationInClosedPeriod: true
+                        allowUsageInClosedPeriod: true
+                        allowRevenueScheduleNegativeAmounts: true
+                        differentCurrencies: false
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/settings_batch-requests/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/settings_batch-requests/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/settings_batch-requests/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/settings_batch-requests/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/settings_batch-requests/postundefined

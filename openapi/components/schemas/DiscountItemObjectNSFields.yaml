@@ -1,0 +1,27 @@
+description: >
+  Container for discount Item fields provided by the [Zuora Connector for
+  NetSuite](https://www.zuora.com/connect/app/?appId=265).
+properties:
+  IntegrationId__NS:
+    description: >
+      ID of the corresponding object in NetSuite. Only available if you have
+      installed the [Zuora Connector for
+      NetSuite](https://www.zuora.com/connect/app/?appId=265).
+    maxLength: 255
+    type: string
+  IntegrationStatus__NS:
+    description: >
+      Status of the invoice item's synchronization with NetSuite. Only available
+      if you have installed the [Zuora Connector for
+      NetSuite](https://www.zuora.com/connect/app/?appId=265).
+    maxLength: 255
+    type: string
+  SyncDate__NS:
+    description: >
+      Date when the invoice item was synchronized with NetSuite. Only available
+      if you have installed the [Zuora Connector for
+      NetSuite](https://www.zuora.com/connect/app/?appId=265).
+    maxLength: 255
+    type: string
+title: discountItemFieldsNS
+type: object

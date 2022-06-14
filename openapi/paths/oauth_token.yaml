@@ -1,0 +1,144 @@
+post:
+  tags:
+    - OAuth
+  summary: Create an OAuth token
+  operationId: createToken
+  description: >
+    Creates a bearer token that enables an OAuth client to authenticate with the
+    Zuora REST API. The OAuth client must have been created using the Zuora UI.
+    See
+    [Authentication](https://www.zuora.com/developer/api-reference/#section/Authentication)
+    for more information.
+
+
+    **Note:** When using this operation, do not set any authentication headers
+    such as `Authorization`, `apiAccessKeyId`, or `apiSecretAccessKey`.
+
+
+    You should not use this operation to generate a large number of bearer
+    tokens in a short period of time; each token should be used until it
+    expires. If you receive a 429 Too Many Requests response when using this
+    operation, reduce the frequency of requests. This endpoint is rate limited
+    by IP address. The rate limit is 100 requests per minute.
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+  requestBody:
+    content:
+      application/x-www-form-urlencoded:
+        schema:
+          type: object
+          properties:
+            client_id:
+              description: |
+                The Client ID of the OAuth client.
+              type: string
+              minLength: 36
+              maxLength: 36
+            client_secret:
+              description: >
+                The Client Secret that was displayed when the OAuth client was
+                created.
+              type: string
+              maxLength: 42
+            grant_type:
+              description: >
+                The OAuth grant type that will be used to generate the token.
+                The value of this parameter must be `client_credentials`.
+              type: string
+              enum:
+                - client_credentials
+          required:
+            - client_id
+            - client_secret
+            - grant_type
+    required: true
+  responses:
+    '200':
+      headers:
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+        X-RateLimit-Limit-minute:
+          description: >
+            The rate limit of this operation, in requests per minute. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: integer
+        X-RateLimit-Remaining-minute:
+          description: >
+            The number of requests that you may make in the next minute. See
+            [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: integer
+      description: OK
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/tokenResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                access_token: c652cbc0ea384b9f81856a93a2a74538
+                token_type: bearer
+                expires_in: 3599
+                scope: >-
+                  user.7c4d5433dc234c369a01b9719ecd059f
+                  entity.1a2b7a37-3e7d-4cb3-b0e2-883de9e766cc
+                  entity.c92ed977-510c-4c48-9b51-8d5e848671e9 service.echo.read
+                  tenant.19
+                jti: c652cbc0ea384b9f81856a93a2a74539
+    '429':
+      headers:
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+        X-RateLimit-Limit-minute:
+          description: >
+            The rate limit of this operation, in requests per minute. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: integer
+        X-RateLimit-Remaining-minute:
+          description: >
+            The number of requests that you may make in the next minute. See
+            [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: integer
+      description: Too Many Requests
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/oauth_token/postundefined

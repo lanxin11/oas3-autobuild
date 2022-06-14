@@ -1,0 +1,113 @@
+get:
+  summary: List revenue items by charge revenue summary number
+  operationId: GET_RevenueItemsByChargeRevenueSummaryNumber
+  description: >
+    This REST API reference describes how to get the details for each revenue
+    item in a charge revenue summary by specifying the charge revenue summary
+    number. Request and response field descriptions and sample code are
+    provided.
+  tags:
+    - Revenue Items
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize_finance_accounting.yaml
+    - name: crs-number
+      in: path
+      description: The charge revenue summary number.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETRevenueItemsType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                revenueItems:
+                  - accountingPeriodName: Sep'2013
+                    isAccountingPeriodClosed: false
+                    amount: 35
+                    currency: USD
+                    accountingPeriodStartDate: '2013-09-01'
+                    accountingPeriodEndDate: '2013-09-30'
+                  - accountingPeriodName: Oct'2013
+                    isAccountingPeriodClosed: false
+                    amount: 50
+                    currency: USD
+                    accountingPeriodStartDate: '2013-10-01'
+                    accountingPeriodEndDate: '2013-10-31'
+                  - accountingPeriodName: Open-Ended
+                    isAccountingPeriodClosed: false
+                    amount: 150
+                    currency: USD
+                    accountingPeriodStartDate: '2013-12-11'
+                    accountingPeriodEndDate: null
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/v1_revenue-items_charge-revenue-summaries_{crs-number}/getundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_revenue-items_charge-revenue-summaries_{crs-number}/getundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_revenue-items_charge-revenue-summaries_{crs-number}/getundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_revenue-items_charge-revenue-summaries_{crs-number}/getundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_revenue-items_charge-revenue-summaries_{crs-number}/getundefined

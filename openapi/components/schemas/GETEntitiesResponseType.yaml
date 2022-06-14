@@ -1,0 +1,10 @@
+properties:
+  entities:
+    description: Container for one or more entities in a multi-entity hierarchy.
+    items:
+      $ref: ./GETEntitiesType.yaml
+    type: array
+  success:
+    description: Returns `true` if the request is successful.
+    type: boolean
+type: object

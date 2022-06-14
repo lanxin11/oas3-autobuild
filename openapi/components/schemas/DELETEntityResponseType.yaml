@@ -1,0 +1,5 @@
+properties:
+  success:
+    description: Returns `true` if the request is successful.
+    type: boolean
+type: object

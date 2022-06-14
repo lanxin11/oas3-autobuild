@@ -1,0 +1,35 @@
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('https://rest.zuora.com/v1/object/taxation-item');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'content-type' => 'application/json',
+  'Authorization' => 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+));
+
+$request->setBody('{
+    "AccountingCode": "Usage Revenue",
+    "ExemptAmount": 50,
+    "InvoiceItemId": "2c93808457d787030157e0306cd43a88",
+    "Jurisdiction": "test",
+    "LocationCode": "code - 001",
+    "Name": "test",
+    "TaxAmount": 3,
+    "TaxCode": "taxcode",
+    "TaxCodeDescription": "description",
+    "TaxDate": "2016-10-20",
+    "TaxMode": "TaxExclusive",
+    "TaxRate": 3,
+    "TaxRateDescription": "test",
+    "TaxRateType": "FlatFee"
+}');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}

@@ -1,0 +1,31 @@
+properties:
+  bankABACode:
+    description: >
+      The nine-digit routing number or ABA number used by banks. This field is
+      only required if the `type` field is set to `ACH`.
+    type: string
+  bankAccountName:
+    description: >
+      The name of the account holder, which can be either a person or a company.
+      This field is only required if the `type` field is set to `ACH`.
+    type: string
+  bankAccountNumber:
+    description: >
+      The bank account number associated with the ACH payment. This field is
+      only required if the `type` field is set to `ACH`.
+    type: string
+  bankAccountType:
+    description: >
+      The type of bank account associated with the ACH payment. This field is
+      only required if the `type` field is set to `ACH`.
+    enum:
+      - BusinessChecking
+      - Checking
+      - Saving
+    type: string
+  bankName:
+    description: >
+      The name of the bank where the ACH payment account is held. This field is
+      only required if the `type` field is set to `ACH`.
+    type: string
+type: object

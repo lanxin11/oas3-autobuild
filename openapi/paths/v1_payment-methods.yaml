@@ -1,0 +1,334 @@
+post:
+  summary: Create a payment method
+  operationId: POST_PaymentMethods
+  description: >
+    You can use this operation to create either a payment method associated with
+    a specific customer account, or an orphan payment method that is not
+    associated with any customer account. The orphan payment method must be
+    associated with a customer account within 10 days. Otherwise, it will be
+    deleted.
+
+
+    This operation supports the payment methods listed below.
+
+
+    ### PayPal Express Checkout
+
+    The following request body fields are specific to this payment method:
+
+    * `BAID` (required)
+
+    * `email` (required)
+
+
+    ### PayPal Native Express Checkout
+
+    The following request body fields are specific to this payment method:
+
+    * `BAID` (required)
+
+    * `email` (optional)
+
+
+    ### PayPal Adaptive
+
+    The following request body fields are specific to this payment method:
+
+    * `preapprovalKey` (required)
+
+    * `email` (required)
+
+
+    ### Credit Card
+
+    The following request body fields are applicable to this payment method:
+
+    * `cardHolderInfo` (`cardHolderName` required)
+
+    * `cardNumber` (required)
+
+    * `cardType` (required)
+
+    * `expirationMonth` (required)
+
+    * `expirationYear` (required)
+
+    * `mitConsentAgreementRef`
+
+    * `mitConsentAgreementSrc`
+
+    * `mitNetworkTransactionId`
+
+    * `mitProfileAction`
+
+    * `mitProfileType`
+
+    * `mitProfileAgreedOn`
+
+    * `securityCode`
+
+    * `checkDuplicated`
+
+    * `mandateInfo`
+
+
+    When creating a credit card payment method, it is recommended to enable [the
+    support for stored credential
+    transactions](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/L_Payment_Methods/Stored_credential_transactions)
+    for this payment method. Specify the [required
+    fields](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/L_Payment_Methods/Stored_credential_transactions/Configuration_procedures/Create_a_new_payment_method)
+    to enable the support.
+
+
+    ### Credit Card (CC) Reference Transaction
+
+    The following request body fields are applicable to this payment method:
+
+    * `tokenId` (required)
+
+    * `secondTokenId`
+
+    * `creditCardMaskNumber`
+
+    * `mandateInfo`
+
+
+    ### ACH
+
+    The following request body fields are applicable to this payment method:
+
+    * `bankABACode` (required)
+
+    * `bankAccountName` (required)
+
+    * `bankAccountNumber` (required)
+
+    * `bankAccountType` (required)
+
+    * `bankName` (required)
+
+    * `addressLine1`
+
+    * `addressLine2`
+
+    * `phone`
+
+    * `email`
+
+    * `city`
+
+    * `country`
+
+    * `state`
+
+    * `zipCode`
+
+    * `mandateInfo`
+
+
+    ### SEPA
+
+    The following request body fields are applicable to this payment method:
+
+    * `IBAN` (required)
+
+    * `accountHolderInfo` (required)
+
+    * `businessIdentificationCode`
+
+    * `mandateInfo`
+
+
+    ### Betalingsservice (Direct Debit DK)
+
+    The following request body fields are applicable to this payment method:
+
+    * `accountNumber` (required)
+
+    * `identityNumber` (required)
+
+    * `bankCode` (required)
+
+    * `accountHolderInfo` (required)
+
+    * `mandateInfo`
+
+
+    ### Autogiro (Direct Debit SE)
+
+    The following request body fields are applicable to this payment
+    method:        
+
+    * `accountNumber` (required)
+
+    * `identityNumber` (required)
+
+    * `branchCode` (required)
+
+    * `accountHolderInfo` (required) 
+
+    * `mandateInfo`
+
+
+    ### Bacs (Direct Debit UK)
+
+    The following request body fields are applicable to this payment
+    method:        
+
+    * `accountNumber` (required)
+
+    * `bankCode` (required)
+
+    * `accountHolderInfo` (required)
+
+    * `mandateInfo`
+
+
+    ### Becs (Direct Entry AU)
+
+    The following request body fields are applicable to this payment
+    method:        
+
+    * `accountNumber` (required)
+
+    * `branchCode` (required)
+
+    * `accountHolderInfo` (required)
+
+    * `mandateInfo`
+
+
+    ### Becsnz (Direct Debit NZ)
+
+    The following request body fields are applicable to this payment
+    method:        
+
+    * `accountNumber` (required)
+
+    * `bankCode` (required)
+
+    * `branchCode` (required)
+
+    * `accountHolderInfo` (required)
+
+    * `mandateInfo`
+
+
+    ### PAD (Pre-Authorized Debit)
+
+    The following request body fields are applicable to this payment method:
+
+    * `accountNumber` (required)
+
+    * `bankCode` (required)
+
+    * `branchCode` (required)
+
+    * `accountHolderInfo` (required)
+
+    * `mandateInfo`
+
+
+    ### Apple Pay on Adyen Integration v2.0
+
+    See [Set up Adyen Apple
+    Pay](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/L_Payment_Methods/Payment_Method_Types/Apple_Pay_on_Web/Set_up_Adyen_Apple_Pay)
+    for details.
+
+
+    ### Google Pay on Adyen Integration v2.0
+
+    This feature is in the Early Adopter phase. See [Set up Adyen Google
+    Pay](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/L_Payment_Methods/Payment_Method_Types/Set_up_Adyen_Google_Pay)
+    for details.
+
+
+    ### Custom payment methods
+
+    With the support of Universal Payment Connector (UPC) and Open Payment
+    Method (OPM) services, you can create custom payment methods by using the
+    fields defined in a definition file for this type of custom payment method.
+    See [Set up custom payment gateways and payment
+    methods](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/MB_Set_up_custom_payment_gateways_and_payment_methods)
+    for details.
+  tags:
+    - Payment Methods
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/POSTPaymentMethodRequest.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/POSTPaymentMethodResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: 2c92a09650a7a80a0150ab50a5b746bd
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_payment-methods/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_payment-methods/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_payment-methods/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_payment-methods/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_payment-methods/postundefined

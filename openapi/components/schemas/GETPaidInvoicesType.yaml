@@ -1,0 +1,16 @@
+properties:
+  appliedPaymentAmount:
+    description: |
+      Amount of the payment applied to this invoice.
+    format: decimal
+    type: string
+  invoiceId:
+    description: |
+      Invoice ID.
+    type: string
+  invoiceNumber:
+    description: |
+      Invoice number.
+    type: string
+title: paidInvoices
+type: object

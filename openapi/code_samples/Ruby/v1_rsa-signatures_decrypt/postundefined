@@ -1,0 +1,16 @@
+require 'uri'
+require 'net/http'
+
+url = URI("https://rest.zuora.com/v1/rsa-signatures/decrypt")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["Authorization"] = 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+request["content-type"] = 'application/json'
+request.body = "{\n    \"method\": \"POST\",\n    \"publicKey\": \"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmWRFTwxQOqaG4JDZSQF/NJWvCDoSXm3TYilNzoN8nBbuvhKa7SZBBS+VP6rFqcbIU38Fu+Rf09vqyYOxuasPJe7yhqeOiStWB/aCPLhwXBeKt37L/qkwpNOKb1FETtUgrc+UjbtT0pnl55wCfi+Ik//X5SQi0B+c0ei1DQv99qmPJJErrhnBtdxeaWAT0EYAo42AOQ5cp0UWDY6OdOYL6+RyFOUFIs1yEgtfg4VMMSpSOKBOhYclQYuSC7nBF5Cc18ydtzsBpf7l49gCLTFzG45NCDAocada8KihFNpGXbauV9V4EPRD4lofaXdsXJ5Tw8/+KCsrUlvIQI3vcEv9LQIDAQAB\",\n    \"signature\": \"BeNYuHFkp/sbfm3clYyCkKEqd7XVTRDOJ1/5rL0tpkqxiSq+maqYkDz5kA+lN64ipoefQuJ7Rdm5TpICErufeJfa2sfTmGARDJ0hr+StXfLsIxHmDoNH5dqcXv3W6MR4kaljEqPVuhzGQ0We98DG52JcHWqqN53oHwTyuZuXocQqnmiE23IPm8UrU3g4hX/OLat0R81wDQ1SslZ+4pnqlncpTpopCK4FxeG3B0gYMhZcYd17Cmf0N3tEHVXHDlJIm4rOx0OVT+YBnjbKYLM0jxYu7PRKRis+yzN1BoappOEB0gmPjznIeiYF0u/fJdZWoEwK7d9mrfJeOBbpFyRoHA==\"\n}"
+
+response = http.request(request)
+puts response.read_body

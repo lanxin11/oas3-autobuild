@@ -1,0 +1,48 @@
+properties:
+  amount:
+    description: |
+      The total amount of the newly generated payment.
+
+      **Note:** This field is only available if `type` is `Payment`.
+    type: number
+  appliedAmount:
+    description: |
+      The amount allocated to this data record.
+    type: number
+  errorCode:
+    description: |
+      The error code of the response.
+
+      **Note:** This field is only available if `type` is `Payment`.
+    type: string
+  errorMessage:
+    description: |
+      The detailed information of the error response.
+
+      **Note:** This field is only available if `type` is `Payment`.
+    type: string
+  id:
+    description: |
+      The ID of the current transaction.
+    type: string
+  status:
+    description: |
+      The status of the newly generated payment.
+
+      **Note:** This field is only available if `type` is `Payment`.
+    enum:
+      - Processed
+      - Processing
+      - Error
+    type: string
+  type:
+    description: |
+      The type of the current transaction.
+    enum:
+      - Payment
+      - CreditMemo
+      - UnappliedPayment
+      - CreditBalanceAdjustment
+    type: string
+title: payment run transaction
+type: object

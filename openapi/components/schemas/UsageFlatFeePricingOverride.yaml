@@ -1,0 +1,12 @@
+allOf:
+  - $ref: ./PriceChangeParams.yaml
+  - properties:
+      listPrice:
+        description: |
+          Price of the charge.
+        type: number
+    type: object
+description: >
+  Pricing information about a usage charge that uses the "flat fee" charge
+  model. In this charge model, the charge has a fixed price.
+title: usageFlatFee

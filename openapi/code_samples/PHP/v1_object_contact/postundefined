@@ -1,0 +1,39 @@
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('https://rest.zuora.com/v1/object/contact');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'content-type' => 'application/json',
+  'Authorization' => 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+));
+
+$request->setBody('{
+    "AccountId": "2c93808457d787030157e0321fdf4fab",
+    "Address1": "312 2nd Ave W",
+    "City": "Seattle",
+    "Country": "United States",
+    "Description": "desc",
+    "Fax": "123456",
+    "FirstName": "FN1476935164020",
+    "HomePhone": "86123456789",
+    "LastName": "LN1476935164020",
+    "MobilePhone": "8613312345678",
+    "NickName": "this is nick name",
+    "OtherPhone": "11111111111111111",
+    "OtherPhoneType": "Work",
+    "PersonalEmail": "home@example.com",
+    "PostalCode": "98119",
+    "State": "Washington",
+    "TaxRegion": "CA",
+    "WorkEmail": "work@example.com"
+}');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}

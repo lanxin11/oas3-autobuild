@@ -1,0 +1,16 @@
+require 'uri'
+require 'net/http'
+
+url = URI("https://rest.zuora.com/v1/orders/{orderNumber}/customFields")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Put.new(url)
+request["Authorization"] = 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+request["content-type"] = 'application/json'
+request.body = "{\n    \"customFields\": {\n        \"order_cf__c\": \"order custom fields\"\n    },\n    \"subscriptions\": [\n        {\n            \"orderActions\": [\n                {\n                    \"customFields\": {\n                        \"order_action_cf__c\": \"Order action custom fields\",\n                        \"order_action_undex__c\": \"Order action custom fields\"\n                    },\n                    \"sequence\": 0\n                }\n            ],\n            \"subscriptionNumber\": \"S-00005\"\n        }\n    ]\n}"
+
+response = http.request(request)
+puts response.read_body

@@ -1,0 +1,122 @@
+post:
+  summary: Perform a mass action
+  operationId: POST_MassUpdater
+  description: >
+    Describes how to perform a mass action through the REST API. 
+
+
+    Using this API method, you send a multipart/form-data request containing a
+    `.csv` file with data about the mass action you want to perform. Zuora
+    returns a key and then asynchronously processes the mass action. You can use
+    the key to get details about the result of the mass action.
+
+
+    If you want to use this operation to perform the Mass Payment Upload (MPU)
+    mass action, see [Mass Payment
+    Upload](https://knowledgecenter.zuora.com/Billing/Finance/Mass_Updater/Mass_Payment_Upload)
+    for more information.
+  tags:
+    - Mass Updater
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          type: object
+          properties:
+            file:
+              description: >
+                File containing data about the mass action you want to perform.
+                The file requirements are the same as when uploading a file
+                through the Mass Updater in the Zuora UI. The file must be a
+                `.csv` file or a zipped `.csv` file.
+
+
+                The maximum file size is 4 MB.
+
+
+                The data in the file must be formatted according to the mass
+                action type you want to perform.
+              type: string
+              format: binary
+            params:
+              description: >
+                Container for the following fields. You must format this
+                parameter as a JSON object.
+
+
+                * `actionType` (string, **Required**) - Type of mass action you
+                want to perform. The following mass actions are supported:
+                `UpdateAccountingCode`, `CreateRevenueSchedule`,
+                `UpdateRevenueSchedule`, `DeleteRevenueSchedule`,
+                `ImportFXRate`, and `MPU`.
+
+
+                * `checksum` (string) - An MD5 checksum that is used to validate
+                the integrity of
+                  the uploaded file. The checksum is a 32-character string.
+              type: string
+          required:
+            - file
+            - params
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/POSTMassUpdateResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+                bulkKey: 402892f04c97b89a014c97bb30a50003
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_bulk/postundefined

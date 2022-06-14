@@ -1,0 +1,15 @@
+properties:
+  reasons:
+    items:
+      properties:
+        code:
+          description: |
+            The error code of response.
+          type: string
+        message:
+          description: |
+            The detail information of the error response.
+          type: string
+      type: object
+    type: array
+type: object

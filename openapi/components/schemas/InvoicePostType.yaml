@@ -1,0 +1,13 @@
+allOf:
+  - properties:
+      id:
+        description: |
+          The ID of the invoice to be posted.
+        type: string
+      invoiceDate:
+        description: >
+          The date that appears on the invoice being created, in `yyyy-mm-dd`
+          format. The value cannot fall in a closed accounting period.
+        format: date
+        type: string
+    type: object

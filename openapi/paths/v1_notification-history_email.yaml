@@ -1,0 +1,170 @@
+get:
+  summary: List email notification histories
+  operationId: GET_EmailHistory
+  description: >
+    Describes how to get a notification history for notification emails.
+
+
+
+    ## Notes
+
+    Request parameters and their values may be appended with a "?" following the
+    HTTPS GET request.  Additional request parameter are separated by "&". 
+
+
+    For example:
+
+
+    `GET
+    https://rest.zuora.com/v1/notification-history/email?startTime=2015-01-12T00:00:00&endTime=2015-01-15T00:00:00&failedOnly=false&eventCategory=1000&pageSize=1`
+  tags:
+    - Notifications
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
+    - name: accountId
+      in: query
+      description: >-
+        ID of an account. By specifying this query parameter, you can filter
+        email notification histories by account.
+      schema:
+        type: string
+    - name: endTime
+      in: query
+      description: >-
+        The end date and time of records to be returned. Defaults to now. Use
+        format yyyy-MM-ddTHH:mm:ss. The maximum date range (endTime - startTime)
+        is three days.
+      required: false
+      schema:
+        type: string
+        format: date-time
+    - name: startTime
+      in: query
+      description: >-
+        The initial date and time of records to be returned. Defaults to (end
+        time - 1 day). Use format yyyy-MM-ddTHH:mm:ss. The maximum date range
+        (endTime - startTime) is three days.
+      required: false
+      schema:
+        type: string
+        format: date-time
+    - name: objectId
+      in: query
+      description: |
+        The Id of an object that triggered an email notification.
+      required: false
+      schema:
+        type: string
+    - name: failedOnly
+      in: query
+      description: >
+        If `true`, only returns failed records. When `false`, returns all
+        records in the given date range. Defaults to `true` when not specified.
+      required: false
+      schema:
+        type: boolean
+    - name: eventCategory
+      in: query
+      description: >
+        Category of records to be returned by event category.
+
+
+        The following formats are supported:
+
+        * `{Event Type Namespace}:{Event Type Name}` if the Custom Events
+        feature is enabled in your tenant. For example:
+        `user.notification:NewSubscriptionCreated`.
+
+        * Numeric code of the event category if the Custom Events feature is not
+        enabled in your tenant. For example, `1210`. See [Event Category
+        Code](https://knowledgecenter.zuora.com/DC_Developers/AA_REST_API/Event_Categories_for_Notification_Histories)
+        for more information.
+      required: false
+      schema:
+        type: number
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETEmailHistoryVOsType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                emailHistories:
+                  - accountId: 2c9e8084769a87be0176f0cfa138001e
+                    result: OK
+                    errorMessage: null
+                    eventCategory: 1210
+                    notification: New Subscription Created
+                    subject: New subscription A-S00000003 was created and activated
+                    toEmail: smith@example.com
+                    fromEmail: no-reply@example.com
+                    cc: bob@example.com,chris@example.com
+                    bcc: ceo@example.com,cto@example.com
+                    replyTo: supportexample.com
+                    sendTime: '2015-01-13T03:31:43'
+                nextPage: >-
+                  https://localhost:8080/apps/v1/notification-history/email?page=2&pageSize=1&startTime=2015-01-12T00:00:00&endTime=2015-01-15T00:00:00&failedOnly=false&eventCategory=1000
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_notification-history_email/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_notification-history_email/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_notification-history_email/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_notification-history_email/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_notification-history_email/getundefined

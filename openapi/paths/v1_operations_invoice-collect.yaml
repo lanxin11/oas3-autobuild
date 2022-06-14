@@ -1,0 +1,176 @@
+post:
+  summary: Invoice and collect
+  operationId: POST_TransactionInvoicePayment
+  description: >
+    Generates and posts invoices and credit memos and collects payments for
+    posted invoices. Credit memos are only available if you have the Invoice
+    Settlement feature enabled and negative charges exist. Credit memos will not
+    be applied to invoices. If draft invoices and credit memos exist when you
+    run this operation, this operation will post the invoices and credit memos.
+    Note that draft credit memos created from an invoice or a product rate plan
+    charge will not be posted.
+
+
+    You can use this operation to generate invoices and collect payments on the
+    posted invoices,
+     or else simply collect payment on a specified existing
+    invoice. The customer's default payment method is used, and the full
+
+    amount due is collected. The operation depends on the parameters you
+
+    specify.
+
+
+    - To generate one or more new invoices for that customer and collect
+
+    payment on the generated and other unpaid invoice(s), leave the
+    **invoiceId** field empty. 
+
+
+    - To collect payment on an existing invoice, specify the invoice ID. 
+
+
+
+    The operation is atomic; if any part is unsuccessful, the entire
+
+    operation is rolled back.
+
+
+    When an error occurs, gateway reason codes and error messages are returned
+    the error response of this operation. The following items are some gateway
+    response code examples.
+
+
+    - Orbital: `05 Do Not Honor`; `14 Invalid Credit Card Number`
+
+    - Vantiv: `301 Invalid Account Number`; `304 Lost/Stolen Card`  
+
+    - CyberSource2: `202 Expired card`; `231 Invalid account number`
+
+
+    For more reason code information, see the corresponding payment gateway
+    documentation. 
+
+
+
+    ## Notes
+
+
+    Timeouts may occur when using this method on an account that
+
+    has an extremely high number of subscriptions.
+  tags:
+    - Operations
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: zuora-version
+      in: header
+      required: false
+      description: >
+
+        The minor version of the Zuora REST API. 
+
+
+        You need to set this parameter if you use the following fields:
+
+        * documentDate
+
+        * targetDate            
+
+
+        If you have the Invoice Settlement feature enabled, you need to specify
+        this parameter. Otherwise, an error is returned.
+
+
+
+        See [Zuora REST API
+        Versions](https://www.zuora.com/developer/api-reference/#section/API-Versions)
+        for more information.
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/POSTInvoiceCollectType.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/POSTInvoiceCollectResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                invoices:
+                  - invoiceId: 4028925a4cb74ec9014cb7540988002e
+                    invoiceNumber: INV00000091
+                    invoiceAmount: 801.73
+                creditMemos:
+                  - id: 402890555a7e9791015a879f064a0054
+                    memoNumber: CM00000012
+                    memoAmount: 801.73
+                paymentId: 402892053e100406013e1024ab7c00e3
+                amountCollected: 801.73
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_operations_invoice-collect/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_operations_invoice-collect/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_operations_invoice-collect/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_operations_invoice-collect/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_operations_invoice-collect/postundefined

@@ -1,0 +1,8 @@
+properties:
+  orderLineItems:
+    items:
+      $ref: ./PostOrderLineItemUpdateType.yaml
+    type: array
+  processingOptions:
+    $ref: ./ProcessingOptions.yaml
+type: object

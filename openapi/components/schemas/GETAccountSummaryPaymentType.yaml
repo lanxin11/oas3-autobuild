@@ -1,0 +1,31 @@
+properties:
+  effectiveDate:
+    description: |
+      Effective date as `yyyy-mm-dd`.
+    format: date
+    type: string
+  id:
+    description: |
+      Payment ID.
+    type: string
+  paidInvoices:
+    description: |
+      Container for paid invoices for this subscription.
+    items:
+      $ref: ./GETAccountSummaryPaymentInvoiceType.yaml
+    type: array
+  paymentNumber:
+    description: |
+      Payment number.
+    type: string
+  paymentType:
+    description: |
+      Payment type; possible values are: `External`, `Electronic`.
+    type: string
+  status:
+    description: >
+      Payment status. Possible values are: `Draft`, `Processing`, `Processed`,
+      `Error`, `Voided`, `Canceled`, `Posted`.
+    type: string
+title: payments
+type: object

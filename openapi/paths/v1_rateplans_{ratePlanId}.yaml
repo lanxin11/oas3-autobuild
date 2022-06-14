@@ -1,0 +1,155 @@
+get:
+  summary: Retrieve a rate plan
+  operationId: GET_RatePlan
+  description: >
+
+    Retrieves the detailed information about a specific subscription rate plan.
+
+
+    * If you have the
+    [Orders](https://knowledgecenter.zuora.com/BC_Subscription_Management/Orders/AA_Overview_of_Orders#Orders)
+    feature enabled, this operation retrieves information about a subscription
+    rate plan and the related order that has amended the rate plan.
+
+
+    * If you have the [Orders
+    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
+    feature enabled, this operation retrieves information about a subscription
+    rate plan and the related order and amendment that have amended the rate
+    plan.
+
+
+    * If you are an existing Zuora Subscribe and Amend customer, this operation
+    retrieves information about a subscription rate plan and the related
+    amendment that has amended the rate plan.
+
+
+    **Note:** Orders is now generally available as of Zuora Billing Release 284
+    (August 2020). If you are an existing Zuora Subscribe and Amend customer and
+    want to adopt Orders, see [What is Orders
+    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization#What_is_Orders_Harmonization.3F)
+    and join the [Orders Harmonization community
+    group](https://community.zuora.com/t5/Orders-Harmonization/gp-p/Orders-Harmonization)
+    for more information. If you want to enable Orders, submit a request at
+    [Zuora Global Support](https://support.zuora.com/).
+  tags:
+    - Rate Plans
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: ratePlanId
+      in: path
+      description: The ID of the subscription rate plan to be retrieved.
+      required: true
+      schema:
+        type: string
+        format: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GetOrderActionRatePlanResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+                id: 402880e47ccbaca1017ccbdd63aa18c8
+                lastChangeType: Update
+                productId: 2c9890207c9649c0017c96a0588201a2
+                productName: MMORPG game
+                productSku: SKU-00000001
+                productRatePlanId: 2c9890207c9649c0017c96a0f11001a4
+                ratePlanName: Rate Plan 1
+                subscriptionId: 402880e47ccbaca1017ccbdd644d18d0
+                subscriptionVersion: 5
+                amendment:
+                  id: 402880e47ccbaca1017ccbdd63c818cb
+                  type: UpdateProduct
+                  code: A-AM00000047
+                  effectiveDate: '2021-12-29'
+                  description: null
+                  name: update
+                  createdBy: 2c9890207c9649c0017c969bc6330002
+                  createdDate: '2021-10-29 19:44:16'
+                  updatedBy: 2c9890207c9649c0017c969bc6330002
+                  updatedDate: '2021-10-29 19:44:16'
+                  serviceActivationDate: '2021-12-29'
+                  customerAcceptanceDate: '2021-12-29'
+                  contractEffectiveDate: '2021-12-29'
+                order:
+                  id: 402880e47ccbaca1017ccbdd7b0e18fd
+                  orderNumber: O-00000037
+                  orderActions:
+                    - id: 402880e47ccbaca1017ccbdd7b1418ff
+                      serviceActivationDate: '2021-12-29'
+                      customerAcceptanceDate: '2021-12-29'
+                      contractEffectiveDate: '2021-12-29'
+                      type: UpdateProduct
+                      updateProduct:
+                        ratePlanId: 402880e47ccbaca1017ccbdd620818ba
+                        uniqueToken: null
+                        specificUpdateDate: null
+                        newRatePlanId: 402880e47ccbaca1017ccbdd63aa18c8
+                        productRatePlanId: 2c9890207c9649c0017c96a0f11001a4
+                        chargeUpdates: []
+                        customFields: {}
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_rateplans_{ratePlanId}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_rateplans_{ratePlanId}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_rateplans_{ratePlanId}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_rateplans_{ratePlanId}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_rateplans_{ratePlanId}/getundefined

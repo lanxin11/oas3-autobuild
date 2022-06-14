@@ -1,0 +1,189 @@
+get:
+  summary: Retrieve a journal run
+  operationId: GET_JournalRun
+  description: >
+    This REST API reference describes how to get information about a journal
+    run. Request and response field descriptions and sample code are provided.
+  tags:
+    - Journal Runs
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: jr-number
+      in: path
+      description: >
+        Journal run number. Must be a valid journal run number in the format
+        `JR-00000001`.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETJournalRunType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                number: JR-00000002
+                status: Completed
+                executedOn: '2014-11-15 22:05:12'
+                segmentationRuleName: s1
+                totalJournalEntryCount: 2
+                targetStartDate: '2016-03-01'
+                targetEndDate: '2016-03-31'
+                journalEntryDate: '2016-02-02'
+                transactionTypes:
+                  - type: Invoice Item
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_journal-runs_{jr-number}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_journal-runs_{jr-number}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_journal-runs_{jr-number}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_journal-runs_{jr-number}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_journal-runs_{jr-number}/getundefined
+delete:
+  summary: Delete a journal run
+  operationId: DELETE_JournalRun
+  description: |
+    This reference describes how to delete a journal run using the REST API.
+                          
+     You can only delete journal runs that have already been canceled.
+                          
+     You must have the "Delete Cancelled Journal Run" Zuora Finance user permission enabled to delete journal runs.
+  tags:
+    - Journal Runs
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: jr-number
+      in: path
+      required: true
+      description: >
+        Journal run number. Must be a valid journal run number in the format
+        `JR-00000001`.
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_journal-runs_{jr-number}/deleteundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_journal-runs_{jr-number}/deleteundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_journal-runs_{jr-number}/deleteundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_journal-runs_{jr-number}/deleteundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_journal-runs_{jr-number}/deleteundefined

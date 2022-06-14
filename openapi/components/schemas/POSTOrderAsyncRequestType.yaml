@@ -1,0 +1,271 @@
+example:
+  description: This is a description for the Order.
+  existingAccountNumber: A00000001
+  orderDate: '2017-01-01'
+  orderLineItems:
+    - billingTrigger: BillImmediately
+      chargeAmountPerUnit: 50
+      customFields:
+        someField__c: some string
+      deferredRevenueAccountingCode: Unearned Revenues
+      description: With Dual Stereo Microphones, HD 1080p, Black
+      itemName: webcam
+      itemType: Product
+      listPricePerUnit: 59
+      productCode: C9201
+      purchaseOrderNumber: 960-000764
+      quantity: 2
+      recognizedRevenueAccountingCode: Earned Revenues
+      revenueRecognitionRule: recognized upon invoice
+      taxCode: '8018'
+      taxMode: TaxInclusive
+      transactionEndDate: '2021-02-01'
+      transactionStartDate: '2021-02-01'
+  orderNumber: OM-00001
+  processingOptions:
+    applyCreditBalance: true
+    billingOptions:
+      creditMemoReasonCode: Unsatisfactory service
+      targetDate: '2017-08-01'
+    collectPayment: true
+    electronicPaymentOptions:
+      paymentGatewayId: 2c9890186cb7c157016cd18c72370999
+      paymentMethodId: 2c9890186cb7c157016cd18c6f690999
+    runBilling: true
+  subscriptions:
+    - orderActions:
+        - createSubscription:
+            billToContactId: efbff07e6290dfb8016291003bd00dda
+            paymentTerm: Net 30
+            subscribeToRatePlans:
+              - productRatePlanId: efbff07e6290dfb8016291003bd00dda
+            subscriptionNumber: SM-00001
+            terms:
+              autoRenew: true
+              initialTerm:
+                period: 12
+                periodType: Month
+                startDate: '2017-01-01'
+                termType: TERMED
+              renewalSetting: RENEW_WITH_SPECIFIC_TERM
+              renewalTerms:
+                - period: 12
+                  periodType: Month
+          triggerDates:
+            - name: ContractEffective
+              triggerDate: '2017-01-01'
+          type: CreateSubscription
+    - orderActions:
+        - createSubscription:
+            subscribeToRatePlans:
+              - productRatePlanId: efbff07e6290dfb8016291003bd00dda
+            subscriptionNumber: SM-00002
+            terms:
+              autoRenew: true
+              initialTerm:
+                period: 12
+                periodType: Month
+                startDate: '2017-02-01'
+                termType: TERMED
+              renewalSetting: RENEW_WITH_SPECIFIC_TERM
+              renewalTerms:
+                - period: 12
+                  periodType: Month
+          triggerDates:
+            - name: ServiceActivation
+              triggerDate: '2017-02-01'
+          type: CreateSubscription
+    - orderActions:
+        - createSubscription:
+            subscribeToRatePlans:
+              - productRatePlanId: efbff07e6290dfb80162910024c80dd5
+            subscriptionNumber: SM-00003
+            terms:
+              autoRenew: true
+              initialTerm:
+                period: 12
+                periodType: Month
+                startDate: '2017-01-01'
+                termType: TERMED
+              renewalSetting: RENEW_WITH_SPECIFIC_TERM
+              renewalTerms:
+                - period: 12
+                  periodType: Month
+          triggerDates:
+            - name: ServiceActivation
+              triggerDate: '2017-03-01'
+            - name: CustomerAcceptance
+              triggerDate: '2017-04-01'
+          type: CreateSubscription
+    - orderActions:
+        - createSubscription:
+            subscribeToRatePlans:
+              - chargeOverrides:
+                  - productRatePlanChargeId: efbff07e6290dfb80162910024d80dd7
+                    startDate:
+                      triggerEvent: SpecificDate
+                productRatePlanId: efbff07e6290dfb80162910024c80dd5
+                uniqueToken: Sugar-free Monthly
+            subscriptionNumber: SM-00004
+            terms:
+              autoRenew: true
+              initialTerm:
+                period: 12
+                periodType: Month
+                startDate: '2017-01-01'
+                termType: TERMED
+              renewalSetting: RENEW_WITH_SPECIFIC_TERM
+              renewalTerms:
+                - period: 12
+                  periodType: Month
+          triggerDates:
+            - name: ServiceActivation
+              triggerDate: '2017-03-01'
+            - name: CustomerAcceptance
+              triggerDate: '2017-04-01'
+          type: CreateSubscription
+    - orderActions:
+        - suspend:
+            suspendPeriods: 2
+            suspendPeriodsType: Week
+            suspendPolicy: FixedPeriodsFromToday
+          triggerDates:
+            - name: ContractEffective
+              triggerDate: '2018-01-01'
+            - name: ServiceActivation
+              triggerDate: '2018-01-01'
+            - name: CustomerAcceptance
+              triggerDate: '2018-01-01'
+          type: Suspend
+      subscriptionNumber: SM-00005
+    - orderActions:
+        - resume:
+            extendsTerm: true
+            resumePolicy: SpecificDate
+            resumeSpecificDate: '2018-10-01'
+          triggerDates:
+            - name: ContractEffective
+              triggerDate: '2018-01-01'
+            - name: ServiceActivation
+              triggerDate: '2018-01-01'
+            - name: CustomerAcceptance
+              triggerDate: '2018-01-01'
+          type: Resume
+      subscriptionNumber: SM-00006
+properties:
+  customFields:
+    $ref: ./OrderObjectCustomFields.yaml
+  description:
+    description: A description of the order.
+    maxLength: 500
+    type: string
+  existingAccountNumber:
+    description: >
+      The account number that this order will be created under. It can be either
+      the accountNumber or the account info provided. It will return an error if
+      both are specified.
+
+      Note that this actually specifies the invoice owner account of the
+      subscriptions included in this order.
+    maxLength: 70
+    type: string
+  externallyManagedBy:
+    description: >
+      An enum field on the Subscription object to indicate the name of a
+      third-party store. This field is used to represent subscriptions created
+      through third-party stores.
+    enum:
+      - Amazon
+      - Apple
+      - Google
+      - Roku
+    type: string
+  newAccount:
+    $ref: ./Account.yaml
+  orderDate:
+    description: >-
+      The date when the order is signed. All the order actions under this order
+      will use this order date as the contract effective date if the contract
+      effective date field is skipped or its value is left as null.
+    format: date
+    type: string
+  orderLineItems:
+    description: >
+      [Order Line
+      Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/AA_Overview_of_Order_Line_Items)
+      are non subscription based items created by an Order, representing
+      transactional charges such as one-time fees, physical goods, or
+      professional service charges that are not sold as subscription services. 
+
+
+      With the Order Line Items feature enabled, you can now launch
+      non-subscription and unified monetization business models in Zuora, in
+      addition to subscription business models.
+
+
+      **Note:** The [Order Line
+      Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/AA_Overview_of_Order_Line_Items)
+      feature is now generally available to all Zuora customers. You need to
+      enable the
+      [Orders](https://knowledgecenter.zuora.com/BC_Subscription_Management/Orders/AA_Overview_of_Orders#Orders)
+      feature to access the [Order Line
+      Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/AA_Overview_of_Order_Line_Items)
+      feature. As of Zuora Billing Release 313 (November 2021), new customers
+      who onboard on
+      [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
+      will have the [Order Line
+      Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
+      feature enabled by default. If you are a new customer who onboard on
+      [Orders
+      Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
+      and want to enable the [Order Line
+      Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
+      feature, submit a request at [Zuora Global
+      Support](https://support.zuora.com/). If you are an existing
+      [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
+      or [Orders
+      Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
+      customer and want to enable the [Order Line
+      Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
+      feature, submit a request at [Zuora Global
+      Support](https://support.zuora.com/).        
+    items:
+      $ref: ./CreateOrderOrderLineItem.yaml
+    type: array
+  orderNumber:
+    description: >-
+      The order number of the new order. If not provided, system will
+      auto-generate a number for this order.
+    maxLength: 100
+    type: string
+  processingOptions:
+    $ref: ./processingOptionsOrders.yaml
+  subscriptions:
+    description: >-
+      Each item includes a set of order actions, which will be applied to the
+      same base subscription.
+    items:
+      properties:
+        customFields:
+          $ref: ./SubscriptionObjectCustomFields.yaml
+        orderActions:
+          description: >-
+            The actions to be applied to the subscription. Order actions will be
+            stored with the sequence when it was provided in the request.
+          items:
+            $ref: ./CreateOrderOrderAction.yaml
+          type: array
+        quote:
+          $ref: ./QuoteObjectFields.yaml
+        ramp:
+          $ref: ./RampRequest.yaml
+        subscriptionNumber:
+          description: >
+            Leave this empty to represent new subscription creation. Specify a
+            subscription number to update an existing subscription.
+          type: string
+      type: object
+    type: array
+required:
+  - orderDate
+type: object

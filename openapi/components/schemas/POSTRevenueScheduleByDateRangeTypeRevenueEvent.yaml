@@ -1,0 +1,40 @@
+allOf:
+  - properties:
+      eventType:
+        description: >
+          Label of the revenue event type. Revenue event type labels can be
+          duplicated. You can configure your revenue event type labels by
+          navigating to **Settings > Finance > Configure Revenue Event Types**
+          in the Zuora UI.
+
+
+          Note that `Credit Memo Posted` and `Debit Memo Posted` are only
+          available if you enable the Invoice Settlement feature.
+        enum:
+          - Invoice Posted
+          - Invoice Item Adjustment Created
+          - Invoice Canceled
+          - Invoice Item Adjustment Canceled
+          - Revenue Distributed
+          - Credit Memo Posted
+          - Debit Memo Posted
+        type: string
+      eventTypeSystemId:
+        description: >
+          System ID of the revenue event type. Each eventType has a unique
+          system ID. You can configure your revenue event type system IDs by
+          navigating to **Settings > Finance > Configure Revenue Event Types**
+          in the Zuora UI.
+
+
+          Required only if there is more than one revenue event type with the
+          same label.
+        type: string
+      notes:
+        description: ''
+        type: string
+    type: object
+  - $ref: ./RevenueEventObjectCustomFields.yaml
+description: |
+  Must specify at least one of `eventType` or `eventTypeSystemId`.
+title: RevenueEvent

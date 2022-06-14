@@ -1,0 +1,80 @@
+properties:
+  AVSResponseCode:
+    description: >
+      The response code returned by the payment gateway referring to the AVS
+      international response of the payment transaction.
+    type: string
+  BatchId:
+    description: >
+      The ID of the batch used to send the transaction if the request was sent
+      in a batch.
+    type: string
+  CVVResponseCode:
+    description: >
+      The response code returned by the payment gateway referring to the CVV
+      international response of the payment transaction.
+    type: string
+  Gateway:
+    description: >
+      The name of the payment gateway used to transact the current payment
+      transaction log.
+    type: string
+  GatewayReasonCode:
+    description: >
+      The code returned by the payment gateway for the payment. This code is
+      gateway-dependent.
+    type: string
+  GatewayReasonCodeDescription:
+    description: >
+      The message returned by the payment gateway for the payment. This message
+      is gateway-dependent. 
+    type: string
+  GatewayState:
+    description: |
+      The state of the transaction at the payment gateway.
+    enum:
+      - MarkedForSubmission
+      - Submitted
+      - Settled
+      - NotSubmitted
+      - FailedToSettle
+    type: string
+  GatewayTransactionType:
+    description: >
+      The type of the transaction, either making a payment, or canceling a
+      payment. 
+    enum:
+      - Authorization
+      - Sale
+      - Void
+      - Inquiry
+      - VoidAuth
+    type: string
+  Id:
+    description: |
+      The ID of the payment transaction log.
+    type: string
+  PaymentId:
+    description: |
+      The ID of the payment wherein the payment transaction log was recorded. 
+    type: string
+  RequestString:
+    description: |
+      The payment transaction request string sent to the payment gateway. 
+    type: string
+  ResponseString:
+    description: |
+      The payment transaction response string returned by the payment gateway. 
+    type: string
+  TransactionDate:
+    description: |
+      The transaction date when the payment was performed. 
+    format: date-time
+    type: string
+  TransactionId:
+    description: >
+      The transaction ID returned by the payment gateway. This field is used to
+      reconcile payment transactions between the payment gateway and records in
+      Zuora.
+    type: string
+type: object

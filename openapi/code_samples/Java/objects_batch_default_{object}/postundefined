@@ -1,0 +1,13 @@
+OkHttpClient client = new OkHttpClient();
+
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"action\": {\n        \"allowPartialSuccess\": true,\n        \"records\": {\n            \"64edb2a5-2796-4e95-9559-846f8636a01b\": {\n                \"age__c\": \"eighteen\",\n                \"name__c\": \"elba43\",\n                \"person_id__c\": \"30c52793-8f06-41c6-b623-04829710d7a\"\n            }\n        },\n        \"type\": \"update\"\n    }\n}");
+Request request = new Request.Builder()
+  .url("https://rest.zuora.com/objects/batch/default/{object}")
+  .post(body)
+  .addHeader("Authorization", "Bearer 6d151216ef504f65b8ff6e9e9e8356d3")
+  .addHeader("content-type", "application/json")
+  .addHeader("cache-control", "no-cache")
+  .build();
+
+Response response = client.newCall(request).execute();

@@ -1,0 +1,121 @@
+get:
+  summary: Retrieve workflow task usage
+  operationId: GET_WorkflowsUsages
+  description: >
+    Gets workflow task usage sorted by day within a specified time frame.
+
+
+    ## User Access Permission
+
+    You must be assigned the **Workflow View Access** permission to run this
+    operation.        
+  tags:
+    - Workflows
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - name: startDate
+      in: query
+      required: true
+      description: >
+        The start date of the usage data that you want to get. For example,
+        2019-01-01.
+      schema:
+        type: string
+        format: date
+    - name: endDate
+      in: query
+      required: true
+      description: >
+        The end date of the usage data that you want to get. For example,
+        2019-12-31.
+      schema:
+        type: string
+        format: date
+    - name: metrics
+      in: query
+      required: true
+      description: >
+        The type of metric that you want to get. Currently, only `taskCount` is
+        supported. `taskCount` is the amount of task runs.
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/UsagesResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                metrics:
+                  - date: '2019-01-16'
+                    values:
+                      taskCount: 1417
+                  - date: '2019-08-02'
+                    values:
+                      taskCount: 24
+                  - date: '2019-05-23'
+                    values:
+                      taskCount: 2
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/workflows_metrics.json/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/workflows_metrics.json/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/workflows_metrics.json/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/workflows_metrics.json/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/workflows_metrics.json/getundefined

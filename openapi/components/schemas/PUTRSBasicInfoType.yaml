@@ -1,0 +1,24 @@
+allOf:
+  - properties:
+      notes:
+        description: |
+          Additional information about this record.
+        type: string
+      referenceId:
+        description: >
+          Reference ID is used only in the custom unlimited rule to create a
+          revenue schedule. In this scenario, the revenue schedule is not linked
+          to an invoice item or invoice item adjustment.
+
+
+          Use this field only when the revenue schedule is not linked to an
+          invoice item or invoice item adjustment, such as for revenue schedules
+          based on the Custom - Unlimited recognition model.
+        maxLength: 100
+        minLength: 0
+        type: string
+    type: object
+  - $ref: ./RevenueScheduleObjectCustomFields.yaml
+example:
+  notes: change recognition term
+  referenceId: Reference ID

@@ -1,0 +1,24 @@
+allOf:
+  - properties:
+      chargeOverrides:
+        description: >
+          This optional container is used to override the quantity of one or
+          more product rate plan charges for this subscription.
+        items:
+          $ref: ./POSTScCreateType.yaml
+        type: array
+      externallyManagedPlanId:
+        description: >
+          Indicates the unique identifier for the rate plan purchased on a
+          third-party store. This field is used to represent a subscription rate
+          plan created through third-party stores.
+        type: string
+      productRatePlanId:
+        description: |
+          ID of a product rate plan for this subscription.
+        type: string
+    required:
+      - productRatePlanId
+    type: object
+  - $ref: ./RatePlanObjectCustomFields.yaml
+title: subscribeToRatePlans

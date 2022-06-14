@@ -1,0 +1,116 @@
+get:
+  summary: Retrieve a file
+  operationId: GET_Files
+  description: >
+    Retrieve files such as export results, invoices, and accounting period
+    reports.
+
+
+    The response content type depends on the type of file that you retrieve.
+
+    For example, if you retrieve an invoice PDF, the value of the `Content-Type`
+
+    header in the response is `application/pdf;charset=UTF-8`.
+
+
+    Other content types include:
+
+
+    - `text/csv` for CSV files
+
+    - `application/msword` for Microsoft Word files
+
+    - `application/vnd.ms-excel` and
+    `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`
+      for Microsoft Excel files (*.xls* and *.xlsx* respectively)
+    - `application/zip` and `application/x-gzip` for ZIP and Gzip files
+    respectively
+
+    - `text/html` for HTML files
+
+    - `text/plain` for text files
+
+
+    The response always contains character encoding information in the
+    `Content-Type` header.
+
+    For example, `Content-Type: application/zip;charset=UTF-8`.
+
+
+    **Note:** The maximum file size is 2,047 MB. If you have a data request that
+    exceeds this limit, Zuora returns the following 403 response:
+    `<security:max-object-size>2047MB</security:max-object-size>`. Submit a
+    request at <a href="http://support.zuora.com/" target="_blank">Zuora Global
+    Support</a> to determine if large file optimization is an option for you.
+  tags:
+    - Files
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: file-id
+      in: path
+      description: |
+        The Zuora ID of the file to retrieve.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_files_{file-id}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_files_{file-id}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_files_{file-id}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_files_{file-id}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_files_{file-id}/getundefined

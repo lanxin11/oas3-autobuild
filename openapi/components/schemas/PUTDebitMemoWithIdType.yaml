@@ -1,0 +1,8 @@
+allOf:
+  - properties:
+      id:
+        description: |
+          The ID of the debit memo.
+        type: string
+    type: object
+  - $ref: ./PUTDebitMemoType.yaml

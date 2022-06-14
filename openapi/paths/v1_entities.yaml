@@ -1,0 +1,278 @@
+post:
+  summary: 'Multi-entity: Create an entity'
+  operationId: POST_Entities
+  description: >
+    **Note:** The Multi-entity feature is in **Limited Availability**. If you
+    wish to have access to the feature, submit a request at [Zuora Global
+    Support](http://support.zuora.com/). 
+
+
+    Creates an entity in a multi-entity hierarchy.
+
+
+    ## User Access Permission
+
+    You must make the call as a global entity administrator.
+
+
+    ## Notes
+
+    * We recommend that you assign only one administrator to manage the entity
+    hierarchy, because an administrator of the global entity by default can only
+    access to the entities that are created by themselves.
+  tags:
+    - Entities
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/CreateEntityType.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CreateEntityResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: 8a80825556ff28a4015709096c5d6f5d
+                name: Acme-Asia
+                displayName: Acme-Asia
+                locale: zh_CN
+                timezone: Asia/Harbin
+                status: Unprovisioned
+                parentId: 8a808255557baba1015580e12fa5083a
+                tenantId: '6398'
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_entities/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_entities/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_entities/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_entities/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_entities/postundefined
+get:
+  summary: 'Multi-entity: List entities'
+  operationId: GET_Entities
+  description: >
+    **Note:** The Multi-entity feature is in **Limited Availability**. If you
+    wish to have access to the feature, submit a request at [Zuora Global
+    Support](http://support.zuora.com/). 
+
+
+
+    Retrieves detailed information of certain entities in a multi-entity
+    hierarchy.
+
+
+
+    You can retrieve:
+
+     - Provisioned entities
+      
+     - Unprovisioned entities
+      
+     - Both provisioned and unprovisioned entities
+
+    ## User Access Permission
+
+
+    You can make the call as any entity user.
+  tags:
+    - Entities
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: provisioned
+      in: query
+      description: >
+        Specify whether to retrieve provisioned or unprovisioned entities:
+
+
+        - `true`: Provisioned entities
+
+
+        - `false`: Unprovisioned entities
+
+
+
+        If you do not specify this field in the request, both the provisioned
+        and unprovisioned entities are returned.
+      required: false
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETEntitiesResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                entities:
+                  - id: 8a808255557baba1015580e12fa5083a
+                    name: Acme Corporation
+                    displayName: Acme Corporation
+                    locale: en_US
+                    timezone: GMT
+                    status: Provisioned
+                    parentId: null
+                    tenantId: '6398'
+                  - id: 8a80825555a3c7a10155b460f53858e6
+                    name: Acme-Americas
+                    displayName: Acme-Americas
+                    locale: en_US
+                    timezone: America/Los_Angeles
+                    status: Provisioned
+                    parentId: 8a808255557baba1015580e12fa5083a
+                    tenantId: '6398'
+                  - id: 8a80825555a3c7a10155b46120d058e7
+                    name: Acme-US
+                    displayName: Acme-US
+                    locale: en_US
+                    timezone: America/Los_Angeles
+                    status: Provisioned
+                    parentId: 8a80825555a3c7a10155b460f53858e6
+                    tenantId: '6398'
+                  - id: 8a80825556ff28a4015708ba29312ecc
+                    name: Acme-Europe
+                    displayName: Acme-Europe
+                    locale: en_US
+                    timezone: Europe/Paris
+                    status: Provisioned
+                    parentId: 8a808255557baba1015580e12fa5083a
+                    tenantId: '6398'
+                  - id: 8a80825556ff28a4015708bac1d8305f
+                    name: Acme-UK
+                    displayName: Acme-UK
+                    locale: en_US
+                    timezone: Europe/London
+                    status: Unprovisioned
+                    parentId: 8a80825556ff28a4015708ba29312ecc
+                    tenantId: '6398'
+                  - id: 8a80825556ff28a4015708bb21963060
+                    name: Acme-France
+                    displayName: Acme-France
+                    locale: en_US
+                    timezone: Europe/Paris
+                    status: Unprovisioned
+                    parentId: 8a80825556ff28a4015708ba29312ecc
+                    tenantId: '6398'
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_entities/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_entities/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_entities/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_entities/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_entities/getundefined

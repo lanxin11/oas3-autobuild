@@ -1,0 +1,210 @@
+get:
+  summary: Retrieve a usage record
+  operationId: GET_Usage
+  description: >
+    This REST API reference describes how to retrieve usage details for an
+    account. Usage data is returned in reverse chronological order.
+  tags:
+    - Usage
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
+    - name: account-key
+      in: path
+      description: Account number or account ID.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETUsageWrapper.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                usage:
+                  - chargeNumber: null
+                    sourceName: Import
+                    quantity: 4
+                    unitOfMeasure: UOM
+                    accountName: subscribeCallYan_1
+                    id: 2c92c8953dac2b1c013dae0a263f35dd
+                    subscriptionNumber: null
+                    startDateTime: '2012-02-05 00:00:00'
+                    accountNumber: A00001115
+                    status: Pending
+                    submissionDateTime: '2013-03-27 15:48:53'
+                    accountId: 2c92a0f9391832b10139183e277a0042
+                  - chargeNumber: null
+                    sourceName: Import
+                    quantity: 4
+                    unitOfMeasure: UOM
+                    accountName: subscribeCallYan_1
+                    id: 2c92c8943db2ae51013dcce116b00f4b
+                    subscriptionNumber: null
+                    startDateTime: '2012-02-05 00:00:00'
+                    accountNumber: A00001115
+                    status: Pending
+                    submissionDateTime: '2013-04-02 15:32:16'
+                    accountId: 2c92a0f9391832b10139183e277a0042
+                  - chargeNumber: null
+                    sourceName: Import
+                    quantity: 3
+                    unitOfMeasure: UOM
+                    accountName: subscribeCallYan_1
+                    id: 2c92c8953dac2b1c013dae0a263f35dc
+                    subscriptionNumber: null
+                    startDateTime: '2012-02-04 00:00:00'
+                    accountNumber: A00001115
+                    status: Pending
+                    submissionDateTime: '2013-03-27 15:48:53'
+                    accountId: 2c92a0f9391832b10139183e277a0042
+                  - chargeNumber: null
+                    sourceName: Import
+                    quantity: 3
+                    unitOfMeasure: UOM
+                    accountName: subscribeCallYan_1
+                    id: 2c92c8943db2ae51013dcce116b00f4a
+                    subscriptionNumber: null
+                    startDateTime: '2012-02-04 00:00:00'
+                    accountNumber: A00001115
+                    status: Pending
+                    submissionDateTime: '2013-04-02 15:32:16'
+                    accountId: 2c92a0f9391832b10139183e277a0042
+                  - chargeNumber: null
+                    sourceName: Import
+                    quantity: 2
+                    unitOfMeasure: UOM
+                    accountName: subscribeCallYan_1
+                    id: 2c92c8953dac2b1c013dae0a263e35db
+                    subscriptionNumber: null
+                    startDateTime: '2012-02-03 00:00:00'
+                    accountNumber: A00001115
+                    status: Pending
+                    submissionDateTime: '2013-03-27 15:48:53'
+                    accountId: 2c92a0f9391832b10139183e277a0042
+                  - chargeNumber: null
+                    sourceName: Import
+                    quantity: 2
+                    unitOfMeasure: UOM
+                    accountName: subscribeCallYan_1
+                    id: 2c92c8943db2ae51013dcce116af0f49
+                    subscriptionNumber: null
+                    startDateTime: '2012-02-03 00:00:00'
+                    accountNumber: A00001115
+                    status: Pending
+                    submissionDateTime: '2013-04-02 15:32:16'
+                    accountId: 2c92a0f9391832b10139183e277a0042
+                  - chargeNumber: null
+                    sourceName: Import
+                    quantity: 1
+                    unitOfMeasure: UOM
+                    accountName: subscribeCallYan_1
+                    id: 2c92c8953dac2b1c013dae0a263e35da
+                    subscriptionNumber: null
+                    startDateTime: '2012-02-02 00:00:00'
+                    accountNumber: A00001115
+                    status: Pending
+                    submissionDateTime: '2013-03-27 15:48:53'
+                    accountId: 2c92a0f9391832b10139183e277a0042
+                  - chargeNumber: null
+                    sourceName: Import
+                    quantity: 1
+                    unitOfMeasure: UOM
+                    accountName: subscribeCallYan_1
+                    id: 2c92c8943db2ae51013dcce116af0f48
+                    subscriptionNumber: null
+                    startDateTime: '2012-02-02 00:00:00'
+                    accountNumber: A00001115
+                    status: Pending
+                    submissionDateTime: '2013-04-02 15:32:16'
+                    accountId: 2c92a0f9391832b10139183e277a0042
+                  - chargeNumber: null
+                    sourceName: Import
+                    quantity: 4
+                    unitOfMeasure: UOM
+                    accountName: subscribeCallYan_1
+                    id: 2c92c8953dac2b1c013dae0a263e35d9
+                    subscriptionNumber: null
+                    startDateTime: '2012-01-05 00:00:00'
+                    accountNumber: A00001115
+                    status: Pending
+                    submissionDateTime: '2013-03-27 15:48:53'
+                    accountId: 2c92a0f9391832b10139183e277a0042
+                  - chargeNumber: null
+                    sourceName: Import
+                    quantity: 4
+                    unitOfMeasure: UOM
+                    accountName: subscribeCallYan_1
+                    id: 2c92c8943db2ae51013dcce116af0f47
+                    subscriptionNumber: null
+                    startDateTime: '2012-01-05 00:00:00'
+                    accountNumber: A00001115
+                    status: Pending
+                    submissionDateTime: '2013-04-02 15:32:16'
+                    accountId: 2c92a0f9391832b10139183e277a0042
+                success: true
+                nextPage: >-
+                  https://rest.zuora.com/v1/usage/accounts/A00001115?page=2&pageSize=10
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_usage_accounts_{account-key}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_usage_accounts_{account-key}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_usage_accounts_{account-key}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_usage_accounts_{account-key}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_usage_accounts_{account-key}/getundefined

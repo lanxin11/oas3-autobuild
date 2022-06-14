@@ -1,0 +1,12 @@
+additionalProperties:
+  description: >
+    Field for data access control. The name of the data access control field has
+    the form <code>*customField*__h</code>. The data access control field is
+    case sensitive. See [Data Access
+    Control](https://knowledgecenter.zuora.com/CF_Users_and_Administrators/A_Administrator_Settings/Data_Access_Control)
+    for more information.
+  type: string
+description: |
+  Container for the data access control field.
+title: dataAccessControlField
+type: object

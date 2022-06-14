@@ -1,0 +1,44 @@
+allOf:
+  - properties:
+      journalEntryItems:
+        description: |
+          Key name that represents the list of journal entry items.
+        items:
+          $ref: ./PUTJournalEntryItemType.yaml
+        type: array
+      notes:
+        description: |
+          Additional information about this record.
+
+          ***Character limit:*** 2,000
+        type: string
+      transferredToAccounting:
+        description: >
+          Status shows whether the journal entry has been transferred to an
+          accounting system. 
+
+
+          This field cannot be changed after the summary journal entry has been
+          canceled.
+
+
+          **Note:** The Zuora Finance ***Override Transferred to Accounting***
+          permission is required to change `transferredToAccounting` from `Yes`
+          to any other value.
+        enum:
+          - 'No'
+          - Processing
+          - 'Yes'
+          - Error
+          - Ignore
+        type: string
+    type: object
+  - $ref: ./JournalEntryObjectCustomFields.yaml
+example:
+  journalEntryItems:
+    - accountingCodeName: Accounts Receivable
+      type: Credit
+    - accountingCodeName: ''
+      type: Debit
+  notes: Transfer to accounting system
+  transferredToAccounting: 'Yes'

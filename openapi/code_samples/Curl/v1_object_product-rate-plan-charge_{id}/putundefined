@@ -1,0 +1,21 @@
+curl -X PUT -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3" -H "Content-Type: application/json" -d '{
+    "AccountingCode": "Deferred Revenue",
+    "BillCycleType": "DefaultFromCustomer",
+    "BillingPeriod": "Month",
+    "ChargeModel": "Flat fee Pricing",
+    "DeferredRevenueAccount": "Deferred Revenue",
+    "Name": "Recurring flat fee",
+    "ProductRatePlanChargeTierData": {
+        "ProductRatePlanChargeTier": [
+            {
+                "Currency": "USD",
+                "Price": 10
+            }
+        ]
+    },
+    "ProductRatePlanId": "2c92c0f8628e007901628f1dc06a453d",
+    "RecognizedRevenueAccount": "Accounts Receivable",
+    "TriggerEvent": "ContractEffective",
+    "UOM": "each",
+    "UseDiscountSpecificAccountingCode": false
+}' "https://rest.zuora.com/v1/object/product-rate-plan-charge/{id}"

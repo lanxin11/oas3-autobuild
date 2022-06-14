@@ -1,0 +1,7 @@
+additionalProperties:
+  $ref: ./CustomObjectDefinition.yaml
+description: >-
+  The custom object definitions. This object maps types to custom object
+  definitions.
+title: customObjectDefinitions
+type: object

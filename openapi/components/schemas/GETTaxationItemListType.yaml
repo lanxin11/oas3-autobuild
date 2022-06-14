@@ -1,0 +1,11 @@
+properties:
+  success:
+    description: Returns `true` if the request was processed successfully.
+    type: boolean
+  taxationItems:
+    description: |
+      Container for taxation items.
+    items:
+      $ref: ./GETTaxationItemTypewithSuccess.yaml
+    type: array
+type: object

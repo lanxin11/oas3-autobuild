@@ -1,0 +1,14 @@
+description: |
+  Information about an order action of type `RemoveProduct`.
+properties:
+  ratePlanId:
+    description: |
+      Internal identifier of the rate plan to remove.
+    type: string
+  uniqueToken:
+    description: >-
+      Unique identifier for the rate plan. This identifier enables you to refer
+      to the rate plan before the rate plan has an internal identifier in Zuora.
+    type: string
+title: removeProduct
+type: object

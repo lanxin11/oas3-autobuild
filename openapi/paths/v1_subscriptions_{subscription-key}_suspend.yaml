@@ -1,0 +1,120 @@
+put:
+  summary: Suspend a subscription
+  operationId: PUT_SuspendSubscription
+  description: >
+    This REST API reference describes how to suspend an active subscription. 
+
+
+    **Note**: If you have the Invoice Settlement feature enabled, it is best
+    practice to set the `zuora-version` parameter to `211.0` or later.
+    Otherwise, an error occurs.
+  tags:
+    - Subscriptions
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: zuora-version
+      in: header
+      required: false
+      description: |
+        The minor version of the Zuora REST API. 
+
+        You only need to set this parameter if you use the following fields:
+        * invoice
+        * collect
+        * runBilling
+        * targetDate
+      schema:
+        type: string
+    - name: subscription-key
+      in: path
+      required: true
+      description: Subscription number or ID. Subscription status must be Active.
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/PUTSubscriptionSuspendType.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/PUTSubscriptionSuspendResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+                subscriptionId: 8a8082c4539c5bcc0153a658a9636fcc
+                suspendDate: '2019-05-01'
+                resumeDate: '2016-06-01'
+                termEndDate: '2020-02-01'
+                totalDeltaTcv: -896.6666667
+                invoiceId: 8a8082c453bb061f0153c529bc921b4b
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/v1_subscriptions_{subscription-key}_suspend/putundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_subscriptions_{subscription-key}_suspend/putundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_subscriptions_{subscription-key}_suspend/putundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_subscriptions_{subscription-key}_suspend/putundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_subscriptions_{subscription-key}_suspend/putundefined

@@ -1,0 +1,316 @@
+get:
+  description: >
+    **Note:** This operation is only available if you have [Invoice
+    Settlement](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement)
+    enabled. The Invoice Settlement feature is generally available as of Zuora
+    Billing Release 296 (March 2021). This feature includes Unapplied Payments,
+    Credit and Debit Memo, and Invoice Item Settlement. If you want to enable
+    Invoice Settlement, see [Invoice Settlement Enablement and Checklist
+    Guide](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement/Invoice_Settlement_Migration_Checklist_and_Guide)
+    for more information. 
+
+
+    Retrieves the information about all refunds. Two types of refunds are
+    available, electronic refunds and external refunds.
+
+
+    ### Filtering
+
+
+    You can use query parameters to restrict the data returned in the response.
+    Each query parameter corresponds to one field in the response body.
+
+
+    If the value of a filterable field is string, you can set the corresponding
+    query parameter to `null` when filtering. Then, you can get the response
+    data with this field value being `null`.
+
+
+    Examples:
+
+
+    - /v1/refunds?status=Processed
+
+
+    - /v1/refunds?amount=4&status=Processed
+
+
+    - /v1/refunds?status=Processed&type=External&sort=+number
+  summary: List refunds
+  operationId: GET_Refunds
+  tags:
+    - Refunds
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETRefundCollectionType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                refunds:
+                  - id: 4028905f5a87c0ff015a889e590e00c9
+                    number: R-00000001
+                    status: Processed
+                    type: External
+                    methodType: CreditCard
+                    accountId: 4028905f5a87c0ff015a87d25ae90025
+                    amount: 4
+                    refundDate: '2017-03-01'
+                    comment: update comment
+                    paymentMethodId: null
+                    paymentMethodSnapshotId: null
+                    paymentId: 4028905f5a87c0ff015a889ddfb800c0
+                    creditMemoId: null
+                    reasonCode: Standard Refund
+                    gatewayId: null
+                    gatewayResponse: null
+                    gatewayResponseCode: null
+                    gatewayState: NotSubmitted
+                    markedForSubmissionOn: null
+                    referenceId: null
+                    secondRefundReferenceId: null
+                    softDescriptor: null
+                    softDescriptorPhone: null
+                    submittedOn: null
+                    settledOn: null
+                    cancelledOn: null
+                    createdDate: '2017-03-01 14:46:03'
+                    createdById: 402881e522cf4f9b0122cf5d82860002
+                    updatedDate: '2017-03-01 16:56:41'
+                    updatedById: 402881e522cf4f9b0122cf5d82860002
+                    refundTransactionTime: null
+                    financeInformation:
+                      bankAccountAccountingCode: null
+                      bankAccountAccountingCodeType: null
+                      unappliedPaymentAccountingCode: null
+                      unappliedPaymentAccountingCodeType: null
+                      transferredToAccounting: 'No'
+                    gatewayReconciliationStatus: null
+                    gatewayReconciliationReason: null
+                    payoutId: null
+                success: true
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
+    - name: accountId
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `accountId` field.
+      schema:
+        type: string
+    - name: amount
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `amount` field.
+      schema:
+        type: number
+        format: double
+    - name: createdById
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `createdById` field.
+      schema:
+        type: string
+    - name: createdDate
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `createdDate` field.
+      schema:
+        type: string
+        format: date-time
+    - name: methodType
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `methodType` field.
+      schema:
+        type: string
+        enum:
+          - ACH
+          - Cash
+          - Check
+          - CreditCard
+          - PayPal
+          - WireTransfer
+          - DebitCard
+          - CreditCardReferenceTransaction
+          - BankTransfer
+          - Other
+    - name: number
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `number` field.
+      schema:
+        type: string
+    - name: paymentId
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `paymentId` field.
+      schema:
+        type: string
+    - name: refundDate
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `refundDate` field.
+      schema:
+        type: string
+        format: date
+    - name: status
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `status` field.
+      schema:
+        type: string
+        enum:
+          - Processed
+          - Canceled
+          - Error
+          - Processing
+    - name: type
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `type` field.
+      schema:
+        type: string
+        enum:
+          - External
+          - Electronic
+    - name: updatedById
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `updatedById` field.
+      schema:
+        type: string
+    - name: updatedDate
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `updatedDate` field.
+      schema:
+        type: string
+        format: date-time
+    - name: sort
+      in: query
+      required: false
+      description: >
+        This parameter restricts the order of the data returned in the response.
+        You can use this parameter to supply a dimension you want to sort on.
+
+
+        A sortable field uses the following form: 
+
+
+        *operator* *field_name*
+
+
+        You can use at most two sortable fields in one URL path. Use a comma to
+        separate sortable fields. For example:  *operator* *field_name*,
+        *operator* *field_name*  
+
+
+        *operator* is used to mark the order of sequencing. The operator is
+        optional. If you only specify the sortable field without any operator,
+        the response data is sorted in descending order by this field.
+
+          - The `-` operator indicates an ascending order.
+          - The `+` operator indicates a descending order.
+
+        By default, the response data is displayed in descending order by refund
+        number.
+
+
+        *field_name* indicates the name of a sortable field. The supported
+        sortable fields of this operation are as below:
+
+          - number
+          - accountId
+          - amount
+          - refundDate
+          - paymentId
+          - createdDate
+          - createdById
+          - updatedDate
+          - updatedById
+
+          
+        Examples:
+
+
+        - /v1/refunds?sort=+number
+
+
+        - /v1/refunds?status=Processed&sort=-number,+amount
+      schema:
+        type: string
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_refunds/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_refunds/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_refunds/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_refunds/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_refunds/getundefined

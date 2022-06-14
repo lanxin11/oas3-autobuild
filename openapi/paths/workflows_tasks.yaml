@@ -1,0 +1,250 @@
+get:
+  summary: List workflow tasks
+  operationId: GET_WorkflowsTasks
+  description: >
+    Retrieves a list of workflow tasks available in your Zuora tenant.
+
+
+    ## User Access Permission
+
+    You must be assigned the **Workflow View Access** permission to run this
+    operation.
+  tags:
+    - Workflows
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - name: id
+      in: query
+      required: false
+      description: >
+        If specified, the operation retrieves the task that is with specified
+        id.
+      schema:
+        type: string
+    - name: name
+      in: query
+      required: false
+      description: >
+        If specified, the operation retrieves tasks that is in the specified
+        name.
+      schema:
+        type: string
+    - name: instance
+      in: query
+      required: false
+      description: >
+        If set to true, the operation retrieves workflows that have the
+        scheduled trigger enabled. If set to false, the operation retrieves
+        workflows that have the scheduled trigger disabled. If not specfied, the
+        operation will not use this filter.
+      schema:
+        type: boolean
+    - name: action_type
+      in: query
+      required: false
+      description: |
+        If specified, the operation retrieves tasks that is the specified type.
+      schema:
+        type: string
+    - name: object
+      in: query
+      required: false
+      description: |
+        If specified, the operation retrieves tasks with the specified object.
+      schema:
+        type: string
+    - name: object_id
+      in: query
+      required: false
+      description: >
+        If specified, the operation retrieves tasks with the specified object
+        id.
+      schema:
+        type: string
+    - name: call_type
+      in: query
+      required: false
+      description: >
+        If specified, the operation retrieves tasks with the specified api call
+        type used.
+      schema:
+        type: string
+    - name: workflow_id
+      in: query
+      required: false
+      description: >
+        If specified, the operation retrieves tasks that for the specified
+        workflow id.
+      schema:
+        type: string
+    - name: tags
+      in: query
+      required: false
+      description: >
+        If specified, the operation retrieves tasks that with the specified
+        filter tags.
+      schema:
+        type: string
+    - name: page
+      in: query
+      required: false
+      description: >
+        If you want to retrieve only the workflows on a specific page, you can
+        specify the `page` number in the query.
+      schema:
+        type: integer
+        default: 1
+    - name: page_length
+      in: query
+      required: false
+      description: >
+        The number of workflow tasks shown in a single call. If the `page`
+        parameter is not specified, the operation will return only the first
+        page of results. If there are multiple pages of results, use it with the
+        `page` parameter to get the results on subsequent pages. The maximum
+        value is 100.
+      schema:
+        type: integer
+        default: 20
+  responses:
+    '200':
+      description: OK
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/TasksResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                data:
+                  - id: 2771
+                    name: If
+                    instance: true
+                    parameters:
+                      if_clause: "{% if 0 > 1 %}\r\nTrue\r\n{% else %}\r\nFalse\r\n{% endif %}"
+                      strict_variables: 'true'
+                    data:
+                      Files:
+                        XML_52881.xml:
+                          name: JSONData_xslt.xml
+                          size: 0.011725425720214844
+                          object_class: Workflow
+                      Tasks:
+                        Previous:
+                          Id: 2770
+                          Status: Error
+                          ErrorClass: WorkflowError::Callout
+                          ErrorReason: Callout response was 500 after 1 tries.
+                      Callout:
+                        URL: https://rest.apisandbox.zuora.com/v1/action/query
+                        RequestBody:
+                          queryString: >-
+                            Select Id From Contact Where LastName = 'Drew' AND
+                            FirstName = 'Nancy' AND  WorkEmail = 'nancy@xyz.com'
+                        ResponseBody:
+                          message: |
+                            An unexpected error occurred
+                        ResponseCode: 500
+                        RequestHeaders:
+                          Content-Type: application/json
+                        ResponseHeaders:
+                          x-n:
+                            - S
+                          date:
+                            - Thu, 19 Sep 2019 12:35:43 GMT
+                          pragma:
+                            - no-cache
+                          server:
+                            - kong/0.9.9
+                          expires:
+                            - Thu, 19 Sep 2019 12:35:43 GMT
+                          connection:
+                            - close
+                          content-type:
+                            - text/plain; charset=UTF-8
+                          cache-control:
+                            - max-age=0, no-cache, no-store
+                      Workflow:
+                        LastRunDate: '2019-09-19'
+                        ExecutionDate: '2019-09-19'
+                        LastRunDateTime: '2019-09-19T12:34:41'
+                        WorkflowRunUser: test-user
+                        ExecutionDateTime: '2019-09-19T12:35:37'
+                    action_type: If
+                    object: null
+                    object_id: null
+                    call_type: SOAP
+                    workflow_id: 476
+                    status: Success
+                    start_time: '2019-09-19T12:35:43.857Z'
+                    end_time: '2019-09-19T12:35:43.942Z'
+                    original_task_id: 2582
+                    original_workflow_id: 416
+                    error: null
+                    error_class: null
+                    error_details: null
+                    tags: []
+                pagination:
+                  page: 1
+                  page_length: 1
+                  next_page: https://rest.zuora.com/workflows/tasks?page=2&page_length=1
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/workflows_tasks/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/workflows_tasks/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/workflows_tasks/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/workflows_tasks/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/workflows_tasks/getundefined

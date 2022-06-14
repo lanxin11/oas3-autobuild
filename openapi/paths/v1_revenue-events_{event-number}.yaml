@@ -1,0 +1,104 @@
+get:
+  summary: Retrieve a revenue event
+  operationId: GET_RevenueEventDetails
+  description: >
+    This REST API reference describes how to get revenue event details by
+    specifying the revenue event number. Request and response field descriptions
+    and sample code are provided.
+  tags:
+    - Revenue Events
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: event-number
+      in: path
+      description: The number associated with the revenue event.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETRevenueEventDetailType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                number: RE-00000001
+                currency: USD
+                notes: null
+                accountId: 2c92c0f8439770960143b2141f5a584e
+                subscriptionId: 2c92c0f943977b4f0143b23487994327
+                subscriptionChargeId: 2c92c0f943977b4f0143b23487ed432e
+                createdOn: '2014-01-20 16:36:45'
+                eventType: Invoice Posted
+                recognitionStart: '2013-10-10'
+                recognitionEnd: '2013-10-10'
+                revenueItems:
+                  - accountingPeriodName: Oct'2013
+                    isAccountingPeriodClosed: false
+                    amount: 50
+                    currency: USD
+                    accountingPeriodStartDate: '2013-10-01'
+                    accountingPeriodEndDate: '2013-10-31'
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_revenue-events_{event-number}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_revenue-events_{event-number}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_revenue-events_{event-number}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_revenue-events_{event-number}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_revenue-events_{event-number}/getundefined

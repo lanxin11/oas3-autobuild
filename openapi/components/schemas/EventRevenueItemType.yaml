@@ -1,0 +1,12 @@
+allOf:
+  - properties:
+      accountingPeriodName:
+        description: >
+          Name of the accounting period. The open-ended accounting period is
+          named `Open-Ended`.
+        type: string
+    required:
+      - accountingPeriodName
+    type: object
+  - $ref: ./RevenueEventItemObjectCustomFields.yaml
+title: revenueItems

@@ -1,0 +1,18 @@
+additionalProperties:
+  description: >
+    The ID of a fail-to-resend email notification history object, containing an
+    object with the error code and message.
+
+
+    **Note:** Multiple records of this field are allowed in the response. Each
+    of them represents a fail-to-resend email notification history.
+  properties:
+    code:
+      description: |
+        The error code of response.
+      type: string
+    message:
+      description: The detail information of the error response
+      type: string
+  type: object
+type: object

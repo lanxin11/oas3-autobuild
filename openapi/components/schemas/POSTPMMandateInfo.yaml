@@ -1,0 +1,124 @@
+description: >
+  The mandate information for the Credit Card, Credit Card Reference
+  Transaction, ACH, or Bank Transfer payment method.
+
+
+  The following mandate fields are common to all supported payment methods:
+
+  * `mandateId`
+
+  * `mandateReason`
+
+  * `mandateStatus`
+
+
+  The following mandate fields are specific to the ACH and Bank Transfer payment
+  methods:
+
+  * `mandateReceivedStatus`
+
+  * `existingMandateStatus`
+
+  * `mandateCreationDate`
+
+  * `mandateUpdateDate`
+
+
+  The following mandate fields are specific to the Credit Card payment method:
+
+  * `mitTransactionId`
+
+  * `mitProfileAgreedOn`
+
+  * `mitConsentAgreementRef`
+
+  * `mitConsentAgreementSrc`
+
+  * `mitProfileType`
+
+  * `mitProfileAction`
+properties:
+  existingMandateStatus:
+    description: |
+      Indicates whether the mandate is an existing mandate.
+    enum:
+      - 'Yes'
+      - 'No'
+    type: string
+  mandateCreationDate:
+    description: |
+      The date on which the mandate was created.
+    format: date
+    type: string
+  mandateId:
+    description: |
+      The mandate ID.
+    type: string
+  mandateReason:
+    description: |
+      The reason of the mandate from the gateway side.
+    type: string
+  mandateReceivedStatus:
+    description: |
+      Indicates whether the mandate is received from the gateway
+    enum:
+      - 'Yes'
+      - 'No'
+    type: string
+  mandateStatus:
+    description: |
+      The status of the mandate from the gateway side.
+    type: string
+  mandateUpdateDate:
+    description: |
+      The date on which the mandate was updated.
+    format: date
+    type: string
+  mitConsentAgreementRef:
+    description: >
+      Reference for the consent agreement that you have established with the
+      customer.  
+    type: string
+  mitConsentAgreementSrc:
+    enum:
+      - External
+    type: string
+  mitProfileAction:
+    description: >
+      Specifies how Zuora activates the stored credential profile. Only
+      applicable if you set the `status` field to `Active`.
+
+
+      * `Activate` (default) - Use this value if you are creating the stored
+      credential profile after receiving the customer's consent.
+
+        Zuora will create the stored credential profile then send a cardholder-initiated transaction (CIT) to the payment gateway to validate the stored credential profile. If the CIT succeeds, the status of the stored credential profile will be `Active`. If the CIT does not succeed, Zuora will not create a stored credential profile.
+        
+        If the payment gateway does not support the stored credential transaction framework, the status of the stored credential profile will be `Agreed`.
+
+
+      * `Persist` - Use this value if the stored credential profile represents a
+      stored credential profile in an external system. The status of the payment
+      method's stored credential profile will be `Active`.
+    enum:
+      - Activate
+      - Persist
+    type: string
+  mitProfileAgreedOn:
+    description: >
+      The date on which the stored credential profile is agreed. The date format
+      is `yyyy-mm-dd`.
+    format: date
+    type: string
+  mitProfileType:
+    description: |
+      Indicates the type of the stored credential profile.
+    type: string
+  mitTransactionId:
+    description: >
+      Specifies the ID of the transaction. Only applicable if you set the
+      `mitProfileAction` field to `Persist`.
+    maxLength: 128
+    type: string
+title: mandateInfo
+type: object

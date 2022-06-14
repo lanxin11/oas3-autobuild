@@ -1,0 +1,54 @@
+curl -X PUT -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3" -H "Content-Type: application/json" -d '{
+    "active": true,
+    "callout": {
+        "active": true,
+        "calloutAuth": {
+            "domain": "example_domain",
+            "password": "example_password",
+            "preemptive": true,
+            "username": "example_user"
+        },
+        "calloutBaseurl": "https://www.example.com/callout/AccountEdit",
+        "calloutParams": {
+            "AccountName": "<Account.Name>",
+            "AccountNumber": "<Account.Number>"
+        },
+        "calloutRetry": true,
+        "description": "Callout when an account is edited",
+        "httpMethod": "POST",
+        "name": "Callout for Account Edited",
+        "requiredAuth": true
+    },
+    "calloutActive": true,
+    "communicationProfileId": "6e569e1e05f040eda51a927b140c0ac5",
+    "description": "Notification sent out when an account is edited",
+    "emailActive": true,
+    "emailTemplateId": "6e569e1e05f040eda51a927b140c0ac6",
+    "filterRule": {
+        "condition": "Account.Balance >= _VIP_BALANCE_AMOUNT && Account.Status == _ACCOUNT_STATUS",
+        "description": "Filter rule to test if an account is a VIP account",
+        "parameters": {
+            "_ACCOUNT_STATUS": {
+                "description": "The status of the VIP Account",
+                "displayName": "VIP Account Status",
+                "options": [
+                    "Draft",
+                    "Active",
+                    "Canceled"
+                ],
+                "valueType": "STRING"
+            },
+            "_VIP_BALANCE_AMOUNT": {
+                "description": "The minimum account balance",
+                "displayName": "VIP Account Balance",
+                "options": null,
+                "valueType": "BIG_DECIMAL"
+            }
+        }
+    },
+    "filterRuleParams": {
+        "_ACCOUNT_STATUS": "Active",
+        "_VIP_ACCOUNT_BALANCE": "100000"
+    },
+    "name": "Account Edit Notification"
+}' "https://rest.zuora.com/notifications/notification-definitions/{id}"

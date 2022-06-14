@@ -1,0 +1,50 @@
+description: |
+  Information about an order action of type `RenewSubscription`.
+properties:
+  billToContactId:
+    description: >
+      The ID of the bill-to contact associated with the subscription.
+
+
+      **Note**: If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
+    type: string
+  clearingExistingBillToContactId:
+    default: false
+    description: >
+      Whether to clear the existing bill-to contact ID at the subscription
+      level. This field is mutually exclusive with the `paymentTerm` field.
+
+
+      **Note**: If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
+    type: boolean
+  clearingExistingPaymentTerm:
+    default: false
+    description: >
+      Whether to clear the existing payment term at the subscription level. This
+      field is mutually exclusive with the `billToContactId` field.
+
+
+      **Note**: If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
+    type: boolean
+  paymentTerm:
+    description: >
+      The name of the payment term associated with the subscription. For
+      example, `Net 30`. The payment term determines the due dates of invoices.
+
+
+      **Note**: If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
+    type: string
+title: RenewSubscription
+type: object

@@ -1,0 +1,17 @@
+import http.client
+
+conn = http.client.HTTPSConnection("https://rest.zuora.com/")
+
+payload = "{\n    \"emailAddresses\": \"contact1@example.com,contact2@example.com\",\n    \"includeAdditionalEmailAddresses\": false,\n    \"pdfFileId\": \"162297b6f8d94edc81373f6037af76fa\",\n    \"useEmailTemplateSetting\": false\n}"
+
+headers = {
+    'Authorization': "Bearer 6d151216ef504f65b8ff6e9e9e8356d3",
+    'content-type': "application/json",
+    }
+
+conn.request("POST", "/v1/creditmemos/{creditMemoId}/emails", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))

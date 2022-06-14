@@ -1,0 +1,36 @@
+allOf:
+  - properties:
+      Description:
+        description: |
+          Description of the feature.
+        maxLength: 1000
+        type: string
+      FeatureCode:
+        description: |
+          Unique code of the feature.
+        maxLength: 255
+        type: string
+      Name:
+        description: |
+          Name of the feature.
+        maxLength: 255
+        type: string
+      Status:
+        default: Active
+        description: |
+          Status of the feature.
+        enum:
+          - Active
+          - Inactive
+        type: string
+    required:
+      - Name
+      - FeatureCode
+    type: object
+  - $ref: ./FeatureObjectCustomFields.yaml
+example:
+  Description: An experimental feature for early adopters
+  FeatureApprover__c: sally@example.com
+  FeatureCode: F017
+  Name: Experimental Feature
+  Status: Active

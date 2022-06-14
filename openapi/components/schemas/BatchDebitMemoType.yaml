@@ -1,0 +1,13 @@
+properties:
+  dueDate:
+    description: >
+      The date by which the payment for the debit memo is due, in `yyyy-mm-dd`
+      format.
+    format: date
+    type: string
+  id:
+    description: |
+      The ID of the debit memo to be updated.
+    type: string
+title: debitMemos
+type: object

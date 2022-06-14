@@ -1,0 +1,27 @@
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('https://rest.zuora.com/v1/revenue-schedules/{rs-number}/distribute-revenue-on-specific-date');
+$request->setMethod(HTTP_METH_PUT);
+
+$request->setHeaders(array(
+  'content-type' => 'application/json',
+  'Authorization' => 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+));
+
+$request->setBody('{
+    "amount": "1000.00",
+    "distributeOn": "2016-02-03",
+    "distributionType": "specific date (delta fixed amount)",
+    "eventType": "Revenue Distributed",
+    "eventTypeSystemId": "RevenueDistributed__z",
+    "notes": "service delivered and accepted by customer"
+}');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}

@@ -1,0 +1,11 @@
+properties:
+  file:
+    description: >
+      URL of the generated quote document if the file was successfully
+      generated.
+    type: string
+  success:
+    description: |
+      Returns `true` if the request was processed successfully.
+    type: boolean
+type: object

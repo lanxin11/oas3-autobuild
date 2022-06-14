@@ -1,0 +1,6 @@
+properties:
+  chargeNumber:
+    description: The number of the rate plan charge.
+    type: string
+title: charges
+type: object

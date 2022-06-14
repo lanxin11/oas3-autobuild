@@ -1,0 +1,7 @@
+properties:
+  results:
+    description: ''
+    items:
+      $ref: ./AmendResult.yaml
+    type: array
+type: object

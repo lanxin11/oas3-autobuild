@@ -1,0 +1,30 @@
+properties:
+  createdBy:
+    description: |
+      The query job creator's Id.
+    format: uuid
+    maxLength: 64
+    minLength: 64
+    type: string
+  id:
+    description: |
+      Internal identifier of the query job.
+    format: uuid
+    maxLength: 64
+    minLength: 64
+    type: string
+  query:
+    description: |
+      The query that was submitted.
+    type: string
+  remainingRetries:
+    description: >
+      The number of times that Zuora will retry the query if Zuora is unable to
+      perform the query.
+    type: integer
+  updatedOn:
+    description: |
+      Date and time when the query job was last updated, in ISO 8601 format.
+    format: date-time
+    type: string
+type: object

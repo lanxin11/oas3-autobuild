@@ -1,0 +1,29 @@
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('https://rest.zuora.com/v1/accounts/{id}/billing-documents/generate');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'content-type' => 'application/json',
+  'Authorization' => 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+));
+
+$request->setBody('{
+    "autoPost": false,
+    "creditMemoReasonCode": "Unsatisfactory service",
+    "effectiveDate": "2017-05-23",
+    "subscriptionIds": [
+        "4028905558b483220158b48983dd0015",
+        "6028905558b483220158b68983dd0016"
+    ],
+    "targetDate": "2017-08-23"
+}');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}

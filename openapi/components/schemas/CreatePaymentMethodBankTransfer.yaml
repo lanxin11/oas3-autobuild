@@ -1,0 +1,137 @@
+properties:
+  IBAN:
+    description: >
+      The International Bank Account Number. This field is required if the
+      `type` field is set to `SEPA`.
+    type: string
+  accountHolderInfo:
+    description: >
+      This container field is required for the following bank transfer payment
+      methods. The nested `accountHolderName` field is required.
+        - Direct Debit NZ (`Becsnz`)
+        - Single Euro Payments Area (`SEPA`)
+        - Direct Debit UK (`Bacs`)
+        - Denmark Direct Debit (`Betalingsservice`)
+        - Sweden Direct Debit (`Autogiro`)
+        - Canadian Pre-Authorized Debit (`PAD`)
+    properties:
+      accountHolderName:
+        description: |
+          Required.
+
+          The full name of the bank account holder.
+        type: string
+      addressLine1:
+        description: >
+          The first line of the address for the account holder.
+
+
+          This field is required for SEPA Direct Debit payment methods on Stripe
+          v2.
+        type: string
+      addressLine2:
+        description: |
+          The second line of the address for the account holder. 
+        type: string
+      city:
+        description: >
+          The city where the account holder stays.
+
+
+          It is recommended to provide the city and country information when
+          creating a payment method. The information will be used to process
+          payments. If the information is not provided during payment method
+          creation, the city and country data will be missing during payment
+          processing.
+        type: string
+      country:
+        description: >
+          The country where the account holder stays.
+
+
+          This field is required for SEPA Direct Debit payment methods on Stripe
+          v2.
+
+
+          It is recommended to provide the city and country information when
+          creating a payment method. The information will be used to process
+          payments. If the information is not provided during payment method
+          creation, the city and country data will be missing during payment
+          processing.
+        type: string
+      email:
+        description: |
+          The email address of the account holder.
+        type: string
+      firstName:
+        description: |
+          The first name of the account holder.
+        type: string
+      lastName:
+        description: |
+          The last name of the account holder.
+        type: string
+      phone:
+        description: |
+          The phone number of the account holder.
+        type: string
+      state:
+        description: |
+          The state where the account holder stays.
+        type: string
+      zipCode:
+        description: |
+          The zip code for the address of the account holder.
+        type: string
+    type: object
+  accountNumber:
+    description: >
+      The number of the customer's bank account. This field is required for the
+      following bank transfer payment methods:
+        - Direct Entry AU (`Becs`)
+        - Direct Debit NZ (`Becsnz`)
+        - Direct Debit UK (`Bacs`)
+        - Denmark Direct Debit (`Betalingsservice`)
+        - Sweden Direct Debit (`Autogiro`)
+        - Canadian Pre-Authorized Debit (`PAD`)
+    type: string
+  bankCode:
+    description: >
+      The sort code or number that identifies the bank. This is also known as
+      the sort code. This field is required for the following bank transfer
+      payment methods:
+        - Direct Debit UK (`Bacs`)
+        - Denmark Direct Debit (`Betalingsservice`)
+        - Direct Debit NZ (`Becsnz`)
+        - Canadian Pre-Authorized Debit (`PAD`)
+    type: string
+  branchCode:
+    description: >
+      The branch code of the bank used for direct debit. This field is required
+      for the following bank transfer payment methods:
+        - Sweden Direct Debit (`Autogiro`)
+        - Direct Entry AU (`Becs`)
+        - Direct Debit NZ (`Becsnz`)
+        - Canadian Pre-Authorized Debit (`PAD`)
+    type: string
+  businessIdentificationCode:
+    description: |
+      The BIC code used for SEPA.
+    type: string
+  currencyCode:
+    description: >
+      The currency used for payment method authorization.
+
+
+      If this field is not specified, `currency` specified for the account is
+      used for payment method authorization. If no currency is specified for the
+      account, the default currency of the account is then used.
+    type: string
+  identityNumber:
+    description: >
+      The identity number used for Bank Transfer. This field is required for the
+      following bank transfer payment methods:
+        - Denmark Direct Debit (`Betalingsservice`)
+        - Sweden Direct Debit (`Autogiro`)
+    type: string
+type: object

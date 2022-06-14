@@ -1,0 +1,27 @@
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('https://rest.zuora.com/v1/gateway-settlement/payments/{payment-id}/chargeback');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'content-type' => 'application/json',
+  'Authorization' => 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+));
+
+$request->setBody('{
+    "amount": 100,
+    "gatewayResponse": "Insufficient funds",
+    "gatewayResponseCode": "023",
+    "referenceId": "825522036728874689",
+    "secondReferenceId": "825522036690700110",
+    "settledOn": "2019-05-07 20:56:32.981"
+}');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}

@@ -1,0 +1,97 @@
+allOf:
+  - properties:
+      AccountingCode:
+        description: >
+          An active accounting code in your Zuora [Chart of
+          Accounts](https://knowledgecenter.zuora.com/CB_Billing/W_Billing_and_Payments_Settings/V_Configure_Accounting_Codes/D_Set_Up_Chart_of_Accounts).
+
+
+          The [accounting
+          code](https://knowledgecenter.zuora.com/BC_Subscription_Management/Product_Catalog/A_Product_Catalog_Concepts/Accounting_Codes)
+          for the credit balance adjustment. Typically, an accounting code for a
+          credit balance adjustment maps to a bank account in your accounting
+          system.
+        maxLength: 100
+        type: string
+      AdjustmentDate:
+        description: >
+          The date when the credit balance adjustment is applied.
+
+
+          With the Future Dated Credit Balance Adjustment feature enabled, you
+          can use this field to specify when the credit balance adjustment is
+          applied. If not specified, the value defaults to the latter date of
+          the date when the API operation is called and the invoice date.
+
+
+          With the Future Dated Credit Balance Adjustment feature disabled, if
+          no value is specified for this field, the value defaults to the date
+          when the API operation is called. If you specify a value for this
+          field, the value must be the date when the API operation is called.
+        format: date
+        maxLength: 29
+        minLength: 0
+        type: string
+      Amount:
+        description: |
+          The amount of the adjustment.
+        format: double
+        type: number
+      Comment:
+        description: |
+          Your comments about the credit balance adjustment.
+        maxLength: 255
+        type: string
+      ReasonCode:
+        description: >
+          A code identifying the reason for the transaction. Must be an existing
+          [reason
+          code](https://knowledgecenter.zuora.com/CB_Billing/K_Payment_Operations/Reason_Codes_for_Payment_Operations)
+          or empty. If you do not specify a value, Zuora uses the default reason
+          code.
+        maxLength: 32
+        type: string
+      ReferenceId:
+        description: |
+          The ID of the payment that the credit balance adjustment is for.
+        maxLength: 100
+        type: string
+      SourceTransactionId:
+        description: >
+          The ID of the object that the credit balance adjustment is applied to.
+          You must specify a value for either the `SourceTransactionId` field or
+          the `SourceTransactionNumber` field.
+
+
+          The value of this field must be an invoice ID.
+        maxLength: 32
+        type: string
+      SourceTransactionNumber:
+        description: >
+          The number of the object that the credit balance adjustment is applied
+          to. You must specify a value for either the `SourceTransactionId`
+          field or the `SourceTransactionNumber` field.
+
+
+          The value of this field must be an invoice number.
+        maxLength: 50
+        type: string
+      Type:
+        description: >
+          Whether the credit balance adjustment increases or decrease the amount
+          of the credit balance.
+        enum:
+          - Decrease
+          - Increase
+        type: string
+    required:
+      - Amount
+      - Type
+    type: object
+  - $ref: ./CreditBalanceAdjustmentObjectNSFields.yaml
+  - $ref: ./CreditBalanceAdjustmentObjectCustomFields.yaml
+example:
+  Amount: 60
+  Comment: Transfer $60.00 from a negative invoice to the account balance
+  SourceTransactionNumber: INV00000420
+  Type: Increase

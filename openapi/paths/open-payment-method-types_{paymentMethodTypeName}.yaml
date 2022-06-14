@@ -1,0 +1,106 @@
+put:
+  summary: Update a custom payment method type
+  operationId: PUT_UpdateOpenPaymentMethodType
+  description: >
+    Update the latest draft version of your custom payment method type. 
+
+
+    **Note:** In the request body, you need to provide all the fields that
+    define this custom payment method type including fields to be updated and
+    the unchanged fields.
+  tags:
+    - Custom Payment Method Types
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - in: path
+      name: paymentMethodTypeName
+      required: true
+      description: >
+        The API name of the custom payment method type, such as
+        `AmazonPay__c_12368`.
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/PUTUpdateOpenPaymentMethodTypeRequest.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/PUTUpdateOpenPaymentMethodTypeResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                status: Draft
+                paymentMethodType: AmazonPay__c_12368
+                revision: 2
+                publishDate: ''
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/open-payment-method-types_{paymentMethodTypeName}/putundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/open-payment-method-types_{paymentMethodTypeName}/putundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/open-payment-method-types_{paymentMethodTypeName}/putundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/open-payment-method-types_{paymentMethodTypeName}/putundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/open-payment-method-types_{paymentMethodTypeName}/putundefined

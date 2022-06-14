@@ -1,0 +1,9 @@
+allOf:
+  - properties:
+      invoiceId:
+        description: |
+          The ID of the invoice that the debit memo is created from.
+        type: string
+    type: object
+  - $ref: ./DebitMemoFromInvoiceType.yaml
+title: memos

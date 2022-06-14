@@ -1,0 +1,224 @@
+get:
+  summary: 'Multi-entity: List connections'
+  operationId: GET_EntityConnections
+  tags:
+    - Entity Connections
+  description: >
+    **Note:** The Multi-entity feature is in **Limited Availability**. If you
+    wish to have access to the feature, submit a request at [Zuora Global
+    Support](http://support.zuora.com/).
+
+
+    Retrieves information about certain connections for a specified entity. You
+    can specify the entity to retrieve in the `Zuora-Entity-Ids` request header.
+
+
+    You can retrieve:
+     - Inbound connections
+     - Outbound connections
+     - Both inbound and outbound connections
+
+    ## User Access Permission
+
+    You can make the call as any entity user. 
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize_entityConnection.yaml
+    - name: type
+      in: query
+      required: false
+      description: >
+        Specifies whether to retrieve inbound or outbound connections for an
+        entity.
+
+
+        Possible values:
+         - `inbound`: All the incoming connections to the entity.
+         - `outbound`: All the outgoing connections from the entity.
+
+        If you do not specify this field in the request, both the inbound and
+        outbound connections are returned.
+      schema:
+        type: string
+        enum:
+          - inbound
+          - outbound
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETEntityConnectionsResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                entityConnections:
+                  - id: 8a80825555a3c7a10155b54a63821c0d
+                    sourceEntityId: 8a80825555a3c7a10155b46120d058e7
+                    targetEntityId: 8a808255557baba1015580e12fa5083a
+                    status: Connected
+                  - id: 8a80825555a3c7a10155b466736c5c3f
+                    sourceEntityId: 8a808255557baba1015580e12fa5083a
+                    targetEntityId: 8a80825555a3c7a10155b460f53858e6
+                    status: Connected
+                  - id: 8a808255575bdae401576a914a140420
+                    sourceEntityId: 8a808255557baba1015580e12fa5083a
+                    targetEntityId: 8a80825556ff28a4015708ba29312ecc
+                    status: Connected
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_entity-connections/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_entity-connections/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_entity-connections/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_entity-connections/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_entity-connections/getundefined
+post:
+  summary: 'Multi-entity: Initiate a connection request'
+  operationId: POST_EntityConnections
+  tags:
+    - Entity Connections
+  description: >
+    **Note:** The Multi-entity feature is in **Limited Availability**. If you
+    wish to have access to the feature, submit a request at [Zuora Global
+    Support](http://support.zuora.com/).
+
+
+    Initiates a connection request from a source entity to a target entity.
+
+
+    ## User Access Permission
+
+    You must make the call as a source entity administrator. Also, this
+    administrator must have permission to access to the target entity.
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/POSTEntityConnectionsType.yaml
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/POSTEntityConnectionsResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: 8a808255575bdae401576a914a140420
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_entity-connections/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_entity-connections/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_entity-connections/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_entity-connections/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_entity-connections/postundefined

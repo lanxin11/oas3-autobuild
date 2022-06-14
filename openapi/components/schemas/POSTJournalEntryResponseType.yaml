@@ -1,0 +1,10 @@
+properties:
+  journalEntryNumber:
+    description: |
+      Journal entry number in the format JE-00000001.
+    type: string
+  success:
+    description: |
+      Returns `true` if the request was processed successfully.
+    type: boolean
+type: object

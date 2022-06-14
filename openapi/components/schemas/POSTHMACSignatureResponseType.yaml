@@ -1,0 +1,15 @@
+properties:
+  signature:
+    description: |
+      Contains a keyed-hash message authentication code (HMAC)
+      e.g. `ZmI0ZjE2ZTMxMWY1YjA0ZTc4MTg1ZDhlYWRkMTEwNDE3M2RiMzNiNQ==<`
+    type: string
+  success:
+    description: |
+      Returns `true` if the request was processed successfully.
+    type: boolean
+  token:
+    description: |
+      Contains a token code. e.g. `gCH6gYqQffQCsFKSLuxyagXsuXcIK0uf`
+    type: string
+type: object

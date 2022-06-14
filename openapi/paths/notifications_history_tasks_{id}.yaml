@@ -1,0 +1,160 @@
+get:
+  summary: Retrieve a notification history deletion task
+  operationId: GET_Get_Notification_History_Deletion_Task
+  tags:
+    - Notifications
+  description: |
+    Get the notification history deletion task by ID.
+  parameters:
+    - $ref: >-
+        ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_Notifications.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: id
+      in: path
+      description: >
+        The ID of the notification history deletion task. You can get the
+        deletion task ID from the 202 response body of the [Delete notification
+        histories for an
+        account](https://www.zuora.com/developer/api-reference/#operation/DELETE_Delete_Notification_History_For_Account)
+        operation.
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '200':
+      description: OK
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: >-
+              ../components/schemas/NotificationsHistoryDeletionTaskResponse.yaml
+        application/json:
+          examples:
+            response:
+              value: |-
+                {
+                    "id": "2be2f02afc504d1b83fb3cd095ce4dc6",
+                    "status": "FINISHED",
+                    "tenantId": "9",
+                    "createdBy": "402881e522cf4f9b0122cf5d82860002",
+                    "createdOn": 1610358627000,
+                    "accountId": "2c9e8084769a87be0176f0cfa138001e"
+                }
+    '404':
+      description: Not Found
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/ErrorResponse.yaml
+        application/json:
+          examples:
+            response:
+              value: |-
+                {
+                    "reasons": [
+                        {
+                            "code": "ObjectNotFound",
+                            "message": "history task with id 2be2f02afc504d1b83fb3cd095ce4dc7 not found"
+                        }
+                    ]
+                }
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/notifications_history_tasks_{id}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/notifications_history_tasks_{id}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/notifications_history_tasks_{id}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/notifications_history_tasks_{id}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/notifications_history_tasks_{id}/getundefined

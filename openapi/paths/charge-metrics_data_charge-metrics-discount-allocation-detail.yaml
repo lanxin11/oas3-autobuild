@@ -1,0 +1,275 @@
+get:
+  summary: List discount allocation details by time range
+  description: >
+    Retrieves discount allocation details about rate plan charges that have
+    changes in a specified time range.
+
+
+    The purpose of `fromTimestamp` and `toTimestamp` is to synchronize discount
+    allocation details incrementally. 
+  operationId: GET_ChargeMetricsDiscountAllocationDetails
+  tags:
+    - Charge Metrics
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Charge_Metrics_Accept.yaml
+    - name: fromTimestamp
+      description: >
+        The starting date and time of a time range when changes are made to
+        charge metrics, in `yyyy-mm-ddThh:mm:ssZ` format. For example,
+        `2020-08-18T09:01:11Z`. The timestamp maps to the `UpdatedOn` timestamp
+        of the to-be-exported object.
+      in: query
+      required: true
+      schema:
+        type: string
+        format: date-time
+    - name: toTimestamp
+      description: >
+        The end date and time of a time range when changes are made to charge
+        metrics, in `yyyy-mm-ddThh:mm:ssZ` format. For example,
+        `2020-08-20T09:01:11Z`. The timestamp maps to the `UpdatedOn` timestamp
+        of the to-be-exported object.
+      in: query
+      required: true
+      schema:
+        type: string
+        format: date-time
+  responses:
+    '200':
+      description: ''
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: >-
+              ../components/schemas/ChargeMetricsDiscountAllocationDetailResponse.yaml
+    '400':
+      headers:
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+      description: Invalid Parameters
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonReasonsErrorResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                reasons:
+                  - code: '53410020'
+                    message: '''toTimestamp'' must be after the ''fromTimestamp''.'
+    '429':
+      description: Rate limited
+      headers:
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Retry-After:
+          description: |
+            The interval of seconds that you have to wait before another retry.
+          schema:
+            type: integer
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonReasonsErrorResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                reasons:
+                  - code: '53410070'
+                    message: Only two requests are allowed within any 24-hour window.
+    '500':
+      headers:
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+      description: Internal Error
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonReasonsErrorResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                reasons:
+                  - code: '53410060'
+                    message: Internal error detected.
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/charge-metrics_data_charge-metrics-discount-allocation-detail/getundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/charge-metrics_data_charge-metrics-discount-allocation-detail/getundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/charge-metrics_data_charge-metrics-discount-allocation-detail/getundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/charge-metrics_data_charge-metrics-discount-allocation-detail/getundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/charge-metrics_data_charge-metrics-discount-allocation-detail/getundefined

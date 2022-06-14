@@ -1,0 +1,296 @@
+get:
+  summary: List orders of an invoice owner
+  operationId: GET_OrdersByInvoiceOwner
+  description: >
+    **Note:** This feature is only available if you have the [Order
+    Metrics](https://knowledgecenter.zuora.com/BC_Subscription_Management/Orders/AA_Overview_of_Orders#Order_Metrics)
+    feature enabled. As of Zuora Billing Release 284, Orders is generally
+    available and the Order Metrics feature is no longer available as a
+    standalone feature. If you are an existing Subscribe and Amend customer and
+    want Order Metrics only, you must turn on [Orders
+    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization).
+    You can still keep the existing Subscribe and Amend API integrations to
+    create and manage subscriptions.
+
+
+    **Note:** The [Order Line
+    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/AA_Overview_of_Order_Line_Items)
+    feature is now generally available to all Zuora customers. You need to
+    enable the
+    [Orders](https://knowledgecenter.zuora.com/BC_Subscription_Management/Orders/AA_Overview_of_Orders#Orders)
+    feature to access the [Order Line
+    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/AA_Overview_of_Order_Line_Items)
+    feature. As of Zuora Billing Release 313 (November 2021), new customers who
+    onboard on
+    [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
+    will have the [Order Line
+    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
+    feature enabled by default. If you are a new customer who onboard on [Orders
+    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
+    and want to enable the [Order Line
+    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
+    feature, submit a request at [Zuora Global
+    Support](https://support.zuora.com/). If you are an existing
+    [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
+    or [Orders
+    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
+    customer and want to enable the [Order Line
+    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
+    feature, submit a request at [Zuora Global
+    Support](https://support.zuora.com/).        
+
+
+    Retrieves the detailed information about all orders for a specified invoice
+    owner.
+  tags:
+    - Orders
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: accountNumber
+      in: path
+      description: The invoice owner account number.
+      required: true
+      schema:
+        type: string
+        format: string
+    - name: page
+      in: query
+      description: |
+        The page number of the orders retrieved. The default is 1.
+      required: false
+      schema:
+        type: integer
+    - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
+    - name: dateFilterOption
+      in: query
+      description: >
+        The date type to filter on. This field value can be orderDate or
+        updatedDate. Default is orderDate.
+      required: false
+      schema:
+        type: string
+    - name: startDate
+      in: query
+      description: >
+        The result will only contain the orders with the date of
+        dateFilterOption later than or equal to this date.
+      required: false
+      schema:
+        type: string
+        format: date
+    - name: endDate
+      in: query
+      description: >
+        The result will only contain the orders with the date of
+        dateFilterOption earlier than or equal to this date.
+      required: false
+      schema:
+        type: string
+        format: date
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GetOrdersResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                orders:
+                  - orderNumber: O-00000002
+                    orderDate: '2017-03-01'
+                    createdDate: '2018-03-14 15:12:58'
+                    createdBy: 2c989028622282520162235ab0f603ba
+                    updatedDate: '2018-03-14 15:12:58'
+                    updatedBy: 2c989028622282520162235ab0f603ba
+                    existingAccountNumber: accountA_Num
+                    currency: USD
+                    status: Completed
+                    description: This is a description for the Order.
+                    subscriptions:
+                      - subscriptionNumber: A-S00000001
+                        customFields:
+                          sub_cf_picklist__c: null
+                        baseVersion: 1
+                        newVersion: 2
+                        orderActions:
+                          - type: UpdateProduct
+                            sequence: 0
+                            triggerDates:
+                              - triggerDate: '2017-03-01'
+                                name: ContractEffective
+                              - triggerDate: '2017-03-01'
+                                name: ServiceActivation
+                              - triggerDate: '2017-03-01'
+                                name: CustomerAcceptance
+                            updateProduct:
+                              ratePlanId: 2c989028622282520162235acd1b05d2
+                              uniqueToken: null
+                              specificUpdateDate: null
+                              newRatePlanId: 2c989028622282520162235ada870649
+                              chargeUpdates:
+                                - description: null
+                                  chargeNumber: C-00000001
+                                  uniqueToken: null
+                                  newRatePlanChargeId: 2c989028622282520162235adabc0651
+                                  pricing:
+                                    recurringVolume:
+                                      quantity: 7
+                                      tiers: []
+                                      priceChangeOption: null
+                                      priceIncreasePercentage: null
+                                  effectiveDate:
+                                    specificTriggerDate: null
+                                  billing:
+                                    billingPeriodAlignment: null
+                                  customFields:
+                                    srpc_cf_picklist__c: null
+                              customFields: {}
+                            customFields:
+                              oa_cf_text__c: null
+                    customFields:
+                      order_cf_date__c: '2017-01-01'
+                  - orderNumber: O-00000001
+                    orderDate: '2017-01-01'
+                    createdDate: '2018-03-14 15:12:55'
+                    createdBy: 2c989028622282520162235ab0f603ba
+                    updatedDate: '2018-03-14 15:12:55'
+                    updatedBy: 2c989028622282520162235ab0f603ba
+                    existingAccountNumber: accountA_Num
+                    currency: USD
+                    status: Completed
+                    subscriptions:
+                      - subscriptionNumber: A-S00000001
+                        customFields:
+                          sub_cf_picklist__c: sub123
+                        baseVersion: null
+                        newVersion: 1
+                        orderActions:
+                          - type: CreateSubscription
+                            sequence: 0
+                            triggerDates:
+                              - triggerDate: '2017-01-01'
+                                name: ContractEffective
+                              - triggerDate: '2017-01-01'
+                                name: ServiceActivation
+                              - triggerDate: '2017-01-01'
+                                name: CustomerAcceptance
+                            createSubscription:
+                              subscriptionOwnerAccountNumber: accountA_Num
+                              terms:
+                                autoRenew: false
+                                renewalSetting: RENEW_WITH_SPECIFIC_TERM
+                                initialTerm:
+                                  startDate: '2017-01-01'
+                                  period: 12
+                                  periodType: Month
+                                  termType: TERMED
+                                renewalTerms:
+                                  - period: 0
+                                    periodType: Month
+                              invoiceSeparately: null
+                              notes: null
+                              subscribeToRatePlans:
+                                - productRatePlanId: 2c989028622282520162235ac91605b3
+                                  newRatePlanId: 2c989028622282520162235acd1b05d2
+                                  uniqueToken: null
+                                  chargeOverrides:
+                                    - description: null
+                                      chargeNumber: C-00000001
+                                      productRateplanChargeId: 2c989028622282520162235aca7a05b9
+                                      uniqueToken: null
+                                      pricing:
+                                        recurringVolume:
+                                          quantity: 12
+                                          tiers: []
+                                          listPriceBase: Per_Billing_Period
+                                          priceChangeOption: null
+                                          priceIncreasePercentage: null
+                                      startDate:
+                                        specificTriggerDate: null
+                                      endDate:
+                                        endDateCondition: null
+                                        specificEndDate: null
+                                        upToPeriods: null
+                                        upToPeriodsType: null
+                                      billing:
+                                        billCycleDay: null
+                                        billingPeriod: null
+                                        billCycleType: null
+                                        billingTiming: null
+                                        billingPeriodAlignment: null
+                                        specificBillingPeriod: null
+                                        weeklyBillCycleDay: null
+                                      customFields:
+                                        srpc_cf_picklist__c: null
+                                  customFields: {}
+                            customFields:
+                              oa_cf_text__c: oa cf test
+                    customFields:
+                      order_cf_date__c: '2017-01-01'
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/v1_orders_invoiceOwner_{accountNumber}/getundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_orders_invoiceOwner_{accountNumber}/getundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_orders_invoiceOwner_{accountNumber}/getundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_orders_invoiceOwner_{accountNumber}/getundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_orders_invoiceOwner_{accountNumber}/getundefined

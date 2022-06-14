@@ -1,0 +1,51 @@
+properties:
+  description:
+    description: |
+      The short description of the product rate plan.
+    type: string
+  effectiveEndDate:
+    description: |
+      The end date of the product rate plan.
+    format: date
+    type: string
+  effectiveStartDate:
+    description: |
+      The start date of the product rate plan.
+    format: date
+    type: string
+  externallyManagedPlanIds:
+    description: >
+      The unique identifier for the product rate plan in a third-party store.
+      This field is used to represent a rate plan created through third-party
+      stores.
+    items:
+      type: string
+    type: array
+  grade:
+    description: >
+      The grade of the product rate plan.
+
+
+      **Note**: This field is in the **Early Adopter** phase. We are actively
+      soliciting feedback from a small set of early adopters before releasing it
+      as generally available. If you want to join this early adopter program,
+      submit a request at [Zuora Global Support](http://support.zuora.com/).
+    type: number
+  id:
+    description: |
+      The unique product rate plan ID.
+    type: string
+  name:
+    description: |
+      The name of the product rate plan.
+    type: string
+  status:
+    description: >
+      The status of the product rate plan. Possible values are: `Active`,
+      `Expired`, `NotStarted`.
+    type: string
+  success:
+    description: |
+      Returns `true` if the request was processed successfully.
+    type: boolean
+type: object

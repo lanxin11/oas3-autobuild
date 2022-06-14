@@ -1,0 +1,30 @@
+allOf:
+  - properties:
+      amount:
+        description: |
+          The calculated gross amount for the Order Line Item.
+        type: number
+      amountWithoutTax:
+        description: >
+          The calculated gross amount for an order line item excluding tax. If
+          the tax mode is tax exclusive, the value of this field equals that of
+          the `amount` field.
+
+
+          If the tax mode of an order line item is not set, the system treats it
+          as tax exclusive by default. The value of the `amountWithoutTax` field
+          equals that of the `amount` field.
+
+
+          If you create an order line item from the product catalog, the tax
+          mode and tax code of the product rate plan charge are used for the
+          order line item by default. You can still overwrite this default
+          set-up by setting the tax mode and tax code of the order line item.
+        type: number
+      id:
+        description: |
+          The sytem generated Id for the Order Line Item.
+        format: UUID
+        type: string
+    type: object
+  - $ref: ./OrderLineItemCommonRetrieveOrderLineItem.yaml

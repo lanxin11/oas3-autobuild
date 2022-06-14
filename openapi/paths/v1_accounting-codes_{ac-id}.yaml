@@ -1,0 +1,294 @@
+delete:
+  summary: Delete an accounting code
+  operationId: DELETE_AccountingCode
+  description: >
+    This reference describes how to delete an accounting code through the REST
+    API.
+
+    ## Prerequisites
+
+    If you have Zuora Finance enabled on your tenant, then you must have the
+    Delete Unused Accounting Code permission.
+
+    ## Limitations
+
+    You can only delete accounting codes that have never been associated with
+    any transactions. An accounting code must be deactivated before you can
+    delete it.
+  tags:
+    - Accounting Codes
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: ac-id
+      in: path
+      required: true
+      description: ID of the accounting code you want to delete.
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_accounting-codes_{ac-id}/deleteundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_accounting-codes_{ac-id}/deleteundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_accounting-codes_{ac-id}/deleteundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_accounting-codes_{ac-id}/deleteundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_accounting-codes_{ac-id}/deleteundefined
+get:
+  summary: Retrieve an accounting code
+  operationId: GET_AccountingCode
+  description: >-
+    This reference describes how to query an accounting code through the REST
+    API.
+  tags:
+    - Accounting Codes
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: ac-id
+      in: path
+      description: ID of the accounting code you want to query.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETAccountingCodeItemType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: 8a8081ae547aac1e01547efb61f20140
+                name: CASH
+                type: Cash
+                glAccountName: null
+                glAccountNumber: null
+                notes: null
+                category: Assets
+                status: Active
+                createdOn: '2016-05-04 01:23:07'
+                createdBy: e20b074746ec48f40147140f51e30a1a
+                updatedOn: '2016-05-05 20:07:38'
+                updatedBy: e20b074746ec48f40147140f51e30a1a
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_accounting-codes_{ac-id}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_accounting-codes_{ac-id}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_accounting-codes_{ac-id}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_accounting-codes_{ac-id}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_accounting-codes_{ac-id}/getundefined
+put:
+  summary: Update an accounting code
+  operationId: PUT_AccountingCode
+  description: >
+    This reference describes how to update an existing accounting code through
+    the REST API.
+
+    ## Prerequisites
+      If you have Zuora Finance enabled on your tenant, you must have the  Manage Accounting Code permission. 
+    ## Limitations
+
+    You can only update accounting codes that are not already associated with
+    any transactions.
+  tags:
+    - Accounting Codes
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: ac-id
+      in: path
+      description: ID of the accounting code you want to update.
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/PUTAccountingCodeType.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_accounting-codes_{ac-id}/putundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_accounting-codes_{ac-id}/putundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_accounting-codes_{ac-id}/putundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_accounting-codes_{ac-id}/putundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_accounting-codes_{ac-id}/putundefined

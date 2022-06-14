@@ -1,0 +1,135 @@
+get:
+  summary: Retrieve usage rate detail for an invoice item
+  operationId: GET_Usage_Rate_Detail_By_Invoice_Item
+  description: >
+    Use this REST API operation to retrieve the usage rate detail for an invoice
+    item to understand how the total amount is calculated. The information is
+    the same as the Rate Detail presented on [PDF
+    invoices](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/IA_Invoices/Create_a_custom_invoice_template/DD_Display_Usage_Charge_Breakdown#How_UsageSummary.RateDetail_is_displayed_on_invoices).  
+
+
+    **Notes and limitations:**
+
+    - Do not support the Overage Charge Model, Tiered with Overage Charge Model,
+    and Multi-attribute Pricing Charge Model.
+
+    - Do not support invoices in `Cancelled` or `Reversed` status.
+
+    - Do not support Active rating.
+
+    - In terms of rating group options, only the [Usage rating by billing
+    period](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Rating/Usage_Rating_by_Group#Usage_rating_by_billing_period)
+    is supported.
+
+    - Do not support [On-demand usage
+    rating](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Rating/On-demand_Usage_Rating). 
+
+    - Tax calculation is not involved.
+  tags:
+    - Usage
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: invoice-item-id
+      in: path
+      description: >-
+        Invoice item ID. For example, `402880e57f725d85017f7267c4ad002b`.
+        Available through Data Source export.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETUsageRateDetailWrapper.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+                data:
+                  invoiceId: 402880e57f725d85017f7267c44c0028
+                  invoiceItemId: 402880e57f725d85017f7267c4ad002b
+                  invoiceNumber: INV00000007
+                  chargeNumber: C-00000001
+                  servicePeriod: 03/01/2022-03/31/2022
+                  uom: Each
+                  quantity: 45
+                  amountWithoutTax: 58
+                  listPrice: |
+                    Tier / From / To / List Price / Price Format
+                    1 / 0 / 9 / 0.00 / Per Unit
+                    2 / 10 / 20 / 1.00 / Per Unit
+                    3 / 21 / 30 / 2.00 / Flat Fee
+                    4 / 31 /   / 3.00 / Per Unit
+                  rateDetail: |-
+                    Tier 1: 0-9, 9 Each(s) x $0.00/Each = $0.00
+                    Tier 2: 10-20, 11 Each(s) x $1.00/Each = $11.00
+                    Tier 3: 21-30, $2.00 Flat Fee
+                    Tier 4: >=31, 15 Each(s) x $3.00/Each = $45.00
+                    Total = $58.00
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/v1_invoices_invoice-item_{invoice-item-id}_usage-rate-detail/getundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_invoices_invoice-item_{invoice-item-id}_usage-rate-detail/getundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_invoices_invoice-item_{invoice-item-id}_usage-rate-detail/getundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_invoices_invoice-item_{invoice-item-id}_usage-rate-detail/getundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_invoices_invoice-item_{invoice-item-id}_usage-rate-detail/getundefined

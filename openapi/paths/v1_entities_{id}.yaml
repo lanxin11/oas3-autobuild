@@ -1,0 +1,322 @@
+put:
+  summary: 'Multi-entity: Update an entity'
+  operationId: PUT_Entities
+  description: >
+    **Note:** The Multi-entity feature is in **Limited Availability**. If you
+    wish to have access to the feature, submit a request at [Zuora Global
+    Support](http://support.zuora.com/). 
+
+
+    Edits the following information about an unprovisioned entity:
+
+     - Name
+     
+     - Display name
+     
+     - Locale
+     
+     - Timezone
+
+    ## User Access Permission
+
+    You must make the call as a global entity administrator.
+
+
+    ## Notes
+
+    * You are not allowed to edit the locale and time zone of the provisioned
+    entities through the REST API.
+
+    * You are not allowed to edit the display name of the global entity.
+  tags:
+    - Entities
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: id
+      in: path
+      required: true
+      description: >-
+        The Id of the entity that you want to edit. You can get the entity Id
+        from the GET Entities call.
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/UpdateEntityType.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/UpdateEntityResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_entities_{id}/putundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_entities_{id}/putundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_entities_{id}/putundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_entities_{id}/putundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_entities_{id}/putundefined
+get:
+  summary: 'Multi-entity: Retrieve an entity'
+  operationId: GET_EntityById
+  description: >
+    **Note:** The Multi-entity feature is in **Limited Availability**. If you
+    wish to have access to the feature, submit a request at [Zuora Global
+    Support](http://support.zuora.com/). 
+
+
+    Retrieves detailed information about a specified entity.
+
+
+    ## User Access Permission
+
+    You can make the call as any entity user.     
+  tags:
+    - Entities
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: id
+      in: path
+      required: true
+      description: >-
+        Specify the Id of the entity that you want to retrieve. You can get the
+        entity Id from the GET Entities call.
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETEntitiesResponseTypeWithId.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: 8a80825555a3c7a10155b460f53858e6
+                name: Acme-Americas
+                displayName: Acme-Americas
+                locale: en_US
+                timezone: America/Los_Angeles
+                status: Provisioned
+                parentId: 8a808255557baba1015580e12fa5083a
+                tenantId: '6398'
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_entities_{id}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_entities_{id}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_entities_{id}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_entities_{id}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_entities_{id}/getundefined
+delete:
+  summary: 'Multi-entity: Delete an entity'
+  operationId: DELETE_Entities
+  description: >
+    **Note:** The Multi-entity feature is in **Limited Availability**. If you
+    wish to have access to the feature, submit a request at [Zuora Global
+    Support](http://support.zuora.com/). 
+
+
+    Removes an entity and its sub-entities from a multi-entity hierarchy. You
+    can only remove unprovisioned entities. An error occurred when you remove a
+    provisioned entity.
+
+
+    ## User Access Permission
+
+    You must make the call as a global entity administrator.   
+  tags:
+    - Entities
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: id
+      in: path
+      required: true
+      description: >-
+        Specify the Id of the entity that you want to delete. You can get the
+        entity Id from the GET Entities call.
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/DELETEntityResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_entities_{id}/deleteundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_entities_{id}/deleteundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_entities_{id}/deleteundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_entities_{id}/deleteundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_entities_{id}/deleteundefined

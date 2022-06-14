@@ -1,0 +1,33 @@
+properties:
+  ChargeNumber:
+    description: ''
+    type: string
+  DMRR:
+    description: ''
+    format: double
+    type: number
+  DTCV:
+    description: ''
+    format: double
+    type: number
+  MRR:
+    description: ''
+    format: double
+    type: number
+  OriginalId:
+    description: ''
+    type: string
+  OriginalRatePlanId:
+    description: ''
+    type: string
+  ProductRatePlanChargeId:
+    description: ''
+    type: string
+  ProductRatePlanId:
+    description: ''
+    type: string
+  TCV:
+    description: ''
+    format: double
+    type: number
+type: object

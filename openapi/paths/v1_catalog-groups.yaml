@@ -1,0 +1,204 @@
+post:
+  summary: Create a catalog group
+  operationId: POST_CreateCatalogGroup
+  description: >
+    **Note**: This operation is in the Early Adopter phase. We are actively
+    soliciting feedback from a small set of early adopters before releasing it
+    as generally available. If you want to join this early adopter program,
+    submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+
+    Creates a catalog group which groups a list of product rate plans.
+  tags:
+    - Catalog Groups
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/POSTCatalogGroupRequest.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CatalogGroupResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: 4028e5ab7f1b600c017f1b7a5e8901d2
+                name: test
+                description: some description
+                catalogGroupNumber: CG-00000001
+                type: Grading
+                productRatePlans:
+                  - id: 4028e5ab7f1b600c017f1b787d5d01cf
+                    status: Active
+                    name: '222'
+                    description: null
+                    effectiveStartDate: '2022-02-21'
+                    effectiveEndDate: '2023-02-21'
+                    grade: 1
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_catalog-groups/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_catalog-groups/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_catalog-groups/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_catalog-groups/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_catalog-groups/postundefined
+get:
+  summary: List all catalog groups
+  operationId: GET_ListAllCatalogGroups
+  description: >
+    **Note**: This operation is in the Early Adopter phase. We are actively
+    soliciting feedback from a small set of early adopters before releasing it
+    as generally available. If you want to join this early adopter program,
+    submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+
+    Retrieves basic information about all catalog groups.
+  tags:
+    - Catalog Groups
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/ListAllCatalogGroupsResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                catalogGroups:
+                  - id: 4028e5ab7f1b600c017f1b7a5e8901d2
+                    name: test
+                    description: some description
+                    catalogGroupNumber: CG-00000001
+                    type: Grading
+                    productRatePlans:
+                      - id: 4028e5ab7f1b600c017f1b787d5d01cf
+                        status: Active
+                        name: '222'
+                        description: null
+                        effectiveStartDate: '2022-02-21'
+                        effectiveEndDate: '2023-02-21'
+                        grade: 1
+                nextPage: false
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_catalog-groups/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_catalog-groups/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_catalog-groups/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_catalog-groups/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_catalog-groups/getundefined

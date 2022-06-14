@@ -1,0 +1,250 @@
+get:
+  summary: Retrieve an account
+  operationId: GET_Account
+  description: >
+    Retrieves basic information about a customer account.
+
+
+    This operation is a quick retrieval that doesn't include the account's
+    subscriptions, invoices, payments, or usage details. Use Get account summary
+    to get more detailed information about an account.
+  tags:
+    - Accounts
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: account-key
+      in: path
+      description: Account number or account ID.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETAccountType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                basicInfo:
+                  id: 402892c74c9193cd014c91d35b0a0132
+                  name: Test
+                  accountNumber: A00000001
+                  notes: ''
+                  status: Active
+                  crmId: ''
+                  batch: Batch1
+                  invoiceTemplateId: null
+                  communicationProfileId: 303d186840e611df817c002185d714e1
+                  salesRep: ''
+                  sequenceSetId: null
+                billingAndPayment:
+                  billCycleDay: 1
+                  currency: USD
+                  defaultPaymentMethodId: 2c93808457d787030157e03220ec4fad
+                  paymentTerm: Net 30
+                  paymentGateway: TestGateway
+                  invoiceDeliveryPrefsPrint: false
+                  invoiceDeliveryPrefsEmail: true
+                  additionalEmailAddresses:
+                    - contact1@example.com
+                    - contact2@example.com
+                metrics:
+                  balance: 0
+                  totalInvoiceBalance: 0
+                  creditBalance: 0
+                  contractedMrr: -900
+                billToContact:
+                  address1: ''
+                  address2: ''
+                  city: ''
+                  country: null
+                  county: null
+                  fax: ''
+                  firstName: Test
+                  homePhone: ''
+                  id: 2c9081a03c6d7b51013c6d7e46c80a17
+                  lastName: Test
+                  mobilePhone: ''
+                  nickname: ''
+                  otherPhone: ''
+                  otherPhoneType: null
+                  personalEmail: ''
+                  state: ''
+                  taxRegion: null
+                  workEmail: contact@example.com
+                  workPhone: ''
+                  zipCode: ''
+                soldToContact:
+                  address1: ''
+                  address2: ''
+                  city: ''
+                  country: null
+                  county: null
+                  fax: ''
+                  firstName: Test
+                  homePhone: ''
+                  id: 2c9081a03c6d7b51013c6d7e46cf0a18
+                  lastName: Test
+                  mobilePhone: ''
+                  nickname: ''
+                  otherPhone: ''
+                  otherPhoneType: null
+                  personalEmail: ''
+                  state: ''
+                  taxRegion: null
+                  workEmail: contact@example.com
+                  workPhone: ''
+                  zipCode: ''
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_accounts_{account-key}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_accounts_{account-key}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_accounts_{account-key}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_accounts_{account-key}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_accounts_{account-key}/getundefined
+put:
+  summary: Update an account
+  operationId: PUT_Account
+  description: "Updates a customer account by specifying the account-key.\n\n## Notes\n1. Only the fields to be changed should be specified.  Any field that is not included in the request body will not be changed.\n2. If an empty field is submitted with this operation, the corresponding field in the account is emptied.\n3. Email addresses: If no email addresses are specified, no change is made to the email addresses on file or to the email delivery preference. If either the **personalEmail** or **workEmail** is specified (or both), the system updates the corresponding email address(es) on file and the email delivery preference is set to `true`. (In that case, emails go to the **workEmail** address, if it exists, or else the **personalEmail**.) On the other hand, if as a result of this call both of the email addresses for the account are empty, the email delivery preference is set to `false`.\n4. The bill-to and sold-to contacts are separate data entities.\_If you select the\_**Same as Bill To Contact**\_check box during account creation, both the Bill To and Sold To contacts are updated upon updating either one\_because they point to the same contact record. In this case, if you want to update only one of them, you have to first create another contact and update the Bill To or Sold To\_contact\_of\_the customer account to be the newly created one.\n\nFor a use case of this operation, see [Configure payment methods](https://www.zuora.com/developer/api-guides/#Configure-payment-methods).\n"
+  tags:
+    - Accounts
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: account-key
+      in: path
+      required: true
+      description: Account number or account ID.
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/PUTAccountType.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_accounts_{account-key}/putundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_accounts_{account-key}/putundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_accounts_{account-key}/putundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_accounts_{account-key}/putundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_accounts_{account-key}/putundefined

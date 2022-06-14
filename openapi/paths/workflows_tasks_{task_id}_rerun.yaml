@@ -1,0 +1,159 @@
+post:
+  summary: Rerun a workflow task
+  operationId: POST_WorkflowsTaskRerun
+  description: >
+    Reruns a specific workflow task by its ID.
+
+
+    ## User Access Permission
+
+    You must be assigned the **Workflow Run Access** permission to run this
+    operation.
+  tags:
+    - Workflows
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - name: task_id
+      in: path
+      required: true
+      description: |
+        The unique ID of the task.
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/Task.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: 2771
+                name: If
+                instance: true
+                parameters:
+                  if_clause: "{% if 0 > 1 %}\r\nTrue\r\n{% else %}\r\nFalse\r\n{% endif %}"
+                  strict_variables: 'true'
+                data:
+                  Files:
+                    XML_52881.xml:
+                      name: JSONData_xslt.xml
+                      size: 0.011725425720214844
+                      object_class: Workflow
+                  Tasks:
+                    Previous:
+                      Id: 2770
+                      Status: Error
+                      ErrorClass: WorkflowError::Callout
+                      ErrorReason: Callout response was 500 after 1 tries.
+                  Callout:
+                    URL: https://rest.apisandbox.zuora.com/v1/action/query
+                    RequestBody:
+                      queryString: >-
+                        Select Id From Contact Where LastName = 'Drew' AND
+                        FirstName = 'Nancy' AND  WorkEmail = 'nancy@xyz.com'
+                    ResponseBody:
+                      message: |
+                        An unexpected error occurred
+                    ResponseCode: 500
+                    RequestHeaders:
+                      Content-Type: application/json
+                    ResponseHeaders:
+                      x-n:
+                        - S
+                      date:
+                        - Thu, 19 Sep 2019 12:35:43 GMT
+                      pragma:
+                        - no-cache
+                      server:
+                        - kong/0.9.9
+                      expires:
+                        - Thu, 19 Sep 2019 12:35:43 GMT
+                      connection:
+                        - close
+                      content-type:
+                        - text/plain; charset=UTF-8
+                      cache-control:
+                        - max-age=0, no-cache, no-store
+                  Workflow:
+                    LastRunDate: '2019-09-19'
+                    ExecutionDate: '2019-09-19'
+                    LastRunDateTime: '2019-09-19T12:34:41'
+                    WorkflowRunUser: test-user
+                    ExecutionDateTime: '2019-09-19T12:35:37'
+                action_type: If
+                object: null
+                object_id: null
+                call_type: SOAP
+                workflow_id: 476
+                status: Success
+                start_time: '2019-09-19T12:35:43.857Z'
+                end_time: '2019-09-19T12:35:43.942Z'
+                original_task_id: 2582
+                original_workflow_id: 416
+                error: null
+                error_class: null
+                error_details: null
+                tags: []
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/workflows_tasks_{task_id}_rerun/postundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/workflows_tasks_{task_id}_rerun/postundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/workflows_tasks_{task_id}_rerun/postundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/workflows_tasks_{task_id}_rerun/postundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/workflows_tasks_{task_id}_rerun/postundefined

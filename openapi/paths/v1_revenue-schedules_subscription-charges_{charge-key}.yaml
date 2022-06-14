@@ -1,0 +1,258 @@
+post:
+  summary: Create a revenue schedule by subscription charge key
+  operationId: POST_RSforSubscCharge
+  description: >
+    Creates a revenue schedule by specifying the subscription charge. This
+    method is for custom unlimited revenue recognition only.
+
+
+    **Note**: You can create a maximum of 3,000 revenue schedules for a
+    subscription charge.
+  tags:
+    - Revenue Schedules
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: charge-key
+      in: path
+      description: >-
+        ID of the subscription rate plan charge; for example,
+        402892793e173340013e173b81000012.
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/POSTRevenueScheduleByChargeType.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/POSTRevenueScheduleByChargeResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                revenueScheduleNumber: rs-00000001
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/v1_revenue-schedules_subscription-charges_{charge-key}/postundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_revenue-schedules_subscription-charges_{charge-key}/postundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_revenue-schedules_subscription-charges_{charge-key}/postundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_revenue-schedules_subscription-charges_{charge-key}/postundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_revenue-schedules_subscription-charges_{charge-key}/postundefined
+get:
+  summary: List revenue schedules by subscription charge key
+  operationId: GET_RSforSubscCharge
+  description: >
+    Retrieves the revenue schedule details by specifying subscription charge ID.
+    Request and response field descriptions and sample code are provided
+  tags:
+    - Revenue Schedules
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize_finance_revenue.yaml
+    - name: charge-key
+      in: path
+      description: >-
+        ID of the subscription rate plan charge; for example,
+        402892793e173340013e173b81000012.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETRSDetailsByChargeType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                revenueSchedules:
+                  - number: RS-00000291
+                    recognitionRuleName: Recognize upon invoicing
+                    amount: 50
+                    undistributedUnrecognizedRevenue: 50
+                    recognizedRevenue: 0
+                    unrecognizedRevenue: 50
+                    currency: USD
+                    notes: null
+                    createdOn: '2014-01-21 13:59:25'
+                    updatedOn: '2014-01-21 13:59:25'
+                    accountId: 2c92c0f8439770960143b2141f5a584e
+                    subscriptionId: 2c92c0f943977b4f0143b23487994327
+                    subscriptionChargeId: 2c92c0f943977b4f0143b23487ed432e
+                    linkedTransactionId: 2c92c094439782460143b62c2ee90f5a
+                    linkedTransactionType: InvoiceItem
+                    referenceId: null
+                    revenueScheduleDate: '2014-01-21'
+                    revenueItems:
+                      - accountingPeriodName: Open-Ended
+                        isAccountingPeriodClosed: false
+                        amount: 50
+                        currency: USD
+                        accountingPeriodStartDate: '2013-12-11'
+                        accountingPeriodEndDate: null
+                        recognizedRevenueAccountingCodeType: null
+                        recognizedRevenueAccountingCode: null
+                        deferredRevenueAccountingCodeType: null
+                        deferredRevenueAccountingCode: null
+                  - number: RS-00000290
+                    recognitionRuleName: Recognize upon invoicing
+                    amount: 50
+                    undistributedUnrecognizedRevenue: 50
+                    recognizedRevenue: 0
+                    unrecognizedRevenue: 50
+                    currency: USD
+                    notes: null
+                    createdOn: '2014-01-21 13:59:25'
+                    updatedOn: '2014-01-21 13:59:25'
+                    accountId: 2c92c0f8439770960143b2141f5a584e
+                    subscriptionId: 2c92c0f943977b4f0143b23487994327
+                    subscriptionChargeId: 2c92c0f943977b4f0143b23487ed432e
+                    linkedTransactionId: 2c92c094439782460143b62c2ee60f59
+                    linkedTransactionNumber: INV00000838
+                    linkedTransactionType: InvoiceItem
+                    referenceId: null
+                    revenueScheduleDate: '2014-01-21'
+                    revenueItems:
+                      - accountingPeriodName: Open-Ended
+                        isAccountingPeriodClosed: false
+                        amount: 50
+                        currency: USD
+                        accountingPeriodStartDate: '2013-12-11'
+                        accountingPeriodEndDate: null
+                        recognizedRevenueAccountingCodeType: null
+                        recognizedRevenueAccountingCode: null
+                        deferredRevenueAccountingCodeType: null
+                        deferredRevenueAccountingCode: null
+                nextPage: >-
+                  https://rest.zuora.com/v1/revenue-schedules/subscription-charges/2c92c0f943977b4f0143b23487ed432e?page=2&pageSize=8
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/v1_revenue-schedules_subscription-charges_{charge-key}/getundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_revenue-schedules_subscription-charges_{charge-key}/getundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_revenue-schedules_subscription-charges_{charge-key}/getundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_revenue-schedules_subscription-charges_{charge-key}/getundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_revenue-schedules_subscription-charges_{charge-key}/getundefined

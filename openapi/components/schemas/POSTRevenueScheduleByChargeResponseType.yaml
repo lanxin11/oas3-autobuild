@@ -1,0 +1,11 @@
+properties:
+  revenueScheduleNumber:
+    description: >
+      Revenue schedule number. The revenue schedule number is always prefixed
+      with "RS", for example, "RS-00000001".
+    type: string
+  success:
+    description: |
+      Returns `true` if the request was processed successfully.
+    type: boolean
+type: object

@@ -1,0 +1,218 @@
+get:
+  summary: Retrieve a subscription by key and version
+  operationId: GET_SubscriptionsByKeyAndVersion
+  description: >
+    This REST API reference describes how to retrieve detailed information about
+    a specified subscription in a specified version. When you create a
+    subscription amendment, you create a new version of the subscription. You
+    can use this method to retrieve information about a subscription in any
+    version.
+  tags:
+    - Subscriptions
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: subscription-key
+      in: path
+      description: |
+        Subscription number. For example, A-S00000135.
+      required: true
+      schema:
+        type: string
+    - name: version
+      in: path
+      description: |
+        Subscription version. For example, 1.
+      required: true
+      schema:
+        type: string
+    - name: charge-detail
+      in: query
+      description: >
+
+        The segmented rate plan charges. When an amendment results in a change
+        to a charge, Zuora creates a segmented rate plan charge. Use this field
+        to track segment charges.
+
+
+        Possible values are:
+
+         * __last-segment__: (Default) The last rate plan charge on the subscription. The last rate plan charge is the last one in the order of time on the subscription rather than the most recent changed charge on the subscription.
+         * __current-segment__: The segmented charge that is active on today’s date (effectiveStartDate <= today’s date < effectiveEndDate).
+         
+         * __all-segments__: All the segmented charges. The `chargeSegments` field is returned in the response. The `chargeSegments` field contains an array of the charge information for all the charge segments.
+
+         * __specific-segment&as-of-date=date__: The segmented charge that is active on a date you specified (effectiveStartDate <= specific date < effectiveEndDate). The format of the date is yyyy-mm-dd.
+      required: false
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETSubscriptionTypeWithSuccess.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+                id: 2c9081a03c63c94c013c687b864e0195
+                accountId: 2c9081a03c63c94c013c66688a2c00bf
+                accountNumber: RestAPI
+                accountName: RestAPI
+                subscriptionNumber: A-S00000004
+                version: 1
+                revision: '1.0'
+                termType: TERMED
+                contractEffectiveDate: '2012-02-01'
+                serviceActivationDate: '2012-02-01'
+                customerAcceptanceDate: '2012-02-01'
+                subscriptionStartDate: '2012-02-01'
+                termStartDate: '2012-02-01'
+                termEndDate: '2013-02-01'
+                initialTermPeriodType: Week
+                currentTerm: 12
+                currentTermPeriodType: Week
+                autoRenew: false
+                renewalSetting: RENEW_WITH_SPECIFIC_TERM
+                renewalTerm: 0
+                renewalTermPeriodType: Week
+                contractedMrr: 26.67
+                totalContractedValue: 404
+                notes: ''
+                status: Active
+                ratePlans:
+                  - id: 2c9081a03c63c94c013c687b868901a4
+                    productId: 2c9081a03c63c94c013c66499ef0001b
+                    productName: OneTime
+                    productSku: SKU-00000022
+                    productRatePlanId: 2c9081a03c63c94c013c665102e5003a
+                    ratePlanName: OT_Tiered
+                    ratePlanCharges:
+                      - id: 2c9081a03c63c94c013c687b868901a5
+                        originalChargeId: 2c9081a03c63c94c013c687a92d70175
+                        productRatePlanChargeId: 2c9081a03c63c94c013c6651d677003c
+                        number: C-00000010
+                        name: OT_Tiered
+                        type: OneTime
+                        model: Tiered
+                        uom: Each
+                        version: 1
+                        pricingSummary: >-
+                          0 to 10 Each: USD20 flat fee;  11 Each or more:
+                          USD4/Each
+                        priceChangeOption: null
+                        priceIncreasePercentage: null
+                        currency: USD
+                        price: null
+                        tiers:
+                          - tier: 1
+                            startingUnit: 0
+                            endingUnit: 10
+                            price: 20
+                            priceFormat: FlatFee
+                          - tier: 2
+                            startingUnit: 11
+                            endingUnit: null
+                            price: 4
+                            priceFormat: PerUnit
+                        includedUnits: null
+                        overagePrice: null
+                        discountPercentage: null
+                        discountAmount: null
+                        applyDiscountTo: null
+                        discountLevel: null
+                        billingDay: null
+                        listPriceBase: null
+                        billingPeriod: null
+                        specificBillingPeriod: null
+                        billingTiming: null
+                        billingPeriodAlignment: null
+                        quantity: 11
+                        smoothingModel: null
+                        numberOfPeriods: null
+                        overageCalculationOption: null
+                        overageUnusedUnitsCreditOption: null
+                        unusedUnitsCreditRates: null
+                        usageRecordRatingOption: null
+                        segment: 1
+                        effectiveStartDate: '2012-02-01'
+                        effectiveEndDate: '2012-02-02'
+                        processedThroughDate: '2012-02-02'
+                        chargedThroughDate: '2012-02-02'
+                        done: true
+                        triggerDate: null
+                        triggerEvent: ContractEffective
+                        endDateCondition: One_Time
+                        upToPeriodsType: null
+                        upToPeriods: null
+                        specificEndDate: null
+                        mrr: null
+                        dmrc: null
+                        tcv: 24
+                        dtcv: 24
+                        description: ''
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/v1_subscriptions_{subscription-key}_versions_{version}/getundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_subscriptions_{subscription-key}_versions_{version}/getundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_subscriptions_{subscription-key}_versions_{version}/getundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_subscriptions_{subscription-key}_versions_{version}/getundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_subscriptions_{subscription-key}_versions_{version}/getundefined

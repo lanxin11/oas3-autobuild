@@ -1,0 +1,16 @@
+require 'uri'
+require 'net/http'
+
+url = URI("https://rest.zuora.com/v1/journal-entries")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["Authorization"] = 'Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
+request["content-type"] = 'application/json'
+request.body = "{\n    \"accountingPeriodName\": \"Nov-2014\",\n    \"currency\": \"USD\",\n    \"journalEntryDate\": \"2014-09-09\",\n    \"journalEntryItems\": [\n        {\n            \"accountingCodeName\": \"Accounts Receivable\",\n            \"accountingCodeType\": \"Deferred Revenue\",\n            \"amount\": \"400.9\",\n            \"homeCurrencyAmount\": \"801.8\",\n            \"type\": \"Credit\"\n        },\n        {\n            \"accountingCodeName\": \"Subscription Revenue\",\n            \"accountingCodeType\": \"Sales Revenue\",\n            \"amount\": \"400.9\",\n            \"homeCurrencyAmount\": \"801.8\",\n            \"type\": \"Debit\"\n        }\n    ],\n    \"notes\": \"my account\",\n    \"segments\": [\n        {\n            \"segmentName\": \"billToCountry\",\n            \"segmentValue\": \"United States\"\n        },\n        {\n            \"segmentName\": \"billToState\",\n            \"segmentValue\": \"California\"\n        }\n    ],\n    \"transferredToAccounting\": \"No\"\n}"
+
+response = http.request(request)
+puts response.read_body

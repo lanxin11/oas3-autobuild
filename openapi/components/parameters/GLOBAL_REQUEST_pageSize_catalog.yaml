@@ -1,0 +1,9 @@
+name: pageSize
+in: query
+required: false
+description: |
+  Number of rows returned per page.
+schema:
+  type: integer
+  maximum: 40
+  default: 10

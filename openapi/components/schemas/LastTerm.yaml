@@ -1,0 +1,31 @@
+description: The length of the period for the current subscription term.
+properties:
+  period:
+    description: Specify only when the termType is 'TERMED'.
+    maximum: 100
+    minimum: 0
+    type: integer
+  periodType:
+    description: Specify only when the termType is 'TERMED'.
+    enum:
+      - Month
+      - Year
+      - Day
+      - Week
+    type: string
+  startDate:
+    description: >
+      The start date of the current term. You can change the term start date of
+      a renewed subscription through a T&Cs order action. However, when changing
+      it to an earlier date, this date must not be earlier than the term start
+      date of the current term before this T&Cs.
+    format: date
+    type: string
+  termType:
+    enum:
+      - TERMED
+      - EVERGREEN
+    type: string
+required:
+  - termType
+type: object

@@ -1,0 +1,228 @@
+get:
+  summary: Describe an object
+  operationId: GET_Describe
+  description: >
+    Provides a reference listing of each object that is available in your Zuora
+    tenant.
+
+
+    The information returned by this call is useful if you are using [CRUD:
+    Create
+    Export](https://www.zuora.com/developer/api-reference/#operation/Object_POSTExport)
+    or the [AQuA
+    API](https://knowledgecenter.zuora.com/DC_Developers/T_Aggregate_Query_API)
+    to create a data source export. See [Export
+    ZOQL](https://knowledgecenter.zuora.com/DC_Developers/M_Export_ZOQL) for
+    more information.
+
+
+    ## Response
+
+    The response contains an XML document that lists the fields of the specified
+    object. Each of the object's fields is represented by a `<field>` element in
+    the XML document.
+        
+    Each `<field>` element contains the following elements:
+
+
+    | Element      |
+    Description                                                                                                                                                                                                                                                                                 
+    |
+
+    |--------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+    | `<name>`     | API name of the
+    field.                                                                                                                                                                                                                                                                      
+    |
+
+    | `<label>`    | Name of the field in the Zuora user
+    interface.                                                                                                                                                                                                                                              
+    |
+
+    | `<type>`     | Data type of the field. The possible data types are:
+    `boolean`, `date`, `datetime`, `decimal`, `integer`, `picklist`, `text`,
+    `timestamp`, and `ZOQL`. If the data type is `picklist`, the `<field>`
+    element contains an `<options>` element that lists the possible values of
+    the field.    |
+
+    | `<contexts>` | Specifies the availability of the field. If the
+    `<contexts>` element lists the `export` context, the field is available for
+    use in data source
+    exports.                                                                                                                                               
+    |
+
+
+    The `<field>` element contains other elements that provide legacy
+    information about the field. This information is not directly related to the
+    REST API.
+
+
+    Response sample:
+
+    ```xml
+
+    <?xml version="1.0" encoding="UTF-8"?>
+
+    <object>
+      <name>ProductRatePlanCharge</name>
+      <label>Product Rate Plan Charge</label>
+      <fields>
+        ...
+        <field>
+          <name>TaxMode</name>
+          <label>Tax Mode</label>
+          <type>picklist</type>
+          <options>
+            <option>TaxExclusive</option>
+            <option>TaxInclusive</option>
+          </options>
+          <contexts>
+            <context>export</context>
+          </contexts>
+          ...
+        </field>
+        ...
+      </fields>
+    </object>
+
+    ```
+
+
+    It is strongly recommended that your integration checks `<contexts>`
+    elements in the response. If your integration does not check `<contexts>`
+    elements, your integration may process fields that are not available for use
+    in data source exports. See [Changes to the Describe
+    API](https://knowledgecenter.zuora.com/DC_Developers/M_Export_ZOQL/Changes_to_the_Describe_API)
+    for more information.
+  tags:
+    - Describe
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: object
+      in: path
+      required: true
+      description: >
+        API name of an object in your Zuora tenant. For example, `InvoiceItem`.
+        See [Zuora Object
+        Model](https://www.zuora.com/developer/api-reference/#section/Zuora-Object-Model)
+        for the list of valid object names.
+
+
+        Depending on the features enabled in your Zuora tenant, you may not be
+        able to list the fields of some objects.
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: |
+        Returns an XML document that lists the fields of the specified object
+      content:
+        text/xml; charset=utf-8:
+          schema:
+            type: string
+    '404':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: |
+        Returns an XML document that indicates the error
+      content:
+        text/xml; charset=utf-8:
+          schema:
+            type: string
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_describe_{object}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_describe_{object}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_describe_{object}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_describe_{object}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_describe_{object}/getundefined

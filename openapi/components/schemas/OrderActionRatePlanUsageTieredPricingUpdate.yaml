@@ -1,0 +1,8 @@
+allOf:
+  - $ref: ./OrderActionRatePlanPriceChangeParams.yaml
+  - properties:
+      tiers:
+        items:
+          $ref: ./OrderActionRatePlanChargeTier.yaml
+        type: array
+    type: object

@@ -1,0 +1,10 @@
+example:
+  reasons: []
+properties:
+  reasons:
+    description: |
+      Returns an empty array if the request succeeds.
+    items:
+      type: string
+    type: array
+type: object

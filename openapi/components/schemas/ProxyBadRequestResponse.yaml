@@ -1,0 +1,16 @@
+properties:
+  Errors:
+    items:
+      properties:
+        Code:
+          description: ''
+          type: string
+        Message:
+          description: ''
+          type: string
+      type: object
+    type: array
+  Success:
+    description: ''
+    type: boolean
+type: object

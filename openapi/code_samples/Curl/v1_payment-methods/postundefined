@@ -1,0 +1,6 @@
+curl -X POST -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3" -H "Content-Type: application/json" -d '{
+    "BAID": "I-1TJ3GAGG82Y9",
+    "accountKey": "2c92c0f95be68649015bf14e001f2760",
+    "email": "customer@example.com",
+    "type": "PayPalEC"
+}' "https://rest.zuora.com/v1/payment-methods"

@@ -1,0 +1,165 @@
+get:
+  summary: Retrieve the status and response of a job
+  operationId: GET_JobStatusAndResponse
+  description: >
+    **Note:** This operation is only available if you have the
+    [Orders](https://knowledgecenter.zuora.com/BC_Subscription_Management/Orders/AA_Overview_of_Orders#Orders)
+    feature enabled. Orders is now generally available as of Zuora Billing
+    Release 284 (August 2020). If you are an existing Zuora Subscribe and Amend
+    customer and want to adopt Orders, see [What is Orders
+    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization#What_is_Orders_Harmonization.3F)
+    and join the [Orders Harmonization community
+    group](https://community.zuora.com/t5/Orders-Harmonization/gp-p/Orders-Harmonization)
+    for more information. If you want to enable Orders, submit a request at
+    [Zuora Global Support](https://support.zuora.com/).
+
+
+    **Note:** The [Order Line
+    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/AA_Overview_of_Order_Line_Items)
+    feature is now generally available to all Zuora customers. You need to
+    enable the
+    [Orders](https://knowledgecenter.zuora.com/BC_Subscription_Management/Orders/AA_Overview_of_Orders#Orders)
+    feature to access the [Order Line
+    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/AA_Overview_of_Order_Line_Items)
+    feature. As of Zuora Billing Release 313 (November 2021), new customers who
+    onboard on
+    [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
+    will have the [Order Line
+    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
+    feature enabled by default. If you are a new customer who onboard on [Orders
+    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
+    and want to enable the [Order Line
+    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
+    feature, submit a request at [Zuora Global
+    Support](https://support.zuora.com/). If you are an existing
+    [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
+    or [Orders
+    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
+    customer and want to enable the [Order Line
+    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
+    feature, submit a request at [Zuora Global
+    Support](https://support.zuora.com/).        
+
+
+    Get the status and response of an asynchronous job. Currently, an
+    asynchronous job created by "Create an order asynchronously" or "Preview an
+    order asynchronously" is supported.
+  tags:
+    - Orders
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - in: path
+      name: jobId
+      description: UUID of the asynchronous job created by an asynchronous API operation.
+      required: true
+      schema:
+        type: string
+        format: UUID
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: OK
+      content:
+        application/json; charset=utf-8:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                description: Type of job status.
+                enum:
+                  - Processing
+                  - Failed
+                  - Completed
+              errors:
+                type: string
+                description: Error messages returned if the job failed.
+              result:
+                $ref: ../components/schemas/JobResult.yaml
+              success:
+                type: boolean
+                description: Indicates whether the operation call succeeded.
+        application/json:
+          examples:
+            response:
+              value:
+                status: Completed
+                errors: null
+                result:
+                  success: true
+                  orderNumber: OM-00002
+                  accountNumber: A00000001
+                  status: Pending
+                  subscriptions:
+                    - subscriptionNumber: SM-00001
+                      status: Pending Activation
+                    - subscriptionNumber: SM-00002
+                      status: Pending Acceptance
+                    - subscriptionNumber: SM-00003
+                      status: Active
+                    - subscriptionNumber: SM-00004
+                      status: Pending Acceptance
+                  invoiceNumbers:
+                    - INV00000001
+                  paymentNumber: P-00000002
+                  paidAmount: 300
+                  orderLineItems:
+                    - id: bd78c052-2adf-42c2-aa0f-ccacc997fa20
+                      itemNumber: '116'
+                success: true
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: ../code_samples/Curl/v1_async-jobs_{jobId}/getundefined
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/v1_async-jobs_{jobId}/getundefined
+    - lang: Java
+      source:
+        $ref: ../code_samples/Java/v1_async-jobs_{jobId}/getundefined
+    - lang: Python
+      source:
+        $ref: ../code_samples/Python/v1_async-jobs_{jobId}/getundefined
+    - lang: Ruby
+      source:
+        $ref: ../code_samples/Ruby/v1_async-jobs_{jobId}/getundefined

@@ -1,0 +1,133 @@
+post:
+  description: >
+    Enables you to authorize the availability of funds for a transaction but
+    delay the capture of funds until a later time. Subsequently, use [CRUD:
+    Create a
+    payment](https://www.zuora.com/developer/api-reference/#operation/Object_POSTPayment)
+    or [Create a
+    payment](https://www.zuora.com/developer/api-reference/#operation/POST_CreatePayment)
+    to capture the authorized funds, or use [Cancel
+    authorization](https://www.zuora.com/developer/api-reference/#operation/POST_CancelAuthorization)
+    to cancel the authorization. 
+
+
+    The following payment gateways support this operation:
+
+
+    * Adyen Integration v2.0
+
+    * CyberSource 1.28
+
+    * CyberSource 1.97
+
+    * CyberSource 2.0 - This gateway supports the Delayed Capture feature for
+    both Credit Cards and Credit Card Reference payment methods. This gateway
+    does not support [Cancel
+    authorization](https://www.zuora.com/developer/api-reference/#operation/POST_CancelAuthorization).
+
+    * Chase Paymentech Orbital
+
+    * Ingenico ePayments
+
+    * SlimPay
+
+    * Verifi Global Payment Gateway
+
+    * WePay
+
+
+    If you have the Invoice Settlement feature enabled, use the [Create
+    payment](https://www.zuora.com/developer/api-reference/#operation/POST_CreatePayment)
+    operation to capture the funds instead of the [CRUD: Create
+    payment](https://www.zuora.com/developer/api-reference/#operation/Object_POSTPayment)
+    operation.
+          
+  summary: Create authorization
+  operationId: POST_CreateAuthorization
+  tags:
+    - Payment Methods
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: payment-method-id
+      in: path
+      description: |
+        The unique ID of the payment method where the authorization is created.
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/POSTDelayAuthorizeCapture.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/POSTAuthorizeResponse.yaml
+  x-code-samples:
+    - lang: Curl
+      source:
+        $ref: >-
+          ../code_samples/Curl/v1_payment-methods_{payment-method-id}_authorize/postundefined
+    - lang: PHP
+      source:
+        $ref: >-
+          ../code_samples/PHP/v1_payment-methods_{payment-method-id}_authorize/postundefined
+    - lang: Java
+      source:
+        $ref: >-
+          ../code_samples/Java/v1_payment-methods_{payment-method-id}_authorize/postundefined
+    - lang: Python
+      source:
+        $ref: >-
+          ../code_samples/Python/v1_payment-methods_{payment-method-id}_authorize/postundefined
+    - lang: Ruby
+      source:
+        $ref: >-
+          ../code_samples/Ruby/v1_payment-methods_{payment-method-id}_authorize/postundefined

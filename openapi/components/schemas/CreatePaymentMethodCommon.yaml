@@ -1,0 +1,85 @@
+properties:
+  accountKey:
+    description: >
+      Internal ID of the customer account that will own the payment method. 
+
+
+      To create an orphan payment method that is not associated with any
+      customer account, you do not need to specify this field during creation.
+      However, you must associate the orphan payment method with a customer
+      account within 10 days. Otherwise, this orphan payment method will be
+      deleted.
+    type: string
+  authGateway:
+    description: >
+      Internal ID of the payment gateway that Zuora will use to authorize the
+      payments that are made with the payment method.
+
+
+      If you do not set this field, Zuora will use one of the following payment
+      gateways instead:
+
+
+      * The default payment gateway of the customer account that owns the
+      payment method, if the `accountKey` field is set.
+
+      * The default payment gateway of your Zuora tenant, if the `accountKey`
+      field is not set.
+    type: string
+  gatewayOptions:
+    description: |
+      The field used to pass gateway-specific parameters and parameter values.
+    properties:
+      key:
+        description: |
+          The name of a gateway-specific parameter.
+        type: string
+      value:
+        description: |
+          The value of the gateway-specific parameter.
+        type: string
+    type: object
+  makeDefault:
+    default: false
+    description: >
+      Specifies whether the payment method will be the default payment method of
+      the customer account that owns the payment method. Only applicable if the
+      `accountKey` field is set.
+
+
+      When you set this field to `true`, make sure the payment method is
+      supported by the default payment gateway.
+    type: boolean
+  mandateInfo:
+    description: >
+      The mandate information for the Credit Card, Credit Card Reference
+      Transaction, ACH, or Bank Transfer payment method.
+    properties:
+      mandateId:
+        description: >
+          The mandate ID.
+
+
+          When creating an ACH payment method, if you need to pass in tokenized
+          information, use the `mandateId` instead of `tokenId` field.
+        maxLength: 36
+        type: string
+      mandateReason:
+        description: |
+          The reason of the mandate from the gateway side.
+        maxLength: 64
+        type: string
+      mandateStatus:
+        description: |
+          The status of the mandate from the gateway side.
+        maxLength: 64
+        type: string
+    type: object
+  skipValidation:
+    default: false
+    description: >
+      Specify whether to skip the validation of the information through the
+      payment gateway. For example, when migrating your payment methods, you can
+      set this field to `true` to skip the validation. 
+    type: boolean
+type: object

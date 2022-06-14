@@ -1,0 +1,10 @@
+properties:
+  fileId:
+    description: |
+      The unique ID of the uploaded PDF file.
+    type: string
+  success:
+    description: |
+      Indicates whether the call succeeded.
+    type: boolean
+type: object
