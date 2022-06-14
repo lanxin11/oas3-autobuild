@@ -1,5 +1,0 @@
-curl -X POST -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3" -H "Content-Type: application/json" -d '{
-    "accountKey": "4028925a4cb74ec9014cb7520fc00005",
-    "invoiceId": "4028925a4cb74ec9014cb7540988002e",
-    "paymentGateway": "TestGateway"
-}' "https://rest.zuora.com/v1/operations/invoice-collect"

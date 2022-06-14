@@ -1,3 +1,0 @@
-curl -X POST -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3" -H "Content-Type: application/json" -d '{
-    "queryLocator": "2c92c0f9602fb240016049ac7e0b47e7-2000"
-}' "https://rest.zuora.com/v1/action/queryMore"

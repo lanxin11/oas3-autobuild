@@ -1,6 +1,0 @@
-curl -X POST -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3" -H "Content-Type: application/json" -d '{
-    "currency": "USD",
-    "method": "POST",
-    "pageId": "2c92c0f855e2b4630155ec9e6a1b6eec",
-    "uri": "https://apisandbox.zuora.com/apps/PublicHostedPageLite.do"
-}' "https://rest.zuora.com/v1/rsa-signatures"
