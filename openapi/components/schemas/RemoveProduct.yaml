@@ -2,9 +2,8 @@ description: |
   Information about an order action of type `RemoveProduct`.
 properties:
   ratePlanId:
-    description: >
-      ID of the rate plan to remove. This can be the latest version or any
-      history version of ID.
+    description: |
+      Internal identifier of the rate plan to remove.
     type: string
   uniqueToken:
     description: >-

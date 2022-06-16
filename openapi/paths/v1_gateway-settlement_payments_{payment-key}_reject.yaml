@@ -1,26 +1,25 @@
 post:
-  summary: Reverse a payment
-  operationId: POST_ReversePayment
+  summary: Reject a payment
+  operationId: POST_RejectPayment
   description: >
-    Sets the Gateway State field of the payment to "Settled", creates a refund
-    for the amount specified in the request, and returns the Refund object as
-    response.
+    Sets the Gateway State field of the payment to "FailedToSettle", creates a
+    refund for the payment amount, and returns the Refund object as response.
   tags:
     - Payment Gateway Reconciliation
   parameters:
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
-    - name: payment-id
+    - name: payment-key
       in: path
       required: true
-      description: Unique ID of the payment.
+      description: Unique ID for payment ID or payment number.
       schema:
         type: string
   requestBody:
     content:
       application/json; charset=utf-8:
         schema:
-          $ref: ../components/schemas/POSTReversePaymentRequest.yaml
+          $ref: ../components/schemas/POSTRejectPaymentRequest.yaml
     required: true
   responses:
     '200':
@@ -69,7 +68,7 @@ post:
       content:
         application/json; charset=utf-8:
           schema:
-            $ref: ../components/schemas/POSTReversePaymentResponse.yaml
+            $ref: ../components/schemas/POSTRejectPaymentResponse.yaml
         application/json:
           examples:
             response:
@@ -87,11 +86,11 @@ post:
                 paymentMethodSnapshotId: null
                 paymentId: 2c90c8e26a6a5271016a8e80de242e56
                 creditMemoId: null
-                reasonCode: Payment Reversal
+                reasonCode: Payment Rejection
                 gatewayId: null
                 gatewayResponse: Insufficient funds latest msg 1
                 gatewayResponseCode: '0231'
-                gatewayState: Settled
+                gatewayState: FailedToSettle
                 markedForSubmissionOn: null
                 referenceId: '825522036728874689'
                 secondRefundReferenceId: '825522036690700110'
@@ -111,4 +110,4 @@ post:
     - lang: cURL
       source:
         $ref: >-
-          ../code_samples/cURL/v1_gateway-settlement_payments_{payment-id}_chargeback/postundefined
+          ../code_samples/cURL/v1_gateway-settlement_payments_{payment-key}_reject/postundefined

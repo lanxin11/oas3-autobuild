@@ -143,7 +143,11 @@ post:
       schema:
         type: string
   requestBody:
-    $ref: ../components/requestBodies/POSTOrderRequestType.yaml
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/POSTOrderAsyncRequestType.yaml
+    required: true
   responses:
     '202':
       description: Accepted

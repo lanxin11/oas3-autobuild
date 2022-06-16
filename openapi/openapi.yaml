@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: '2022-05-19'
+  version: '2022-06-09'
   title: 'API Reference: Billing'
   x-logo:
     url: >-
@@ -1931,10 +1931,12 @@ paths:
     $ref: paths/v1_invoices_{invoiceId}_creditmemos.yaml
   /v1/creditmemos/{creditMemoId}:
     $ref: paths/v1_creditmemos_{creditMemoId}.yaml
+  /v1/creditmemos/{creditMemoKey}:
+    $ref: paths/v1_creditmemos_{creditMemoKey}.yaml
   /v1/creditmemos/{creditMemoId}/apply:
     $ref: paths/v1_creditmemos_{creditMemoId}_apply.yaml
-  /v1/creditmemos/{creditMemoId}/cancel:
-    $ref: paths/v1_creditmemos_{creditMemoId}_cancel.yaml
+  /v1/creditmemos/{creditMemoKey}/cancel:
+    $ref: paths/v1_creditmemos_{creditMemoKey}_cancel.yaml
   /v1/creditmemos/{creditMemoId}/emails:
     $ref: paths/v1_creditmemos_{creditMemoId}_emails.yaml
   /v1/creditmemos/{creditMemoId}/files:
@@ -2004,10 +2006,12 @@ paths:
     $ref: paths/v1_invoices_{invoiceId}_debitmemos.yaml
   /v1/debitmemos/{debitMemoId}:
     $ref: paths/v1_debitmemos_{debitMemoId}.yaml
+  /v1/debitmemos/{debitMemoKey}:
+    $ref: paths/v1_debitmemos_{debitMemoKey}.yaml
   /v1/debitmemos/{debitMemoId}/application-parts:
     $ref: paths/v1_debitmemos_{debitMemoId}_application-parts.yaml
-  /v1/debitmemos/{debitMemoId}/cancel:
-    $ref: paths/v1_debitmemos_{debitMemoId}_cancel.yaml
+  /v1/debitmemos/{debitMemoKey}/cancel:
+    $ref: paths/v1_debitmemos_{debitMemoKey}_cancel.yaml
   /v1/debitmemos/{debitMemoId}/collect:
     $ref: paths/v1_debitmemos_{debitMemoId}_collect.yaml
   /v1/debitmemos/{debitMemoId}/emails:
@@ -2173,14 +2177,14 @@ paths:
     $ref: paths/v1_subscriptions_{subscriptionNumber}_customFields.yaml
   /v1/orders/{orderNumber}/triggerDates:
     $ref: paths/v1_orders_{orderNumber}_triggerDates.yaml
-  /v1/gateway-settlement/payments/{payment-id}/settle:
-    $ref: paths/v1_gateway-settlement_payments_{payment-id}_settle.yaml
-  /v1/gateway-settlement/payments/{payment-id}/reject:
-    $ref: paths/v1_gateway-settlement_payments_{payment-id}_reject.yaml
-  /v1/gateway-settlement/payments/{payment-id}/chargeback:
-    $ref: paths/v1_gateway-settlement_payments_{payment-id}_chargeback.yaml
-  /v1/refunds/{refund-id}/reconcile:
-    $ref: paths/v1_refunds_{refund-id}_reconcile.yaml
+  /v1/gateway-settlement/payments/{payment-key}/settle:
+    $ref: paths/v1_gateway-settlement_payments_{payment-key}_settle.yaml
+  /v1/gateway-settlement/payments/{payment-key}/reject:
+    $ref: paths/v1_gateway-settlement_payments_{payment-key}_reject.yaml
+  /v1/gateway-settlement/payments/{payment-key}/chargeback:
+    $ref: paths/v1_gateway-settlement_payments_{payment-key}_chargeback.yaml
+  /v1/refunds/{refund-key}/reconcile:
+    $ref: paths/v1_refunds_{refund-key}_reconcile.yaml
   /v1/payment-gateway-transaction-log/{paymentOrRefundOrPaymentMethod-id}:
     $ref: >-
       paths/v1_payment-gateway-transaction-log_{paymentOrRefundOrPaymentMethod-id}.yaml

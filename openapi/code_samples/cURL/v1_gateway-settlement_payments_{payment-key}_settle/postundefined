@@ -1,3 +1,3 @@
 curl -X POST -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3" -H "Content-Type: application/json" -d '{
     "settledOn": "2019-05-07 20:56:32.981"
-}' "https://rest.zuora.com/v1/gateway-settlement/payments/{payment-id}/settle"
+}' "https://rest.zuora.com/v1/gateway-settlement/payments/{payment-key}/settle"

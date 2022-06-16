@@ -35,9 +35,8 @@ properties:
       would fail.
     type: string
   ratePlanId:
-    description: >
-      ID of a rate plan for this subscription. This can be the latest version or
-      any history version of ID.
+    description: |
+      ID of a rate plan for this subscription.
     type: string
   serviceActivationDate:
     description: >
