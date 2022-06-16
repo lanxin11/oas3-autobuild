@@ -259,7 +259,7 @@ properties:
     type: string
   SubscriptionId:
     description: |2-
-       The ID of the subscription that the amendment changes.
+       The ID of the subscription that the amendment changes. The ID can be the latest version or any history version of ID.
 
 
       **Character limit**: 32

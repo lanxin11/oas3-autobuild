@@ -122,11 +122,7 @@ post:
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
   requestBody:
-    content:
-      application/json; charset=utf-8:
-        schema:
-          $ref: ../components/schemas/POSTOrderPreviewRequestType.yaml
-    required: true
+    $ref: ../components/requestBodies/POSTOrderPreviewRequestType.yaml
   responses:
     '200':
       headers:

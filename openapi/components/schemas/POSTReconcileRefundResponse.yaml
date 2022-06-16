@@ -245,7 +245,8 @@ properties:
     format: date-time
     type: string
   success:
-    description: Indicates if the request is processed successfully.
+    description: |
+      Indicates if the request is processed successfully.
     type: boolean
   type:
     description: |

@@ -91,6 +91,8 @@ get:
                 baseRatePlanId: null
                 destinationAccountId: 402896a9529bc3dc01529bcba7120023
                 destinationInvoiceOwnerId: 402896a9529bc3dc01529bcba7120023
+                subType: Upgrade
+                effectivePolicy: EffectiveImmediately
   x-code-samples:
     - lang: cURL
       source:

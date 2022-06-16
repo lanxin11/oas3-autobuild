@@ -46,8 +46,9 @@ allOf:
           plan created through third-party stores.
         type: string
       ratePlanId:
-        description: |
-          ID of a rate plan for this subscription.
+        description: >
+          ID of a rate plan for this subscription. This can be the latest
+          version or any history version of ID.
         type: string
       serviceActivationDate:
         description: >

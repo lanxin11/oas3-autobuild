@@ -112,8 +112,9 @@ allOf:
           Quantity of units; must be greater than zero.
         type: number
       ratePlanChargeId:
-        description: |
-          ID of a rate-plan charge for this subscription.
+        description: >
+          ID of a rate-plan charge for this subscription. It can be the latest
+          version or any history version of ID.
         type: string
       tiers:
         description: >

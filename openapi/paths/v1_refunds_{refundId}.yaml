@@ -266,12 +266,8 @@ delete:
     for more information. 
 
 
-    Deletes a refund. You can delete a refund with the Canceled or Error
-    status. 
-
-
-    If you have the Invoice Settlement feature enabled, refunds applied to
-    credit balance cannot be deleted.
+    Deletes a refund. You can delete a refund with the Canceled status. Note
+    that refunds applied to credit balance cannot be deleted.
   summary: Delete a refund
   operationId: DELETE_Refund
   tags:

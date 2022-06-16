@@ -67,6 +67,20 @@ allOf:
           If `true`, this subscription automatically renews at the end of the
           subscription term. Default is `false`.
         type: boolean
+      change:
+        description: >
+          Use this field to change one or more rate plans - to replace the
+          existing rate plans in a subscription with other rate plans.
+
+
+          **Note**: This feature is in the **Early Adopter** phase. We are
+          actively soliciting feedback from a small set of early adopters before
+          releasing it as generally available. If you want to join this early
+          adopter program, submit a request at [Zuora Global
+          Support](http://support.zuora.com/).
+        items:
+          $ref: ./PUTSrpChangeType.yaml
+        type: array
       clearingExistingBillToContactId:
         default: false
         description: >

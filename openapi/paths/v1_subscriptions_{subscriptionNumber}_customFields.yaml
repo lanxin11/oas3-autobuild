@@ -28,11 +28,7 @@ put:
         type: string
         format: string
   requestBody:
-    content:
-      application/json; charset=utf-8:
-        schema:
-          $ref: ../components/schemas/PUTSubscriptionPatchRequestType.yaml
-    required: true
+    $ref: ../components/requestBodies/PUTSubscriptionPatchRequestType.yaml
   responses:
     '200':
       headers:

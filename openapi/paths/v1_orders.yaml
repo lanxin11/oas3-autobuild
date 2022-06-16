@@ -180,11 +180,7 @@ post:
       schema:
         type: string
   requestBody:
-    content:
-      application/json; charset=utf-8:
-        schema:
-          $ref: ../components/schemas/POSTOrderRequestType.yaml
-    required: true
+    $ref: ../components/requestBodies/POSTOrderRequestType.yaml
   responses:
     '200':
       headers:
