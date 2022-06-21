@@ -1912,9 +1912,9 @@ paths:
   /v1/catalog/products/{product-id}/share:
     $ref: paths/v1_catalog_products_{product-id}_share.yaml
   /charge-metrics/data/charge-metrics:
-    $ref: paths/charge-metrics_data_charge-metrics.yaml
+    $ref: paths/charge_metrics/charge-metrics_data_charge-metrics.yaml
   /charge-metrics/data/charge-metrics-discount-allocation-detail:
-    $ref: paths/charge-metrics_data_charge-metrics-discount-allocation-detail.yaml
+    $ref: paths/charge_metrics/charge-metrics_data_charge-metrics-discount-allocation-detail.yaml
   /v1/charge-revenue-summaries/{crs-number}:
     $ref: paths/v1_charge-revenue-summaries_{crs-number}.yaml
   /v1/charge-revenue-summaries/subscription-charges/{charge-key}:
@@ -2041,9 +2041,9 @@ paths:
   /v1/document-properties/{documentPropertiesId}:
     $ref: paths/v1_document-properties_{documentPropertiesId}.yaml
   /events/event-triggers:
-    $ref: paths/events_event-triggers.yaml
+    $ref: paths/event_triggers/events_event-triggers.yaml
   /events/event-triggers/{id}:
-    $ref: paths/events_event-triggers_{id}.yaml
+    $ref: paths/event_triggers/events_event-triggers_{id}.yaml
   /v1/files/{file-id}:
     $ref: paths/v1_files_{file-id}.yaml
   /v1/hmac-signatures:
@@ -2107,27 +2107,27 @@ paths:
   /v1/users/{username}/accessible-entities:
     $ref: paths/v1_users_{username}_accessible-entities.yaml
   /notifications/notification-definitions:
-    $ref: paths/notifications_notification-definitions.yaml
+    $ref: paths/notifications/notifications_notification-definitions.yaml
   /notifications/notification-definitions/{id}:
-    $ref: paths/notifications_notification-definitions_{id}.yaml
+    $ref: paths/notifications/notifications_notification-definitions_{id}.yaml
   /notifications/email-templates:
-    $ref: paths/notifications_email-templates.yaml
+    $ref: paths/notifications/notifications_email-templates.yaml
   /notifications/email-templates/import:
-    $ref: paths/notifications_email-templates_import.yaml
+    $ref: paths/notifications/notifications_email-templates_import.yaml
   /notifications/email-templates/{id}:
-    $ref: paths/notifications_email-templates_{id}.yaml
+    $ref: paths/notifications/notifications_email-templates_{id}.yaml
   /notifications/history:
-    $ref: paths/notifications_history.yaml
+    $ref: paths/notifications/notifications_history.yaml
   /notifications/history/tasks/{id}:
-    $ref: paths/notifications_history_tasks_{id}.yaml
+    $ref: paths/notifications/notifications_history_tasks_{id}.yaml
   /notifications/email-histories/resend:
-    $ref: paths/notifications_email-histories_resend.yaml
+    $ref: paths/notifications/notifications_email-histories_resend.yaml
   /notifications/callout-histories/resend:
-    $ref: paths/notifications_callout-histories_resend.yaml
+    $ref: paths/notifications/notifications_callout-histories_resend.yaml
   /v1/notification-history/callout:
-    $ref: paths/v1_notification-history_callout.yaml
+    $ref: paths/notifications/v1_notification-history_callout.yaml
   /v1/notification-history/email:
-    $ref: paths/v1_notification-history_email.yaml
+    $ref: paths/notifications/v1_notification-history_email.yaml
   /oauth/token:
     $ref: paths/oauth_token.yaml
   /open-payment-method-types:
@@ -2342,11 +2342,11 @@ paths:
   /v1/rsa-signatures/decrypt:
     $ref: paths/v1_rsa-signatures_decrypt.yaml
   /events/scheduled-events:
-    $ref: paths/events_scheduled-events.yaml
+    $ref: paths/event_triggers/events_scheduled-events.yaml
   /events/scheduled-events/{namespace}/{name}:
-    $ref: paths/events_scheduled-events_{namespace}_{name}.yaml
+    $ref: paths/event_triggers/events_scheduled-events_{namespace}_{name}.yaml
   /events/scheduled-events/{id}:
-    $ref: paths/events_scheduled-events_{id}.yaml
+    $ref: paths/event_triggers/events_scheduled-events_{id}.yaml
   /v1/sequence-sets:
     $ref: paths/v1_sequence-sets.yaml
   /v1/sequence-sets/{id}:
