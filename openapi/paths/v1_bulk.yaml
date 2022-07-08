@@ -117,6 +117,6 @@ post:
                 success: true
                 bulkKey: 402892f04c97b89a014c97bb30a50003
   x-code-samples:
-    - lang: Curl
+    - lang: curl
       source:
-        $ref: ../code_samples/Curl/v1_bulk/postundefined
+        $ref: ../code_samples/curl/v1_bulk/post.sh

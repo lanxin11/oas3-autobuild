@@ -30,10 +30,10 @@ post:
       schema:
         type: integer
   x-code-samples:
-    - lang: Curl
+    - lang: curl
       source:
         $ref: >-
-          ../code_samples/Curl/v1_payment-methods_{payment-method-id}_profiles_{profile-number}_expire/postundefined
+          ../code_samples/curl/v1_payment-methods_{payment-method-id}_profiles_{profile-number}_expire/post.sh
   responses:
     '200':
       headers:

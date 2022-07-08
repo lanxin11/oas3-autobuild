@@ -139,6 +139,6 @@ post:
             type: integer
       description: Too Many Requests
   x-code-samples:
-    - lang: Curl
+    - lang: curl
       source:
-        $ref: ../code_samples/Curl/oauth_token/postundefined
+        $ref: ../code_samples/curl/oauth_token/post.sh

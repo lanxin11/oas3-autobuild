@@ -99,6 +99,6 @@ get:
             maxLength: 64
       description: ''
   x-code-samples:
-    - lang: Curl
+    - lang: curl
       source:
-        $ref: ../code_samples/Curl/v1_files_{file-id}/getundefined
+        $ref: ../code_samples/curl/v1_files_{file-id}/get.sh
