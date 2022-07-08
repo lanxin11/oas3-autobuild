@@ -81,11 +81,6 @@ post:
               value:
                 revenueScheduleNumber: rs-00000001
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_revenue-schedules_subscription-charges_{charge-key}/postundefined
 get:
   summary: List revenue schedules by subscription charge key
   operationId: GET_RSforSubscCharge
@@ -97,6 +92,7 @@ get:
   parameters:
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize_finance_revenue.yaml
     - name: charge-key
       in: path
@@ -219,8 +215,3 @@ get:
                 nextPage: >-
                   https://rest.zuora.com/v1/revenue-schedules/subscription-charges/2c92c0f943977b4f0143b23487ed432e?page=2&pageSize=8
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_revenue-schedules_subscription-charges_{charge-key}/getundefined

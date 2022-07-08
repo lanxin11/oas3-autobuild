@@ -195,8 +195,3 @@ get:
                         tcv: 24
                         dtcv: 24
                         description: ''
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_subscriptions_{subscription-key}_versions_{version}/getundefined

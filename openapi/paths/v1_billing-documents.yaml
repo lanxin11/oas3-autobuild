@@ -2,7 +2,7 @@ get:
   description: >
     Retrieves the information about all billing documents associated with a
     specified account. The billing documents contain invoices, credit memos, and
-    debit memos. 
+    debit memos.
 
 
     To retrieve information about credit memos and debit memos, you must have
@@ -26,6 +26,7 @@ get:
   parameters:
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
     - name: accountId
       in: query
@@ -182,6 +183,6 @@ get:
                     status: Posted
                 success: true
   x-code-samples:
-    - lang: cURL
+    - lang: Curl
       source:
-        $ref: ../code_samples/cURL/v1_billing-documents/getundefined
+        $ref: ../code_samples/Curl/v1_billing-documents/getundefined

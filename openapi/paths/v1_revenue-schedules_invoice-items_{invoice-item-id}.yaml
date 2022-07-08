@@ -80,11 +80,6 @@ post:
               value:
                 revenueScheduleNumber: RS-00000002
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_revenue-schedules_invoice-items_{invoice-item-id}/postundefined
 get:
   summary: Retrieve a revenue schedule by invoice item ID
   operationId: GET_RSbyInvoiceItem
@@ -183,8 +178,3 @@ get:
                     deferredRevenueAccountingCodeType: null
                     deferredRevenueAccountingCode: null
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_revenue-schedules_invoice-items_{invoice-item-id}/getundefined

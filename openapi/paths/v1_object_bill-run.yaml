@@ -203,7 +203,3 @@ post:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_bill-run/postundefined

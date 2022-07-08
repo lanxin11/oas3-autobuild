@@ -77,8 +77,3 @@ put:
               value:
                 revenueEventNumber: RE-00000326
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_revenue-schedules_{rs-number}_distribute-revenue-across-accounting-periods/putundefined

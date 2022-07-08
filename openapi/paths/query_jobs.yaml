@@ -132,10 +132,6 @@ post:
               value:
                 code: 400
                 message: Unable to process JSON
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/query_jobs/postundefined
 get:
   operationId: GET_DataQueryJobs
   summary: List data query jobs
@@ -167,11 +163,12 @@ get:
           - completed
           - failed
           - cancelled
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
     - name: pageSize
       in: query
       required: false
       description: |
-        Specifies the maximum number of query jobs to return.
+        The number of records returned per page in the response.
       schema:
         type: integer
         maximum: 100
@@ -247,7 +244,3 @@ get:
                     processingTime: 9212
                     remainingRetries: 3
                     updatedOn: '2018-08-17T13:14:19.17Z'
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/query_jobs/getundefined

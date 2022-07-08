@@ -287,7 +287,3 @@ post:
                   - status: 406
                     code: invalid
                     title: Workflow WF-396-00000002 with Id 399 is an instance/run.
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/workflows_{workflow_id}_run/postundefined

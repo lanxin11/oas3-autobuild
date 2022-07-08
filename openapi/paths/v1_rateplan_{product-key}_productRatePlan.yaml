@@ -136,8 +136,3 @@ get:
                           deferredRevenueAccountingCode: ''
                           deferredRevenueAccountingCodeType: null
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_rateplan_{product-key}_productRatePlan/getundefined

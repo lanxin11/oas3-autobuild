@@ -226,10 +226,6 @@ get:
                 records: {}
                 size: 0
                 done: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_rate-plan-charge_{id}/getundefined
 put:
   summary: 'CRUD: Update a rate plan charge'
   operationId: Object_PUTRatePlanCharge
@@ -375,7 +371,3 @@ put:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_rate-plan-charge_{id}/putundefined

@@ -137,7 +137,3 @@ get:
                         productRatePlanId: 2c9890207c9649c0017c96a0f11001a4
                         chargeUpdates: []
                         customFields: {}
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_rateplans_{ratePlanId}/getundefined

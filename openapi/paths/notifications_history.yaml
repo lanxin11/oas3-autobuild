@@ -192,6 +192,6 @@ delete:
                     ]
                 }
   x-code-samples:
-    - lang: cURL
+    - lang: Curl
       source:
-        $ref: ../code_samples/cURL/notifications_history/deleteundefined
+        $ref: ../code_samples/Curl/notifications_history/deleteundefined

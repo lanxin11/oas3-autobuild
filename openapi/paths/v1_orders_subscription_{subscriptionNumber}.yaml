@@ -54,13 +54,7 @@ get:
       required: true
       schema:
         type: string
-    - name: page
-      in: query
-      description: |
-        The page number of the orders retrieved. The default is '1'.
-      required: false
-      schema:
-        type: integer
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
     - name: dateFilterOption
       in: query
@@ -273,8 +267,3 @@ get:
                     customFields:
                       order_cf_date__c: '2017-01-01'
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_orders_subscription_{subscriptionNumber}/getundefined

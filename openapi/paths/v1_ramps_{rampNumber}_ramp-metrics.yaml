@@ -166,7 +166,3 @@ get:
       required: true
       schema:
         type: string
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_ramps_{rampNumber}_ramp-metrics/getundefined

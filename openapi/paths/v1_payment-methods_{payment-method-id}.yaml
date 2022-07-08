@@ -102,11 +102,6 @@ put:
               value:
                 id: 2c92c0f86c99b4eb016cae1ee301728f
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_payment-methods_{payment-method-id}/putundefined
 get:
   summary: Retrieve a payment method
   operationId: GET_PaymentMethod
@@ -228,11 +223,6 @@ get:
                 updatedBy: 402881e522cf4f9b0122cf5d82860002
                 AA_PICKLIST__c: null
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_payment-methods_{payment-method-id}/getundefined
 delete:
   summary: Delete a payment method
   operationId: DELETE_PaymentMethods
@@ -316,8 +306,3 @@ delete:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_payment-methods_{payment-method-id}/deleteundefined

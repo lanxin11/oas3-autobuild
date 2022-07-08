@@ -149,10 +149,6 @@ post:
         schema:
           $ref: ../components/schemas/DebitMemoFromChargeType.yaml
     required: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_debitmemos/postundefined
 put:
   description: >
     **Note:** This operation is only available if you have [Invoice
@@ -237,10 +233,6 @@ put:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_debitmemos/putundefined
 get:
   description: >
     **Note:** This operation is only available if you have [Invoice
@@ -466,6 +458,7 @@ get:
   parameters:
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
     - name: accountId
       in: query
@@ -666,7 +659,3 @@ get:
         - /v1/debitmemos?status=Processed&sort=-number,+amount
       schema:
         type: string
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_debitmemos/getundefined

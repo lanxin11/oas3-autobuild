@@ -139,6 +139,6 @@ post:
                 id: 402880ea536ff494015372a7ea17001f
                 fileId: 402880ea536ff494015372a7ea12001e
   x-code-samples:
-    - lang: cURL
+    - lang: Curl
       source:
-        $ref: ../code_samples/cURL/v1_attachments/postundefined
+        $ref: ../code_samples/Curl/v1_attachments/postundefined

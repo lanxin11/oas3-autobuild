@@ -92,7 +92,3 @@ post:
                 key: >-
                   MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmWRFTwxQOqaG4JDZSQF/NJWvCDoSXm3TYilNzoN8nBbuvhKa7SZBBS+VP6rFqcbIU38Fu+Rf09vqyYOxuasPJe7yhqeOiStWB/aCPLhwXBeKt37L/qkwpNOKb1FETtUgrc+UjbtT0pnl55wCfi+Ik//X5SQi0B+c0ei1DQv99qmPJJErrhnBtdxeaWAT0EYAo42AOQ5cp0UWDY6OdOYL6+RyFOUFIs1yEgtfg4VMMSpSOKBOhYclQYuSC7nBF5Cc18ydtzsBpf7l49gCLTFzG45NCDAocada8KihFNpGXbauV9V4EPRD4lofaXdsXJ5Tw8/+KCsrUlvIQI3vcEv9LQIDAQAB
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_rsa-signatures/postundefined

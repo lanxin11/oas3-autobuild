@@ -53,7 +53,8 @@ properties:
   subscriptionIds:
     description: >
       The IDs of the subscriptions that you want to create the billing documents
-      for. 
+      for. Each value must be the ID of the latest version of an active
+      subscription.
     items:
       type: string
     type: array

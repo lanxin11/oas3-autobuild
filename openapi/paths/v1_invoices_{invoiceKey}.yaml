@@ -1,0 +1,102 @@
+put:
+  summary: Update an invoice
+  operationId: PUT_UpdateInvoice
+  description: |
+    Updates a specific invoice. 
+  tags:
+    - Invoices
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: invoiceKey
+      in: path
+      required: true
+      description: |
+        The ID or number of the invoice. For example,
+        2c92c8955bd63cc1015bd7c151af02ab or INV-0000001.
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/PutInvoiceType.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/PutInvoiceResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: 40288ae9600808280160081dc9c13f15
+                number: INV00000090
+                accountId: 40288ae9600808280160081db1533506
+                invoiceDate: '2017-11-29'
+                currency: USD
+                targetDate: '2017-11-29'
+                dueDate: '2017-12-18'
+                postedOn: null
+                postedById: null
+                status: Draft
+                amount: 100
+                taxAmount: 0
+                totalTaxExemptAmount: 0
+                balance: 100
+                discount: 0
+                comment: ''
+                autoPay: false
+                transferredToAccounting: 'No'
+                creditBalanceAdjustmentAmount: 0
+                createdDate: '2017-11-29 22:10:58'
+                createdById: 40288ae9600808280160081d833a311a
+                updatedDate: '2017-11-30 13:47:52'
+                updatedById: 40288ae9600808280160081d833a311a
+                cancelledOn: null,
+                cancelledById: null,
+                success: true

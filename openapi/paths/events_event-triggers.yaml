@@ -1,6 +1,6 @@
 post:
   tags:
-    - Event Triggers
+    - Custom Event Triggers
   operationId: POST_EventTrigger
   summary: Create an event trigger
   description: >
@@ -344,13 +344,9 @@ post:
                     }
                   ]
                 }
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/events_event-triggers/postundefined
 get:
   tags:
-    - Event Triggers
+    - Custom Event Triggers
   operationId: GET_EventTriggers
   summary: List event triggers
   parameters:
@@ -594,7 +590,3 @@ get:
                     }
                   ]
                 }
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/events_event-triggers/getundefined

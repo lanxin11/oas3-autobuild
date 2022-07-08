@@ -82,8 +82,3 @@ post:
           $ref: >-
             ../components/schemas/POSTBillingDocumentFilesDeletionJobRequest.yaml
     required: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_accounts_billing-documents_files_deletion-jobs/postundefined

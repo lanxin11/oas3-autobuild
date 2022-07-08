@@ -158,10 +158,6 @@ post:
         schema:
           $ref: ../components/schemas/POSTBulkCreditMemosRequestType.yaml
     required: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_creditmemos_bulk/postundefined
 put:
   description: >
     **Note:** This operation is only available if you have [Invoice
@@ -304,7 +300,3 @@ put:
         schema:
           $ref: ../components/schemas/PUTBulkCreditMemosRequestType.yaml
     required: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_creditmemos_bulk/putundefined

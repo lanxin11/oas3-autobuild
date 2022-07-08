@@ -106,8 +106,3 @@ get:
                     visible: true
                     representer: true
                     editable: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/open-payment-method-types_{paymentMethodTypeName}_published/getundefined

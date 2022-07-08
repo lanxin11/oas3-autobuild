@@ -90,11 +90,6 @@ post:
         schema:
           $ref: ../components/schemas/POSTDmiRevenueScheduleByTransactionType.yaml
     required: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_revenue-schedules_debit-memo-items_{dmi-id}/postundefined
 get:
   description: >
     **Note:** This operation is only available if you have [Invoice
@@ -209,8 +204,3 @@ get:
       required: true
       schema:
         type: string
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_revenue-schedules_debit-memo-items_{dmi-id}/getundefined

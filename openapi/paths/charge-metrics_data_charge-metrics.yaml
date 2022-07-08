@@ -278,7 +278,3 @@ get:
                 reasons:
                   - code: '53400060'
                     message: Internal error detected.
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/charge-metrics_data_charge-metrics/getundefined

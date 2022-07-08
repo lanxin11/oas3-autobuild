@@ -154,10 +154,6 @@ post:
         schema:
           $ref: ../components/schemas/CreatePaymentType.yaml
     required: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_payments/postundefined
 get:
   description: >
     **Note:** This operation is only available if you have [Invoice
@@ -301,6 +297,7 @@ get:
   parameters:
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
     - name: accountId
       in: query
@@ -483,7 +480,3 @@ get:
         - /v1/payments?status=Processed&sort=-number,+amount
       schema:
         type: string
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_payments/getundefined

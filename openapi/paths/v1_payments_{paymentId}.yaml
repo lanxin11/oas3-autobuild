@@ -129,10 +129,6 @@ put:
         schema:
           $ref: ../components/schemas/UpdatePaymentType.yaml
     required: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_payments_{paymentId}/putundefined
 get:
   description: >
     **Note:** This operation is only available if you have [Invoice
@@ -258,10 +254,6 @@ get:
         8a8082e65b27f6c3015b89e4344c16b1.
       schema:
         type: string
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_payments_{paymentId}/getundefined
 delete:
   description: >
     **Note:** This operation is only available if you have [Invoice
@@ -347,7 +339,3 @@ delete:
         8a8082e65b27f6c3015b89e4344c16b1.
       schema:
         type: string
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_payments_{paymentId}/deleteundefined

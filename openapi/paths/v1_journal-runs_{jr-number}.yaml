@@ -80,10 +80,6 @@ get:
                 transactionTypes:
                   - type: Invoice Item
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_journal-runs_{jr-number}/getundefined
 delete:
   summary: Delete a journal run
   operationId: DELETE_JournalRun
@@ -159,7 +155,3 @@ delete:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_journal-runs_{jr-number}/deleteundefined

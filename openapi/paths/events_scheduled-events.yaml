@@ -1,6 +1,6 @@
 post:
   tags:
-    - Scheduled Events
+    - Custom Scheduled Events
   summary: Create a scheduled event
   operationId: POST_ScheduledEvent
   description: >
@@ -172,13 +172,9 @@ post:
                 reasons:
                   - code: SystemError
                     message: internal server error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/events_scheduled-events/postundefined
 get:
   tags:
-    - Scheduled Events
+    - Custom Scheduled Events
   summary: List all scheduled events
   operationId: GET_ScheduledEvents
   parameters:
@@ -363,7 +359,3 @@ get:
                 reasons:
                   - code: SystemError
                     message: internal server error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/events_scheduled-events/getundefined

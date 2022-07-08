@@ -218,10 +218,6 @@ get:
                 records: {}
                 size: 0
                 done: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_contact_{id}/getundefined
 put:
   summary: 'CRUD: Update a contact'
   operationId: Object_PUTContact
@@ -375,10 +371,6 @@ put:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_contact_{id}/putundefined
 delete:
   summary: 'CRUD: Delete a contact'
   operationId: Object_DELETEContact
@@ -518,7 +510,3 @@ delete:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_contact_{id}/deleteundefined

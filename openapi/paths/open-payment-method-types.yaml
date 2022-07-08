@@ -70,7 +70,3 @@ post:
                 paymentMethodType: AmazonPay__C_12368
                 revision: 1
                 publishDate: ''
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/open-payment-method-types/postundefined

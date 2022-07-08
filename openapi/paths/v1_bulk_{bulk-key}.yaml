@@ -85,7 +85,3 @@ get:
                 errorCount: 1
                 successCount: 2
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_bulk_{bulk-key}/getundefined

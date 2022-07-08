@@ -112,8 +112,3 @@ get:
       required: true
       schema:
         type: string
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_debitmemos_{debitMemoId}_items_{dmitemid}_taxation-items/getundefined

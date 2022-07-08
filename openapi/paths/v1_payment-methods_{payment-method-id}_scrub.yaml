@@ -90,8 +90,3 @@ put:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_payment-methods_{payment-method-id}_scrub/putundefined

@@ -100,10 +100,6 @@ put:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_entities_{id}/putundefined
 get:
   summary: 'Multi-entity: Retrieve an entity'
   operationId: GET_EntityById
@@ -193,10 +189,6 @@ get:
                 parentId: 8a808255557baba1015580e12fa5083a
                 tenantId: '6398'
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_entities_{id}/getundefined
 delete:
   summary: 'Multi-entity: Delete an entity'
   operationId: DELETE_Entities
@@ -280,7 +272,3 @@ delete:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_entities_{id}/deleteundefined

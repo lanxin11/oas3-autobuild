@@ -100,11 +100,6 @@ get:
                     deferredRevenueAccountingCodeType: null
                     deferredRevenueAccountingCode: null
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_revenue-schedules_invoice-item-adjustments_{invoice-item-adj-key}/getundefined
 post:
   summary: >-
     Create a revenue schedule for an invoice item adjustment (manual
@@ -190,8 +185,3 @@ post:
               value:
                 revenueScheduleNumber: rs-00000002
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_revenue-schedules_invoice-item-adjustments_{invoice-item-adj-key}/postundefined

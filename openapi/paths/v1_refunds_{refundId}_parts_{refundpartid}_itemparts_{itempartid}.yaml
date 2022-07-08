@@ -107,8 +107,3 @@ get:
         4028905f5a87c0ff015a889e590e00c9.
       schema:
         type: string
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_refunds_{refundId}_parts_{refundpartid}_itemparts_{itempartid}/getundefined

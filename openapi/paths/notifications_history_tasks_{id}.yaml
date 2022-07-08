@@ -142,7 +142,3 @@ get:
                         }
                     ]
                 }
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/notifications_history_tasks_{id}/getundefined

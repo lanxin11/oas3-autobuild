@@ -224,10 +224,6 @@ get:
                 records: {}
                 size: 0
                 done: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_payment-method_{id}/getundefined
 put:
   summary: 'CRUD: Update a payment method'
   operationId: Object_PUTPaymentMethod
@@ -375,10 +371,6 @@ put:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_payment-method_{id}/putundefined
 delete:
   summary: 'CRUD: Delete a payment method'
   operationId: Object_DELETEPaymentMethod
@@ -517,7 +509,3 @@ delete:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_payment-method_{id}/deleteundefined

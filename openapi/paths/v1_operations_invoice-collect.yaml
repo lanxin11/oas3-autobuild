@@ -158,7 +158,3 @@ post:
                 paymentId: 402892053e100406013e1024ab7c00e3
                 amountCollected: 801.73
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_operations_invoice-collect/postundefined

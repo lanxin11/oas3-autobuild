@@ -103,7 +103,3 @@ get:
                   - date: '2019-05-23'
                     values:
                       taskCount: 2
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/workflows_metrics.json/getundefined

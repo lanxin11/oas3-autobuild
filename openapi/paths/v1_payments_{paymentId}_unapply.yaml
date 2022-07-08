@@ -152,7 +152,3 @@ put:
         schema:
           $ref: ../components/schemas/UnapplyPaymentType.yaml
     required: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_payments_{paymentId}_unapply/putundefined

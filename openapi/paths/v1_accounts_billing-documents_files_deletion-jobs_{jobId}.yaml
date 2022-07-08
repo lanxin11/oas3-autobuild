@@ -77,8 +77,3 @@ get:
                 id: 2c92c8f83dc4f752013dc72c24ee016c
                 status: Pending
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_accounts_billing-documents_files_deletion-jobs_{jobId}/getundefined

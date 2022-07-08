@@ -242,11 +242,11 @@ properties:
       [prepayment
       charge](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown/Create_prepayment_charge).      
     enum:
-      - Subscription_Term
-      - Annual
-      - Semi_Annual
-      - Quarter
-      - Month
+      - SUBSCRIPTION_TERM
+      - ANNUAL
+      - SEMI_ANNUAL
+      - QUARTER
+      - MONTH
     type: string
 required:
   - productRatePlanChargeId

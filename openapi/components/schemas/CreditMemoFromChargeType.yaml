@@ -1,8 +1,24 @@
 allOf:
   - properties:
       accountId:
-        description: |
+        description: >
           The ID of the account associated with the credit memo.
+
+
+          **Note**: When creating credit memos from product rate plan charges,
+          you must specify `accountNumber`, `accountId`, or both in the request
+          body. If both fields are specified, they must correspond to the same
+          account.
+        type: string
+      accountNumber:
+        description: >
+          The number of the account associated with the credit memo.
+
+
+          **Note**: When creating credit memos from product rate plan charges,
+          you must specify `accountNumber`, `accountId`, or both in the request
+          body. If both fields are specified, they must correspond to the same
+          account.
         type: string
       autoPost:
         default: false

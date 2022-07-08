@@ -81,7 +81,3 @@ get:
         example, `402888e67f8b3a68017f8bbb2a06062d` or `Apple0001`.
       schema:
         type: string
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_product-rate-plans_{id}/getundefined

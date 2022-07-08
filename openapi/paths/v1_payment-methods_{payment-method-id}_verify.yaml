@@ -86,8 +86,3 @@ put:
               value:
                 success: true
                 paymentMethodId: 402890765d9ce329015da18034ee0057
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_payment-methods_{payment-method-id}_verify/putundefined

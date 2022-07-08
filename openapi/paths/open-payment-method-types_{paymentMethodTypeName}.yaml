@@ -83,8 +83,3 @@ put:
                 paymentMethodType: AmazonPay__c_12368
                 revision: 2
                 publishDate: ''
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/open-payment-method-types_{paymentMethodTypeName}/putundefined

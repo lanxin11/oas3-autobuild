@@ -92,8 +92,3 @@ get:
                 finishedAt: 2019-09-10 19:33:34 UTC
                 createdAt: 2019-09-10 19:32:21 UTC
                 updatedAt: 2019-09-10 19:33:34 UTC
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/workflows_workflow_runs_{workflow_run_id}/getundefined

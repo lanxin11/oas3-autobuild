@@ -85,10 +85,6 @@ post:
                     effectiveStartDate: '2022-02-21'
                     effectiveEndDate: '2023-02-21'
                     grade: 1
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_catalog-groups/postundefined
 get:
   summary: List all catalog groups
   operationId: GET_ListAllCatalogGroups
@@ -174,7 +170,3 @@ get:
                         effectiveEndDate: '2023-02-21'
                         grade: 1
                 nextPage: false
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_catalog-groups/getundefined

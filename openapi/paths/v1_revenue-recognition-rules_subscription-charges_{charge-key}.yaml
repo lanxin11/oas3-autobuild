@@ -73,8 +73,3 @@ get:
               value:
                 revenueRecognitionRuleName: Recognize upon invoicing
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_revenue-recognition-rules_subscription-charges_{charge-key}/getundefined

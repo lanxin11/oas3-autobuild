@@ -95,10 +95,6 @@ get:
                 updatedOn: '2015-09-28 00:53:13'
                 updatedBy: e20b074746ec48f40147140f51e30a1a
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_accounting-periods_{ap-id}/getundefined
 put:
   summary: Update an accounting period
   operationId: PUT_UpdateAccountingPeriod
@@ -217,10 +213,6 @@ put:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_accounting-periods_{ap-id}/putundefined
 delete:
   summary: Delete an accounting period
   operationId: DELETE_AccountingPeriod
@@ -315,7 +307,3 @@ delete:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_accounting-periods_{ap-id}/deleteundefined

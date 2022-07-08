@@ -104,7 +104,3 @@ post:
         application/json; charset=utf-8:
           schema:
             $ref: ../components/schemas/GetOrderLineItemResponseType.yaml
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_order-line-items_bulk/postundefined

@@ -217,11 +217,6 @@ get:
                 records: {}
                 size: 0
                 done: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_object_invoice-item-adjustment_{id}/getundefined
 put:
   summary: 'CRUD: Update an invoice item adjustment'
   operationId: Object_PUTInvoiceItemAdjustment
@@ -366,11 +361,6 @@ put:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_object_invoice-item-adjustment_{id}/putundefined
 delete:
   summary: 'CRUD: Delete an invoice item adjustment'
   operationId: Object_DELETEInvoiceItemAdjustment
@@ -509,8 +499,3 @@ delete:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_object_invoice-item-adjustment_{id}/deleteundefined

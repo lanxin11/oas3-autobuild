@@ -259,10 +259,6 @@ post:
         application/json; charset=utf-8:
           schema:
             $ref: ../components/schemas/CustomObjectRecordsThrottledResponse.yaml
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/objects_records_default_{object}/postundefined
 get:
   summary: List records for a custom object
   description: >
@@ -327,12 +323,15 @@ get:
       required: false
       schema:
         type: string
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
     - name: pageSize
-      description: Page size. The value must be between 1 and 1000.
+      description: The number of records returned per page in the response.
       in: query
       required: false
       schema:
         type: integer
+        minimum: 1
+        maximum: 1000
     - name: cursor
       description: >-
         The `cursor` points to the last record of the previous result set. The
@@ -390,7 +389,3 @@ get:
         application/json; charset=utf-8:
           schema:
             $ref: ../components/schemas/QueryCustomObjectRecordsResponse.yaml
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/objects_records_default_{object}/getundefined

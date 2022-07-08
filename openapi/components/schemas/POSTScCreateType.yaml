@@ -65,7 +65,6 @@ allOf:
           Billing period for the charge. The start day of the billing period is
           also called the bill cycle day (BCD).
 
-
           Values:
 
 

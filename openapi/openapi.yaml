@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: '2022-06-22'
+  version: '2022-07-08'
   title: 'API Reference: Billing'
   x-logo:
     url: >-
@@ -536,7 +536,7 @@ info:
 
 
 
-    ## REST API Resource Code
+    ## REST API Resource Codes
 
 
     The 6-digit resource code indicates the REST API resource, typically a field
@@ -550,7 +550,7 @@ info:
     in the Knowledge Center for a full list of resource codes.
 
 
-    ## Error Category Code
+    ## Error Category Codes
 
 
     The 2-digit error category code identifies the type of error, for example,
@@ -616,6 +616,13 @@ info:
     | 60      | Internal error              | The server encounters an internal
     error. | Contact [Zuora Global Support](https://support.zuora.com) with the
     returned `Zuora-Request-Id` value in the response header for assistance. |
+
+    | 61      | Temporary error             | A temporary error occurs during
+    request processing, for example, a database communication error. |
+    <p>Resubmit the request first to have another try.</p> <p>If this error
+    still occurs, contact [Zuora Global Support](https://support.zuora.com) with
+    the returned `Zuora-Request-Id` value in the response header for assistance.
+    </p>|
 
     | 70      | Request exceeded limit      | The total number of concurrent
     requests exceeds the limit allowed by the system. | <p>Resubmit the request
@@ -1511,6 +1518,17 @@ tags:
     description: ''
   - name: Credit Memos
     description: ''
+  - name: Custom Event Triggers
+    description: >
+      The Event Trigger service manages the business events and trigger
+      conditions that are defined on [Zuora Business Object
+      Model](http://knowledgecenter.zuora.com/BB_Introducing_Z_Business/D_Zuora_Business_Objects_Relationship).
+      When a Zuora object changes, the trigger conditions defined on the object
+      are evaluated, and if any condition qualifies, a business event will be
+      triggered and turned into a notification.
+
+
+      **Note**: Event Triggers operations are only applicable to custom events.
   - name: Custom Exchange Rates
     description: ''
   - name: Custom Object Definitions
@@ -1635,6 +1653,8 @@ tags:
       Note: You can only use the bearer token to access the "Custom Payment
       Method Types" API operations. Access with `apiAccessKeyId` and
       `apiSecretAccessKey` is not supported.
+  - name: Custom Scheduled Events
+    description: ''
   - name: Data Queries
     description: >
       The Data Query feature enables you to perform SQL queries in your Zuora
@@ -1650,17 +1670,6 @@ tags:
     description: ''
   - name: Entity Connections
     description: ''
-  - name: Event Triggers
-    description: >
-      The Event Trigger service manages the business events and trigger
-      conditions that are defined on [Zuora Business Object
-      Model](http://knowledgecenter.zuora.com/BB_Introducing_Z_Business/D_Zuora_Business_Objects_Relationship).
-      When a Zuora object changes, the trigger conditions defined on the object
-      are evaluated, and if any condition qualifies, a business event will be
-      triggered and turned into a notification.
-
-
-      **Note**: Event Triggers operations are only applicable to custom events.
   - name: Exports
     description: ''
   - name: Features
@@ -1777,8 +1786,6 @@ tags:
     description: ''
   - name: RSA Signatures
     description: ''
-  - name: Scheduled Events
-    description: ''
   - name: Sequence Sets
     description: ''
   - name: Settings
@@ -1887,10 +1894,10 @@ paths:
     $ref: paths/v1_attachments_{object-type}_{object-key}.yaml
   /v1/attachments/{attachment-id}:
     $ref: paths/v1_attachments_{attachment-id}.yaml
-  /v1/bill-runs/{billRunId}/emails:
-    $ref: paths/v1_bill-runs_{billRunId}_emails.yaml
-  /v1/accounts/{id}/billing-documents/generate:
-    $ref: paths/v1_accounts_{id}_billing-documents_generate.yaml
+  /v1/bill-runs/{billRunKey}/emails:
+    $ref: paths/v1_bill-runs_{billRunKey}_emails.yaml
+  /v1/accounts/{key}/billing-documents/generate:
+    $ref: paths/v1_accounts_{key}_billing-documents_generate.yaml
   /v1/billing-documents:
     $ref: paths/v1_billing-documents.yaml
   /v1/accounts/billing-documents/files/deletion-jobs:
@@ -1927,24 +1934,22 @@ paths:
     $ref: paths/v1_creditmemos.yaml
   /v1/creditmemos/bulk:
     $ref: paths/v1_creditmemos_bulk.yaml
-  /v1/invoices/{invoiceId}/creditmemos:
-    $ref: paths/v1_invoices_{invoiceId}_creditmemos.yaml
-  /v1/creditmemos/{creditMemoId}:
-    $ref: paths/v1_creditmemos_{creditMemoId}.yaml
+  /v1/invoices/{invoiceKey}/creditmemos:
+    $ref: paths/v1_invoices_{invoiceKey}_creditmemos.yaml
   /v1/creditmemos/{creditMemoKey}:
     $ref: paths/v1_creditmemos_{creditMemoKey}.yaml
   /v1/creditmemos/{creditMemoId}/apply:
     $ref: paths/v1_creditmemos_{creditMemoId}_apply.yaml
   /v1/creditmemos/{creditMemoKey}/cancel:
     $ref: paths/v1_creditmemos_{creditMemoKey}_cancel.yaml
-  /v1/creditmemos/{creditMemoId}/emails:
-    $ref: paths/v1_creditmemos_{creditMemoId}_emails.yaml
-  /v1/creditmemos/{creditMemoId}/files:
-    $ref: paths/v1_creditmemos_{creditMemoId}_files.yaml
-  /v1/creditmemos/{creditMemoId}/items:
-    $ref: paths/v1_creditmemos_{creditMemoId}_items.yaml
-  /v1/creditmemos/{creditMemoId}/items/{cmitemid}:
-    $ref: paths/v1_creditmemos_{creditMemoId}_items_{cmitemid}.yaml
+  /v1/creditmemos/{creditMemoKey}/emails:
+    $ref: paths/v1_creditmemos_{creditMemoKey}_emails.yaml
+  /v1/creditmemos/{creditMemoKey}/files:
+    $ref: paths/v1_creditmemos_{creditMemoKey}_files.yaml
+  /v1/creditmemos/{creditMemoKey}/items:
+    $ref: paths/v1_creditmemos_{creditMemoKey}_items.yaml
+  /v1/creditmemos/{creditMemoKey}/items/{cmitemid}:
+    $ref: paths/v1_creditmemos_{creditMemoKey}_items_{cmitemid}.yaml
   /v1/creditmemos/{creditMemoId}/items/{cmitemid}/taxation-items:
     $ref: paths/v1_creditmemos_{creditMemoId}_items_{cmitemid}_taxation-items.yaml
   /v1/creditmemos/{creditMemoId}/parts:
@@ -1956,22 +1961,26 @@ paths:
   /v1/creditmemos/{creditMemoId}/parts/{partid}/itemparts/{itempartid}:
     $ref: >-
       paths/v1_creditmemos_{creditMemoId}_parts_{partid}_itemparts_{itempartid}.yaml
-  /v1/creditmemos/{creditMemoId}/pdfs:
-    $ref: paths/v1_creditmemos_{creditMemoId}_pdfs.yaml
-  /v1/creditmemos/{creditMemoId}/post:
-    $ref: paths/v1_creditmemos_{creditMemoId}_post.yaml
+  /v1/creditmemos/{creditMemoKey}/pdfs:
+    $ref: paths/v1_creditmemos_{creditMemoKey}_pdfs.yaml
+  /v1/creditmemos/{creditMemoKey}/post:
+    $ref: paths/v1_creditmemos_{creditMemoKey}_post.yaml
   /v1/creditmemos/{creditmemoId}/refunds:
     $ref: paths/v1_creditmemos_{creditmemoId}_refunds.yaml
-  /v1/creditmemos/{creditMemoId}/reverse:
-    $ref: paths/v1_creditmemos_{creditMemoId}_reverse.yaml
-  /v1/creditmemos/{creditMemoId}/taxationitems:
-    $ref: paths/v1_creditmemos_{creditMemoId}_taxationitems.yaml
+  /v1/creditmemos/{creditMemoKey}/reverse:
+    $ref: paths/v1_creditmemos_{creditMemoKey}_reverse.yaml
+  /v1/creditmemos/{creditMemoKey}/taxationitems:
+    $ref: paths/v1_creditmemos_{creditMemoKey}_taxationitems.yaml
   /v1/creditmemos/{creditMemoId}/unapply:
     $ref: paths/v1_creditmemos_{creditMemoId}_unapply.yaml
-  /v1/creditmemos/{creditMemoId}/unpost:
-    $ref: paths/v1_creditmemos_{creditMemoId}_unpost.yaml
+  /v1/creditmemos/{creditMemoKey}/unpost:
+    $ref: paths/v1_creditmemos_{creditMemoKey}_unpost.yaml
   /v1/creditmemos/{creditMemoId}/write-off:
     $ref: paths/v1_creditmemos_{creditMemoId}_write-off.yaml
+  /events/event-triggers:
+    $ref: paths/events_event-triggers.yaml
+  /events/event-triggers/{id}:
+    $ref: paths/events_event-triggers_{id}.yaml
   /v1/custom-exchange-rates/{currency}:
     $ref: paths/v1_custom-exchange-rates_{currency}.yaml
   /objects/definitions/default:
@@ -1994,6 +2003,10 @@ paths:
     $ref: paths/objects_jobs_{id}_files.yaml
   /objects/jobs/{id}/errors:
     $ref: paths/objects_jobs_{id}_errors.yaml
+  /events/scheduled-events:
+    $ref: paths/events_scheduled-events.yaml
+  /events/scheduled-events/{id}:
+    $ref: paths/events_scheduled-events_{id}.yaml
   /query/jobs:
     $ref: paths/query_jobs.yaml
   /query/jobs/{job-id}:
@@ -2002,10 +2015,8 @@ paths:
     $ref: paths/v1_debitmemos.yaml
   /v1/debitmemos/bulk:
     $ref: paths/v1_debitmemos_bulk.yaml
-  /v1/invoices/{invoiceId}/debitmemos:
-    $ref: paths/v1_invoices_{invoiceId}_debitmemos.yaml
-  /v1/debitmemos/{debitMemoId}:
-    $ref: paths/v1_debitmemos_{debitMemoId}.yaml
+  /v1/invoices/{invoiceKey}/debitmemos:
+    $ref: paths/v1_invoices_{invoiceKey}_debitmemos.yaml
   /v1/debitmemos/{debitMemoKey}:
     $ref: paths/v1_debitmemos_{debitMemoKey}.yaml
   /v1/debitmemos/{debitMemoId}/application-parts:
@@ -2014,24 +2025,24 @@ paths:
     $ref: paths/v1_debitmemos_{debitMemoKey}_cancel.yaml
   /v1/debitmemos/{debitMemoId}/collect:
     $ref: paths/v1_debitmemos_{debitMemoId}_collect.yaml
-  /v1/debitmemos/{debitMemoId}/emails:
-    $ref: paths/v1_debitmemos_{debitMemoId}_emails.yaml
-  /v1/debitmemos/{debitMemoId}/files:
-    $ref: paths/v1_debitmemos_{debitMemoId}_files.yaml
-  /v1/debitmemos/{debitMemoId}/items:
-    $ref: paths/v1_debitmemos_{debitMemoId}_items.yaml
-  /v1/debitmemos/{debitMemoId}/items/{dmitemid}:
-    $ref: paths/v1_debitmemos_{debitMemoId}_items_{dmitemid}.yaml
+  /v1/debitmemos/{debitMemoKey}/emails:
+    $ref: paths/v1_debitmemos_{debitMemoKey}_emails.yaml
+  /v1/debitmemos/{debitMemoKey}/files:
+    $ref: paths/v1_debitmemos_{debitMemoKey}_files.yaml
+  /v1/debitmemos/{debitMemoKey}/items:
+    $ref: paths/v1_debitmemos_{debitMemoKey}_items.yaml
+  /v1/debitmemos/{debitMemoKey}/items/{dmitemid}:
+    $ref: paths/v1_debitmemos_{debitMemoKey}_items_{dmitemid}.yaml
   /v1/debitmemos/{debitMemoId}/items/{dmitemid}/taxation-items:
     $ref: paths/v1_debitmemos_{debitMemoId}_items_{dmitemid}_taxation-items.yaml
-  /v1/debitmemos/{debitMemoId}/pdfs:
-    $ref: paths/v1_debitmemos_{debitMemoId}_pdfs.yaml
-  /v1/debitmemos/{debitMemoId}/post:
-    $ref: paths/v1_debitmemos_{debitMemoId}_post.yaml
-  /v1/debitmemos/{debitMemoId}/unpost:
-    $ref: paths/v1_debitmemos_{debitMemoId}_unpost.yaml
-  /v1/debitmemos/{debitMemoId}/taxationitems:
-    $ref: paths/v1_debitmemos_{debitMemoId}_taxationitems.yaml
+  /v1/debitmemos/{debitMemoKey}/pdfs:
+    $ref: paths/v1_debitmemos_{debitMemoKey}_pdfs.yaml
+  /v1/debitmemos/{debitMemoKey}/post:
+    $ref: paths/v1_debitmemos_{debitMemoKey}_post.yaml
+  /v1/debitmemos/{debitMemoKey}/unpost:
+    $ref: paths/v1_debitmemos_{debitMemoKey}_unpost.yaml
+  /v1/debitmemos/{debitMemoKey}/taxationitems:
+    $ref: paths/v1_debitmemos_{debitMemoKey}_taxationitems.yaml
   /v1/describe/{object}:
     $ref: paths/v1_describe_{object}.yaml
   /v1/document-properties:
@@ -2040,10 +2051,6 @@ paths:
     $ref: paths/v1_document-properties_{documentType}_{documentId}.yaml
   /v1/document-properties/{documentPropertiesId}:
     $ref: paths/v1_document-properties_{documentPropertiesId}.yaml
-  /events/event-triggers:
-    $ref: paths/events_event-triggers.yaml
-  /events/event-triggers/{id}:
-    $ref: paths/events_event-triggers_{id}.yaml
   /v1/files/{file-id}:
     $ref: paths/v1_files_{file-id}.yaml
   /v1/hmac-signatures:
@@ -2056,20 +2063,22 @@ paths:
     $ref: paths/v1_invoices.yaml
   /v1/invoices/bulk-post:
     $ref: paths/v1_invoices_bulk-post.yaml
-  /v1/invoices/{invoiceId}:
-    $ref: paths/v1_invoices_{invoiceId}.yaml
+  /v1/invoices/{invoiceKey}:
+    $ref: paths/v1_invoices_{invoiceKey}.yaml
   /v1/invoices/{invoiceId}/application-parts:
     $ref: paths/v1_invoices_{invoiceId}_application-parts.yaml
-  /v1/invoices/{invoiceId}/emails:
-    $ref: paths/v1_invoices_{invoiceId}_emails.yaml
+  /v1/invoices/{invoiceKey}/emails:
+    $ref: paths/v1_invoices_{invoiceKey}_emails.yaml
+  /v1/invoices/{invoiceKey}/files:
+    $ref: paths/v1_invoices_{invoiceKey}_files.yaml
   /v1/invoices/{invoiceId}/files:
     $ref: paths/v1_invoices_{invoiceId}_files.yaml
-  /v1/invoices/{invoiceId}/items:
-    $ref: paths/v1_invoices_{invoiceId}_items.yaml
-  /v1/invoices/{invoiceId}/items/{itemId}/taxation-items:
-    $ref: paths/v1_invoices_{invoiceId}_items_{itemId}_taxation-items.yaml
-  /v1/invoices/{invoiceId}/reverse:
-    $ref: paths/v1_invoices_{invoiceId}_reverse.yaml
+  /v1/invoices/{invoiceKey}/items:
+    $ref: paths/v1_invoices_{invoiceKey}_items.yaml
+  /v1/invoices/{invoiceKey}/items/{itemId}/taxation-items:
+    $ref: paths/v1_invoices_{invoiceKey}_items_{itemId}_taxation-items.yaml
+  /v1/invoices/{invoiceKey}/reverse:
+    $ref: paths/v1_invoices_{invoiceKey}_reverse.yaml
   /v1/invoices/{invoiceId}/write-off:
     $ref: paths/v1_invoices_{invoiceId}_write-off.yaml
   /v1/journal-runs:
@@ -2220,12 +2229,12 @@ paths:
       paths/v1_payment-methods_{payment-method-id}_profiles_{profile-number}_expire.yaml
   /v1/payment-runs:
     $ref: paths/v1_payment-runs.yaml
-  /v1/payment-runs/{paymentRunId}:
-    $ref: paths/v1_payment-runs_{paymentRunId}.yaml
-  /v1/payment-runs/{paymentRunId}/summary:
-    $ref: paths/v1_payment-runs_{paymentRunId}_summary.yaml
-  /v1/payment-runs/{paymentRunId}/data:
-    $ref: paths/v1_payment-runs_{paymentRunId}_data.yaml
+  /v1/payment-runs/{paymentRunKey}:
+    $ref: paths/v1_payment-runs_{paymentRunKey}.yaml
+  /v1/payment-runs/{paymentRunKey}/summary:
+    $ref: paths/v1_payment-runs_{paymentRunKey}_summary.yaml
+  /v1/payment-runs/{paymentRunKey}/data:
+    $ref: paths/v1_payment-runs_{paymentRunKey}_data.yaml
   /v1/payments:
     $ref: paths/v1_payments.yaml
   /v1/payments/{paymentId}:
@@ -2268,10 +2277,10 @@ paths:
     $ref: paths/v1_rateplans_{ratePlanId}.yaml
   /v1/refunds:
     $ref: paths/v1_refunds.yaml
-  /v1/refunds/{refundId}:
-    $ref: paths/v1_refunds_{refundId}.yaml
-  /v1/refunds/{refundId}/cancel:
-    $ref: paths/v1_refunds_{refundId}_cancel.yaml
+  /v1/refunds/{refundKey}:
+    $ref: paths/v1_refunds_{refundKey}.yaml
+  /v1/refunds/{refundKey}/cancel:
+    $ref: paths/v1_refunds_{refundKey}_cancel.yaml
   /v1/refunds/{refundId}/parts:
     $ref: paths/v1_refunds_{refundId}_parts.yaml
   /v1/refunds/{refundId}/parts/{refundpartid}:
@@ -2341,12 +2350,6 @@ paths:
     $ref: paths/v1_rsa-signatures.yaml
   /v1/rsa-signatures/decrypt:
     $ref: paths/v1_rsa-signatures_decrypt.yaml
-  /events/scheduled-events:
-    $ref: paths/events_scheduled-events.yaml
-  /events/scheduled-events/{namespace}/{name}:
-    $ref: paths/events_scheduled-events_{namespace}_{name}.yaml
-  /events/scheduled-events/{id}:
-    $ref: paths/events_scheduled-events_{id}.yaml
   /v1/sequence-sets:
     $ref: paths/v1_sequence-sets.yaml
   /v1/sequence-sets/{id}:
@@ -2373,6 +2376,8 @@ paths:
     $ref: paths/v1_subscriptions_{subscription-key}_resume.yaml
   /v1/subscriptions/{subscription-key}/suspend:
     $ref: paths/v1_subscriptions_{subscription-key}_suspend.yaml
+  /v1/subscriptions/{subscription-key}/delete:
+    $ref: paths/v1_subscriptions_{subscription-key}_delete.yaml
   /v1/subscriptions/{subscriptionNumber}/versions/{version}/customFields:
     $ref: >-
       paths/v1_subscriptions_{subscriptionNumber}_versions_{version}_customFields.yaml

@@ -125,8 +125,3 @@ get:
                       field 'billingAddress.houseNumberOrName' is not
                       provided.","errorType":"validation"}, shopperReference=,
                       networkTxReference=, 
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_payment-gateway-transaction-log_{paymentOrRefundOrPaymentMethod-id}/getundefined

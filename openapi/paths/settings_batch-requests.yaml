@@ -124,7 +124,3 @@ post:
                         allowUsageInClosedPeriod: true
                         allowRevenueScheduleNegativeAmounts: true
                         differentCurrencies: false
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/settings_batch-requests/postundefined

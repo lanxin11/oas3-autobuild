@@ -128,7 +128,3 @@ delete:
                   - code: invalid
                     status: 403
                     title: Cannot delete the active version of a workflow.
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/versions_{version_id}/deleteundefined

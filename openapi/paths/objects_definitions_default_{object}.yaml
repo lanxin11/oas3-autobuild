@@ -120,10 +120,6 @@ get:
         application/json; charset=utf-8:
           schema:
             $ref: ../components/schemas/CommonErrorResponse.yaml
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/objects_definitions_default_{object}/getundefined
 delete:
   summary: Delete a custom object definition
   description: >
@@ -206,8 +202,3 @@ delete:
             description: The URI of the deleted custom object definition
             format: uri
             example: /objects/definitions/default/test_custom_object
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/objects_definitions_default_{object}/deleteundefined

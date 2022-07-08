@@ -131,10 +131,6 @@ get:
                   productRatePlanChargeId: null
                   customFields:
                     externalNumber5__c: olinumber-023
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_order-line-items_{itemId}/getundefined
 put:
   summary: Update an order line item
   operationId: PUT_OrderLineItem
@@ -248,7 +244,3 @@ put:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_order-line-items_{itemId}/putundefined

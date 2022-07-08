@@ -101,7 +101,3 @@ post:
               value:
                 success: true
                 billingPreviewRunId: 402890b757d1ec1b0157d5aa3d6802aa
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_billing-preview-runs/postundefined

@@ -99,8 +99,3 @@ post:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_catalog_products_{product-id}_share/postundefined

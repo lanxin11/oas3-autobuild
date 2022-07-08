@@ -351,11 +351,6 @@ put:
                   "code":"500",
                   "message":"A temporary problem in the service occurred, you can retry later."
                 }
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/notifications_notification-definitions_{id}/putundefined
 get:
   summary: Retrieve a notification definition
   operationId: GET_Get_Notification_Definition
@@ -645,11 +640,6 @@ get:
                   "code":"500",
                   "message":"A temporary problem in the service occurred, you can retry later."
                 }
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/notifications_notification-definitions_{id}/getundefined
 delete:
   summary: Delete a notification definition
   operationId: DELETE_Delete_Notification_Definition
@@ -992,8 +982,3 @@ delete:
                   "code":"500",
                   "message":"A temporary problem in the service occurred, you can retry later."
                 }
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/notifications_notification-definitions_{id}/deleteundefined

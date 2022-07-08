@@ -97,11 +97,6 @@ put:
                 documentId: 40288af1614cee0b01614cf2ec25000a
                 documentType: CreditMemo
                 customFileName: customPDFName
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_document-properties_{documentPropertiesId}/putundefined
 delete:
   summary: Delete document properties
   operationId: DELETE_DocumentProperties
@@ -191,8 +186,3 @@ delete:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_document-properties_{documentPropertiesId}/deleteundefined

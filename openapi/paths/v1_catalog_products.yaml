@@ -95,7 +95,3 @@ get:
                     productRatePlans: >-
                       https://rest.zuora.com/v1/rateplan/40289f466463d683016463ef8b7301a0/productRatePlan
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_catalog_products/getundefined

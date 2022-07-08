@@ -221,10 +221,6 @@ get:
                 records: {}
                 size: 0
                 done: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_bill-run_{id}/getundefined
 put:
   summary: 'CRUD: Post or cancel a bill run'
   operationId: Object_PUTBillRun
@@ -415,10 +411,6 @@ put:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_bill-run_{id}/putundefined
 delete:
   summary: 'CRUD: Delete a bill run'
   operationId: Object_DELETEBillRun
@@ -564,7 +556,3 @@ delete:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_bill-run_{id}/deleteundefined

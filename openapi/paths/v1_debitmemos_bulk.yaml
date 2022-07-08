@@ -147,10 +147,6 @@ post:
         schema:
           $ref: ../components/schemas/POSTBulkDebitMemosRequestType.yaml
     required: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_debitmemos_bulk/postundefined
 put:
   description: >
     **Note:** This operation is only available if you have [Invoice
@@ -301,7 +297,3 @@ put:
         schema:
           $ref: ../components/schemas/PUTBulkDebitMemosRequestType.yaml
     required: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_debitmemos_bulk/putundefined

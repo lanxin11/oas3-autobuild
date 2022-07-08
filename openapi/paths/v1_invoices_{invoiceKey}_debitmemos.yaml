@@ -1,0 +1,143 @@
+post:
+  description: >
+    **Note:** This operation is only available if you have [Invoice
+    Settlement](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement)
+    enabled. The Invoice Settlement feature is generally available as of Zuora
+    Billing Release 296 (March 2021). This feature includes Unapplied Payments,
+    Credit and Debit Memo, and Invoice Item Settlement. If you want to enable
+    Invoice Settlement, see [Invoice Settlement Enablement and Checklist
+    Guide](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement/Invoice_Settlement_Migration_Checklist_and_Guide)
+    for more information. 
+
+
+    Creates an ad-hoc debit memo from an invoice.
+
+
+    You can create a debit memo from an invoice only if you have the user
+    permission. See [Billing
+    Roles](https://knowledgecenter.zuora.com/CF_Users_and_Administrators/A_Administrator_Settings/User_Roles/d_Billing_Roles)
+    for more information.
+  summary: Create a debit memo from an invoice
+  operationId: POST_DebitMemoFromInvoice
+  tags:
+    - Debit Memos
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETDebitMemoType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: 402890555a87d7f5015a89251edc0045
+                number: DM00000003
+                accountId: 402890555a7d4022015a7dabf5f60088
+                billToContactId: 2c93808457d787030157e031bb3de684
+                paymentTerm: Net 30
+                debitMemoDate: '2017-11-30'
+                targetDate: null
+                dueDate: '2017-12-30'
+                postedOn: null
+                postedById: null
+                status: Draft
+                sourceType: Invoice
+                amount: 0.01
+                taxAmount: 0.01
+                totalTaxExemptAmount: 0
+                balance: 0.01
+                beAppliedAmount: 0
+                autoPay: true
+                comment: the comment
+                referredInvoiceId: 402890555a7d4022015a7dadb3b300a4
+                transferredToAccounting: 'No'
+                reasonCode: Charge Dispute
+                referredCreditMemoId: 402881e522cf4f9b0222cf5d82860002
+                excludeItemBillingFromRevenueAccounting: true
+                createdDate: '2017-03-01 17:13:15'
+                createdById: 402881e522cf4f9b0122cf5d82860002
+                updatedDate: '2017-03-01 17:13:15'
+                updatedById: 402881e522cf4f9b0122cf5d82860002
+                cancelledOn: null
+                cancelledById: null
+                latestPDFFileId: null
+                taxStatus: null
+                taxMessage: null
+                success: true
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - in: path
+      description: >
+        The ID or number of an invoice that you want to create a debit memo
+        from. For example, 2c93808457d787030157e030d10f3f64 or INV00000001.
+      name: invoiceKey
+      required: true
+      schema:
+        type: string
+    - name: zuora-version
+      in: header
+      required: false
+      description: >
+
+        The minor version of the Zuora REST API. See [Minor
+        Version](https://www.zuora.com/developer/api-reference/#section/API-Versions/Minor-Version)
+        for information about REST API version control. 
+
+
+        This header affects the availability of the following request fields:
+
+        * `items` > `comment`
+
+        * `items` > `description`
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/DebitMemoFromInvoiceType.yaml
+    required: true

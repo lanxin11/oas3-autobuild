@@ -190,7 +190,3 @@ post:
             response:
               value:
                 jobId: 2c90a02d676688200167770ce20601b6
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_async_orders_preview/postundefined

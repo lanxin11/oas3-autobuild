@@ -117,8 +117,3 @@ get:
                 updatedById: 4028906d58240f960158241132be0003
                 updatedDate: '2016-11-04 16:19:00'
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_billing-preview-runs_{billingPreviewRunId}/getundefined

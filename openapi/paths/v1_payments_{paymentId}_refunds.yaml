@@ -135,7 +135,3 @@ post:
         schema:
           $ref: ../components/schemas/PostRefundType.yaml
     required: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_payments_{paymentId}_refunds/postundefined

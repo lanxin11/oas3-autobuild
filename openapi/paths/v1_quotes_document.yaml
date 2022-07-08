@@ -91,7 +91,3 @@ post:
                 success: true
                 file: >-
                   https://rest.zuora.com/v1/file/2c92c09447f1ca410147f7bfed8c5a87
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_quotes_document/postundefined

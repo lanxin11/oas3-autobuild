@@ -221,10 +221,6 @@ get:
                 records: {}
                 size: 0
                 done: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_account_{id}/getundefined
 put:
   summary: 'CRUD: Update an account'
   operationId: Object_PUTAccount
@@ -371,10 +367,6 @@ put:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_account_{id}/putundefined
 delete:
   summary: 'CRUD: Delete an account'
   operationId: Object_DELETEAccount
@@ -521,7 +513,3 @@ delete:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_account_{id}/deleteundefined

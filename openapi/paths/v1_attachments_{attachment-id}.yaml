@@ -86,10 +86,6 @@ get:
                 updatedOn: '2016-05-02 13:09:17'
                 updatedBy: 4028e487327fd45a0132829ebb673ff9
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_attachments_{attachment-id}/getundefined
 put:
   summary: Update an attachment
   operationId: PUT_Attachments
@@ -177,10 +173,6 @@ put:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_attachments_{attachment-id}/putundefined
 delete:
   summary: Delete an attachment
   operationId: DELETE_Attachments
@@ -260,7 +252,3 @@ delete:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_attachments_{attachment-id}/deleteundefined

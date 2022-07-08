@@ -1,0 +1,335 @@
+get:
+  description: >
+    **Note:** This operation is only available if you have [Invoice
+    Settlement](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement)
+    enabled. The Invoice Settlement feature is generally available as of Zuora
+    Billing Release 296 (March 2021). This feature includes Unapplied Payments,
+    Credit and Debit Memo, and Invoice Item Settlement. If you want to enable
+    Invoice Settlement, see [Invoice Settlement Enablement and Checklist
+    Guide](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement/Invoice_Settlement_Migration_Checklist_and_Guide)
+    for more information. 
+
+
+    Retrieves the information about all items of a debit memo. A debit memo item
+    is a single line item in a debit memo. 
+
+
+    ### Filtering
+
+
+    You can use query parameters to restrict the data returned in the response.
+    Each query parameter corresponds to one field in the response body.
+
+
+    If the value of a filterable field is string, you can set the corresponding
+    query parameter to `null` when filtering. Then, you can get the response
+    data with this field value being `null`. 
+
+
+    Examples:
+
+
+    - /v1/debitmemos/402890245c7ca371015c7cb40b28001f/items?amount=100
+
+
+    -
+    /v1/debitmemos/402890245c7ca371015c7cb40b28001f/items?amount=100&sort=createdDate
+  summary: List debit memo items
+  operationId: GET_DebitMemoItems
+  tags:
+    - Debit Memos
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETDebitMemoItemCollectionType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                items:
+                  - id: 402890555a87d7f5015a89251ede0046
+                    amount: 1
+                    amountWithoutTax: 1
+                    beAppliedAmount: 0
+                    balance: 1
+                    taxMode: TaxExclusive
+                    sku: SKU-00000002
+                    skuName: SKU-30
+                    serviceStartDate: '2017-11-01'
+                    serviceEndDate: '2017-11-30'
+                    sourceItemType: InvoiceDetail
+                    sourceItemId: 402890555a7d4022015a7dadb3b700a6
+                    appliedToItemId: 402890555a7d4022015a2dadb3b700a6
+                    excludeItemBillingFromRevenueAccounting: true
+                    processingType: Charge
+                    createdDate: '2017-03-01 17:13:15'
+                    createdById: 402881e522cf4f9b0122cf5d82860002
+                    updatedDate: '2017-03-01 17:13:15'
+                    updatedById: 402881e522cf4f9b0122cf5d82860002
+                    comment: This is comment!
+                    subscriptionId: null
+                    unitOfMeasure: Each
+                    unitPrice: 1
+                    quantity: 1
+                    financeInformation:
+                      deferredRevenueAccountingCode: Subscription Revenue
+                      deferredRevenueAccountingCodeType: SalesRevenue
+                      recognizedRevenueAccountingCode: Subscription Revenue
+                      recognizedRevenueAccountingCodeType: SalesRevenue
+                    taxationItems:
+                      data:
+                        - id: 402890555a87d7f5015a89251ef10047
+                          sourceTaxItemId: 402890555a7d4022015a7dadb39b00a1
+                          taxAmount: 0.01
+                          balance: 0.01
+                          paymentAmount: 0
+                          creditAmount: 0
+                          name: STATE TAX
+                          exemptAmount: 0
+                          jurisdiction: CALIFORNIA
+                          locationCode: '06'
+                          taxCode: ZtaxCode
+                          taxCodeDescription: ''
+                          taxDate: '2017-11-30'
+                          taxRate: 0.0625
+                          taxRateDescription: This is tax rate description!
+                          taxRateType: Percentage
+                          financeInformation:
+                            salesTaxPayableAccountingCode: null
+                            salesTaxPayableAccountingCodeType: null
+                success: true
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
+    - in: path
+      description: >
+        The unique ID or number of a debit memo. For example,
+        8a8082e65b27f6c3015ba419f3c2644e or DM00000001.
+      name: debitMemoKey
+      required: true
+      schema:
+        type: string
+    - name: zuora-version
+      in: header
+      required: false
+      description: >
+
+        The minor version of the Zuora REST API. See [Minor
+        Version](https://www.zuora.com/developer/api-reference/#section/API-Versions/Minor-Version)
+        for information about REST API version control. 
+
+
+        This header affects the availability of the following response fields:
+
+        * `items` > `taxItems`
+
+        * `items` > `taxationItems`
+
+        * `items` > `comment`
+
+        * `items` > `description`
+      schema:
+        type: string
+    - name: amount
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `amount` field.
+      schema:
+        type: number
+        format: double
+    - name: beAppliedAmount
+      in: query
+      required: false
+      description: >
+        This parameter filters the response based on the `beAppliedAmount`
+        field.
+      schema:
+        type: number
+        format: double
+    - name: createdById
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `createdById` field.
+      schema:
+        type: string
+    - name: createdDate
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `createdDate` field.
+      schema:
+        type: string
+        format: date-time
+    - name: id
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `id` field.
+      schema:
+        type: string
+    - name: serviceEndDate
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `serviceEndDate` field.
+      schema:
+        type: string
+        format: date
+    - name: serviceStartDate
+      in: query
+      required: false
+      description: >
+        This parameter filters the response based on the `serviceStartDate`
+        field.
+      schema:
+        type: string
+        format: date
+    - name: sku
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `sku` field.
+      schema:
+        type: string
+    - name: skuName
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `skuName` field.
+      schema:
+        type: string
+    - name: sourceItemId
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `sourceItemId` field.
+      schema:
+        type: string
+    - name: subscriptionId
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `subscriptionId` field.
+      schema:
+        type: string
+    - name: updatedById
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `updatedById` field.
+      schema:
+        type: string
+    - name: updatedDate
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `updatedDate` field.
+      schema:
+        type: string
+        format: date-time
+    - name: sort
+      in: query
+      required: false
+      description: >
+        This parameter restricts the order of the data returned in the response.
+        You can use this parameter to supply a dimension you want to sort on.
+
+
+        A sortable field uses the following form: 
+
+
+        *operator* *field_name*
+
+
+        You can use at most two sortable fields in one URL path. Use a comma to
+        separate sortable fields. For example:  *operator* *field_name*,
+        *operator* *field_name*  
+
+
+        *operator* is used to mark the order of sequencing. The operator is
+        optional. If you only specify the sortable field without any operator,
+        the response data is sorted in descending order by this field.
+
+          - The `-` operator indicates an ascending order.
+          - The `+` operator indicates a descending order.
+
+        By default, the response data is displayed in descending order by
+        updated date.
+
+
+        *field_name* indicates the name of a sortable field. The supported
+        sortable fields of this operation are as below:
+
+          - id
+          - amount
+          - beAppliedAmount
+          - sku
+          - skuName
+          - serviceStartDate
+          - serviceEndDate
+          - sourceItemId
+          - createdDate
+          - createdById
+          - updatedDate
+          - updatedById
+          - subscriptionId
+
+          
+        Examples:
+
+
+        - /v1/debitmemos/402890245c7ca371015c7cb40b28001f/items?sort=createdDate
+
+
+        -
+        /v1/debitmemos/402890245c7ca371015c7cb40b28001f/items?amount=100&sort=createdDate
+      schema:
+        type: string

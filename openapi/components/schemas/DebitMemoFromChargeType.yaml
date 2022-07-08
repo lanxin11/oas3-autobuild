@@ -12,7 +12,7 @@ allOf:
         type: string
       accountNumber:
         description: >
-          The Number of the account associated with the debit memo.
+          The number of the account associated with the debit memo.
 
 
           **Note**: When creating debit memos from product rate plan charges,

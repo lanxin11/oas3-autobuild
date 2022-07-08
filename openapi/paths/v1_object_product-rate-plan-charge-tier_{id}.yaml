@@ -205,11 +205,6 @@ get:
                 records: {}
                 size: 0
                 done: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_object_product-rate-plan-charge-tier_{id}/getundefined
 put:
   summary: 'CRUD: Update a product rate plan charge tier'
   operationId: Object_PUTProductRatePlanChargeTier
@@ -364,8 +359,3 @@ put:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_object_product-rate-plan-charge-tier_{id}/putundefined

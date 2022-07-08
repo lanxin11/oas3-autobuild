@@ -79,10 +79,6 @@ delete:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_accounting-codes_{ac-id}/deleteundefined
 get:
   summary: Retrieve an accounting code
   operationId: GET_AccountingCode
@@ -165,10 +161,6 @@ get:
                 updatedOn: '2016-05-05 20:07:38'
                 updatedBy: e20b074746ec48f40147140f51e30a1a
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_accounting-codes_{ac-id}/getundefined
 put:
   summary: Update an accounting code
   operationId: PUT_AccountingCode
@@ -252,7 +244,3 @@ put:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_accounting-codes_{ac-id}/putundefined

@@ -115,7 +115,3 @@ post:
                 subscriptionNumber: A-S00000041
                 contractedMrr: 1950
                 totalContractedValue: 6227.41935465
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_subscriptions/postundefined

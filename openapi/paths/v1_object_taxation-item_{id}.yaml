@@ -212,10 +212,6 @@ get:
                 records: {}
                 size: 0
                 done: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_taxation-item_{id}/getundefined
 put:
   summary: 'CRUD: Update a taxation item'
   operationId: Object_PUTTaxationItem
@@ -355,10 +351,6 @@ put:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_taxation-item_{id}/putundefined
 delete:
   summary: 'CRUD: Delete a taxation item'
   operationId: Object_DELETETaxationItem
@@ -491,7 +483,3 @@ delete:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_taxation-item_{id}/deleteundefined

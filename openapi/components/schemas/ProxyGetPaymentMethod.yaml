@@ -18,12 +18,23 @@ properties:
       **Character limit**: 32 **Values**: automatically generated 
     type: string
   AchAccountType:
-    description: |2
+    description: >2
        The type of bank account associated with the ACH payment. Use this field for ACH payment methods.
+      When creating an ACH payment method on Adyen, this field is required by
+      Zuora but it is not required by Adyen. To create the ACH payment method
+      successfully, specify a real value for this field if you can. If it is not
+      possible to get the real value for it, specify any of the allowed values
+      as a dummy value, `Checking` preferably.
+
       **Character limit**: 16 **Values**:
 
+
       - `BusinessChecking`
+
+      - `BusinnessSaving`
+
       - `Checking`
+
       - `Saving`
     type: string
   AchAddress1:
@@ -37,8 +48,13 @@ properties:
       **Character limit:** **Values:** an address 
     type: string
   AchBankName:
-    description: |2-
+    description: >2-
        The name of the bank where the ACH payment account is held. Use this field for ACH payment methods.
+      When creating an ACH payment method on Adyen, this field is required by
+      Zuora but it is not required by Adyen. To create the ACH payment method
+      successfully, specify a real value for this field if you can. If it is not
+      possible to get the real value for it, specify a dummy value.
+
       **Character limit**: 70 **Values**: a string of 70 characters or fewer 
     type: string
   Active:

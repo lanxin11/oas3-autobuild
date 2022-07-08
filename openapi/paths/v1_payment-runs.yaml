@@ -94,10 +94,6 @@ post:
                 updatedDate: '2017-12-28 09:00:06'
                 updatedById: 2c92c0f958fffd7d015914aeefc71a5d
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_payment-runs/postundefined
 get:
   description: >
     Retrieves the information about all payment runs. You can define filterable
@@ -133,6 +129,7 @@ get:
   parameters:
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
     - name: createdById
       in: query
@@ -303,7 +300,3 @@ get:
                     updatedById: 2c92c0f956bc8fcb0156f8eee04b4d54
                 nextPage: /payment-runs?page=2
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_payment-runs/getundefined

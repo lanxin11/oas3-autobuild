@@ -29,6 +29,7 @@ get:
   parameters:
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
     - name: object-type
       in: path
@@ -128,8 +129,3 @@ get:
                     updatedOn: '2016-05-02 13:09:17'
                     updatedBy: 4028e487327fd45a0132829ebb673ff9
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_attachments_{object-type}_{object-key}/getundefined

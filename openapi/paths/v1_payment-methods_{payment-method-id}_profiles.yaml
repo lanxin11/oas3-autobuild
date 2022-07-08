@@ -83,11 +83,6 @@ post:
                 success: true
                 paymentMethodId: 402881836953a3c7016953aec290000d
                 number: 3
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_payment-methods_{payment-method-id}_profiles/postundefined
 get:
   description: |
     Retrieves the stored credential profiles within a payment method.
@@ -194,8 +189,3 @@ get:
                     cancelledOn: null
                     expiredOn: null
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_payment-methods_{payment-method-id}_profiles/getundefined

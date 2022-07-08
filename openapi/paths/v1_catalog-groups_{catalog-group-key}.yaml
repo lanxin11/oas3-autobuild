@@ -86,11 +86,6 @@ get:
                     effectiveStartDate: '2022-02-21'
                     effectiveEndDate: '2023-02-21'
                     grade: 1
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_catalog-groups_{catalog-group-key}/getundefined
 put:
   summary: Update a catalog group
   operationId: PUT_UpdateCatalogGroup
@@ -196,11 +191,6 @@ put:
                     effectiveStartDate: '2022-02-21'
                     effectiveEndDate: '2023-02-21'
                     grade: 1
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_catalog-groups_{catalog-group-key}/putundefined
 delete:
   summary: Delete a catalog group
   operationId: DELETE_CatalogGroup
@@ -277,8 +267,3 @@ delete:
             response:
               value:
                 success: 'true'
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_catalog-groups_{catalog-group-key}/deleteundefined

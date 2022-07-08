@@ -94,8 +94,3 @@ put:
         schema:
           $ref: ../components/schemas/PUTCreditMemoWriteOff.yaml
     required: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_creditmemos_{creditMemoId}_write-off/putundefined

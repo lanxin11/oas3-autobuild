@@ -92,10 +92,6 @@ post:
                 parentId: 8a808255557baba1015580e12fa5083a
                 tenantId: '6398'
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_entities/postundefined
 get:
   summary: 'Multi-entity: List entities'
   operationId: GET_Entities
@@ -248,7 +244,3 @@ get:
                     parentId: 8a80825556ff28a4015708ba29312ecc
                     tenantId: '6398'
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_entities/getundefined

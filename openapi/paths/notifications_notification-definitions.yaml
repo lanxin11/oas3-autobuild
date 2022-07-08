@@ -358,11 +358,6 @@ post:
                   "code":"500",
                   "message":"A temporary problem in the service occurred, you can retry later."
                 }
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/notifications_notification-definitions/postundefined
 get:
   summary: List notification definitions
   operationId: GET_Query_Notification_Definitions
@@ -700,8 +695,3 @@ get:
                   "code":"500",
                   "message":"A temporary problem in the service occurred, you can retry later."
                 }
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/notifications_notification-definitions/getundefined

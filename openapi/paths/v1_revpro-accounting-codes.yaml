@@ -69,7 +69,3 @@ put:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_revpro-accounting-codes/putundefined

@@ -210,11 +210,6 @@ get:
                 records: {}
                 size: 0
                 done: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_object_credit-balance-adjustment_{id}/getundefined
 put:
   summary: 'CRUD: Update a credit balance adjustment'
   operationId: Object_PUTCreditBalanceAdjustment
@@ -360,8 +355,3 @@ put:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_object_credit-balance-adjustment_{id}/putundefined

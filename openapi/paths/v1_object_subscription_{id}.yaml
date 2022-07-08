@@ -224,10 +224,6 @@ get:
                 records: {}
                 size: 0
                 done: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_subscription_{id}/getundefined
 put:
   summary: 'CRUD: Update a subscription'
   operationId: Object_PUTSubscription
@@ -373,10 +369,6 @@ put:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_subscription_{id}/putundefined
 delete:
   summary: 'CRUD: Delete a subscription'
   operationId: Object_DELETESubscription
@@ -515,7 +507,3 @@ delete:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_subscription_{id}/deleteundefined

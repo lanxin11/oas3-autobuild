@@ -95,8 +95,3 @@ put:
                 resumeDate: '2019-10-01'
                 termEndDate: '2020-01-31'
                 totalDeltaTcv: 396.7741935
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_subscriptions_{subscription-key}_resume/putundefined

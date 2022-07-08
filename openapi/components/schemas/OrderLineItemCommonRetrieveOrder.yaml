@@ -57,6 +57,16 @@ properties:
     description: |
       The description of the Order Line Item.
     type: string
+  discount:
+    description: >
+      This field shows the total discount amount that is applied to an order
+      line item after the `inlineDiscountType`, `inlineDiscountPerUnit` and
+      `quantity` fields are set.
+
+
+      The inline discount is applied to the list price of an order line item
+      (see the `listPrice` field).
+    type: number
   excludeItemBillingFromRevenueAccounting:
     description: >
       The flag to exclude Order Line Item related invoice items, invoice item
@@ -75,6 +85,47 @@ properties:
       **Note**: This field is only available if you have the Billing - Revenue
       Integration feature enabled. 
     type: boolean
+  inlineDiscountPerUnit:
+    description: >
+      This field is used in accordance with the `inlineDiscountType` field, in
+      the following manner:
+
+      * If the `inlineDiscountType` field is set as `Percentage`, this field
+      specifies the discount percentage for each unit of the order line item.
+      For exmaple, if you specify `5` in this field, the discount percentage is
+      5%.
+
+      * If the `inlineDiscountType` field is set as `FixedAmount`, this field
+      specifies the discount amount on each unit of the order line item. For
+      exmaple, if you specify `10` in this field, the discount amount on each
+      unit of the order line item is 10.
+
+
+      Once you set the `inlineDiscountType`, `inlineDiscountPerUnit`, and
+      `listPricePerUnit` fields, the system will automatically generate the
+      `amountPerUnit` field. You shall not set the `amountPerUnit` field by
+      yourself.
+    type: number
+  inlineDiscountType:
+    description: >
+      This field is used to specify the inline discount type, which can be
+      `Percentage`, `FixedAmount`, or `None`. The default value is `Percentage`.
+
+
+      This field is used together with the `inlineDiscountPerUnit` field to
+      specify inline discounts for order line items. The inline discount is
+      applied to the list price of an order line item. 
+
+
+      Once you set the `inlineDiscountType`, `inlineDiscountPerUnit`, and
+      `listPricePerUnit` fields, the system will automatically generate the
+      `amountPerUnit` field. You shall not set the `amountPerUnit` field by
+      yourself.
+    enum:
+      - Percentage
+      - FixedAmount
+      - None
+    type: string
   itemName:
     description: |
       The name of the Order Line Item.

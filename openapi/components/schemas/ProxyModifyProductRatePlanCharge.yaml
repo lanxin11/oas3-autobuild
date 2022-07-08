@@ -36,7 +36,7 @@ allOf:
         format: int32
         type: integer
       BillCycleType:
-        description: >2
+        description: >2-
            Specifies how to determine the billing day for the charge. **Character limit**: 20 **Values**: one of the following:
 
           - `DefaultFromCustomer`
@@ -49,6 +49,10 @@ allOf:
 
           - `SpecificDayofWeek`
 
+          - `TermStartDay`
+
+          - `TermEndDay`
+
           **Note**:
 
 
@@ -59,6 +63,9 @@ allOf:
           - If you set this field to `SpecificDayofWeek`, you must specify which
           day of the week as the billing day for the charge in the
           WeeklyBillCycleDay field.
+
+          - `TermStartDay` and `TermEndDay` are only available for prepayment
+          charges. 
         type: string
       BillingPeriod:
         description: >2-
@@ -94,6 +101,8 @@ allOf:
           - `AlignToCharge`
           - `AlignToSubscriptionStart`
           - `AlignToTermStart`
+          - `AlignToTermEnd`
+          **Note:** `AlignToTermEnd` is only available for prepayment charges.
         type: string
       BillingTiming:
         description: >2+
@@ -189,6 +198,7 @@ allOf:
         enum:
           - TimeBased
           - ConsumptionBased
+          - FullCreditBack
         type: string
       DefaultQuantity:
         description: >2-
@@ -725,6 +735,15 @@ allOf:
 
           - `Saturday`
         type: string
+    required:
+      - BillCycleType
+      - BillingPeriod
+      - ChargeModel
+      - Name
+      - ProductRatePlanChargeTierData
+      - ProductRatePlanId
+      - TriggerEvent
+      - UseDiscountSpecificAccountingCode
     type: object
   - $ref: ./ProductRatePlanChargeObjectNSFields.yaml
   - $ref: ./ProductRatePlanChargeObjectCustomFields.yaml

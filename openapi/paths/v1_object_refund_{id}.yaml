@@ -194,10 +194,6 @@ get:
                 records: {}
                 size: 0
                 done: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_refund_{id}/getundefined
 put:
   summary: 'CRUD: Update a refund'
   operationId: Object_PUTRefund
@@ -343,10 +339,6 @@ put:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_refund_{id}/putundefined
 delete:
   summary: 'CRUD: Delete a refund'
   operationId: Object_DELETERefund
@@ -485,7 +477,3 @@ delete:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_refund_{id}/deleteundefined

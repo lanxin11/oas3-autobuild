@@ -316,7 +316,3 @@ post:
               value:
                 id: 2c92a09650a7a80a0150ab50a5b746bd
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_payment-methods/postundefined

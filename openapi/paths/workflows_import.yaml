@@ -107,7 +107,3 @@ post:
                 timezone: null
                 createdAt: '2019-10-03T14:14:39.139Z'
                 updatedAt: '2019-10-03T14:14:39.139Z'
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/workflows_import/postundefined

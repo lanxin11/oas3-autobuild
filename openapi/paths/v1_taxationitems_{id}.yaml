@@ -97,10 +97,6 @@ put:
         schema:
           $ref: ../components/schemas/PUTTaxationItemType.yaml
     required: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_taxationitems_{id}/putundefined
 get:
   description: |
     Retrieves the information about a specific taxation item by ID.
@@ -195,10 +191,6 @@ get:
         The unique ID of a taxation item.
       schema:
         type: string
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_taxationitems_{id}/getundefined
 delete:
   description: |
     Deletes a specific taxation item by ID.
@@ -269,7 +261,3 @@ delete:
         The unique ID of a taxation item.
       schema:
         type: string
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_taxationitems_{id}/deleteundefined

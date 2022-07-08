@@ -117,6 +117,6 @@ get:
                     GBP: 1.134589832
                     USD: 0.892243287
   x-code-samples:
-    - lang: cURL
+    - lang: Curl
       source:
-        $ref: ../code_samples/cURL/v1_custom-exchange-rates_{currency}/getundefined
+        $ref: ../code_samples/Curl/v1_custom-exchange-rates_{currency}/getundefined

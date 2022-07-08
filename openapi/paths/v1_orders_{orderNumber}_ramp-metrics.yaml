@@ -206,7 +206,3 @@ get:
       required: true
       schema:
         type: string
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_orders_{orderNumber}_ramp-metrics/getundefined

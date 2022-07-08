@@ -114,7 +114,3 @@ put:
                 creditMemo:
                   id: 402890555a40ca7f015a5b099b0e307a
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_invoices_{invoiceId}_write-off/putundefined

@@ -149,8 +149,3 @@ post:
                 a00000000000000000000000000000001:
                   code: ObjectNotFound
                   message: Email history does not exist.
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/notifications_email-histories_resend/postundefined

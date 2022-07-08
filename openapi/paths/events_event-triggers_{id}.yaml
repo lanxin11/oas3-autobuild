@@ -1,6 +1,6 @@
 get:
   tags:
-    - Event Triggers
+    - Custom Event Triggers
   operationId: GET_EventTrigger
   summary: Retrieve an event trigger
   parameters:
@@ -195,14 +195,10 @@ get:
                     }
                   ]
                 }
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/events_event-triggers_{id}/getundefined
 put:
   description: ''
   tags:
-    - Event Triggers
+    - Custom Event Triggers
   operationId: PUT_EventTrigger
   summary: Update an event trigger
   parameters:
@@ -403,14 +399,10 @@ put:
                     }
                   ]
                 }
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/events_event-triggers_{id}/putundefined
 delete:
   description: ''
   tags:
-    - Event Triggers
+    - Custom Event Triggers
   operationId: DELETE_EventTrigger
   summary: Delete an event trigger
   parameters:
@@ -585,7 +577,3 @@ delete:
                     }
                   ]
                 }
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/events_event-triggers_{id}/deleteundefined

@@ -171,7 +171,3 @@ post:
                     processingType: Discount
                     appliedToItemId: cf6326638f3c4ddda3722734aebd7ba7
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_operations_billing-preview/postundefined

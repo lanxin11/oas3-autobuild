@@ -167,6 +167,6 @@ post:
               value:
                 message: Authentication error
   x-code-samples:
-    - lang: cURL
+    - lang: Curl
       source:
-        $ref: ../code_samples/cURL/v1_object_import/postundefined
+        $ref: ../code_samples/Curl/v1_object_import/postundefined

@@ -79,8 +79,3 @@ post:
         application/json; charset=utf-8:
           schema:
             $ref: ../components/schemas/POSTVoidAuthorizeResponse.yaml
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_payment-methods_{payment-method-id}_voidAuthorize/postundefined

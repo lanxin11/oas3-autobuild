@@ -124,8 +124,3 @@ post:
                   version: 0.0.1
                   type: Workflow::Setup
                   status: Active
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/workflows_{workflow_id}_versions_import/postundefined

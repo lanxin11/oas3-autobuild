@@ -69,7 +69,3 @@ post:
         application/json; charset=utf-8:
           schema:
             $ref: ../components/schemas/POSTReconcileRefundResponse.yaml
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_refunds_{refund-key}_reconcile/postundefined

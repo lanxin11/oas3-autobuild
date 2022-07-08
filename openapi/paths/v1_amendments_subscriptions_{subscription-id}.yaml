@@ -1,8 +1,8 @@
 get:
-  summary: List all amendments of a subscription
+  summary: Retrieve the last amendment of a subscription
   operationId: GET_AmendmentsBySubscriptionID
   description: >-
-    Retrieves detailed information about the amendment with the specified
+    Retrieves detailed information about the last amendment of the specified
     subscription.
   tags:
     - Amendments
@@ -93,8 +93,3 @@ get:
                 baseRatePlanId: null
                 destinationAccountId: 402896a9529bc3dc01529bcba7120023
                 destinationInvoiceOwnerId: 402896a9529bc3dc01529bcba7120023
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_amendments_subscriptions_{subscription-id}/getundefined

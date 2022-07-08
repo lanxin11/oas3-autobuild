@@ -127,11 +127,6 @@ get:
         application/json; charset=utf-8:
           schema:
             $ref: ../components/schemas/CommonErrorResponse.yaml
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/objects_records_default_{object}_{id}/getundefined
 put:
   summary: Update a custom object record
   description: |
@@ -282,11 +277,6 @@ put:
         application/json; charset=utf-8:
           schema:
             $ref: ../components/schemas/CommonErrorResponse.yaml
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/objects_records_default_{object}_{id}/putundefined
 patch:
   summary: Partially update a custom object record
   operationId: Patch_PartialUpdateCustomObjectRecord
@@ -440,7 +430,6 @@ patch:
         application/json; charset=utf-8:
           schema:
             $ref: ../components/schemas/CommonErrorResponse.yaml
-  x-code-samples: []
 delete:
   summary: Delete a custom object record
   description: "Deletes a custom object record of the given type and ID.\n\nNote that 200 response will be returned under either of the following conditions:\n* The record is identified and successfully deleted\n* The record could not be found\n\nNote that\_the record is deleted immediately and, therefore, will not be retained upon successful deletion.\n"
@@ -526,8 +515,3 @@ delete:
             format: uri
             example: >-
               /objects/records/default/test_custom_object/3a437f0b-fa7a-45bf-a9a5-2187a5a13ec0
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/objects_records_default_{object}_{id}/deleteundefined

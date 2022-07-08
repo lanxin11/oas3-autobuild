@@ -79,7 +79,3 @@ post:
               value:
                 success: true
                 journalEntryNumber: JE-00000001
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_journal-entries/postundefined

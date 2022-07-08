@@ -115,7 +115,3 @@ post:
                     taxExemptAmount: 0
                     transferredToAccounting: null
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_invoices_batch/postundefined

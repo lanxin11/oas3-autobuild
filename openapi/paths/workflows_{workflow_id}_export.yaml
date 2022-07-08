@@ -286,7 +286,3 @@ get:
                   - status: 400
                     code: invalid
                     title: Workflow version '1' is not found.
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/workflows_{workflow_id}_export/getundefined

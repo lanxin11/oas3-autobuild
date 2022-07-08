@@ -93,7 +93,3 @@ get:
                 destinationInvoiceOwnerId: 402896a9529bc3dc01529bcba7120023
                 subType: Upgrade
                 effectivePolicy: EffectiveImmediately
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_amendments_{amendment-key}/getundefined

@@ -257,7 +257,3 @@ put:
                   - status: 404
                     code: Task
                     title: Missing ids for tasks.
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/workflows_tasks_batch_update/putundefined

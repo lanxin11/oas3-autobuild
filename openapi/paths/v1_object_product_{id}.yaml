@@ -204,10 +204,6 @@ get:
                 records: {}
                 size: 0
                 done: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_product_{id}/getundefined
 put:
   summary: 'CRUD: Update a product'
   operationId: Object_PUTProduct
@@ -353,10 +349,6 @@ put:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_product_{id}/putundefined
 delete:
   summary: 'CRUD: Delete a product'
   operationId: Object_DELETEProduct
@@ -495,7 +487,3 @@ delete:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_product_{id}/deleteundefined

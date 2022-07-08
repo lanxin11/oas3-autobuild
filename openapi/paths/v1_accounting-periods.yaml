@@ -95,10 +95,6 @@ post:
               value:
                 id: 7b7181ae547aac1e01547efb61f20162
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_accounting-periods/postundefined
 get:
   summary: List all accounting periods
   operationId: GET_AllAccountingPeriods
@@ -108,6 +104,7 @@ get:
   parameters:
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize_finance_accounting.yaml
   responses:
     '200':
@@ -262,7 +259,3 @@ get:
                     updatedOn: '2016-03-16 23:23:29'
                     updatedBy: e20b074746ec48f40147140f51e30a1a
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_accounting-periods/getundefined

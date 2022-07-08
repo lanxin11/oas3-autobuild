@@ -180,7 +180,7 @@ properties:
       usageVolume:
         $ref: ./UsageVolumePricingOverride.yaml
     type: object
-  productRatePlanChargeId:
+  productRateplanChargeId:
     description: >
       Internal identifier of the product rate plan charge that the charge is
       based on.
@@ -228,6 +228,6 @@ properties:
     maxLength: 50
     type: string
 required:
-  - productRatePlanChargeId
+  - productRateplanChargeId
 title: charge
 type: object

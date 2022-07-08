@@ -261,10 +261,6 @@ post:
                 orderLineItems:
                   - id: bd78c052-2adf-42c2-aa0f-ccacc997fa20
                     itemNumber: '116'
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_orders/postundefined
 get:
   summary: List orders
   operationId: GET_AllOrders
@@ -314,14 +310,7 @@ get:
   parameters:
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
-    - name: page
-      in: query
-      description: |
-        The page number of the orders retrieved. 
-      required: false
-      schema:
-        type: integer
-        default: 1
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
     - name: dateFilterOption
       in: query
@@ -558,7 +547,3 @@ get:
                             customFields:
                               order_cf_date__c: '2017-01-01'
                     success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_orders/getundefined

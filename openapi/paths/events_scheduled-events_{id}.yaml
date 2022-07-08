@@ -1,6 +1,6 @@
 get:
   tags:
-    - Scheduled Events
+    - Custom Scheduled Events
   summary: Retrieve a scheduled event by ID
   operationId: GET_ScheduledEventByID
   parameters:
@@ -171,13 +171,9 @@ get:
                 reasons:
                   - code: SystemError
                     message: internal server error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/events_scheduled-events_{id}/getundefined
 delete:
   tags:
-    - Scheduled Events
+    - Custom Scheduled Events
   summary: Delete a scheduled event by ID
   operationId: DELETE_ScheduledEventByID
   parameters:
@@ -344,7 +340,3 @@ delete:
                 reasons:
                   - code: SystemError
                     message: internal server error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/events_scheduled-events_{id}/deleteundefined
