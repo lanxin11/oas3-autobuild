@@ -1,1 +1,0 @@
-curl -X GET -H "Authorization: Bearer e5cb941a9b1f47838b4085b4d5e00415" -H "Content-Type: application/json" "https://rest.zuora.com/objects/jobs?pageSize=2&cursor=a9e9a58d-0a11-4685-b1ab-99521dbc20a1"

@@ -269,7 +269,3 @@ post:
               value:
                 code: 71013040
                 message: Not Found.
-  x-code-samples:
-    - lang: curl
-      source:
-        $ref: ../code_samples/curl/objects_jobs_{id}_files/post.sh

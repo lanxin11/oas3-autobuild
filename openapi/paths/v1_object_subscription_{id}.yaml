@@ -83,6 +83,7 @@ get:
                 InitialTermPeriodType: Month
                 AccountId: 2c92c0fa6343984c0163498b71a604b2
                 IsInvoiceSeparate: false
+                IsLatestVersion: false
                 CurrentTermPeriodType: Month
                 CurrentTerm: 12
                 RenewalTermPeriodType: Month

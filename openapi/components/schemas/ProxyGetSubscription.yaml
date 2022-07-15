@@ -113,7 +113,12 @@ allOf:
       IsInvoiceSeparate:
         description: |2-
            Determines if the subscription is invoiced separately. If `TRUE`, then all charges for this subscription are collected into the subscription's own invoice.
-          **V****alues**: `TRUE`, `FALSE `(default) 
+          **Values**: `TRUE`, `FALSE `(default) 
+        type: boolean
+      IsLatestVersion:
+        description: |2-
+           Determines if the subscription is the latest version. If the value of this field is `TRUE`, the subscription is the latest version.
+          **Values**: `TRUE`, `FALSE `(default) 
         type: boolean
       LastChangeDate:
         description: >

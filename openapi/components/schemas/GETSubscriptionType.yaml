@@ -107,6 +107,9 @@ allOf:
           other subscriptions. If the value is `false`, the subscription is
           included with other subscriptions in the account invoice.
         type: string
+      isLatestVersion:
+        description: If 'true', the current subscription object is the latest version.
+        type: boolean
       lastBookingDate:
         description: >
           The last booking date of a subscription. The value of this field is as

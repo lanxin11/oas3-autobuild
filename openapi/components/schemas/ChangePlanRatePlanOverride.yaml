@@ -33,7 +33,5 @@ properties:
       which rate plan to modify.
     maxLength: 50
     type: string
-required:
-  - productRatePlanId
 title: ratePlan
 type: object

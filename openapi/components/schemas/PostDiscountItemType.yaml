@@ -4,6 +4,10 @@ allOf:
         description: |
           The accounting code associated with the discount item.
         type: string
+      accountsReceivableAccountingCode:
+        description: |
+          The accounting code for accounts receivable.
+        type: string
       adjustmentLiabilityAccountingCode:
         description: >
           The accounting code for adjustment liability.

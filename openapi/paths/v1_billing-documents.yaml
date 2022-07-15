@@ -182,7 +182,3 @@ get:
                     accountId: 4028905f5e4feb3833b50af9aa002d1
                     status: Posted
                 success: true
-  x-code-samples:
-    - lang: curl
-      source:
-        $ref: ../code_samples/curl/v1_billing-documents/get.sh

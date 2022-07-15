@@ -28,8 +28,11 @@ allOf:
         type: string
       type:
         description: >
-          Accounting code type. You cannot create new accounting codes of type
-          `AccountsReceivable`. 
+          If you want to create multiple accounting codes of the type
+          `AccountsReceivable`, you need to have [Invoice Item
+          Settlement](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement/C_Invoice_Item_Settlement)
+          enabled and contact [Zuora Global Support](http://support.zuora.com)
+          to access the Multiple AR Accounting Codes feature. 
 
 
           Note that `On-Account Receivable` is only available if you enable the

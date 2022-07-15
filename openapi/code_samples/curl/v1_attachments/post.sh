@@ -1,1 +1,0 @@
-curl -X POST -H "Authorization: Bearer f21f017e4724445d8647b1f0de7ed6f1" -F "file=@PODocument.pdf" "https://rest.zuora.com/v1/attachments/?description=Postal%20order&associatedObjectType=Subscription&associatedObjectKey=A-S00005714"

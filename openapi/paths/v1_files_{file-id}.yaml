@@ -98,7 +98,3 @@ get:
             type: string
             maxLength: 64
       description: ''
-  x-code-samples:
-    - lang: curl
-      source:
-        $ref: ../code_samples/curl/v1_files_{file-id}/get.sh

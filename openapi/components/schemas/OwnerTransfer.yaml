@@ -6,6 +6,35 @@ description: >
   wish to have access to the feature, submit a request at [Zuora Global
   Support](http://support.zuora.com/).
 properties:
+  billToContactId:
+    description: >
+      The contact id of the bill to contact that the subscription is being
+      transferred to.
+    type: string
+  clearingExistingBillToContact:
+    default: false
+    description: >
+      Whether to clear the existing bill-to contact ID at the subscription
+      level. This field is mutually exclusive with the `paymentTerm` field.
+
+
+      **Note**: If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
+    type: boolean
+  clearingExistingPaymentTerm:
+    default: false
+    description: >
+      Whether to clear the existing payment term at the subscription level. This
+      field is mutually exclusive with the `billToContactId` field.
+
+
+      **Note**: If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
+    type: boolean
   destinationAccountNumber:
     description: >
       The account number of the account that the subscription is being
@@ -15,6 +44,11 @@ properties:
     description: >
       The account number of the invoice owner account that the subscription is
       being transferred to.
+    type: string
+  paymentTerm:
+    description: >
+      Name of the payment term associated with the account. For example, "Net
+      30". The payment term determines the due dates of invoices.
     type: string
 title: ownerTransfer
 type: object

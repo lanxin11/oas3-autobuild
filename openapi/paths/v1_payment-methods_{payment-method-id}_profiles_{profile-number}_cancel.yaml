@@ -28,11 +28,6 @@ post:
         method.
       schema:
         type: integer
-  x-code-samples:
-    - lang: curl
-      source:
-        $ref: >-
-          ../code_samples/curl/v1_payment-methods_{payment-method-id}_profiles_{profile-number}_cancel/post.sh
   responses:
     '200':
       headers:

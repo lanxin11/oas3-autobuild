@@ -95,7 +95,3 @@ post:
               value:
                 success: true
                 fileId: 40289f466463d683016463ef8b7301a2
-  x-code-samples:
-    - lang: curl
-      source:
-        $ref: ../code_samples/curl/v1_invoices_{invoiceKey}_files/post.sh

@@ -97,6 +97,7 @@ allOf:
         enum:
           - TimeBased
           - ConsumptionBased
+          - FullCreditBack
         type: string
       defaultQuantity:
         description: >
