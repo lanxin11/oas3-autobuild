@@ -83,8 +83,8 @@ post:
         * targetDate
       schema:
         type: string
-  securitySchemes:
-    - $ref: ../components/securitySchemes/OAuth.yaml
+  security:
+    - Authorization: []
   requestBody:
     content:
       application/json; charset=utf-8:
