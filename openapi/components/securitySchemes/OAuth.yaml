@@ -1,10 +1,6 @@
-name: Authorization
-in: header
-required: false
-description: |
-  `Bearer {token}` for a valid OAuth token.
-schema:
+Authorization:
   type: oauth2
+  description: `Bearer {token}` for a valid OAuth token.
   flows:
     clientCredentials:
       tokenUrl: https://rest.apisandbox.zuora.com/oauth/token
