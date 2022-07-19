@@ -1,0 +1,12 @@
+properties:
+  BAID:
+    description: |
+      ID of a PayPal billing agreement. For example, I-1TJ3GAGG82Y9.
+    type: string
+  email:
+    description: >
+      Email address associated with the payment method. This field is required
+      if you want to create a PayPal Express Checkout payment method or a PayPal
+      Adaptive payment method.
+    type: string
+type: object

@@ -1,0 +1,26 @@
+description: ''
+example:
+  creditMemo:
+    prefix: FR-CM
+  invoice:
+    startNumber: 100
+  name: FR
+  payment:
+    prefix: FR-P-
+properties:
+  creditMemo:
+    $ref: ./CreditMemoEntityPrefix.yaml
+  debitMemo:
+    $ref: ./DebitMemoEntityPrefix.yaml
+  invoice:
+    $ref: ./InvoiceEntityPrefix.yaml
+  name:
+    description: >
+      The name of the sequence set configured for billing documents, payments,
+      and refunds.
+    type: string
+  payment:
+    $ref: ./PaymentEntityPrefix.yaml
+  refund:
+    $ref: ./RefundEntityPrefix.yaml
+type: object

@@ -1,0 +1,8 @@
+properties:
+  data:
+    description: |
+      The list of workflow versions retrieved. 
+    items:
+      $ref: ./Workflow.yaml
+    type: array
+type: object

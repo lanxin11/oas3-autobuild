@@ -1,0 +1,87 @@
+properties:
+  createTime:
+    description: |
+      The timestamp of the logs created in ISO-8601 format.
+    type: string
+  createdBy:
+    description: |
+      The ID of the user who created the transaction.
+    type: string
+  currency:
+    description: |
+      The type of currenty, in which the transaction was made.
+    type: string
+  gatewayId:
+    description: |
+      The ID of the gateway, through which the transaction was processed.
+    type: string
+  gatewayName:
+    description: |
+      The name of the gateway, through which the transaction was processed.
+    type: string
+  gatewayType:
+    description: >
+      The type of the valid gateway, through which the transactioin was
+      processed.
+    type: string
+  gatewayVersion:
+    description: |
+      The version of the gateway, through which the transaction was processed.
+    type: string
+  id:
+    description: |
+      The unique ID of the transaction log.
+    type: string
+  operationId:
+    description: |
+      The ID of the transaction operation.
+    type: string
+  operationType:
+    description: >
+      The type of transaction operation, such as `Payment`, `Refund`,
+      `Validation`.
+    type: string
+  paymentMethodType:
+    description: >
+      The type of the payment method used for the transaction, such as `Credit
+      Card`, `ACH`, etc.
+    type: string
+  receiveTime:
+    description: |
+      The time when Zuora received the response.
+    type: string
+  request:
+    description: |
+      The request parameters when sending the request.
+    type: string
+  response:
+    description: |
+      The response body of the received response.
+    type: string
+  responseCode:
+    description: >
+      The code associated with the response. The value can be `Success`,
+      `Failure`, or `Error`.
+    type: string
+  sendTime:
+    description: |
+      The time when Zuora sent the request.
+    type: string
+  tenantId:
+    description: |
+      The tenant ID of the user requesting the logs.
+    type: string
+  updatedBy:
+    description: |
+      The ID of the user who last updated the transaction.
+    type: string
+  updatedTime:
+    description: |
+      The timestamp of logs updated in ISO-8601 format.
+    type: string
+  zReferenceId:
+    description: |
+      The payment or refund Id.
+    type: string
+title: payment transaction log record
+type: object

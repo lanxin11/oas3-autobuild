@@ -1,0 +1,92 @@
+allOf:
+  - properties:
+      accountId:
+        description: >
+          The ID of the account associated with the debit memo.
+
+
+          **Note**: When creating debit memos from product rate plan charges,
+          you must specify `accountNumber`, `accountId`, or both in the request
+          body. If both fields are specified, they must correspond to the same
+          account.
+        type: string
+      accountNumber:
+        description: >
+          The number of the account associated with the debit memo.
+
+
+          **Note**: When creating debit memos from product rate plan charges,
+          you must specify `accountNumber`, `accountId`, or both in the request
+          body. If both fields are specified, they must correspond to the same
+          account.
+        type: string
+      autoPay:
+        description: >
+          Whether debit memos are automatically picked up for processing in the
+          corresponding payment run. 
+
+
+          By default, debit memos are automatically picked up for processing in
+          the corresponding payment run.
+        type: boolean
+      autoPost:
+        default: false
+        description: >
+          Whether to automatically post the debit memo after it is created. 
+
+
+          Setting this field to `true`, you do not need to separately call the
+          [Post a debit
+          memo](https://www.zuora.com/developer/api-reference/#operation/PUT_PostDebitMemo)
+          operation to post the debit memo.
+        type: boolean
+      charges:
+        description: >
+          Container for product rate plan charges. The maximum number of items
+          is 1,000.
+        items:
+          $ref: ./DebitMemoFromChargeDetailType.yaml
+        maxItems: 1000
+        type: array
+      comment:
+        description: |
+          Comments about the debit memo.
+        maxLength: 255
+        minLength: 0
+        type: string
+      dueDate:
+        description: >
+          The date by which the payment for the debit memo is due, in
+          `yyyy-mm-dd` format.
+        format: date
+        type: string
+      effectiveDate:
+        description: |
+          The date when the debit memo takes effect.
+        format: date
+        type: string
+      reasonCode:
+        description: >
+          A code identifying the reason for the transaction. The value must be
+          an existing reason code or empty. If you do not specify a value, Zuora
+          uses the default reason code.
+        type: string
+    type: object
+  - $ref: ./DebitMemoObjectNSFields.yaml
+  - $ref: ./DebitMemoObjectCustomFields.yaml
+example:
+  accountId: 402890555a7e9791015a7f15fe44001c
+  autoPay: true
+  autoPost: false
+  charges:
+    - amount: 30
+      chargeId: 402890555a87d7f5015a892cae910050
+      comment: this is comment1
+      quantity: 1
+    - amount: 20
+      chargeId: 402890555a87d7f5015a892dff7f0053
+      comment: this is comment2
+  comment: the comment
+  effectiveDate: '2017-10-17'
+  reasonCode: Correcting invoice error
+title: charges

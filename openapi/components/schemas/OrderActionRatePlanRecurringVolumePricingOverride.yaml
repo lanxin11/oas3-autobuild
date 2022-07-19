@@ -1,0 +1,28 @@
+allOf:
+  - $ref: ./OrderActionRatePlanPriceChangeParams.yaml
+  - properties:
+      listPriceBase:
+        description: |
+          Specifies the duration of each recurring period.
+        enum:
+          - Per_Billing_Period
+          - Per_Month
+          - Per_Week
+        type: string
+      quantity:
+        description: |
+          Number of units purchased.
+        minimum: 0
+        type: number
+      tiers:
+        description: |
+          List of variable pricing tiers in the charge.
+        items:
+          $ref: ./OrderActionRatePlanChargeTier.yaml
+        type: array
+    type: object
+description: >
+  Pricing information about a recurring charge that uses the "volume pricing"
+  charge model. In this charge model, the charge has a variable price per unit,
+  depending on how many units are purchased.
+title: recurringVolume

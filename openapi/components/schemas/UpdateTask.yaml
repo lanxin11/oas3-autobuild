@@ -1,0 +1,58 @@
+description: |
+  A task.
+properties:
+  action_type:
+    description: |
+      The type of task.
+    type: string
+  call_type:
+    description: |
+      The type of the API used.
+    type: string
+  concurrent_limit:
+    description: |
+      The maximum number of this task that can run concurrently.
+    maximum: 9999999
+    minimum: 1
+    type: integer
+  id:
+    description: |
+      The unique ID of the task.
+    type: integer
+  name:
+    description: |
+      The name of the task.
+    type: string
+  object:
+    description: |
+      The selected object for the task.
+    type: string
+  object_id:
+    description: |
+      The ID of the selected object of the task.
+    type: string
+  status:
+    description: |
+      The status of the task instance.
+    enum:
+      - Queued
+      - Processing
+      - Pending
+      - Success
+      - Stopped
+      - Error
+    type: string
+  tags:
+    description: |
+      The array of filter tags.
+    items:
+      type: string
+    type: array
+  workflow_id:
+    description: |
+      The ID of the workflow the task belongs to.
+    type: integer
+required:
+  - id
+title: task
+type: object

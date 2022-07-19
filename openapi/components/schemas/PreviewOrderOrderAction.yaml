@@ -1,0 +1,87 @@
+properties:
+  addProduct:
+    $ref: ./PreviewOrderRatePlanOverride.yaml
+  cancelSubscription:
+    $ref: ./CancelSubscription.yaml
+  changePlan:
+    $ref: ./CreateChangePlan.yaml
+  changeReason:
+    description: |
+      The change reason set for an order action when an order is created.
+    type: string
+  createSubscription:
+    $ref: ./PreviewOrderCreateSubscription.yaml
+  customFields:
+    $ref: ./OrderActionObjectCustomFields.yaml
+  ownerTransfer:
+    $ref: ./OwnerTransfer.yaml
+  removeProduct:
+    $ref: ./RemoveProduct.yaml
+  renewSubscription:
+    $ref: ./RenewSubscription.yaml
+  resume:
+    $ref: ./CreateOrderResume.yaml
+  suspend:
+    $ref: ./CreateOrderSuspend.yaml
+  termsAndConditions:
+    $ref: ./CreateOrderTermsAndConditions.yaml
+  triggerDates:
+    description: >
+      Container for the contract effective, service activation, and customer
+      acceptance dates of the order action. 
+
+
+      If the service activation date is set as a required field in Default
+      Subscription Settings, skipping this field in a `CreateSubscription` order
+      action of your JSON request will result in a `Pending` order and a
+      `Pending Activation` subscription.
+
+
+      If the customer acceptance date is set as a required field in Default
+      Subscription Settings, skipping this field in a `CreateSubscription` order
+      action of your JSON request will result in a `Pending` order and a
+      `Pending Acceptance` subscription. If the service activation date field is
+      at the same time required and skipped (or set as null), it will be a
+      `Pending Activation` subscription.
+    items:
+      $ref: ./TriggerDate.yaml
+    type: array
+  type:
+    description: >
+      Type of order action.
+
+
+      Unless the type of order action is `RenewSubscription`, you must use the
+      corresponding field to provide information about the order action. For
+      example, if the type of order action is `AddProduct`, you must set the
+      `addProduct` field.
+
+
+      Zuora returns an error if you set a field that corresponds to a different
+      type of order action. For example, if the type of order action is
+      `AddProduct`, Zuora returns an error if you set the `updateProduct` field.
+
+
+      **Note**: The change plan type of order action is in the **Early Adopter**
+      phase. We are actively soliciting feedback from a small set of early
+      adopters before releasing it as generally available. If you want to join
+      this early adopter program, submit a request at [Zuora Global
+      Support](http://support.zuora.com/).
+    enum:
+      - CreateSubscription
+      - TermsAndConditions
+      - AddProduct
+      - UpdateProduct
+      - RemoveProduct
+      - RenewSubscription
+      - CancelSubscription
+      - OwnerTransfer
+      - Suspend
+      - Resume
+      - ChangePlan
+    type: string
+  updateProduct:
+    $ref: ./PreviewOrderRatePlanUpdate.yaml
+required:
+  - type
+type: object

@@ -1,0 +1,14 @@
+example:
+  description: Updated image
+  fileName: Image123.png
+properties:
+  description:
+    description: |
+      Description of the attachment.
+    type: string
+  fileName:
+    description: >
+      File name of the attachment. The value should not contain the file
+      extension. Only the file name without the extension can be edited.
+    type: string
+type: object

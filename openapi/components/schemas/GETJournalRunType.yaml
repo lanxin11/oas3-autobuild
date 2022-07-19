@@ -1,0 +1,60 @@
+properties:
+  aggregateCurrency:
+    description: ''
+    type: boolean
+  executedOn:
+    description: |
+      Date and time the journal run was executed.
+    format: date-time
+    type: string
+  journalEntryDate:
+    description: |
+      Date of the journal entry.
+    format: date
+    type: string
+  number:
+    description: |
+      Journal run number.
+    type: string
+  segmentationRuleName:
+    description: |
+      Name of GL segmentation rule used in the journal run.
+    type: string
+  status:
+    description: |
+      Status of the journal run. 
+    enum:
+      - Pending
+      - Processing
+      - Completed
+      - Error
+      - CancelInprogress
+      - Cancelled
+      - DeleteInprogress
+    type: string
+  success:
+    description: |
+      Returns `true` if the request was processed successfully.
+    type: boolean
+  targetEndDate:
+    description: |
+      The target end date of the journal run.
+    format: date
+    type: string
+  targetStartDate:
+    description: |
+      The target start date of the journal run.
+    format: date
+    type: string
+  totalJournalEntryCount:
+    description: |
+      Total number of journal entries in the journal run.
+    format: int64
+    type: integer
+  transactionTypes:
+    description: |
+      Transaction types included in the journal run.
+    items:
+      $ref: ./GETJournalRunTransactionType.yaml
+    type: array
+type: object

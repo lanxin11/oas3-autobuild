@@ -1,0 +1,98 @@
+allOf:
+  - properties:
+      AccountId:
+        description: |2-
+           The ID of the account associated with the usage data. This field is required if no value is specified for the `AccountNumber` field.
+          **Character limit**: 32 **Values**: a valid account ID 
+        type: string
+      AccountNumber:
+        description: |2-
+           The number of the account associated with the usage data. This field is required if no value is specified for the `AccountId` field.
+          **Character limit**: 50 **Values**: a valid account number 
+        type: string
+      ChargeId:
+        description: ' The OrginalId of the rate plan charge related to the usage record, e.g., `2c9081a03c63c94c013c6873357a0117` **Character limit**: 32 **Values**: a valid rate plan charge OriginalID '
+        type: string
+      CreatedById:
+        description: |2-
+           The user ID of the person who uploaded the usage records.
+          **Character limit**: 32 **Values**: automatically generated 
+        type: string
+      CreatedDate:
+        description: |2-
+           The date when the usage was generated.
+          **Character limit**: 29 **Values**: automatically generated 
+        format: date-time
+        type: string
+      Description:
+        description: |
+          A description of the usage record.
+        type: string
+      EndDateTime:
+        description: |2-
+           The end date and time of a range of time when usage is tracked. Use this field for reporting; this field doesn't affect usage calculation.
+          **Character limit**: 29 **Values**: a valid date and time value 
+        format: date-time
+        type: string
+      Id:
+        description: Object identifier.
+        type: string
+      Quantity:
+        description: >2-
+           Indicates the number of units used.
+          **Character limit**: 16 **Values**: a valid decimal amount equal to or
+          greater than 0 
+        format: double
+        type: number
+      RbeStatus:
+        description: >2-
+           Indicates if the rating and billing engine (RBE) processed usage data for an invoice.
+          **Character limit**: 9 **Values**: automatically generated to be one
+          of the following values: `Importing`, `Pending`, `Processed` 
+        type: string
+      SourceType:
+        description: >2-
+           Indicates if the usage records were imported from the web-based UI or the API.
+          **Character limit**: 6 **Values**: automatically generated to be one
+          of the following values: `API`, `Import` 
+        type: string
+      StartDateTime:
+        description: |2-
+           The start date and time of a range of time when usage is tracked. Zuora uses this field value to determine the usage date. Unlike the `EndDateTime`, the `StartDateTime` field does affect usage calculation.
+          **Character limit**: 29 **Values**: a valid date and time value 
+        format: date-time
+        type: string
+      SubmissionDateTime:
+        description: |2-
+           The date when usage was submitted.
+          **Character limit**: 29 **Values**: automatically generated 
+        format: date-time
+        type: string
+      SubscriptionId:
+        description: |2-
+           The original ID of the subscription that contains the fees related to the usage data.
+          **Character limit**: 32 **Values**: a valid subscription ID 
+        type: string
+      SubscriptionNumber:
+        description: >
+          The unique identifier number of the subscription that contains the
+          fees related to the usage data.
+        type: string
+      UOM:
+        description: |2-
+           Specifies the units to measure usage. Units of measure are configured in the web-based UI. Your values depend on your configuration in **Billing Settings**.
+          **Character limit**: **Values**: a valid unit of measure 
+        type: string
+      UpdatedById:
+        description: |2-
+           The ID of the user who last updated the usage upload.
+          **Character limit**: 32 **Values**: automatically generated 
+        type: string
+      UpdatedDate:
+        description: |2-
+           The date when the usage upload was last updated.
+          **Character limit**: 29 **Values**: automatically generated 
+        format: date-time
+        type: string
+    type: object
+  - $ref: ./UsageObjectCustomFields.yaml

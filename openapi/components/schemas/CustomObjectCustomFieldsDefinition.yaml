@@ -1,0 +1,5 @@
+additionalProperties:
+  $ref: ./CustomObjectCustomFieldDefinition.yaml
+description: The custom field definition in the custom object definition
+title: customObjectCustomFieldDefinition
+type: object

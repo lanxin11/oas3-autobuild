@@ -1,0 +1,119 @@
+properties:
+  CreatedById:
+    description: |-
+      The ID of the Zuora user who created the RatePlanChargeTier object.
+
+      **Character limit**: 32
+
+
+      **Values**: automatically generated 
+    type: string
+  CreatedDate:
+    description: |2-
+       The date when the RatePlanChargeTier object was created.
+
+
+      **Character limit**: 29
+
+
+      **Values**: automatically generated 
+    format: date-time
+    type: string
+  EndingUnit:
+    description: |2-
+       The end number of a range of units for the tier. This field is only required if the charge mode is `Tiered Pricing` or `Tierred with Overage Pricing`.
+
+
+      **Character limit**: 16
+
+
+      **Values**: any positive decimal value 
+    format: double
+    type: number
+  IsOveragePrice:
+    description: |2-
+       Indicates if the price is an overage price. An overage occurs when usage surpasses the last defined tier. This field is applicable only to tier pricing and volume pricing models.
+
+
+
+      **Values**: true, false 
+    type: boolean
+  Price:
+    description: |2-
+       The price of the tier if the charge is a flat fee, or the price of each unit in the tier if the change model is tiered pricing.
+
+
+      **Character limit**: 16
+
+
+      **Values**: any positive decimal value 
+    format: double
+    type: number
+  PriceFormat:
+    description: |2-
+       Indicates if the price is a flat fee or is per unit.
+
+
+      **Character limit**: 8
+
+
+      **Values**: `FlatFee`, `PerUnit` 
+    enum:
+      - FlatFee
+      - PerUnit
+    type: string
+  RatePlanChargeId:
+    description: |2-
+       The ID of the subscription or amendment rate plan charge associated with this tier. You can't create an unassociated tier.
+
+
+      **Character limit**: 32
+
+
+      **Values**: inherited from `RatePlanCharge`.`Id` 
+    type: string
+  StartingUnit:
+    description: |2-
+       The start number of a range of units for the tier. This field is only required if the charge mode is `Tiered Pricing` or `Tierred with Overage Pricing`.
+
+
+      **Character limit**: 16
+
+
+      **Values**: any positive decimal value 
+    format: double
+    type: number
+  Tier:
+    description: |2-
+       A unique number that identifies the tier that the price applies to.
+
+
+      **Character limit**: 20
+
+
+      **Values**: automatically generated 
+    format: int32
+    type: integer
+  UpdatedById:
+    description: |-
+      The ID of the last user to update the object.
+
+      **Character limit**: 32
+
+
+      **Values**: automatically generated 
+    type: string
+  UpdatedDate:
+    description: |2-
+       The date when the object was last updated.
+
+
+      **Character limit**: 29
+
+
+      **Values**: automatically generated 
+    format: date-time
+    type: string
+required:
+  - RatePlanChargeId
+type: object

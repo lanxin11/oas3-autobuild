@@ -1,0 +1,16 @@
+description: Request of processing custom object records in batch.
+example:
+  action:
+    allowPartialSuccess: true
+    records:
+      64edb2a5-2796-4e95-9559-846f8636a01b:
+        age__c: eighteen
+        name__c: elba43
+        person_id__c: 30c52793-8f06-41c6-b623-04829710d7a
+    type: update
+properties:
+  action:
+    $ref: ./CustomObjectRecordBatchAction.yaml
+required:
+  - action
+type: object

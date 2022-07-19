@@ -1,0 +1,43 @@
+properties:
+  currency:
+    description: |
+      Currency used by the charge model. For example: USD or EUR
+    type: string
+  discountAmount:
+    description: >
+      Value subtracted from price in currency specified. Used only when the
+      charge model is DiscountFixedAmount.
+    format: decimal
+    type: string
+  discountPercentage:
+    description: >
+      Percent discount applied to the price. Used only when the charge model is
+      DiscountPercentage.
+    format: decimal
+    type: string
+  includedUnits:
+    description: >
+      Specifies the number of units in the base set of units when the charge
+      model is Overage.
+    format: decimal
+    type: string
+  overagePrice:
+    description: >
+      Price per unit when base set of units is exceeded. Used only when charge
+      model is Overage or Tiered with Overage.
+    format: decimal
+    type: string
+  price:
+    description: |
+      The decimal value that applies when the charge model is not tiered
+    format: decimal
+    type: string
+  tiers:
+    description: >
+      Container for one or many defined tier ranges with distinct pricing. 
+      Applies when model is `Tiered`, `TieredWithOverage`, or `Volume`
+    items:
+      $ref: ./GETProductRatePlanChargePricingTierType.yaml
+    type: array
+title: pricing
+type: object

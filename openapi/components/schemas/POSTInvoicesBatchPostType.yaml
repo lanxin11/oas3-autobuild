@@ -1,0 +1,19 @@
+allOf:
+  - properties:
+      invoices:
+        description: >
+          The container for invoices to be posted. The maximum number of
+          invoices to be posted is 50 in one request.
+        items:
+          $ref: ./InvoicePostType.yaml
+        title: invoices
+        type: array
+    type: object
+example:
+  invoices:
+    - id: 402890555a7e9791015a7f15fe440123
+      invoiceDate: '2022-10-12'
+    - id: 402890555a7e9791015a7f15fe44013a
+      invoiceDate: '2022-10-12'
+    - id: 402890555a7e9791015a7f15fe44012b
+      invoiceDate: '2022-10-12'

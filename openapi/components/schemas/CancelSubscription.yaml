@@ -1,0 +1,16 @@
+description: |
+  Information about an order action of type `CancelSubscription`.
+properties:
+  cancellationEffectiveDate:
+    format: date
+    type: string
+  cancellationPolicy:
+    enum:
+      - EndOfCurrentTerm
+      - EndOfLastInvoicePeriod
+      - SpecificDate
+    type: string
+required:
+  - cancellationPolicy
+title: cancelSubscription
+type: object

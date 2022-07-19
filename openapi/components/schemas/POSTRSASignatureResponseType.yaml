@@ -1,0 +1,27 @@
+properties:
+  key:
+    description: |
+      Public key generated for this Payment Page.
+    type: string
+  signature:
+    description: >
+      Digital signature generated for this Payment Page.
+
+
+      If `signature` returns `null` but `token` is successfully returned, please
+      limit the number of the fields in your request to make sure that the
+      maximum length supported by the RSA signature algorithm is not exceeded.
+    type: string
+  success:
+    description: |
+      Returns `true` if the request was processed successfully.
+    type: boolean
+  tenantId:
+    description: |
+      ID of the Zuora tenant.
+    type: string
+  token:
+    description: |
+      Token generated for this Payment Page.
+    type: string
+type: object

@@ -1,0 +1,12 @@
+properties:
+  bankABACode:
+    description: >
+      The nine-digit routing number or ABA number used by banks. This field is
+      only required if the `type` field is set to `ACH`.
+    type: string
+  bankAccountName:
+    description: >
+      The name of the account holder, which can be either a person or a company.
+      This field is only required if the `type` field is set to `ACH`.
+    type: string
+type: object

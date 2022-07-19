@@ -1,0 +1,17 @@
+properties:
+  nextPage:
+    description: >
+      The URL for requesting the next page of the response, if it exists;
+      otherwise absent.
+    type: string
+  paymentRuns:
+    description: |
+      Container for payment runs.
+    items:
+      $ref: ./GETPaymentRunType.yaml
+    type: array
+  success:
+    description: |
+      Returns `true` if the request was processed successfully.
+    type: boolean
+type: object

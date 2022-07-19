@@ -1,0 +1,6 @@
+allOf:
+  - $ref: ./OrderDeltaMetric.yaml
+description: >
+  Order Delta Mrr. This is a metric that reflects the change to the TCV on rate
+  plan charge object as the result of the order.
+type: object

@@ -1,0 +1,15 @@
+description: |
+  Container for the prefix and starting document number of invoices.
+properties:
+  prefix:
+    description: |
+      The prefix of invoices.
+    example: INV
+    type: string
+  startNumber:
+    description: |
+      The starting document number of invoices.
+    example: 10
+    type: integer
+title: Invoice
+type: object

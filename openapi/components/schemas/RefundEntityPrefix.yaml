@@ -1,0 +1,15 @@
+description: |
+  Container for the prefix and starting number of refunds.
+properties:
+  prefix:
+    description: |
+      The prefix of refunds.
+    example: R-
+    type: string
+  startNumber:
+    description: |
+      The starting number of refunds.
+    example: 10
+    type: integer
+title: refund
+type: object

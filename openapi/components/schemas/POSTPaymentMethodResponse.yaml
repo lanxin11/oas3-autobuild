@@ -1,0 +1,24 @@
+allOf:
+  - $ref: ./CommonResponseType.yaml
+  - properties:
+      id:
+        description: |
+          Internal ID of the payment method that was created.
+        type: string
+      reasons:
+        items:
+          description: >
+            Error information. Only applicable if the payment method was not
+            created.
+          properties:
+            code:
+              description: |
+                Error code.
+              type: string
+            message:
+              description: |
+                Error message.
+              type: string
+          type: object
+        type: array
+    type: object

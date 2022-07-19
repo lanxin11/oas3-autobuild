@@ -1,0 +1,11 @@
+properties:
+  segmentName:
+    description: |
+      Name of segment.
+    type: string
+  segmentValue:
+    description: |
+      Value of segment in this summary journal entry.
+    type: string
+title: segments
+type: object

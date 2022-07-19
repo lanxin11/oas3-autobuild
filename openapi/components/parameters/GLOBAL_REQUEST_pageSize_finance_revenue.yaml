@@ -1,0 +1,9 @@
+name: pageSize
+in: query
+required: false
+description: |
+  The number of records returned per page in the response.
+schema:
+  type: integer
+  maximum: 300
+  default: 8

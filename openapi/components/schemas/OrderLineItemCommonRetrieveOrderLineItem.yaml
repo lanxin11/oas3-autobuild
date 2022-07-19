@@ -1,0 +1,247 @@
+properties:
+  UOM:
+    description: |
+      Specifies the units to measure usage.
+    type: string
+  accountingCode:
+    description: |
+      The accountingCode for the Order Line Item.
+    type: string
+  adjustmentLiabilityAccountingCode:
+    description: >
+      The accounting code on the Order Line Item object for customers using
+      [Zuora Billing - Revenue
+      Integration](https://knowledgecenter.zuora.com/Zuora_Revenue/Zuora_Billing_-_Revenue_Integration).
+    type: string
+  adjustmentRevenueAccountingCode:
+    description: >
+      The accounting code on the Order Line Item object for customers using
+      [Zuora Billing - Revenue
+      Integration](https://knowledgecenter.zuora.com/Zuora_Revenue/Zuora_Billing_-_Revenue_Integration).
+    type: string
+  amendedByOrderOn:
+    description: >
+      The date when the rate plan charge is amended through an order or
+      amendment. This field is to standardize the booking date information to
+      increase audit ability and traceability of data between Zuora Billing and
+      Zuora Revenue. It is mapped as the booking date for a sale order line in
+      Zuora Revenue.
+    format: date
+    type: string
+  amountPerUnit:
+    description: |
+      The actual charged amount per unit for the Order Line Item.
+    type: number
+  billTargetDate:
+    description: >
+      The target date for the Order Line Item to be picked up by bill run for
+      billing.
+    format: date
+    type: string
+  contractAssetAccountingCode:
+    description: >
+      The accounting code on the Order Line Item object for customers using
+      [Zuora Billing - Revenue
+      Integration](https://knowledgecenter.zuora.com/Zuora_Revenue/Zuora_Billing_-_Revenue_Integration).
+    type: string
+  contractLiabilityAccountingCode:
+    description: >
+      The accounting code on the Order Line Item object for customers using
+      [Zuora Billing - Revenue
+      Integration](https://knowledgecenter.zuora.com/Zuora_Revenue/Zuora_Billing_-_Revenue_Integration).
+    type: string
+  contractRecognizedRevenueAccountingCode:
+    description: >
+      The accounting code on the Order Line Item object for customers using
+      [Zuora Billing - Revenue
+      Integration](https://knowledgecenter.zuora.com/Zuora_Revenue/Zuora_Billing_-_Revenue_Integration).
+    type: string
+  customFields:
+    $ref: ./OrderLineItemCustomFieldsRetrieveOrderLineItem.yaml
+  deferredRevenueAccountingCode:
+    description: |
+      The deferred revenue accounting code for the Order Line Item.
+    type: string
+  description:
+    description: |
+      The description of the Order Line Item.
+    type: string
+  discount:
+    description: >
+      This field shows the total discount amount that is applied to an order
+      line item after the `inlineDiscountType`, `inlineDiscountPerUnit` and
+      `quantity` fields are set.
+
+
+      The inline discount is applied to the list price of an order line item
+      (see the `listPrice` field).
+    type: number
+  excludeItemBillingFromRevenueAccounting:
+    description: >
+      The flag to exclude Order Line Item related invoice items, invoice item
+      adjustments, credit memo items, and debit memo items from revenue
+      accounting.
+
+
+      **Note**: This field is only available if you have the Billing - Revenue
+      Integration feature enabled. 
+    type: boolean
+  excludeItemBookingFromRevenueAccounting:
+    description: >
+      The flag to exclude Order Line Item from revenue accounting.
+
+
+      **Note**: This field is only available if you have the Billing - Revenue
+      Integration feature enabled. 
+    type: boolean
+  inlineDiscountPerUnit:
+    description: >
+      This field is used in accordance with the `inlineDiscountType` field, in
+      the following manner:
+
+      * If the `inlineDiscountType` field is set as `Percentage`, this field
+      specifies the discount percentage for each unit of the order line item.
+      For exmaple, if you specify `5` in this field, the discount percentage is
+      5%.
+
+      * If the `inlineDiscountType` field is set as `FixedAmount`, this field
+      specifies the discount amount on each unit of the order line item. For
+      exmaple, if you specify `10` in this field, the discount amount on each
+      unit of the order line item is 10.
+
+
+      Once you set the `inlineDiscountType`, `inlineDiscountPerUnit`, and
+      `listPricePerUnit` fields, the system will automatically generate the
+      `amountPerUnit` field. You shall not set the `amountPerUnit` field by
+      yourself.
+    type: number
+  inlineDiscountType:
+    description: >
+      This field is used to specify the inline discount type, which can be
+      `Percentage`, `FixedAmount`, or `None`. The default value is `Percentage`.
+
+
+      This field is used together with the `inlineDiscountPerUnit` field to
+      specify inline discounts for order line items. The inline discount is
+      applied to the list price of an order line item. 
+
+
+      Once you set the `inlineDiscountType`, `inlineDiscountPerUnit`, and
+      `listPricePerUnit` fields, the system will automatically generate the
+      `amountPerUnit` field. You shall not set the `amountPerUnit` field by
+      yourself.
+    enum:
+      - Percentage
+      - FixedAmount
+      - None
+    type: string
+  itemName:
+    description: |
+      The name of the Order Line Item.
+    type: string
+  itemNumber:
+    description: |
+      The number for the Order Line Item.
+    type: string
+  itemState:
+    description: >
+      The state of the Order Line Item. See [Order Line Item states, Order
+      states, and state
+      transitions](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/AB_Order_Line_Item_States_and_Order_States)
+      for more information.
+    enum:
+      - Executing
+      - SentToBilling
+      - Complete
+      - Cancelled
+    type: string
+  itemType:
+    description: |
+      The type of the Order Line Item. 
+    enum:
+      - Product
+      - Fee
+      - Services
+    type: string
+  listPrice:
+    description: >
+      The extended list price for an order line item, calculated by the formula:
+      listPrice = listPricePerUnit * quantity
+    type: number
+  listPricePerUnit:
+    description: |
+      The list price per unit for the Order Line Item.
+    type: number
+  originalOrderDate:
+    description: >
+      The date when the rate plan charge is created through an order or
+      amendment. This field is to standardize the booking date information to
+      increase audit ability and traceability of data between Zuora Billing and
+      Zuora Revenue. It is mapped as the booking date for a sale order line in
+      Zuora Revenue.
+    format: date
+    type: string
+  productCode:
+    description: |
+      The product code for the Order Line Item.
+    type: string
+  productRatePlanChargeId:
+    description: |
+      Id of a Product Rate Plan Charge. Only one-time charges are supported.
+    format: date
+    type: string
+  purchaseOrderNumber:
+    description: >
+      Used by customers to specify the Purchase Order Number provided by the
+      buyer.
+    type: string
+  quantity:
+    description: >
+      The quantity of units, such as the number of authors in a hosted wiki
+      service.
+    type: number
+  recognizedRevenueAccountingCode:
+    description: |
+      The recognized revenue accounting code for the Order Line Item.
+    type: string
+  relatedSubscriptionNumber:
+    description: >
+      Use this field to relate an order line item to an subscription. Specify
+      this field to the subscription number of the subscription to relate.
+    type: string
+  revenueRecognitionRule:
+    description: |
+      The Revenue Recognition rule for the Order Line Item.
+    type: string
+  taxCode:
+    description: |
+      The tax code for the Order Line Item.
+    type: string
+  taxMode:
+    description: |
+      The tax mode for the Order Line Item.
+    enum:
+      - TaxInclusive
+      - TaxExclusive
+    type: string
+  transactionEndDate:
+    description: >
+      The date a transaction is completed. The default value of this field is
+      the transaction start date. Also, the value of this field should always
+      equal or be later than the value of the `transactionStartDate` field.
+    format: date
+    type: string
+  transactionStartDate:
+    description: >
+      The date a transaction starts. The default value of this field is the
+      order date.
+    format: date
+    type: string
+  unbilledReceivablesAccountingCode:
+    description: >
+      The accounting code on the Order Line Item object for customers using
+      [Zuora Billing - Revenue
+      Integration](https://knowledgecenter.zuora.com/Zuora_Revenue/Zuora_Billing_-_Revenue_Integration).
+    type: string
+title: OrderLineItem
+type: object

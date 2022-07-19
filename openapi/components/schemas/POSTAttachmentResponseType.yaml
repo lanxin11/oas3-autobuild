@@ -1,0 +1,16 @@
+properties:
+  fileId:
+    description: >
+      ID to identify the attached file. Use this file ID with [Get
+      files](https://www.zuora.com/developer/api-reference/#operation/GET_Files)
+      to download the file.
+    type: string
+  id:
+    description: |
+      Attachment id.
+    type: string
+  success:
+    description: |
+      Returns `true` if the request was processed successfully.
+    type: boolean
+type: object

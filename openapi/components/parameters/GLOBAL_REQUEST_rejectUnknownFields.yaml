@@ -1,0 +1,18 @@
+name: rejectUnknownFields
+in: query
+required: false
+description: |
+  Specifies whether the call fails if the request body contains unknown fields.
+  With `rejectUnknownFields` set to `true`, Zuora returns a 400 response if
+  the request body contains unknown fields. The body of the 400 response is:
+
+  ```json
+  {
+      "message": "Error - unrecognised fields"
+  }
+  ```
+
+  By default, Zuora ignores unknown fields in the request body.
+schema:
+  type: boolean
+  default: false

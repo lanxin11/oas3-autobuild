@@ -1,0 +1,85 @@
+description: |
+  A workflow.
+properties:
+  active_version:
+    description: |
+      Information of the active version. 
+    properties:
+      description:
+        description: |
+          The description of the active version.
+        type: string
+      id:
+        description: |
+          The unique ID of the active version.
+        type: integer
+      status:
+        description: |
+          The status of the active version.
+        type: string
+      type:
+        description: >
+          The type of the active version. Currently the only valid value is
+          'Workflow::Setup'.
+        enum:
+          - Workflow::Setup
+          - Workflow::Instance
+        type: string
+      version:
+        description: |
+          The version number of the active version.
+        type: string
+    type: object
+  calloutTrigger:
+    description: >
+      Indicates whether the callout trigger is enabled for the retrieved
+      workflow.
+    type: boolean
+  createdAt:
+    description: >
+      The date and time when the workflow is created, in the `YYYY-MM-DD
+      HH:MM:SS` format.
+    format: datetime
+    type: string
+  description:
+    description: |
+      The description of the workflow definition.
+    type: string
+  id:
+    description: |
+      The unique ID of the workflow definition.
+    type: integer
+  interval:
+    description: >
+      The schedule of the workflow, in a CRON expression. Returns null if the
+      schedued trigger is disabled.
+    type: string
+  name:
+    description: |
+      The name of the workflow definition.
+    type: string
+  ondemandTrigger:
+    description: |
+      Indicates whether the ondemand trigger is enabled for the workflow.
+    type: boolean
+  scheduledTrigger:
+    description: |
+      Indicates whether the scheduled trigger is enabled for the workflow.
+    type: boolean
+  status:
+    description: |
+      The status of the workflow definition.
+    type: string
+  timezone:
+    description: >
+      The timezone that is configured for the scheduler of the workflow. Returns
+      null if the scheduled trigger is disabled.
+    type: string
+  updatedAt:
+    description: >
+      The date and time when the workflow is updated the last time, in the
+      `YYYY-MM-DD HH:MM:SS` format.
+    format: datetime
+    type: string
+title: a workflow definition with version information
+type: object

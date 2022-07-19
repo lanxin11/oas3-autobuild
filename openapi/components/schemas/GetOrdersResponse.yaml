@@ -1,0 +1,14 @@
+allOf:
+  - $ref: ./CommonResponseType.yaml
+  - properties:
+      nextPage:
+        description: >
+          URL to retrieve the next page of the response if it exists; otherwise
+          absent.
+        format: URL
+        type: string
+      orders:
+        items:
+          $ref: ./Order.yaml
+        type: array
+    type: object

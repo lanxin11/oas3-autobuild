@@ -1,0 +1,27 @@
+properties:
+  customFileName:
+    description: >
+      The custom file name used by Word or PDF files generated for the billing
+      document.
+    type: string
+  documentId:
+    description: |
+      The unique ID of a billing document.
+    type: string
+  documentType:
+    description: |
+      The type of the billing document. 
+    enum:
+      - Invoice
+      - CreditMemo
+      - DebitMemo
+    type: string
+  id:
+    description: |
+      The unique ID of a document property.
+    type: string
+  success:
+    description: |
+      Indicates whether the call succeeded.
+    type: boolean
+type: object

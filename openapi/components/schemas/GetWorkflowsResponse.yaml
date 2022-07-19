@@ -1,0 +1,28 @@
+properties:
+  data:
+    description: |
+      The list of workflows retrieved. 
+    items:
+      $ref: ./WorkflowDefinitionAndVersions.yaml
+    type: array
+  pagination:
+    description: >
+      An object containing pagination information for the list of workflows
+      returned by the api
+    properties:
+      next_page:
+        description: >
+          A string containing the URL where the next page of data can be
+          retrieved.
+        type: string
+      page:
+        description: |
+          An integer denoting the current page number.
+        type: integer
+      page_length:
+        description: >
+          An integer denoting the number of workflows in this response. The
+          maximum value is 50.
+        type: integer
+    type: object
+type: object

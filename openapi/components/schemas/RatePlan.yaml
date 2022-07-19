@@ -1,0 +1,108 @@
+allOf:
+  - properties:
+      AmendmentId:
+        description: |2-
+           The ID of the amendment associated with the rate plan. This field only applies to amendment rate plans.
+
+
+          **Character limit**: 32
+
+          **Values**: a valid amendment ID 
+        type: string
+      AmendmentSubscriptionRatePlanId:
+        description: >-
+          The ID of the subscription rate plan modified by the amendment. This
+          field only applies to amendment rate plans. The ID can be the latest
+          version or any history version of ID.
+
+
+          **Character limit**: 32
+
+
+          **Values**: a valid rate plan ID 
+        type: string
+      AmendmentType:
+        description: >-
+          The type of amendment associated with the rate plan. This field only
+          applies to amendment rate plans.
+
+
+          **Character limit**: 20
+
+
+          **Values**: inherited from `Amendment.Type` 
+        type: string
+      CreatedById:
+        description: |-
+          The ID of the Zuora user who created the RatePlan object.
+
+          **Character limit**: 32
+
+          **Values**: automatically generated 
+        type: string
+      CreatedDate:
+        description: |-
+          The date when the `RatePlan` object was last updated.
+
+          **Character limit**: 29
+
+          **Values**: automatically generated 
+        format: date-time
+        type: string
+      ExternallyManagedPlanId:
+        description: >
+          The unique identifier for the rate plan purchased on a third-party
+          store. This field is used to represent a subscription rate plan
+          created through third-party stores.
+        type: string
+      Name:
+        description: >-
+          The name of the rate plan. Leave this null in a subscribe call to
+          inherited the `ProductRatePlan.Name` field value.
+
+
+          **Character limit**: 100
+
+
+          **Values**: a string of 100 characters or fewer or inherited from
+          ProductRatePlan.Name 
+        type: string
+      ProductRatePlanId:
+        description: |-
+          The ID of the associated product rate plan.
+
+          **Character limit**: 32
+
+          **Values**: a valid product rate plan ID 
+        type: string
+      SubscriptionId:
+        description: |-
+          The ID of the subscription that the rate plan belongs to.
+
+          **Character limit**: 32
+
+          **Values**: a valid subscription ID 
+        type: string
+      UpdatedById:
+        description: |2-
+           The ID of the user who last updated the rate plan.
+
+
+          **Character limit**: 32
+
+          **Values**: automatically generated 
+        type: string
+      UpdatedDate:
+        description: |2-
+           The date when the rate plan was last updated.
+
+
+          **Character limit**: 29
+
+          **Values**: automatically generated 
+        format: date-time
+        type: string
+    required:
+      - ProductRatePlanId
+    type: object
+  - $ref: ./SubscriptionObjectCustomFields.yaml

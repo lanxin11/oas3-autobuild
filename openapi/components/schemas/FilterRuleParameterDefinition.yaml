@@ -1,0 +1,51 @@
+description: |
+  Definition of a filter rule parameter.
+properties:
+  description:
+    maxLength: 255
+    type: string
+  displayName:
+    description: |
+      The display name of the parameter.
+    maxLength: 255
+    type: string
+  options:
+    description: |
+      The option values of the parameter.
+    items:
+      type: string
+    type: array
+  valueType:
+    description: |
+      The type of the value.
+    enum:
+      - STRING
+      - BYTE
+      - SHORT
+      - CHARACTER
+      - INTEGER
+      - LONG
+      - FLOAT
+      - DOUBLE
+      - BOOLEAN
+      - BIG_INTEGER
+      - BIG_DECIMAL
+      - LOCAL_DATE
+      - LOCAL_DATE_TIME
+      - TIMESTAMP
+      - BYTE_ARRAY
+      - SHORT_ARRAY
+      - CHARACTER_ARRAY
+      - INTEGER_ARRAY
+      - FLOAT_ARRAY
+      - DOUBLE_ARRAY
+      - BOOLEAN_ARRAY
+      - STRING_ARRAY
+      - BIG_INTEGER_ARRAY
+      - BIG_DECIMAL_ARRAY
+      - LOCAL_DATE_ARRAY
+      - LOCAL_DATE_TIME_ARRAY
+      - TIMESTAMP_ARRAY
+    type: string
+title: parameter
+type: object

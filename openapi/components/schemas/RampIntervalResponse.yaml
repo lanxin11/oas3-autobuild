@@ -1,0 +1,17 @@
+properties:
+  description:
+    description: The short description of the interval.
+    type: string
+  endDate:
+    description: The end date of the interval.
+    format: date
+    type: string
+  name:
+    description: The name of the interval.
+    type: string
+  startDate:
+    description: The start date of the interval.
+    format: date
+    type: string
+title: intervals
+type: object

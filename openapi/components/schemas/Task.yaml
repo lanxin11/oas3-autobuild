@@ -1,0 +1,150 @@
+description: |
+  A task.
+properties:
+  action_type:
+    description: |
+      The type of the task.
+    enum:
+      - Approval
+      - Attachment
+      - Billing::BillRun
+      - Billing::CurrencyConversion
+      - Billing::CustomInvoice
+      - Callout
+      - Cancel
+      - Create
+      - CustomObject::Create
+      - CustomObject::Delete
+      - CustomObject::Query
+      - CustomObject::Update
+      - Data::BillingPreviewRun
+      - Data::Link
+      - Delay
+      - Delete
+      - Download::SFTP
+      - Email
+      - Export
+      - File::CustomPDF::CustomDocument
+      - If
+      - InvoiceGenerate
+      - Iterate
+      - Logic::CSVTranslator
+      - Logic::Case
+      - Logic::CustomCode
+      - Logic::JSONTransform
+      - Logic::Lambda
+      - Logic::ResponseFormatter
+      - Logic::XMLTransform
+      - NewProduct
+      - Notifications::GoogleCloudPrint
+      - Notifications::PhoneCall
+      - Notifications::SMS
+      - Payment::GatewayReconciliation
+      - Payment::PaymentRun
+      - Query
+      - RemoveProduct
+      - Reporting::ReportData
+      - Reporting::RunReport
+      - Resume
+      - Suspend
+      - UI::Page
+      - UI::Stop
+      - Update
+      - Upload::FTP
+      - Upload::SFTP
+      - WriteOff
+    type: string
+  call_type:
+    description: |
+      The type of API used.
+    type: string
+  concurrent_limit:
+    description: the number of concurrent tasks that are allowed to run simultaneously
+    type: integer
+  data:
+    description: |
+      The data payload for the task.
+    type: object
+  end_time:
+    description: |
+      If **Instance** is **true**, the end time of the task instance.
+    type: string
+  error:
+    description: >
+      If **Instance** is **true** and **status** is **Error**, the error reason
+      of the task instance failure.
+    type: string
+  error_class:
+    description: >
+      If **Instance** is **true** and **status** is **Error**, the error class
+      of the task instance failure.
+    type: string
+  error_details:
+    description: >
+      If **Instance** is **true** and **status** is **Error**, the error details
+      of the task instance failure.
+    type: string
+  id:
+    description: |
+      The unique ID of the task.
+    type: integer
+  instance:
+    description: |
+      Indicates whether this task belongs to an instance of a workflow.
+    type: boolean
+  name:
+    description: |
+      The name of the task.
+    type: string
+  object:
+    description: |
+      The selected object for the task.
+    type: string
+  object_id:
+    description: |
+      The id of the selected object of the task.
+    type: string
+  original_task_id:
+    description: >
+      If **Instance** is **true**, the ID of the original task in the original
+      workflow.
+    type: integer
+  original_workflow_id:
+    description: |
+      If **Instance** is **true**, the ID of the original workflow.
+    type: integer
+  parameters:
+    description: |
+      The configuration of the task.
+    type: object
+  start_time:
+    description: |
+      If **Instance** is **true**, the start time of the task instance.
+    type: string
+  status:
+    description: |
+      If **Instance** is **true**, the status of the task instance.
+    enum:
+      - Queued
+      - Processing
+      - Pending
+      - Success
+      - Stopped
+      - Error
+    type: string
+  tags:
+    description: |
+      The array of filter tags.
+    items:
+      type: string
+    type: array
+  task_id:
+    description: >-
+      the id of this task's parent task. Will be null if this is the first task
+      of the workflow
+    type: integer
+  workflow_id:
+    description: |
+      The ID of the workflow that the task belongs to.
+    type: integer
+type: object

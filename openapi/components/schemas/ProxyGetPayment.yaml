@@ -1,0 +1,238 @@
+allOf:
+  - properties:
+      AccountId:
+        description: |
+          The unique account ID for the customer that the payment is for.
+        type: string
+      AccountingCode:
+        description: >
+          The accounting code for the payment. Accounting codes group
+          transactions that contain similar accounting attributes.
+        type: string
+      Amount:
+        description: |
+          The amount of the payment.
+        format: double
+        type: number
+      AppliedAmount:
+        description: >
+          The applied amount of the payment.
+
+
+          **Note**: This field is only available if you have the Invoice
+          Settlement feature enabled.
+        format: double
+        type: number
+      AppliedCreditBalanceAmount:
+        description: >
+          If you have the Invoice Settlement feature disabled, the value of this
+          field is the amount of the payment to apply to a credit balance.
+
+
+          If you have the Invoice Settlement feature enabled, the value of this
+          field returned in the response is `0` for the payments that are
+          created after the enablement.
+        format: double
+        type: number
+      AuthTransactionId:
+        description: |
+          The authorization transaction ID from the payment gateway. 
+        type: string
+      BankIdentificationNumber:
+        description: >
+          The first six or eight digits of the credit card or debit card used
+          for the payment, when applicable. 
+        type: string
+      CancelledOn:
+        description: |
+          The date and time when the payment was canceled.
+        format: date-time
+        type: string
+      Comment:
+        description: |
+          Additional information related to the payment.
+        type: string
+      CreatedById:
+        description: |
+          The ID of the Zuora user who created the payment.
+        type: string
+      CreatedDate:
+        description: |
+          The date and time when the payment was created.
+        format: date-time
+        type: string
+      EffectiveDate:
+        description: |
+          The date when the payment takes effect.
+        format: date
+        type: string
+      Gateway:
+        description: |
+          The name of the gateway instance that processes the payment. 
+        type: string
+      GatewayOrderId:
+        description: >
+          A merchant-specified natural key value that can be passed to the
+          electronic payment gateway when a payment is created. If not
+          specified, the payment number will be passed in instead.
+        type: string
+      GatewayResponse:
+        description: >
+          The message returned from the payment gateway for the payment. This
+          message is gateway-dependent.
+        type: string
+      GatewayResponseCode:
+        description: >
+          The code returned from the payment gateway for the payment. This code
+          is gateway-dependent.
+        type: string
+      GatewayState:
+        description: |
+          The status of the payment in the gateway; use for reconciliation.
+        enum:
+          - MarkedForSubmission
+          - Submitted
+          - Settled
+          - NotSubmitted
+          - FailedToSettle
+        type: string
+      Id:
+        description: >
+          The unique ID of a payment. For example,
+          2c92c095592623ea01596621ada84352.
+        type: string
+      MarkedForSubmissionOn:
+        description: >
+          The date and time when a payment was marked and waiting for batch
+          submission to the payment process. 
+        format: date-time
+        type: string
+      PaymentMethodId:
+        description: |
+          The ID of the payment method used for the payment. 
+        type: string
+      PaymentMethodSnapshotId:
+        description: >
+          The unique ID of the payment method snapshot which is a copy of the
+          particular payment method used in a transaction.
+        type: string
+      PaymentNumber:
+        description: >
+          The unique identification number of the payment. For example,
+          P-00000028.
+        type: string
+      ReferenceId:
+        description: >
+          The transaction ID returned by the payment gateway. Use this field to
+          reconcile payments between your gateway and Zuora Payments.
+        type: string
+      RefundAmount:
+        description: >
+          The amount of the payment that is refunded. The value of this field is
+          `0` if no refund is made against the payment.
+        format: double
+        type: number
+      SecondPaymentReferenceId:
+        description: >
+          The transaction ID returned by the payment gateway if there is an
+          additional transaction for the payment. Use this field to reconcile
+          payments between your gateway and Zuora Payments.
+        type: string
+      SettledOn:
+        description: >
+          The date and time when the payment was settled in the payment
+          processor. This field is used by the Spectrum gateway only and not
+          applicable to other gateways.
+        format: date-time
+        type: string
+      SoftDescriptor:
+        description: >
+          A payment gateway-specific field that maps to Zuora for the gateways,
+          Orbital, Vantiv and Verifi. 
+        type: string
+      SoftDescriptorPhone:
+        description: >
+          A payment gateway-specific field that maps to Zuora for the gateways,
+          Orbital, Vantiv and Verifi.
+        type: string
+      Source:
+        description: >
+          How the payment was created, whether through the API, manually,
+          import, or payment run.
+        enum:
+          - PaymentRun
+          - Import
+          - Manually
+          - API
+        type: string
+      SourceName:
+        description: >
+          The name of the source. The value is a Payment Run number or a file
+          name.
+        type: string
+      Status:
+        description: >
+          The status of the payment in Zuora. The value depends on the type of
+          payments.
+
+
+          - If you have the Invoice Settlement feature disabled, for electronic
+          payments, the status can be `Processed`, `Processing`, `Error`, or
+          `Voided`. For external payments, the status can be `Processed` or
+          `Canceled`.
+
+          - If you have the Invoice Settlement feature enabled, for electronic
+          payments, the status can be `Processed`, `Processing`, `Error`, or
+          `Canceled`. For external payments, the status can be `Processed` or
+          `Canceled`.
+        enum:
+          - Processed
+          - Error
+          - Voided
+          - Canceled
+        type: string
+      SubmittedOn:
+        description: |
+          The date and time when the payment was submitted.
+        format: date-time
+        type: string
+      TransferredToAccounting:
+        description: >
+          Indicates if the payment was transferred to an external accounting
+          system. Use this field for integration with accounting systems, such
+          as NetSuite.
+        enum:
+          - Processing
+          - 'Yes'
+          - Error
+          - Ignore
+        type: string
+      Type:
+        description: >
+          The type of the payment, whether the payment is external or
+          electronic.
+        enum:
+          - External
+          - Electronic
+        type: string
+      UnappliedAmount:
+        description: >
+          The unapplied amount of the payment.
+
+
+          **Note**: This field is only available if you have the Invoice
+          Settlement feature enabled.
+        format: double
+        type: number
+      UpdatedById:
+        description: |
+          The ID of the Zuora user who last updated the payment.
+        type: string
+      UpdatedDate:
+        description: |
+          The date and time when the payment was last updated.
+        format: date-time
+        type: string
+    type: object
+  - $ref: ./PaymentObjectNSFields.yaml
+  - $ref: ./PaymentObjectCustomFields.yaml

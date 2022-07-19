@@ -1,0 +1,71 @@
+allOf:
+  - properties:
+      AccountingCode:
+        description: ' The Chart of Accounts '
+        type: string
+      ExemptAmount:
+        description: |2-
+           The calculated tax amount excluded due to the exemption.
+          **Character limit**: 16 **Values**: a decimal value 
+        format: double
+        type: number
+      Jurisdiction:
+        description: >2-
+           The jurisdiction that applies the tax or VAT. This value is typically a state, province, county, or city.
+          **Character limit**: 32 **Values**: a string of 32 characterrs or
+          fewer 
+        type: string
+      LocationCode:
+        description: |2-
+           The identifier for the location based on the value of the `TaxCode` field.
+          **Character limit**: 32 **Values**: automatically generated 
+        type: string
+      Name:
+        description: >2-
+           The name of the tax rate, such as sales tax or GST. This name is displayed on invoices.
+          **Character limit**: 128 **Values**: a string of 128 characters or
+          fewer 
+        type: string
+      TaxAmount:
+        description: |2-
+           The amount of the tax applied to the charge.
+          **Character limit**: 16 **Values**: a decimal value 
+        format: double
+        type: number
+      TaxCode:
+        description: >2-
+           The tax code identifies which tax rules and tax rates to apply to a specific charge.
+          **Character limit**: 32 **Values**: a string of 32 characters or
+          fewer 
+        type: string
+      TaxCodeDescription:
+        description: >2-
+           The description for the tax code.
+          **Character limit**: 255 **Values**: a string of 255 characters or
+          fewer 
+        type: string
+      TaxDate:
+        description: |2-
+           The date that the tax is applied to the charge, in `yyyy-mm-dd` format.
+          **Character limit**: 29 
+        format: date
+        type: string
+      TaxRate:
+        description: |2-
+           The tax rate applied to the charge.
+          **Character limit**: 16 **Values**: a valid decimal value 
+        format: double
+        type: number
+      TaxRateDescription:
+        description: >2-
+           The description of the tax rate.
+          **Character limit**: 255 **Values**: a string of 255 characters or
+          fewer 
+        type: string
+      TaxRateType:
+        description: |2-
+           The type of the tax rate applied to the charge.
+          **Character limit**: 10 **Values**: `Percentage`, `FlatFee` 
+        type: string
+    type: object
+  - $ref: ./TaxationItemObjectCustomFields.yaml

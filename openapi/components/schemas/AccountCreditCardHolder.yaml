@@ -1,0 +1,67 @@
+description: >
+  Information about the cardholder of a credit card payment method associated
+  with an account. If you do not provide information about the cardholder, Zuora
+  uses the account's bill-to contact.
+properties:
+  addressLine1:
+    description: |
+      First line of the cardholder's address.
+    maxLength: 255
+    type: string
+  addressLine2:
+    description: |
+      Second line of the cardholder's address.
+    maxLength: 255
+    type: string
+  cardHolderName:
+    description: >
+      Full name of the cardholder as it appears on the card. For example, "John
+      J Smith".
+    maxLength: 50
+    type: string
+  city:
+    description: >
+      City of the cardholder's address.
+
+
+      It is recommended to provide the city and country information when
+      creating a payment method. The information will be used to process
+      payments. If the information is not provided during payment method
+      creation, the city and country data will be missing during payment
+      processing.
+    maxLength: 40
+    type: string
+  country:
+    description: >
+      Country of the cardholder's address. The value of this field must be a
+      valid country name or abbreviation.
+
+
+      It is recommended to provide the city and country information when
+      creating a payment method. The information will be used to process
+      payments. If the information is not provided during payment method
+      creation, the city and country data will be missing during payment
+      processing.
+    maxLength: 64
+    type: string
+  email:
+    description: |
+      Email address of the cardholder.
+    maxLength: 80
+    type: string
+  phone:
+    description: |
+      Phone number of the cardholder.
+    maxLength: 40
+    type: string
+  state:
+    description: |
+      State or province of the cardholder's address.
+    maxLength: 50
+    type: string
+  zipCode:
+    description: |
+      ZIP code or other postal code of the cardholder's address.
+    maxLength: 20
+    type: string
+type: object

@@ -1,0 +1,83 @@
+allOf:
+  - properties:
+      AccountId:
+        description: |
+          The unique account ID for the customer that the payment is for.
+        maxLength: 32
+        minLength: 0
+        type: string
+      AccountingCode:
+        description: >
+          The accounting code for the payment. Accounting codes group
+          transactions that contain similar accounting attributes.
+        maxLength: 100
+        minLength: 0
+        type: string
+      Amount:
+        description: |
+          The amount of the payment.
+        format: double
+        maxLength: 16
+        minLength: 0
+        type: number
+      EffectiveDate:
+        description: |
+          The date when the payment takes effect.
+        format: date
+        maxLength: 29
+        minLength: 0
+        type: string
+      PaymentMethodId:
+        description: >
+          The ID of the payment method used for the payment. 
+
+
+          For a specified credit card payment method, it is recommended that
+          [the support for stored credential
+          transactions](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/L_Payment_Methods/Stored_credential_transactions)
+          for this payment method is already enabled.
+        maxLength: 32
+        minLength: 0
+        type: string
+      ReferenceId:
+        description: >
+          The transaction ID returned by the payment gateway. Use this field to
+          reconcile payments between your gateway and Zuora Payments.
+        maxLength: 100
+        minLength: 0
+        type: string
+      Status:
+        description: >
+          The updated status of the payment. The value depends on the type of
+          payment.
+
+
+          - For Electronic payment, the available value is `Voided`.
+
+          - For External payment, the available value is `Canceled`.
+        enum:
+          - Voided
+          - Canceled
+        type: string
+      TransferredToAccounting:
+        description: >
+          Whether the refund was transferred to an external accounting system.
+          Use this field for integration with accounting systems, such as
+          NetSuite.
+        enum:
+          - Processing
+          - 'Yes'
+          - Error
+          - Ignore
+        type: string
+      Type:
+        description: >
+          The type of the payment, whether the payment is external or
+          electronic.
+        enum:
+          - External
+          - Electronic
+        type: string
+    type: object
+  - $ref: ./PaymentObjectNSFields.yaml
+  - $ref: ./PaymentObjectCustomFields.yaml

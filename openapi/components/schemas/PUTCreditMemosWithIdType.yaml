@@ -1,0 +1,9 @@
+allOf:
+  - properties:
+      id:
+        description: |
+          The ID of the credit memo.
+        type: string
+    type: object
+  - $ref: ./PUTCreditMemoType.yaml
+title: memos

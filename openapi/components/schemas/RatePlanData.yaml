@@ -1,0 +1,20 @@
+properties:
+  RatePlan:
+    $ref: ./RatePlanDataRatePlan.yaml
+  RatePlanChargeData:
+    description: ''
+    items:
+      $ref: ./RatePlanChargeData.yaml
+    type: array
+  SubscriptionProductFeatureList:
+    description: ''
+    properties:
+      SubscriptionProductFeature:
+        description: ''
+        items:
+          $ref: ./SubscriptionProductFeature.yaml
+        type: array
+    type: object
+required:
+  - RatePlan
+type: object

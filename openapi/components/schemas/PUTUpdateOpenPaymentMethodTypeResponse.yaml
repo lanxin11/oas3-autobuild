@@ -1,0 +1,20 @@
+properties:
+  paymentMethodType:
+    description: |
+      The API name of the custom payment method type.
+    type: string
+  publishDate:
+    description: >
+      The date when the custom payment method type was published. It is emptry
+      if the custom payment method type has not been published yet.
+    type: string
+  revision:
+    description: >
+      The revision number of the custom payment method type, which starts from 1
+      and increases by 1 when you update a published revision for the first
+      time.
+    type: integer
+  status:
+    description: |
+      The status of the custom payment method type.
+    type: string

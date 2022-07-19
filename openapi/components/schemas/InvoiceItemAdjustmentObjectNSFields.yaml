@@ -1,0 +1,27 @@
+description: >
+  Container for Invoice Item Adjustment fields provided by the [Zuora Connector
+  for NetSuite](https://www.zuora.com/connect/app/?appId=265).
+properties:
+  InvoiceItemAdjustment.IntegrationId__NS:
+    description: >
+      ID of the corresponding object in NetSuite. Only available if you have
+      installed the [Zuora Connector for
+      NetSuite](https://www.zuora.com/connect/app/?appId=265).
+    maxLength: 255
+    type: string
+  InvoiceItemAdjustment.IntegrationStatus__NS:
+    description: >
+      Status of the invoice item adjustment's synchronization with NetSuite.
+      Only available if you have installed the [Zuora Connector for
+      NetSuite](https://www.zuora.com/connect/app/?appId=265).
+    maxLength: 255
+    type: string
+  InvoiceItemAdjustment.SyncDate__NS:
+    description: >
+      Date when the invoice item adjustment was synchronized with NetSuite. Only
+      available if you have installed the [Zuora Connector for
+      NetSuite](https://www.zuora.com/connect/app/?appId=265).
+    maxLength: 255
+    type: string
+title: invoiceItemAdjustmentFieldsNS
+type: object

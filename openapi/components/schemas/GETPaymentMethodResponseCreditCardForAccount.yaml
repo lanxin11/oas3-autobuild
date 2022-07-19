@@ -1,0 +1,26 @@
+properties:
+  cardNumber:
+    description: |
+      The masked credit card number.
+
+      When `cardNumber` is `null`, the following fields will not be returned:
+        - `expirationMonth`
+        - `expirationYear`
+        - `accountHolderInfo`
+    type: string
+  expirationMonth:
+    description: |
+      One or two digits expiration month (1-12).
+              
+    type: integer
+  expirationYear:
+    description: |
+      Four-digit expiration year.
+    type: integer
+  securityCode:
+    description: |
+      The CVV or CVV2 security code for the credit card or debit card.
+                  Only required if changing expirationMonth, expirationYear, or cardHolderName.
+                  To ensure PCI compliance, this value isn''t stored and can''t be queried. 
+    type: string
+type: object

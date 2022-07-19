@@ -1,0 +1,9 @@
+allOf:
+  - $ref: ./OrderActionRatePlanPriceChangeParams.yaml
+  - properties:
+      listPrice:
+        type: number
+      quantity:
+        minimum: 0
+        type: number
+    type: object

@@ -1,0 +1,61 @@
+allOf:
+  - properties:
+      comment:
+        description: |
+          Comments about the refund.
+        maxLength: 255
+        minLength: 0
+        type: string
+      financeInformation:
+        description: |
+          Container for the finance information related to the refund.
+        properties:
+          bankAccountAccountingCode:
+            description: >
+              The accounting code that maps to a bank account in your accounting
+              system.
+            maxLength: 100
+            minLength: 0
+            type: string
+          transferredToAccounting:
+            description: >
+              Whether the payment was transferred to an external accounting
+              system. Use this field for integration with accounting systems,
+              such as NetSuite. 
+            enum:
+              - Processing
+              - 'Yes'
+              - 'No'
+              - Error
+              - Ignore
+            type: string
+          unappliedPaymentAccountingCode:
+            description: |
+              The accounting code for the unapplied payment.
+            maxLength: 100
+            minLength: 0
+            type: string
+        type: object
+      reasonCode:
+        description: >
+          A code identifying the reason for the transaction. The value must be
+          an existing reason code or empty. If you do not specify a value, Zuora
+          uses the default reason code.
+        type: string
+      referenceId:
+        description: >
+          The transaction ID returned by the payment gateway. Use this field to
+          reconcile refunds between your gateway and Zuora Payments.
+
+
+          You can only update the reference ID for external refunds.
+        maxLength: 100
+        minLength: 0
+        type: string
+    type: object
+  - $ref: ./RefundObjectNSFields.yaml
+  - $ref: ./RefundObjectCustomFields.yaml
+example:
+  comment: update comment
+  financeInformation:
+    transferredToAccounting: 'No'

@@ -1,0 +1,11 @@
+properties:
+  reasons:
+    description: The list of reasons that the request was unsuccessful
+    items:
+      $ref: ./ValidationReasons.yaml
+    title: validation reasons
+    type: array
+  success:
+    description: Returns `false` if the request was not successful.
+    type: boolean
+type: object

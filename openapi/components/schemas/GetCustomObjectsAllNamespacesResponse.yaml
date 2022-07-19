@@ -1,0 +1,10 @@
+properties:
+  count:
+    description: The number of namespaces for custom object definitions.
+    example: 1
+    type: integer
+  namespaces:
+    items:
+      $ref: ./CustomObjectsNamespace.yaml
+    type: array
+type: object

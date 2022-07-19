@@ -1,0 +1,10 @@
+name: page
+in: query
+description: >
+  The index number of the page you want to retrieve. By default, the first page
+  is returned in the response. 
+required: false
+schema:
+  type: integer
+  format: int32
+  default: 0

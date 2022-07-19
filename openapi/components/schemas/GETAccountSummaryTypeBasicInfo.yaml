@@ -1,0 +1,113 @@
+allOf:
+  - properties:
+      accountNumber:
+        description: |
+          Account number.
+        type: string
+      additionalEmailAddresses:
+        description: |
+          A list of additional email addresses to receive email notifications.
+        items:
+          type: string
+        type: array
+      balance:
+        description: |
+          Current outstanding balance.
+        format: decimal
+        type: string
+      batch:
+        description: |
+          The alias name given to a batch. A string of 50 characters or less.
+        type: string
+      billCycleDay:
+        description: >
+          Billing cycle day (BCD), the day of the month when a bill run
+          generates invoices for the account.
+        type: string
+      currency:
+        description: |
+          A currency as defined in Billing Settings in the Zuora UI.
+        type: string
+      defaultPaymentMethod:
+        description: ''
+        properties:
+          creditCardExpirationMonth:
+            description: |
+              Two-digit numeric card expiration month as `mm`.
+            type: string
+          creditCardExpirationYear:
+            description: |
+              Four-digit card expiration year as `yyyy`.
+            type: string
+          creditCardNumber:
+            description: >
+              Credit card number, 16 characters or less, displayed in masked
+              format (e.g., ************1234).
+            type: string
+          creditCardType:
+            description: >
+              The type of the credit card.
+
+
+              Possible values  include `Visa`, `MasterCard`, `AmericanExpress`,
+              `Discover`, `JCB`, and `Diners`. For more information about credit
+              card types supported by different payment gateways, see [Supported
+              Payment
+              Methods](https://knowledgecenter.zuora.com/Zuora_Central/Billing_and_Payments/L_Payment_Methods/Supported_Payment_Methods).
+            type: string
+          id:
+            description: |
+              ID of the default payment method associated with this account.
+            type: string
+          paymentMethodType:
+            description: ''
+            type: string
+        type: object
+      id:
+        description: |
+          Account ID.
+        type: string
+      invoiceDeliveryPrefsEmail:
+        description: |
+          Whether the customer wants to receive invoices through email. 
+        type: boolean
+      invoiceDeliveryPrefsPrint:
+        description: >
+          Whether the customer wants to receive printed invoices, such as
+          through postal mail.
+        type: boolean
+      lastInvoiceDate:
+        description: >
+          Date of the most recent invoice for the account; null if no invoice
+          has ever been generated.
+        format: date
+        type: string
+      lastPaymentAmount:
+        description: >
+          Amount of the most recent payment collected for the account; null if
+          no payment has ever been collected.
+        format: decimal
+        type: string
+      lastPaymentDate:
+        description: >
+          Date of the most recent payment collected for the account. Null if no
+          payment has ever been collected.
+        format: date
+        type: string
+      name:
+        description: |
+          Account name.
+        type: string
+      status:
+        description: |
+          Account status; possible values are: `Active`, `Draft`, `Canceled`.
+        type: string
+      tags:
+        description: ''
+        type: string
+    type: object
+  - $ref: ./AccountObjectNSFields.yaml
+  - $ref: ./AccountObjectCustomFields.yaml
+description: |
+  Container for basic information about the account.
+title: basicInfo

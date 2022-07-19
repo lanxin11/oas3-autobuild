@@ -1,0 +1,48 @@
+allOf:
+  - $ref: ./POSTBulkCreditMemosRequestType.yaml
+  - properties:
+      memos:
+        description: >
+          The container for a list of credit memos. The maximum number of credit
+          memos is 50.
+        items:
+          $ref: ./POSTBulkCreditMemoFromInvoiceType.yaml
+        maxItems: 50
+        type: array
+    type: object
+example:
+  //: >-
+    Please replace the value of the `sourceType` field with `Invoice`. This is
+    not a request field, but only a comment on the `sourceType` field.
+  memos:
+    - autoApplyToInvoiceUponPosting: false
+      autoPost: false
+      comment: the comment
+      effectiveDate: '2016-11-30'
+      excludeFromAutoApplyRules: false
+      invoiceId: 4028905558b483220158b48983dd0015
+      items:
+        - amount: 1
+          comment: This is comment!
+          invoiceItemId: 4028905558b483220158b48983dd0015
+          quantity: 1
+          serviceEndDate: '2016-11-30'
+          serviceStartDate: '2016-11-01'
+          skuName: SKU-30
+          taxItems:
+            - amount: 0.01
+              jurisdiction: CALIFORNIA
+              locationCode: '06'
+              sourceTaxItemId: 4028905558b483220158b48983150010
+              taxCode: null
+              taxCodeDescription: This is tax code description!
+              taxDate: '2016-11-30'
+              taxExemptAmount: 0
+              taxName: STATE TAX
+              taxRate: 0.0625
+              taxRateDescription: This is tax rate description!
+              taxRateType: Percentage
+          taxMode: TaxExclusive
+          unitOfMeasure: Test_UOM
+      reasonCode: Write-off
+  sourceType: Invoice

@@ -1,0 +1,32 @@
+allOf:
+  - properties:
+      defaultPaymentMethodId:
+        description: |
+          ID of the default payment method for the account.
+        type: string
+      paymentGateway:
+        description: >
+          The name of the payment gateway instance. If null or left unassigned,
+          the Account will use the Default Gateway.
+        type: string
+      returnedPaymentMethodType:
+        description: >
+          Container for a specific type of payment method on the customer
+          account. For example, `creditcard`, `debitcard`,
+          `creditcardreferencetransaction`, `ach`, etc. Each
+          `returnedPaymentMethodType` array contains one or more payment methods
+          of that payment method type.
+
+
+          **Note:** The response could return more than one payment method type
+          arrays. See **Response samples** as an example.
+        items:
+          $ref: ./GETPaymentMethodResponseForAccount.yaml
+        title: Payment Method Type
+        type: array
+      success:
+        description: |
+          Returns `true` if the request was processed successfully.
+        type: boolean
+    type: object
+  - $ref: ./customAccountPaymentMethod.yaml

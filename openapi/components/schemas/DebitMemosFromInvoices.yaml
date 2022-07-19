@@ -1,0 +1,47 @@
+allOf:
+  - $ref: ./POSTBulkDebitMemosRequestType.yaml
+  - properties:
+      memos:
+        description: >
+          The container for a list of debit memos. The maximum number of debit
+          memos is 50.
+        items:
+          $ref: ./POSTBulkDebitMemoFromInvoiceType.yaml
+        maxItems: 50
+        type: array
+    type: object
+example:
+  //: >-
+    Please replace the value of the `sourceType` field with `Invoice`. This is
+    not a request field, but only a comment on the `sourceType` field.
+  memos:
+    - autoPay: true
+      comment: the comment
+      effectiveDate: '2017-11-30'
+      invoiceId: 402890555a7d4022015a7dadb3b300a4
+      items:
+        - amount: 1
+          autoPost: false
+          comment: This is comment!
+          invoiceItemId: 402890555a7d4022015a7dadb3b700a6
+          quantity: 1
+          serviceEndDate: '2017-11-30'
+          serviceStartDate: '2017-11-01'
+          skuName: SKU-30
+          taxItems:
+            - amount: 0.01
+              jurisdiction: CALIFORNIA
+              locationCode: '06'
+              sourceTaxItemId: 402890555a7d4022015a7dadb39b00a1
+              taxCode: null
+              taxCodeDescription: null
+              taxDate: '2017-11-30'
+              taxExemptAmount: 0
+              taxName: STATE TAX
+              taxRate: 0.0625
+              taxRateDescription: This is tax rate description!
+              taxRateType: Percentage
+          taxMode: TaxExclusive
+          unitOfMeasure: Test_UOM
+      reasonCode: Charge Dispute
+  sourceType: Invoice

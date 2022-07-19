@@ -1,0 +1,8 @@
+allOf:
+  - properties:
+      ramps:
+        items:
+          $ref: ./RampResponse.yaml
+        type: array
+    type: object
+  - $ref: ./CommonResponseType.yaml

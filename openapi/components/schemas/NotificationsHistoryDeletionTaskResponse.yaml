@@ -1,0 +1,30 @@
+description: The notification history deletion task information.
+properties:
+  accountId:
+    description: >-
+      The ID of the account whose notification histories are deleted by the
+      current deletion task.
+    format: uuid
+    type: string
+  createdBy:
+    description: The ID of the user who submits the notification history deletion task.
+    format: uuid
+    type: string
+  createdOn:
+    description: The timestamp when the notification history deletion task is created.
+    type: integer
+  id:
+    description: The ID of the notification history deletion task.
+    format: uuid
+    type: string
+  status:
+    description: The status of the notification history deletion task.
+    enum:
+      - RUNNING
+      - FINISHED
+      - FAILED
+    type: string
+  tenantId:
+    description: The ID of the tenant where the notification history deletion task runs.
+    type: string
+type: object

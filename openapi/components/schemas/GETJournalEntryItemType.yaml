@@ -1,0 +1,58 @@
+allOf:
+  - properties:
+      accountingCodeName:
+        description: |
+          Name of the accounting code.
+        type: string
+      accountingCodeType:
+        description: >
+          Accounting code type.
+
+
+          Note that `On-Account Receivable` is only available if you enable the
+          Invoice Settlement feature. 
+        enum:
+          - AccountsReceivable
+          - On-Account Receivable
+          - Cash
+          - OtherAssets
+          - CustomerCashOnAccount
+          - DeferredRevenue
+          - SalesTaxPayable
+          - OtherLiabilities
+          - SalesRevenue
+          - SalesDiscounts
+          - OtherRevenue
+          - OtherEquity
+          - BadDebt
+          - OtherExpenses
+        type: string
+      amount:
+        description: |
+          Journal entry item amount in transaction currency.
+        format: decimal
+        type: string
+      glAccountName:
+        description: >
+          The account number in the general ledger (GL) that corresponds to the
+          accounting code.
+        type: string
+      glAccountNumber:
+        description: >
+          The account name in the general ledger (GL) that corresponds to the
+          accounting code.
+        type: string
+      homeCurrencyAmount:
+        description: |
+          Journal entry item amount in home currency.
+        format: decimal
+        type: string
+      type:
+        description: 'Type of journal entry item. '
+        enum:
+          - Credit
+          - Debit
+        type: string
+    type: object
+  - $ref: ./JournalEntryItemObjectCustomFields.yaml
+title: journalEntryItems

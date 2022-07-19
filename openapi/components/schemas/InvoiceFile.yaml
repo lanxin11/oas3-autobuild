@@ -1,0 +1,19 @@
+properties:
+  id:
+    description: >
+      The ID of the invoice PDF file. This is the ID for the file object and
+      different from the file handle ID in the `pdfFileUrl` field. To open a
+      file, you have to use the file handle ID.
+    type: string
+  pdfFileUrl:
+    description: >
+      The REST URL for the invoice PDF file. Click the URL to open the invoice
+      PDF file.
+    type: string
+  versionNumber:
+    description: |
+      The version number of the invoice PDF file.
+    format: int64
+    type: integer
+title: invoiceFiles
+type: object

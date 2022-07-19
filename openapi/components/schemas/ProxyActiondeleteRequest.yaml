@@ -1,0 +1,19 @@
+example:
+  ids:
+    - 2c93808457d787030157e031fcd34e19
+  type: ProductRatePlanCharge
+properties:
+  ids:
+    description: |
+      A list of one or more IDs for the objects you want to delete.
+    items:
+      type: string
+    type: array
+  type:
+    description: |
+      The type of object that you are deleting.
+    type: string
+required:
+  - type
+  - ids
+type: object

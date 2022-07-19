@@ -1,0 +1,202 @@
+allOf:
+  - properties:
+      AccountingCode:
+        description: >2-
+           The accounting code for the item's charge. Accounting codes group transactions that contain similar accounting attributes.
+          **Character limit**: 100 **Values**: inherited from
+          `RatePlanCharge.AccountingCode` 
+        type: string
+      AppliedToInvoiceItemId:
+        description: >2-
+           Associates a discount invoice item to a specific invoice item.
+
+          **Character limit**: 32
+
+
+          **Values**: inherited from `InvoiceItem.Id` for the invoice item that
+          the discount charge is applied to 
+        type: string
+      ChargeAmount:
+        description: >2-
+           The amount being charged for the invoice item. This amount doesn't include taxes regardless if the charge's tax mode is inclusive or exclusive.
+          **Character limit**: **Values**: automatically calculated from
+          multiple fields in multiple objects 
+        format: double
+        type: number
+      ChargeDate:
+        description: |2-
+           The date when the Invoice Item is created .
+          **Character limit**: 29 **Values**: automatically generated 
+        format: date-time
+        type: string
+      ChargeName:
+        description: >2-
+           The name of the invoice item's charge.
+          **Character limi**t: 50 **Values: **inherited from
+          `RatePlanCharge.Name` 
+        type: string
+      CreatedById:
+        description: |2-
+           The user ID of the person who created the invoice item.
+          **Character limit**: 32 **Values**: automatically generated 
+        type: string
+      CreatedDate:
+        description: |2-
+           The date the invoice item was created.
+          **Character limit:** 29 **Values**: automatically generated 
+        format: date-time
+        type: string
+      ExcludeItemBillingFromRevenueAccounting:
+        description: ' Whether excluding item from revenue accounting. The flag to exclude non-revenue related invoice items, invoice item adjustments, credit memo items, and debit memo items from revenue accounting. **Note**: This field is only available if you have the RevPro Integration feature enabled. And you must set the `X-Zuora-WSDL-Version` request header to `116` or later. Otherwise, an error occurs. **Character limit**: 8 **Values**: Default value is false, inherited from order line item. '
+        type: boolean
+      Id:
+        description: Object identifier.
+        type: string
+      InvoiceId:
+        description: |2-
+           The ID of the invoice that's associated with this invoice item.
+          **Character limit**: 32 **Values**: inherited from `Invoice.Id` 
+        type: string
+      ProcessingType:
+        description: |2
+           Identifies the kind of charge where 0 is a charge, 1 is a discount, 2 is a prepayment, and 3 is a tax. The returned value is text not decimal on data sources.
+          **Character limit**: **Values: **
+
+          - 0: charge
+          - 1: discount
+          - 2: prepayment
+          - 3: tax
+        format: double
+        type: number
+      ProductDescription:
+        description: >2-
+           A description of the product associated with this invoice item.
+
+          **Character limit**: 500
+
+
+          **Values**: inherited from `Product.Description`
+
+
+          **Note**: This value changes if `Product.Description` is updated. The
+          values of `UpdatedById` and `UpdatedDate` for the `InvoiceItem` do not
+          change when `Product.Description` is updated. 
+        type: string
+      ProductName:
+        description: >2-
+           The name of the product associated with this invoice item.
+
+          **Character limit**: 255
+
+
+          **Values**: inherited from `Product.Name`
+
+
+          **Note**: This value changes if `Product.Name` is updated. The values
+          of `UpdatedById` and `UpdatedDate` for the `InvoiceItem` do not change
+          when `Product.Name` is updated. 
+        type: string
+      Quantity:
+        description: |2-
+           The number of units for this invoice item.
+          **Values**: inherited from `RatePlanCharge.Quantity` 
+        format: double
+        type: number
+      RatePlanChargeId:
+        description: >2-
+           The ID of the rate plan charge that's associated with this invoice item.
+          **Character limit**: 32 **Values**: inherited from
+          `RatePlanCharge.Id` 
+        type: string
+      RevRecStartDate:
+        description: >2-
+           The date when revenue recognition is triggered.
+          **Character limit**: 29 **Values**: generated from
+          `InvoiceItem.RevRecTriggerCondition` 
+        format: date
+        type: string
+      SKU:
+        description: |2-
+           The unique SKU for the product associated with this invoice item.
+          **Character limit**: 255 **Values**: inherited from `Product.SKU` 
+        type: string
+      ServiceEndDate:
+        description: |2-
+           The end date of the service period associated with this invoice item. Service ends one second before the date in this value.
+          **Character limit**: 29 **Values**: automatically generated 
+        format: date
+        type: string
+      ServiceStartDate:
+        description: |2-
+           The start date of the service period associated with this invoice item. If the associated charge is a one-time fee, then this date is the date of that charge.
+          **Character limit:** 29 **Values**: automatically generated 
+        format: date
+        type: string
+      SourceItemType:
+        description: |2
+           The type of the source item. **Note**: To use this field, you must set the `X-Zuora-WSDL-Version` request header to `118` or later. Otherwise, an error occurs. **Character limit**: 16 **Values**: one of the following enum values:
+
+          -  SubscriptionComponent
+
+          -  Rounding
+
+          -  ProductRatePlanCharge
+
+          -  None
+
+          -  OrderLineItem
+        type: string
+      SubscriptionId:
+        description: |2-
+           The ID of the subscription associated with the invoice item.
+          **Character limit**: 32 **Values**: inherited from `Subscription.Id` 
+        type: string
+      TaxAmount:
+        description: >2-
+           The amount of tax applied to the invoice item's charge.
+          **Character limit**: **Values**: calculated from multiple fields in
+          the ProductRatePlanCharge object 
+        format: double
+        type: number
+      TaxCode:
+        description: >2-
+           Specifies the tax code for taxation rules.
+          **Character limit**: 6 **Values**: inherited from
+          `ProductRatePlanCharge.TaxCode` 
+        type: string
+      TaxExemptAmount:
+        description: >2-
+           The calculated tax amount excluded due to the exemption.
+          **Character limit**: **Values**: calculated from multiple fields in
+          the ProductRatePlanCharge object 
+        format: double
+        type: number
+      TaxMode:
+        description: |2-
+           The tax mode of the invoice item.
+          **Character limit**: 12 **Values**: `TaxExclusive`, `TaxInclusive` 
+        type: string
+      UOM:
+        description: ' Specifies the units to measure usage. **Character limit**: **Values**: inherited from `ProductRatePlanCharge.UOM` '
+        type: string
+      UnitPrice:
+        description: >2-
+           The per-unit price of the invoice item.
+          **Character limit**: **Values**: calculated from multiple fields in
+          ProductRatePlanCharge and ProductRatePlanChargeTier objets 
+        format: double
+        type: number
+      UpdatedById:
+        description: |2-
+           The ID of the user who last updated the invoice item.
+          **Character limit**: 32 **Values**: automatically generated 
+        type: string
+      UpdatedDate:
+        description: |2-
+           The date when the invoice item was last updated.
+          **Character limit**: 29 **Values**: automatically generated 
+        format: date-time
+        type: string
+    type: object
+  - $ref: ./InvoiceItemObjectNSFields.yaml
+  - $ref: ./InvoiceItemObjectCustomFields.yaml

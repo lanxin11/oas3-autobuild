@@ -1,0 +1,7 @@
+properties:
+  Errors:
+    description: The error messages
+    items:
+      type: string
+    type: array
+type: object

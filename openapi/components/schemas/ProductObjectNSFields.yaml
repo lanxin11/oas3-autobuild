@@ -1,0 +1,37 @@
+description: >
+  Container for Product fields provided by the [Zuora Connector for
+  NetSuite](https://www.zuora.com/connect/app/?appId=265).
+properties:
+  IntegrationId__NS:
+    description: >
+      ID of the corresponding object in NetSuite. Only available if you have
+      installed the [Zuora Connector for
+      NetSuite](https://www.zuora.com/connect/app/?appId=265).
+    maxLength: 255
+    type: string
+  IntegrationStatus__NS:
+    description: >
+      Status of the product's synchronization with NetSuite. Only available if
+      you have installed the [Zuora Connector for
+      NetSuite](https://www.zuora.com/connect/app/?appId=265).
+    maxLength: 255
+    type: string
+  ItemType__NS:
+    description: >
+      Type of item that is created in NetSuite for the product. Only available
+      if you have installed the [Zuora Connector for
+      NetSuite](https://www.zuora.com/connect/app/?appId=265).
+    enum:
+      - Inventory
+      - Non Inventory
+      - Service
+    type: string
+  SyncDate__NS:
+    description: >
+      Date when the product was synchronized with NetSuite. Only available if
+      you have installed the [Zuora Connector for
+      NetSuite](https://www.zuora.com/connect/app/?appId=265).
+    maxLength: 255
+    type: string
+title: productFieldsNS
+type: object

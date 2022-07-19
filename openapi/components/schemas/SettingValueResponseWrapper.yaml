@@ -1,0 +1,26 @@
+properties:
+  id:
+    description: |
+      The Id of the corresponding request.
+    type: string
+  method:
+    description: |
+      The HTTP method. It is the same as that of the corresponding request.
+    enum:
+      - GET
+      - HEAD
+      - POST
+      - PUT
+      - PATCH
+      - DELETE
+      - OPTIONS
+      - TRACE
+    type: string
+  response:
+    $ref: ./SettingValueResponse.yaml
+  url:
+    description: |
+      The url as specified in the corresponding request.
+    type: string
+title: settingsValueResponseWrapper
+type: object

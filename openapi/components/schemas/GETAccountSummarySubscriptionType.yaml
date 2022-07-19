@@ -1,0 +1,60 @@
+allOf:
+  - properties:
+      autoRenew:
+        description: |
+          If `true`, auto-renew is enabled. If `false`, auto-renew is disabled.
+        type: boolean
+      id:
+        description: |
+          Subscription ID.
+        type: string
+      initialTerm:
+        description: |
+          Duration of the initial subscription term in whole months. 
+        type: string
+      ratePlans:
+        description: |
+          Container for rate plans for this subscription.
+        items:
+          $ref: ./GETAccountSummarySubscriptionRatePlanType.yaml
+        type: array
+      renewalTerm:
+        description: |
+          Duration of the renewal term in whole months.
+        type: string
+      status:
+        description: >
+          Subscription status; possible values are: `Draft`,
+          `PendingActivation`, `PendingAcceptance`, `Active`, `Cancelled`,
+          `Expired`.
+        type: string
+      subscriptionNumber:
+        description: |
+          Subscription Number.
+        type: string
+      subscriptionStartDate:
+        description: |
+          Subscription start date.
+        format: date
+        type: string
+      termEndDate:
+        description: >
+          End date of the subscription term. If the subscription is evergreen,
+          this is either null or equal to the cancellation date, as appropriate.
+        format: date
+        type: string
+      termStartDate:
+        description: >
+          Start date of the subscription term. If this is a renewal
+          subscription, this date is different than the subscription start date.
+        format: date
+        type: string
+      termType:
+        description: |
+          Possible values are: `TERMED`, `EVERGREEN`.
+        type: string
+    type: object
+  - $ref: ./SubscriptionObjectQTFields.yaml
+  - $ref: ./SubscriptionObjectNSFields.yaml
+  - $ref: ./SubscriptionObjectCustomFields.yaml
+title: subscriptions

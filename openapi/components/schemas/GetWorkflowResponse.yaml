@@ -1,0 +1,102 @@
+properties:
+  cpuTime:
+    description: |
+      The overall CPU time for the execution of the workflow.
+    format: time
+    type: string
+  createdAt:
+    description: >
+      The date and time when the workflow is created, in the `YYYY-MM-DD
+      HH:MM:SS` format..
+    format: datetime
+    type: string
+  finishedAt:
+    description: >
+      The date and time when the execution of the workflow completes, in the
+      `YYYY-MM-DD HH:MM:SS` format.
+    format: datetime
+    type: string
+  id:
+    description: |
+      The unique ID of the workflow.
+    type: integer
+  messages:
+    description: |
+      Messages from tasks. 
+
+      **Note:** This field is only returned in Production.
+    type: object
+  name:
+    description: |
+      The unique run number of the workflow.
+    type: string
+  originalWorkflowId:
+    description: |
+      The ID of the workflow setup.
+    type: string
+  runTime:
+    description: |
+      The execution time of the workflow including the waiting time, in seconds.
+    format: double
+    type: number
+  status:
+    description: |
+      The status of the workflow:
+        - Queued: The workflow is in queue for being processed.
+        - Processing: The workflow is in process.
+        - Stopping: The workflow is being stopped through Zuora UI.
+        - Stopped: The workflow is stopped through Zuora UI.
+        - Finished: The workflow is finished. When a workflow is finished, it might have tasks pending for retry or delay. Pending tasks do not block the onfinish branch of the workflow, but they block the oncomplete branch of the iterate. 
+    enum:
+      - Queued
+      - Processing
+      - Stopping
+      - Stopped
+      - Finished
+    type: string
+  tasks:
+    description: |
+      An object containing task counts.
+    properties:
+      error:
+        description: |
+          The number of tasks in **Error** state.
+        type: integer
+      pending:
+        description: |
+          The number of tasks in **Pending** state.
+        type: integer
+      processing:
+        description: |
+          The number of tasks in **Processing** state.
+        type: integer
+      queued:
+        description: |
+          The number of tasks in **Queued** state.
+        type: integer
+      stopped:
+        description: |
+          The number of tasks in **Stopped** state.
+        type: integer
+      success:
+        description: |
+          The number of tasks in **Success** state.
+        type: integer
+      total:
+        description: |
+          The total number of tasks.
+        type: integer
+    type: object
+  type:
+    description: |
+      The type of the current workflow. Possible values:
+        - `Workflow::Setup`: The workflow is a setup and is used for creating workflow instances.
+        - `Workflow::Instance`: The workflow is an execution that has data.
+    type: string
+  updatedAt:
+    description: >
+      The date and time when the workflow is updated the last time, in the
+      `YYYY-MM-DD HH:MM:SS` format.
+    format: datetime
+    type: string
+type: object

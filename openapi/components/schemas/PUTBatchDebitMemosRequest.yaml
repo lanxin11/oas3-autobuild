@@ -1,0 +1,14 @@
+example:
+  debitMemos:
+    - dueDate: '2017-12-28'
+      id: 402890d25f9f083f015f9f28041d0008
+    - dueDate: '2017-12-20'
+      id: 402890555a87d7f5015a892f2ba10057
+properties:
+  debitMemos:
+    description: |
+      Container for debit memo update details.
+    items:
+      $ref: ./BatchDebitMemoType.yaml
+    type: array
+type: object

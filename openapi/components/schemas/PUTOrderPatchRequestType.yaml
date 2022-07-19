@@ -1,0 +1,42 @@
+example:
+  customFields:
+    order_cf__c: order custom fields
+  subscriptions:
+    - orderActions:
+        - customFields:
+            order_action_cf__c: Order action custom fields
+            order_action_undex__c: Order action custom fields
+          sequence: 0
+      subscriptionNumber: S-00005
+properties:
+  customFields:
+    $ref: ./OrderObjectCustomFields.yaml
+  subscriptions:
+    items:
+      properties:
+        orderActions:
+          items:
+            properties:
+              customFields:
+                $ref: ./OrderActionObjectCustomFields.yaml
+              orderActionId:
+                description: >
+                  The Id of the order action in the order. You can provide
+                  either the `sequence` or the `orderActionId` field to specify
+                  which order action to update. You cannot use then both at the
+                  same time.
+                type: string
+              sequence:
+                description: >
+                  The sequence number of the order action in the order. You can
+                  provide either the `sequence` or the `orderActionId` field to
+                  specify which order action to update. You cannot use then both
+                  at the same time.
+                type: integer
+            type: object
+          type: array
+        subscriptionNumber:
+          type: string
+      type: object
+    type: array
+type: object

@@ -1,0 +1,14 @@
+name: Accept
+in: header
+required: false
+description: >
+  Expressed as MIME types that the client is able to understand. Using content
+  negotiation, the server then selects one of the proposals, uses it and informs
+  the client of its choice with the `Content-Type` response header. The possible
+  response MIME types are `application/json-seq` compatible with
+  http://jsonlines.org/, and `text/csv` compatible with RFC 4180.
+  `application/json-seq` is the default response MIME type. If the `Accept`
+  header is not sepecified, or set */*, the response body is returned in
+  application/json-seq MIME type.
+schema:
+  type: string

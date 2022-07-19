@@ -1,0 +1,422 @@
+allOf:
+  - properties:
+      BillCycleType:
+        description: >2-
+           Specifies how to determine the billing day for the charge.
+
+
+          **Character limit**: 20
+
+
+
+          **Values**: inherited from `ProductRatePlanCharge.BillCycleType`
+          **Note:** You can override the value inherited from the Product Rate
+          Plan Charge, but only when creating a new subscription or a New
+          Product amendment. 
+        type: string
+      BillingPeriod:
+        description: >2-
+           Allows billing period to be overridden on rate plan charge.
+
+
+
+          **Values**: inherited from `ProductRatePlanCharge.BillingPeriod`
+          **Note:** You can override the value inherited from the Product Rate
+          Plan Charge, but only when creating a new subscription or a New
+          Product amendment. 
+        type: string
+      BillingTiming:
+        description: >2+
+           The billing timing for the charge. You can choose to bill in advance or in arrears for recurring charge types. This field is not used in one-time or usage based charge types.
+
+
+          **Character limit**:
+
+
+
+          **Values**: one of the following:
+
+
+          - I`n Advance`
+
+          - `In Arrears`
+
+          **Note:** You can override the value inherited from the Product Rate
+          Plan Charge when a subscription has a recurring charge type.
+
+          This feature is in **Limited Availability**. If you wish to have
+          access to the feature, submit a request at [Zuora Global
+          Support](http://support.zuora.com/).
+
+        type: string
+      ChargeNumber:
+        description: |2
+           A unique number that identifies the charge. This number is returned as a string.
+
+
+          **Character limit**: 50
+
+
+          **Values**: one of the following:
+
+          - automatically generated if left null
+          - a unique number of 50 characters or fewer
+        type: string
+      DiscountAmount:
+        description: |2-
+           Specifies the amount of a fixed-amount discount. You can provide a value for this field if the `ChargeModel` field value is `Discount-Fixed Amount`. If this field is included in a query, the query will filter out the rate plans whose `ChargeModel` field is not of a Discount type. You cannot query this field with the following fields in a single query:
+
+          - Price
+          - IncludedUnits
+          - DiscountPercentage
+          - OveragePrice
+
+
+          **Character limit**: 16
+
+
+          **Values**: a valid currency amount 
+        format: decimal
+        type: string
+      DiscountPercentage:
+        description: ' Query Filter '
+        format: decimal
+        type: string
+      EndDateCondition:
+        description: >2-
+           Defines when the charge ends after the charge trigger date. This field can be updated when **Status** is `Draft`.
+
+
+
+          **Values**: one of the following:
+
+
+          - `SubscriptionEnd`: The charge ends on the subscription end date
+          after the charge trigger date. This is the default value.
+
+          - `FixedPeriod`: The charge ends after a specified period based on the
+          trigger date of the charge. If you set this field to `FixedPeriod`,
+          you must specify the length of the period and a period type by
+          defining the `UpToPeriods` and `UpToPeriodsType` fields.
+
+          - `SpecificEndDate`: The specific date on which the charge ends. If
+          you set this field to `SpecificEndDate`, you must specify the specific
+          date by defining the `SpecificEndDate` field.
+
+
+
+
+          **Note**: If the subscription ends before the charge end date, the
+          charge ends when the subscription ends. But if the subscription end
+          date is subsequently changed through a Renewal, or Terms and
+          Conditions amendment, the charge will end on the charge end date. 
+        type: string
+      ListPriceBase:
+        description: |
+          The list price base for the product rate plan charge.
+
+
+          **Values**: one of the following:
+
+          - `Per Month`
+          - `Per Billing Period`
+          - `Per Week`
+        type: string
+      Price:
+        description: ' Query Filter '
+        format: decimal
+        type: string
+      PriceChangeOption:
+        description: |2
+           Applies an automatic price change when a termed subscription is renewed.
+
+
+          **Character limit**:
+
+
+          **Values**: one of the following:
+
+          - `NoChange` (default)
+          - `SpecificPercentageValue`
+          - `UseLatestProductCatalogPricing`
+        type: string
+      PriceIncreasePercentage:
+        description: |2-
+           Specifies the percentage to increase or decrease the price of renewed subscriptions. Use this field if the `ProductRatePlanCharge`.`PriceChangeOption` value is set to `SpecificPercentageValue`.
+
+
+          **Character limit**: 16
+
+
+          **Values**: a decimal value between -100 and 100 
+        format: decimal
+        type: string
+      ProductRatePlanChargeId:
+        description: ''
+        type: string
+      Quantity:
+        description: |2-
+           The default quantity of units, such as the number of authors in a hosted wiki service. Valid for all charge models except for Flat Fee pricing. This field is only rquired if the charge model is tiered pricing or volume pricing.
+
+
+          **Character limit**: 16
+
+
+          **Values**: a valid quantity value 
+        format: double
+        type: number
+      RatingGroup:
+        description: >
+          Specifies a rating group based on which usage records are rated. 
+
+
+          Values:
+
+
+          * `ByBillingPeriod` (default): The rating is based on all the usages
+          in a billing period.       
+
+          * `ByUsageStartDate`: The rating is based on all the usages on the
+          same usage start date. 
+
+          * `ByUsageRecord`: The rating is based on each usage record.
+
+          * `ByUsageUpload`: The rating is based on all the usages in a uploaded
+          usage file (.xls or .csv).
+
+
+          **Note:**
+
+
+          The `ByBillingPeriod` value can be applied for all charge models.
+
+          The `ByUsageStartDate`, `ByUsageRecord`, and `ByUsageUpload` values
+          can only be applied for per unit, volume pricing, and tiered pricing
+          charge models.
+
+          Use this field only for Usage charges. One-Time Charges and Recurring
+          Charges return `NULL`.
+        type: string
+      RevRecCode:
+        description: |2-
+           Associates this product rate plan charge with a specific revenue recognition code.
+
+
+          **Character limit**: 70
+
+
+          **Values**: a valid revenue recognition code 
+        type: string
+      RevRecTriggerCondition:
+        description: |2+
+           Specifies when revenue recognition begins.
+
+
+          **Character limit**: 22
+
+
+          **Values**: one of the following:
+
+          -  `ContractEffectiveDate`
+
+          -  `ServiceActivationDate`
+
+          -  `CustomerAcceptanceDate`
+
+        type: string
+      RevenueRecognitionRuleName:
+        description: >2-
+           Specifies the Revenue Recognition Rule that you want the Rate Plan Charge to use. This field can be updated when **Status** is `Draft`. By default, the Revenue Recognition Rule is inherited from the Product Rate Plan Charge. For Amend
+          calls, you can use this field only for NewProduct amendments. For
+          Update
+
+          calls, you can use this field only to update subscriptions in draft
+          status. Note that if you use this field to specify a Revenue
+          Recognition Rule for the Rate Plan Charge, the rule will remain as
+          specified even if you later change the rule used by the corresponding
+          Product Rate Plan Charge. See [Z-Billing User
+          Role](https://knowledgecenter.zuora.com/CF_Users_and_Administrators/A_Administrator_Settings/User_Roles/d_Billing_Roles)
+          permission enabled to use this field.
+
+
+
+
+          **Character limit**: n/a
+
+
+
+          **Values**: name of an active Revenue Recognition Rule 
+        type: string
+      SpecificBillingPeriod:
+        description: >2-
+           Customizes the number of months or weeks for the charges billing period. This field is only required if you set the value of the `BillingPeriod` field to `Specific Months` or `Specific Weeks`.
+
+
+          **Character limit**: 5
+
+
+
+          **Values**: inherited from `ProductRatePlanCharge.BillingPeriod`
+          **Note:** You can override the value inherited from the Product Rate
+          Plan Charge, but only when creating a new subscription or a New
+          Product amendment. 
+        format: int64
+        type: integer
+      SpecificEndDate:
+        description: >2
+           The specific date on which the charge ends, in `yyyy-mm-dd` format.
+
+
+          **Character limit**: 29
+
+
+
+
+          **Note**:
+
+
+          - This field is only applicable when the `EndDateCondition` field is
+          set to `SpecificEndDate`.
+
+          - If the subscription ends before the specific end date, the charge
+          ends when the subscription ends. But if the subscription end date is
+          subsequently changed through a Renewal, or Terms and Conditions
+          amendment, the charge will end on the specific end date.
+        format: date
+        type: string
+      TriggerDate:
+        description: |2+
+           The date when the charge becomes effective and billing begins, in `yyyy-mm-dd` format. This field is only required if the `TriggerEvent` field is set to `SpecificDate`.
+
+
+          **Character limit**: 29
+
+        format: date
+        type: string
+      TriggerEvent:
+        description: >2
+           Specifies when to start billing the customer for the charge.
+          **Note: **This field can be passed through the subscribe
+
+          and amend
+
+          calls and will override the default value set on the Product Rate Plan
+          Charge.
+
+
+
+          **Character limit**: 18
+
+
+
+          **Values**: inherited from `ProductRatePlanCharge.TriggerEvent` and
+          can be one of the following values:
+
+
+          - `ContractEffective `is the date when the subscription's contract
+          goes into effect and the charge is ready to be billed.
+
+          - `ServiceActivationDate `is when the services or products for a
+          subscription have been activated and the customers have access.
+
+          - `CustomerAcceptance `is when the customer accepts the services or
+          products for a subscription.
+
+          - SpecificDate is valid only on the RatePlanCharge.
+        type: string
+      UpToPeriods:
+        description: >2
+           Specifies the length of the period during which the charge is active. If this period ends before the subscription ends, the charge ends when this period ends.
+
+
+          **Character limit**: 5
+
+
+
+          **Values**: inherited from `ProductRatePlanCharge.UpToPeriods`
+
+
+          **Note**:
+
+
+          - You must use this field together with the `UpToPeriodsType` field to
+          specify the time period. This field is only applicable only when the
+          `EndDateCondition` field is set to `FixedPeriod`.
+
+          - You can override the value inherited from the Product Rate Plan
+          Charge, but only when creating a new subscription or a New Product
+          amendment.
+
+          - Use this field to override the value in
+          `ProductRatePlanCharge.UpToPeriod`.
+
+          - If you override the value in this field, enter a whole number
+          between 0 and 65535, exclusive.
+
+          - If the subscription end date is subsequently changed through a
+          Renewal, or Terms and Conditions amendment, the charge end date will
+          change accordingly up to the original period end.
+        format: int64
+        type: integer
+      UpToPeriodsType:
+        description: >2
+           The period type used to define when the charge ends. This field can be updated when **Status** is `Draft`.
+
+
+          **Values**: one of the following:
+
+
+          - `Billing Periods` (default)
+
+          - `Days`
+
+          - `Weeks`
+
+          - `Months`
+
+          - `Years`
+
+
+
+          **Note**:
+
+
+          - You must use this field together with the `UpToPeriods` field to
+          specify the time period.
+
+          - This field is only applicable only when the `EndDateCondition` field
+          is set to `FixedPeriod`.
+        type: string
+      WeeklyBillCycleDay:
+        description: >2
+           Specifies which day of the week as the bill cycle day (BCD) for the charge.
+          This feature is in **Limited Availability**. If you wish to have
+          access to the feature, submit a request at [Zuora Global
+          Support](http://support.zuora.com/).
+
+
+
+
+
+          **Values**: one of the following:
+
+
+          - `Sunday`
+
+          - `Monday`
+
+          - `Tuesday`
+
+          - `Wednesday`
+
+          - `Thursday`
+
+          - `Friday`
+
+          - `Saturday`
+        type: string
+    required:
+      - ProductRatePlanChargeId
+    type: object
+  - $ref: ./RatePlanChargeObjectCustomFields.yaml
+title: RatePlanCharge

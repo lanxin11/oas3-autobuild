@@ -1,0 +1,51 @@
+example:
+  accountId: 402881e861bd8a7e0161c6a453750026
+  accountNumber: A00000004
+  gatewayOrderId: A001
+  transactionId: '5205213224866613203009'
+properties:
+  accountId:
+    description: >-
+      The ID of the customer account. This field is generally required, but is
+      optional if you are using the Ingenico ePayments gateway.
+    type: string
+  accountNumber:
+    description: >-
+      The number of the customer account. This field is generally required, but
+      is optional if you are using the Ingenico ePayments gateway.
+    type: string
+  gatewayOptions:
+    description: |
+      The field used to pass gateway-specific parameters and parameter values.
+    properties:
+      key:
+        description: |
+          The name of a gateway-specific parameter.
+        type: string
+      value:
+        description: |
+          The value of the gateway-specific parameter.
+        type: string
+    type: object
+  gatewayOrderId:
+    description: >
+      The order ID for the specific gateway.
+
+
+      The specified order ID will be used in transaction authorization. If you
+      specify an empty value for this field, Zuora will generate an ID and you
+      will have to associate this ID with your order ID by yourself if needed.
+      It is recommended to specify an ID for this field.
+    type: string
+  paymentGatewayId:
+    description: >-
+      The ID of the payment gateway instance. This field is required if you do
+      not specify the `accountId` and `accountNumber` fields.
+    type: string
+  transactionId:
+    description: The ID of the transaction.
+    type: string
+required:
+  - transactionId
+  - gatewayOrderId
+type: object

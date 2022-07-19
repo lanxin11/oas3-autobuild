@@ -1,0 +1,115 @@
+allOf:
+  - description: |
+      Contact details associated with an account.
+    properties:
+      address1:
+        description: >
+          First line of the contact's address. This is often a street address or
+          a business name.
+        maxLength: 255
+        type: string
+      address2:
+        description: |
+          Second line of the contact's address.
+        maxLength: 255
+        type: string
+      city:
+        description: |
+          City of the contact's address.
+        maxLength: 40
+        type: string
+      country:
+        description: >
+          Country; must be a valid country name or abbreviation. If using Zuora
+          Tax, you must specify a country in the sold-to contact to calculate
+          tax. A bill-to contact may be used if no sold-to contact is provided.
+        maxLength: 64
+        type: string
+      county:
+        description: |
+          County of the contact's address.
+        maxLength: 32
+        type: string
+      fax:
+        description: |
+          Fax number of the contact.
+        maxLength: 40
+        type: string
+      firstName:
+        description: |
+          First name of the contact.
+        maxLength: 100
+        type: string
+      homePhone:
+        description: |
+          Home phone number of the contact.
+        maxLength: 40
+        type: string
+      lastName:
+        description: |
+          Last name of the contact.
+        maxLength: 100
+        type: string
+      mobilePhone:
+        description: |
+          Mobile phone number of the contact.
+        maxLength: 40
+        type: string
+      nickname:
+        description: |
+          Nickname of the contact.
+        maxLength: 100
+        type: string
+      otherPhone:
+        description: >
+          Additional phone number of the contact. Use the `otherPhoneType` field
+          to specify the type of phone number.
+        maxLength: 40
+        type: string
+      otherPhoneType:
+        description: |
+          Specifies the type of phone number in the `otherPhone` field.
+        enum:
+          - Work
+          - Mobile
+          - Home
+          - Other
+        type: string
+      personalEmail:
+        description: |
+          Personal email address of the contact.
+        format: email
+        maxLength: 80
+        type: string
+      postalCode:
+        description: |
+          ZIP code or other postal code of the contact's address.
+        maxLength: 20
+        type: string
+      state:
+        description: |
+          State or province of the contact's address.
+        maxLength: 40
+        type: string
+      taxRegion:
+        description: >
+          Region defined in your taxation rules. Only applicable if you use
+          Zuora Tax.
+        maxLength: 32
+        type: string
+      workEmail:
+        description: |
+          Business email address of the contact.
+        format: email
+        maxLength: 80
+        type: string
+      workPhone:
+        description: |
+          Business phone number of the contact.
+        maxLength: 40
+        type: string
+    required:
+      - firstName
+      - lastName
+    type: object
+  - $ref: ./ContactObjectCustomFields.yaml

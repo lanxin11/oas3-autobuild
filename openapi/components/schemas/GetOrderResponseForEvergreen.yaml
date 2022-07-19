@@ -1,0 +1,6 @@
+allOf:
+  - $ref: ./CommonResponseType.yaml
+  - properties:
+      order:
+        $ref: ./OrderForEvergreen.yaml
+    type: object

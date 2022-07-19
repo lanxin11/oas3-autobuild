@@ -1,0 +1,94 @@
+allOf:
+  - properties:
+      address1:
+        description: |
+          First address line, 255 characters or less.
+        type: string
+      address2:
+        description: |
+          Second address line, 255 characters or less.
+        type: string
+      city:
+        description: |
+          City, 40 characters or less.
+        type: string
+      country:
+        description: >
+          Country; must be a valid country name or abbreviation. If using Zuora
+          Tax, you must specify a country in the sold-to contact to calculate
+          tax. A bill-to contact may be used if no sold-to contact is provided.
+        type: string
+      county:
+        description: >
+          County; 32 characters or less. May optionally be used by Zuora Tax to
+          calculate county tax.
+        type: string
+      fax:
+        description: |
+          Fax phone number, 40 characters or less.
+        type: string
+      firstName:
+        description: |
+          First name, 100 characters or less.
+        type: string
+      homePhone:
+        description: |
+          Home phone number, 40 characters or less.
+        type: string
+      lastName:
+        description: |
+          Last name, 100 characters or less.
+        type: string
+      mobilePhone:
+        description: |
+          Mobile phone number, 40 characters or less.
+        type: string
+      nickname:
+        description: |
+          Nickname for this contact
+        type: string
+      otherPhone:
+        description: |
+          Other phone number, 40 characters or less.
+        type: string
+      otherPhoneType:
+        description: |
+          Possible values are: `Work`, `Mobile`, `Home`, `Other`.
+        type: string
+      personalEmail:
+        description: |
+          Personal email address, 80 characters or less.
+        type: string
+      state:
+        description: >
+          State; must be a valid state or province name or 2-character
+          abbreviation. If using Zuora Tax, be aware that Zuora Tax  requires a
+          state (in the US) or province (in Canada) in this field for the
+          sold-to contact to calculate tax, and that a bill-to contact may be
+          used if no sold-to contact is provided.
+        type: string
+      taxRegion:
+        description: >
+          If using Zuora Tax, a region string as optionally defined in your tax
+          rules. Not required.
+        type: string
+      workEmail:
+        description: |
+          Work email address, 80 characters or less.
+        type: string
+      workPhone:
+        description: |
+          Work phone number, 40 characters or less.
+        type: string
+      zipCode:
+        description: |
+          Zip code, 20 characters or less.
+        type: string
+    required:
+      - firstName
+      - lastName
+    type: object
+  - $ref: ./ContactObjectCustomFields.yaml
+description: |
+  Container for optional sold-to contact.
+title: Contact

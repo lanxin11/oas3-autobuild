@@ -1,0 +1,35 @@
+allOf:
+  - properties:
+      add:
+        description: |
+          The list of product rate plans to be added to the catalog group.
+        items:
+          $ref: ./POSTorPUTCatalogGroupAddProductRatePlan.yaml
+        title: add
+        type: array
+      description:
+        description: |
+          The description of the catalog group.
+        type: string
+      name:
+        description: |
+          The unique name of the catalog group.
+        type: string
+      remove:
+        description: |
+          The list of product rate plans to be removed from the catalog group.
+        items:
+          $ref: ./PUTCatalogGroupRemoveProductRatePlan.yaml
+        type: array
+    type: object
+example:
+  add:
+    - grade: 3
+      id: 4028e5ab7f1b600c017f1b787d5d01cf
+    - grade: 2
+      id: 4028e5ab7f1b600c017f1b787d5d01ac
+  description: description
+  name: name
+  remove:
+    - id: 4028e5ab7f1b600c017f1b787d5d01cf
+    - id: 4028e5ab7f1b600c017f1b787d5d01ac

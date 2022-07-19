@@ -1,0 +1,23 @@
+properties:
+  processId:
+    description: |
+      The Id of the process that handle the operation.
+    type: string
+  reasons:
+    items:
+      properties:
+        code:
+          description: |
+            The error code of response.
+          type: string
+        message:
+          description: |
+            The detail information of the error response
+          type: string
+      type: object
+    type: array
+  success:
+    description: |
+      Indicates whether the call succeeded.
+    type: boolean
+type: object

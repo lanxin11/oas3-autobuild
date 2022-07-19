@@ -1,0 +1,9 @@
+name: entityId
+in: header
+required: false
+description: >-
+  The Id of the entity that you want to access. Note that you must have
+  permission to access the entity. For more information, see [REST
+  Authentication](https://www.zuora.com/developer/api-reference/#section/Authentication/Entity-Id-and-Entity-Name).
+schema:
+  type: string

@@ -1,0 +1,14 @@
+example:
+  requests:
+    - id: '1'
+      method: GET
+      url: /billing-rules
+    - id: '2'
+      method: GET
+      url: /accounting-rules
+properties:
+  requests:
+    items:
+      $ref: ./SettingValueRequest.yaml
+    type: array
+type: object

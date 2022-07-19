@@ -1,0 +1,36 @@
+properties:
+  Gateway:
+    description: ''
+    type: string
+  GatewayReasonCode:
+    description: ''
+    type: string
+  GatewayReasonCodeDescription:
+    description: ''
+    type: string
+  GatewayTransactionType:
+    description: ''
+    type: string
+  Id:
+    description: Object identifier.
+    type: string
+  PaymentMethodId:
+    description: ''
+    type: string
+  PaymentMethodType:
+    description: ''
+    type: string
+  RequestString:
+    description: ''
+    type: string
+  ResponseString:
+    description: ''
+    type: string
+  TransactionDate:
+    description: ''
+    format: date-time
+    type: string
+  TransactionId:
+    description: ''
+    type: string
+type: object

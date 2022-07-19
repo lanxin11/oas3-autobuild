@@ -1,0 +1,10 @@
+properties:
+  id:
+    description: |
+      ID of the updated payment method.
+    type: string
+  success:
+    description: |
+      Returns `true` if the request was processed successfully.
+    type: boolean
+type: object

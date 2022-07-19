@@ -1,0 +1,584 @@
+allOf:
+  - properties:
+      amendedByOrderOn:
+        description: >
+          The date when the rate plan charge is amended through an order or
+          amendment. This field is to standardize the booking date information
+          to increase audit ability and traceability of data between Zuora
+          Billing and Zuora Revenue. It is mapped as the booking date for a sale
+          order line in Zuora Revenue.
+        type: string
+      applyDiscountTo:
+        description: >
+          Specifies the type of charges a specific discount applies to. 
+
+
+          This field is only used when applied to a discount charge model. If
+          you are not using a discount charge model, the value is null.
+
+
+          Possible values:
+
+
+          * `RECURRING`
+
+          * `USAGE`
+
+          * `ONETIMERECURRING`
+
+          * `ONETIMEUSAGE`
+
+          * `RECURRINGUSAGE`
+
+          * `ONETIMERECURRINGUSAGE`
+        type: string
+      billingDay:
+        description: >
+          Billing cycle day (BCD), which is when bill runs generate invoices
+
+          for charges associated with the product rate plan charge or the
+          account.  
+
+
+          Values:
+
+
+          * `DefaultFromCustomer`
+
+          * `SpecificDayofMonth(#)`
+
+          * `SubscriptionStartDay`
+
+          * `ChargeTriggerDay`
+
+          * `SpecificDayofWeek/dayofweek`: in which dayofweek is the day in the
+          week you define your billing periods to start.
+
+
+          In the response data, a day-of-the-month value (`1`-`31`) appears in
+          place of the hash sign above ("#"). If this value exceeds the number
+          of days in a particular month, the last day of the month is used as
+          the BCD.
+        type: string
+      billingPeriod:
+        description: |
+          Allows billing period to be overridden on the rate plan charge.
+        type: string
+      billingPeriodAlignment:
+        description: |
+          Possible values:
+
+          * `AlignToCharge`
+          * `AlignToSubscriptionStart`
+          * `AlignToTermStart`
+        type: string
+      billingTiming:
+        description: >
+          The billing timing for the charge. This field is only used if the
+          `ratePlanChargeType` value is `Recurring`.
+
+
+          Possible values are:
+
+
+          * `In Advance`
+
+          * `In Arrears`
+
+
+          **Note:** This feature is in **Limited Availability**. If you wish to
+          have access to the feature, submit a request at [Zuora Global
+          Support](http://support.zuora.com/).
+        type: string
+      chargeModelConfiguration:
+        $ref: ./ChargeModelConfigurationType.yaml
+      chargedThroughDate:
+        description: |
+          The date through which a customer has been billed for the charge.
+        format: date
+        type: string
+      currency:
+        description: |
+          Currency used by the account. For example, `USD` or `EUR`.
+        type: string
+      description:
+        description: |
+          Description of the rate plan charge.
+        type: string
+      discountAmount:
+        description: |
+          The amount of the discount.
+        type: number
+      discountApplyDetails:
+        description: >
+          Container for the application details about a discount rate plan
+          charge. 
+
+
+          Only discount rate plan charges have values in this field.
+        items:
+          $ref: ./GETDiscountApplyDetailsType.yaml
+        type: array
+      discountClass:
+        description: >
+          The class that the discount belongs to. The discount class defines the
+          order in which discount rate plan charges are applied.
+
+
+          For more information, see [Manage Discount
+          Classes](https://knowledgecenter.zuora.com/BC_Subscription_Management/Product_Catalog/B_Charge_Models/Manage_Discount_Classes).
+        type: string
+      discountLevel:
+        description: >
+          The level of the discount. Values: `RatePlan`, `Subscription`,
+          `Account`.
+        type: string
+      discountPercentage:
+        description: |
+          The amount of the discount as a percentage.
+        type: number
+      dmrc:
+        description: >
+          The change (delta) of monthly recurring charge exists when the change
+          in monthly recurring revenue caused by an amendment or a new
+          subscription.
+        type: number
+      done:
+        description: >
+          A value of `true` indicates that an invoice for a charge segment has
+          been completed. A value of `false` indicates that an invoice has not
+          been completed for the charge segment.
+        type: boolean
+      drawdownRate:
+        description: >
+          **Note**: This field is only available if you have the [Prepaid with
+          Drawdown](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown)
+          feature enabled.
+
+
+          The [conversion
+          rate](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown/Create_drawdown_charge#UOM_Conversion)
+          between Usage UOM and Drawdown UOM for a [drawdown
+          charge](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown/Create_drawdown_charge).
+          Must be a positive number (>0).
+        type: number
+      drawdownUom:
+        description: >
+          **Note**: This field is only available if you have the [Prepaid with
+          Drawdown](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown)
+          feature enabled.
+
+
+          Unit of measurement for a [drawdown
+          charge](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown/Create_drawdown_charge).
+        type: string
+      dtcv:
+        description: >
+          After an amendment or an AutomatedPriceChange event, `dtcv` displays
+          the change (delta) for the total contract value (TCV) amount for this
+          charge, compared with its previous value with recurring charge types.
+        type: number
+      effectiveEndDate:
+        description: |
+          The effective end date of the rate plan charge.
+        format: date
+        type: string
+      effectiveStartDate:
+        description: |
+          The effective start date of the rate plan charge.
+        format: date
+        type: string
+      endDateCondition:
+        description: >
+          Defines when the charge ends after the charge trigger date.
+
+
+          If the subscription ends before the charge end date, the charge ends
+          when the subscription ends. But if the subscription end date is
+          subsequently changed through a Renewal, or Terms and Conditions
+          amendment, the charge will end on the charge end date.
+
+
+          Values:
+
+
+          * `Subscription_End`
+
+          * `Fixed_Period`
+
+          * `Specific_End_Date`
+
+          * `One_Time`
+        type: string
+      excludeItemBillingFromRevenueAccounting:
+        description: >
+          The flag to exclude rate plan charge related invoice items, invoice
+          item adjustments, credit memo items, and debit memo items from revenue
+          accounting.
+
+
+          **Note**: This field is only available if you have the Billing -
+          Revenue Integration feature enabled. 
+        type: boolean
+      excludeItemBookingFromRevenueAccounting:
+        description: >
+          The flag to exclude rate plan charges from revenue accounting.
+
+
+          **Note**: This field is only available if you have the Billing -
+          Revenue Integration feature enabled. 
+        type: boolean
+      id:
+        description: |
+          Rate plan charge ID.
+        type: string
+      includedUnits:
+        description: |
+          Specifies the number of units in the base set of units.
+        type: number
+      isPrepaid:
+        description: >
+          **Note**: This field is only available if you have the [Prepaid with
+          Drawdown](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown)
+          feature enabled.
+
+
+          Indicates whether this charge is a prepayment (topup) charge or a
+          drawdown charge. Values: `true` or `false`.
+        type: boolean
+      listPriceBase:
+        description: |
+          List price base; possible values are:
+
+          * `Per_Billing_Period`
+          * `Per_Month`
+          * `Per_Week`
+        type: string
+      model:
+        description: |
+          Charge model; possible values are:
+
+          * `FlatFee`
+          * `PerUnit`
+          * `Overage`
+          * `Volume`
+          * `Tiered`
+          * `TieredWithOverage`
+          * `DiscountFixedAmount`
+          * `DiscountPercentage`
+          * `MultiAttributePricing`
+          * `PreratedPerUnit`
+          * `PreratedPricing`
+          * `HighWatermarkVolumePricing`
+          * `HighWatermarkTieredPricing`
+        type: string
+      mrr:
+        description: |
+          Monthly recurring revenue of the rate plan charge.
+        type: number
+      name:
+        description: |
+          Charge name.
+        type: string
+      number:
+        description: |
+          Charge number.
+        type: string
+      numberOfPeriods:
+        description: >
+          Specifies the number of periods to use when calculating charges in an
+          overage smoothing charge model.
+        format: int64
+        type: integer
+      originalChargeId:
+        description: |
+          The original ID of the rate plan charge.
+        type: string
+      originalOrderDate:
+        description: >
+          The date when the rate plan charge is created through an order or
+          amendment. This field is to standardize the booking date information
+          to increase audit ability and traceability of data between Zuora
+          Billing and Zuora Revenue. It is mapped as the booking date for a sale
+          order line in Zuora Revenue.
+        format: date
+        type: string
+      overageCalculationOption:
+        description: |
+          Determines when to calculate overage charges.
+        type: string
+      overagePrice:
+        description: |
+          The price for units over the allowed amount.
+        type: number
+      overageUnusedUnitsCreditOption:
+        description: |
+          Determines whether to credit the customer with unused units of usage.
+        type: string
+      prepaidOperationType:
+        description: >
+          **Note**: This field is only available if you have the [Prepaid with
+          Drawdown](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown)
+          feature enabled.
+
+
+          The type of this charge. It is either a prepayment (topup) charge or a
+          drawdown charge. 
+        enum:
+          - topup
+          - drawdown
+        type: string
+      prepaidQuantity:
+        description: >
+          **Note**: This field is only available if you have the [Prepaid with
+          Drawdown](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown)
+          feature enabled.
+
+
+          The number of units included in a [prepayment
+          charge](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown/Create_prepayment_charge).
+          Must be a positive number (>0).
+        type: number
+      prepaidTotalQuantity:
+        description: >
+          **Note**: This field is only available if you have the [Prepaid with
+          Drawdown](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown)
+          feature enabled.
+
+
+          The total amount of units that end customers can use during a validity
+          period when they subscribe to a [prepayment
+          charge](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown/Create_prepayment_charge).
+        type: number
+      prepaidUom:
+        description: >
+          **Note**: This field is only available if you have the [Prepaid with
+          Drawdown](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown)
+          feature enabled.
+
+
+          Unit of measurement for a [prepayment
+          charge](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown/Create_prepayment_charge).
+        type: string
+      price:
+        description: |
+          The price associated with the rate plan charge expressed as a decimal.
+        type: number
+      priceChangeOption:
+        description: >
+          When the following is true:
+
+
+          1. AutomatedPriceChange setting is on
+
+
+          2. Charge type is not one-time
+
+
+          3. Charge model is not discount percentage
+
+
+          Then an automatic price change can have a value for when a termed
+          subscription is renewed. 
+
+
+          Values (one of the following):
+
+
+          * `NoChange` (default)
+
+          * `SpecificPercentageValue`
+
+          * `UseLatestProductCatalogPricing`
+        type: string
+      priceIncreasePercentage:
+        description: |
+          A planned future price increase amount as a percentage.
+        type: number
+      pricingSummary:
+        description: |
+          Concise description of rate plan charge model.
+        type: string
+      processedThroughDate:
+        description: >
+          The date until when charges have been processed. When billing in
+          arrears, such as usage, this field value is the the same as the
+          `ChargedThroughDate` value. This date is the earliest date when a
+          charge can be amended.
+        format: date
+        type: string
+      productRatePlanChargeId:
+        description: ''
+        type: string
+      quantity:
+        description: >
+          The quantity of units, such as the number of authors in a hosted wiki
+          service. Valid for all charge models except for Flat Fee pricing.
+        type: number
+      ratingGroup:
+        description: >
+          Specifies a rating group based on which usage records are rated.
+
+
+          Possible values:
+
+
+          - `ByBillingPeriod` (default): The rating is based on all the usages
+          in a billing period.
+
+          - `ByUsageStartDate`: The rating is based on all the usages on the
+          same usage start date. 
+
+          - `ByUsageRecord`: The rating is based on each usage record.
+
+          - `ByUsageUpload`: The rating is based on all the  usages in a
+          uploaded usage file (`.xls` or `.csv`).
+
+          - `ByGroupId`: The rating is based on all the usages in a custom
+          group.
+
+
+          **Note:** 
+
+          - The `ByBillingPeriod` value can be applied for all charge models. 
+
+          - The `ByUsageStartDate`, `ByUsageRecord`, and `ByUsageUpload` values
+          can only be applied for per unit, volume pricing, and tiered pricing
+          charge models. 
+
+          - The `ByGroupId` value is only available if you have the Active
+          Rating feature enabled.
+
+          - Use this field only for Usage charges. One-Time Charges and
+          Recurring Charges return `NULL`.
+        type: string
+      segment:
+        description: >
+          The identifying number of the subscription rate plan segment. Segments
+          are numbered sequentially, starting with 1.
+        format: int64
+        type: integer
+      smoothingModel:
+        description: >
+          Specifies when revenue recognition begins. When charge model is
+          `Overage` or `TieredWithOverage`, `smoothingModel` will be one of the
+          following values:
+
+
+          * `ContractEffectiveDate`
+
+          * `ServiceActivationDate`
+
+          * `CustomerAcceptanceDate`
+        type: string
+      specificBillingPeriod:
+        description: >
+          Customizes the number of month or week for the charges billing period.
+          This field is required if you set the value of the `BillingPeriod`
+          field to `Specific_Months` or `Specific_Weeks`.
+        format: int64
+        type: integer
+      specificEndDate:
+        description: >
+          The specific date on which the charge ends. If the subscription ends
+          before the specific end date, the charge ends when the subscription
+          ends. But if the subscription end date is subsequently changed through
+          a Renewal, or Terms and Conditions amendment, the charge will end on
+          the specific end date.
+        format: date
+        type: string
+      tcv:
+        description: |
+          The total contract value.
+        type: number
+      tiers:
+        description: |
+          One or many defined ranges with distinct pricing.
+        items:
+          $ref: ./GETTierType.yaml
+        type: array
+      triggerDate:
+        description: |
+          The date that the rate plan charge will be triggered.
+        format: date
+        type: string
+      triggerEvent:
+        description: |
+          The event that will cause the rate plan charge to be triggered.
+
+          Possible values: 
+
+          * `ContractEffective`
+          * `ServiceActivation`
+          * `CustomerAcceptance`
+          * `SpecificDate`
+        type: string
+      type:
+        description: |
+          Charge type. Possible values are: `OneTime`, `Recurring`, `Usage`.
+        type: string
+      unusedUnitsCreditRates:
+        description: >
+          Specifies the rate to credit a customer for unused units of usage.
+          This field is applicable only for overage charge models when the 
+
+          `OverageUnusedUnitsCreditOption` field value is
+          `CreditBySpecificRate`.
+        type: number
+      uom:
+        description: |
+          Specifies the units to measure usage. 
+        type: string
+      upToPeriods:
+        description: >
+          Specifies the length of the period during which the charge is active.
+          If this period ends before the subscription ends, the charge ends when
+          this period ends.
+
+
+          If the subscription end date is subsequently changed through a
+          Renewal, or Terms and Conditions amendment, the charge end date will
+          change accordingly up to the original period end.
+        type: string
+      upToPeriodsType:
+        description: |
+          The period type used to define when the charge ends. 
+
+          Values:
+
+          * `Billing_Periods`
+          * `Days`
+          * `Weeks`
+          * `Months`
+          * `Years`
+        type: string
+      usageRecordRatingOption:
+        description: >
+          Determines how Zuora processes usage records for per-unit usage
+          charges. 
+        type: string
+      validityPeriodType:
+        description: >
+          **Note**: This field is only available if you have the [Prepaid with
+          Drawdown](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown)
+          feature enabled.
+
+
+          The period in which the prepayment units are valid to use as defined
+          in a [prepayment
+          charge](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown/Create_prepayment_charge).
+        enum:
+          - SUBSCRIPTION_TERM
+          - ANNUAL
+          - SEMI_ANNUAL
+          - QUARTER
+          - MONTH
+        type: string
+      version:
+        description: |
+          Rate plan charge revision number.
+        format: int64
+        type: integer
+    type: object
+  - $ref: ./RatePlanChargeObjectCustomFields.yaml
+title: ratePlanCharges

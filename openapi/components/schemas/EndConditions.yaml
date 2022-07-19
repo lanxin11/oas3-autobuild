@@ -1,0 +1,46 @@
+description: |
+  Specifies when a charge becomes inactive.
+properties:
+  endDateCondition:
+    description: >
+      Condition for the charge to become inactive.
+
+
+      If the value of this field is `Fixed_Period`, the charge is active for a
+      predefined duration based on the value of the `upToPeriodsType` and
+      `upToPeriods` fields.
+
+
+      If the value of this field is `Specific_End_Date`, use the
+      `specificEndDate` field to specify the date when then charge becomes
+      inactive.
+    enum:
+      - Subscription_End
+      - Fixed_Period
+      - Specific_End_Date
+    type: string
+  specificEndDate:
+    description: >
+      Date in YYYY-MM-DD format. Only applicable if the value of the
+      `endDateCondition` field is `Specific_End_Date`.
+    format: date
+    type: string
+  upToPeriods:
+    description: >
+      Duration of the charge in billing periods, days, weeks, months, or years,
+      depending on the value of the `upToPeriodsType` field. Only applicable if
+      the value of the `endDateCondition` field is `Fixed_Period`.
+    type: integer
+  upToPeriodsType:
+    description: >
+      Unit of time that the charge duration is measured in. Only applicable if
+      the value of the `endDateCondition` field is `Fixed_Period`.
+    enum:
+      - Billing_Periods
+      - Days
+      - Weeks
+      - Months
+      - Years
+    type: string
+title: endDate
+type: object

@@ -1,0 +1,65 @@
+properties:
+  AmendmentIds:
+    description: >
+      A list of the IDs of the associated amendments. There can be as many as
+      three amendment IDs. Use a comma to separate each amendment ID.
+    items:
+      type: string
+    type: array
+  ChargeMetricsData:
+    $ref: ./ChargeMetricsData.yaml
+  CreditMemoDatas:
+    description: ''
+    items:
+      $ref: ./ActionAmendCreditMemoData.yaml
+    type: array
+  CreditMemoId:
+    description: ''
+    type: string
+  Errors:
+    description: ''
+    items:
+      $ref: ./ActionsErrorResponse.yaml
+    type: array
+  GatewayResponse:
+    description: ''
+    type: string
+  GatewayResponseCode:
+    description: ''
+    type: string
+  InvoiceDatas:
+    description: >
+      This array of invoices contains one invoice only as one invoice is
+      generated for one subscription.
+    items:
+      $ref: ./ActionAmendInvoiceData.yaml
+    type: array
+  InvoiceId:
+    description: ''
+    type: string
+  PaymentId:
+    description: ''
+    type: string
+  PaymentTransactionNumber:
+    description: ''
+    type: string
+  SubscriptionId:
+    description: ''
+    type: string
+  Success:
+    description: ''
+    type: boolean
+  TotalDeltaMrr:
+    description: |
+      `TotalDeltaMrr` is calculated by the following formula:
+
+       TotalDeltaMrr = newSubscription.CMRR - originalSubscription.CMRR
+
+       See [here](https://knowledgecenter.zuora.com/Billing/Subscriptions/Customer_Accounts/A_How_to_Manage_Customer_Accounts/E_Key_Metrics/B_Monthly_Recurring_Revenue#Contracted_MRR) for the definition of CMRR. The new subscriptin represents the later version of an subscription after an amendment. The original subscription represents the original version of the subscription before the amendment. 
+    format: double
+    type: number
+  TotalDeltaTcv:
+    description: ''
+    format: double
+    type: number
+type: object

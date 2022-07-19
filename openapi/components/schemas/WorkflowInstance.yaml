@@ -1,0 +1,37 @@
+description: A instance workflow object.
+properties:
+  createdAt:
+    description: >
+      The date and time when the workflow is created, in the `YYYY-MM-DD
+      HH:MM:SS` format.
+    format: datetime
+    type: string
+  id:
+    description: |
+      The unique ID of the workflow.
+    type: integer
+  name:
+    description: |
+      The run number of this workflow instance
+    type: string
+  originalWorkflowId:
+    description: >
+      The identifier of the workflow template that is used to create this
+      instance.
+    type: integer
+  status:
+    description: |
+      Describes the current state of this workflow instance:
+        - Queued: The workflow is in queue for being processed.
+        - Processing: The workflow is in process.
+    enum:
+      - Queued
+      - Processing
+    type: string
+  updatedAt:
+    description: >
+      The date and time the last time when the workflow is updated, in the
+      `YYYY-MM-DD HH:MM:SS` format.
+    format: datetime
+    type: string
+type: object

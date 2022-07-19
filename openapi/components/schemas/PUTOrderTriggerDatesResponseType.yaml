@@ -1,0 +1,35 @@
+allOf:
+  - $ref: ./CommonResponseType.yaml
+  - properties:
+      accountNumber:
+        description: The account number for the order.
+        type: string
+      orderNumber:
+        description: The order number of the order updated.
+        type: string
+      status:
+        description: Status of the order.
+        enum:
+          - Completed
+          - Pending
+        type: string
+      subscriptions:
+        description: The subscriptions updated.
+        items:
+          properties:
+            status:
+              description: >-
+                Status of the subscription. `Pending Activation` and `Pending
+                Acceptance` are only applicable for an order that contains a
+                `CreateSubscription` order action.
+              enum:
+                - Active
+                - Pending Activation
+                - Pending Acceptance
+              type: string
+            subscriptionNumber:
+              description: Subscription number of the subscription updated.
+              type: string
+          type: object
+        type: array
+    type: object

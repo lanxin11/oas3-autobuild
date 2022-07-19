@@ -1,0 +1,52 @@
+allOf:
+  - properties:
+      CreatedById:
+        description: ''
+        type: string
+      CreatedDate:
+        description: |2-
+           Date and time when the product feature was added to the subscription.
+          **Character limit**: 29 **Values**: 
+        format: date-time
+        type: string
+      Description:
+        description: |2-
+           Description of the subscription product feature.
+          **Character limit**: 500 **Values**: 
+        type: string
+      FeatureCode:
+        description: |2-
+           Unique code of the feature.
+          **Character limit**: 255 **Values**: 
+        type: string
+      FeatureId:
+        description: |2-
+           Internal Zuora ID of the feature.
+          **Character limit**: 32 **Values**: 
+        type: string
+      Id:
+        description: Object identifier.
+        type: string
+      Name:
+        description: |2-
+           Name of the feature.
+          **Character limit**: 255 **Values**: 
+        type: string
+      RatePlanId:
+        description: |2-
+           Id of the product rate plan to which the feature belongs.
+          **Character limit**: 32 **Values**: 
+        type: string
+      UpdatedById:
+        description: |2-
+           Internal Zuora ID of the user who last updated the subscription product feature.
+          **Character limit**: 32 **Values**: 
+        type: string
+      UpdatedDate:
+        description: |2-
+           Date and time when the subscription product feature was last updated.
+          **Character limit**: 29 **Values**: 
+        format: date-time
+        type: string
+    type: object
+  - $ref: ./SubscriptionProductFeatureObjectCustomFields.yaml

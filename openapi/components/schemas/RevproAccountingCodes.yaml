@@ -1,0 +1,45 @@
+example:
+  adjustmentLiabilityAccount: adjustL-1
+  adjustmentRevenueAccount: adjustRev-1
+  contractAssetAccount: CA-2
+  contractLiabilityAccount: CL-2
+  productRatePlanChargeId: 2c92c0f962470b8101624b869fcd45fc
+  recognizedRevenueAccount: ContractRevRec-1
+  unbilledReceivablesAccount: unbilledR-1
+properties:
+  adjustmentLiabilityAccount:
+    description: The name of the account where the Account Type is "Adjustment Liability".
+    maxLength: 100
+    type: string
+  adjustmentRevenueAccount:
+    description: The name of the account where the Account Type is "Adjustment Revenue".
+    maxLength: 100
+    type: string
+  contractAssetAccount:
+    description: The name of the account where the Account Type is "Contract Asset".
+    maxLength: 100
+    type: string
+  contractLiabilityAccount:
+    description: The name of the account where the Account Type is "Contract Liability".
+    maxLength: 100
+    type: string
+  productRatePlanChargeId:
+    description: The ID of your product rate plan charge.
+    type: string
+  recognizedRevenueAccount:
+    description: The name of the account where the Account Type is "Recognized Revenue".
+    maxLength: 100
+    type: string
+  unbilledReceivablesAccount:
+    description: The name of the account where the Account Type is "Unbilled Receivables".
+    maxLength: 100
+    type: string
+required:
+  - productRatePlanChargeId
+  - contractAssetAccount
+  - contractLiabilityAccount
+  - unbilledReceivablesAccount
+  - adjustmentLiabilityAccount
+  - recognizedRevenueAccount
+  - adjustmentRevenueAccount
+type: object

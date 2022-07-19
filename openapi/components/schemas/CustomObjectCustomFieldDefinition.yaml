@@ -1,0 +1,26 @@
+description: The custom field definition in the custom object
+properties:
+  format:
+    description: The data format of the custom field
+    type: string
+  label:
+    description: The UI label of the custom field
+    type: string
+  maxLength:
+    description: |
+      The maximum length of string that can be stored in the custom field.
+      Only applicable if:
+
+      - The custom field `type` is `string`; and
+      - The custom field `format` is not specified
+    type: integer
+  origin:
+    description: Specifies that this is a custom field
+    enum:
+      - custom
+    type: string
+  type:
+    description: The data type of the custom field
+    type: string
+title: customObjectCustomFieldDefinition
+type: object

@@ -1,0 +1,162 @@
+allOf:
+  - $ref: ./CommonResponseType.yaml
+  - properties:
+      accountId:
+        description: >-
+          The account ID for the order. This field is returned only when the
+          `returnIds` query parameter in the "Create an order asynchronously"
+          operation is set to `true`.
+        type: string
+      accountNumber:
+        description: The account number for the order.
+        type: string
+      creditMemoIds:
+        description: >-
+          An array of the credit memo IDs that are generated in the "Create an
+          order asynchronously" operation. This field is returned only when the
+          `returnIds` query parameter in the "Create an order asynchronously"
+          operation is set to `true`.
+        items:
+          type: string
+        type: array
+      creditMemoNumbers:
+        description: >-
+          An array of the credit memo numbers generated in this order request.
+          The credit memo is only available if you have the Invoice Settlement
+          feature enabled.
+        items:
+          type: string
+        type: array
+      invoiceId:
+        description: >-
+          An array of the invoice IDs that are generated in the "Create an order
+          asynchronously" operation. This field is returned only when the
+          `returnIds` query parameter in the "Create an order asynchronously"
+          operation is set to `true`.
+        items:
+          type: string
+        type: string
+      invoiceNumbers:
+        description: >-
+          An array of the invoice numbers generated in this order request.
+          Normally it includes one invoice number only, but can include multiple
+          items when a subscription was tagged as invoice separately.
+        items:
+          type: string
+        type: array
+      orderId:
+        description: >-
+          The ID of the order created. This field is returned only when the
+          `returnIds` query parameter in the "Create an order asynchronously"
+          operation is set to `true`.
+        type: string
+      orderLineItems:
+        items:
+          properties:
+            id:
+              description: The sytem generated Id for the Order Line Item.
+              format: UUID
+              type: string
+            itemNumber:
+              description: The number for the Order Line Item.
+              format: UUID
+              type: string
+          type: object
+        type: array
+      orderNumber:
+        description: The order number of the order created.
+        type: string
+      paidAmount:
+        description: The total amount collected in this order request.
+        type: string
+      paymentId:
+        description: >-
+          The ID of the payment that is collected in the "Create an order
+          asynchronously" operation. This field is returned only when the
+          `returnIds` query parameter in the "Create an order asynchronously"
+          operation is set to `true`.
+        type: string
+      paymentNumber:
+        description: The payment number that collected in this order request.
+        type: string
+      ramps:
+        description: >
+          **Note**: This field is only available if you have the Ramps feature
+          enabled. The
+          [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
+          feature must be enabled before you can access the
+          [Ramps](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Ramps_and_Ramp_Metrics/A_Overview_of_Ramps_and_Ramp_Metrics)
+          feature. The Ramps feature is available for customers with Enterprise
+          and Nine editions by default. If you are a Growth customer, see [Zuora
+          Editions](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/C_Zuora_Editions)
+          for pricing information coming October 2020.
+
+
+          The ramp definitions created by this order request.
+        items:
+          properties:
+            rampNumber:
+              description: The number of the ramp definition.
+              type: string
+            subscriptionNumber:
+              description: >-
+                The number of the subscription that this ramp deal definition is
+                applied to.
+              type: string
+          type: object
+        type: array
+      status:
+        description: >-
+          Status of the order. `Pending` is only applicable for an order that
+          contains a `CreateSubscription` order action.
+        enum:
+          - Completed
+          - Pending
+        type: string
+      subscriptionIds:
+        description: >-
+          Container for the IDs of the subscriptions in the order. This field is
+          returned only when the `returnIds` query parameter in the "Create an
+          order asynchronously" operation is set to `true`.
+        items:
+          type: string
+        type: array
+      subscriptionNumbers:
+        description: "**Note:** This field is in Zuora REST API version control. Supported minor versions are 222.4 or earlier. To use this field in the method, you must set the\_`zuora-version` parameter to the minor version number in the request header.\n\nContainer for the subscription numbers of the subscriptions in an order.\n"
+        items:
+          type: string
+        type: array
+      subscriptions:
+        description: "**Note:** This field is in Zuora REST API version control. Supported minor versions are 223.0 or later. To use this field in the method, you must set the\_`zuora-version` parameter to the minor version number in the request header.\n\nContainer for the subscription numbers and statuses in an order.\n"
+        items:
+          properties:
+            status:
+              description: >-
+                Status of the subscription. `Pending Activation` and `Pending
+                Acceptance` are only applicable for an order that contains a
+                `CreateSubscription` order action.
+              enum:
+                - Active
+                - Pending Activation
+                - Pending Acceptance
+                - Cancelled
+              type: string
+            subscriptionNumber:
+              description: Subscription number of the subscription included in this order.
+              type: string
+          type: object
+        type: array
+    type: object
+description: >
+  **Note:** The schema of the `result` nested field is the same as the response
+  body schema of either the ["Create an
+  order"](https://www.zuora.com/developer/api-reference/#operation/POST_Order)
+  or the ["Preview an
+  order"](https://www.zuora.com/developer/api-reference/#operation/POST_PreviewOrder)
+  operation, depending on the purpose of the job.
+
+
+  The following schema for the nested `result` field is defined as the response
+  body schema of "Create an order". See [Preview an
+  Order](https://www.zuora.com/developer/api-reference/#operation/POST_PreviewOrder)
+  for the response body schema of "Preview an order". 

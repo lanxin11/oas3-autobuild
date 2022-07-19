@@ -1,0 +1,265 @@
+allOf:
+  - properties:
+      AccountId:
+        description: |
+          The unique account ID for the customer that the payment is for.
+        maxLength: 32
+        minLength: 0
+        type: string
+      AccountingCode:
+        description: >
+          The accounting code for the payment. Accounting codes group
+          transactions that contain similar accounting attributes.
+        maxLength: 100
+        minLength: 0
+        type: string
+      Amount:
+        description: |
+          The amount of the payment.
+
+          If Invoice Settlement is enabled, this field is required.
+        format: double
+        maxLength: 16
+        minLength: 0
+        type: number
+      AppliedCreditBalanceAmount:
+        description: >
+          If you have the Invoice Settlement feature disabled, the value of this
+          field is the amount of the payment to apply to a credit balance. This
+          field is only required if the `AppliedInvoiceAmount` field value is
+          null.
+
+
+          If you have the Invoice Settlement feature enabled, the value of this
+          field is created as the unapplied amount.
+        format: double
+        maxLength: 16
+        minLength: 0
+        type: number
+      AppliedInvoiceAmount:
+        description: >
+          The amount of the payment to apply to an invoice. This field is only
+          required if either the `InvoiceId` or `InvoiceNumber` field is not
+          null.
+        format: decimal
+        maxLength: 16
+        minLength: 0
+        type: number
+      AuthTransactionId:
+        description: >
+          The authorization transaction ID from the payment gateway. Use this
+          field for electronic payments, such as credit cards.
+
+
+          The following payment gateways support this field:
+            - Adyen Integration v2.0
+            - CyberSource 1.28
+            - CyberSource 1.97
+            - CyberSource 2.0
+            - Chase Paymentech Orbital
+            - Ingenico ePayments
+            - SlimPay
+            - Verifi Global Payment Gateway
+            - WePay Payment Gateway Integration
+        maxLength: 50
+        minLength: 0
+        type: string
+      Comment:
+        description: |
+          Additional information related to the payment.
+        maxLength: 255
+        minLength: 0
+        type: string
+      EffectiveDate:
+        description: >
+          The date when the payment takes effect.
+
+
+          **Note:** This is an optional field that only applies to electronic
+          payments. When specified, it must be set to the date of today.
+        format: date
+        maxLength: 29
+        minLength: 0
+        type: string
+      Gateway:
+        description: >
+          The name of the gateway instance that processes the payment. When
+          creating a payment, the value of this field must be a valid gateway
+          instance name, and this gateway must support the specific payment
+          method. If no value is specified, the default gateway on the Account
+          will be used.
+        type: string
+      GatewayOptionData:
+        description: >
+          A field used to pass gateway options. Zuora allows you to pass in
+          special gateway-specific parameters for payments through the [gateway
+          integrations that support gateway
+          options](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/LA_Hosted_Payment_Pages/B_Payment_Pages_2.0/J_Client_Parameters_for_Payment_Pages_2.0#Gateway_Options).
+
+
+          For each of these special parameters, you supply the name-value pair
+          and Zuora passes it to the gateway. This allows you to add
+          functionality that's supported by a specific gateway but currently not
+          supported by Zuora.
+        properties:
+          GatewayOption:
+            description: ''
+            items:
+              $ref: ./GatewayOption.yaml
+            maxItems: 200
+            minItems: 0
+            type: array
+        required:
+          - GatewayOption
+        type: object
+      GatewayOrderId:
+        description: >
+          A merchant-specified natural key value that can be passed to the
+          electronic payment gateway when a payment is created. If not
+          specified, the payment number will be passed in instead.
+
+
+          Gateways check duplicates on the gateway order ID to ensure that the
+          merchant do not accidentally enter the same transaction twice. This ID
+          can also be used to do reconciliation and tie the payment to a natural
+          key in external systems. The source of this ID varies by merchant.
+          Some merchants use their shopping cart order IDs, and others use
+          something different. Merchants use this ID to track transactions in
+          their eCommerce systems.
+        maxLength: 70
+        minLength: 0
+        type: string
+      GatewayResponse:
+        description: >
+          The message returned from the payment gateway for the payment. This
+          message is gateway-dependent.
+        maxLength: 500
+        minLength: 0
+        type: string
+      GatewayResponseCode:
+        description: >
+          The code returned from the payment gateway for the payment. This code
+          is gateway-dependent.
+        maxLength: 20
+        minLength: 0
+        type: string
+      GatewayState:
+        description: |
+          The status of the payment in the gateway; use for reconciliation.
+        enum:
+          - MarkedForSubmission
+          - Submitted
+          - Settled
+          - NotSubmitted
+          - FailedToSettle
+        type: string
+      InvoiceId:
+        description: >
+          The ID of the invoice that the payment is applied to. When applying a
+          payment to a single invoice, this field is only required if the
+          `InvoiceNumber` field is null.
+        maxLength: 32
+        minLength: 0
+        type: string
+      InvoiceNumber:
+        description: >
+          The unique identification number for the invoice that the payment is
+          applied to. When applying a payment to a single invoice, this field is
+          only required if the `InvoiceId` field is null.
+        maxLength: 32
+        minLength: 0
+        type: string
+      InvoicePaymentData:
+        description: >
+          Container for the invoice payment data. This field is only required if
+          you apply a payment to multiple invoices.
+        properties:
+          InvoicePayment:
+            description: ''
+            items:
+              $ref: ./InvoicePayment.yaml
+            maxItems: 200
+            minItems: 0
+            type: array
+        required:
+          - InvoicePayment
+        title: InvoicePaymentData
+        type: object
+      PaymentMethodId:
+        description: >
+          The ID of the payment method used for the payment. 
+
+
+          For a specified credit card payment method, it is recommended that
+          [the support for stored credential
+          transactions](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/L_Payment_Methods/Stored_credential_transactions)
+          for this payment method is already enabled.
+        maxLength: 32
+        minLength: 0
+        type: string
+      ReferenceId:
+        description: >
+          The transaction ID returned by the payment gateway. Use this field to
+          reconcile payments between your gateway and Zuora Payments.
+        maxLength: 100
+        minLength: 0
+        type: string
+      SoftDescriptor:
+        description: >
+          A payment gateway-specific field that maps to Zuora for the gateways,
+          Orbital, Vantiv and Verifi. 
+
+
+          Zuora passes this field to Verifi directly without verification. In
+          general, this field will be defaulted by the gateway. For Orbital,
+          this field contains two fields separated by an asterisk,
+          `SDMerchantName` and `SDProductionInfo`. For more information, contact
+          your payment gateway.
+        maxLength: 35
+        minLength: 0
+        type: string
+      SoftDescriptorPhone:
+        description: >
+          A payment gateway-specific field that maps to Zuora for the gateways,
+          Orbital, Vantiv and Verifi.
+
+
+          Verifi and Orbital determine how to format this string. For more
+          information, contact your payment gateway.
+        maxLength: 20
+        minLength: 0
+        type: string
+      Status:
+        description: >
+          The status of the payment in Zuora. The only available value is
+          `Processed`.
+        enum:
+          - Processed
+        type: string
+      Type:
+        description: >
+          The type of the payment, whether the payment is external or
+          electronic.
+        enum:
+          - External
+          - Electronic
+        type: string
+    required:
+      - AccountId
+      - PaymentMethodId
+      - EffectiveDate
+      - Status
+      - Type
+    type: object
+  - $ref: ./PaymentObjectNSFields.yaml
+  - $ref: ./PaymentObjectCustomFields.yaml
+example:
+  AccountId: 2c93808457d787030157e03190e748ea
+  Amount: 2
+  AppliedCreditBalanceAmount: 0
+  AppliedInvoiceAmount: 2
+  EffectiveDate: '2016-10-20'
+  InvoiceId: 2c93808457d787030157e03195604902
+  PaymentMethodId: 2c93808457d787030157e03196d1490e
+  Status: Processed
+  Type: Electronic

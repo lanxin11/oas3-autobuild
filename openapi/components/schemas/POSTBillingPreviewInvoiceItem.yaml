@@ -1,0 +1,102 @@
+properties:
+  appliedToItemId:
+    description: |
+      The unique ID of the invoice item that the discount charge is applied to.
+    type: string
+  chargeAmount:
+    description: >
+      The amount of the charge. This amount doesn't include taxes regardless if
+      the charge's tax mode is inclusive or exclusive.
+    format: decimal
+    type: string
+  chargeDate:
+    description: |
+      The date when the invoice item was created.
+    format: date-time
+    type: string
+  chargeDescription:
+    description: |
+      Description of the charge.
+    type: string
+  chargeId:
+    description: |
+      Id of the charge.
+    type: string
+  chargeName:
+    description: |
+      Name of the charge.
+    type: string
+  chargeNumber:
+    description: |
+      Number of the charge.
+    type: string
+  chargeType:
+    description: |
+      The type of charge. 
+
+      Possible values are `OneTime`, `Recurring`, and `Usage`.
+    type: string
+  id:
+    description: |
+      Invoice item ID.
+    type: string
+  processingType:
+    description: |-
+      Identifies the kind of charge. 
+
+      Possible values:
+      * charge
+      * discount
+      * prepayment
+      * tax
+    type: string
+  productName:
+    description: |
+      Name of the product associated with this item.
+    type: string
+  quantity:
+    description: |
+      Quantity of this item, in the configured unit of measure for the charge.
+    format: decimal
+    type: string
+  serviceEndDate:
+    description: >
+      End date of the service period for this item, i.e., the last day of the
+      service period, in `yyyy-mm-dd` format.
+    format: date
+    type: string
+  serviceStartDate:
+    description: >
+      Start date of the service period for this item, in `yyyy-mm-dd` format. If
+      the charge is a one-time fee, this is the date of that charge.
+    format: date
+    type: string
+  subscriptionId:
+    description: |
+      ID of the subscription associated with this item.
+    type: string
+  subscriptionName:
+    description: |
+      Name of the subscription associated with this item.
+    type: string
+  subscriptionNumber:
+    description: |
+      Number of the subscription associated with this item.
+    type: string
+  taxAmount:
+    description: >
+      If you use [Zuora
+      Tax](https://knowledgecenter.zuora.com/Billing/Taxes/A_Zuora_Tax) and the
+      product rate plan charge associated with the invoice item is of [tax
+      inclusive
+      mode](https://knowledgecenter.zuora.com/Billing/Taxes/A_Zuora_Tax/D_Associate_tax_codes_with_product_charges_and_set_the_tax_mode),
+      the value of this field is the amount of tax applied to the charge.
+      Otherwise, the value of this field is `0`. 
+    format: decimal
+    type: string
+  unitOfMeasure:
+    description: |
+      Unit used to measure consumption.
+    type: string
+title: invoiceItems
+type: object

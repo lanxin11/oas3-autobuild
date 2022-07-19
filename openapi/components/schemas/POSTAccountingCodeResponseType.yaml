@@ -1,0 +1,10 @@
+properties:
+  id:
+    description: |
+      ID of the newly created accounting code.
+    type: string
+  success:
+    description: |
+      Returns `true` if the request was processed successfully.
+    type: boolean
+type: object

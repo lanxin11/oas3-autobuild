@@ -1,0 +1,69 @@
+description: >
+  Default payment method associated with an account. Only credit card payment
+  methods are supported.
+
+
+  After a credit card payment method is created, it is recommended to enable
+  [the support for stored credential
+  transactions](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/L_Payment_Methods/Stored_credential_transactions)
+  for this payment method. See [Migrate an existing payment method for stored
+  credential
+  transactions](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/L_Payment_Methods/Stored_credential_transactions/Configuration_procedures/Migrate_an_existing_payment_method)
+  or [Migrate all existing payment methods for stored credential
+  transactions](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/L_Payment_Methods/Stored_credential_transactions/Configuration_procedures/Migrate_all_existing_payment_methods_for_stored_credential_transactions)
+  for more information.
+properties:
+  cardHolderInfo:
+    $ref: ./AccountCreditCardHolder.yaml
+  cardNumber:
+    description: >
+      Card number. Once set, you cannot update or query the value of this field.
+      The value of this field is only available in masked format. For example,
+      XXXX-XXXX-XXXX-1234 (hyphens must not be used when you set the credit card
+      number).
+    type: string
+  cardType:
+    description: |
+      Type of card.
+    enum:
+      - Visa
+      - MasterCard
+      - AmericanExpress
+      - Discover
+      - JCB
+      - Diners
+      - CUP
+      - Maestro
+      - Electron
+      - AppleVisa
+      - AppleMasterCard
+      - AppleAmericanExpress
+      - AppleDiscover
+      - AppleJCB
+      - Elo
+      - Hipercard
+      - Naranja
+      - Nativa
+      - TarjetaShopping
+      - Cencosud
+      - Argencard
+      - Cabal
+    type: string
+  expirationMonth:
+    description: |
+      Expiration date of the card.
+    maximum: 12
+    minimum: 1
+    type: integer
+  expirationYear:
+    description: |
+      Expiration year of the card.
+    maximum: 2500
+    minimum: 1980
+    type: integer
+  securityCode:
+    description: >
+      CVV or CVV2 security code of the card. To ensure PCI compliance, Zuora
+      does not store the value of this field.
+    type: string
+type: object

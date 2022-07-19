@@ -1,0 +1,6 @@
+allOf:
+  - properties:
+      rampMetrics:
+        $ref: ./RampMetrics.yaml
+    type: object
+  - $ref: ./CommonResponseType.yaml

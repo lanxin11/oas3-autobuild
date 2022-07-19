@@ -1,0 +1,79 @@
+allOf:
+  - properties:
+      billCycleDay:
+        description: >
+          The account's bill cycle day (BCD), when bill runs generate invoices
+          for the account. Specify any day of the month (`1`-`31`, where `31` =
+          end-of-month), or `0` for auto-set.
+        format: int64
+        type: integer
+      billToContact:
+        description: |
+          Container for bill-to contact information of this account.
+        properties:
+          city:
+            description: >
+              The city of the bill-to address. The value should be 40 characters
+              or less.
+            type: string
+          country:
+            description: >
+              The country of the bill-to address. The value must be a valid
+              country name or abbreviation.
+
+
+              **Note:** You must specify this field if you are using Zuora Tax
+              for this account.
+            type: string
+          county:
+            description: >
+              The county of the bill-to address. The value should be 32
+              characters or less.
+            type: string
+          state:
+            description: >
+              The state of the bill-to address. The value must be a valid state
+              or province name or 2-character abbreviation.
+
+
+              **Note:** You must specify this field if you are using Zuora Tax
+              for this account and the country is `USA` or `Canada`.
+            type: string
+          taxRegion:
+            description: >
+              If using Zuora Tax, a region string as optionally defined in your
+              tax rules.
+            type: string
+          zipCode:
+            description: >
+              The zip code of the bill-to address. The value should be 20
+              characters or less.
+            type: string
+        type: object
+      currency:
+        description: |
+          A currency as defined in Billing Settings.
+        type: string
+    required:
+      - billCycleDay
+      - billToContact
+      - currency
+    type: object
+  - $ref: ./AccountObjectNSFields.yaml
+  - $ref: ./AccountObjectCustomFields.yaml
+description: >
+  A container for providing a customer account information if you do not have an
+  existing customer account. This customer account information is only used for
+  subscription preview.
+
+
+  You must specify the account information either in this field or in the
+  `accountKey` field with the following conditions:
+
+
+  * If you already have a customer account, specify the account number or ID in
+  the accountKey field.
+
+  * If you do not have a customer account, provide account information in this
+  field.
+title: previewAccountInfo

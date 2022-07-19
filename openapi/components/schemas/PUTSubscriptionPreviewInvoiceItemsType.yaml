@@ -1,0 +1,51 @@
+properties:
+  chargeAmount:
+    description: >
+      The amount of the charge. This amount doesn't include taxes unless the
+      charge's tax mode is inclusive.
+    type: number
+  chargeDescription:
+    description: |
+      Description of the charge.
+    type: string
+  chargeName:
+    description: |
+      Name of the charge
+    type: string
+  productName:
+    description: |
+      Name of the product associated with this item.
+    type: string
+  productRatePlanChargeId:
+    description: ''
+    type: string
+  quantity:
+    description: |
+      Quantity of this item.
+    type: number
+  serviceEndDate:
+    description: >
+      End date of the service period for this item, i.e., the last day of the
+      period, as yyyy-mm-dd.
+    format: date
+    type: string
+  serviceStartDate:
+    description: >
+      Service start date as yyyy-mm-dd. If the charge is a one-time fee, this is
+      the date of that charge.
+    format: date
+    type: string
+  taxationItems:
+    description: >-
+      List of taxation items.
+
+      **Note**: This field is only available if you set the `zuora-version`
+      request header to `315.0` or later. 
+    items:
+      $ref: ./POSTSubscriptionPreviewTaxationItemsType.yaml
+    type: array
+  unitOfMeasure:
+    description: ''
+    type: string
+title: invoiceItems
+type: object

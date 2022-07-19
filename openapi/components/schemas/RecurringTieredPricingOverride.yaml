@@ -1,0 +1,28 @@
+allOf:
+  - $ref: ./PriceChangeParams.yaml
+  - properties:
+      listPriceBase:
+        description: |
+          Specifies the duration of each recurring period.
+        enum:
+          - Per_Billing_Period
+          - Per_Month
+          - Per_Week
+        type: string
+      quantity:
+        description: |
+          Number of units purchased.
+        minimum: 0
+        type: number
+      tiers:
+        description: |
+          List of cumulative pricing tiers in the charge.
+        items:
+          $ref: ./ChargeTier.yaml
+        type: array
+    type: object
+description: >
+  Pricing information about a recurring charge that uses the "tiered pricing"
+  charge model. In this charge model, the charge has cumulative pricing tiers
+  that become effective as units are purchased.
+title: recurringTiered

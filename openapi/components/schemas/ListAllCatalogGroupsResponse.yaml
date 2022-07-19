@@ -1,0 +1,13 @@
+properties:
+  catalogGroups:
+    description: |
+      The list of catalog groups that are retrieved..
+    items:
+      $ref: ./CatalogGroupResponse.yaml
+    type: array
+  nextPage:
+    description: >
+      URL to retrieve the next page of the response if it exists; otherwise
+      absent.
+    format: URL
+    type: string

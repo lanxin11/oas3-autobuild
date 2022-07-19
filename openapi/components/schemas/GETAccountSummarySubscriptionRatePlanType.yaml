@@ -1,0 +1,22 @@
+properties:
+  productId:
+    description: |
+      Product ID.
+    type: string
+  productName:
+    description: |
+      Product name.
+    type: string
+  productRatePlanId:
+    description: |
+      Product Rate Plan ID.
+    type: string
+  productSku:
+    description: ''
+    type: string
+  ratePlanName:
+    description: |
+      Rate plan name.
+    type: string
+title: ratePlans
+type: object

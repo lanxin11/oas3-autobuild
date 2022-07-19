@@ -1,0 +1,11 @@
+name: pageSize
+in: query
+description: |
+  The maximum number of rows in a page to return in a response. 
+required: false
+schema:
+  type: integer
+  format: int32
+  minimum: 25
+  maximum: 2000
+  default: 100

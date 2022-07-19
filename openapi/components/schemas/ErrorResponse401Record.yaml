@@ -1,0 +1,16 @@
+properties:
+  code:
+    example: 7101251X
+    format: Int32
+    type: integer
+  details:
+    example:
+      - code: 7101251X
+        message: Unauthorized to view object record.
+    items:
+      $ref: ./Error401.yaml
+    type: array
+  message:
+    example: Unauthorized to process object record.
+    type: string
+type: object

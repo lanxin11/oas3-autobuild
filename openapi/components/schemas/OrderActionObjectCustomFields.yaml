@@ -1,0 +1,11 @@
+additionalProperties:
+  description: >
+    Custom fields of the Order Action object. The name of each custom field has
+    the form <code>*customField*__c</code>. Custom field names are case
+    sensitive. See [Manage Custom
+    Fields](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Manage_Custom_Fields)
+    for more information.
+description: |
+  Container for custom fields of an Order Action object.
+title: orderActionFieldsCustom
+type: object

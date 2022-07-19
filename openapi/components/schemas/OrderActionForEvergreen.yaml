@@ -1,0 +1,102 @@
+description: Represents the processed order action.
+properties:
+  addProduct:
+    $ref: ./RatePlanOverrideForEvergreen.yaml
+  cancelSubscription:
+    $ref: ./CancelSubscription.yaml
+  createSubscription:
+    $ref: ./CreateSubscriptionForEvergreen.yaml
+  customFields:
+    $ref: ./OrderActionObjectCustomFields.yaml
+  id:
+    description: The Id of the order action processed in the order.
+    type: string
+  orderMetrics:
+    description: >
+      Shows the delta metrics caused by a specific order action on a specific
+      charge.
+    items:
+      $ref: ./OrderMetricsForEvergreen.yaml
+    type: array
+  ownerTransfer:
+    $ref: ./OwnerTransfer.yaml
+  removeProduct:
+    $ref: ./RemoveProduct.yaml
+  renewSubscription:
+    $ref: ./RenewSubscription.yaml
+  resume:
+    $ref: ./GetOrderResume.yaml
+  sequence:
+    description: The sequence of the order actions processed in the order.
+    type: integer
+  suspend:
+    $ref: ./GetOrderSuspend.yaml
+  termsAndConditions:
+    $ref: ./TermsAndConditions.yaml
+  triggerDates:
+    description: >
+      Container for the contract effective, service activation, and customer
+      acceptance dates of the order action. 
+
+
+      If [Zuora is configured to require service
+      activation](https://knowledgecenter.zuora.com/CB_Billing/Billing_Settings/Define_Default_Subscription_Settings#Require_Service_Activation_of_Orders.3F)
+      and the `ServiceActivation` field is not set for a `CreateSubscription`
+      order action, a `Pending` order and a `Pending Activation` subscription
+      are created.
+
+
+      If [Zuora is configured to require customer
+      acceptance](https://knowledgecenter.zuora.com/CB_Billing/Billing_Settings/Define_Default_Subscription_Settings#Require_Customer_Acceptance_of_Orders.3F)
+      and the `CustomerAcceptance` field is not set for a `CreateSubscription`
+      order action, a `Pending` order and a `Pending Acceptance` subscription
+      are created. At the same time, if the service activation date field is
+      also required and not set, a `Pending` order and a `Pending Activation`
+      subscription are created instead.
+
+
+      If [Zuora is configured to require service
+      activation](https://knowledgecenter.zuora.com/CB_Billing/Billing_Settings/Define_Default_Subscription_Settings#Require_Service_Activation_of_Orders.3F)
+      and the `ServiceActivation` field is not set for either of the following
+      order actions, a `Pending` order is created. The subscription status is
+      not impacted. **Note:** This feature is in **Limited Availability**. If
+      you want to have access to the feature, submit a request at [Zuora Global
+      Support](http://support.zuora.com/).
+       * AddProduct
+       * UpdateProduct
+       * RemoveProduct
+       * RenewSubscription
+       * TermsAndConditions
+
+      If [Zuora is configured to require customer
+      acceptance](https://knowledgecenter.zuora.com/CB_Billing/Billing_Settings/Define_Default_Subscription_Settings#Require_Customer_Acceptance_of_Orders.3F)
+      and the `CustomerAcceptance` field is not set for either of the following
+      order actions, a `Pending` order is created. The subscription status is
+      not impacted. **Note:** This feature is in **Limited Availability**. If
+      you want to have access to the feature, submit a request at [Zuora Global
+      Support](http://support.zuora.com/).
+       * AddProduct
+       * UpdateProduct
+       * RemoveProduct
+       * RenewSubscription
+       * TermsAndConditions
+    items:
+      $ref: ./TriggerDate.yaml
+    type: array
+  type:
+    description: Type of the order action.
+    enum:
+      - CreateSubscription
+      - TermsAndConditions
+      - AddProduct
+      - UpdateProduct
+      - RemoveProduct
+      - RenewSubscription
+      - CancelSubscription
+      - OwnerTransfer
+      - Suspend
+      - Resume
+    type: string
+  updateProduct:
+    $ref: ./RatePlanUpdateForEvergreen.yaml
+type: object

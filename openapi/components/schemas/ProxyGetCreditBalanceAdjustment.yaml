@@ -1,0 +1,137 @@
+allOf:
+  - properties:
+      AccountId:
+        description: |2
+           The account ID of the credit balance's account. Zuora generates this value from the source transaction.
+          **Character limit**: 32 **Values**: automatically generated from:
+
+          - CreditBalanceAdjustment.SourceTransactionId or
+          - CreditBalanceAdjustment.SourceTransactionNumber
+        type: string
+      AccountingCode:
+        description: ' The Chart of Accounts '
+        type: string
+      AdjustmentDate:
+        description: |2-
+           The date when the credit balance adjustment is applied.
+          **Character limit**: 29 **Values**: automatically generated 
+        format: date
+        type: string
+      Amount:
+        description: |2-
+           The amount of the adjustment.
+          **Character limit**: 16 **Values**: a valid currency amount 
+        format: double
+        type: number
+      CancelledOn:
+        description: |2-
+           The date when the credit balance adjustment was canceled.
+          **Character limit**: 29 **Values**: automatically generated 
+        format: date-time
+        type: string
+      Comment:
+        description: >2-
+           Use this field to record comments about the credit balance adjustment.
+          **Character limit**: 255 **Values**: a string of 255 characters or
+          fewer 
+        type: string
+      CreatedById:
+        description: |2-
+           The user ID of the person who created the credit balance adjustment.
+          **Character limit**: 32 **Values**: automatically generated 
+        type: string
+      CreatedDate:
+        description: |2-
+           The date when the credit balance adjustmentwas generated.
+          **Character limit**: 29 **Values**: automatically generated 
+        format: date-time
+        type: string
+      Id:
+        description: Object identifier.
+        type: string
+      Number:
+        description: |2-
+           A unique identifier for the credit balance adjustment. Zuora generates this number in the format, <em>CBA-xxxxxxxx</em>, such as CBA-00375919.
+          **Character limit**: 255 **Values**: automatically generated 
+        type: string
+      ReasonCode:
+        description: |2-
+           A code identifying the reason for the transaction. Must be an existing reason code or empty. If you do not specify a value, Zuora uses the default reason code.
+          **Character limit**: 32 **Values**: a valid reason code 
+        type: string
+      ReferenceId:
+        description: >2-
+           The ID of the payment that the credit balance adjustment is for.
+          **Character limit**: 100 **Values**: a string of 100 characters or
+          fewer 
+        type: string
+      SourceTransactionId:
+        description: |2
+           The ID of the object that the credit balance adjustment is applied to. You must specify a value for either the `SourceTransactionId` field or the `SourceTransactionNumber` field.
+          **Character limit**: 32 **Values**: one of the following:
+
+          - InvoiceId
+          - PaymentId
+          - RefundId
+        type: string
+      SourceTransactionNumber:
+        description: |2
+           The number of the object that the credit balance adjustment is applied to. You must specify a value for either the `SourceTransactionId` field or the `SourceTransactionNumber` field.
+          **Character limit**: 50 **Values**: one of the following:
+
+          - InvoiceNumber
+          - PaymentNumber
+          - RefundNumber
+        type: string
+      SourceTransactionType:
+        description: >2
+           The source of the credit balance adjustment.
+          **Character limit**: **Values**: automatically generated; one of the
+          following:
+
+
+          - Invoice
+
+          - Payment
+
+          - Refund
+        type: string
+      Status:
+        description: >2
+           The status of the credit balance adjustment.
+          **Character limit**: 9 **Values**: automatically generated; one of the
+          following:
+
+
+          - Processed
+
+          - Canceled
+        type: string
+      TransferredToAccounting:
+        description: >
+          Status of the credit balance adjustment's transfer to an external
+          accounting system, such as NetSuite.
+        enum:
+          - Processing
+          - 'Yes'
+          - 'No'
+          - Error
+          - Ignore
+        type: string
+      Type:
+        description: Create Query Filter
+        type: string
+      UpdatedById:
+        description: |2-
+           The ID of the user who last updated the credit balance adjustment.
+          **Character limit**: 32 **Values**: automatically generated 
+        type: string
+      UpdatedDate:
+        description: |2-
+           The date when the credit balance adjustment was last updated.
+          **Character limit**: 29 **Values**: automatically generated 
+        format: date-time
+        type: string
+    type: object
+  - $ref: ./CreditBalanceAdjustmentObjectNSFields.yaml
+  - $ref: ./CreditBalanceAdjustmentObjectCustomFields.yaml

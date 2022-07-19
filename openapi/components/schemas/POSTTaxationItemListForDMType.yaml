@@ -1,0 +1,40 @@
+example:
+  taxationItems:
+    - exemptAmount: 0
+      financeInformation:
+        salesTaxPayableAccountingCode: Check
+      jurisdiction: CALIFORNIA
+      locationCode: '06'
+      memoItemId: 402890555a7e9791015a87b082980068
+      name: STATE TAX
+      sourceTaxItemId: 402890555a7d4022015a7db254e200c2
+      taxAmount: 0.01
+      taxCode: ServiceTaxCode
+      taxCodeDescription: This is tax code description!
+      taxDate: '2016-06-05'
+      taxRate: 0.0625
+      taxRateDescription: This is tax rate description!
+      taxRateType: Percentage
+    - exemptAmount: 0
+      financeInformation:
+        salesTaxPayableAccountingCode: Check
+      jurisdiction: CALIFORNIA
+      locationCode: '06'
+      memoItemId: 402890555a7e9791015a87b082d5006a
+      name: STATE TAX
+      sourceTaxItemId: 402890555a7d4022015a7db254e200c3
+      taxAmount: 0.02
+      taxCode: ServiceTaxCode
+      taxCodeDescription: This is tax code description!
+      taxDate: '2016-06-05'
+      taxRate: 0.0625
+      taxRateDescription: This is tax rate description!
+      taxRateType: Percentage
+properties:
+  taxationItems:
+    description: |
+      Container for taxation items.
+    items:
+      $ref: ./POSTTaxationItemForDMType.yaml
+    type: array
+type: object

@@ -1,0 +1,20 @@
+example:
+  reasons:
+    - code: ObjectNotFound
+      message: >-
+        Notification definition with id 6e569e1e05f040eda51a927b140c0ac1 does
+        not exist
+properties:
+  reasons:
+    items:
+      properties:
+        code:
+          description: |
+            The error code of response.
+          type: string
+        message:
+          description: The detail information of the error response
+          type: string
+      type: object
+    type: array
+type: object

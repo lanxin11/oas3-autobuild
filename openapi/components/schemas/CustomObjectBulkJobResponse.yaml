@@ -1,0 +1,117 @@
+example:
+  CreatedById: 7b39d73f-22e6-404a-b8e7-894f7620e91c
+  CreatedDate: '2021-03-15T06:47:18Z'
+  Id: ed4b9701-bafb-4976-8019-b08269430153
+  UpdatedById: 7b39d73f-22e6-404a-b8e7-894f7620e91c
+  UpdatedDate: '2021-03-15T06:47:18Z'
+  error:
+    code: 71012560
+    message: Service limit reached, please retry later.
+  namespace: default
+  object: passenger
+  operation: delete
+  processingTime: 1882
+  recordsProcessed: 500
+  status: failed
+properties:
+  CreatedById:
+    description: The ID of the user who creates the job.
+    format: uuid
+    type: string
+  CreatedDate:
+    description: The time when the bulk job is created.
+    format: date-time
+    type: string
+  Id:
+    description: The custom object bulk job ID.
+    format: uuid
+    type: string
+  UpdatedById:
+    description: The ID of the user who updates the job.
+    format: uuid
+    type: string
+  UpdatedDate:
+    description: The time when the bulk job is updated.
+    format: date-time
+    type: string
+  error:
+    properties:
+      code:
+        description: The error code.
+        example: 71012560
+        format: Int32
+        type: integer
+      message:
+        description: The error message.
+        example: Service limit reached, please retry later.
+        type: string
+    type: object
+  namespace:
+    description: >
+      The namespace of the object. Custom objects belong to the `default`
+      namespace. Zuora standard objects belong to the `com_zuora` namespace.
+      Bulk job operations on the following Zuora standard objects are supported:
+
+      * SavedQuery
+    enum:
+      - default
+      - com_zuora
+    type: string
+  object:
+    description: The object to that the bulk operation performs on.
+    example: passenger
+    type: string
+  operation:
+    description: >
+      The operation that the bulk job performs. Only the users that have the
+      "Delete Custom Objects" permission can submit a `delete` bulk job request.
+      Only the users that have the "Edit Custom Objects" permission can submit a
+      `create` or `update` bulk job request. See [Platform
+      Permissions](https://knowledgecenter.zuora.com/Billing/Tenant_Management/A_Administrator_Settings/User_Roles/h_Platform_Roles#Platform_Permissions)
+      for more information.
+    enum:
+      - delete
+      - create
+    type: string
+  processingTime:
+    description: >-
+      The amount of time elapsed, in milliseconds, from the submission to the
+      completion of the bulk job.
+    example: 550
+    type: integer
+  recordsProcessed:
+    description: The number of object records processed by the bulk job.
+    example: 1000
+    type: integer
+  status:
+    description: >
+      The status of the bulk job:
+
+
+      - `accepted` - The job has been accepted and is ready to process.
+
+      - `pending` - The job is waiting for your input. You can use [Upload a
+      file for a custom object bulk
+      job](https://www.zuora.com/developer/api-reference/#operation/POST_UploadFileForCustomObjectBulkJob)
+      to upload a file so that the job can start creating records.
+
+      - `in_progress` - The job is processing.
+
+      - `completed` - The job has completed.
+
+      - `failed` - The job was unable to complete. You can use [List all errors
+      for a custom object bulk
+      job](https://www.zuora.com/developer/api-reference/#operation/GET_CustomObjectBulkJobErrors)
+      to list the errors.
+
+      - `cancelled` - The job was cancelled by the server.
+    enum:
+      - accepted
+      - pending
+      - in_progress
+      - completed
+      - failed
+      - cancelled
+    example: failed
+    type: string
+type: object

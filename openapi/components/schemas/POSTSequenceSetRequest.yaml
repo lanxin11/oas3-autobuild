@@ -1,0 +1,25 @@
+description: ''
+properties:
+  creditMemo:
+    $ref: ./CreditMemoEntityPrefix.yaml
+  debitMemo:
+    $ref: ./DebitMemoEntityPrefix.yaml
+  invoice:
+    $ref: ./InvoiceEntityPrefix.yaml
+  name:
+    description: >
+      The name of the sequence set to configure for billing documents, payments,
+      and refunds.
+    example: FRANCE
+    type: string
+  payment:
+    $ref: ./PaymentEntityPrefix.yaml
+  refund:
+    $ref: ./RefundEntityPrefix.yaml
+required:
+  - name
+  - invoice
+  - creditMemo
+  - debitMemo
+title: sequenceSets
+type: object

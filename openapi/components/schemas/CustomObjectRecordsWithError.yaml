@@ -1,0 +1,23 @@
+properties:
+  code:
+    description: >
+      See [Custom Objects API error
+      code](https://knowledgecenter.zuora.com/Central_Platform/Custom_Objects/Z_Custom_Objects_API#Custom_Objects_API_error_code)
+      for details.
+    enum:
+      - 71012520
+      - 71012521
+      - 71012522
+      - 71012523
+      - 71012524
+      - 71012525
+      - 71012526
+      - 71012530
+    format: Int32
+    type: integer
+  message:
+    example: Field [last_name__c] cannot accept empty string.
+    type: string
+  record:
+    $ref: ./CustomObjectRecordWithAllFields.yaml
+type: object

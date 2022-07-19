@@ -1,0 +1,18 @@
+properties:
+  nextPage:
+    description: >
+      URL to retrieve the next page of the response if it exists; otherwise
+      absent.
+    format: URL
+    type: string
+  subscriptions:
+    description: |
+      Array of subscriptions.
+    items:
+      $ref: ./GETSubscriptionType.yaml
+    type: array
+  success:
+    description: |
+      Returns `true` if the request was processed successfully.
+    type: boolean
+type: object

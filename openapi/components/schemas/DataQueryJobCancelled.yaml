@@ -1,0 +1,13 @@
+allOf:
+  - $ref: ./DataQueryJobCommon.yaml
+  - properties:
+      queryStatus:
+        description: |
+          Status of the query job.
+        enum:
+          - cancelled
+        type: string
+    type: object
+description: |
+  A cancelled data query job.
+title: cancelledQueryJob

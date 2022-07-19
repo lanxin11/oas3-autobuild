@@ -1,0 +1,33 @@
+example:
+  effectiveDate: '2017-03-02'
+  invoices:
+    - amount: 1
+      invoiceId: 4028905f5a87c0ff015a87d3f8f10043
+      items:
+        - amount: 0.9
+          creditMemoItemId: 4028905f5a890526015a8d73f74b0016
+          invoiceItemId: 4028905f5a87c0ff015a87d3f90c0045
+        - amount: 0.1
+          creditTaxItemId: 4028905f5a890526015a8d73f90c0018
+          taxItemId: 4028905f5a87c0ff015a87d3f884003f
+properties:
+  debitMemos:
+    description: >
+      Container for debit memos that the credit memo is applied to. The maximum
+      number of debit memos is 1,000.
+    items:
+      $ref: ./CreditMemoApplyDebitMemoRequestType.yaml
+    type: array
+  effectiveDate:
+    description: |
+      The date when the credit memo is applied.
+    format: date
+    type: string
+  invoices:
+    description: >
+      Container for invoices that the credit memo is applied to. The maximum
+      number of invoices is 1,000.
+    items:
+      $ref: ./CreditMemoApplyInvoiceRequestType.yaml
+    type: array
+type: object

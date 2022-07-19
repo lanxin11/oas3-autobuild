@@ -1,0 +1,63 @@
+properties:
+  amountWithoutTax:
+    description: |
+      The credit memo item amount excluding tax.
+    format: double
+    type: number
+  chargeAmount:
+    description: >
+      The amount of the credit memo item. For tax-inclusive credit memo items,
+      the amount indicates the credit memo item amount including tax. For
+      tax-exclusive credit memo items, the amount indicates the credit memo item
+      amount excluding tax
+    format: double
+    type: number
+  chargeDescription:
+    description: |
+      Description of this credit memo item.
+    type: string
+  chargeName:
+    description: |
+      Name of this credit memo item.
+    type: string
+  productName:
+    description: |
+      Name of the product associated with this credit memo item.
+    type: string
+  productRatePlanChargeId:
+    description: |
+      ID of the product rate plan charge associated with this credit memo item.
+    type: string
+  quantity:
+    description: |
+      Quantity of the charge associated with this credit memo item.
+    type: integer
+  serviceEndDate:
+    description: |
+      End date of the service period for this credit memo item, as yyyy-mm-dd.
+    format: date
+    type: string
+  serviceStartDate:
+    description: |
+      Service start date of this credit memo item, as yyyy-mm-dd.
+    format: date
+    type: string
+  taxAmount:
+    description: |
+      The tax amount of the credit memo item.
+    format: double
+    type: number
+  taxationItems:
+    description: >-
+      List of taxation items.
+
+      **Note**: This field is only available if you set the `zuora-version`
+      request header to `315.0` or later. 
+    items:
+      $ref: ./POSTSubscriptionPreviewTaxationItemsType.yaml
+    type: array
+  unitOfMeasure:
+    description: Unit used to measure consumption.
+    type: string
+title: creditMemoItems
+type: object

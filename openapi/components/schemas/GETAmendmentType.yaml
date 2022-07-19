@@ -1,0 +1,280 @@
+properties:
+  autoRenew:
+    description: >
+      Determines whether the subscription is automatically renewed, or whether
+      it expires at the end of the term and needs to be manually renewed. 
+    type: boolean
+  baseRatePlanId:
+    description: >
+      The rate plan ID on which changes are made. Only the Update or Remove
+      amendment returns a base rate plan ID.
+    type: string
+  baseSubscriptionId:
+    description: |
+      The ID of the subscription based on which the amendment is created.
+    type: string
+  bookingDate:
+    description: >
+      The date when the amendment is signed. This field is to standardize the
+      booking date information to increase audit ability and traceability of
+      data between Zuora Billing and Zuora Revenue. It is mapped as the booking
+      date for a sale order line in Zuora Revenue.
+    format: date
+    type: string
+  code:
+    description: |
+      The amendment code.
+    type: string
+  contractEffectiveDate:
+    description: >
+      The date when the amendment becomes effective for billing purposes, as
+      `yyyy-mm-dd`.
+    format: date
+    type: string
+  currentTerm:
+    description: |
+      The length of the period for the current subscription term. 
+    format: int64
+    type: integer
+  currentTermPeriodType:
+    description: |
+      The period type for the current subscription term.
+      Possible values are:
+
+      - Month
+      - Year
+      - Day
+      - Week
+    type: string
+  customerAcceptanceDate:
+    description: >
+      The date when the customer accepts the amendment changes to the
+      subscription, as `yyyy-mm-dd`.
+    format: date
+    type: string
+  description:
+    description: |
+      Description of the amendment.
+    type: string
+  destinationAccountId:
+    description: |
+      The ID of the account that the subscription is being transferred to.
+    type: string
+  destinationInvoiceOwnerId:
+    description: |
+      The ID of the invoice that the subscription is being transferred to.
+    type: string
+  effectiveDate:
+    description: |
+      The date when the amendment changes take effective. 
+    format: date
+    type: string
+  effectivePolicy:
+    description: >
+
+      Effective Policy for the subscription. Possible values are:
+
+
+      - EffectiveImmediately
+
+
+      - EffectiveEndOfBillingPeriod
+
+
+      - SpecificDate
+
+
+      The value depends on the following conditions:
+
+      * If the rate plan change (from old to new) is an upgrade, the effective
+      policy is `EffectiveImmediately` by default.
+
+      * If the rate plan change (from old to new) is a downgrade, the effective
+      policy is `EffectiveEndOfBillingPeriod` by default.
+
+      * Otherwise, the effective policy is `SpecificDate` by default.
+
+
+      **Note:** This feature is in the **Early Adopter** phase. We are actively
+      soliciting feedback from a small set of early adopters before releasing it
+      as generally available. If you want to join this early adopter program,
+      submit a request at [Zuora Global Support](http://support.zuora.com/).
+    type: string
+  id:
+    description: |
+      The amendment ID.
+    type: string
+  name:
+    description: |
+      The name of the amendment.
+    type: string
+  newRatePlanId:
+    description: >
+      The ID of the rate plan charge on which amendment is made. Only the Add or
+      Update amendment returns a new rate plan ID.
+    type: string
+  newSubscriptionId:
+    description: |
+      The ID of the subscription that the amendment changes.
+    type: string
+  renewalSetting:
+    description: >
+      Specifies whether a termed subscription will remain termed or change to
+      evergreen when it is renewed.
+
+      Possible values are:
+
+
+      - RENEW_WITH_SPECIFIC_TERM
+
+      - RENEW_TO_EVERGREEN
+    type: string
+  renewalTerm:
+    description: |
+      The term of renewal for the amended subscription.
+    format: int64
+    type: integer
+  renewalTermPeriodType:
+    description: |
+      The period type for the subscription renewal term.
+      Possible values are:
+
+      - Month
+      - Year
+      - Day
+      - Week
+    type: string
+  resumeDate:
+    description: >
+      The date when the subscription resumption takes effect, as `yyyy-mm-dd`.
+
+
+      **Note:** This feature is in **Limited Availability**. If you wish to have
+      access to the feature, submit a request at [Zuora Global
+      Support](http://support.zuora.com/).
+    format: date
+    type: string
+  serviceActivationDate:
+    description: |
+      The date when service is activated, as `yyyy-mm-dd`.
+    format: date
+    type: string
+  specificUpdateDate:
+    description: >
+      The date when the Update Product amendment takes effect. 
+
+      Only for the Update Product amendments if there is already a future-dated
+      Update Product amendment on
+
+      the subscription.
+    format: date
+    type: string
+  status:
+    description: |
+      The status of the amendment.
+      Possible values are:
+
+      - Draft 
+      - Pending Activation
+      - Pending Acceptance
+      - Completed
+    type: string
+  subType:
+    description: >
+      Sub type for the subscription. 
+
+
+      Possible values are:
+
+
+      - Upgrade
+
+
+      - Downgrade
+
+
+      - Crossgrade
+
+
+      - PlanChanged
+
+
+      This field shows the sub type you choose for your change plan amendment.
+
+
+      However, if you do not set this field, the field will be automatically
+      generated by the system according to the following rules:
+
+
+      When the old and new rate plans are within the same Grading catalog group:
+
+      * If the grade of new plan is greater than that of the old plan, this is
+      an "Upgrade".
+
+      * If the grade of new plan is less than that of the old plan, this is a
+      "Downgrade".
+
+      * If the grade of new plan equals that of the old plan, this is a
+      "Crossgrade".
+
+
+      When the old and new rate plans are not in the same Grading catalog group,
+      or either has no group, this is "PlanChanged".
+
+
+      **Note:** This feature is in the **Early Adopter** phase. We are actively
+      soliciting feedback from a small set of early adopters before releasing it
+      as generally available. If you want to join this early adopter program,
+      submit a request at [Zuora Global Support](http://support.zuora.com/).
+    type: string
+  success:
+    description: |
+      Returns `true` if the request was processed successfully.
+    type: boolean
+  suspendDate:
+    description: >
+      The date when the subscription suspension takes effect, as `yyyy-mm-dd`.
+
+
+      **Note:** This feature is in **Limited Availability**. If you wish to have
+      access to the feature, submit a request at [Zuora Global
+      Support](http://support.zuora.com/).
+    format: date
+    type: string
+  termStartDate:
+    description: |
+      The date when the new terms and conditions take effect.
+    format: date
+    type: string
+  termType:
+    description: |
+      Indicates if the subscription is `TERMED` or `EVERGREEN`.
+    type: string
+  type:
+    description: >
+      Type of the amendment.
+
+      Possible values are:
+
+
+      - Cancellation
+
+      - NewProduct
+
+      - OwnerTransfer
+
+      - RemoveProduct
+
+      - Renewal
+
+      - UpdateProduct
+
+      - TermsAndConditions
+
+      - ChangePlan - Note that this feature is in the **Early Adopter** phase.
+      We are actively soliciting feedback from a small set of early adopters
+      before releasing it as generally available. If you want to join this early
+      adopter program, submit a request at [Zuora Global
+      Support](http://support.zuora.com/).
+    type: string
+type: object
