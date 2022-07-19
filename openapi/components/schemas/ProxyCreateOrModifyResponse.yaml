@@ -1,8 +1,0 @@
-properties:
-  Id:
-    description: ''
-    type: string
-  Success:
-    description: ''
-    type: boolean
-type: object

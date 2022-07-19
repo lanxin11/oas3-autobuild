@@ -1,7 +1,0 @@
-properties:
-  SubscriptionProductFeature:
-    description: ''
-    items:
-      $ref: ./ActionAmendSubscriptionProductFeature.yaml
-    type: array
-type: object

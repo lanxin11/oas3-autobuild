@@ -1,8 +1,0 @@
-properties:
-  id:
-    description: The id of the deleted workflow
-    type: string
-  success:
-    description: The indicator for whether the deletion was a success
-    type: boolean
-type: object

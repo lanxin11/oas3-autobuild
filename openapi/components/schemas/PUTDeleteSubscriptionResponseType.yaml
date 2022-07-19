@@ -1,5 +1,0 @@
-properties:
-  success:
-    description: Returns `true` if the request is processed successfully.
-    type: boolean
-type: object

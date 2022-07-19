@@ -1,4 +1,0 @@
-additionalProperties: true
-description: Request payload if any
-title: settingsRequestBody
-type: object

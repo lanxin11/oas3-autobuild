@@ -56,20 +56,7 @@ post:
   parameters:
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
-    - name: apiAccessKeyId
-      in: header
-      description: |
-        Account username
-      required: false
-      schema:
-        type: string
-    - name: apiSecretAccessKey
-      in: header
-      description: |
-        Account password
-      required: false
-      schema:
-        type: string
+    - $ref: '#/components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml'
     - name: zuora-version
       in: header
       required: false
@@ -83,8 +70,6 @@ post:
         * targetDate
       schema:
         type: string
-  security:
-    - Authorization: []
   requestBody:
     content:
       application/json; charset=utf-8:

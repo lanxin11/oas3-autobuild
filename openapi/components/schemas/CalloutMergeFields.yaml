@@ -1,9 +1,0 @@
-additionalProperties:
-  description: >
-    The key is the parameter name. The value is a merge field with angle
-    brackets.
-  type: string
-description: |
-  A key-value map of merge fields of this callout.
-title: calloutParams
-type: object

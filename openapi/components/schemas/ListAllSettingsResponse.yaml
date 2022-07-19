@@ -1,7 +1,0 @@
-properties:
-  settings:
-    items:
-      $ref: ./SettingItemWithOperationsInformation.yaml
-    type: array
-title: allSettings
-type: object

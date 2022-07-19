@@ -1,5 +1,0 @@
-properties:
-  success:
-    description: ''
-    type: boolean
-type: object

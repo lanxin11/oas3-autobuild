@@ -1,9 +1,0 @@
-allOf:
-  - properties:
-      invoiceId:
-        description: |
-          The ID of the invoice that the credit memo is created from.
-        type: string
-    type: object
-  - $ref: ./CreditMemoFromInvoiceType.yaml
-title: memos

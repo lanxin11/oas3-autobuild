@@ -1,9 +1,0 @@
-properties:
-  description:
-    description: The description of the paramter.
-    type: string
-  name:
-    description: The name of the parameter.
-    type: string
-title: httpRequestParameter
-type: object

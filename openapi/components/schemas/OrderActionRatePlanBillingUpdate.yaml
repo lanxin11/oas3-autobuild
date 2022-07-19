@@ -1,8 +1,0 @@
-properties:
-  billingPeriodAlignment:
-    enum:
-      - AlignToCharge
-      - AlignToSubscriptionStart
-      - AlignToTermStart
-    type: string
-type: object

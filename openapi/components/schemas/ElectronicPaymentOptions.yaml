@@ -1,5 +1,0 @@
-properties:
-  PaymentMethodId:
-    description: ''
-    type: string
-type: object

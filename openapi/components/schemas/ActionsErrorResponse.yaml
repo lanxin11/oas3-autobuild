@@ -1,8 +1,0 @@
-properties:
-  Code:
-    description: ''
-    type: string
-  Message:
-    description: ''
-    type: string
-type: object

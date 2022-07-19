@@ -1,9 +1,0 @@
-example:
-  customFileName: exampleCreditMemo
-properties:
-  customFileName:
-    description: >
-      The custom file name to use to generate new Word or PDF files for the
-      billing document.
-    type: string
-type: object

@@ -1,7 +1,0 @@
-properties:
-  responses:
-    items:
-      $ref: ./SettingValueResponseWrapper.yaml
-    type: array
-title: batchResponse
-type: object

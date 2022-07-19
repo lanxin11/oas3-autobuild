@@ -1,6 +1,0 @@
-allOf:
-  - $ref: ./PriceChangeParams.yaml
-  - properties:
-      listPrice:
-        type: number
-    type: object

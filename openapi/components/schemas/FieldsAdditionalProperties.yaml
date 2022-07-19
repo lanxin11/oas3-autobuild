@@ -1,7 +1,0 @@
-additionalProperties:
-  type: string
-description: >
-  Field mappings in the form of `<this-object-field-name>`:
-  `<other-object-field-name>`.
-title: relationshipFieldMapping
-type: object

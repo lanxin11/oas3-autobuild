@@ -1,9 +1,0 @@
-additionalProperties:
-  type: string
-description: >
-  Field mappings in the form of `<this-object-field-name>`:
-  `<other-object-field-name>`. Usually the `<other-object-field-name>` can only
-  be the `Id` field of the related object. Two exceptions are Subscription Name
-  and Rate Plan Charge Number as both of them are unique.
-title: relationshipFieldMapping
-type: object

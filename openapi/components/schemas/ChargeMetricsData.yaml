@@ -1,7 +1,0 @@
-properties:
-  ChargeMetrics:
-    description: ''
-    items:
-      $ref: ./NewChargeMetrics.yaml
-    type: array
-type: object

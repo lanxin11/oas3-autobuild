@@ -1,9 +1,0 @@
-name: If-Match
-in: header
-required: false
-description: >
-  The expected ETag of the resource. You can use this header to perform a
-  conditional request. Zuora responds with 412 Precondition Failed if the ETag
-  of the resource does not match the value of this header. 
-schema:
-  type: string

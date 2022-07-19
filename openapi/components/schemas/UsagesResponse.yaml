@@ -1,8 +1,0 @@
-properties:
-  metrics:
-    description: |
-      The list of tasks retrieved.
-    items:
-      $ref: ./Usage.yaml
-    type: array
-type: object

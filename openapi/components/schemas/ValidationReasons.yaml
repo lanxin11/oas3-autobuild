@@ -1,8 +1,0 @@
-properties:
-  fieldName:
-    description: The name of the invalid field
-    type: string
-  title:
-    description: A description why that field is invalid
-    type: string
-type: object

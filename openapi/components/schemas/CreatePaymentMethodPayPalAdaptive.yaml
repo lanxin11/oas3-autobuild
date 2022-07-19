@@ -1,6 +1,0 @@
-properties:
-  preapprovalKey:
-    description: |
-      The PayPal preapproval key.
-    type: string
-type: object

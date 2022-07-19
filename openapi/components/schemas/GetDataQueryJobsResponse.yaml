@@ -1,9 +1,0 @@
-properties:
-  data:
-    description: >
-      List of data query jobs. The query jobs are listed in reverse order of
-      creation.
-    items:
-      $ref: ./DataQueryJob.yaml
-    type: array
-type: object

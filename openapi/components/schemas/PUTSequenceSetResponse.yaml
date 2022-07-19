@@ -1,7 +1,0 @@
-description: ''
-properties:
-  success:
-    description: |
-      Indicates whether the call succeeded.
-    type: boolean
-type: object

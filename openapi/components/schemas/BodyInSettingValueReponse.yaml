@@ -1,4 +1,0 @@
-additionalProperties: true
-description: Response body if the request is executed successfully.
-title: settingsResponseBody
-type: object

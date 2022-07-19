@@ -1,9 +1,0 @@
-properties:
-  errors:
-    description: All errors for a custom object bulk job.
-    items:
-      $ref: ./CustomObjectBulkJobErrorResponse.yaml
-    type: array
-required:
-  - errors
-type: object

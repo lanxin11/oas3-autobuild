@@ -1,6 +1,0 @@
-allOf:
-  - $ref: ./CommonResponseType.yaml
-  - properties:
-      order:
-        $ref: ./Order.yaml
-    type: object
