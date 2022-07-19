@@ -1,8 +1,13 @@
-type: oauth2
-description: OAuth bearer token for authentication.
-flows:
-  clientCredentials:
-    tokenUrl: https://rest.apisandbox.zuora.com/oauth/token
-    scopes: 
-      write: create, update, or delete an object
-      read: read the info on an object"
+name: Authorization
+in: header
+required: false
+description: |
+  `Bearer {token}` for a valid OAuth token.
+schema:
+  type: oauth2
+  flows:
+    clientCredentials:
+      tokenUrl: https://rest.apisandbox.zuora.com/oauth/token
+      scopes: 
+        write: create, update, or delete an object
+        read: read the info on an object"

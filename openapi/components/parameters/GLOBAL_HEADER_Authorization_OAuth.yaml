@@ -1,6 +1,6 @@
 name: Authorization
 in: header
-required: true
+required: false
 description: |
   `Bearer {token}` for a valid OAuth token.
 schema:
