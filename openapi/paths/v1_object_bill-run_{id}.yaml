@@ -12,6 +12,7 @@ get:
   tags:
     - Bill Run
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_X_Zuora_WSDL_Version.yaml
@@ -273,6 +274,7 @@ put:
   tags:
     - Bill Run
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_rejectUnknownFields.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
@@ -425,6 +427,7 @@ delete:
   tags:
     - Bill Run
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - name: id

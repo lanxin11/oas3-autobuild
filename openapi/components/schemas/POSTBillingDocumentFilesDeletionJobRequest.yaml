@@ -2,11 +2,31 @@ example:
   accountIds:
     - 4028905558b483220158b48983dd0015
     - 6028905558b483220158b68983dd0016
+  accountKeys:
+    - 4028905558b483220158b48983dd0015
+    - A00000001
 properties:
   accountIds:
     description: >
       Container for the IDs of the accounts that you want to create the billing
-      document files deletion job for. 
+      document files deletion job for.
+
+
+      **Note**: When creating jobs to delete billing document PDF files, you
+      must specify either set of `accountIds` or `accountKeys` in the request
+      body.
+    items:
+      type: string
+    type: array
+  accountKeys:
+    description: >
+      Container for the IDs and/or numbers of the accounts that you want to
+      create the billing document files deletion job for.
+
+
+      **Note**: When creating jobs to delete billing document PDF files, you
+      must specify either set of `accountIds` or `accountKeys` in the request
+      body.
     items:
       type: string
     type: array

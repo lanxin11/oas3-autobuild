@@ -196,6 +196,26 @@ allOf:
 
           **Values**: `TRUE`, `FALSE `(default) 
         type: boolean
+      LastBookingDate:
+        description: >-
+          The last booking date of the subscription object. This field is
+          writable only when the subscription is newly created as a first
+          version subscription. You can override the date value when creating a
+          subscription through the Subscribe and Amend API or the subscription
+          creation UI (non-Orders). Otherwise, the default value `today` is set
+          per the user's timezone. The value of this field is as follows:
+
+          * For a new subscription created by the [Subscribe and Amend
+          APIs](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Migration_Guidance#Subscribe_and_Amend_APIs_to_Migrate),
+          this field has the value of the subscription creation date.
+
+          * For a subscription changed by an amendment, this field has the value
+          of the amendment booking date.
+
+          * For a subscription created or changed by an order, this field has
+          the value of the order date. 
+        format: date
+        type: string
       Name:
         description: |2
            The unique identifier of the subscription. If you don't specify a value, then Zuora generates a name automatically. Whether auto-generated or manually specified, the subscription name must be unique. Otherwise an error will occur. You can change this value only when the subscription is in `Draft` status. Once the subscription is activated, you can't change this value, nor can you use this value for a different subscription.

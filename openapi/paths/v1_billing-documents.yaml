@@ -17,26 +17,46 @@ get:
     -
     /billing-documents?accountId=4028905f5e4feb38015e50af9aa002d1&sort=+documentDate
 
-    -
-    /billing-documents?accountId=4028905f5e4feb38015e50af9aa002d1&status=Posted
+    - /billing-documents?account=4028905f5e4feb38015e50af9aa002d1&status=Posted
+
+    - /billing-documents?accountNumber=A00000001&sort=+documentDate
+
+    - /billing-documents?accountNumber=A00000001&status=Posted
   summary: List billing documents for an account
   operationId: GET_BillingDocuments
   tags:
     - Billing Documents
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
     - name: accountId
       in: query
-      required: true
       description: >
         The ID of the customer account that the billing documents are associated
-        with. 
+        with.
+
+
+        **Note**: When retrieving information about all billing documents
+        associated with an account, you must specify either `accountId` or
+        `accountKey` in the query parameters.
       schema:
         type: string
         format: uuid
+    - name: accountKey
+      in: query
+      description: >
+        The ID or number of the customer account that the billing documents are
+        associated with.
+
+
+        **Note**: When retrieving information about all billing documents
+        associated with an account, you must specify either `accountId` or
+        `accountKey` in the query parameters.
+      schema:
+        type: string
     - name: documentDate
       in: query
       required: false

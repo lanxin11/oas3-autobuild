@@ -197,6 +197,7 @@ get:
                                 endDate: '2021-12-31'
                 success: true
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - in: path

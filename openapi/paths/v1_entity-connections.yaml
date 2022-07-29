@@ -22,6 +22,7 @@ get:
 
     You can make the call as any entity user. 
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
@@ -130,6 +131,7 @@ post:
     You must make the call as a source entity administrator. Also, this
     administrator must have permission to access to the target entity.
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
   requestBody:

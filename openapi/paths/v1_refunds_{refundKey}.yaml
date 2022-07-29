@@ -109,6 +109,7 @@ put:
                 payoutId: null
                 success: true
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - in: path
@@ -236,6 +237,7 @@ get:
                 payoutId: null
                 success: true
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - in: path
@@ -318,6 +320,7 @@ delete:
               value:
                 success: true
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - in: path

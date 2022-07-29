@@ -108,15 +108,26 @@ allOf:
           included with other subscriptions in the account invoice.
         type: string
       isLatestVersion:
-        description: If 'true', the current subscription object is the latest version.
+        description: If `true`, the current subscription object is the latest version.
         type: boolean
       lastBookingDate:
-        description: >
-          The last booking date of a subscription. The value of this field is as
-          follows:
-            * For a new subscription created by the [Subscribe and Amend APIs](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Migration_Guidance#Subscribe_and_Amend_APIs_to_Migrate), this field has the value of the subscription creation date.
-            * For a subscription changed by an amendment, this field has the value of the amendment booking date.
-            * For a subscription created or changed by an order, this field has the value of the order date.
+        description: >-
+          The last booking date of the subscription object. This field is
+          writable only when the subscription is newly created as a first
+          version subscription. You can override the date value when creating a
+          subscription through the Subscribe and Amend API or the subscription
+          creation UI (non-Orders). Otherwise, the default value `today` is set
+          per the user's timezone. The value of this field is as follows:
+
+          * For a new subscription created by the [Subscribe and Amend
+          APIs](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Migration_Guidance#Subscribe_and_Amend_APIs_to_Migrate),
+          this field has the value of the subscription creation date.
+
+          * For a subscription changed by an amendment, this field has the value
+          of the amendment booking date.
+
+          * For a subscription created or changed by an order, this field has
+          the value of the order date. 
         format: date
         type: string
       notes:

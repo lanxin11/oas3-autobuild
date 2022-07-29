@@ -13,10 +13,9 @@ post:
   tags:
     - Accounting Codes
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
-  security:
-    - Authorization: []
   requestBody:
     content:
       application/json; charset=utf-8:
@@ -86,6 +85,7 @@ get:
   tags:
     - Accounting Codes
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml

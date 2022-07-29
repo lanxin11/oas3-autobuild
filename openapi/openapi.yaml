@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: '2022-07-15'
+  version: '2022-07-22'
   title: 'API Reference: Billing'
   x-logo:
     url: >-
@@ -2071,8 +2071,6 @@ paths:
     $ref: paths/v1_invoices_{invoiceKey}_emails.yaml
   /v1/invoices/{invoiceKey}/files:
     $ref: paths/v1_invoices_{invoiceKey}_files.yaml
-  /v1/invoices/{invoiceId}/files:
-    $ref: paths/v1_invoices_{invoiceId}_files.yaml
   /v1/invoices/{invoiceKey}/items:
     $ref: paths/v1_invoices_{invoiceKey}_items.yaml
   /v1/invoices/{invoiceKey}/items/{itemId}/taxation-items:
@@ -2545,14 +2543,3 @@ paths:
     $ref: paths/v1_object_usage_{id}.yaml
 servers:
   - url: https://rest.zuora.com
-components:
-  securitySchemes:
-    Authorization:
-      type: oauth2
-      description: '`Bearer {token}` for a valid OAuth token.'
-      flows:
-        clientCredentials:
-          tokenUrl: https://rest.apisandbox.zuora.com/oauth/token
-          scopes:
-            write: create, update, or delete an object
-            read: read the info on an object"
