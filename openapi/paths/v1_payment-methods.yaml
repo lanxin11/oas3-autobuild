@@ -10,35 +10,7 @@ post:
 
 
     This operation supports the payment methods listed below.
-
-
-    ### PayPal Express Checkout
-
-    The following request body fields are specific to this payment method:
-
-    * `BAID` (required)
-
-    * `email` (required)
-
-
-    ### PayPal Native Express Checkout
-
-    The following request body fields are specific to this payment method:
-
-    * `BAID` (required)
-
-    * `email` (optional)
-
-
-    ### PayPal Adaptive
-
-    The following request body fields are specific to this payment method:
-
-    * `preapprovalKey` (required)
-
-    * `email` (required)
-
-
+            
     ### Credit Card
 
     The following request body fields are applicable to this payment method:
@@ -227,6 +199,49 @@ post:
     * `accountHolderInfo` (required)
 
     * `mandateInfo`
+
+
+    ### PayPal Express Checkout
+
+    The following request body fields are specific to this payment method:
+
+    * `BAID` (required)
+
+    * `email` (required)
+
+
+    ### PayPal Native Express Checkout
+
+    The following request body fields are specific to this payment method:
+
+    * `BAID` (required)
+
+    * `email` (optional)
+
+
+    ### PayPal Adaptive
+
+    The following request body fields are specific to this payment method:
+
+    * `preapprovalKey` (required)
+
+    * `email` (required)
+
+
+    ### PayPal Commerce Platform
+
+    The following request body fields are applicable to the creation of a
+    payment method with the PayPal Commerce Platform gateway integration:
+
+    * `BAID` (required)
+
+    * `email` (required)
+
+
+    This feature is in the Early Adopter phase. See [PayPal Commerce Platform
+    Gateway](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/M_Payment_Gateways/Supported_Payment_Gateways/PayPal_Commerce_Platform_Gateway)
+    for details.
+
 
 
     ### Apple Pay on Adyen Integration v2.0

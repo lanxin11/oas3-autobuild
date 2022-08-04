@@ -1,0 +1,13 @@
+description: |
+  Container of the payment schedules that are created.
+properties:
+  paymentSchedules:
+    description: |
+      Container for payment parts.
+    items:
+      $ref: ./POSTPaymentSchedulesEach.yaml
+    type: array
+  success:
+    description: Returns `true` if the request was processed successfully.
+    type: boolean
+type: object

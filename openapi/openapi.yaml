@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: '2022-07-22'
+  version: '2022-07-29'
   title: 'API Reference: Billing'
   x-logo:
     url: >-
@@ -1742,6 +1742,8 @@ tags:
     description: ''
   - name: Payment Runs
     description: ''
+  - name: Payment Schedules
+    description: ''
   - name: Payment Transaction Logs
     description: ''
   - name: Payments
@@ -1938,8 +1940,8 @@ paths:
     $ref: paths/v1_invoices_{invoiceKey}_creditmemos.yaml
   /v1/creditmemos/{creditMemoKey}:
     $ref: paths/v1_creditmemos_{creditMemoKey}.yaml
-  /v1/creditmemos/{creditMemoId}/apply:
-    $ref: paths/v1_creditmemos_{creditMemoId}_apply.yaml
+  /v1/creditmemos/{creditMemoKey}/apply:
+    $ref: paths/v1_creditmemos_{creditMemoKey}_apply.yaml
   /v1/creditmemos/{creditMemoKey}/cancel:
     $ref: paths/v1_creditmemos_{creditMemoKey}_cancel.yaml
   /v1/creditmemos/{creditMemoKey}/emails:
@@ -1952,15 +1954,15 @@ paths:
     $ref: paths/v1_creditmemos_{creditMemoKey}_items_{cmitemid}.yaml
   /v1/creditmemos/{creditMemoId}/items/{cmitemid}/taxation-items:
     $ref: paths/v1_creditmemos_{creditMemoId}_items_{cmitemid}_taxation-items.yaml
-  /v1/creditmemos/{creditMemoId}/parts:
-    $ref: paths/v1_creditmemos_{creditMemoId}_parts.yaml
-  /v1/creditmemos/{creditMemoId}/parts/{partid}:
-    $ref: paths/v1_creditmemos_{creditMemoId}_parts_{partid}.yaml
-  /v1/creditmemos/{creditMemoId}/parts/{partid}/itemparts:
-    $ref: paths/v1_creditmemos_{creditMemoId}_parts_{partid}_itemparts.yaml
-  /v1/creditmemos/{creditMemoId}/parts/{partid}/itemparts/{itempartid}:
+  /v1/creditmemos/{creditMemoKey}/parts:
+    $ref: paths/v1_creditmemos_{creditMemoKey}_parts.yaml
+  /v1/creditmemos/{creditMemoKey}/parts/{partid}:
+    $ref: paths/v1_creditmemos_{creditMemoKey}_parts_{partid}.yaml
+  /v1/creditmemos/{creditMemoKey}/parts/{partid}/itemparts:
+    $ref: paths/v1_creditmemos_{creditMemoKey}_parts_{partid}_itemparts.yaml
+  /v1/creditmemos/{creditMemoKey}/parts/{partid}/itemparts/{itempartid}:
     $ref: >-
-      paths/v1_creditmemos_{creditMemoId}_parts_{partid}_itemparts_{itempartid}.yaml
+      paths/v1_creditmemos_{creditMemoKey}_parts_{partid}_itemparts_{itempartid}.yaml
   /v1/creditmemos/{creditMemoKey}/pdfs:
     $ref: paths/v1_creditmemos_{creditMemoKey}_pdfs.yaml
   /v1/creditmemos/{creditMemoKey}/post:
@@ -1971,8 +1973,8 @@ paths:
     $ref: paths/v1_creditmemos_{creditMemoKey}_reverse.yaml
   /v1/creditmemos/{creditMemoKey}/taxationitems:
     $ref: paths/v1_creditmemos_{creditMemoKey}_taxationitems.yaml
-  /v1/creditmemos/{creditMemoId}/unapply:
-    $ref: paths/v1_creditmemos_{creditMemoId}_unapply.yaml
+  /v1/creditmemos/{creditMemoKey}/unapply:
+    $ref: paths/v1_creditmemos_{creditMemoKey}_unapply.yaml
   /v1/creditmemos/{creditMemoKey}/unpost:
     $ref: paths/v1_creditmemos_{creditMemoKey}_unpost.yaml
   /v1/creditmemos/{creditMemoId}/write-off:
@@ -2023,8 +2025,8 @@ paths:
     $ref: paths/v1_debitmemos_{debitMemoId}_application-parts.yaml
   /v1/debitmemos/{debitMemoKey}/cancel:
     $ref: paths/v1_debitmemos_{debitMemoKey}_cancel.yaml
-  /v1/debitmemos/{debitMemoId}/collect:
-    $ref: paths/v1_debitmemos_{debitMemoId}_collect.yaml
+  /v1/debitmemos/{debitMemoKey}/collect:
+    $ref: paths/v1_debitmemos_{debitMemoKey}_collect.yaml
   /v1/debitmemos/{debitMemoKey}/emails:
     $ref: paths/v1_debitmemos_{debitMemoKey}_emails.yaml
   /v1/debitmemos/{debitMemoKey}/files:
@@ -2233,32 +2235,54 @@ paths:
     $ref: paths/v1_payment-runs_{paymentRunKey}_summary.yaml
   /v1/payment-runs/{paymentRunKey}/data:
     $ref: paths/v1_payment-runs_{paymentRunKey}_data.yaml
+  /v1/payment-schedules:
+    $ref: paths/v1_payment-schedules.yaml
+  /v1/payment-schedules/batch:
+    $ref: paths/v1_payment-schedules_batch.yaml
+  /v1/payment-schedules/{paymentScheduleKey}:
+    $ref: paths/v1_payment-schedules_{paymentScheduleKey}.yaml
+  /v1/payment-schedules/{paymentScheduleKey}/preview:
+    $ref: paths/v1_payment-schedules_{paymentScheduleKey}_preview.yaml
+  /v1/payment-schedules/{paymentScheduleKey}/cancel:
+    $ref: paths/v1_payment-schedules_{paymentScheduleKey}_cancel.yaml
+  /v1/payment-schedules/{paymentScheduleKey}/items:
+    $ref: paths/v1_payment-schedules_{paymentScheduleKey}_items.yaml
+  /v1/payment-schedules/statistics/{yyyy-mm-dd}:
+    $ref: paths/v1_payment-schedules_statistics_{yyyy-mm-dd}.yaml
+  /v1/payment-schedule-items/{item-id}:
+    $ref: paths/v1_payment-schedule-items_{item-id}.yaml
+  /v1/payment-schedule-items/{item-id}/cancel:
+    $ref: paths/v1_payment-schedule-items_{item-id}_cancel.yaml
+  /v1/payment-schedule-items/retry-payment:
+    $ref: paths/v1_payment-schedule-items_retry-payment.yaml
   /v1/payments:
     $ref: paths/v1_payments.yaml
-  /v1/payments/{paymentId}:
-    $ref: paths/v1_payments_{paymentId}.yaml
+  /v1/payments/{paymentKey}:
+    $ref: paths/v1_payments_{paymentKey}.yaml
   /v1/payments/{paymentId}/transfer:
     $ref: paths/v1_payments_{paymentId}_transfer.yaml
-  /v1/payments/{paymentId}/apply:
-    $ref: paths/v1_payments_{paymentId}_apply.yaml
-  /v1/payments/{paymentId}/cancel:
-    $ref: paths/v1_payments_{paymentId}_cancel.yaml
-  /v1/payments/{paymentId}/parts:
-    $ref: paths/v1_payments_{paymentId}_parts.yaml
-  /v1/payments/{paymentId}/parts/{partid}:
-    $ref: paths/v1_payments_{paymentId}_parts_{partid}.yaml
-  /v1/payments/{paymentId}/parts/{partid}/itemparts:
-    $ref: paths/v1_payments_{paymentId}_parts_{partid}_itemparts.yaml
-  /v1/payments/{paymentId}/parts/{partid}/itemparts/{itempartid}:
-    $ref: paths/v1_payments_{paymentId}_parts_{partid}_itemparts_{itempartid}.yaml
-  /v1/payments/{paymentId}/refunds:
-    $ref: paths/v1_payments_{paymentId}_refunds.yaml
-  /v1/payments/{paymentId}/unapply:
-    $ref: paths/v1_payments_{paymentId}_unapply.yaml
+  /v1/payments/{paymentKey}/apply:
+    $ref: paths/v1_payments_{paymentKey}_apply.yaml
+  /v1/payments/{paymentKey}/cancel:
+    $ref: paths/v1_payments_{paymentKey}_cancel.yaml
+  /v1/payments/{paymentKey}/parts:
+    $ref: paths/v1_payments_{paymentKey}_parts.yaml
+  /v1/payments/{paymentKey}/parts/{partid}:
+    $ref: paths/v1_payments_{paymentKey}_parts_{partid}.yaml
+  /v1/payments/{paymentKey}/parts/{partid}/itemparts:
+    $ref: paths/v1_payments_{paymentKey}_parts_{partid}_itemparts.yaml
+  /v1/payments/{paymentKey}/parts/{partid}/itemparts/{itempartid}:
+    $ref: paths/v1_payments_{paymentKey}_parts_{partid}_itemparts_{itempartid}.yaml
+  /v1/payments/{paymentKey}/refunds:
+    $ref: paths/v1_payments_{paymentKey}_refunds.yaml
+  /v1/payments/{paymentKey}/unapply:
+    $ref: paths/v1_payments_{paymentKey}_unapply.yaml
   /v1/rateplan/{product-key}/productRatePlan:
     $ref: paths/v1_rateplan_{product-key}_productRatePlan.yaml
   /v1/product-rate-plans/{id}:
     $ref: paths/v1_product-rate-plans_{id}.yaml
+  /v1/product-rate-plans/external-id/{id}:
+    $ref: paths/v1_product-rate-plans_external-id_{id}.yaml
   /v1/quotes/document:
     $ref: paths/v1_quotes_document.yaml
   /v1/ramps/{rampNumber}:
@@ -2279,15 +2303,15 @@ paths:
     $ref: paths/v1_refunds_{refundKey}.yaml
   /v1/refunds/{refundKey}/cancel:
     $ref: paths/v1_refunds_{refundKey}_cancel.yaml
-  /v1/refunds/{refundId}/parts:
-    $ref: paths/v1_refunds_{refundId}_parts.yaml
-  /v1/refunds/{refundId}/parts/{refundpartid}:
-    $ref: paths/v1_refunds_{refundId}_parts_{refundpartid}.yaml
-  /v1/refunds/{refundId}/parts/{refundpartid}/itemparts:
-    $ref: paths/v1_refunds_{refundId}_parts_{refundpartid}_itemparts.yaml
-  /v1/refunds/{refundId}/parts/{refundpartid}/itemparts/{itempartid}:
+  /v1/refunds/{refundKey}/parts:
+    $ref: paths/v1_refunds_{refundKey}_parts.yaml
+  /v1/refunds/{refundKey}/parts/{refundpartid}:
+    $ref: paths/v1_refunds_{refundKey}_parts_{refundpartid}.yaml
+  /v1/refunds/{refundKey}/parts/{refundpartid}/itemparts:
+    $ref: paths/v1_refunds_{refundKey}_parts_{refundpartid}_itemparts.yaml
+  /v1/refunds/{refundKey}/parts/{refundpartid}/itemparts/{itempartid}:
     $ref: >-
-      paths/v1_refunds_{refundId}_parts_{refundpartid}_itemparts_{itempartid}.yaml
+      paths/v1_refunds_{refundKey}_parts_{refundpartid}_itemparts_{itempartid}.yaml
   /v1/revenue-events/{event-number}:
     $ref: paths/v1_revenue-events_{event-number}.yaml
   /v1/revenue-events/revenue-schedules/{rs-number}:

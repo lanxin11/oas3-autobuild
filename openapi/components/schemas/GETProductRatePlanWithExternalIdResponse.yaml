@@ -1,4 +1,11 @@
 properties:
+  ExternalIdSourceSystem:
+    description: >
+      The combination of `externallyManagedPlanId` and `externalIdSourceSystem`
+      is the unique identifier for the rate plan purchased on a third-party
+      store. This field is used to represent a subscription rate plan created
+      through third-party stores.
+    type: string
   description:
     description: |
       The short description of the product rate plan.

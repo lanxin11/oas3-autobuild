@@ -5,21 +5,6 @@ allOf:
           Type of the payment method. Possible values include:
 
 
-          * `PayPalEC` - PayPal Express Checkout payment method. Use this type
-          if you are using a [PayPal Payflow Pro
-          Gateway](https://knowledgecenter.zuora.com/CB_Billing/M_Payment_Gateways/Supported_Payment_Gateways/PayPal_Payflow_Pro%2C_Website_Payments_Payflow_Edition%2C_Website_Pro_Payment_Gateway)
-          instance.
-
-          * `PayPalNativeEC` - PayPal Native Express Checkout payment method.
-          Use this type if you are using a [PayPal Express Checkout
-          Gateway](https://knowledgecenter.zuora.com/CB_Billing/M_Payment_Gateways/Supported_Payment_Gateways/PayPal_Express_Checkout_Gateway)
-          instance.
-
-          * `PayPalAdaptive` - PayPal Adaptive payment method. Use this type if
-          you are using a [PayPal Adaptive Payment
-          Gateway](https://knowledgecenter.zuora.com/CB_Billing/M_Payment_Gateways/Supported_Payment_Gateways/PayPal_Adaptive_Payments_Gateway)
-          instance.
-
           * `CreditCard` - Credit card payment method.
 
           * `CreditCardReferenceTransaction` - Credit Card Reference
@@ -43,6 +28,26 @@ allOf:
 
           * `PAD` - Pre-Authorized Debit.
 
+          * `PayPalCP` - PayPal Commerce Platform payment method. Use this type
+          if you are using a [PayPal Commerce Platform
+          Gateway](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/M_Payment_Gateways/Supported_Payment_Gateways/PayPal_Commerce_Platform_Gateway)
+          instance.
+
+          * `PayPalEC` - PayPal Express Checkout payment method. Use this type
+          if you are using a [PayPal Payflow Pro
+          Gateway](https://knowledgecenter.zuora.com/CB_Billing/M_Payment_Gateways/Supported_Payment_Gateways/PayPal_Payflow_Pro%2C_Website_Payments_Payflow_Edition%2C_Website_Pro_Payment_Gateway)
+          instance.
+
+          * `PayPalNativeEC` - PayPal Native Express Checkout payment method.
+          Use this type if you are using a [PayPal Express Checkout
+          Gateway](https://knowledgecenter.zuora.com/CB_Billing/M_Payment_Gateways/Supported_Payment_Gateways/PayPal_Express_Checkout_Gateway)
+          instance.
+
+          * `PayPalAdaptive` - PayPal Adaptive payment method. Use this type if
+          you are using a [PayPal Adaptive Payment
+          Gateway](https://knowledgecenter.zuora.com/CB_Billing/M_Payment_Gateways/Supported_Payment_Gateways/PayPal_Adaptive_Payments_Gateway)
+          instance.
+
           * `AdyenApplePay` - Apple Pay on Adyen Integration v2.0. See [Set up
           Adyen Apple
           Pay](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/L_Payment_Methods/Payment_Method_Types/Apple_Pay_on_Web/Set_up_Adyen_Apple_Pay)
@@ -64,7 +69,7 @@ allOf:
     required:
       - type
     type: object
-  - $ref: ./CreatePMPayPalECPayPalNativeEC.yaml
+  - $ref: ./CreatePMPayPalECPayPalNativeECPayPalCP.yaml
   - $ref: ./CreatePaymentMethodPayPalAdaptive.yaml
   - $ref: ./CreatePaymentMethodCreditCard.yaml
   - $ref: ./CreatePaymentMethodACH.yaml

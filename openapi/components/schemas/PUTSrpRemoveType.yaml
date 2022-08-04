@@ -41,6 +41,17 @@ properties:
       They must point to the same product rate plan. Otherwise, the request
       would fail.
     type: string
+  externalIdSourceSystem:
+    description: >
+      The ID of the external source system. You can use this field and
+      `externalCatalogPlanId` to specify a product rate plan that is imported
+      from an external system.
+
+
+      **Note:** If both `externalCatalogPlanId`, `externalIdSourceSystem` and
+      `productRatePlanId` are provided. They must point to the same product rate
+      plan. Otherwise, the request would fail.
+    type: string
   ratePlanId:
     description: >
       ID of a rate plan for this subscription. This can be the latest version or

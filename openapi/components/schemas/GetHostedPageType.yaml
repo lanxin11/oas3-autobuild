@@ -13,9 +13,8 @@ properties:
       'Bank Transfer'.
     type: string
   pageVersion:
-    description: >
-      Version of the Payment Page. 1 for Payment Pages 1.0 or 2 for Payment
-      Pages 2.0.
+    description: |
+      Version of the Payment Page. 2 for Payment Pages 2.0.
     type: string
 title: hostedpages
 type: object

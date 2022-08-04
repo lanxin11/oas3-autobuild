@@ -63,6 +63,17 @@ allOf:
           `productRatePlanId`. If more than one field is provided then the
           request would fail.
         type: string
+      externalIdSourceSystem:
+        description: >
+          The ID of the external source system. You can use this field and
+          `externalCatalogPlanId` to specify a product rate plan that is
+          imported from an external system.
+
+
+          **Note:** If both `externalCatalogPlanId`, `externalIdSourceSystem`
+          and `productRatePlanId` are provided. They must point to the same
+          product rate plan. Otherwise, the request would fail.
+        type: string
       newExternalCatalogPlanId:
         description: >
           An external ID of the product rate plan to be added. You can use this
@@ -74,6 +85,18 @@ allOf:
 
           **Note:** Provide only one of `newExternalCatalogPlanId` or
           `newProductRatePlanId`. If both fields are provided then the request
+          would fail.
+        type: string
+      newExternalIdSourceSystem:
+        description: >
+          The ID of the external source system. You can use this field and
+          `newExternalCatalogPlanId` to specify a product rate plan that is
+          imported from an external system.
+
+
+          **Note:** If both `newExternalCatalogPlanId`,
+          `newExternalIdSourceSystem` and `newProductRatePlanId` are provided.
+          They must point to the same product rate plan. Otherwise, the request
           would fail.
         type: string
       newProductRatePlanId:

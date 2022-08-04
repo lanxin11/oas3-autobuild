@@ -362,6 +362,11 @@ allOf:
           and Zuora passes it to the gateway. This allows you to add
           functionality that's supported by a specific gateway but currently not
           supported by Zuora.
+
+
+          Zuora sends all the information that you specified to the gateway. If
+          you specify any unsupported gateway option parameters, they will be
+          ignored without error prompts.
         properties:
           GatewayOption:
             description: ''

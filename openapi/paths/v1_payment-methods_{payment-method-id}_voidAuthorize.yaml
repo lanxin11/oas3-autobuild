@@ -8,6 +8,7 @@ post:
       - Chase Paymentech Orbital
       - Ingenico ePayments
       - Verifi Global Payment Gateway
+      - PayPal Commerce Platform
       - SlimPay
       - WePay
   summary: Cancel authorization

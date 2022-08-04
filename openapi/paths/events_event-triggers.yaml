@@ -40,6 +40,8 @@ post:
       * PaymentApplication
       * PaymentMethod
       * PaymentPart
+      * PaymentSchedule
+      * PaymentScheduleItem
       * PrepaidValidityPeriodSummary
       * Product
       * ProductFeature

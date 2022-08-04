@@ -62,6 +62,14 @@ properties:
         - `invoiceDate` and `invoiceTargetDate` (if the Zuora REST API version is 214.0 or earlier)
         - `documentDate` and `targetDate` (if the Zuora REST API version is 215.0 or later)
     type: string
+  invoiceNumber:
+    description: |
+      The number of an existing invoice for which to collect payment using
+      the account's default payment method. If this value is specified, no new
+      invoice is generated, and the following fields are ignored:
+        - `invoiceDate` and `invoiceTargetDate` (if the Zuora REST API version is 214.0 or earlier)
+        - `documentDate` and `targetDate` (if the Zuora REST API version is 215.0 or later)
+    type: string
   invoiceTargetDate:
     description: >
       **Note:** This field has been replaced by the `targetDate` field in Zuora

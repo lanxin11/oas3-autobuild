@@ -1,1 +1,0 @@
-curl -X GET -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3" -H "Content-Type: application/json" "https://rest.sandbox.eu.zuora.com/v1/custom-exchange-rates/EUR?startDate=2019-04-28&endDate=2019-04-30"

@@ -1,0 +1,16 @@
+description: |
+  Information of the payment schedule items to be retried.
+properties:
+  id:
+    description: |
+      Specifies the ID of the payment schedule item to be retried.
+    type: string
+  paymentGatewayId:
+    description: |
+      Specifies the ID of a payment gateway that will be used in the retry.
+    type: string
+  paymentMethodId:
+    description: |
+      Specifies the ID of a payment method that will be used in the retry.
+    type: string
+type: object

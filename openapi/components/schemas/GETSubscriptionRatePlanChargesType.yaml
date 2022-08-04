@@ -108,7 +108,7 @@ allOf:
 
           The way to calculate credit. See [Credit
           Option](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown/Create_prepayment_charge#Credit_Option)
-          for more information. 
+          for more information.
         enum:
           - TimeBased
           - ConsumptionBased

@@ -1,0 +1,219 @@
+get:
+  description: >
+    Retrieves a payment schedule item by ID.
+
+
+    **Note:**
+
+    - The Payment Schedules feature is in the **Early Adopter** phase. We are
+    actively soliciting feedback from a small set of early adopters before
+    releasing it as generally available. If you want to join this early adopter
+    program, submit a request at [Zuora Global
+    Support](https://support.zuora.com/).
+
+    - This operation is only available if you have [Invoice
+    Settlement](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement)
+    enabled.
+  summary: Retrieve a payment schedule item
+  operationId: GET_PaymentScheduleItem
+  tags:
+    - Payment Schedules
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETPaymentScheduleItemResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: 8a90857b822459cd018224dcb9ec13bf
+                number: 1
+                paymentScheduleId: 8a90857b822459cd018224dcb9eb13be
+                paymentScheduleNumber: PS-00000007
+                standalone: false
+                scheduledDate: '2022-07-31'
+                runHour: 23
+                paymentMethodId: 8a90a2fd8074995801807817ebed52aa
+                paymentGatewayId: 8a90a2fd807499580180781775c452a8
+                amount: 30
+                currency: USD
+                status: Pending
+                errorMessage: null
+                paymentId: null
+                billingDocument:
+                  id: 8a90a2fd819503b50181959525e5205d
+                  number: INV00000001
+                  type: Invoice
+                description: ''
+                createdDate: '2022-07-22 00:43:42'
+                createdById: 8a90e082802185b901802199e15902d1
+                updatedDate: '2022-07-22 00:43:42'
+                updatedById: 8a90e082802185b901802199e15902d1
+                success: true
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - in: path
+      name: item-id
+      required: true
+      description: |
+        The unique ID of a payment schedule item.
+      schema:
+        type: string
+put:
+  description: >
+    Updates a payment schedule item by ID.
+
+
+    **Note:**
+
+    - The Payment Schedules feature is in the **Early Adopter** phase. We are
+    actively soliciting feedback from a small set of early adopters before
+    releasing it as generally available. If you want to join this early adopter
+    program, submit a request at [Zuora Global
+    Support](https://support.zuora.com/).
+
+    - This operation is only available if you have [Invoice
+    Settlement](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement)
+    enabled.
+  summary: Update a payment schedule item
+  operationId: PUT_PaymentScheduleItem
+  tags:
+    - Payment Schedules
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/PUTPaymentScheduleItemResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: 8a90857b822459cd018224dcb9ec13bf
+                number: 1
+                paymentScheduleId: 8a90857b822459cd018224dcb9eb13be
+                paymentScheduleNumber: PS-00000007
+                standalone: false
+                scheduledDate: '2022-07-31'
+                runHour: 23
+                paymentMethodId: 8a90a2fd8074995801807817ebed52aa
+                paymentGatewayId: 8a90a2fd807499580180781775c452a8
+                amount: 30
+                currency: USD
+                status: Pending
+                errorMessage: null
+                paymentId: null
+                billingDocument:
+                  id: 8a90a2fd819503b50181959525e5205d
+                  number: INV00000001
+                  type: Invoice
+                description: ''
+                createdDate: '2022-07-22 00:43:42'
+                createdById: 8a90e082802185b901802199e15902d1
+                updatedDate: '2022-07-22 00:43:42'
+                updatedById: 8a90e082802185b901802199e15902d1
+                success: true
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - in: path
+      name: item-id
+      required: true
+      description: |
+        The unique ID of a payment schedule item.
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/PUTPaymentScheduleItemRequest.yaml
+    required: true

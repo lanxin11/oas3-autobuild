@@ -1,0 +1,141 @@
+allOf:
+  - properties:
+      accountId:
+        description: |
+          ID of the account that owns the payment schedule.
+        type: string
+      accountNumber:
+        description: |
+          Number of the account that owns the payment schedule.
+        type: string
+      billingDocument:
+        properties:
+          id:
+            description: >
+              ID of the billing document. for example,
+              `2c9890306fb2121e016fb21a6b550041`.
+            type: string
+          number:
+            description: |
+              Number of the billing docuemnt, for example, `INV00002345`.
+            type: string
+          type:
+            description: >
+              Indicates whether the associated billing document is a debit memo
+              or a invoice.
+            type: string
+        type: object
+      createdById:
+        description: |
+          ID of the user who created this payment schedule.
+        type: string
+      createdDate:
+        description: |
+          The date and time the payment schedule is created.
+        format: date
+        type: string
+      description:
+        description: |
+          The description of the payment schedule.
+        type: string
+      id:
+        description: |
+          ID of the payment schedule.
+        type: string
+      isCustom:
+        description: |
+          Indicates if the payment schedule is a custom payment schedule.
+        type: boolean
+      items:
+        description: |
+          Container for payment schedule items.
+        items:
+          $ref: ./PaymentScheduleItemCommonResponse.yaml
+        type: array
+      nextPaymentDate:
+        description: |
+          The date the next payment will be processed.
+        format: date
+        type: string
+      occurrences:
+        description: >
+          The number of payment schedule items that are created by this payment
+          schedule.
+        type: integer
+      paymentScheduleNumber:
+        description: |
+          Number of the payment schedule.
+        type: string
+      period:
+        description: >
+          For recurring payment schedule only. The period of payment generation.
+          Available values include: `Monthly`, `Weekly`, `BiWeekly`.
+
+          Return `null` for custom payment schedules.
+        type: string
+      recentPaymentDate:
+        description: |
+          The date the last payment was processed.
+        format: date
+        type: string
+      runHour:
+        description: >
+          [0,1,2,~,22,23]
+
+
+          At which hour in the day in the tenant’s timezone this payment will be
+          collected.
+
+          Return `0` for custom payment schedules.
+        type: integer
+      standalone:
+        description: >
+          Indicates if the payments that the payment schedule created are
+          standalone payments or not.
+        type: boolean
+      startDate:
+        description: >
+          The date when the first payment of this payment schedule is
+          proccessed.
+        format: date
+        type: string
+      status:
+        description: >
+          The status of the payment schedule.
+
+
+          - `Active`: There are still pament schedule items to process.
+
+          - `Canceled`: After a payment schedule is canceled by the user, the
+          schedule is marked as `Canceled`.
+
+          - `Completed`: After all payment schedule items are processed, the
+          schedule is marked as `Completed`.
+        enum:
+          - Active
+          - Canceled
+          - Completed
+        type: string
+      success:
+        description: |
+          Returns `true` if the request was processed successfully.        
+        type: boolean
+      totalPaymentsErrored:
+        description: |
+          The number of errored payments.
+        type: integer
+      totalPaymentsProcessed:
+        description: |
+          The number of processed payments.
+        type: integer
+      updatedById:
+        description: |
+          ID of the user who last updated this payment schedule.
+        type: string
+      updatedDate:
+        description: |
+          The date and time the payment schedule is last updated.
+        format: date
+        type: string
+    type: object
+  - $ref: ./PaymentScheduleCustomFields.yaml

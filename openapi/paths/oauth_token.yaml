@@ -138,7 +138,3 @@ post:
           schema:
             type: integer
       description: Too Many Requests
-  x-code-samples:
-    - lang: curl
-      source:
-        $ref: ../code_samples/curl/oauth_token/post.sh

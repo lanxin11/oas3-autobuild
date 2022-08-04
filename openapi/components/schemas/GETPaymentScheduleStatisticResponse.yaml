@@ -1,0 +1,33 @@
+description: |
+  The object that contains the payment schedule statistic of the specified date.
+properties:
+  date:
+    description: |
+      The specified date.
+    format: date
+    type: string
+  paymentRuns:
+    items:
+      $ref: ./PaymentRunStatistic.yaml
+    title: Container for the payment run statistic.
+    type: array
+  paymentScheduleItems:
+    properties:
+      error:
+        description: |
+          The number of errored payment schedule items.              
+        type: integer
+      pending:
+        description: |
+          The number of pending payment schedule items.
+        type: integer
+      processed:
+        description: |
+          The number of processed payment schedule items. 
+        type: integer
+    type: object
+  success:
+    description: |
+      Returns `true` if the request was processed successfully.
+    type: boolean
+type: object

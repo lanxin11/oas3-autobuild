@@ -1,0 +1,11 @@
+properties:
+  id:
+    description: |
+      The ID of the created payment schedule.
+    type: string
+  paymentScheduleNumber:
+    description: |
+      The number of the created payment schedule.
+    type: string
+title: Payment Schedule ID and Number
+type: object

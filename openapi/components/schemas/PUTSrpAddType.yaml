@@ -53,6 +53,17 @@ allOf:
           provided. They must point to the same product rate plan. Otherwise,
           the request would fail.
         type: string
+      externalIdSourceSystem:
+        description: >
+          The ID of the external source system. You can use this field and
+          `externalCatalogPlanId` to specify a product rate plan that is
+          imported from an external system.
+
+
+          **Note:** If both `externalCatalogPlanId`, `externalIdSourceSystem`
+          and `productRatePlanId` are provided. They must point to the same
+          product rate plan. Otherwise, the request would fail.
+        type: string
       externallyManagedPlanId:
         description: >
           Indicates the unique identifier for the rate plan purchased on a

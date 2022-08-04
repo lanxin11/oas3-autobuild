@@ -559,7 +559,7 @@ properties:
         type: string
       GatewayOptionData:
         description: |2-
-           Use this field to pass gateway options.
+           Use this field to pass gateway options. Zuora sends all the information that you specified to the gateway. If you specify any unsupported gateway option parameters, they will be ignored without error prompts.
 
 
           **Character limit**: 255

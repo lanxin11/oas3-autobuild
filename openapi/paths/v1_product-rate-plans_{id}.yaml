@@ -1,8 +1,8 @@
 get:
-  summary: Retrieve a product rate plan
+  summary: Retrieve a product rate plan by ID
   operationId: GET_ProductRatePlan
   description: |
-    Retrieves a product rate plan by its ID or external ID.
+    Retrieves a product rate plan by its ID.
   tags:
     - Product Rate Plans
   responses:
@@ -69,6 +69,7 @@ get:
                   - Apple0001
                   - Apple0002
                   - Google0003
+                externalIdSourceSystem: apple
                 success: true
   parameters:
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
@@ -78,7 +79,7 @@ get:
       name: id
       required: true
       description: >
-        The ID or an external ID of the product rate plan to be retrieved. For
-        example, `402888e67f8b3a68017f8bbb2a06062d` or `Apple0001`.
+        The ID of the product rate plan to be retrieved. For example,
+        `402888e67f8b3a68017f8bbb2a06062d`.
       schema:
         type: string

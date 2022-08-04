@@ -1,0 +1,110 @@
+get:
+  description: >
+    **Note:** This operation is only available if you have the [Invoice Item
+    Settlement](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement/C_Invoice_Item_Settlement)
+    feature enabled. Invoice Item Settlement must be used together with other
+    Invoice Settlement features (Unapplied Payments, and Credit and Debit
+    memos).  If you wish to enable Invoice Settlement, see [Invoice Settlement
+    Enablement and Checklist
+    Guide](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement/Invoice_Settlement_Migration_Checklist_and_Guide)
+    for more information.  
+
+
+    Retrieves the information about a specific refund part item. A refund part
+    item is a single line item in a refund part. A refund part can consist of
+    several different types of items.
+  summary: Retrieve a refund part item
+  operationId: GET_RefundItemPart
+  tags:
+    - Refunds
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETRefundItemPartType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: 4028905f5a87c0ff015a889e592a00ce
+                amount: 4
+                creditMemoItemId: null
+                creditTaxItemId: null
+                createdDate: '2017-03-01 14:46:03'
+                createdById: 402881e522cf4f9b0122cf5d82860002
+                updatedDate: '2017-03-01 14:46:03'
+                updatedById: 402881e522cf4f9b0122cf5d82860002
+                success: true
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - in: path
+      name: itempartid
+      required: true
+      description: >
+        The unique ID of a specific refund part item. You can get the refund
+        part item ID from the response of [Get refund part
+        items](https://www.zuora.com/developer/api-reference/#operation/GET_RefundItemParts).
+      schema:
+        type: string
+    - in: path
+      name: refundpartid
+      required: true
+      description: >
+        The unique ID of a specific refund part. You can get the refund part ID
+        from the response of [List all parts of a
+        refund](https://www.zuora.com/developer/api-reference/#operation/GET_RefundParts).
+      schema:
+        type: string
+    - in: path
+      name: refundKey
+      required: true
+      description: >
+        The number or unique ID of a refund. For example,
+        4028905f5a87c0ff015a889e590e00c9.
+      schema:
+        type: string

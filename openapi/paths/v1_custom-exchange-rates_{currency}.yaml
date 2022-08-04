@@ -117,7 +117,3 @@ get:
                     providerExchangeRateDate: '2019-04-30'
                     GBP: 1.134589832
                     USD: 0.892243287
-  x-code-samples:
-    - lang: curl
-      source:
-        $ref: ../code_samples/curl/v1_custom-exchange-rates_{currency}/get.sh

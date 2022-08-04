@@ -123,6 +123,11 @@ allOf:
         description: >
           The field used to pass gateway-specific parameters and parameter
           values.
+
+
+          Zuora sends all the information that you specified to the gateway. If
+          you specify any unsupported gateway option parameters, they will be
+          ignored without error prompts.
         properties:
           key:
             description: |
@@ -192,6 +197,13 @@ allOf:
           payment method for the customer account is used automatically. If the
           default payment method is different from the type of payments that you
           want to create, an error occurs.
+        type: string
+      paymentScheduleNumber:
+        description: >-
+          The number of the payment schedule to be linked with the payment. See
+          [Link payments to payment
+          schedules](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Payment_Schedules/Link_payments_with_payment_schedules)
+          for more information.
         type: string
       referenceId:
         description: >
