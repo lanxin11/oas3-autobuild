@@ -222,7 +222,11 @@ put:
       schema:
         type: string
   requestBody:
-    $ref: ../components/schemas/PUTPaymentScheduleRequest.yaml
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/PUTPaymentScheduleRequest.yaml
+    required: true
   responses:
     '200':
       headers:

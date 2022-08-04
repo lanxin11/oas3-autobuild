@@ -51,7 +51,11 @@ put:
       schema:
         type: string
   requestBody:
-    $ref: ../components/schemas/PUTPreviewPaymentScheduleRequest.yaml
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/PUTPreviewPaymentScheduleRequest.yaml
+    required: true
   responses:
     '200':
       headers:
