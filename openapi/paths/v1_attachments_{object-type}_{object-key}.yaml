@@ -49,11 +49,11 @@ get:
       in: path
       description: |
         ID of the object to list attachements for.
-         - If `object-type` is `account`, specify an account ID.
+         - If `object-type` is `account`, specify an account ID or number.
          - If `object-type` is `invoice`, specify an invoice ID.
          - If `object-type` is `subscription`, specify a subscription number.
-         - If `object-type` is `creditmemo`, specify a credit memo ID.
-         - If `object-type` is `debitmemo`, specify a debit memo ID.
+         - If `object-type` is `creditmemo`, specify a credit memo ID or number.
+         - If `object-type` is `debitmemo`, specify a debit memo ID or number.
       required: true
       schema:
         type: string

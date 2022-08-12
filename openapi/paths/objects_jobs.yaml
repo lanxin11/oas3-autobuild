@@ -288,3 +288,7 @@ get:
         application/json; charset=utf-8:
           schema:
             $ref: ../components/schemas/CustomObjectBulkJobResponseCollection.yaml
+  x-code-samples:
+    - lang: curl
+      source:
+        $ref: ../code_samples/curl/objects_jobs/get.sh

@@ -23,12 +23,6 @@ properties:
       They must point to the same product rate plan. Otherwise, the request
       would fail.
     type: string
-  externallyManagedPlanId:
-    description: >
-      Indicates the unique identifier for the rate plan purchased on a
-      third-party store. This field is used to represent a subscription rate
-      plan created through third-party stores.
-    type: string
   ratePlanId:
     description: >
       The id of the rate plan to be updated. It can be the latest version or any

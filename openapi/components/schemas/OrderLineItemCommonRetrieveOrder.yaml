@@ -202,6 +202,20 @@ properties:
     description: |
       The Revenue Recognition rule for the Order Line Item.
     type: string
+  soldTo:
+    description: >
+      The ID of a contact that belongs to the billing account of the order line
+      item. Use this field to assign an existing account as the sold-to contact
+      of an order line item.
+    type: string
+  soldToSnapshotId:
+    description: >
+      The snapshot of the ID for an account used as the sold-to contact of an
+      order line item. This field is used to store the original information
+      about the account, in case the information about the account is changed
+      after the creation of the order line item. The `soldToSnapshotId` field is
+      exposed while retrieving the order line item details.
+    type: string
   taxCode:
     description: |
       The tax code for the Order Line Item.

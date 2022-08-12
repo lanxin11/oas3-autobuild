@@ -17,6 +17,7 @@ example:
       quantity: 2
       recognizedRevenueAccountingCode: Earned Revenues
       revenueRecognitionRule: recognized upon invoice
+      soldTo: 4028fc828244a0ac018244dfc9a90bee
       taxCode: '8018'
       taxMode: TaxInclusive
       transactionEndDate: '2021-02-01'

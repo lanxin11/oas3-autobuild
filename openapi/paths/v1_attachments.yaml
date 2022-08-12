@@ -43,7 +43,6 @@ post:
       description: |
         The type of the object to add attachements for. 
       required: true
-      example: Subscription
       schema:
         type: string
         enum:
@@ -60,10 +59,9 @@ post:
         every subscription version.
 
 
-        For Account, Invoice, Credit Memo, and Debit Memo, specify the
-        correponding ID.
+        For Account, Credit Memo, and Debit Memo, specify the corresponding ID
+        or number. For Invoice, specify the corresponding ID.
       required: true
-      example: A-S00005714
       schema:
         type: string
   requestBody:
@@ -81,7 +79,6 @@ post:
 
 
                 The maximum file size is 4 MB.
-              example: PODocument.pdf
               type: string
               format: binary
           required:
@@ -142,3 +139,7 @@ post:
                 success: true
                 id: 402880ea536ff494015372a7ea17001f
                 fileId: 402880ea536ff494015372a7ea12001e
+  x-code-samples:
+    - lang: curl
+      source:
+        $ref: ../code_samples/curl/v1_attachments/post.sh

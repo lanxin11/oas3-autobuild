@@ -1,13 +1,27 @@
 properties:
+  appliedProductName:
+    description: |
+      The name of the product that the discount rate plan charge applies to.
+    type: string
   appliedProductRatePlanChargeId:
     description: >
       The ID of the product rate plan charge that the discount rate plan charge
       applies to.
     type: string
+  appliedProductRatePlanChargeName:
+    description: >
+      The name of the product rate plan charge that the discount rate plan
+      charge applies to.
+    type: string
   appliedProductRatePlanId:
     description: >
       The ID of the product rate plan that the discount rate plan charge applies
       to.
+    type: string
+  appliedProductRatePlanName:
+    description: >
+      The name of the product rate plan that the discount rate plan charge
+      applies to.
     type: string
 title: discountApplyDetails
 type: object

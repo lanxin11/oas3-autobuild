@@ -126,6 +126,8 @@ get:
                   listPricePerUnit: 59
                   listPrice: 118
                   billTargetDate: null
+                  soldTo: 4028fc828244a0ac018244dfc9a90bee
+                  soldToSnapshotId: 4028fc828244a0ac018244dfc9b00bf0
                   transactionDate: '2021-02-01'
                   accountingCode: null
                   UOM: null

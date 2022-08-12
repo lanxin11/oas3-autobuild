@@ -25,24 +25,10 @@ get:
     [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
     will have the [Order Line
     Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
-    feature enabled by default. If you are a new customer who onboard on [Orders
-    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
-    and want to enable the [Order Line
-    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
-    feature, submit a request at [Zuora Global
-    Support](https://support.zuora.com/). If you are an existing
-    [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
-    or [Orders
-    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
-    customer and want to enable the [Order Line
-    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
-    feature, submit a request at [Zuora Global
-    Support](https://support.zuora.com/).        
+    feature enabled by default. 
 
-
-    Retrieves the detailed information about all orders for a specified
-    subscription. Any orders containing the changes on the specified
-    subscription are returned.
+    Retrieves the detailed information about all orders except for the pending
+    orders for a specified subscription.
   tags:
     - Orders
   parameters:

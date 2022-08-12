@@ -242,8 +242,14 @@ get:
                             discountApplyDetails:
                               - appliedProductRatePlanId: 8a8082c45aa81b51015ad5a473fb0e8d
                                 appliedProductRatePlanChargeId: 8a8082c45aa81b51015ad5a655c00e8f
+                                appliedProductName: ABC
+                                appliedProductRatePlanName: RatePlan 1
+                                appliedProductRatePlanChargeName: Annual Charge
                               - appliedProductRatePlanId: 8a8082c45aa81b51015ad5a473fb0e8d
                                 appliedProductRatePlanChargeId: 8a8082c45aa81b51015ad5a655c00e8f
+                                appliedProductName: ABC
+                                appliedProductRatePlanName: RatePlan 1
+                                appliedProductRatePlanChargeName: Annual Charge
                             billingDay: DefaultFromCustomer
                             listPriceBase: null
                             billingPeriod: Month

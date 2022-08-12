@@ -258,6 +258,13 @@ post:
     for details.
 
 
+    ### Google Pay on Chase Paymentech Orbital Gateway
+
+    This feature is in the Early Adopter phase. See [Set up Google Pay on
+    Chase](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/L_Payment_Methods/Payment_Method_Types/Set_up_Google_Pay_on_Chase)
+    for details.
+
+
     ### Custom payment methods
 
     With the support of Universal Payment Connector (UPC) and Open Payment
