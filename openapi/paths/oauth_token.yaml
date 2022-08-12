@@ -34,12 +34,14 @@ post:
               type: string
               minLength: 36
               maxLength: 36
+              examples: client_id=b64e42ba-7e1a-4bc6-9146-5e1b420306b5
             client_secret:
               description: >
                 The Client Secret that was displayed when the OAuth client was
                 created.
               type: string
               maxLength: 42
+              examples: dOFENLWU193EEoEsWjPZrcjLKVr5OrN1HC9Kqg
             grant_type:
               description: >
                 The OAuth grant type that will be used to generate the token.
