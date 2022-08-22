@@ -2060,12 +2060,12 @@ paths:
     $ref: paths/v1_document-properties_{documentPropertiesId}.yaml
   /v1/files/{file-id}:
     $ref: paths/v1_files_{file-id}.yaml
-  /v1/fulfillments/:
-    $ref: paths/v1_fulfillments_.yaml
+  /v1/fulfillments:
+    $ref: paths/v1_fulfillments.yaml
   /v1/fulfillments/{key}:
     $ref: paths/v1_fulfillments_{key}.yaml
-  /v1/fulfillment-items/:
-    $ref: paths/v1_fulfillment-items_.yaml
+  /v1/fulfillment-items:
+    $ref: paths/v1_fulfillment-items.yaml
   /v1/fulfillment-items/{id}:
     $ref: paths/v1_fulfillment-items_{id}.yaml
   /v1/hmac-signatures:
