@@ -1,0 +1,9 @@
+example:
+  customFields:
+    PICKLIST_CF__c: option_1
+  description: description1
+  itemIdentifier: 0c27b769-5bba-46a5-80aa-cdd95f931216
+properties:
+  fulfillmentItem:
+    $ref: ./FulfillmentItemPut.yaml
+type: object

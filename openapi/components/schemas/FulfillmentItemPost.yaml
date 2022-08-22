@@ -1,0 +1,8 @@
+allOf:
+  - properties:
+      fulfillmentNumber:
+        description: |
+          The reference of the related Fulfillment.
+        type: string
+    type: object
+  - $ref: ./FulfillmentItemCommon.yaml

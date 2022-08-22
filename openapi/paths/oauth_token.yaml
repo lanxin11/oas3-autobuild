@@ -51,10 +51,7 @@ post:
             - client_id
             - client_secret
             - grant_type
-        examples:
-          client_id=b64e42ba-7e1a-4bc6-9146-5e1b420306b5
-          client_secret=dOFENLWU193EEoEsWjPZrcjLKVr5OrN1HC9Kqg
-          grant_type=client_credentials
+    required: true
   responses:
     '200':
       headers:

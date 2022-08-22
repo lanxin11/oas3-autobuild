@@ -121,11 +121,11 @@ put:
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - in: path
-      name: paymentId
+      name: paymentKey
       required: true
       description: >
-        The unique ID of an unapplied payment. For example,
-        8a8082e65b27f6c3015b89e4344c16b1.
+        The unique ID or number of an unapplied payment. For example,
+        `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.          
       schema:
         type: string
   requestBody:

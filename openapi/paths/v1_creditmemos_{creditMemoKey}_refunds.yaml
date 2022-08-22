@@ -127,10 +127,10 @@ post:
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - in: path
-      name: creditmemoId
+      name: creditMemoKey
       description: >
-        The unique ID of a credit memo. For example,
-        8a8082e65b27f6c3015ba45ff82c7172.
+        The ID or number of the credit memo. For example,
+        2c92c8955bd63cc1015bd7c151af02ab or CM00000001.
       required: true
       schema:
         type: string

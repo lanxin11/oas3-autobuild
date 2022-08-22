@@ -1,0 +1,96 @@
+properties:
+  billTargetDate:
+    description: >
+      The target date for the Fulfillment to be picked up by bill run for
+      billing.
+    format: date
+    type: string
+  carrier:
+    description: >
+      The carrier of the Fulfillment. The available values can be configured in
+      **Billing Settings** > **Fulfillment Settings** through Zuora UI.
+    type: string
+  customFields:
+    $ref: ./FulfillmentCustomFields.yaml
+  description:
+    description: |
+      The description of the Fulfillment.
+    type: string
+  excludeItemBillingFromRevenueAccounting:
+    description: >
+      The flag to exclude Fulfillment related invoice items, invoice item
+      adjustments, credit memo items, and debit memo items from revenue
+      accounting.
+
+
+      **Note**: This field is only available if you have the [Zuora Billing -
+      Revenue
+      Integration](https://knowledgecenter.zuora.com/Zuora_Revenue/Zuora_Billing_-_Revenue_Integration)
+      feature enabled. 
+    type: boolean
+  excludeItemBookingFromRevenueAccounting:
+    description: >
+      The flag to exclude Fulfillment from revenue accounting.
+
+
+      **Note**: This field is only available if you have the [Zuora Billing -
+      Revenue
+      Integration](https://knowledgecenter.zuora.com/Zuora_Revenue/Zuora_Billing_-_Revenue_Integration)
+      feature enabled. 
+    type: boolean
+  externalId:
+    description: |
+      The external id of the Fulfillment.
+    type: string
+  fulfillmentDate:
+    description: |
+      The date of the Fulfillment.
+    format: date
+    type: string
+  fulfillmentLocation:
+    description: >
+      The fulfillment location of the Fulfillment. The available values can be
+      configured in **Billing Settings** > **Fulfillment Settings** through
+      Zuora UI.
+    type: string
+  fulfillmentSystem:
+    description: >
+      The fulfillment system of the Fulfillment. The available values can be
+      configured in **Billing Settings** > **Fulfillment Settings** through
+      Zuora UI.
+    type: string
+  fulfillmentType:
+    description: |
+      The type of the Fulfillment. 
+    enum:
+      - Delivery
+      - Return
+    type: string
+  orderLineItemId:
+    description: |
+      The reference id of the related Order Line Item.
+    format: UUID
+    type: string
+  quantity:
+    description: |
+      The quantity of the Fulfillment.
+    type: number
+  state:
+    description: >
+      The state of the Fulfillment. See [State transitions for an order, order
+      line item, and
+      fulfillment](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/AB_Order_Line_Item_States_and_Order_States)
+      for more information.
+    enum:
+      - Executing
+      - Booked
+      - SentToBilling
+      - Complete
+      - Cancelled
+    type: string
+  trackingNumber:
+    description: |
+      The tracking number of the Fulfillment.
+    type: string
+title: Fulfillment
+type: object

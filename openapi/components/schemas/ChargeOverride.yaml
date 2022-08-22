@@ -144,8 +144,10 @@ properties:
       accounting.
 
 
-      **Note**: This field is only available if you have the Billing - Revenue
-      Integration feature enabled. 
+      **Note**: This field is only available if you have the [Zuora Billing -
+      Revenue
+      Integration](https://knowledgecenter.zuora.com/Zuora_Revenue/Zuora_Billing_-_Revenue_Integration)
+      feature enabled. 
     type: boolean
   excludeItemBookingFromRevenueAccounting:
     default: false
@@ -153,8 +155,10 @@ properties:
       The flag to exclude rate plan charges from revenue accounting.
 
 
-      **Note**: This field is only available if you have the Billing - Revenue
-      Integration feature enabled. 
+      **Note**: This field is only available if you have the [Zuora Billing -
+      Revenue
+      Integration](https://knowledgecenter.zuora.com/Zuora_Revenue/Zuora_Billing_-_Revenue_Integration)
+      feature enabled. 
     type: boolean
   prepaidQuantity:
     description: >

@@ -1,0 +1,6 @@
+allOf:
+  - $ref: ./CommonResponseType.yaml
+  - properties:
+      fulfillment:
+        $ref: ./FulfillmentGet.yaml
+    type: object

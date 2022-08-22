@@ -220,7 +220,7 @@ allOf:
       Status:
         description: >2
            The status of the subscription.
-          **Character limit**: 17 **Values**: automatically generated **Possible
+          **Character limit**: 18 **Values**: automatically generated **Possible
           values**: one of the following:
 
 

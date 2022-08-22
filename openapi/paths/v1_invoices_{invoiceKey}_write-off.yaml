@@ -46,12 +46,12 @@ put:
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
-    - name: invoiceId
+    - name: invoiceKey
       in: path
       required: true
       description: >
-        The unique ID of an invoice. For example,
-        2c92c8955bd63cc1015bd7c151af02ab.
+        The ID or number of the invoice. For example,
+        2c92c8955bd63cc1015bd7c151af02ab or INV-0000001.
       schema:
         type: string
   requestBody:

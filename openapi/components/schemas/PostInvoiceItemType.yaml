@@ -89,6 +89,14 @@ allOf:
         items:
           $ref: ./PostDiscountItemType.yaml
         type: array
+      excludeItemBillingFromRevenueAccounting:
+        description: >
+          The flag to exclude the invoice item from revenue accounting.
+
+
+          **Note**: This field is only available if you have the Billing -
+          Revenue Integration feature enabled. 
+        type: boolean
       itemType:
         description: |
           The type of the invoice item.

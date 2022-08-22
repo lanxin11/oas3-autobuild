@@ -1,33 +1,28 @@
-get:
-  summary: List all application parts of an invoice
+post:
+  summary: Create fulfillment items
+  operationId: Create_FulfillmentItem
   description: >
-    **Note:** This operation is only available if you have [Invoice
-    Settlement](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement)
-    enabled. The Invoice Settlement feature is generally available as of Zuora
-    Billing Release 296 (March 2021). This feature includes Unapplied Payments,
-    Credit and Debit Memo, and Invoice Item Settlement. If you want to enable
-    Invoice Settlement, see [Invoice Settlement Enablement and Checklist
-    Guide](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement/Invoice_Settlement_Migration_Checklist_and_Guide)
-    for more information.
+    **Note:** This operation is only available if you have the Fulfillment and
+    Return feature enabled. The Fulfillment and Return feature is in the **Early
+    Adopter** phase. We are actively soliciting feedback from a small set of
+    early adopters before releasing it as generally available. If you want to
+    join this early adopter program, submit a request at [Zuora Global
+    Support](https://support.zuora.com/).        
 
 
-    Retrieves information about the payments or credit memos that are applied to
-    a specified invoice.
-  operationId: GET_InvoiceApplicationParts
+    Create one or multiple fulfillment items.
   tags:
-    - Invoices
+    - Fulfillments
   parameters:
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
-    - name: invoiceId
-      in: path
-      required: true
-      description: >
-        The unique ID of an invoice. For example,
-        2c92c8955bd63cc1015bd7c151af02ab.
-      schema:
-        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/PostFulfillmentItemsRequestType.yaml
+    required: true
   responses:
     '200':
       headers:
@@ -71,28 +66,16 @@ get:
           schema:
             type: string
             maxLength: 64
-      description: OK
+      description: ''
       content:
         application/json; charset=utf-8:
           schema:
-            $ref: ../components/schemas/GetInvoiceApplicationPartCollectionType.yaml
+            $ref: ../components/schemas/PostFulfillmentItemsResponseType.yaml
         application/json:
           examples:
             response:
               value:
-                applicationParts:
-                  - paymentId: null
-                    creditMemoId: 4028905f60a165a50160b4f632ff023d
-                    appliedAmount: 22
-                    createdDate: '2018-01-02 11:42:16'
-                    createdById: 402881e522cf4f9b0122cf5d82860002
-                    updatedDate: '2018-01-02 11:42:16'
-                    updatedById: 402881e522cf4f9b0122cf5d82860002
-                  - paymentId: 4028905f60a165a50160b4f5d5cb0229
-                    creditMemoId: null
-                    appliedAmount: 11
-                    createdDate: '2018-01-02 11:41:38'
-                    createdById: 402881e522cf4f9b0122cf5d82860002
-                    updatedDate: '2018-01-02 11:41:38'
-                    updatedById: 402881e522cf4f9b0122cf5d82860002
+                fulfillmentItems:
+                  - id: 4028828c82819b74018282544fea17c6
+                  - id: 4028828c82819b7401828254507a17c7
                 success: true

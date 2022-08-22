@@ -470,6 +470,13 @@ get:
         This parameter filters the response based on the `accountId` field.
       schema:
         type: string
+    - name: accountNumber
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `accountNumber` field.
+      schema:
+        type: string
     - name: amount
       in: query
       required: false

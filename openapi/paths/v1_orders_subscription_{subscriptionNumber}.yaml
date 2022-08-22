@@ -27,6 +27,7 @@ get:
     Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
     feature enabled by default. 
 
+
     Retrieves the detailed information about all orders except for the pending
     orders for a specified subscription.
   tags:

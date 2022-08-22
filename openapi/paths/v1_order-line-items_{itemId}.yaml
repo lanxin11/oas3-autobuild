@@ -53,6 +53,18 @@ get:
       schema:
         type: string
         format: UUID
+    - name: fulfillment
+      in: query
+      description: >
+        Return the related fulfillments or not.
+
+
+        **Note**: This field is only available if you have the Fulfillment and
+        Return feature enabled.
+      required: false
+      schema:
+        type: boolean
+        default: false
   responses:
     '200':
       headers:

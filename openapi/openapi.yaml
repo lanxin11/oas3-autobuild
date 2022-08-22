@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: '2022-08-04'
+  version: '2022-08-22'
   title: 'API Reference: Billing'
   x-logo:
     url: >-
@@ -1183,6 +1183,9 @@ info:
     | Entity                                        |
     `Tenant`                                   |
 
+    | Fulfillment                                   |
+    `Fulfillment`                              |
+
     | Feature                                       |
     `Feature`                                  |
 
@@ -1676,6 +1679,8 @@ tags:
     description: ''
   - name: Files
     description: ''
+  - name: Fulfillments
+    description: ''
   - name: HMAC Signatures
     description: ''
   - name: Hosted Pages
@@ -1967,8 +1972,8 @@ paths:
     $ref: paths/v1_creditmemos_{creditMemoKey}_pdfs.yaml
   /v1/creditmemos/{creditMemoKey}/post:
     $ref: paths/v1_creditmemos_{creditMemoKey}_post.yaml
-  /v1/creditmemos/{creditmemoId}/refunds:
-    $ref: paths/v1_creditmemos_{creditmemoId}_refunds.yaml
+  /v1/creditmemos/{creditMemoKey}/refunds:
+    $ref: paths/v1_creditmemos_{creditMemoKey}_refunds.yaml
   /v1/creditmemos/{creditMemoKey}/reverse:
     $ref: paths/v1_creditmemos_{creditMemoKey}_reverse.yaml
   /v1/creditmemos/{creditMemoKey}/taxationitems:
@@ -2049,12 +2054,20 @@ paths:
     $ref: paths/v1_describe_{object}.yaml
   /v1/document-properties:
     $ref: paths/v1_document-properties.yaml
-  /v1/document-properties/{documentType}/{documentId}:
-    $ref: paths/v1_document-properties_{documentType}_{documentId}.yaml
+  /v1/document-properties/{documentType}/{documentKey}:
+    $ref: paths/v1_document-properties_{documentType}_{documentKey}.yaml
   /v1/document-properties/{documentPropertiesId}:
     $ref: paths/v1_document-properties_{documentPropertiesId}.yaml
   /v1/files/{file-id}:
     $ref: paths/v1_files_{file-id}.yaml
+  /v1/fulfillments/:
+    $ref: paths/v1_fulfillments_.yaml
+  /v1/fulfillments/{key}:
+    $ref: paths/v1_fulfillments_{key}.yaml
+  /v1/fulfillment-items/:
+    $ref: paths/v1_fulfillment-items_.yaml
+  /v1/fulfillment-items/{id}:
+    $ref: paths/v1_fulfillment-items_{id}.yaml
   /v1/hmac-signatures:
     $ref: paths/v1_hmac-signatures.yaml
   /v1/hostedpages:
@@ -2067,8 +2080,8 @@ paths:
     $ref: paths/v1_invoices_bulk-post.yaml
   /v1/invoices/{invoiceKey}:
     $ref: paths/v1_invoices_{invoiceKey}.yaml
-  /v1/invoices/{invoiceId}/application-parts:
-    $ref: paths/v1_invoices_{invoiceId}_application-parts.yaml
+  /v1/invoices/{invoiceKey}/application-parts:
+    $ref: paths/v1_invoices_{invoiceKey}_application-parts.yaml
   /v1/invoices/{invoiceKey}/emails:
     $ref: paths/v1_invoices_{invoiceKey}_emails.yaml
   /v1/invoices/{invoiceKey}/files:
@@ -2079,8 +2092,8 @@ paths:
     $ref: paths/v1_invoices_{invoiceKey}_items_{itemId}_taxation-items.yaml
   /v1/invoices/{invoiceKey}/reverse:
     $ref: paths/v1_invoices_{invoiceKey}_reverse.yaml
-  /v1/invoices/{invoiceId}/write-off:
-    $ref: paths/v1_invoices_{invoiceId}_write-off.yaml
+  /v1/invoices/{invoiceKey}/write-off:
+    $ref: paths/v1_invoices_{invoiceKey}_write-off.yaml
   /v1/journal-runs:
     $ref: paths/v1_journal-runs.yaml
   /v1/journal-runs/{jr-number}:
@@ -2186,6 +2199,8 @@ paths:
     $ref: paths/v1_subscriptions_{subscriptionNumber}_customFields.yaml
   /v1/orders/{orderNumber}/triggerDates:
     $ref: paths/v1_orders_{orderNumber}_triggerDates.yaml
+  /v1/orders/subscription/{subscription-key}/pending:
+    $ref: paths/v1_orders_subscription_{subscription-key}_pending.yaml
   /v1/gateway-settlement/payments/{payment-key}/settle:
     $ref: paths/v1_gateway-settlement_payments_{payment-key}_settle.yaml
   /v1/gateway-settlement/payments/{payment-key}/reject:
@@ -2259,8 +2274,8 @@ paths:
     $ref: paths/v1_payments.yaml
   /v1/payments/{paymentKey}:
     $ref: paths/v1_payments_{paymentKey}.yaml
-  /v1/payments/{paymentId}/transfer:
-    $ref: paths/v1_payments_{paymentId}_transfer.yaml
+  /v1/payments/{paymentKey}/transfer:
+    $ref: paths/v1_payments_{paymentKey}_transfer.yaml
   /v1/payments/{paymentKey}/apply:
     $ref: paths/v1_payments_{paymentKey}_apply.yaml
   /v1/payments/{paymentKey}/cancel:

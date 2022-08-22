@@ -101,18 +101,13 @@ post:
                     taxExemptAmount: 0
                     discount: 0
                     transferredToAccounting: null
-                  - id: ff8080817cdfcc5f017cdfd01ead0009
-                    invoiceNumber: INV00000020
-                    accountId: ff8080817cda56fa017cda87aaa2071e
-                    amount: 210
-                    amountWithoutTax: 200
-                    invoiceDate: '2020-02-01'
-                    dueDate: '2020-02-01'
-                    autoPay: false
-                    comments: comments
-                    status: Draft
-                    taxAmount: 10
-                    discount: 0
-                    taxExemptAmount: 0
-                    transferredToAccounting: null
+                    success: true
+                  - success: false
+                    processId: CA037C0B8C5B0682
+                    reasons:
+                      - code: 58490020
+                        message: >-
+                          No account is found with accountId
+                          ff8080817cda56fa017cda87aaa2071f.
+                    objectIndex: 1
                 success: true
