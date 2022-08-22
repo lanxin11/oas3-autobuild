@@ -8,6 +8,7 @@ lint:
   rules:
     no-unused-components: error
     no-identical-paths: warning
+    no-path-trailing-slash: warning
 features.openapi:
   showConsole: true
   htmlTemplate: ./docs/index.html
