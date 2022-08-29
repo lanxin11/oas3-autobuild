@@ -5,6 +5,7 @@ get:
   tags:
     - Invoice Item Adjustments
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - name: fields
@@ -217,11 +218,6 @@ get:
                 records: {}
                 size: 0
                 done: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_object_invoice-item-adjustment_{id}/getundefined
 put:
   summary: 'CRUD: Update an invoice item adjustment'
   operationId: Object_PUTInvoiceItemAdjustment
@@ -229,6 +225,7 @@ put:
   tags:
     - Invoice Item Adjustments
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - name: id
@@ -366,11 +363,6 @@ put:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_object_invoice-item-adjustment_{id}/putundefined
 delete:
   summary: 'CRUD: Delete an invoice item adjustment'
   operationId: Object_DELETEInvoiceItemAdjustment
@@ -378,6 +370,7 @@ delete:
   tags:
     - Invoice Item Adjustments
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - name: id
@@ -509,8 +502,3 @@ delete:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_object_invoice-item-adjustment_{id}/deleteundefined

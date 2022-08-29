@@ -201,10 +201,6 @@ post:
               value:
                 code: 71012514
                 message: User does not have permission to delete custom objects.
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/objects_jobs/postundefined
 get:
   summary: List all custom object bulk jobs
   description: |
@@ -226,14 +222,15 @@ get:
       schema:
         type: string
         format: date
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
     - name: pageSize
-      description: >-
-        Page size of the result. The maximum page size is 100. The defaut page
-        size is 25.
+      description: The number of records returned per page in the response.
       in: query
       required: false
       schema:
         type: integer
+        maximum: 100
+        default: 25
     - name: cursor
       description: >-
         The `cursor` points to the last job of the previous result set. The
@@ -292,6 +289,6 @@ get:
           schema:
             $ref: ../components/schemas/CustomObjectBulkJobResponseCollection.yaml
   x-code-samples:
-    - lang: cURL
+    - lang: curl
       source:
-        $ref: ../code_samples/cURL/objects_jobs/getundefined
+        $ref: ../code_samples/curl/objects_jobs/get.sh

@@ -1,0 +1,29 @@
+description: Payment run statistic.
+properties:
+  completedOn:
+    description: |
+      The date and time the payment run is completed.
+    format: date-time
+    type: string
+  executedOn:
+    description: |
+      The date and time the payment run is executed.
+    format: date-time
+    type: string
+  number:
+    description: |
+      Payment run number.
+    type: string
+  numberOfErrors:
+    description: |
+      Number of errored payments
+    type: integer
+  numberOfPayments:
+    description: |
+      Number of processed payments.
+    type: integer
+  status:
+    description: |
+      Payment run status.
+    type: string
+type: object

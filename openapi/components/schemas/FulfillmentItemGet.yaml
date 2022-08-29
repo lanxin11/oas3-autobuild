@@ -1,0 +1,14 @@
+allOf:
+  - properties:
+      fulfillmentId:
+        description: |
+          The reference id of the related Fulfillment.
+        format: UUID
+        type: string
+      id:
+        description: |
+          The sytem generated Id.
+        format: UUID
+        type: string
+    type: object
+  - $ref: ./FulfillmentItemCommon.yaml

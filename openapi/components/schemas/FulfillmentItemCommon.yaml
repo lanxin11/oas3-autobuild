@@ -1,0 +1,13 @@
+properties:
+  customFields:
+    $ref: ./FulfillmentItemCustomFields.yaml
+  description:
+    description: |
+      The description of the Fulfillment Item.
+    type: string
+  itemIdentifier:
+    description: |
+      The external identifier of the Fulfillment Item.
+    type: string
+title: FulfillmentItem
+type: object

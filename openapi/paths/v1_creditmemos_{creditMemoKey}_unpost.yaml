@@ -1,0 +1,123 @@
+put:
+  description: >
+    **Note:** This operation is only available if you have [Invoice
+    Settlement](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement)
+    enabled. The Invoice Settlement feature is generally available as of Zuora
+    Billing Release 296 (March 2021). This feature includes Unapplied Payments,
+    Credit and Debit Memo, and Invoice Item Settlement. If you want to enable
+    Invoice Settlement, see [Invoice Settlement Enablement and Checklist
+    Guide](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement/Invoice_Settlement_Migration_Checklist_and_Guide)
+    for more information. 
+
+
+    Unposts a credit memo that is in Posted status. If a credit memo has been
+    applied or refunded, you are not allowed to unpost it. After a credit memo
+    is unposted, its status becomes Draft. 
+
+
+    You can unpost credit memos only if you have the [Billing
+    permissions](https://knowledgecenter.zuora.com/CF_Users_and_Administrators/A_Administrator_Settings/User_Roles/d_Billing_Roles#Billing_Permissions).
+  summary: Unpost a credit memo
+  operationId: PUT_UnpostCreditMemo
+  tags:
+    - Credit Memos
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETCreditMemoType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: 402890555a7e9791015a879f064a0054
+                number: CM00000012
+                accountId: 402890555a7e9791015a7f15fe44001c
+                currency: USD
+                creditMemoDate: '2017-03-01'
+                targetDate: null
+                postedById: 402881e522cf4f9b0122cf5d82860002
+                postedOn: '2017-03-01 14:28:06'
+                status: Draft
+                amount: 3.1
+                taxAmount: 0.1
+                totalTaxExemptAmount: 0
+                unappliedAmount: 3.1
+                refundAmount: 0
+                appliedAmount: 0
+                comment: ''
+                source: API
+                sourceId: null
+                sourceType: Standalone
+                referredInvoiceId: 402890555a7e9791015a7f1756aa0035
+                reasonCode: Correcting invoice error
+                reversed: false
+                createdDate: '2017-03-01 10:07:10'
+                createdById: 402881e522cf4f9b0122cf5d82860002
+                updatedDate: '2017-03-01 14:28:06'
+                updatedById: 402881e522cf4f9b0122cf5d82860002
+                cancelledOn: null
+                cancelledById: null
+                latestPDFFileId: null
+                transferredToAccounting: 'No'
+                excludeFromAutoApplyRules: false
+                autoApplyUponPosting: false
+                taxStatus: null
+                taxMessage: null
+                billToContactId: null
+                success: true
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - in: path
+      name: creditMemoKey
+      description: >
+        The unique ID or number of a credit memo. For example,
+        8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.
+      required: true
+      schema:
+        type: string

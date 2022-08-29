@@ -8,8 +8,10 @@ get:
   tags:
     - Summary Journal Entries
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize_finance_revenue.yaml
     - name: jr-number
       in: path
@@ -101,8 +103,3 @@ get:
                         type: Credit
                         amount: 100
                         homeCurrencyAmount: 100
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_journal-entries_journal-runs_{jr-number}/getundefined

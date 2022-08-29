@@ -26,19 +26,7 @@ post:
     [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
     will have the [Order Line
     Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
-    feature enabled by default. If you are a new customer who onboard on [Orders
-    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
-    and want to enable the [Order Line
-    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
-    feature, submit a request at [Zuora Global
-    Support](https://support.zuora.com/). If you are an existing
-    [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
-    or [Orders
-    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
-    customer and want to enable the [Order Line
-    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
-    feature, submit a request at [Zuora Global
-    Support](https://support.zuora.com/).        
+    feature enabled by default.       
 
 
     You can use this operation to create subscriptions and make changes to
@@ -156,6 +144,7 @@ post:
   tags:
     - Orders
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - in: query
@@ -261,10 +250,6 @@ post:
                 orderLineItems:
                   - id: bd78c052-2adf-42c2-aa0f-ccacc997fa20
                     itemNumber: '116'
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_orders/postundefined
 get:
   summary: List orders
   operationId: GET_AllOrders
@@ -292,19 +277,7 @@ get:
     [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
     will have the [Order Line
     Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
-    feature enabled by default. If you are a new customer who onboard on [Orders
-    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
-    and want to enable the [Order Line
-    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
-    feature, submit a request at [Zuora Global
-    Support](https://support.zuora.com/). If you are an existing
-    [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
-    or [Orders
-    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
-    customer and want to enable the [Order Line
-    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
-    feature, submit a request at [Zuora Global
-    Support](https://support.zuora.com/).        
+    feature enabled by default.        
 
 
     Retrieves information about all orders in your tenant. By default, it
@@ -312,16 +285,10 @@ get:
   tags:
     - Orders
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
-    - name: page
-      in: query
-      description: |
-        The page number of the orders retrieved. 
-      required: false
-      schema:
-        type: integer
-        default: 1
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
     - name: dateFilterOption
       in: query
@@ -472,6 +439,8 @@ get:
                         listPricePerUnit: 59
                         listPrice: 118
                         billTargetDate: null
+                        soldTo: 4028fc828244a0ac018244dfc9a90bee
+                        soldToSnapshotId: 4028fc828244a0ac018244dfc9b00bf0
                         transactionStartDate: '2021-02-01'
                         transactionEndDate: '2021-02-01'
                         accountingCode: null
@@ -558,7 +527,3 @@ get:
                             customFields:
                               order_cf_date__c: '2017-01-01'
                     success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_orders/getundefined

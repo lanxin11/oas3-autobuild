@@ -36,29 +36,16 @@ allOf:
         format: int32
         type: integer
       BillCycleType:
-        description: >2
-           Specifies how to determine the billing day for the charge. **Character limit**: 20 **Values**: one of the following:
+        description: |2
+           **Values**: one of the following:
 
           - `DefaultFromCustomer`
-
           - `SpecificDayofMonth:`
-
           - `SubscriptionStartDay`
-
           - `ChargeTriggerDay`
-
           - `SpecificDayofWeek`
-
-          **Note**:
-
-
-          - If you set this field to `SpecificDayofMonth`, you must specify
-          which day of the month as the billing day for the charge in the
-          BillCycleDay field.
-
-          - If you set this field to `SpecificDayofWeek`, you must specify which
-          day of the week as the billing day for the charge in the
-          WeeklyBillCycleDay field.
+          - `TermStartDay`
+          - `TermEndDay`
         type: string
       BillingPeriod:
         description: >2-
@@ -87,13 +74,12 @@ allOf:
           or `Specific Weeks`. 
         type: string
       BillingPeriodAlignment:
-        description: |2
-           Aligns charges within the same subscription if multiple charges begin on different dates.
-          **Character limit**: 24 **Values**: one of the following:
+        description: |
 
           - `AlignToCharge`
           - `AlignToSubscriptionStart`
           - `AlignToTermStart`
+          - `AlignToTermEnd`
         type: string
       BillingTiming:
         description: >2+

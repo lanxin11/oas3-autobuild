@@ -18,13 +18,17 @@ post:
     for more information.
 
 
-    After you use this operation to generate an RSA signature, if `signature`
-    returns `null` but `token` is successfully returned, please limit the number
-    of the fields in your request to make sure that the maximum length supported
-    by the RSA signature algorithm is not exceeded.
+    **Troubleshooting tip:** After you use this operation to generate an RSA
+    signature, if `signature` returns `null` but `token` is successfully
+    returned, please limit the number of the fields in your request to make sure
+    that the maximum length supported by the RSA signature algorithm is not
+    exceeded. The calculation of the request length is determined by the number
+    of the parameters, and the length of each of the parameter name and its
+    value.
   tags:
     - RSA Signatures
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
   requestBody:
@@ -92,7 +96,3 @@ post:
                 key: >-
                   MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmWRFTwxQOqaG4JDZSQF/NJWvCDoSXm3TYilNzoN8nBbuvhKa7SZBBS+VP6rFqcbIU38Fu+Rf09vqyYOxuasPJe7yhqeOiStWB/aCPLhwXBeKt37L/qkwpNOKb1FETtUgrc+UjbtT0pnl55wCfi+Ik//X5SQi0B+c0ei1DQv99qmPJJErrhnBtdxeaWAT0EYAo42AOQ5cp0UWDY6OdOYL6+RyFOUFIs1yEgtfg4VMMSpSOKBOhYclQYuSC7nBF5Cc18ydtzsBpf7l49gCLTFzG45NCDAocada8KihFNpGXbauV9V4EPRD4lofaXdsXJ5Tw8/+KCsrUlvIQI3vcEv9LQIDAQAB
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_rsa-signatures/postundefined

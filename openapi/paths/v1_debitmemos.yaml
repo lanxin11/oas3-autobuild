@@ -116,6 +116,7 @@ post:
                 paymentTerm: null
                 success: true
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: zuora-version
@@ -149,10 +150,6 @@ post:
         schema:
           $ref: ../components/schemas/DebitMemoFromChargeType.yaml
     required: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_debitmemos/postundefined
 put:
   description: >
     **Note:** This operation is only available if you have [Invoice
@@ -176,6 +173,7 @@ put:
   tags:
     - Debit Memos
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
   requestBody:
@@ -237,10 +235,6 @@ put:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_debitmemos/putundefined
 get:
   description: >
     **Note:** This operation is only available if you have [Invoice
@@ -464,14 +458,23 @@ get:
                     paymentTerm: null
                 success: true
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
     - name: accountId
       in: query
       required: false
       description: |
         This parameter filters the response based on the `accountId` field.
+      schema:
+        type: string
+    - name: accountNumber
+      in: query
+      required: false
+      description: |
+        This parameter filters the response based on the `accountNumber` field.
       schema:
         type: string
     - name: amount
@@ -666,7 +669,3 @@ get:
         - /v1/debitmemos?status=Processed&sort=-number,+amount
       schema:
         type: string
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_debitmemos/getundefined

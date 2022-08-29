@@ -232,7 +232,3 @@ get:
                   page: 1
                   page_length: 1
                   next_page: https://rest.zuora.com/workflows/tasks?page=2&page_length=1
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/workflows_tasks/getundefined

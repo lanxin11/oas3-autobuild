@@ -43,6 +43,7 @@ get:
   tags:
     - Order Line Items
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: itemId
@@ -52,6 +53,18 @@ get:
       schema:
         type: string
         format: UUID
+    - name: fulfillment
+      in: query
+      description: >
+        Return the related fulfillments or not.
+
+
+        **Note**: This field is only available if you have the Fulfillment and
+        Return feature enabled.
+      required: false
+      schema:
+        type: boolean
+        default: false
   responses:
     '200':
       headers:
@@ -125,16 +138,14 @@ get:
                   listPricePerUnit: 59
                   listPrice: 118
                   billTargetDate: null
+                  soldTo: 4028fc828244a0ac018244dfc9a90bee
+                  soldToSnapshotId: 4028fc828244a0ac018244dfc9b00bf0
                   transactionDate: '2021-02-01'
                   accountingCode: null
                   UOM: null
                   productRatePlanChargeId: null
                   customFields:
                     externalNumber5__c: olinumber-023
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_order-line-items_{itemId}/getundefined
 put:
   summary: Update an order line item
   operationId: PUT_OrderLineItem
@@ -180,6 +191,7 @@ put:
   tags:
     - Order Line Items
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: itemId
@@ -248,7 +260,3 @@ put:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_order-line-items_{itemId}/putundefined

@@ -28,6 +28,7 @@ post:
   tags:
     - Attachments
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: description
@@ -58,8 +59,8 @@ post:
         every subscription version.
 
 
-        For Account, Invoice, Credit Memo, and Debit Memo, specify the
-        correponding ID.
+        For Account, Credit Memo, and Debit Memo, specify the corresponding ID
+        or number. For Invoice, specify the corresponding ID.
       required: true
       schema:
         type: string
@@ -139,6 +140,6 @@ post:
                 id: 402880ea536ff494015372a7ea17001f
                 fileId: 402880ea536ff494015372a7ea12001e
   x-code-samples:
-    - lang: cURL
+    - lang: curl
       source:
-        $ref: ../code_samples/cURL/v1_attachments/postundefined
+        $ref: ../code_samples/curl/v1_attachments/post.sh

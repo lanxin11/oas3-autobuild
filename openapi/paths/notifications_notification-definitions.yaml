@@ -24,8 +24,7 @@ post:
     **Note**: This operation is only applicable to notifications for custom
     events and custom scheduled events.
   parameters:
-    - $ref: >-
-        ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_Notifications.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
   requestBody:
@@ -358,11 +357,6 @@ post:
                   "code":"500",
                   "message":"A temporary problem in the service occurred, you can retry later."
                 }
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/notifications_notification-definitions/postundefined
 get:
   summary: List notification definitions
   operationId: GET_Query_Notification_Definitions
@@ -375,8 +369,7 @@ get:
     **Note**: This operation is only applicable to notifications for custom
     events and custom scheduled events.
   parameters:
-    - $ref: >-
-        ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_Notifications.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: start
@@ -700,8 +693,3 @@ get:
                   "code":"500",
                   "message":"A temporary problem in the service occurred, you can retry later."
                 }
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/notifications_notification-definitions/getundefined

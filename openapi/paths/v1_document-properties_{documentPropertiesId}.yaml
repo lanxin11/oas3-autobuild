@@ -24,6 +24,7 @@ put:
   tags:
     - Document Properties
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - name: documentPropertiesId
@@ -97,11 +98,6 @@ put:
                 documentId: 40288af1614cee0b01614cf2ec25000a
                 documentType: CreditMemo
                 customFileName: customPDFName
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_document-properties_{documentPropertiesId}/putundefined
 delete:
   summary: Delete document properties
   operationId: DELETE_DocumentProperties
@@ -128,6 +124,7 @@ delete:
   tags:
     - Document Properties
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - name: documentPropertiesId
@@ -191,8 +188,3 @@ delete:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_document-properties_{documentPropertiesId}/deleteundefined

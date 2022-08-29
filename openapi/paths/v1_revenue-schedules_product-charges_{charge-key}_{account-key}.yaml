@@ -138,8 +138,10 @@ get:
                         deferredRevenueAccountingCode: null
                 success: true
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize_finance_revenue.yaml
     - in: path
       name: account-key
@@ -156,8 +158,3 @@ get:
       required: true
       schema:
         type: string
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_revenue-schedules_product-charges_{charge-key}_{account-key}/getundefined

@@ -34,4 +34,12 @@ properties:
   targetName:
     description: Required if the `type` of the action is `renameField`
     type: string
+  unique:
+    description: >
+      Indicates whether to specify a unique constraint to the field. You can
+      remove the unique constraint on the field. However, you can only add a
+      unique constraint to a filterable field if the custom object contains no
+      record. One custom object can have a maximum of 5 fields with unique
+      constraints.
+    type: boolean
 type: object

@@ -13,7 +13,7 @@ properties:
       feature disabled, this field is unavailable in the request body and the
       value of this field is `null` in the response body.
     type: string
-  clearingExistingBillToContactId:
+  clearingExistingBillToContact:
     default: false
     description: >
       Whether to clear the existing bill-to contact ID at the subscription

@@ -40,6 +40,11 @@ allOf:
         description: >
           The field used to pass gateway-specific parameters and parameter
           values.
+
+
+          Zuora sends all the information that you specified to the gateway. If
+          you specify any unsupported gateway option parameters, they will be
+          ignored without error prompts.
         properties:
           key:
             description: |

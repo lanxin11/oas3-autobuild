@@ -13,6 +13,7 @@ post:
   tags:
     - RSA Signatures
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
   requestBody:
@@ -80,7 +81,3 @@ post:
                 decryptedSignature: >-
                   /apps/publichostedpagelite.do#12270#tpyeSbjfUdpZpY4EMSCy7CrupvuhIdvM#1473658419005#2c92c0f855e2b4630155ec9e6a1b6eec
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_rsa-signatures_decrypt/postundefined

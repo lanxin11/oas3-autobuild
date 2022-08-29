@@ -8,6 +8,7 @@ get:
   tags:
     - Revenue Schedules
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: rs-number
@@ -109,10 +110,6 @@ get:
                     deferredRevenueAccountingCodeType: 'Liabilities: Sales'
                     deferredRevenueAccountingCode: MONTHLY RECURRING CHARGE
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_revenue-schedules_{rs-number}/getundefined
 delete:
   summary: Delete a revenue schedule
   operationId: DELETE_RS
@@ -130,6 +127,7 @@ delete:
   tags:
     - Revenue Schedules
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: rs-number
@@ -202,7 +200,3 @@ delete:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_revenue-schedules_{rs-number}/deleteundefined

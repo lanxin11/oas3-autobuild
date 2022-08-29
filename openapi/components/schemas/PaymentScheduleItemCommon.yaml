@@ -1,0 +1,59 @@
+allOf:
+  - properties:
+      amount:
+        description: |
+          The amount that needs to be collected by this payment schedule item.
+        type: number
+      currency:
+        description: >
+          The currency of the payment.
+
+
+          **Note**:
+
+          - This field is optional. If not specified, the default value is the
+          currency set for the account.
+        type: string
+      description:
+        description: |
+          Description of the payment schedule item.
+        type: string
+      paymentGatewayId:
+        description: >
+          The ID of the payment gateway.
+
+
+          **Note**:
+
+          - This field is optional. If not specified, the default value is the
+          payment gateway id set for the account.
+        required:
+          - type
+        type: string
+      paymentMethodId:
+        description: >
+          The ID of the payment method.
+
+
+          **Note**:
+
+          - This field is optional. If not specified, the default value is the
+          payment method id set for the account.
+        type: string
+      runHour:
+        description: >
+          At which hour of the day in the tenant’s timezone this payment will be
+          collected. Available values:`[0,1,2,~,22,23]`.
+
+          The default value is `0`.
+        type: string
+      scheduledDate:
+        description: |
+          The date to collect the payment.
+        format: date
+        type: string
+    required:
+      - scheduledDate
+      - amount
+    type: object
+  - $ref: ./PaymentScheduleItemCustomFields.yaml

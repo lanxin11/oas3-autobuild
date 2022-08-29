@@ -141,7 +141,3 @@ post:
                 error_class: null
                 error_details: null
                 tags: []
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/workflows_tasks_{task_id}_rerun/postundefined

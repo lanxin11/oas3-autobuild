@@ -36,29 +36,28 @@ allOf:
         format: int32
         type: integer
       BillCycleType:
-        description: >2
-           Specifies how to determine the billing day for the charge. **Character limit**: 20 **Values**: one of the following:
+        description: >
+          Specifies how to determine the billing day for the
+          charge.              
 
-          - `DefaultFromCustomer`
+          **Character limit**: 20              
 
-          - `SpecificDayofMonth:`
-
-          - `SubscriptionStartDay`
-
-          - `ChargeTriggerDay`
-
-          - `SpecificDayofWeek`
+          **Values**: one of the following:
+            - `DefaultFromCustomer`
+            - `SpecificDayofMonth:`
+            - `SubscriptionStartDay`
+            - `ChargeTriggerDay`
+            - `SpecificDayofWeek`
+            - `TermStartDay`                
+            - `TermEndDay`
 
           **Note**:
-
-
-          - If you set this field to `SpecificDayofMonth`, you must specify
-          which day of the month as the billing day for the charge in the
-          BillCycleDay field.
-
-          - If you set this field to `SpecificDayofWeek`, you must specify which
-          day of the week as the billing day for the charge in the
-          WeeklyBillCycleDay field.
+            - If you set this field to `SpecificDayofMonth`, you must specify which day of the month as the billing day for the charge in the BillCycleDay field. 
+            - If you set this field to `SpecificDayofWeek`, you must specify which day of the week as the billing day for the charge in the WeeklyBillCycleDay field. 
+            - By default, `TermStartDay` and `TermEndDay` are only available for prepayment charges. But you can reach out to Zuora Global Support to request enabling it for non-prepaid recurring charges. Meanwhile, note the following rules applies to these options:
+              - The Term End Day option of the Billing Day field must be coupled with the Align to Term End option of the Billing Period Alignment field.
+              - For prepaid charges, the Term Start Day option of the Billing Day field must be coupled with the existing Align to Term Start option of the Billing Period Alignment field.
+              - For non-prepaid recurring charges: If Billing Day is set to Term Start Day, Billing Period Alignment must be Align to Term Start; If Billing Day is set to Term End Day, Billing Period Alignment can be set to other values.
         type: string
       BillingPeriod:
         description: >2-
@@ -87,13 +86,25 @@ allOf:
           or `Specific Weeks`. 
         type: string
       BillingPeriodAlignment:
-        description: |2
-           Aligns charges within the same subscription if multiple charges begin on different dates.
-          **Character limit**: 24 **Values**: one of the following:
+        description: >
+          Aligns charges within the same subscription if multiple charges begin
+          on different dates.
 
-          - `AlignToCharge`
-          - `AlignToSubscriptionStart`
-          - `AlignToTermStart`
+
+          **Character limit**: 24
+
+          **Values**: one of the following:
+            - `AlignToCharge`
+
+            - `AlignToSubscriptionStart`
+
+            - `AlignToTermStart`
+
+            - `AlignToTermEnd`
+
+          **Note:** `AlignToTermEnd` is only available for prepayment charges by
+          default. Reach out to Zuora Global Support to enable it for
+          non-prepaid recurring charges.
         type: string
       BillingTiming:
         description: >2+
@@ -189,6 +200,7 @@ allOf:
         enum:
           - TimeBased
           - ConsumptionBased
+          - FullCreditBack
         type: string
       DefaultQuantity:
         description: >2-
@@ -725,6 +737,15 @@ allOf:
 
           - `Saturday`
         type: string
+    required:
+      - BillCycleType
+      - BillingPeriod
+      - ChargeModel
+      - Name
+      - ProductRatePlanChargeTierData
+      - ProductRatePlanId
+      - TriggerEvent
+      - UseDiscountSpecificAccountingCode
     type: object
   - $ref: ./ProductRatePlanChargeObjectNSFields.yaml
   - $ref: ./ProductRatePlanChargeObjectCustomFields.yaml

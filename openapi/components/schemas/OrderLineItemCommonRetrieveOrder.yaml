@@ -29,6 +29,21 @@ properties:
       billing.
     format: date
     type: string
+  billingRule:
+    description: >
+      The billing rule of the Order Line Item.
+
+
+      **Note:** This field is only available if you have the Fulfillment and
+      Return feature enabled. The Fulfillment and Return feature is in the
+      **Early Adopter** phase. We are actively soliciting feedback from a small
+      set of early adopters before releasing it as generally available. If you
+      want to join this early adopter program, submit a request at [Zuora Global
+      Support](https://support.zuora.com/).
+    enum:
+      - TriggerWithoutFulfillment
+      - TriggerAsFulfillmentOccurs
+    type: string
   contractAssetAccountingCode:
     description: >
       The accounting code on the Order Line Item object for customers using
@@ -57,6 +72,16 @@ properties:
     description: |
       The description of the Order Line Item.
     type: string
+  discount:
+    description: >
+      This field shows the total discount amount that is applied to an order
+      line item after the `inlineDiscountType`, `inlineDiscountPerUnit` and
+      `quantity` fields are set.
+
+
+      The inline discount is applied to the list price of an order line item
+      (see the `listPrice` field).
+    type: number
   excludeItemBillingFromRevenueAccounting:
     description: >
       The flag to exclude Order Line Item related invoice items, invoice item
@@ -64,29 +89,91 @@ properties:
       accounting.
 
 
-      **Note**: This field is only available if you have the Billing - Revenue
-      Integration feature enabled. 
+      **Note**: This field is only available if you have the [Zuora Billing -
+      Revenue
+      Integration](https://knowledgecenter.zuora.com/Zuora_Revenue/Zuora_Billing_-_Revenue_Integration)
+      feature enabled. 
     type: boolean
   excludeItemBookingFromRevenueAccounting:
     description: >
       The flag to exclude Order Line Item from revenue accounting.
 
 
-      **Note**: This field is only available if you have the Billing - Revenue
-      Integration feature enabled. 
+      **Note**: This field is only available if you have the [Zuora Billing -
+      Revenue
+      Integration](https://knowledgecenter.zuora.com/Zuora_Revenue/Zuora_Billing_-_Revenue_Integration)
+      feature enabled. 
     type: boolean
+  inlineDiscountPerUnit:
+    description: >
+      This field is used in accordance with the `inlineDiscountType` field, in
+      the following manner:
+
+      * If the `inlineDiscountType` field is set as `Percentage`, this field
+      specifies the discount percentage for each unit of the order line item.
+      For exmaple, if you specify `5` in this field, the discount percentage is
+      5%.
+
+      * If the `inlineDiscountType` field is set as `FixedAmount`, this field
+      specifies the discount amount on each unit of the order line item. For
+      exmaple, if you specify `10` in this field, the discount amount on each
+      unit of the order line item is 10.
+
+
+      Once you set the `inlineDiscountType`, `inlineDiscountPerUnit`, and
+      `listPricePerUnit` fields, the system will automatically generate the
+      `amountPerUnit` field. You shall not set the `amountPerUnit` field by
+      yourself.
+    type: number
+  inlineDiscountType:
+    description: >
+      This field is used to specify the inline discount type, which can be
+      `Percentage`, `FixedAmount`, or `None`. The default value is `Percentage`.
+
+
+      This field is used together with the `inlineDiscountPerUnit` field to
+      specify inline discounts for order line items. The inline discount is
+      applied to the list price of an order line item. 
+
+
+      Once you set the `inlineDiscountType`, `inlineDiscountPerUnit`, and
+      `listPricePerUnit` fields, the system will automatically generate the
+      `amountPerUnit` field. You shall not set the `amountPerUnit` field by
+      yourself.
+    enum:
+      - Percentage
+      - FixedAmount
+      - None
+    type: string
+  itemCategory:
+    default: Sale
+    description: >
+      The category of the Order Line Item, to indicate a product sale or return.
+
+
+      **Note:** This field is only available if you have the Fulfillment and
+      Return feature enabled. The Fulfillment and Return feature is in the
+      **Early Adopter** phase. We are actively soliciting feedback from a small
+      set of early adopters before releasing it as generally available. If you
+      want to join this early adopter program, submit a request at [Zuora Global
+      Support](https://support.zuora.com/).
+    enum:
+      - Sale
+      - Return
+    type: string
   itemName:
     description: |
       The name of the Order Line Item.
     type: string
   itemState:
     description: >
-      The state of an Order Line Item. See [Order Line Item states, Order
-      states, and state
-      transitions](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/AB_Order_Line_Item_States_and_Order_States)
+      The state of an Order Line Item. See [State transitions for an order,
+      order line item, and
+      fulfillment](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/AB_Order_Line_Item_States_and_Order_States)
       for more information.
     enum:
       - Executing
+      - Booked
       - SentToBilling
       - Complete
       - Cancelled
@@ -108,6 +195,55 @@ properties:
     description: |
       The list price per unit for the Order Line Item.
     type: number
+  originalOrderId:
+    description: >
+      The ID of the original sale order for a return order line item. 
+
+
+      **Note:** This field is only available if you have the Fulfillment and
+      Return feature enabled. The Fulfillment and Return feature is in the
+      **Early Adopter** phase. We are actively soliciting feedback from a small
+      set of early adopters before releasing it as generally available. If you
+      want to join this early adopter program, submit a request at [Zuora Global
+      Support](https://support.zuora.com/).
+    type: string
+  originalOrderLineItemId:
+    description: >
+      The ID of the original sale order line item for a return order line item. 
+
+
+      **Note:** This field is only available if you have the Fulfillment and
+      Return feature enabled. The Fulfillment and Return feature is in the
+      **Early Adopter** phase. We are actively soliciting feedback from a small
+      set of early adopters before releasing it as generally available. If you
+      want to join this early adopter program, submit a request at [Zuora Global
+      Support](https://support.zuora.com/).
+    type: string
+  originalOrderLineItemNumber:
+    description: >
+      The number of the original sale order line item for a return order line
+      item. 
+
+
+      **Note:** This field is only available if you have the Fulfillment and
+      Return feature enabled. The Fulfillment and Return feature is in the
+      **Early Adopter** phase. We are actively soliciting feedback from a small
+      set of early adopters before releasing it as generally available. If you
+      want to join this early adopter program, submit a request at [Zuora Global
+      Support](https://support.zuora.com/).
+    type: string
+  originalOrderNumber:
+    description: >
+      The number of the original sale order for a return order line item. 
+
+
+      **Note:** This field is only available if you have the Fulfillment and
+      Return feature enabled. The Fulfillment and Return feature is in the
+      **Early Adopter** phase. We are actively soliciting feedback from a small
+      set of early adopters before releasing it as generally available. If you
+      want to join this early adopter program, submit a request at [Zuora Global
+      Support](https://support.zuora.com/).
+    type: string
   productCode:
     description: |
       The product code for the Order Line Item.
@@ -126,6 +262,42 @@ properties:
     description: >
       The quantity of units, such as the number of authors in a hosted wiki
       service.
+    type: number
+  quantityAvailableForReturn:
+    description: >
+      The quantity that can be returned for an order line item. 
+
+
+      **Note:** This field is only available if you have the Fulfillment and
+      Return feature enabled. The Fulfillment and Return feature is in the
+      **Early Adopter** phase. We are actively soliciting feedback from a small
+      set of early adopters before releasing it as generally available. If you
+      want to join this early adopter program, submit a request at [Zuora Global
+      Support](https://support.zuora.com/).
+    type: number
+  quantityFulfilled:
+    description: >
+      The fulfilled quantity for an order line item.
+
+
+      **Note:** This field is only available if you have the Fulfillment and
+      Return feature enabled. The Fulfillment and Return feature is in the
+      **Early Adopter** phase. We are actively soliciting feedback from a small
+      set of early adopters before releasing it as generally available. If you
+      want to join this early adopter program, submit a request at [Zuora Global
+      Support](https://support.zuora.com/).
+    type: number
+  quantityPendingFulfillment:
+    description: >
+      The quantity to fulfill for an order line item. 
+
+
+      **Note:** This field is only available if you have the Fulfillment and
+      Return feature enabled. The Fulfillment and Return feature is in the
+      **Early Adopter** phase. We are actively soliciting feedback from a small
+      set of early adopters before releasing it as generally available. If you
+      want to join this early adopter program, submit a request at [Zuora Global
+      Support](https://support.zuora.com/).
     type: number
   recognizedRevenueAccountingCode:
     description: |
@@ -147,9 +319,36 @@ properties:
       * To relate an order line item to an existing subscription, specify this
       field to the subscription number of the existing subscription.
     type: string
+  requiresFulfillment:
+    description: >
+      The flag to show whether fulfillment is needed or not. It's derived from
+      billing rule of the Order Line Item.
+
+
+      **Note:** This field is only available if you have the Fulfillment and
+      Return feature enabled. The Fulfillment and Return feature is in the
+      **Early Adopter** phase. We are actively soliciting feedback from a small
+      set of early adopters before releasing it as generally available. If you
+      want to join this early adopter program, submit a request at [Zuora Global
+      Support](https://support.zuora.com/).
+    type: boolean
   revenueRecognitionRule:
     description: |
       The Revenue Recognition rule for the Order Line Item.
+    type: string
+  soldTo:
+    description: >
+      The ID of a contact that belongs to the billing account of the order line
+      item. Use this field to assign an existing account as the sold-to contact
+      of an order line item.
+    type: string
+  soldToSnapshotId:
+    description: >
+      The snapshot of the ID for an account used as the sold-to contact of an
+      order line item. This field is used to store the original information
+      about the account, in case the information about the account is changed
+      after the creation of the order line item. The `soldToSnapshotId` field is
+      exposed while retrieving the order line item details.
     type: string
   taxCode:
     description: |

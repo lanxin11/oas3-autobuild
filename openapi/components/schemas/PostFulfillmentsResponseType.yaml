@@ -1,0 +1,51 @@
+allOf:
+  - $ref: ./CommonResponseType.yaml
+  - properties:
+      creditMemoNumbers:
+        description: >
+          An array of the credit memo numbers generated in this request. The
+          credit memo is only available if you have the Invoice Settlement
+          feature enabled.
+        items:
+          type: string
+        type: array
+      fulfillments:
+        items:
+          properties:
+            fulfillmentItems:
+              items:
+                properties:
+                  id:
+                    description: |
+                      The sytem generated Id.
+                    format: UUID
+                    type: string
+                type: object
+              type: array
+            fulfillmentNumber:
+              description: |
+                The sytem generated number for the Fulfillment.
+              type: string
+            id:
+              description: |
+                The sytem generated Id.
+              format: UUID
+              type: string
+          type: object
+        type: array
+      invoiceNumbers:
+        description: >
+          An array of the invoice numbers generated in this request. Normally it
+          includes one invoice number only.
+        items:
+          type: string
+        type: array
+      paidAmount:
+        description: |
+          The total amount collected in this request.
+        type: number
+      paymentNumber:
+        description: |
+          The payment number collected in this request.
+        type: string
+    type: object

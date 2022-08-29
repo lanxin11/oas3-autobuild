@@ -1,0 +1,10 @@
+example:
+  billTargetDate: '2022-01-01'
+  fulfillmentDate: '2022-01-01'
+  fulfillmentType: Delivery
+  quantity: 5
+  state: SentToBilling
+properties:
+  fulfillment:
+    $ref: ./FulfillmentPut.yaml
+type: object

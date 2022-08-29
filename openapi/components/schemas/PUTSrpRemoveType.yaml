@@ -27,16 +27,35 @@ properties:
     type: string
   externalCatalogPlanId:
     description: >
-      An external ID of the product rate plan to be removed. 
+      An external ID of the rate plan to be removed. You can use this field to
+      specify an existing rate plan in your subscription. The value of the
+      `externalCatalogPlanId` field must match one of the values that are
+      predefined in the `externallyManagedPlanIds` field on a product rate plan.
+      However, if there are multiple rate plans with the same
+      `productRatePlanId` value existing in the subscription, you must use the
+      `ratePlanId` field to remove the rate plan. The `externalCatalogPlanId`
+      field cannot be used to distinguish multiple rate plans in this case.
 
 
       **Note:** If both `externalCatalogPlanId` and `ratePlanId` are provided.
       They must point to the same product rate plan. Otherwise, the request
       would fail.
     type: string
+  externalIdSourceSystem:
+    description: >
+      The ID of the external source system. You can use this field and
+      `externalCatalogPlanId` to specify a product rate plan that is imported
+      from an external system.
+
+
+      **Note:** If both `externalCatalogPlanId`, `externalIdSourceSystem` and
+      `productRatePlanId` are provided. They must point to the same product rate
+      plan. Otherwise, the request would fail.
+    type: string
   ratePlanId:
-    description: |
-      ID of a rate plan for this subscription.
+    description: >
+      ID of a rate plan for this subscription. This can be the latest version or
+      any history version of ID.
     type: string
   serviceActivationDate:
     description: >
@@ -56,6 +75,5 @@ properties:
     type: string
 required:
   - contractEffectiveDate
-  - ratePlanId
 title: remove
 type: object

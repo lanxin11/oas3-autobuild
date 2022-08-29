@@ -2,7 +2,7 @@ name: pageSize
 in: query
 required: false
 description: |
-  Number of rows returned per page.
+  The number of records returned per page in the response.
 schema:
   type: integer
   maximum: 300

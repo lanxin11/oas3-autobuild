@@ -1,0 +1,102 @@
+get:
+  summary: Retrieve payment run data
+  operationId: GET_PaymentRunData
+  description: >
+    Retrieves payment run data and the processing result with details, if the
+    `data` field was specified in the Create payment run operation.
+       
+  tags:
+    - Payment Runs
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - in: path
+      name: paymentRunKey
+      description: >
+        The unique ID of a payment run or the payment run number. For example,
+        402890245f097f39015f0f074a2e0566.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/GETPaymentRunDataArrayResponse.yaml
+          examples:
+            response:
+              value:
+                data:
+                  - accountId: 402881ed738ddf2001738def8db50058
+                    documentId: 402881ed738ddf2001738df388fd009e
+                    documentType: Invoice
+                    amount: 80
+                    paymentMethodId: 402881ed738ddf2001738def8e60005b
+                    paymentGatewayId: 402881ed738ddf2001738def8b630050
+                    comment: Comment1
+                    customField1__c: cf_value1
+                    customField2__c: cf_value2
+                    result: Processed
+                    amountToCollect: 80
+                    amountCollected: 80
+                    transactions:
+                      - id: 402881ed738ddf2001738dfafad6012c
+                        type: Payment
+                        appliedAmount: 40
+                        amount: 40
+                        status: Processed
+                      - id: 402881ed738ddf2001738df7572400e6
+                        type: CreditMemo
+                        appliedAmount: 10
+                      - id: 402881ed738ddf2001738df715d800dd
+                        type: UnappliedPayment
+                        appliedAmount: 30
+                  - accountId: 402881ed738ddf2001738def8db50058
+                    documentType: DebitMemo
+                    documentId: 402881ed738ddf2001738df5b90a00c0
+                    amount: 70
+                    paymentMethodId: 402881ed738ddf2001738df97dbe00fe
+                    paymentGatewayId: 402881ed738ddf2001738def8b630050
+                    comment: Comment2
+                    customField1__c: cf_value3
+                    customField2__c: cf_value4
+                    result: Processed
+                    amountToCollect: 70
+                    amountCollected: 70
+                    transactions:
+                      - id: 402881ed738ddf2001738dfafcbd013b
+                        type: Payment
+                        appliedAmount: 70
+                        amount: 70
+                        status: Processed
+                  - accountId: c49b85cd8ba742edb5ab4b3da90fc4c0
+                    documentId: 7dab18d036dc4c94bbec853afb12affb
+                    documentType: Invoice
+                    paymentMethodId: 1906df6f56f049c8b7457dc31f62d0ec
+                    comment: Comment3
+                    customField1__c: cf_value5
+                    customField2__c: cf_value6
+                    paymentGatewayId: 768929c2f51947e79e73703bfc9bca7d
+                    result: Error
+                    errorCode: Invalid_Request_Data
+                    errorMessage: Payment method is closed
+                success: true

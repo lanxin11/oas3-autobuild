@@ -1,0 +1,9 @@
+properties:
+  cancelDate:
+    description: |
+      Specifies when the payment schedule will be canceled.
+    format: date
+    type: string
+required:
+  - cancelDate
+type: object

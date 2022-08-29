@@ -59,5 +59,8 @@ properties:
       Editions](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/C_Zuora_Editions)
       for pricing information.
     type: string
+required:
+  - Key
+  - Value
 title: ConfigurationItem
 type: object

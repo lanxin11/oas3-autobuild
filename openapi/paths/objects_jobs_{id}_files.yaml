@@ -270,6 +270,6 @@ post:
                 code: 71013040
                 message: Not Found.
   x-code-samples:
-    - lang: cURL
+    - lang: curl
       source:
-        $ref: ../code_samples/cURL/objects_jobs_{id}_files/postundefined
+        $ref: ../code_samples/curl/objects_jobs_{id}_files/post.sh

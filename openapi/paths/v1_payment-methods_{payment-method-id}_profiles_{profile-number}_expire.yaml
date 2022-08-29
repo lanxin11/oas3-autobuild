@@ -12,6 +12,7 @@ post:
   tags:
     - Payment Methods
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: payment-method-id
@@ -30,10 +31,10 @@ post:
       schema:
         type: integer
   x-code-samples:
-    - lang: cURL
+    - lang: curl
       source:
         $ref: >-
-          ../code_samples/cURL/v1_payment-methods_{payment-method-id}_profiles_{profile-number}_expire/postundefined
+          ../code_samples/curl/v1_payment-methods_{payment-method-id}_profiles_{profile-number}_expire/post.sh
   responses:
     '200':
       headers:

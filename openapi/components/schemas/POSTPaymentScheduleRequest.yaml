@@ -1,0 +1,306 @@
+allOf:
+  - properties:
+      accountId:
+        description: >
+          ID of the customer account the payment schedule belongs to.
+
+
+          **Note:**
+
+          `accountId` and `accountNumber` cannot both be `null`. When both
+          fields are specified, the two values must match each other.          
+        type: string
+      accountNumber:
+        description: >
+          Account number of the customer account the payment schedule belongs
+          to.
+
+
+          **Note:**
+
+          `accountId` and `accountNumber` cannot both be `null`. When both
+          fields are specified, the two values must match each other.          
+        type: string
+      amount:
+        description: |
+          The amount of each payment schedule item in the payment schedule.
+
+          **Note:**
+          - This field is required when `items` is not specified.
+          - This field will be ignored when `items` is specified.
+        type: number
+      billingDocument:
+        description: >
+          Object of the billing document with which the payment schedule is
+          associated.
+
+
+          **Note:**
+
+          - This field is optional. If you have the Standalone Payment feature
+          enabled, you can escape this field and set `standalone` to `true` to
+          create standalone payments. You can also choose to create unapplied
+          payments by escaping this object and setting `standalone` to `false`.
+
+          - If Standalone Payment is not enabled, leaving this object
+          unspecified will create unapplied payments.
+        properties:
+          id:
+            description: |
+              ID of the billing document.
+
+              **Note:**
+               If a billing document is specified, either `id` or `number` of the billing document must be specified. You cannot specify both of them or skip both.
+            type: string
+          number:
+            description: |
+              ID of the billing document.
+
+              **Note:**
+               If a billing document is specified, either `id` or `number` of the billing document must be specified. You cannot specify both of them or skip both.
+            type: string
+          type:
+            description: |
+              The type of the billing document. The default value is `Invoice`.
+            enum:
+              - Invoice
+              - DebitMemo
+            type: string
+        required:
+          - type
+        type: object
+      currency:
+        description: >
+          Currency of the payment schedule.
+
+
+          **Note:**
+
+          - This field is optional. The default value is the account's default
+          currency.
+
+          - This field will be ignored when `items` is specified.
+        type: string
+      description:
+        description: |
+          Description of the payment schedule. Max length is 255.
+        type: string
+      items:
+        description: |
+          Container array for payment schedule items.
+        items:
+          allOf:
+            - properties:
+                amount:
+                  description: >
+                    The amount that needs to be collected by this payment
+                    schedule item.
+                  type: number
+                billingDocument:
+                  description: >
+                    Object for the billing document with which the payment
+                    schedule item is associated. 
+
+                    **Note:** You must specify the same billing document for all
+                    the payment schedule items in one payment schedule.
+                  properties:
+                    id:
+                      description: >
+                        The ID of the billing document.
+
+
+                        **Note:**
+
+                        If a billing document is specified, one of `id` or
+                        `number` must be specified. You cannot specify both of
+                        them or or skip both.
+                      type: string
+                    number:
+                      description: >
+                        The number of the billing document.
+
+
+                        **Note:**
+
+                        If a billing document is specified, one of `id` or
+                        `number` must be specified. You cannot specify both of
+                        them or skip both.
+                      type: string
+                    type:
+                      description: >
+                        The type of the billing document. The default value is
+                        `Invoice`.
+                      enum:
+                        - Invoice
+                        - DebitMemo
+                      type: string
+                  required:
+                    - type
+                  type: object
+                currency:
+                  description: >
+                    The currency of the payment.
+
+
+                    **Note**:
+
+                    - This field is optional. If not specified, the default
+                    value is the currency set for the account.
+                  type: string
+                description:
+                  description: |
+                    Description of the payment schedule item.
+                  type: string
+                paymentGatewayId:
+                  description: >
+                    The ID of the payment gateway.
+
+
+                    **Note**:
+
+                    - This field is optional. If not specified, the default
+                    value is the payment gateway id set for the account.
+                  type: string
+                paymentMethodId:
+                  description: >
+                    The ID of the payment method.
+
+
+                    **Note**:
+
+                    - This field is optional. If not specified, the default
+                    value is the payment method id set for the account.
+                  type: string
+                runHour:
+                  description: >
+                    At which hour in the day in the tenant’s timezone this
+                    payment will be collected. Available
+                    values:`[0,1,2,~,22,23]`. If the time difference between
+                    your tenant’s timezone and the timezone where Zuora servers
+                    are is not in full hours, for example, 2.5 hours, the
+                    payment schedule items will be triggered half hour later
+                    than your scheduled time.
+
+                    The default value is `0`.
+                  type: string
+                scheduledDate:
+                  description: |
+                    The date to collect the payment.
+                  format: date
+                  type: string
+              type: object
+            - $ref: ./PaymentScheduleItemCustomFields.yaml
+        type: array
+      occurrences:
+        description: >
+          The number of payment schedule item to be created. Maximum value is
+          1000.
+
+
+          **Note:**
+
+          - This field is required when `items` is not specified.
+
+          - This field will be ignored when `items` is specified. 
+        type: integer
+      paymentGatewayId:
+        description: >
+          ID of the payment gateway.
+
+
+          **Note:**
+
+          - This field is optional. The default value is the account's default
+          payment gateway ID. If no payment gateway ID is found on the cusotmer
+          account level, the default value will be the tenant's default payment
+          gateway ID.
+
+          - This field will be ignored when `items` is specified. 
+        type: string
+      paymentMethodId:
+        description: >
+          ID of the payment method.
+
+
+          **Note:**
+
+          - This field is optional. The default value is the account's default
+          payment method ID.
+
+          - This field will be ignored when `items` is specified.  
+        type: string
+      paymentScheduleNumber:
+        description: >
+          You can use this field to specify the number of the payment schedule.
+
+          Only characters from the following sets are allowed: A-Z, a-z, 0-9,
+          and `-`. 
+
+          Payment numbers must start with a letter. In addition,`-` can only be
+          used at most once and cannot be placed at the beginning or the end of
+          the payment numbers.         
+        type: string
+      period:
+        description: >
+          The frequency for the payment collection since the `startDate`.
+
+
+          **Note:**
+
+          - Thie field is required when `items` is not specified.
+
+          - This field will be ignored when `items` is specified.
+
+          - If `startDate` is `30` or `31` and `period` is `Monthly`, when in
+          February, payment schedule will use the last day of February for
+          payment collection. 
+        enum:
+          - Monthly
+          - Weekly
+          - BiWeekly
+        type: string
+      runHour:
+        description: >
+          Specifies at which hour in the day in the tenant’s time zone when this
+          payment will be collected. Available values: `[0,1,2,~,22,23]`.
+
+
+          **Note:**
+
+          - If the time difference between your tenant’s timezone and the
+          timezone where Zuora servers are is not in full hours, for example,
+          2.5 hours, the payment schedule items will be triggered half hour
+          later than your scheduled time.
+
+          - This field is optional. The default value is `0`.
+
+          - This field will be ignored when `items` is specified.             
+        type: integer
+      standalone:
+        description: >
+          Indicate whether the payments created by the payment schedule are
+          standalone payments or not. When setting to `true`, standalone
+          payments will be created. When setting to `false`, you can either
+          specify a billing document, or not specifying any billing documents.
+          In the later case, unapplied payments will be created. If set to
+          `null`, standalone payment will be created.
+
+
+          **Note**: 
+
+          - This field is only available if the Standalone Payment is enabled.
+          Do not include this field if Standalone Payment is not enabled.
+
+          - If Standalone Payment is enabled, default value is `true`.
+        type: boolean
+      startDate:
+        description: |
+          The date for the first payment collection.
+
+          **Note:**
+          - This field is required when `items` is not specified.
+          - This field will be ignored when `items` is specified.              
+        format: date
+        type: string
+    type: object
+  - $ref: ./PaymentScheduleCustomFields.yaml

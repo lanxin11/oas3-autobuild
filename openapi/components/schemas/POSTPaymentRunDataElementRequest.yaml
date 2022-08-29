@@ -62,6 +62,19 @@ allOf:
           If neither of `documentType` and `documentId` is specified, all
           invoices/debit memos with open balance of the account are collected.
         type: string
+      documentNumber:
+        description: >
+          The number of a billing document associated with the payment run.
+          `documentNumber` must be valid and match with `documentType`.
+
+
+          You must either specify both `documentNumber` and `documentType`, or
+          specify neither of them.
+
+
+          If neither of `documentType` and `documentNumber` is specified, all
+          invoices/debit memos with open balance of the account are collected.
+        type: string
       documentType:
         description: >
           The type of a billing document associated with the payment run. The

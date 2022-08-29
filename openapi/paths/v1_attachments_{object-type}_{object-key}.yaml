@@ -27,8 +27,10 @@ get:
   tags:
     - Attachments
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
     - name: object-type
       in: path
@@ -47,11 +49,11 @@ get:
       in: path
       description: |
         ID of the object to list attachements for.
-         - If `object-type` is `account`, specify an account ID.
+         - If `object-type` is `account`, specify an account ID or number.
          - If `object-type` is `invoice`, specify an invoice ID.
          - If `object-type` is `subscription`, specify a subscription number.
-         - If `object-type` is `creditmemo`, specify a credit memo ID.
-         - If `object-type` is `debitmemo`, specify a debit memo ID.
+         - If `object-type` is `creditmemo`, specify a credit memo ID or number.
+         - If `object-type` is `debitmemo`, specify a debit memo ID or number.
       required: true
       schema:
         type: string
@@ -128,8 +130,3 @@ get:
                     updatedOn: '2016-05-02 13:09:17'
                     updatedBy: 4028e487327fd45a0132829ebb673ff9
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_attachments_{object-type}_{object-key}/getundefined

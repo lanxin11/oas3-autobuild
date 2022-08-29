@@ -129,6 +129,7 @@ post:
                         message: Cannot find a Invoice instance with id test.
                     objectIndex: 1
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: zuora-version
@@ -147,10 +148,6 @@ post:
         schema:
           $ref: ../components/schemas/POSTBulkDebitMemosRequestType.yaml
     required: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_debitmemos_bulk/postundefined
 put:
   description: >
     **Note:** This operation is only available if you have [Invoice
@@ -283,6 +280,7 @@ put:
                     objectIndex: 1
                     success: false
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: zuora-version
@@ -301,7 +299,3 @@ put:
         schema:
           $ref: ../components/schemas/PUTBulkDebitMemosRequestType.yaml
     required: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_debitmemos_bulk/putundefined

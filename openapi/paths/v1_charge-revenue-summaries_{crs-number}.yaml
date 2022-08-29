@@ -8,6 +8,7 @@ get:
   tags:
     - Charge Revenue Summaries
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: crs-number
@@ -100,8 +101,3 @@ get:
                     accountingPeriodStartDate: '2013-12-11'
                     accountingPeriodEndDate: null
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_charge-revenue-summaries_{crs-number}/getundefined

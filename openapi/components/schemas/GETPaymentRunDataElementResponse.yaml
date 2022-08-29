@@ -43,6 +43,11 @@ allOf:
           The billing document ID specified in the `data` field when creating
           the payment run. `null` is returned if it was not specified.
         type: string
+      documentNumber:
+        description: >
+          The billing document number specified in the `data` field when
+          creating the payment run. `null` is returned if it was not specified.
+        type: string
       documentType:
         description: >
           The billing document type specified in the `data` field when creating

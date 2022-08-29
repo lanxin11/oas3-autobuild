@@ -1,0 +1,8 @@
+allOf:
+  - properties:
+      success:
+        description: |
+          Indicates whether the invoice is created successfully.
+        type: boolean
+    type: object
+  - $ref: ./PostInvoiceResponse.yaml

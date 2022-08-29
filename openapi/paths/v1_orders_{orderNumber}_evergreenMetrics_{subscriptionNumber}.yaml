@@ -55,6 +55,7 @@ get:
   tags:
     - Orders
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: orderNumber
@@ -252,8 +253,3 @@ get:
                                   type: Regular
                                   startDate: '2017-01-07'
                   customFields: {}
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_orders_{orderNumber}_evergreenMetrics_{subscriptionNumber}/getundefined

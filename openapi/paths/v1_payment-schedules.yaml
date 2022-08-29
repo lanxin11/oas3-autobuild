@@ -1,0 +1,467 @@
+post:
+  description: >
+    Creates a payment schedule. You can create either recurring payment
+    schedules or custom payment schedules.
+
+
+    **Note:**
+
+    - The Payment Schedules feature is in the **Early Adopter** phase. We are
+    actively soliciting feedback from a small set of early adopters before
+    releasing it as generally available. If you want to join this early adopter
+    program, submit a request at [Zuora Global
+    Support](https://support.zuora.com/).
+
+    - This operation is only available if you have [Invoice
+    Settlement](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement)
+    enabled.
+
+    - You can choose to use payment schedules to process payments associated
+    with billing documents or unapplied payments. If Standalone Payment is
+    enabled, you can also use payment schedules to process standalone payments.
+
+    - This operation is version controlled. If you set `zuora-version` to
+    `329.0`, when creating custom payment schedules associated with billing
+    documents, you need to specify the billing document for each payment
+    schedule item; If `zuora-version` is set to `330.0`, when creating custom
+    payment schedules associated with billing documents, you only need to
+    specify the billing documents at the payment schedule level. The default
+    version number is `329.0`. However, we recommend that you specify the
+    version to `330.0`. `329.0` will be deprecated soon.
+  summary: Create a payment schedule
+  operationId: POST_PaymentSchedule
+  tags:
+    - Payment Schedules
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: zuora-version
+      in: header
+      required: false
+      description: |
+
+        The minor version of the Zuora REST API. 
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/POSTPaymentScheduleRequest.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/POSTPaymentScheduleResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+                id: 402880e749b72b310149b7343ef80005
+                paymentScheduleNumber: PS-00000001
+                accountId: 402880e741112b310149b7343ef81234
+                accountNumber: A-00000001
+                startDate: '2021-11-01'
+                period: Monthly
+                runHour: 1
+                occurrences: 2
+                status: Active
+                nextProcessDate: '2021-11-01'
+                recentProcessedDate: null
+                processedCount: 0
+                errorCount: 0
+                description: null
+                “isCustom”: true
+                “standalone”: true
+                cf1__c: v1
+                createdDate: '2021-11-01 19:40:00'
+                updatedDate: '2021-11-01 19:40:00'
+                createdById: 402892f942306295014230a4ab4909bf
+                updatedById: 402892f942306295014230a4ab4909bf
+                items:
+                  - id: 412880e749b72b310149b7343ef81346
+                    number: 1
+                    paymentScheduleId: 402880e749b72b310149b7343ef80005
+                    paymentScheduleNumber: PS-00000001
+                    accountId: 402880e741112b310149b7343ef81234
+                    scheduledDate: '2021-11-01'
+                    amount: 10
+                    currency: USD
+                    runHour: 1
+                    paymentMethodId: '123'
+                    paymentGatewayId: abc
+                    status: Pending
+                    errorMessage: null
+                    paymentId: null
+                    standalone: true
+                    description: null
+                    cf1__c: v1
+                    createdDate: '2021-11-01 19:40:00'
+                    updatedDate: '2021-11-01 19:40:00'
+                    createdById: 402892f942306295014230a4ab4909bf
+                    updatedById: 402892f942306295014230a4ab4909bf
+                    billingDocument:
+                      number: INV00002345
+                      id: 2c9890306fb2121e016fb21a6b550041
+                      type: Invoice
+                  - id: 412880e749b72b310149b7343ef81347
+                    number: 1
+                    paymentScheduleId: string
+                    paymentScheduleNumber: string
+                    accountId: 402880e741112b310149b7343ef81234
+                    scheduledDate: '2021-12-01'
+                    amount: 10
+                    currency: USD
+                    runHour: 1
+                    paymentMethodId: '123'
+                    paymentGatewayId: abc
+                    standalone: true
+                    status: Pending
+                    errorMessage: null
+                    paymentId: null
+                    description: null
+                    cf1__c: v1
+                    createdDate: '2021-11-01 19:40:00'
+                    updatedDate: '2021-11-01 19:40:00'
+                    createdById: 402892f942306295014230a4ab4909bf
+                    updatedById: 402892f942306295014230a4ab4909bf
+                    billingDocument:
+                      number: INV00007765
+                      id: 2c9890306f6fb21a6b550041b2121e01
+                      type: Invoice
+get:
+  description: >
+    Retrieves payment schedules of a customer account.
+
+
+    **Note:**
+
+    - The Payment Schedules feature is in the **Early Adopter** phase. We are
+    actively soliciting feedback from a small set of early adopters before
+    releasing it as generally available. If you want to join this early adopter
+    program, submit a request at [Zuora Global
+    Support](https://support.zuora.com/).
+
+    - This operation is only available if you have [Invoice
+    Settlement](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement)
+    enabled.
+  summary: List payment schedules by customer account
+  operationId: GET_PaymentSchedules
+  tags:
+    - Payment Schedules
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: lastProcessedItems
+      in: query
+      description: >
+        Number of the most recent processed payment schedules dispalyed in the
+        response body.
+      required: false
+      schema:
+        type: integer
+    - name: nextPendingItems
+      in: query
+      description: >
+        Number of next pending payment schedule items displayed in the response
+        body.
+      required: false
+      schema:
+        type: integer
+    - name: accountId
+      in: query
+      description: >
+        The ID of the customer account. If neither `accountId` nor
+        `accountNumber` is specified, all payment schedules will be returned. 
+      required: false
+      schema:
+        type: string
+    - name: accountNumber
+      in: query
+      description: >
+        The number of the customer account. If neither `accountId` nor
+        `accountNumber` is specified, all payment schedules will be returned. 
+      required: false
+      schema:
+        type: integer
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETPaymentSchedulesResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                - id: 8a90857b822459cd018224dcb9eb13be
+                  paymentScheduleNumber: PS-00000007
+                  standalone: false
+                  accountId: 8a90a2fd8074995801807816dbac52a4
+                  accountNumber: A00000002
+                  startDate: '2022-07-31'
+                  runHour: 0
+                  period: null
+                  occurrences: 2
+                  status: Active
+                  nextPaymentDate: '2022-07-31'
+                  recentPaymentDate: null
+                  totalPaymentsProcessed: 0
+                  totalPaymentsErrored: 0
+                  description: ''
+                  isCustom: true
+                  billingDocument: null
+                  createdDate: '2022-07-22 00:43:42'
+                  createdById: 8a90e082802185b901802199e15902d1
+                  updatedDate: '2022-07-22 00:45:36'
+                  updatedById: 8a90e082802185b901802199e15902d1
+                  items:
+                    - id: 8a90857b822459cd018224dcb9ec13bf
+                      number: 1
+                      paymentScheduleId: 8a90857b822459cd018224dcb9eb13be
+                      paymentScheduleNumber: PS-00000007
+                      standalone: false
+                      scheduledDate: '2022-07-31'
+                      runHour: 23
+                      paymentMethodId: 8a90a2fd8074995801807817ebed52aa
+                      paymentGatewayId: 8a90a2fd807499580180781775c452a8
+                      amount: 30
+                      currency: USD
+                      status: Pending
+                      errorMessage: null
+                      paymentId: null
+                      billingDocument:
+                        id: 8a90a2fd819503b50181959525e5205d
+                        number: INV00000001
+                        type: Invoice
+                      description: ''
+                      createdDate: '2022-07-22 00:43:42'
+                      createdById: 8a90e082802185b901802199e15902d1
+                      updatedDate: '2022-07-22 00:43:42'
+                      updatedById: 8a90e082802185b901802199e15902d1
+                    - id: 8a90a2fd822459ec018224de77a0359d
+                      number: 2
+                      paymentScheduleId: 8a90857b822459cd018224dcb9eb13be
+                      paymentScheduleNumber: PS-00000007
+                      standalone: false
+                      scheduledDate: '2022-08-31'
+                      runHour: 20
+                      paymentMethodId: 8a90a2fd8074995801807817ebed52aa
+                      paymentGatewayId: 8a90a2fd807499580180781775c452a8
+                      amount: 10
+                      currency: USD
+                      status: Pending
+                      errorMessage: null
+                      paymentId: null
+                      billingDocument:
+                        id: 8a90a2fd819503b50181959525e5205d
+                        number: INV00000001
+                        type: Invoice
+                      description: ''
+                      createdDate: '2022-07-22 00:45:35'
+                      createdById: 8a90e082802185b901802199e15902d1
+                      updatedDate: '2022-07-22 00:45:35'
+                      updatedById: 8a90e082802185b901802199e15902d1
+                - id: 8a90e0828219a57101821f00287a3abd
+                  paymentScheduleNumber: PS-00000006
+                  standalone: false
+                  accountId: 8a90a2fd8074995801807816dbac52a4
+                  accountNumber: A00000002
+                  startDate: '2022-07-21'
+                  runHour: 11
+                  period: BiWeekly
+                  occurrences: 4
+                  status: Active
+                  nextPaymentDate: '2022-08-04'
+                  recentPaymentDate: '2022-07-21'
+                  totalPaymentsProcessed: 1
+                  totalPaymentsErrored: 0
+                  description: test update ps Xiaokai
+                  isCustom: false
+                  billingDocument: null
+                  createdDate: '2022-07-20 21:24:40'
+                  createdById: 8a90e082802185b901802199e15902d1
+                  updatedDate: '2022-07-21 11:00:21'
+                  updatedById: '3'
+                  items:
+                    - id: 8a90e0828219a57101821f00287a3abf
+                      number: 1
+                      paymentScheduleId: 8a90e0828219a57101821f00287a3abd
+                      paymentScheduleNumber: PS-00000006
+                      standalone: false
+                      scheduledDate: '2022-07-21'
+                      runHour: 11
+                      paymentMethodId: 8a90a2fd8074995801807817ebed52aa
+                      paymentGatewayId: 8a90a2fd807499580180781775c452a8
+                      amount: 10
+                      currency: USD
+                      status: Processed
+                      errorMessage: null
+                      paymentId: 8a90e86d821fd6d1018221eae795158b
+                      billingDocument:
+                        id: 8a90a2fd819503b50181959525e5205d
+                        number: INV00000001
+                        type: Invoice
+                      description: test update ps Xiaokai
+                      createdDate: '2022-07-20 21:24:40'
+                      createdById: 8a90e082802185b901802199e15902d1
+                      updatedDate: '2022-07-21 11:00:19'
+                      updatedById: '3'
+                    - id: 8a90e0828219a57101821f00287b3ac0
+                      number: 2
+                      paymentScheduleId: 8a90e0828219a57101821f00287a3abd
+                      paymentScheduleNumber: PS-00000006
+                      standalone: false
+                      scheduledDate: '2022-08-04'
+                      runHour: 11
+                      paymentMethodId: 8a90a2fd8074995801807817ebed52aa
+                      paymentGatewayId: 8a90a2fd807499580180781775c452a8
+                      amount: 10
+                      currency: USD
+                      status: Pending
+                      errorMessage: null
+                      paymentId: null
+                      billingDocument:
+                        id: 8a90a2fd819503b50181959525e5205d
+                        number: INV00000001
+                        type: Invoice
+                      description: test update ps Xiaokai
+                      createdDate: '2022-07-20 21:24:40'
+                      createdById: 8a90e082802185b901802199e15902d1
+                      updatedDate: '2022-07-20 21:26:26'
+                      updatedById: 8a90e082802185b901802199e15902d1
+                    - id: 8a90e0828219a57101821f00287b3ac1
+                      number: 3
+                      paymentScheduleId: 8a90e0828219a57101821f00287a3abd
+                      paymentScheduleNumber: PS-00000006
+                      standalone: false
+                      scheduledDate: '2022-08-18'
+                      runHour: 11
+                      paymentMethodId: 8a90a2fd8074995801807817ebed52aa
+                      paymentGatewayId: 8a90a2fd807499580180781775c452a8
+                      amount: 10
+                      currency: USD
+                      status: Pending
+                      errorMessage: null
+                      paymentId: null
+                      billingDocument:
+                        id: 8a90a2fd819503b50181959525e5205d
+                        number: INV00000001
+                        type: Invoice
+                      description: test update ps Xiaokai
+                      createdDate: '2022-07-20 21:24:40'
+                      createdById: 8a90e082802185b901802199e15902d1
+                      updatedDate: '2022-07-20 21:26:26'
+                      updatedById: 8a90e082802185b901802199e15902d1
+                    - id: 8a90e0828219a57101821f01c5447f04
+                      number: 4
+                      paymentScheduleId: 8a90e0828219a57101821f00287a3abd
+                      paymentScheduleNumber: PS-00000006
+                      standalone: false
+                      scheduledDate: '2022-09-01'
+                      runHour: 11
+                      paymentMethodId: 8a90a2fd8074995801807817ebed52aa
+                      paymentGatewayId: 8a90a2fd807499580180781775c452a8
+                      amount: 10
+                      currency: USD
+                      status: Pending
+                      errorMessage: null
+                      paymentId: null
+                      billingDocument:
+                        id: 8a90a2fd819503b50181959525e5205d
+                        number: INV00000001
+                        type: Invoice
+                      description: test update ps Xiaokai
+                      createdDate: '2022-07-20 21:26:26'
+                      createdById: 8a90e082802185b901802199e15902d1
+                      updatedDate: '2022-07-20 21:26:26'
+                      updatedById: 8a90e082802185b901802199e15902d1

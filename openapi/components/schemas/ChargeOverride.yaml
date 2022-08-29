@@ -144,8 +144,10 @@ properties:
       accounting.
 
 
-      **Note**: This field is only available if you have the Billing - Revenue
-      Integration feature enabled. 
+      **Note**: This field is only available if you have the [Zuora Billing -
+      Revenue
+      Integration](https://knowledgecenter.zuora.com/Zuora_Revenue/Zuora_Billing_-_Revenue_Integration)
+      feature enabled. 
     type: boolean
   excludeItemBookingFromRevenueAccounting:
     default: false
@@ -153,8 +155,10 @@ properties:
       The flag to exclude rate plan charges from revenue accounting.
 
 
-      **Note**: This field is only available if you have the Billing - Revenue
-      Integration feature enabled. 
+      **Note**: This field is only available if you have the [Zuora Billing -
+      Revenue
+      Integration](https://knowledgecenter.zuora.com/Zuora_Revenue/Zuora_Billing_-_Revenue_Integration)
+      feature enabled. 
     type: boolean
   prepaidQuantity:
     description: >
@@ -204,7 +208,7 @@ properties:
       usageVolume:
         $ref: ./UsageVolumePricingOverride.yaml
     type: object
-  productRatePlanChargeId:
+  productRateplanChargeId:
     description: >
       Internal identifier of the product rate plan charge that the charge is
       based on.
@@ -262,13 +266,13 @@ properties:
       [prepayment
       charge](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown/Create_prepayment_charge).
     enum:
-      - Subscription_Term
-      - Annual
-      - Semi_Annual
-      - Quarter
-      - Month
+      - SUBSCRIPTION_TERM
+      - ANNUAL
+      - SEMI_ANNUAL
+      - QUARTER
+      - MONTH
     type: string
 required:
-  - productRatePlanChargeId
+  - productRateplanChargeId
 title: charge
 type: object

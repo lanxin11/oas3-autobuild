@@ -2,7 +2,14 @@ put:
   summary: Renew a subscription
   operationId: PUT_RenewSubscription
   description: >
-    Renews a termed subscription using existing renewal terms.
+    Renews a termed subscription using existing renewal terms. 
+
+    When you renew a subscription, the current subscription term is extended by
+    creating a new term.  
+
+    If any charge in your subscription has the billing period set as
+    `SubscriptionTerm`， a new charge segment is generated for the new term.
+
 
 
     **Note**: If you have the Invoice Settlement feature enabled, it is best
@@ -11,6 +18,7 @@ put:
   tags:
     - Subscriptions
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: zuora-version
@@ -94,8 +102,3 @@ put:
                 success: true
                 termEndDate: '2014-05-01'
                 subscriptionId: 2c92c8f83dcbd8b1013dcce0f09100a5
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_subscriptions_{subscription-key}_renew/putundefined

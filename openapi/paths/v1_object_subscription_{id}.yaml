@@ -5,6 +5,7 @@ get:
   tags:
     - Subscriptions
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_X_Zuora_WSDL_Version.yaml
@@ -83,6 +84,7 @@ get:
                 InitialTermPeriodType: Month
                 AccountId: 2c92c0fa6343984c0163498b71a604b2
                 IsInvoiceSeparate: false
+                IsLatestVersion: false
                 CurrentTermPeriodType: Month
                 CurrentTerm: 12
                 RenewalTermPeriodType: Month
@@ -224,10 +226,6 @@ get:
                 records: {}
                 size: 0
                 done: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_subscription_{id}/getundefined
 put:
   summary: 'CRUD: Update a subscription'
   operationId: Object_PUTSubscription
@@ -235,6 +233,7 @@ put:
   tags:
     - Subscriptions
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_rejectUnknownFields.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
@@ -373,10 +372,6 @@ put:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_subscription_{id}/putundefined
 delete:
   summary: 'CRUD: Delete a subscription'
   operationId: Object_DELETESubscription
@@ -384,6 +379,7 @@ delete:
   tags:
     - Subscriptions
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - name: id
@@ -515,7 +511,3 @@ delete:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_object_subscription_{id}/deleteundefined

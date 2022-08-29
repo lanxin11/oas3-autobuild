@@ -9,6 +9,7 @@ put:
       * Add a new product rate plan
       * Remove an existing subscription rate plan
       * Change the quantity or price of an existing subscription rate plan
+      * Change rate plans - to replace the existing rate plans in a subscription with other rate plans. Note that this feature is in the **Early Adopter** phase. We are actively soliciting feedback from a small set of early adopters before releasing it as generally available. If you want to join this early adopter program, submit a request at [Zuora Global Support](http://support.zuora.com/).
 
     ## Notes
 
@@ -64,6 +65,7 @@ put:
   tags:
     - Subscriptions
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: zuora-version
@@ -105,7 +107,12 @@ put:
     - name: subscription-key
       in: path
       required: true
-      description: Subscription number or ID.
+      description: >-
+        Subscription number or ID. ID can be the latest version or any history
+        version of ID. If you want to use any history version of ID, the
+        `STABLE_ID_PUBLIC_API` permission must be enabled. Submit a request at
+        [Zuora Global Support](http://support.zuora.com/) to enable the
+        permission.
       schema:
         type: string
   requestBody:
@@ -170,10 +177,6 @@ put:
                 subscriptionId: 4028bb83510f8ed7015114a503cf0373
                 totalDeltaMrr: 100
                 totalDeltaTcv: 4867.7419355
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_subscriptions_{subscription-key}/putundefined
 get:
   summary: Retrieve a subscription by key
   operationId: GET_SubscriptionsByKey
@@ -183,6 +186,7 @@ get:
   tags:
     - Subscriptions
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: subscription-key
@@ -405,6 +409,9 @@ get:
                         discountApplyDetails:
                           - appliedProductRatePlanId: 8a8082c45aa81b51015ad5a473fb0e8d
                             appliedProductRatePlanChargeId: 8a8082c45aa81b51015ad5a655c00e8f
+                            appliedProductName: ABC
+                            appliedProductRatePlanName: RatePlan 1
+                            appliedProductRatePlanChargeName: Annual Charge
                         billingDay: DefaultFromCustomer
                         listPriceBase: null
                         billingPeriod: Month
@@ -435,7 +442,3 @@ get:
                         tcv: 0
                         dtcv: 0
                         description: ''
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_subscriptions_{subscription-key}/getundefined

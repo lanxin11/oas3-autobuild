@@ -1,0 +1,9 @@
+description: |
+  Container for the payment schedule items to be added to the payment schedule.
+properties:
+  items:
+    items:
+      $ref: ./PaymentScheduleItemCommon.yaml
+    title: Array of payment schedule item
+    type: array
+type: object

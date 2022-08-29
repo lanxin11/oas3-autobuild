@@ -1,0 +1,96 @@
+get:
+  summary: List all properties of a billing document
+  operationId: GET_DocumentProperties
+  description: >
+    **Note:** This feature is available only if you have the Billing Document
+    Properties Setup feature enabled. The Billing Document Properties Setup
+    feature is in **Limited Availability**. If you wish to have access to the
+    feature, submit a request at [Zuora Global
+    Support](http://support.zuora.com/).
+
+     Retrieve information about document properties of a billing document. Billing documents include invoices, credit memos, and debit memos.
+     
+     **Note:** You can retrieve information about document properties of credit and debit memos only if you have the Invoice Settlement feature enabled. The Invoice Settlement feature is generally available as of Zuora Billing Release 296 (March 2021). This feature includes Unapplied Payments, Credit and Debit Memo, and Invoice Item Settlement. If you want to enable Invoice Settlement, see [Invoice Settlement Enablement and Checklist Guide](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement/Invoice_Settlement_Migration_Checklist_and_Guide) for more information.
+  tags:
+    - Document Properties
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - name: documentType
+      in: path
+      description: |
+        The type of the billing document. 
+      required: true
+      schema:
+        type: string
+        enum:
+          - Invoice
+          - CreditMemo
+          - DebitMemo
+    - name: documentKey
+      in: path
+      description: >
+        The unique ID or number of document properties to be retrieved. For
+        example, 402892c74c9193cd014c96bbe7c101f9, INV00000001, CM00000001, or
+        DM00000001.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETDocumentPropertiesResponseType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                success: true
+                id: 402892c74c9193cd014c96bbe7c101f9
+                documentId: 40288af1614cee0b01614cf2ec25000a
+                documentType: CreditMemo
+                customFileName: customPDFName

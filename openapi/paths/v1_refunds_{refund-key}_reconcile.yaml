@@ -7,6 +7,7 @@ post:
   tags:
     - Payment Gateway Reconciliation
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: refund-key
@@ -69,7 +70,3 @@ post:
         application/json; charset=utf-8:
           schema:
             $ref: ../components/schemas/POSTReconcileRefundResponse.yaml
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_refunds_{refund-key}_reconcile/postundefined

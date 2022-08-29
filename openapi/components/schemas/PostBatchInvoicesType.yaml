@@ -96,6 +96,7 @@ example:
           serviceStartDate: '2020-02-01'
           sku: sku-001
           uom: each
+  useSingleTransaction: false
 properties:
   invoices:
     description: |
@@ -103,4 +104,20 @@ properties:
     items:
       $ref: ./PostInvoiceType.yaml
     type: array
+  useSingleTransaction:
+    description: >
+      Whether a batch request is handled with a single transaction.
+
+
+      - `true` indicates that a batch request will be handled with a single
+      transaction.
+
+      - `false`  indicates that the standalone invoices to be created in a batch
+      request will be handled with separated transactions.
+
+
+      If the field is set to `false`, a failure in the batch request will not
+      cause the whole request to fail, so you have to retry the whole batch
+      request.
+    type: boolean
 type: object

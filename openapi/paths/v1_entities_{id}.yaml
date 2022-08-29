@@ -31,6 +31,7 @@ put:
   tags:
     - Entities
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: id
@@ -100,10 +101,6 @@ put:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_entities_{id}/putundefined
 get:
   summary: 'Multi-entity: Retrieve an entity'
   operationId: GET_EntityById
@@ -122,6 +119,7 @@ get:
   tags:
     - Entities
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: id
@@ -193,10 +191,6 @@ get:
                 parentId: 8a808255557baba1015580e12fa5083a
                 tenantId: '6398'
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_entities_{id}/getundefined
 delete:
   summary: 'Multi-entity: Delete an entity'
   operationId: DELETE_Entities
@@ -217,6 +211,7 @@ delete:
   tags:
     - Entities
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: id
@@ -280,7 +275,3 @@ delete:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_entities_{id}/deleteundefined

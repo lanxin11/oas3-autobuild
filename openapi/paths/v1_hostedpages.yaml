@@ -11,9 +11,6 @@ get:
     Pages:
 
 
-    * The request for Payment Pages 1.0 configuration information: `GET
-    <BaseURL>/hostedpages?version=1`
-
     * The request for Payment Pages 2.0 configuration information: `GET
     <BaseURL>/hostedpages?version=2`
 
@@ -23,27 +20,20 @@ get:
 
     ## Notes
 
-    If you do not have the corresponding tenant setting enabled, e.g., the
-    request `version` parameter set to 2 with the Payment Pages 2.0 setting
-    disabled, you will receive an error.
+    If you do not have the corresponding tenant setting enabled, such as
+    specifying the request `version` parameter to 2 but disabliing Payment Pages
+    2.0, you will receive an error.
   tags:
     - Hosted Pages
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: versionNumber
       in: query
       description: >
         Version of the Payment Pages for which you want to retrieve the
-        configuration information. Specify 1 for Payment Pages 1.0 or 2 for
-        Payment Pages 2.0. If omitted, information for all versions of Payment
-        Pages are returned.
-
-
-        The response also depends on your tenant settings for Payment Pages 1.0
-        and Payment Pages 2.0. For example, if only the tenant setting for
-        Payment Pages 2.0 is enabled, the response will only contain information
-        for Payment Pages 2.0 forms even when this parameter is omitted.
+        configuration information. Specify 2 for Payment Pages 2.0.
       required: false
       schema:
         type: string
@@ -110,7 +100,3 @@ get:
                     pageType: Credit Card
                     pageVersion: 2
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_hostedpages/getundefined

@@ -1,0 +1,132 @@
+allOf:
+  - properties:
+      accountId:
+        description: >
+          ID of the customer account that owns the payment schedule item, for
+          example `402880e741112b310149b7343ef81234`.
+        type: string
+      amount:
+        description: |
+          The amount of the payment.
+        format: decimal
+        type: number
+      billingDocument:
+        properties:
+          id:
+            description: >
+              ID of the billing document. for example,
+              `2c9890306fb2121e016fb21a6b550041`.
+            type: string
+          number:
+            description: |
+              The number of the billing docuemnt, for example, `INV00002345`.
+            type: string
+          type:
+            description: >
+              Indicates whether the associated billing document is a debit memo
+              or a invoice.
+            type: string
+        type: object
+      createdById:
+        description: |
+          The ID of the user who created the payment schedule item.
+        type: string
+      createdDate:
+        description: |
+          The date and time when the payment schedule item was created.
+        format: date
+        type: string
+      currency:
+        description: |
+          The currency of the payment.
+        type: string
+      description:
+        description: |
+          The description of the payment schedule item.
+        type: string
+      errorMessage:
+        description: >
+          The error message indicating if the error is related to the
+          configuration or the payment collection.
+        type: string
+      id:
+        description: >
+          ID of the payment schedule item. For example,
+          `412880e749b72b310149b7343ef81346`.
+        type: string
+      number:
+        description: |
+          Number of the payment schedule item.
+        type: string
+      paymentGatewayId:
+        description: |
+          ID of the payment gateway of the payment schedule item.
+        type: string
+      paymentId:
+        description: >
+          ID of the payment that is created by the payment schedule item， or
+          linked to the payment schedule item. 
+        type: string
+      paymentMethodId:
+        description: |
+          ID of the payment method of the payment schedule item.
+        type: string
+      paymentScheduleId:
+        description: >
+          ID of the payment schedule that contains the payment schedule item,
+          for example, `ID402880e749b72b310149b7343ef80005`,
+        type: string
+      paymentScheduleNumber:
+        description: >
+          Number of the payment schedule that contains the payment schedule
+          item, for example, `ID402880e749b72b310149b7343ef80005`,
+        type: string
+      runHour:
+        description: >
+          At which hour in the day in the tenant’s timezone this payment will be
+          collected.
+        type: integer
+      scheduledDate:
+        description: |
+          The scheduled date when the payment is processed.
+        format: date
+        type: string
+      standalone:
+        description: >
+          Indicates if the payment created by the payment schedule item is a
+          standalone payment.
+        type: boolean
+      status:
+        description: >
+          ID of the payment method of the payment schedule item.
+
+
+          - `Pending`: Waiting for processing.
+
+          - `Processed`: The payment has been collected.
+
+          - `Error`: Failed to collect the payment.
+
+          - `Canceled`: After a pending payment schedule item is canceled by the
+          user, the item is marked as `Canceled`.
+        enum:
+          - Pending
+          - Processed
+          - Error
+          - Canceled
+        type: string
+      success:
+        description: |
+          Returns `true` if the request was processed successfully. 
+        type: boolean
+      updatedById:
+        description: |
+          The ID of the user who updated the payment schedule item.
+        type: string
+      updatedDate:
+        description: |
+          The date and time when the payment schedule item was last updated.
+        format: date
+        type: string
+    type: object
+  - $ref: ./PaymentScheduleItemCustomFields.yaml

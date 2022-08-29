@@ -3,6 +3,8 @@ properties:
     $ref: ./CreateOrderRatePlanOverride.yaml
   cancelSubscription:
     $ref: ./CancelSubscription.yaml
+  changePlan:
+    $ref: ./CreateChangePlan.yaml
   changeReason:
     description: |
       The change reason set for an order action when an order is created.
@@ -98,6 +100,7 @@ properties:
        * RemoveProduct
        * RenewSubscription
        * TermsAndConditions
+       * ChangePlan
 
       However, pending orders created through all order actions except for
       "Create new subscription":
@@ -108,6 +111,12 @@ properties:
        * [Zuora is configured to require service activation](https://knowledgecenter.zuora.com/CB_Billing/Billing_Settings/Define_Default_Subscription_Settings#Require_Service_Activation_of_Orders.3F) and the service activation date is not set in your "Create an order" call.
        * [Zuora is configured to require customer acceptance](https://knowledgecenter.zuora.com/CB_Billing/Billing_Settings/Define_Default_Subscription_Settings#Require_Customer_Acceptance_of_Orders.3F) and the customer acceptance date is not set in your "Create an order" call.
        * When a charge in the subscription has its `triggerEvent` field set as `SpecificDate` and the `specificTriggerDate` field is not set in your "Create an order" API call.
+
+      **Note**: The change plan type of order action is in the **Early Adopter**
+      phase. We are actively soliciting feedback from a small set of early
+      adopters before releasing it as generally available. If you want to join
+      this early adopter program, submit a request at [Zuora Global
+      Support](http://support.zuora.com/).
     enum:
       - CreateSubscription
       - TermsAndConditions
@@ -119,6 +128,7 @@ properties:
       - OwnerTransfer
       - Suspend
       - Resume
+      - ChangePlan
     type: string
   updateProduct:
     $ref: ./CreateOrderRatePlanUpdate.yaml

@@ -92,10 +92,6 @@ get:
                   version: 0.0.1
                   type: Workflow::Setup
                   status: Active
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/workflows_{workflow_id}/getundefined
 delete:
   summary: Delete a workflow
   operationId: DELETE_Workflow
@@ -229,10 +225,6 @@ delete:
                   - >-
                     Invalid ID / Multiple objects returned - SchemaId: 2
                     InstanceId: 2 ObjectId: 19080
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/workflows_{workflow_id}/deleteundefined
 patch:
   summary: Update a workflow
   operationId: PATCH_UpdateWorkflow
@@ -483,4 +475,3 @@ patch:
                     title: >-
                       The entered cron interval is not valid, rebuild schedule
                       and submit again.
-  x-code-samples: []

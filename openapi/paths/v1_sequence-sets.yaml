@@ -30,6 +30,7 @@ post:
   tags:
     - Sequence Sets
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
   requestBody:
@@ -126,10 +127,6 @@ post:
                     refund:
                       prefix: IR-
                       startNumber: 10
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_sequence-sets/postundefined
 get:
   summary: List sequence sets
   operationId: GET_SequenceSets
@@ -154,6 +151,7 @@ get:
   tags:
     - Sequence Sets
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
@@ -270,7 +268,3 @@ get:
                       prefix: ITAR-
                       startNumber: 14
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_sequence-sets/getundefined

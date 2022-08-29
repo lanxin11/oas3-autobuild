@@ -6,6 +6,7 @@ get:
   tags:
     - Custom Payment Method Types
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: paymentMethodTypeName
@@ -113,8 +114,3 @@ get:
                     visible: true
                     representer: true
                     editable: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/open-payment-method-types_{paymentMethodTypeName}_draft_{revisionNumber}/getundefined

@@ -18,6 +18,7 @@ delete:
   tags:
     - Accounting Codes
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: ac-id
@@ -79,10 +80,6 @@ delete:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_accounting-codes_{ac-id}/deleteundefined
 get:
   summary: Retrieve an accounting code
   operationId: GET_AccountingCode
@@ -92,6 +89,7 @@ get:
   tags:
     - Accounting Codes
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: ac-id
@@ -165,10 +163,6 @@ get:
                 updatedOn: '2016-05-05 20:07:38'
                 updatedBy: e20b074746ec48f40147140f51e30a1a
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_accounting-codes_{ac-id}/getundefined
 put:
   summary: Update an accounting code
   operationId: PUT_AccountingCode
@@ -185,6 +179,7 @@ put:
   tags:
     - Accounting Codes
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: ac-id
@@ -252,7 +247,3 @@ put:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_accounting-codes_{ac-id}/putundefined

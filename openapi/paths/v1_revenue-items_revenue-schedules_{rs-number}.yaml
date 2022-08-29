@@ -8,8 +8,10 @@ get:
   tags:
     - Revenue Items
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize_finance_accounting.yaml
     - name: rs-number
       in: path
@@ -83,11 +85,6 @@ get:
                     deferredRevenueAccountingCodeType: null
                     deferredRevenueAccountingCode: null
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_revenue-items_revenue-schedules_{rs-number}/getundefined
 put:
   summary: Update custom fields on revenue items by revenue schedule number
   operationId: PUT_CustomFieldsonRevenueItemsByRevenueSchedule
@@ -98,6 +95,7 @@ put:
   tags:
     - Revenue Items
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: rs-number
@@ -167,8 +165,3 @@ put:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_revenue-items_revenue-schedules_{rs-number}/putundefined

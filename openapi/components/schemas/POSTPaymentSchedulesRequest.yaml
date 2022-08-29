@@ -1,0 +1,8 @@
+properties:
+  paymentSchedules:
+    description: |
+      Container of the payment schedules to be created.
+    items:
+      $ref: ./POSTPaymentScheduleRequest.yaml
+    type: array
+type: object

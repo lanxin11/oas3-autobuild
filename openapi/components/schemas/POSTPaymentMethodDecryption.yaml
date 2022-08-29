@@ -54,16 +54,30 @@ properties:
     type: string
   mitConsentAgreementSrc:
     description: >
-      Required if you set the `mitProfileAction` field. This field is only
-      available for CyberSource v2.0 integration.
+      This field is only available for CyberSource v2.0 integration to create a
+      stored credential profile within the payment method. It is required if the
+      `mitProfileAction` field is specified.
+
+
+      When creating an Apple Pay payment method on CyberSource v2.0, it is
+      strongly recommended to create the stored credential profile for the
+      payment method through specifying the `mitProfileAction`,
+      `mitConsentAgreementSrc`, and `mitProfileType` fields to prevent payment
+      rejection.
     enum:
       - External
     type: string
   mitProfileAction:
     description: >
-      If you set this field, Zuora creates a stored credential profile within
-      the payment method. This field is only available for CyberSource v2.0
-      integration.
+      This field is only available for CyberSource v2.0 integration to create a
+      stored credential profile within the payment method. 
+
+
+      When creating an Apple Pay payment method on CyberSource v2.0, it is
+      strongly recommended to create the stored credential profile for the
+      payment method through specifying the `mitProfileAction`,
+      `mitConsentAgreementSrc`, and `mitProfileType` fields to prevent payment
+      rejection.
           
       - `Activate` - Use this value if you are creating the stored credential
       profile after receiving the customer's consent.
@@ -83,10 +97,18 @@ properties:
     type: string
   mitProfileType:
     description: >
-      Required if you set the `mitProfileAction` field. Indicates the type of
+      This field is only available for CyberSource v2.0 integration to create a
+      stored credential profile within the payment method. It is required if the
+      `mitProfileAction` field is specified. This field indicates the type of
       the stored credential profile to process recurring or unsecheduled
-      transactions. This field is only available for CyberSource v2.0
-      integration.
+      transactions.
+
+
+      When creating an Apple Pay payment method on CyberSource v2.0, it is
+      strongly recommended to create the stored credential profile for the
+      payment method through specifying the `mitProfileAction`,
+      `mitConsentAgreementSrc`, and `mitProfileType` fields to prevent payment
+      rejection.
           
     enum:
       - Recurring

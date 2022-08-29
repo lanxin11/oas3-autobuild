@@ -10,6 +10,7 @@ get:
   tags:
     - Accounting Periods
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: ap-id
@@ -95,10 +96,6 @@ get:
                 updatedOn: '2015-09-28 00:53:13'
                 updatedBy: e20b074746ec48f40147140f51e30a1a
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_accounting-periods_{ap-id}/getundefined
 put:
   summary: Update an accounting period
   operationId: PUT_UpdateAccountingPeriod
@@ -150,6 +147,7 @@ put:
   tags:
     - Accounting Periods
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: ap-id
@@ -217,10 +215,6 @@ put:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_accounting-periods_{ap-id}/putundefined
 delete:
   summary: Delete an accounting period
   operationId: DELETE_AccountingPeriod
@@ -254,6 +248,7 @@ delete:
   tags:
     - Accounting Periods
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: ap-id
@@ -315,7 +310,3 @@ delete:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_accounting-periods_{ap-id}/deleteundefined

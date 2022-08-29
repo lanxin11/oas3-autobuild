@@ -23,8 +23,7 @@ post:
     events](https://www.zuora.com/developer/api-reference/#tag/Scheduled-Events)
     for more information about custom scheduled events.
   parameters:
-    - $ref: >-
-        ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_Notifications.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
   requestBody:
@@ -357,10 +356,6 @@ post:
                   "code":"500",
                   "message":"A temporary problem in the service occurred, you can retry later."
                 }
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/notifications_email-templates/postundefined
 get:
   summary: List email templates
   operationId: GET_Query_Email_Templates
@@ -370,8 +365,7 @@ get:
     Queries email templates. This operation supports querying email templates
     for all event types.
   parameters:
-    - $ref: >-
-        ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_Notifications.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: start
@@ -743,7 +737,3 @@ get:
                   "code":"500",
                   "message":"A temporary problem in the service occurred, you can retry later."
                 }
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/notifications_email-templates/getundefined

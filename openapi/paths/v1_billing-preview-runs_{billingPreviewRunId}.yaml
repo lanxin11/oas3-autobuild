@@ -17,6 +17,7 @@ get:
     containing a preview of invoice item data and credit memo item data for a
     batch of customer accounts.
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: zuora-version
@@ -117,8 +118,3 @@ get:
                 updatedById: 4028906d58240f960158241132be0003
                 updatedDate: '2016-11-04 16:19:00'
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_billing-preview-runs_{billingPreviewRunId}/getundefined

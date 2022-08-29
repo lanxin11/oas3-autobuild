@@ -1,0 +1,5 @@
+description: |
+  Container for payment schedules.
+items:
+  $ref: ./PaymentScheduleCommonResponse.yaml
+type: array

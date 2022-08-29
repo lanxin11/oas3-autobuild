@@ -27,6 +27,7 @@ post:
   tags:
     - Payment Methods
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
   requestBody:
@@ -89,7 +90,3 @@ post:
               value:
                 paymentMethodId: 2c92c8f83dcbd8b1013dcce1d6a60
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_payment-methods_credit-cards/postundefined

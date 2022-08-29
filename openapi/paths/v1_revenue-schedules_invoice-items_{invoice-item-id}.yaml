@@ -7,6 +7,7 @@ post:
   tags:
     - Revenue Schedules
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: invoice-item-id
@@ -80,11 +81,6 @@ post:
               value:
                 revenueScheduleNumber: RS-00000002
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_revenue-schedules_invoice-items_{invoice-item-id}/postundefined
 get:
   summary: Retrieve a revenue schedule by invoice item ID
   operationId: GET_RSbyInvoiceItem
@@ -94,6 +90,7 @@ get:
   tags:
     - Revenue Schedules
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: invoice-item-id
@@ -183,8 +180,3 @@ get:
                     deferredRevenueAccountingCodeType: null
                     deferredRevenueAccountingCode: null
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_revenue-schedules_invoice-items_{invoice-item-id}/getundefined

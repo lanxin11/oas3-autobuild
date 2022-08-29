@@ -1,0 +1,112 @@
+post:
+  description: >
+    **Note:** This operation is only available if you have [Invoice
+    Settlement](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement)
+    enabled. The Invoice Settlement feature is generally available as of Zuora
+    Billing Release 296 (March 2021). This feature includes Unapplied Payments,
+    Credit and Debit Memo, and Invoice Item Settlement. If you want to enable
+    Invoice Settlement, see [Invoice Settlement Enablement and Checklist
+    Guide](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement/Invoice_Settlement_Migration_Checklist_and_Guide)
+    for more information.
+
+
+    Creates taxation items for a credit memo.
+  summary: Create taxation items for a credit memo
+  operationId: POST_CM_TaxationItems
+  tags:
+    - Credit Memos
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/GETTaxationItemListType.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                taxationItems:
+                  - createdById: 402881e522cf4f9b0122cf5d82860002
+                    createdDate: '2017-03-01 10:08:43'
+                    exemptAmount: 0
+                    id: 402890555a7e9791015a87a072880062
+                    memoItemId: 402890555a7e9791015a879f064d0055
+                    sourceTaxItemId: 402890555a7d4022015a7db254e200c1
+                    jurisdiction: CALIFORNIA
+                    locationCode: '06'
+                    name: STATE TAX
+                    taxAmount: 0.1
+                    taxCode: ServiceTaxCode
+                    taxCodeDescription: This is tax code description!
+                    taxDate: '2016-09-30'
+                    taxRate: 0.0625
+                    taxRateDescription: This is tax rate description!
+                    taxRateType: Percentage
+                    updatedById: 402881e522cf4f9b0122cf5d82860002
+                    updatedDate: '2017-03-01 10:08:43'
+                    financeInformation:
+                      onAccountAccountingCode: Check
+                      onAccountAccountingCodeType: Cash
+                      salesTaxPayableAccountingCode: Check
+                      salesTaxPayableAccountingCodeType: Cash
+                success: true
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - in: path
+      name: creditMemoKey
+      required: true
+      description: >
+        The unique ID or number of a credit memo. For example,
+        8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/POSTTaxationItemListForCMType.yaml
+    required: true

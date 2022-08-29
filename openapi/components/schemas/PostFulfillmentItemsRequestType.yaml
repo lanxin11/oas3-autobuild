@@ -1,0 +1,18 @@
+example:
+  fulfillmentItems:
+    - customFields:
+        PICKLIST_CF__c: option_1
+      description: description1
+      fulfillmentNumber: F-00000001
+      itemIdentifier: 0c27b769-5bba-46a5-80aa-cdd95f931216
+    - customFields:
+        PICKLIST_CF__c: option_2
+      description: description2
+      fulfillmentNumber: F-00000001
+      itemIdentifier: 456d3812-33d2-454c-b272-4c5a9a3e2742
+properties:
+  fulfillmentItems:
+    items:
+      $ref: ./FulfillmentItemPost.yaml
+    type: array
+type: object

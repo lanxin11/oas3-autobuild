@@ -113,21 +113,13 @@ allOf:
       IsInvoiceSeparate:
         description: |2-
            Determines if the subscription is invoiced separately. If `TRUE`, then all charges for this subscription are collected into the subscription's own invoice.
-          **V****alues**: `TRUE`, `FALSE `(default) 
+          **Values**: `TRUE`, `FALSE `(default) 
         type: boolean
-      LastChangeDate:
-        description: >
-          The last change date of a subscription. The value of this field is as
-          follows:
-            * For a new subscription created by the [Subscribe and Amend APIs](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Migration_Guidance#Subscribe_and_Amend_APIs_to_Migrate), this field has the value of the subscription creation date.
-            * For a subscription changed by an amendment, this field has the value of the amendment booking date.
-            * For a subscription created or changed by an order, this field has the value of the order date.
-
-            
-          **Note:** This field is only available if you set the
-          `X-Zuora-WSDL-Version` header parameter to `122` or later.
-        format: date
-        type: string
+      IsLatestVersion:
+        description: |2-
+           Determines if the subscription is the latest version. If the value of this field is `TRUE`, the subscription is the latest version.
+          **Values**: `TRUE`, `FALSE `(default) 
+        type: boolean
       Name:
         description: |2
            The unique identifier of the subscription. If you don't specify a value, then Zuora generates a name automatically. Whether auto-generated or manually specified, the subscription name must be unique. Otherwise an error will occur.
@@ -228,7 +220,7 @@ allOf:
       Status:
         description: >2
            The status of the subscription.
-          **Character limit**: 17 **Values**: automatically generated **Possible
+          **Character limit**: 18 **Values**: automatically generated **Possible
           values**: one of the following:
 
 
@@ -313,6 +305,26 @@ allOf:
           **Values**: automatically generated 
         format: int32
         type: integer
+      lastBookingDate:
+        description: >-
+          The last booking date of the subscription object. This field is
+          writable only when the subscription is newly created as a first
+          version subscription. You can override the date value when creating a
+          subscription through the Subscribe and Amend API or the subscription
+          creation UI (non-Orders). Otherwise, the default value `today` is set
+          per the user's timezone. The value of this field is as follows:
+
+          * For a new subscription created by the [Subscribe and Amend
+          APIs](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Migration_Guidance#Subscribe_and_Amend_APIs_to_Migrate),
+          this field has the value of the subscription creation date.
+
+          * For a subscription changed by an amendment, this field has the value
+          of the amendment booking date.
+
+          * For a subscription created or changed by an order, this field has
+          the value of the order date. 
+        format: date
+        type: string
     type: object
   - $ref: ./SubscriptionObjectQTFields.yaml
   - $ref: ./SubscriptionObjectNSFields.yaml

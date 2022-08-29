@@ -5,6 +5,7 @@ get:
   tags:
     - Product Rate Plan Charges
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - name: fields
@@ -229,11 +230,6 @@ get:
                 records: {}
                 size: 0
                 done: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_object_product-rate-plan-charge_{id}/getundefined
 put:
   summary: 'CRUD: Update a product rate plan charge'
   operationId: Object_PUTProductRatePlanCharge
@@ -242,6 +238,7 @@ put:
   tags:
     - Product Rate Plan Charges
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_rejectUnknownFields.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
@@ -437,11 +434,6 @@ put:
                 records: {}
                 size: 0
                 done: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_object_product-rate-plan-charge_{id}/putundefined
 delete:
   summary: 'CRUD: Delete a product rate plan charge'
   operationId: Object_DELETEProductRatePlanCharge
@@ -450,6 +442,7 @@ delete:
   tags:
     - Product Rate Plan Charges
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - name: id
@@ -583,8 +576,3 @@ delete:
             response:
               value:
                 message: Authentication error
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_object_product-rate-plan-charge_{id}/deleteundefined

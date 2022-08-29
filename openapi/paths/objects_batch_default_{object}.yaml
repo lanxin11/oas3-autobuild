@@ -263,7 +263,3 @@ post:
         application/json; charset=utf-8:
           schema:
             $ref: ../components/schemas/CustomObjectRecordsThrottledResponse.yaml
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/objects_batch_default_{object}/postundefined

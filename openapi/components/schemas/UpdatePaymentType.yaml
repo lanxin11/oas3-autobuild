@@ -38,6 +38,13 @@ allOf:
             minLength: 0
             type: string
         type: object
+      paymentScheduleKey:
+        description: >-
+          The unique ID or the number of the payment schedule to be linked with
+          the payment. See [Link payments to payment
+          schedules](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Payment_Schedules/Link_payments_with_payment_schedules)
+          for more information.
+        type: string
       referenceId:
         description: >
           The transaction ID returned by the payment gateway. Use this field to

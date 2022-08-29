@@ -86,7 +86,11 @@ allOf:
       billingPeriod:
         description: >
           Billing period for the charge. The start day of the billing period is
-          also called the bill cycle day (BCD).
+          also called the bill cycle day (BCD). When you renew a subscription,
+          the current subscription term is extended by creating a new term. If
+          any charge in your subscription has the billing period set as
+          `SubscriptionTerm`， a new charge segment is generated for the new
+          term.
 
 
           Values:
@@ -256,10 +260,8 @@ allOf:
           charge. Must be >=`0`.
 
 
-          Available for the following charge types for the Overage charge model:
+          Available for the following charge type for the Overage charge model:
 
-
-          * Recurring
 
           * Usage-based
         type: number

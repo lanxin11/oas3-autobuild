@@ -1,14 +1,27 @@
 example:
-  accountId: 402890b75972406c0159724cd4d00011
+  accountKey: 402890b75972406c0159724cd4d00011
   assumeRenewal: None
   chargeTypeToExclude: ''
   includingEvergreenSubscription: 'true'
   targetDate: '2017-05-10'
 properties:
   accountId:
-    description: |
-      ID of the customer account to which the billing preview applies.
+    description: >
+      The ID of the customer account to which the billing preview applies.
+
+
+      **Note**: When posting billing preview, you must specify either
+      `accountId` or `accountKey` in the request body.
     maxLength: 255
+    type: string
+  accountKey:
+    description: >
+      The ID or number of the customer account to which the billing preview
+      applies.
+
+
+      **Note**: When posting billing preview, you must specify either
+      `accountId` or `accountKey` in the request body.
     type: string
   assumeRenewal:
     description: >
@@ -86,6 +99,5 @@ properties:
     format: date
     type: string
 required:
-  - accountId
   - targetDate
 type: object

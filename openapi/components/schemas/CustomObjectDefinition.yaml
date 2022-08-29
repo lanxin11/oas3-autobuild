@@ -213,6 +213,11 @@ properties:
         enum:
           - object
         type: string
+      unique:
+        description: The fields with unique constraints.
+        items:
+          type: string
+        type: array
     type: object
   type:
     description: The API name of the custom object

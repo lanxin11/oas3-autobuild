@@ -1,0 +1,7 @@
+properties:
+  items:
+    items:
+      $ref: ./POSTRetryPaymentScheduleItemInfo.yaml
+    title: Payment schedule items to be retried.
+    type: array
+type: object

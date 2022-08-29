@@ -137,7 +137,3 @@ get:
         application/csv:
           schema:
             $ref: ../components/schemas/ListAllSettingsResponse.yaml
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/settings_listing/getundefined

@@ -6,8 +6,9 @@ properties:
     format: date
     type: string
   id:
-    description: |
-      The ID of the debit memo to be updated.
+    description: >
+      The unique ID or number of the debit memo to be updated. For example,
+      402890555a87d7f5015a892f2ba10057 or or DM00000001.
     type: string
 title: debitMemos
 type: object

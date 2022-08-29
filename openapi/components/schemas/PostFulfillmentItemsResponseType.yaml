@@ -1,0 +1,14 @@
+allOf:
+  - $ref: ./CommonResponseType.yaml
+  - properties:
+      fulfillmentItems:
+        items:
+          properties:
+            id:
+              description: |
+                The sytem generated Id.
+              format: UUID
+              type: string
+          type: object
+        type: array
+    type: object

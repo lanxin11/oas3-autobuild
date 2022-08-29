@@ -6,6 +6,7 @@ post:
   tags:
     - Imports
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_rejectUnknownFields.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
@@ -167,6 +168,6 @@ post:
               value:
                 message: Authentication error
   x-code-samples:
-    - lang: cURL
+    - lang: curl
       source:
-        $ref: ../code_samples/cURL/v1_object_import/postundefined
+        $ref: ../code_samples/curl/v1_object_import/post.sh

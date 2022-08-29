@@ -40,6 +40,7 @@ post:
   tags:
     - Subscriptions
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: zuora-version
@@ -161,7 +162,3 @@ post:
                           taxDate: '2021-10-08'
                           taxRateDescription: taxRateDescription1
                           taxRateType: FlatFee
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_subscriptions_preview/postundefined

@@ -1,12 +1,12 @@
 properties:
   documentDate:
-    description: The invoice date displayed on the invoice.
+    description: The invoice date displayed on the billing document.
     format: date
     type: string
   targetDate:
     description: >-
-      Date through which to calculate charges for order line items if an invoice
-      is generated. See [What is a Target
+      Date through which to calculate charges for order line items if a billing
+      document is generated. See [What is a Target
       Date?](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/G_Bill_Runs/Creating_Bill_Runs#What_is_a_Target_Date.3F).
     format: date
     type: string

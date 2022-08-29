@@ -4,6 +4,8 @@ properties:
     $ref: ./RatePlanOverride.yaml
   cancelSubscription:
     $ref: ./CancelSubscription.yaml
+  changePlan:
+    $ref: ./ChangePlan.yaml
   changeReason:
     description: |
       The change reason set for an order action when an order is created.
@@ -158,7 +160,15 @@ properties:
       $ref: ./TriggerDate.yaml
     type: array
   type:
-    description: Type of the order action.
+    description: >
+      Type of the order action.
+
+
+      **Note**: The Change plan type of order action is in the **Early Adopter**
+      phase. We are actively soliciting feedback from a small set of early
+      adopters before releasing it as generally available. If you want to join
+      this early adopter program, submit a request at [Zuora Global
+      Support](http://support.zuora.com/).
     enum:
       - CreateSubscription
       - TermsAndConditions
@@ -170,6 +180,7 @@ properties:
       - OwnerTransfer
       - Suspend
       - Resume
+      - ChangePlan
     type: string
   updateProduct:
     $ref: ./RatePlanUpdate.yaml

@@ -1,0 +1,28 @@
+example:
+  fulfillments:
+    - billTargetDate: '2022-01-01'
+      fulfillmentDate: '2022-01-01'
+      fulfillmentType: Delivery
+      orderLineItemId: 4028828c82819b740182821bb23e15c4
+      quantity: 5
+      state: SentToBilling
+    - billTargetDate: '2022-01-01'
+      fulfillmentDate: '2022-01-01'
+      fulfillmentType: Delivery
+      orderLineItemId: 4028828c82819b740182821bb23e15c4
+      quantity: 5
+      state: SentToBilling
+  processingOptions:
+    billingOptions:
+      documentDate: '2022-01-01'
+      targetDate: '2022-01-01'
+    collectPayment: true
+    runBilling: true
+properties:
+  fulfillments:
+    items:
+      $ref: ./FulfillmentPost.yaml
+    type: array
+  processingOptions:
+    $ref: ./ProcessingOptions.yaml
+type: object

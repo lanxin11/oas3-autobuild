@@ -153,6 +153,23 @@ example:
           type: Resume
       subscriptionNumber: SM-00006
 properties:
+  category:
+    default: NewSale
+    description: >
+      Category of the order to indicate a product sale or return. Default value
+      is `NewSale`.
+
+
+      **Note:** This field is only available if you have the Fulfillment and
+      Return feature enabled. The Fulfillment and Return feature is in the
+      **Early Adopter** phase. We are actively soliciting feedback from a small
+      set of early adopters before releasing it as generally available. If you
+      want to join this early adopter program, submit a request at [Zuora Global
+      Support](https://support.zuora.com/).
+    enum:
+      - NewSale
+      - Return
+    type: string
   customFields:
     $ref: ./OrderObjectCustomFields.yaml
   description:
@@ -215,31 +232,35 @@ properties:
       [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
       will have the [Order Line
       Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
-      feature enabled by default. If you are a new customer who onboard on
-      [Orders
-      Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
-      and want to enable the [Order Line
-      Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
-      feature, submit a request at [Zuora Global
-      Support](https://support.zuora.com/). If you are an existing
-      [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
-      or [Orders
-      Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
-      customer and want to enable the [Order Line
-      Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
-      feature, submit a request at [Zuora Global
-      Support](https://support.zuora.com/).        
+      feature enabled by default.        
     items:
       $ref: ./CreateOrderOrderLineItem.yaml
     type: array
   orderNumber:
-    description: >-
+    description: >
       The order number of the new order. If not provided, system will
-      auto-generate a number for this order.
+      auto-generate a number for this order.   
+
+      **Note:** Make sure the order number does not contain a slash.
     maxLength: 100
     type: string
   processingOptions:
     $ref: ./processingOptionsOrders.yaml
+  reasonCode:
+    description: >
+      Values of reason code configured in **Billing Settings** > **Configure
+      Reason Codes** through Zuora UI. Indicates the reason when a return order
+      line item occurs.
+
+
+      **Note:** This field is only available if you have the Fulfillment and
+      Return feature enabled. The Fulfillment and Return feature is in the
+      **Early Adopter** phase. We are actively soliciting feedback from a small
+      set of early adopters before releasing it as generally available. If you
+      want to join this early adopter program, submit a request at [Zuora Global
+      Support](https://support.zuora.com/).
+    maxLength: 255
+    type: string
   subscriptions:
     description: >-
       Each item includes a set of order actions, which will be applied to the

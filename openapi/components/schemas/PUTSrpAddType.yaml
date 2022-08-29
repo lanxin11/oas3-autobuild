@@ -42,12 +42,27 @@ allOf:
         type: string
       externalCatalogPlanId:
         description: >
-          An external ID of the product rate plan to be added. 
+          An external ID of the product rate plan to be added. You can use this
+          field to specify a product rate plan that is imported from an external
+          system. The value of the `externalCatalogPlanId` field must match one
+          of the values that are predefined in the `externallyManagedPlanIds`
+          field on a product rate plan.
 
 
           **Note:** If both `externalCatalogPlanId` and `productRatePlanId` are
           provided. They must point to the same product rate plan. Otherwise,
           the request would fail.
+        type: string
+      externalIdSourceSystem:
+        description: >
+          The ID of the external source system. You can use this field and
+          `externalCatalogPlanId` to specify a product rate plan that is
+          imported from an external system.
+
+
+          **Note:** If both `externalCatalogPlanId`, `externalIdSourceSystem`
+          and `productRatePlanId` are provided. They must point to the same
+          product rate plan. Otherwise, the request would fail.
         type: string
       externallyManagedPlanId:
         description: >
@@ -79,7 +94,6 @@ allOf:
         format: date
         type: string
     required:
-      - productRatePlanId
       - contractEffectiveDate
     type: object
   - $ref: ./RatePlanObjectCustomFields.yaml

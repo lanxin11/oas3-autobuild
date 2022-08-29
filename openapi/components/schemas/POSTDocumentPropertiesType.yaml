@@ -8,10 +8,13 @@ properties:
       The custom file name to use to generate new Word or PDF files for the
       billing document.
     type: string
-  documentId:
+  documentKey:
     description: >
-      The unique ID of a billing document that you want to create document
-      properties for.
+      The unique ID or number of a billing document that you want to create
+      document properties for.
+
+      For example, 402892c74c9193cd014c96bbe7c101f9, INV00000001, CM00000001, or
+      DM00000001.
     type: string
   documentType:
     description: |

@@ -22,8 +22,10 @@ get:
 
     You can make the call as any entity user. 
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize_entityConnection.yaml
     - name: type
       in: query
@@ -110,10 +112,6 @@ get:
                     targetEntityId: 8a80825556ff28a4015708ba29312ecc
                     status: Connected
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_entity-connections/getundefined
 post:
   summary: 'Multi-entity: Initiate a connection request'
   operationId: POST_EntityConnections
@@ -133,6 +131,7 @@ post:
     You must make the call as a source entity administrator. Also, this
     administrator must have permission to access to the target entity.
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
   requestBody:
@@ -194,7 +193,3 @@ post:
               value:
                 id: 8a808255575bdae401576a914a140420
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_entity-connections/postundefined

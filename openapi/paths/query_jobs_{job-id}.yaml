@@ -204,10 +204,6 @@ get:
               value:
                 code: 1001
                 message: 'No such query: 1e8e8586-5366-4cdf-a01d-fae3b2cf8427'
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/query_jobs_{job-id}/getundefined
 delete:
   operationId: DELETE_DataQueryJob
   summary: Cancel a data query job
@@ -347,7 +343,3 @@ delete:
                 message: >-
                   Query job c20a8ff4-3960-4c85-b067-d5259035f523 is not in
                   accepted or in_progress status
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/query_jobs_{job-id}/deleteundefined

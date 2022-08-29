@@ -7,7 +7,7 @@ properties:
       updated when not all records in the request pass the schema validation.
 
 
-      This field is applicable only to the batch update actions.
+      Only applicable when `type` is `update`.
     example: true
     type: boolean
   ids:

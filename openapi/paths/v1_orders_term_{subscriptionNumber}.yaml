@@ -17,6 +17,7 @@ get:
   tags:
     - Orders
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: subscriptionNumber
@@ -36,14 +37,7 @@ get:
       required: false
       schema:
         type: integer
-    - name: page
-      in: query
-      description: |
-        The page number of the terms retrieved.
-      required: false
-      schema:
-        type: integer
-        default: 1
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
   responses:
     '200':
@@ -104,7 +98,3 @@ get:
                     isEvergreen: false
                     startDate: '2017-11-01'
                     endDate: '2017-12-01'
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_orders_term_{subscriptionNumber}/getundefined

@@ -25,19 +25,7 @@ get:
     [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
     will have the [Order Line
     Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
-    feature enabled by default. If you are a new customer who onboard on [Orders
-    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
-    and want to enable the [Order Line
-    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
-    feature, submit a request at [Zuora Global
-    Support](https://support.zuora.com/). If you are an existing
-    [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
-    or [Orders
-    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
-    customer and want to enable the [Order Line
-    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
-    feature, submit a request at [Zuora Global
-    Support](https://support.zuora.com/).        
+    feature enabled by default.        
 
 
     Retrieves the detailed information about all orders for a specified
@@ -46,6 +34,7 @@ get:
   tags:
     - Orders
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: accountNumber
@@ -55,13 +44,7 @@ get:
       schema:
         type: string
         format: string
-    - name: page
-      in: query
-      description: |
-        The page number of the orders retrieved. The default is 1.
-      required: false
-      schema:
-        type: integer
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
     - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
     - name: dateFilterOption
       in: query
@@ -276,8 +259,3 @@ get:
                     customFields:
                       order_cf_date__c: '2017-01-01'
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: >-
-          ../code_samples/cURL/v1_orders_subscriptionOwner_{accountNumber}/getundefined

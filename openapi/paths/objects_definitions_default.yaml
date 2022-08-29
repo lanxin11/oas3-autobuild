@@ -83,10 +83,6 @@ get:
           schema:
             $ref: >-
               ../components/schemas/GETAllCustomObjectDefinitionsInNamespaceResponse.yaml
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/objects_definitions_default/getundefined
 post:
   summary: Create custom object definitions
   operationId: POST_CustomObjectDefinitions
@@ -210,7 +206,3 @@ post:
         application/json; charset=utf-8:
           schema:
             $ref: ../components/schemas/CommonErrorResponse.yaml
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/objects_definitions_default/postundefined

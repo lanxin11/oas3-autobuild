@@ -33,14 +33,6 @@ allOf:
           format.
         format: date
         type: string
-      excludeItemBillingFromRevenueAccounting:
-        description: >
-          The flag to exclude the invoice item from revenue accounting.
-
-
-          **Note**: This field is only available if you have the Billing -
-          Revenue Integration feature enabled. 
-        type: boolean
       invoiceDate:
         description: >
           The date that appears on the invoice being created, in `yyyy-mm-dd`

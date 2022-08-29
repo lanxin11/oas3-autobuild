@@ -7,6 +7,7 @@ get:
   tags:
     - Journal Runs
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: jr-number
@@ -80,10 +81,6 @@ get:
                 transactionTypes:
                   - type: Invoice Item
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_journal-runs_{jr-number}/getundefined
 delete:
   summary: Delete a journal run
   operationId: DELETE_JournalRun
@@ -96,6 +93,7 @@ delete:
   tags:
     - Journal Runs
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: jr-number
@@ -159,7 +157,3 @@ delete:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_journal-runs_{jr-number}/deleteundefined

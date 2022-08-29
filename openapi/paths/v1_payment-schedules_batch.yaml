@@ -1,0 +1,111 @@
+post:
+  description: >
+    Creates multiple payment schedules at once. You can create both recurring
+    payment schedules and custom payment schedules in one request.
+
+
+    **Note:**
+
+    - The Payment Schedules feature is in the **Early Adopter** phase. We are
+    actively soliciting feedback from a small set of early adopters before
+    releasing it as generally available. If you want to join this early adopter
+    program, submit a request at [Zuora Global
+    Support](https://support.zuora.com/).
+
+    - This operation is only available if you have [Invoice
+    Settlement](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement)
+    enabled.
+
+    - If Standalone Payment is enabled, you can choose to use payment schedules
+    to process payments associated with billing documents, standalone payments,
+    or unapplied payments. If Standalone Payment is not enabled, you can only
+    use payment schedules to process unapplied payments or payments associated
+    with billing documents.
+
+    - This operation is version controlled. If you set `zuora-version` to
+    `329.0`, when creating custom payment schedules associated with billing
+    documents, you need to specify the billing document for each payment
+    schedule item; If `zuora-version` is set to `330.0`, when creating custom
+    payment schedules associated with billing documents, you only need to
+    specify the billing documents at the payment schedule level. The default
+    version number is `329.0`. However, we recommend that you specify the
+    version to `330.0`. `329.0` will be deprecated soon.
+  summary: Create multiple payment schedules at once
+  operationId: POST_PaymentSchedules
+  tags:
+    - Payment Schedules
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: zuora-version
+      in: header
+      required: false
+      description: |
+
+        The minor version of the Zuora REST API. 
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/POSTPaymentSchedulesRequest.yaml
+    required: true
+  responses:
+    '200':
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      description: ''
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/POSTPaymentSchedulesResponse.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                paymentSchedules:
+                  - id: 402880e741112b310149b7343ef81234
+                    paymentScheduleNumber: PS-00311401
+                  - id: 402880e741112b310149b7343ef81234
+                    paymentScheduleNumber: PS-00311402

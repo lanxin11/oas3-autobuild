@@ -1,0 +1,15 @@
+allOf:
+  - properties:
+      orderLineItemId:
+        description: |
+          The reference id of the related Order Line Item.
+        format: UUID
+        type: string
+    type: object
+  - $ref: ./FulfillmentCommon.yaml
+  - properties:
+      fulfillmentItems:
+        items:
+          $ref: ./FulfillmentItemPostFromFulfillmentPost.yaml
+        type: array
+    type: object

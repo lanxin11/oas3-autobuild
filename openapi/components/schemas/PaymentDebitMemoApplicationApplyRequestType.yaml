@@ -8,6 +8,10 @@ properties:
     description: |
       The unique ID of the debit memo that the payment is applied to.
     type: string
+  debitMemoNumber:
+    description: |
+      The number of the debit memo that the payment is applied to.
+    type: string
   items:
     description: >
       Container for debit memo items. The maximum number of items is 1,000.

@@ -10,35 +10,7 @@ post:
 
 
     This operation supports the payment methods listed below.
-
-
-    ### PayPal Express Checkout
-
-    The following request body fields are specific to this payment method:
-
-    * `BAID` (required)
-
-    * `email` (required)
-
-
-    ### PayPal Native Express Checkout
-
-    The following request body fields are specific to this payment method:
-
-    * `BAID` (required)
-
-    * `email` (optional)
-
-
-    ### PayPal Adaptive
-
-    The following request body fields are specific to this payment method:
-
-    * `preapprovalKey` (required)
-
-    * `email` (required)
-
-
+            
     ### Credit Card
 
     The following request body fields are applicable to this payment method:
@@ -229,6 +201,49 @@ post:
     * `mandateInfo`
 
 
+    ### PayPal Express Checkout
+
+    The following request body fields are specific to this payment method:
+
+    * `BAID` (required)
+
+    * `email` (required)
+
+
+    ### PayPal Native Express Checkout
+
+    The following request body fields are specific to this payment method:
+
+    * `BAID` (required)
+
+    * `email` (optional)
+
+
+    ### PayPal Adaptive
+
+    The following request body fields are specific to this payment method:
+
+    * `preapprovalKey` (required)
+
+    * `email` (required)
+
+
+    ### PayPal Commerce Platform
+
+    The following request body fields are applicable to the creation of a
+    payment method with the PayPal Commerce Platform gateway integration:
+
+    * `BAID` (required)
+
+    * `email` (required)
+
+
+    This feature is in the Early Adopter phase. See [PayPal Commerce Platform
+    Gateway](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/M_Payment_Gateways/Supported_Payment_Gateways/PayPal_Commerce_Platform_Gateway)
+    for details.
+
+
+
     ### Apple Pay on Adyen Integration v2.0
 
     See [Set up Adyen Apple
@@ -243,6 +258,13 @@ post:
     for details.
 
 
+    ### Google Pay on Chase Paymentech Orbital Gateway
+
+    This feature is in the Early Adopter phase. See [Set up Google Pay on
+    Chase](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/L_Payment_Methods/Payment_Method_Types/Set_up_Google_Pay_on_Chase)
+    for details.
+
+
     ### Custom payment methods
 
     With the support of Universal Payment Connector (UPC) and Open Payment
@@ -254,6 +276,7 @@ post:
   tags:
     - Payment Methods
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
   requestBody:
@@ -316,7 +339,3 @@ post:
               value:
                 id: 2c92a09650a7a80a0150ab50a5b746bd
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_payment-methods/postundefined

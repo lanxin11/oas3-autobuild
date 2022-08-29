@@ -25,25 +25,14 @@ get:
     [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
     will have the [Order Line
     Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
-    feature enabled by default. If you are a new customer who onboard on [Orders
-    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
-    and want to enable the [Order Line
-    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
-    feature, submit a request at [Zuora Global
-    Support](https://support.zuora.com/). If you are an existing
-    [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
-    or [Orders
-    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
-    customer and want to enable the [Order Line
-    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
-    feature, submit a request at [Zuora Global
-    Support](https://support.zuora.com/).        
+    feature enabled by default.       
 
 
     Retrieves the detailed information about a specified order.
   tags:
     - Orders
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: orderNumber
@@ -244,6 +233,8 @@ get:
                       listPricePerUnit: 59
                       listPrice: 118
                       billTargetDate: null
+                      soldTo: 4028fc828244a0ac018244dfc9a90bee
+                      soldToSnapshotId: 4028fc828244a0ac018244dfc9b00bf0
                       transactionStartDate: '2021-02-01'
                       transactionEndDate: '2021-02-01'
                       accountingCode: null
@@ -252,10 +243,6 @@ get:
                       customFields:
                         orderLineItemCF__c: olinumber-023
                   customFields: {}
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_orders_{orderNumber}/getundefined
 delete:
   tags:
     - Orders
@@ -285,19 +272,7 @@ delete:
     [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
     will have the [Order Line
     Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
-    feature enabled by default. If you are a new customer who onboard on [Orders
-    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
-    and want to enable the [Order Line
-    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
-    feature, submit a request at [Zuora Global
-    Support](https://support.zuora.com/). If you are an existing
-    [Orders](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/AA_Overview_of_Orders)
-    or [Orders
-    Harmonization](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Orders_Harmonization/Orders_Harmonization)
-    customer and want to enable the [Order Line
-    Items](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items)
-    feature, submit a request at [Zuora Global
-    Support](https://support.zuora.com/).        
+    feature enabled by default.        
 
 
     Deletes a specified order. 
@@ -314,6 +289,7 @@ delete:
     this order are invoiced.
   operationId: DELETE_Order
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - name: orderNumber
@@ -376,7 +352,3 @@ delete:
             response:
               value:
                 success: true
-  x-code-samples:
-    - lang: cURL
-      source:
-        $ref: ../code_samples/cURL/v1_orders_{orderNumber}/deleteundefined
