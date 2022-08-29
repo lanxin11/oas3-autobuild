@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: '2022-08-22'
+  version: '2022-08-25'
   title: 'API Reference: Billing'
   x-logo:
     url: >-

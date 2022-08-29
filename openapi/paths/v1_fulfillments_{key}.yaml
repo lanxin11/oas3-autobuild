@@ -120,11 +120,12 @@ put:
     Support](https://support.zuora.com/).        
 
 
-    Update a specified fulfillment. The `state` property of a fulfillment can be
-    updated when it's in a different state, to trigger the state transition.
-    Other properties of a fulfillment can only be updated when it's in the
-    `Executing` state, or it's in the `Booked` state and the user has the 'Allow
-    Edit Of Booked Order Line Item' permission.
+    Updates a specified fulfillment. The `state` field of a fulfillment can only
+    be updated when it is in a different state, to trigger the state transition.
+    The other fields of a fulfillment can only be updated when the fulfillment
+    is in the `Executing` state, or when the fulfillment is in the `Booked`
+    state and the user has the "Allow Edit Of Booked Order Line Items"
+    permission.
   tags:
     - Fulfillments
   parameters:
@@ -209,8 +210,8 @@ delete:
     Support](https://support.zuora.com/).         
 
 
-    Delete a specified fulfillment. A fulfillment can only be deleted if it's in
-    the `Executing` state.
+    Deletes a specified fulfillment. A fulfillment can only be deleted when it
+    is in the `Executing` state.
   tags:
     - Fulfillments
   parameters:

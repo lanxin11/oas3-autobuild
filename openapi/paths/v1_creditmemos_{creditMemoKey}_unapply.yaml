@@ -30,7 +30,8 @@ put:
 
 
     - If you want to unapply one credit memo without specifying invoices or
-    debit memos, you have to specify the invoices or debit memos in the request.
+    debit memos and the limit is hit, you have to specify the invoice items or
+    debit memo items in the request to decrease the number of items.
 
     - If you want to unapply one credit memo from multiple specified invoices or
     debit memos, decrease the number of invoices or debit memos in the request.

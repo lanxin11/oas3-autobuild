@@ -10,8 +10,8 @@ post:
     Support](https://support.zuora.com/).        
 
 
-    Create one or multiple Fulfillment objects. You can also choose to generate
-    invoices or memos for these Fulfillment objects in the same API call.
+    Creates one or multiple Fulfillment objects. You can also generate invoices
+    or memos for these Fulfillment objects in this API call.
   tags:
     - Fulfillments
   parameters:

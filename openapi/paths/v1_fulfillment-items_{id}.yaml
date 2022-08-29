@@ -96,7 +96,7 @@ put:
     Support](https://support.zuora.com/).        
 
 
-    Update a specified fulfillment item.
+    Updates a specified fulfillment item.
   tags:
     - Fulfillments
   parameters:
@@ -181,7 +181,7 @@ delete:
     Support](https://support.zuora.com/).        
 
 
-    Delete a specified fulfillment item. 
+    Deletes a specified fulfillment item. 
   tags:
     - Fulfillments
   parameters:

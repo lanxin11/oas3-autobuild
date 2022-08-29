@@ -106,14 +106,18 @@ properties:
     type: array
   useSingleTransaction:
     description: >
-      Indicates whether a batch request is handled with a single transaction.
+      Whether a batch request is handled with a single transaction.
 
 
-      **true** means request will be handled with a single transaction.
+      - `true` indicates that a batch request will be handled with a single
+      transaction.
 
-      **false** means invoices in request will be handled with individual
-      transactions.
+      - `false`  indicates that the standalone invoices to be created in a batch
+      request will be handled with separated transactions.
 
-      When this property is not passed, the default value is true.
+
+      If the field is set to `false`, a failure in the batch request will not
+      cause the whole request to fail, so you have to retry the whole batch
+      request.
     type: boolean
 type: object

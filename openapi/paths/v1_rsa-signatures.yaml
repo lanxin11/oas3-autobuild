@@ -18,10 +18,13 @@ post:
     for more information.
 
 
-    After you use this operation to generate an RSA signature, if `signature`
-    returns `null` but `token` is successfully returned, please limit the number
-    of the fields in your request to make sure that the maximum length supported
-    by the RSA signature algorithm is not exceeded.
+    **Troubleshooting tip:** After you use this operation to generate an RSA
+    signature, if `signature` returns `null` but `token` is successfully
+    returned, please limit the number of the fields in your request to make sure
+    that the maximum length supported by the RSA signature algorithm is not
+    exceeded. The calculation of the request length is determined by the number
+    of the parameters, and the length of each of the parameter name and its
+    value.
   tags:
     - RSA Signatures
   parameters:

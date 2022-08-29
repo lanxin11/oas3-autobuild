@@ -10,7 +10,7 @@ post:
     Support](https://support.zuora.com/).        
 
 
-    Create one or multiple fulfillment items.
+    Creates one or multiple fulfillment items.
   tags:
     - Fulfillments
   parameters:

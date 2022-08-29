@@ -237,9 +237,11 @@ properties:
       $ref: ./CreateOrderOrderLineItem.yaml
     type: array
   orderNumber:
-    description: >-
+    description: >
       The order number of the new order. If not provided, system will
-      auto-generate a number for this order.
+      auto-generate a number for this order.   
+
+      **Note:** Make sure the order number does not contain a slash.
     maxLength: 100
     type: string
   processingOptions:

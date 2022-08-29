@@ -15,11 +15,11 @@ post:
     To split a draft invoice into multiple split invoices:
 
 
-    1. Use the create call to create a separate InvoiceSplitItem object for each
-    split invoice that you want to create from the original draft invoice.
-
-    2. Use the create call to create a single InvoiceSplit object to collect all
+    1. Use the create call to create a single InvoiceSplit object to collect all
     of the InvoiceSplitItem objects.
+
+    2. Use the create call to create a separate InvoiceSplitItem object for each
+    split invoice that you want to create from the original draft invoice.
 
     3. Use the execute call to split the draft invoice into multiple split
     invoices.

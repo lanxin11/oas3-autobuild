@@ -198,10 +198,10 @@ allOf:
           default payment method is different from the type of payments that you
           want to create, an error occurs.
         type: string
-      paymentScheduleNumber:
+      paymentScheduleKey:
         description: >-
-          The number of the payment schedule to be linked with the payment. See
-          [Link payments to payment
+          The unique ID or the number of the payment schedule to be linked with
+          the payment. See [Link payments to payment
           schedules](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Payment_Schedules/Link_payments_with_payment_schedules)
           for more information.
         type: string

@@ -172,10 +172,10 @@ allOf:
           The unique ID of the payment method snapshot which is a copy of the
           particular Payment Method used in a transaction.
         type: string
-      paymentScheduleNumber:
+      paymentScheduleKey:
         description: >-
-          The number of the payment schedule that is linked to the payment. See
-          [Link payments to payment
+          The unique ID or the number of the payment schedule that is linked to
+          the payment. See [Link payments to payment
           schedules](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Payment_Schedules/Link_payments_with_payment_schedules)
           for more information.
         type: string
