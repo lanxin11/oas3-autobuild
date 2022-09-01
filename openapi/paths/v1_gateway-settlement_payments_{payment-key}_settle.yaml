@@ -13,7 +13,7 @@ post:
     - name: payment-key
       in: path
       required: true
-      description: Unique ID for payment ID or payment number.
+      description: The payment number starting with "P-" or the unique payment ID.
       schema:
         type: string
   requestBody:

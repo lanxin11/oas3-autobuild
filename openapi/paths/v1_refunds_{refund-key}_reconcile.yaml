@@ -13,7 +13,7 @@ post:
     - name: refund-key
       in: path
       required: true
-      description: The unique refund ID or the refund number.
+      description: The refund number starting with “R-” or the unique refund ID.
       schema:
         type: string
   requestBody:
