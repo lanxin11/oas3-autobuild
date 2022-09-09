@@ -116,6 +116,11 @@ allOf:
           - Canceled
           - Completed
         type: string
+      totalAmount:
+        description: >
+          The total amount that will be collected by the payment
+          schedule.            
+        type: number
       totalPaymentsErrored:
         description: |
           The number of errored payments.

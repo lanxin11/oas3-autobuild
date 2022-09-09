@@ -302,5 +302,23 @@ allOf:
           - This field will be ignored when `items` is specified.              
         format: date
         type: string
+      totalAmount:
+        description: >
+          The total amount of that the payment schedule will collect. This field
+          is only available for recurring payment schedules. 
+
+
+          **Note**:
+
+          - When creating recurring payment schedules, there are 2 options to
+          specify amounts:
+            
+            - Specify `totalAmount` and `occurrences`, `amount` will be calculated.
+            - Specify `amount` and `occurrences`, `totalAmount` will be calculated.
+            
+            You must specify either `totalAmount` or `amount`. Specifying both fields at the same time is not allowed.
+          - If the Standalone Payments feature is enabled and `standalone` is
+          set to `true` for the payment schedule, `totalAmount` will be ignored.
+        type: number
     type: object
   - $ref: ./PaymentScheduleCustomFields.yaml

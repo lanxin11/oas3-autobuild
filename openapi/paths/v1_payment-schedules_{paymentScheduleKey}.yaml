@@ -79,6 +79,7 @@ get:
                 runHour: 0
                 period: null
                 occurrences: 2
+                totalAmount: 40
                 status: Active
                 nextPaymentDate: '2022-07-31'
                 recentPaymentDate: null
@@ -288,6 +289,7 @@ put:
                 runHour: 23
                 period: Monthly
                 occurrences: 5
+                totalAmount: 230
                 status: Active
                 nextPaymentDate: '2022-11-01'
                 recentPaymentDate: null

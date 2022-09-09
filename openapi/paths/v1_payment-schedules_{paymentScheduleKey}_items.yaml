@@ -98,6 +98,7 @@ post:
                 runHour: 0
                 period: null
                 occurrences: 3
+                totalAmount: 50
                 status: Active
                 nextPaymentDate: '2022-07-31'
                 recentPaymentDate: null

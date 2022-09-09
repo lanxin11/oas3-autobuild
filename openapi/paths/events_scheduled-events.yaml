@@ -181,6 +181,36 @@ get:
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - name: eventTypeName
+      in: query
+      description: >-
+        The name of the scheduled event. Should be specified in the pattern:
+        ^[A-Za-z]{1,}[\\w\\-]*$
+      required: false
+      schema:
+        type: string
+    - name: apiObject
+      in: query
+      description: >-
+        The base object that the scheduled event is defined upon. Should be
+        specified in the pattern: ^[A-Z][\\w\\-]*$
+      required: false
+      schema:
+        type: string
+    - name: apiField
+      in: query
+      description: >-
+        The base field of the base object in the `apiObject` field. Should be
+        specified in the pattern: ^[A-Z][\\w\\-]*$
+      required: false
+      schema:
+        type: string
+    - name: active
+      in: query
+      description: Indicate whether the scheduled event is active or inactive.
+      required: false
+      schema:
+        type: boolean
     - name: start
       in: query
       description: >-

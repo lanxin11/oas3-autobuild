@@ -82,6 +82,7 @@ put:
                 period: Monthly
                 runHour: 1
                 occurrences: 2
+                totalAmount: 20
                 status: Canceled
                 nextProcessDate: '2021-11-01'
                 recentProcessedDate: null

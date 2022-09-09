@@ -84,9 +84,18 @@ get:
       required: false
       description: >
         If specified, the operation retrieves tasks that with the specified
-        filter tags.
+        filter tags. Use the following syntax to specify multiple tags:
+        `tags[]=tag_value_1&tags[]=tag_value_2`.
+
+
+        **Note:** All the workflow tasks that have any of the specified tags
+        will be listed in the response body.
+      style: form
+      explode: false
       schema:
-        type: string
+        type: array
+        items:
+          type: string
     - name: page
       in: query
       required: false

@@ -111,6 +111,7 @@ post:
                 period: Monthly
                 runHour: 1
                 occurrences: 2
+                totalAmount: 20
                 status: Active
                 nextProcessDate: '2021-11-01'
                 recentProcessedDate: null
@@ -292,6 +293,7 @@ get:
                   runHour: 0
                   period: null
                   occurrences: 2
+                  totalAmount: 50
                   status: Active
                   nextPaymentDate: '2022-07-31'
                   recentPaymentDate: null
@@ -360,6 +362,7 @@ get:
                   runHour: 11
                   period: BiWeekly
                   occurrences: 4
+                  totalAmount: 40
                   status: Active
                   nextPaymentDate: '2022-08-04'
                   recentPaymentDate: '2022-07-21'

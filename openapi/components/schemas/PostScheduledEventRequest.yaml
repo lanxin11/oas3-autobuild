@@ -1,5 +1,6 @@
 description: namespace.name pair should be unique universally
 example:
+  active: true
   apiField: TermEndDate
   apiObject: Subscription
   condition: Subscription.Status == _SUBSCRIPTION_STATUS
@@ -22,6 +23,10 @@ example:
         - Cancelled
       valueType: STRING
 properties:
+  active:
+    default: true
+    description: Indicate whether the scheduled event is active or inactive.
+    type: boolean
   apiField:
     description: >
       The base field of the base object in the `apiObject` field, should be in

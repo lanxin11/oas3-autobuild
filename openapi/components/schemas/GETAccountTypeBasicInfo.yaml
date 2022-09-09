@@ -72,6 +72,11 @@ allOf:
           length is 32 characters. Use this field if you have customer hierarchy
           enabled.
         type: string
+      purchaseOrderNumber:
+        description: >-
+          The purchase order number provided by your customer for services,
+          products, or both purchased.
+        type: string
       salesRep:
         description: >-
           The name of the sales representative associated with this account, if

@@ -1,16 +1,12 @@
 example:
   active: true
-  apiField: TermEndDate
-  apiObject: Subscription
   condition: Subscription.Status == _SUBSCRIPTION_STATUS
-  cronExpression: 0 30 10 ? * *
   description: >-
     Trigger a scheduled event at 10:30 AM based on TermEndDate of subscription
     objects.
   displayName: Term End Date Scheduled Event
-  id: d306545b74e445e4bffcf1c7609804be
-  name: TermEndDateScheduledEvent
-  namespace: user.notification
+  hours: 10
+  minutes: 30
   parameters:
     _SUBSCRIPTION_STATUS:
       description: The status of the subscription
@@ -26,20 +22,6 @@ properties:
   active:
     description: Indicate whether the scheduled event is active or inactive
     type: boolean
-  apiField:
-    description: >-
-      The base field of the base object in the `apiObject` field, should be in
-      date or timestamp format. The scheduled event notifications are triggered
-      based on this date and the event parameters (before or after a specified
-      number of days) from notification definitions. Should be specified in the
-      pattern: ^[A-Z][\\w\\-]*$
-    type: string
-  apiObject:
-    description: >-
-      The base object that the scheduled event is defined upon. The base object
-      should contain a date or timestamp format field. Should be specified in
-      the pattern: ^[A-Z][\\w\\-]*$
-    type: string
   condition:
     description: >
       The filter rule conditions, written in
@@ -62,28 +44,31 @@ properties:
 
       `Invoice.Amount` refers to the `Amount` field of the Zuora object
       `Invoice`.
-    type: string
-  cronExpression:
-    description: >-
-      The cron expression defines the time when scheduled event notifications
-      will be sent.
+    maxLength: 65535
     type: string
   description:
     description: The description of the scheduled event.
+    maxLength: 1000
     type: string
   displayName:
     description: The display name of the scheduled event.
+    maxLength: 500
+    minLength: 1
     type: string
-  id:
-    description: Scheduled event ID.
-    format: uuid
-    type: string
-  name:
-    description: The name of the scheduled event.
-    type: string
-  namespace:
-    description: The namespace of the scheduled event name in the `name` field.
-    type: string
+  hours:
+    description: >-
+      The scheduled time (hour) that the scheduled event notifications are sent.
+      This time is based on the localized timezone of your tenant.
+    maximum: 23
+    minimum: 0
+    type: integer
+  minutes:
+    description: >-
+      The scheduled time (minute) that the scheduled event notifications are
+      sent. This time is based on the localized timezone of your tenant.
+    maximum: 59
+    minimum: 0
+    type: integer
   parameters:
     additionalProperties:
       description: Definition of a filter rule parameter.
@@ -103,12 +88,38 @@ properties:
           type: array
         valueType:
           description: The type of the value.
+          enum:
+            - STRING
+            - BYTE
+            - SHORT
+            - CHARACTER
+            - INTEGER
+            - LONG
+            - FLOAT
+            - DOUBLE
+            - BOOLEAN
+            - BIG_INTEGER
+            - BIG_DECIMAL
+            - LOCAL_DATE
+            - LOCAL_DATE_TIME
+            - TIMESTAMP
+            - BYTE_ARRAY
+            - SHORT_ARRAY
+            - CHARACTER_ARRAY
+            - INTEGER_ARRAY
+            - FLOAT_ARRAY
+            - DOUBLE_ARRAY
+            - BOOLEAN_ARRAY
+            - STRING_ARRAY
+            - BIG_INTEGER_ARRAY
+            - BIG_DECIMAL_ARRAY
+            - LOCAL_DATE_ARRAY
+            - LOCAL_DATE_TIME_ARRAY
+            - TIMESTAMP_ARRAY
           type: string
       type: object
     description: >-
-      The parameter definitions of the filter rule. The names of the parameters
-      must match with the filter rule and can't be duplicated. You should
-      specify all the parameters when creating scheduled event notifications.
+      The parameters of the filter rule. The names of the parameters must match
+      with the filter rule and can't be duplicated.
     type: object
-title: ScheduledEvent
 type: object

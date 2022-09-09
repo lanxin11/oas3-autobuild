@@ -122,6 +122,10 @@ allOf:
         description: |
           Returns `true` if the request was processed successfully.        
         type: boolean
+      totalAmount:
+        description: |
+          The total amount that will be collected by the payment schedule.
+        type: number
       totalPaymentsErrored:
         description: |
           The number of errored payments.

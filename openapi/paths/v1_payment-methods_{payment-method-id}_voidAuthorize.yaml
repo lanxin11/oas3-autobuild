@@ -1,16 +1,36 @@
 post:
-  description: |
+  description: >
     Allows you to cancel an authorization. 
 
-    The following payment gateways support this operation:
-      - Adyen Integration v2.0
-      - CyberSource 1.28 and 1.97
-      - Chase Paymentech Orbital
-      - Ingenico ePayments
-      - Verifi Global Payment Gateway
-      - PayPal Commerce Platform
-      - SlimPay
-      - WePay
+
+    The following payment gateways support this operation. Click the following
+    links to see more information about the Delayed Capture feature supported by
+    each gateway.
+
+
+    * [Adyen Integration
+    v2.0](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/M_Payment_Gateways/Supported_Payment_Gateways/Adyen_Integration_v2.0)
+
+    * [CyberSource version 2.0, 1.97, and
+    1.28](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/M_Payment_Gateways/Supported_Payment_Gateways/CyberSource_Payment_Gateway)
+
+    * [Chase Paymentech
+    Orbital](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/M_Payment_Gateways/Supported_Payment_Gateways/Chase_Orbital_Payment_Gateway)
+
+    * [Ingenico
+    ePayments](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/M_Payment_Gateways/Supported_Payment_Gateways/Ingenico_ePayments_Gateway)
+
+    * [PayPal Commerce
+    Platform](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/M_Payment_Gateways/Supported_Payment_Gateways/PayPal_Commerce_Platform_Gateway)
+
+    *
+    [SlimPay](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/M_Payment_Gateways/Supported_Payment_Gateways/SlimPay_Payment_Gateway)
+
+    * [Verifi Global Payment
+    Gateway](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/M_Payment_Gateways/Supported_Payment_Gateways/Verifi_Global_Payment_Gateway)
+
+    *
+    [WePay](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/M_Payment_Gateways/Supported_Payment_Gateways/WePay_payment_gateway_integration)
   summary: Cancel authorization
   operationId: POST_CancelAuthorization
   tags:

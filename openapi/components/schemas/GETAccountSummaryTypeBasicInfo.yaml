@@ -98,6 +98,11 @@ allOf:
         description: |
           Account name.
         type: string
+      purchaseOrderNumber:
+        description: >-
+          The purchase order number provided by your customer for services,
+          products, or both purchased.
+        type: string
       status:
         description: |
           Account status; possible values are: `Active`, `Draft`, `Canceled`.
