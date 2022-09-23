@@ -140,5 +140,6 @@ post:
       description: Too Many Requests
   x-code-samples:
     - lang: curl
+      label: Curl
       source:
         $ref: ../code_samples/curl/oauth_token/post.sh

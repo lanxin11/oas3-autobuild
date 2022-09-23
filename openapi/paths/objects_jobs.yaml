@@ -290,5 +290,6 @@ get:
             $ref: ../components/schemas/CustomObjectBulkJobResponseCollection.yaml
   x-code-samples:
     - lang: curl
+      label: Curl
       source:
         $ref: ../code_samples/curl/objects_jobs/get.sh

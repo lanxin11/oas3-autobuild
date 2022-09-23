@@ -119,5 +119,6 @@ get:
                     USD: 0.892243287
   x-code-samples:
     - lang: curl
+      label: Curl
       source:
         $ref: ../code_samples/curl/v1_custom-exchange-rates_{currency}/get.sh

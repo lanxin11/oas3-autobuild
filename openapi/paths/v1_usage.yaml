@@ -174,5 +174,6 @@ post:
                 checkImportStatus: /v1/usage/2c92c8f83dcbd8b1013dcce1159900cc/status
   x-code-samples:
     - lang: curl
+      label: Curl
       source:
         $ref: ../code_samples/curl/v1_usage/post.sh

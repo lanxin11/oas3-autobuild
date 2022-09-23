@@ -271,5 +271,6 @@ post:
                 message: Not Found.
   x-code-samples:
     - lang: curl
+      label: Curl
       source:
         $ref: ../code_samples/curl/objects_jobs_{id}_files/post.sh

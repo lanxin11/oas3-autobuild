@@ -110,5 +110,6 @@ post:
                 fileId: 40289f466463d683016463ef8b7301a4
   x-code-samples:
     - lang: curl
+      label: Curl
       source:
         $ref: ../code_samples/curl/v1_creditmemos_{creditMemoKey}_files/post.sh
