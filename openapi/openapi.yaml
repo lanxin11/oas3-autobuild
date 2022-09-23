@@ -1135,6 +1135,9 @@ info:
     information about the `BillRun` object. `BillingRun` and `BillRun` have
     different fields. |                     
 
+    | Configuration Templates                       |
+    `ConfigurationTemplates`                  |
+
     | Contact                                       |
     `Contact`                                  |
 
@@ -1513,6 +1516,13 @@ tags:
         - [Retrieve all communication profiles (using the Settings API)](https://knowledgecenter.zuora.com/Central_Platform/API/BB_C_Settings_API/Settings_API_tutorials/Get_all_Communication_Profiles)
         - [Update a communication profile (using the Settings API)](https://knowledgecenter.zuora.com/Central_Platform/API/BB_C_Settings_API/Settings_API_tutorials/Modify_a_Communication_Profile)
         - [Create a communication profile (using the Settings API)](https://knowledgecenter.zuora.com/Central_Platform/API/BB_C_Settings_API/Settings_API_tutorials/Create_a_new_Communication_Profile)
+  - name: Configuration Templates
+    description: >
+      Configuration Template API allows you to create templates based on
+      selected components or subcomponents. With this, the migration from source
+      to target is prompted from the comparison screen with a specific and
+      minimal set of components, therefore reducing the time spent in the
+      deployment manager compare screen.
   - name: Connections
     description: ''
   - name: Contacts
@@ -2268,6 +2278,8 @@ paths:
     $ref: paths/v1_payment-schedule-items_{item-id}.yaml
   /v1/payment-schedule-items/{item-id}/cancel:
     $ref: paths/v1_payment-schedule-items_{item-id}_cancel.yaml
+  /v1/payment-schedule-items/{item-id}/skip:
+    $ref: paths/v1_payment-schedule-items_{item-id}_skip.yaml
   /v1/payment-schedule-items/retry-payment:
     $ref: paths/v1_payment-schedule-items_retry-payment.yaml
   /v1/payments:

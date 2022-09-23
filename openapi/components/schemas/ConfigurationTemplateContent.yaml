@@ -1,0 +1,33 @@
+description: It contains information about template schemas with segregation keys.
+properties:
+  componentType:
+    description: Type of Component.
+    type: string
+  error:
+    description: Error Information.
+    type: string
+  id:
+    description: Id of Each component.
+    type: string
+  key:
+    description: Key value of fields inside component.
+    type: string
+  method:
+    description: Http method which is used to retrieve the particular component.
+    type: string
+  payload:
+    $ref: ./JsonNode.yaml
+  result:
+    description: Contains the response of details fetched regarding selected component.
+    type: string
+  segregationKey:
+    description: Gives the difference between components and sub components.
+    type: string
+  templateId:
+    description: Id of the Template.
+    type: string
+  url:
+    description: Metadata is retrieved from this URL.
+    type: string
+title: ConfigurationTemplateContent
+type: object

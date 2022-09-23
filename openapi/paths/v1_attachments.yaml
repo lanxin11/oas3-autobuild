@@ -141,5 +141,6 @@ post:
                 fileId: 402880ea536ff494015372a7ea12001e
   x-code-samples:
     - lang: curl
+      label: Curl
       source:
         $ref: ../code_samples/curl/v1_attachments/post.sh

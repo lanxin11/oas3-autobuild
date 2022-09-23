@@ -1,0 +1,18 @@
+example:
+  reasons:
+    - code: ObjectNotFound
+      message: Configuration Templates does not exist.
+properties:
+  reasons:
+    items:
+      properties:
+        code:
+          description: |
+            The error code of response.
+          type: string
+        message:
+          description: A detailed description of the error response.
+          type: string
+      type: object
+    type: array
+type: object

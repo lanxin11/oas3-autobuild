@@ -1,0 +1,11 @@
+additionalProperties:
+  description: >
+    Custom fields of the feature. The name of each custom field has the form
+    <code>*customField*__c</code>. Custom field names are case sensitive. See
+    [Manage Custom
+    Fields](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Manage_Custom_Fields)
+    for more information.
+description: |
+  A container for custom fields of the feature.
+title: ratePlanFeatureCustom
+type: object

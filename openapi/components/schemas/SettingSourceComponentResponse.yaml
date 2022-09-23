@@ -1,0 +1,34 @@
+description: >-
+  Provides details about the different components that need to be compared and
+  deployed.
+properties:
+  customFields:
+    items:
+      $ref: ./SettingComponentKeyValue.yaml
+    type: array
+  customObjects:
+    items:
+      $ref: ./SettingComponentKeyValue.yaml
+    type: array
+  dataAccessControl:
+    items:
+      $ref: ./SettingComponentKeyValue.yaml
+    type: array
+  notifications:
+    items:
+      $ref: ./SettingComponentKeyValue.yaml
+    type: array
+  productCatalog:
+    items:
+      $ref: ./SettingComponentKeyValue.yaml
+    type: array
+  settings:
+    items:
+      $ref: ./SettingComponentKeyValue.yaml
+    type: array
+  workflows:
+    items:
+      $ref: ./SettingComponentKeyValue.yaml
+    type: array
+title: SettingSourceComponentResponse
+type: object

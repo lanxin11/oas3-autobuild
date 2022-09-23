@@ -1,0 +1,61 @@
+description: Response after migration is added.
+properties:
+  emailIds:
+    description: 'List of Emails with comma separator '
+    type: string
+  environment:
+    description: Environment information
+    type: string
+  id:
+    description: Variable to hold the job ID.
+    type: string
+  migratedBy:
+    description: User responsible for migration.
+    example: Jane Cooper
+    type: string
+  migrationDescription:
+    description: Description of the migration.
+    example: Migration from/to Sandbox
+    type: string
+  migrationEnd:
+    description: Timestamp when migration ended.
+    example: '2020-11-01 18:00:00'
+    type: string
+  migrationName:
+    description: Name of the migration.
+    example: Job A
+    type: string
+  migrationStart:
+    description: Timestamp when migration started.
+    example: '2020-11-01 18:00:00'
+    type: string
+  response:
+    items:
+      $ref: ./MigrationComponentContent.yaml
+    type: array
+  sourceTenantDescription:
+    description: Source Tenant Description.
+    example: Duno
+    type: string
+  sourceTenantName:
+    description: Source Tenant Name.
+    example: Duno
+    type: string
+  status:
+    description: Status of the Migration Job.
+    example: IN PROGRESS
+    type: string
+  type:
+    type: string
+required:
+  - id
+  - migratedBy
+  - migrationDescription
+  - migrationEnd
+  - migrationName
+  - migrationStart
+  - sourceTenantDescription
+  - sourceTenantName
+  - status
+title: MigrationClientResponse
+type: object

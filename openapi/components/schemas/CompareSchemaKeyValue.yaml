@@ -1,0 +1,23 @@
+description: >-
+  When a comparison is made between a source and target tenant, it sends a
+  response to the user interface.
+properties:
+  difference:
+    additionalProperties:
+      items:
+        type: string
+      type: array
+    description: Returns the different components list.
+    type: object
+  response:
+    description: Provides the total reponse of the components.
+    items:
+      $ref: ./MigrationComponentContent.yaml
+    type: array
+  segregationKeys:
+    description: Provides separation of components.
+    items:
+      type: string
+    type: array
+title: CompareSchemaKeyValue
+type: object

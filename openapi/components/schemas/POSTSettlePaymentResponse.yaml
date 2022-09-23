@@ -110,6 +110,14 @@ properties:
       electronic payment gateway when a payment is created. If not specified,
       the payment number will be passed in instead.
     type: string
+  gatewayReconciliationReason:
+    description: |
+      The reason of gateway reconciliation.
+    type: string
+  gatewayReconciliationStatus:
+    description: |
+      The status of gateway reconciliation.
+    type: string
   gatewayResponse:
     description: >
       The message returned from the payment gateway for the payment. This
@@ -153,6 +161,10 @@ properties:
     description: >
       The unique ID of the payment method snapshot which is a copy of the
       particular Payment Method used in a transaction.
+    type: string
+  payoutId:
+    description: |
+      The payout ID from the gateway side.
     type: string
   referenceId:
     description: >

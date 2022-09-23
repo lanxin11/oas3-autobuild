@@ -1,0 +1,9 @@
+description: It contains a collection of all the templates that have been created.
+properties:
+  templates:
+    description: Contains list of template details.
+    items:
+      $ref: ./TemplateDetailResponse.yaml
+    type: array
+title: TemplateResponse
+type: object

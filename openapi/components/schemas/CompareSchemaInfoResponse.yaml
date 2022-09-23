@@ -1,0 +1,36 @@
+description: >-
+  When Tenant's Compare API returns a result, this object is used to send the
+  response to UI.
+properties:
+  customFields:
+    items:
+      $ref: ./CompareSchemaKeyValue.yaml
+    type: array
+  customObjects:
+    items:
+      $ref: ./CompareSchemaKeyValue.yaml
+    type: array
+  dataAccessControl:
+    items:
+      $ref: ./CompareSchemaKeyValue.yaml
+    type: array
+  metaData:
+    $ref: ./JsonNode.yaml
+  notifications:
+    items:
+      $ref: ./CompareSchemaKeyValue.yaml
+    type: array
+  productCatalog:
+    items:
+      $ref: ./CompareSchemaKeyValue.yaml
+    type: array
+  settings:
+    items:
+      $ref: ./CompareSchemaKeyValue.yaml
+    type: array
+  workflows:
+    items:
+      $ref: ./CompareSchemaKeyValue.yaml
+    type: array
+title: CompareSchemaInfoResponse
+type: object

@@ -1,0 +1,52 @@
+description: >-
+  When a comparison is made between a source and target tenant, it sends a
+  response to the user interface.
+properties:
+  attribute:
+    type: string
+  componentType:
+    description: Type of selected components to be migrated.
+    type: string
+  currentTargetResponse:
+    $ref: ./JsonNode.yaml
+  description:
+    type: string
+  disabled:
+    type: string
+  errorMessage:
+    description: Error information.
+    type: string
+  httpMethods:
+    type: string
+  id:
+    type: string
+  key:
+    type: string
+  migratedOn:
+    description: It is the time when migration is triggered.
+    format: date-time
+    type: string
+  migrationId:
+    description: Migration ID. It is generated at the time of triggering deployment.
+    type: string
+  pathPattern:
+    description: PathPattern of component.
+    type: string
+  previousTargetResponse:
+    $ref: ./JsonNode.yaml
+  result:
+    description: Returns the result details of Components.
+    type: string
+  segregationKey:
+    description: Displays the differences between components.
+    type: string
+  sourceResponse:
+    $ref: ./JsonNode.yaml
+  status:
+    description: Returns the status of each component.
+    type: string
+  updateStatus:
+    description: Updated Status.
+    type: string
+title: MigrationComponentContent
+type: object

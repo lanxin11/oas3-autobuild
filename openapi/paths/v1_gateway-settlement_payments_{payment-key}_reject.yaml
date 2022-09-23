@@ -106,4 +106,7 @@ post:
                 updatedById: 402881e522cf4f9b0122cf5d82860002
                 refundTransactionTime: null
                 financeInformation: null
+                gatewayReconciliationStatus: null
+                gatewayReconciliationReason: null
+                payoutId: null
                 success: true

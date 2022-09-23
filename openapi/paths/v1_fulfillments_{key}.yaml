@@ -10,7 +10,11 @@ get:
     Support](https://support.zuora.com/).        
 
 
-    Retrieves the detailed information about a specified fulfillment.
+    Retrieves the detailed information about a specified fulfillment. The
+    following tutorial demonstrates how to use this operation:
+
+    * [View details of a
+    fulfillment](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/H_View_details_of_a_fulfillment)
   tags:
     - Fulfillments
   parameters:
@@ -126,6 +130,11 @@ put:
     is in the `Executing` state, or when the fulfillment is in the `Booked`
     state and the user has the "Allow Edit Of Booked Order Line Items"
     permission.
+
+    The following tutorial demonstrates how to use this operation:
+
+    * [Update a
+    fulfillment](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/H_Update_a_fulfillment)
   tags:
     - Fulfillments
   parameters:

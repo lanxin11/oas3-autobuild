@@ -7,6 +7,10 @@ properties:
     items:
       $ref: ./CreateOrderChargeOverride.yaml
     type: array
+  clearingExistingFeatures:
+    description: |
+      Specifies whether all features in the rate plan will be cleared.
+    type: boolean
   customFields:
     $ref: ./RatePlanObjectCustomFields.yaml
   externallyManagedPlanId:
@@ -20,6 +24,26 @@ properties:
       Internal identifier of the product rate plan that the rate plan is based
       on.
     type: string
+  subscriptionProductFeatures:
+    description: >
+      List of features associated with the rate plan.
+
+      The system compares the `subscriptionProductFeatures` and `featureId`
+      fields in the request with the counterpart fields in a rate plan. The
+      comparison results are as follows:
+
+      * If there is no `subscriptionProductFeatures` field or the field is
+      empty, features in the rate plan remain unchanged. But if the
+      `clearingExistingFeatures` field is additionally set to true, all features
+      in the rate plan are cleared.
+
+      * If the `subscriptionProductFeatures` field contains the `featureId`
+      nested fields, as well as the optional `description` and `customFields`
+      nested fields, the features indicated by the featureId nested fields in
+      the request overwrite all features in the rate plan.
+    items:
+      $ref: ./RatePlanFeatureOverride.yaml
+    type: array
   uniqueToken:
     description: >
       Unique identifier for the rate plan. This identifier enables you to refer

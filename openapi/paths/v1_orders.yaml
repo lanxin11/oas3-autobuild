@@ -48,8 +48,12 @@ post:
      * [Update a Product in a Subscription](https://knowledgecenter.zuora.com/BC_Subscription_Management/Orders/AC_Orders_Tutorials/C_Update_a_Product_in_a_Subscription)
      * [Cancel a Subscription](https://knowledgecenter.zuora.com/BC_Subscription_Management/Orders/AC_Orders_Tutorials/D_Cancel_a_Subscription)
      * [Remove a Product from a Subscription](https://knowledgecenter.zuora.com/BC_Subscription_Management/Orders/AC_Orders_Tutorials/D_Remove_a_Product_from_a_Subscription)
-     * [Create an order line item](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/Create_an_order_line_item)
-     * [Create an order line item with a new subscription](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/Create_an_order_line_item_with_a_new_subscription)
+     * [Create a sales order line item without fulfillments](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/AC_Create_a_sales_order_line_item_without_fulfillments)
+     * [Create a sales order line item with fulfillments](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/AD_Create_a_sales_order_line_item_with_fulfillments)
+     * [Create an order line item with a new subscription](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/AE_Create_an_order_line_item_with_a_new_subscription)
+     * [Create a return order line item without fulfillments](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/AF_Create_a_return_order_line_item_without_fulfillments)
+     * [Create a return order line item with fulfillments](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/Create_a_return_order_line_item_with_fulfillments)
+
 
     You can also see the [API
     Guides](https://www.zuora.com/developer/api-guides/) for more use cases of

@@ -211,5 +211,6 @@ get:
                 success: true
   x-code-samples:
     - lang: curl
+      label: Curl
       source:
         $ref: ../code_samples/curl/v1_billing-documents/get.sh

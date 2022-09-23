@@ -1,0 +1,19 @@
+description: |
+  Information about feature in rate plan.
+properties:
+  customFields:
+    $ref: ./RatePlanFeatureOverrideCustomFields.yaml
+  description:
+    description: A description of the feature.
+    maxLength: 500
+    type: string
+  featureId:
+    description: |
+      Internal identifier of the feature in the product catalog.
+    type: string
+  id:
+    description: |
+      Internal identifier of the rate plan feature override.
+    type: string
+title: ratePlanFeature
+type: object

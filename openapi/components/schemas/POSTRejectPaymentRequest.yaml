@@ -1,10 +1,20 @@
 example:
+  gatewayReconciliationReason: insufficient_funds
+  gatewayReconciliationStatus: payment_failed
   gatewayResponse: Insufficient funds
   gatewayResponseCode: '023'
   referenceId: '825522036728874689'
   secondReferenceId: '825522036690700110'
   settledOn: '2019-05-07 20:56:32.981'
 properties:
+  gatewayReconciliationReason:
+    description: |
+      The reason of gateway reconciliation.
+    type: string
+  gatewayReconciliationStatus:
+    description: |
+      The status of gateway reconciliation.
+    type: string
   gatewayResponse:
     description: >
       The transaction response returned by the gateway for this transaction. If

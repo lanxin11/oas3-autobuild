@@ -3,7 +3,7 @@ put:
     Preview the result of a payment schedule update. This operation only
     provides a preview. No changes will be made to the database. For custom
     payment schedules, only the custom fields on the payment schedules can be
-    udpated. Use the [Updated a payment schedule
+    udpated. Use the [Update a payment schedule
     item](https://www.zuora.com/developer/api-reference/#tag/PUT_PaymentScheduleItem)
     operation to update payment schedule items of custom payment schedule.
 

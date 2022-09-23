@@ -1,6 +1,16 @@
 example:
   queryLocator: 2c92c0f9602fb240016049ac7e0b47e7-2000
 properties:
+  conf:
+    description: ''
+    properties:
+      batchSize:
+        description: >
+          Defines the batch size of the query result. The range is 1 - 2000
+          (inclusive). If a value higher than 2000 is submitted, only 2000
+          results are returned.
+        type: integer
+    type: object
   queryLocator:
     description: ''
     type: string

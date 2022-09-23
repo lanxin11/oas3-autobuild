@@ -1,0 +1,44 @@
+description: >
+  CreateTemplateRequestContent object contains information for creating
+  template.
+properties:
+  content:
+    $ref: ./SettingSourceComponentResponse.yaml
+  customFields:
+    description: Selected custom fields component or not.
+    type: boolean
+  customObjects:
+    description: Selected custom objects component or not.
+    type: boolean
+  description:
+    description: Creates template description.
+    type: string
+  name:
+    description: Name of the Template.
+    type: string
+  notifications:
+    description: Selected Notification component or not.
+    type: boolean
+  selectedComponents:
+    description: >-
+      ConfigurationTemplateContent object contains the selected meta data
+      information.
+    items:
+      $ref: ./ConfigurationTemplateContent.yaml
+    type: array
+  settings:
+    description: Selected Settings component or not.
+    type: boolean
+  templateTenant:
+    description: ID of the template tenant.
+    example: 80b3f8cd-5801-4ed7-bee7-ad1569916c2f
+    type: string
+  workflows:
+    description: Selected Workflow component or not.
+    type: boolean
+required:
+  - description
+  - name
+  - templateTenant
+title: CreateTemplateRequestContent
+type: object

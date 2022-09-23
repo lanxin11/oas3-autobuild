@@ -1,0 +1,43 @@
+description: >
+  Request to add a new Template migration.
+
+  TemplateMigrationClientRequest object contains request details of target
+  tenant, source tenant, and template information needed for migration.
+properties:
+  comments:
+    type: string
+  description:
+    description: Description of the migration.
+    example: Migration from/to Sandbox
+    type: string
+  emailIds:
+    description: List of Emails with comma separator.
+    example: abcd@zuora.com,xyz@zuora.com
+    type: string
+  entityUuid:
+    description: Entity UUID
+    example: 11111
+    type: string
+  metaData:
+    $ref: ./JsonNode.yaml
+  name:
+    description: Name of the migration.
+    example: Job A
+    type: string
+  request:
+    description: List of settings need to be migrated.
+    example: ST 4
+    items:
+      $ref: ./MigrationComponentContent.yaml
+    type: array
+  sendEmail:
+    description: Flag determines whether or not to send an email.
+    example: true
+    type: boolean
+required:
+  - description
+  - entityUuid
+  - name
+  - sendEmail
+title: TemplateMigrationClientRequest
+type: object

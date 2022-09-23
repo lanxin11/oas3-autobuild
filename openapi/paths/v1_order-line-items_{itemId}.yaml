@@ -39,7 +39,11 @@ get:
     [Zuora Global Support](https://support.zuora.com/).
 
 
-    Retrieves the detailed information about a specified order line item.
+    Retrieves the detailed information about a specified order line item. The
+    following tutorial demonstrates how to use this operation:
+
+    * [View details of an order line
+    item](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/GJ_View_details_of_an_order_line_item)
   tags:
     - Order Line Items
   parameters:
@@ -187,7 +191,14 @@ put:
     [Zuora Global Support](https://support.zuora.com/).
 
 
-    Updates a specified order line item.
+    Updates a specified order line item. The following tutorials demonstrate how
+    to use this operation:
+
+    * [Update an order line
+    item](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/GH_Update_an_order_line_item)
+
+    * [Cancel an order line
+    item](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/GZ_Cancel_an_order_line_item)
   tags:
     - Order Line Items
   parameters:

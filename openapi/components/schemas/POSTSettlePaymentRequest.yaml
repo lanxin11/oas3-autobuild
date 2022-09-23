@@ -1,6 +1,21 @@
 example:
+  gatewayReconciliationReason: paid
+  gatewayReconciliationStatus: succeeded
+  payoutId: PAYOUT123
   settledOn: '2019-05-07 20:56:32.981'
 properties:
+  gatewayReconciliationReason:
+    description: |
+      The reason of gateway reconciliation.
+    type: string
+  gatewayReconciliationStatus:
+    description: |
+      The status of gateway reconciliation.
+    type: string
+  payoutId:
+    description: |
+      The payout ID from the gateway side.
+    type: string
   settledOn:
     description: >
       The date and time of the transaction settlement. The format is `yyyy-mm-dd

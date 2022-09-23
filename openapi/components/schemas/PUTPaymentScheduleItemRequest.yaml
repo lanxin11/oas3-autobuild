@@ -1,38 +1,40 @@
-properties:
-  amount:
-    description: |
-      The amount of the payment.
-    format: decimal
-    type: number
-  currency:
-    description: |
-      The currency of the payment.
-    type: string
-  description:
-    description: |
-      The description of the payment schedule item.
-    type: string
-  paymentGatewayId:
-    description: |
-      ID of the payment gateway of the payment schedule item.
-    type: string
-  paymentId:
-    description: >
-      ID of the payment that is created by the payment schedule item， or linked
-      to the payment schedule item. 
-    type: string
-  paymentMethodId:
-    description: |
-      ID of the payment method of the payment schedule item.
-    type: string
-  runHour:
-    description: >
-      At which hour of the day in the tenant’s timezone this payment will be
-      collected.
-    type: integer
-  scheduledDate:
-    description: |
-      The scheduled date when the payment is processed.
-    format: date
-    type: string
-type: object
+allOf:
+  - properties:
+      amount:
+        description: |
+          The amount of the payment.
+        format: decimal
+        type: number
+      currency:
+        description: |
+          The currency of the payment.
+        type: string
+      description:
+        description: |
+          The description of the payment schedule item.
+        type: string
+      paymentGatewayId:
+        description: |
+          ID of the payment gateway of the payment schedule item.
+        type: string
+      paymentId:
+        description: >
+          ID of the payment that is created by the payment schedule item， or
+          linked to the payment schedule item. 
+        type: string
+      paymentMethodId:
+        description: |
+          ID of the payment method of the payment schedule item.
+        type: string
+      runHour:
+        description: >
+          At which hour of the day in the tenant’s timezone this payment will be
+          collected.
+        type: integer
+      scheduledDate:
+        description: |
+          The scheduled date when the payment is processed.
+        format: date
+        type: string
+    type: object
+  - $ref: ./PaymentScheduleItemCustomFields.yaml

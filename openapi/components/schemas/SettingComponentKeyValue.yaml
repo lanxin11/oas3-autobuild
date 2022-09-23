@@ -1,0 +1,20 @@
+description: >-
+  Provides details about the individual components that need to be compared and
+  deployed.
+properties:
+  errors:
+    items:
+      type: string
+    type: array
+  originalPayload:
+    $ref: ./JsonNode.yaml
+  response:
+    items:
+      $ref: ./ConfigurationTemplateContent.yaml
+    type: array
+  segregationKeys:
+    items:
+      type: string
+    type: array
+title: SettingComponentKeyValue
+type: object

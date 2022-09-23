@@ -11,7 +11,14 @@ post:
 
 
     Creates one or multiple Fulfillment objects. You can also generate invoices
-    or memos for these Fulfillment objects in this API call.
+    or memos for these Fulfillment objects in this API call. The following
+    tutorials demonstrate how to use this operation:
+
+    * [Create a sales order line item with
+    fulfillments](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/AD_Create_a_sales_order_line_item_with_fulfillments)
+
+    * [Create a return order line item with
+    fulfillments](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/Create_a_return_order_line_item_with_fulfillments)
   tags:
     - Fulfillments
   parameters:

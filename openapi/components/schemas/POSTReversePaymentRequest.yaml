@@ -1,7 +1,10 @@
 example:
   amount: 100
+  gatewayReconciliationReason: insufficient_funds
+  gatewayReconciliationStatus: payment_failed
   gatewayResponse: Insufficient funds
   gatewayResponseCode: '023'
+  payoutId: PAYOUT123
   referenceId: '825522036728874689'
   secondReferenceId: '825522036690700110'
   settledOn: '2019-05-07 20:56:32.981'
@@ -11,6 +14,14 @@ properties:
       The amount that needs to be reversed (chargeback). It cannot be greater
       than the total Payment amount. 
     type: number
+  gatewayReconciliationReason:
+    description: |
+      The reason of gateway reconciliation.
+    type: string
+  gatewayReconciliationStatus:
+    description: |
+      The status of gateway reconciliation.
+    type: string
   gatewayResponse:
     description: >
       The transaction response returned by the gateway for this transaction. If
@@ -20,6 +31,10 @@ properties:
     description: >
       Response message Code returned by the gateway about the transaction
       status.
+    type: string
+  payoutId:
+    description: |
+      The payout ID from the gateway side.
     type: string
   referenceId:
     description: >

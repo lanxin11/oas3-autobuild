@@ -220,6 +220,12 @@ allOf:
           * `Cancelled`
           * `Suspended`
         type: string
+      statusHistory:
+        description: |
+          Container for status history.
+        items:
+          $ref: ./GETSubscriptionStatusHistoryType.yaml
+        type: array
       subscriptionEndDate:
         description: >
           The date when the subscription term ends, where the subscription ends

@@ -1,0 +1,43 @@
+description: Contains all template details.
+properties:
+  active:
+    description: Whether or not the template is active.
+    type: boolean
+  content:
+    $ref: ./SettingSourceComponentResponse.yaml
+  createdBy:
+    description: Information about the user who created it.
+    type: string
+  createdOn:
+    description: When it is created.
+    type: string
+  description:
+    description: >-
+      Template description which contains the information about the created
+      template.
+    type: string
+  entityName:
+    description: Name of the Entity
+    type: string
+  environment:
+    description: Details of the environment in which the template was created.
+    type: string
+  errors:
+    description: Error information.
+    type: string
+  id:
+    description: Id of the template.
+    type: string
+  name:
+    description: Name of the template.
+    type: string
+  status:
+    description: >-
+      The status of the template creation, such as whether it is in progress,
+      completed, or failed.
+    type: string
+  tenantName:
+    description: Tenant's name for whom the template is created.
+    type: string
+title: TemplateDetailResponse
+type: object

@@ -77,6 +77,14 @@ properties:
     description: |
       The ID of the gateway instance that processes the payment.
     type: string
+  gatewayReconciliationReason:
+    description: |
+      The reason of gateway reconciliation.
+    type: string
+  gatewayReconciliationStatus:
+    description: |
+      The status of gateway reconciliation.
+    type: string
   gatewayResponse:
     description: >
       The message returned from the payment gateway for the payment. This
@@ -139,6 +147,10 @@ properties:
     description: >
       The unique ID of the payment method snapshot which is a copy of the
       particular Payment Method used in a transaction.
+    type: string
+  payoutId:
+    description: |
+      The payout ID from the gateway side.
     type: string
   reasonCode:
     description: |
