@@ -24,7 +24,7 @@ properties:
       The date when the rate plan charge is amended through an order or
       amendment. This field is to standardize the booking date information to
       increase audit ability and traceability of data between Zuora Billing and
-      Zuora Revenue. It is mapped as the booking date for a sale order line in
+      Zuora Revenue. It is mapped as the booking date for a sales order line in
       Zuora Revenue.
     format: date
     type: string
@@ -155,9 +155,9 @@ properties:
       - None
     type: string
   itemCategory:
-    default: Sale
+    default: Sales
     description: >
-      The category for the Order Line Item, to indicate a product sale or
+      The category for the Order Line Item, to indicate a product sales or
       return.
 
 
@@ -168,7 +168,7 @@ properties:
       want to join this early adopter program, submit a request at [Zuora Global
       Support](https://support.zuora.com/).
     enum:
-      - Sale
+      - Sales
       - Return
     type: string
   itemName:
@@ -214,13 +214,13 @@ properties:
       The date when the rate plan charge is created through an order or
       amendment. This field is to standardize the booking date information to
       increase audit ability and traceability of data between Zuora Billing and
-      Zuora Revenue. It is mapped as the booking date for a sale order line in
+      Zuora Revenue. It is mapped as the booking date for a sales order line in
       Zuora Revenue.
     format: date
     type: string
   originalOrderId:
     description: >
-      The ID of the original sale order for a return order line item. 
+      The ID of the original sales order for a return order line item.
 
 
       **Note:** This field is only available if you have the Fulfillment and
@@ -232,7 +232,7 @@ properties:
     type: string
   originalOrderLineItemId:
     description: >
-      The ID of the original sale order line item for a return order line item. 
+      The ID of the original sales order line item for a return order line item.
 
 
       **Note:** This field is only available if you have the Fulfillment and
@@ -244,8 +244,8 @@ properties:
     type: string
   originalOrderLineItemNumber:
     description: >
-      The number of the original sale order line item for a return order line
-      item. 
+      The number of the original sales order line item for a return order line
+      item.
 
 
       **Note:** This field is only available if you have the Fulfillment and
@@ -257,7 +257,7 @@ properties:
     type: string
   originalOrderNumber:
     description: >
-      The number of the original sale order for a return order line item. 
+      The number of the original sales order for a return order line item.
 
 
       **Note:** This field is only available if you have the Fulfillment and

@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: '2022-09-09'
+  version: '2022-09-23'
   title: 'API Reference: Billing'
   x-logo:
     url: >-
@@ -1943,6 +1943,18 @@ paths:
     $ref: paths/v1_charge-revenue-summaries_{crs-number}.yaml
   /v1/charge-revenue-summaries/subscription-charges/{charge-key}:
     $ref: paths/v1_charge-revenue-summaries_subscription-charges_{charge-key}.yaml
+  /deployment-manager/deployment_templates:
+    $ref: paths/deployment-manager_deployment_templates.yaml
+  /deployment-manager/deployment_templates/{id}:
+    $ref: paths/deployment-manager_deployment_templates_{id}.yaml
+  /deployment-manager/deployment_artifacts:
+    $ref: paths/deployment-manager_deployment_artifacts.yaml
+  /deployment-manager/deployment_artifacts/retrieve-settings:
+    $ref: paths/deployment-manager_deployment_artifacts_retrieve-settings.yaml
+  /deployment-manager/deployment_artifacts/compare:
+    $ref: paths/deployment-manager_deployment_artifacts_compare.yaml
+  /deployment-manager/deployment_artifacts/deploy:
+    $ref: paths/deployment-manager_deployment_artifacts_deploy.yaml
   /v1/connections:
     $ref: paths/v1_connections.yaml
   /v1/contacts/{contactId}/scrub:

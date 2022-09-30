@@ -18,17 +18,11 @@ allOf:
         format: date-time
         type: string
       creditCardMaskNumber:
-        description: >
+        description: |
           The masked credit card number, such as:
-
           ```
-
           *********1112
-
           ```
-
-          **Note:** This field is only returned for Credit Card Reference
-          Transaction payment type.
         type: string
       creditCardType:
         description: >

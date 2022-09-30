@@ -155,10 +155,10 @@ example:
       subscriptionNumber: SM-00006
 properties:
   category:
-    default: NewSale
+    default: NewSales
     description: >
       Category of the order to indicate a product sale or return. Default value
-      is `NewSale`.
+      is `NewSales`.
 
 
       **Note:** This field is only available if you have the Fulfillment and
@@ -168,7 +168,7 @@ properties:
       want to join this early adopter program, submit a request at [Zuora Global
       Support](https://support.zuora.com/).
     enum:
-      - NewSale
+      - NewSales
       - Return
     type: string
   customFields:

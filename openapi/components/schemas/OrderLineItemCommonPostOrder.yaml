@@ -141,7 +141,7 @@ properties:
       - None
     type: string
   itemCategory:
-    default: Sale
+    default: Sales
     description: >
       The category for the Order Line Item, to indicate a product sale or
       return.
@@ -154,7 +154,7 @@ properties:
       want to join this early adopter program, submit a request at [Zuora Global
       Support](https://support.zuora.com/).
     enum:
-      - Sale
+      - Sales
       - Return
     type: string
   itemName:

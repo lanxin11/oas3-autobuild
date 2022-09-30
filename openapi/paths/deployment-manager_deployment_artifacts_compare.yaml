@@ -1,0 +1,565 @@
+post:
+  summary: Compare settings between a source tenant and a target tenant
+  operationId: POST_CompareTemplate
+  description: >
+    To Compare the configurations from the template downloaded and used in
+    deployment manager for migration which is available in source and target
+    tenant.
+  tags:
+    - Configuration Templates
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - name: tenant
+      in: query
+      description: Customers need to specify tenant ID.
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          type: object
+          properties:
+            template:
+              description: >-
+                Template contains the config metadata and target tenant
+                information.
+              type: string
+              format: binary
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/CompareSchemaInfoResponse.yaml
+          examples:
+            response:
+              value:
+                customFields:
+                  - segregationKeys:
+                      - Account
+                      - Invoice
+                      - InvoiceItem
+                      - AccountingCode
+                      - ProductRatePlanCharge
+                      - ProductFeature
+                      - Product
+                      - JournalEntry
+                      - RatePlan
+                      - Amendment
+                      - DebitTaxationItem
+                      - Subscription
+                      - Order
+                      - Usage
+                      - ProductRatePlan
+                      - AccountingPeriod
+                      - CreditMemoItem
+                      - RevenueSchedule
+                      - RatePlanCharge
+                      - Contact
+                      - OrderAction
+                      - Payment
+                      - CreditBalanceAdjustment
+                      - Refund
+                      - DebitMemo
+                    originalPayload:
+                      definitions:
+                        Account:
+                          type: Account
+                          schema:
+                            type: object
+                            properties:
+                              idx_date_1__c:
+                                format: date
+                                label: idx_date_1
+                                type: string
+                                description: test
+                                createdDate: '2022-08-18T12:38:13.000Z'
+                                updatedDate: '2022-08-18T12:38:13.000Z'
+                              non_idx_text_1__c:
+                                maxLength: 50
+                                label: non_idx_text_1
+                                type: string
+                                description: non_idx_text_1
+                                default: non_idx_text_1
+                                createdDate: '2022-08-18T12:38:14.000Z'
+                                updatedDate: '2022-08-18T12:38:14.000Z'
+                              Last_Token_Transaction_Date__c:
+                                maxLength: 255
+                                label: Last_Token_Transaction_Date
+                                type: string
+                                description: ''
+                                createdDate: '2022-08-22T19:30:10.000Z'
+                                updatedDate: '2022-08-22T19:30:10.000Z'
+                              CollectionsAgent__c:
+                                maxLength: 255
+                                label: Collections Agent
+                                type: string
+                                description: ''
+                                default: abc
+                                createdDate: '2022-08-22T18:16:38.000Z'
+                                updatedDate: '2022-08-22T18:16:38.000Z'
+                              InCollections__c:
+                                maxLength: 25
+                                label: <details/open/ontoggle=confirm(cookie)>
+                                type: string
+                                description: ''
+                                createdDate: '2022-08-18T12:38:04.000Z'
+                                updatedDate: '2022-08-18T12:38:04.000Z'
+                            indexed:
+                              - Last_Token_Transaction_Date__c
+                              - idx_date_1__c
+                            readOnlyOnUI:
+                              - idx_date_1__c
+                              - non_idx_text_1__c
+                            additionalProperties: false
+                        AccountingCode:
+                          type: AccountingCode
+                          schema:
+                            type: object
+                            properties:
+                              AccountingCodeCustomText__c:
+                                maxLength: 64
+                                label: AccountingCodeCustomText
+                                type: string
+                                default: custom text
+                                createdDate: '2022-02-01T08:41:03.000Z'
+                                updatedDate: '2022-02-01T08:41:03.000Z'
+                              AccountingCodeCustomDate__c:
+                                format: date
+                                label: AccountingCodeCustomDate
+                                type: string
+                                createdDate: '2022-02-08T07:20:15.000Z'
+                                updatedDate: '2022-02-08T07:20:15.000Z'
+                              AccountingCodeCustomPickList__c:
+                                enum:
+                                  - Alpha
+                                  - Beta
+                                  - Omega
+                                label: AccountingCodeCustomPickList
+                                type: string
+                                default: Alpha
+                                createdDate: '2022-02-08T07:20:18.000Z'
+                                updatedDate: '2022-02-08T07:20:18.000Z'
+                            additionalProperties: false
+                      count: 2
+                    response:
+                      - id: a8a0ff9f-3297-45a5-a523-4f5d5f4f393a
+                        key: idx_date_1
+                        segregationKey: Account
+                        componentType: CustomFields
+                        url: '-'
+                        method: GET
+                        payload:
+                          label: idx_date_1
+                          description: test
+                          format: date
+                          API_name: idx_date_1__c
+                          UIReadOnly: true
+                          indexed: true
+                        result: DONE
+                        error: '-'
+                        templateId: null
+                    errors: []
+                customObjects:
+                  - segregationKeys:
+                      - Available Custom Objects
+                    originalPayload: {}
+                    response:
+                      - id: 456335f2-711d-4e73-b8ec-3309e78b403a
+                        key: zzzzzzzzzz
+                        segregationKey: Available Custom Objects
+                        componentType: CustomObjects
+                        url: /zzzzzzzzzz
+                        method: GET
+                        payload:
+                          label: zzzzzzzzzz
+                          api_name: zzzzzzzzzz
+                          description: ' '
+                          enableRecordMigration: 'false'
+                          customFields:
+                            - description: ' '
+                              type: boolean
+                              api_name: isFilterable__c
+                              field_name: isFilterable
+                              required: 'false'
+                              filterable: 'true'
+                            - description: ' '
+                              type: string
+                              api_name: picklist__c
+                              field_name: picklist
+                              required: 'false'
+                              filterable: 'false'
+                            - description: ' '
+                              type: string
+                              api_name: zzz__c
+                              field_name: zzz
+                              required: 'false'
+                              filterable: 'false'
+                        result: DONE
+                        error: '-'
+                        templateId: null
+                    errors: []
+                dataAccessControl:
+                  - errors: []
+                    originalPayload: {}
+                    response:
+                      - componentType: dataAccessControl
+                        error: '-'
+                        id: 456335f2-711d-4e73-b8ec-3309e78b403a
+                        key: zzzzzzzzzz
+                        method: GET
+                        payload: {}
+                        result: DONE
+                        segregationKey: Available dataAccessControl
+                        templateId: null
+                        url: /zzzzzzzzzz
+                    segregationKeys:
+                      - Available dataAccessControl
+                notifications:
+                  - segregationKeys:
+                      - Communication profile
+                      - Email Templates
+                    originalPayload:
+                      2c92c8fb7ddc795b017dde4350c949a0:
+                        - id: 2c92c8fb7ddc795b017dde437a0949a6
+                          profileId: 2c92c8fb7ddc795b017dde4350c949a0
+                          eventId: 2c92c8f9631ea3850163271f7fa02da0
+                          eventName: New Invoice Posted
+                          name: Invoice Posted within a Bill Run of Auto-Post
+                          description: >-
+                            Trigger the notification when invoices are posted
+                            within a bill run and the bill run has auto-post.
+                            This is to support existing email notification
+                            behavior from within a bill run.
+                          active: false
+                          hidden: false
+                          param1: BILLRUN
+                          param4: Not include invoice PDF
+                          emailOption: true
+                          emailTemplate: 2c92c8f9631ea3850163271f80152de2
+                          emailTemplateName: Invoice Posted Default Email Template
+                          calloutOption: false
+                          contentType: APPLICATION_JSON
+                          calloutRetriable: false
+                          calloutAuth: false
+                          calloutOauth2: false
+                          calloutPreemptiveAuth: false
+                          useCustomRequestBody: false
+                    response:
+                      - id: f5ee9c26-8420-4f92-9463-1983d1268281
+                        key: B2C Customers
+                        segregationKey: Communication profile
+                        componentType: Notifications
+                        url: >-
+                          settings/communication-profiles/2c92c8fb7ddc795b017dde4350c949a0
+                        method: GET
+                        payload:
+                          id: 2c92c8fb7ddc795b017dde4350c949a0
+                          name: B2C Customers
+                          locale: default
+                          description: ''
+                          isDefault: false
+                        result: DONE
+                        error: '-'
+                        templateId: null
+                    errors: []
+                productCatalog:
+                  - errors: []
+                    originalPayload: {}
+                    response:
+                      - componentType: productCatalog
+                        error: '-'
+                        id: 456335f2-711d-4e73-b8ec-3309e78b403a
+                        key: zzzzzzzzzz
+                        method: GET
+                        payload: {}
+                        result: DONE
+                        segregationKey: Available productCatalog
+                        templateId: null
+                        url: /zzzzzzzzzz
+                    segregationKeys:
+                      - Available productCatalog
+                settings:
+                  - segregationKeys:
+                      - Finance
+                      - Billing
+                      - Administration
+                      - ManageMultiEntity
+                      - Payments
+                      - Taxation
+                      - BillingDocumentConfiguration
+                      - ManageDataAccessControl
+                    originalPayload: {}
+                    response:
+                      - id: bfcb76d9-3fb8-4a15-8d13-fe0b805b5ee6
+                        key: AccountingPeriods
+                        segregationKey: Finance
+                        componentType: Settings
+                        url: v1/accounting-periods
+                        method: GET
+                        payload: {}
+                        result: FAILED
+                        error: >
+                          {"success":false,"reasons":[{"message":"Failed to get
+                          user info","code":"90000011"}]}
+                        templateId: null
+                      - id: 6a27d0d3-3c4c-408f-b160-04510014ebf1
+                        key: AccountingRules
+                        segregationKey: Finance
+                        componentType: Settings
+                        url: /accounting-rules
+                        method: GET
+                        payload:
+                          allowBlankAccountingCodes: true
+                          allowCreationInClosedPeriod: true
+                          allowUsageInClosedPeriod: false
+                          allowRevenueScheduleNegativeAmounts: false
+                        result: DONE
+                        error: null
+                        templateId: null
+                    errors: []
+                workflows:
+                  - segregationKeys:
+                      - Payment to Provision
+                      - >-
+                        Negative Invoices to Positive Account Credit Balance
+                        Limit 1
+                      - Automated Dunning | 2nd Attempt Failed
+                      - Subscription Price Uplift -- JSON Transform
+                    originalPayload: {}
+                    response:
+                      - id: df74980b-ff25-4684-a950-7e0c25810a72
+                        key: >-
+                          Resume Subscriptions for Accounts with Zero Balance
+                          Limit 1_0.0.13
+                        segregationKey: >-
+                          Resume Subscriptions for Accounts with Zero Balance
+                          Limit 1
+                        componentType: WorkFlows
+                        url: '1'
+                        method: GET
+                        payload:
+                          id: 1
+                          name: >-
+                            Resume Subscriptions for Accounts with Zero Balance
+                            Limit 1
+                          description: ''
+                          status: Active
+                          ondemandTrigger: true
+                          calloutTrigger: true
+                          scheduledTrigger: false
+                          interval: null
+                          timezone: null
+                          createdAt: '2022-08-21T10:51:22.613-07:00'
+                          updatedAt: '2022-08-21T10:51:22.613-07:00'
+                          priority: Medium
+                          active_version:
+                            id: 2483
+                            name: >-
+                              Resume Subscriptions for Accounts with Zero
+                              Balance Limit 1
+                            definitionId: 1
+                            description: ''
+                            type: Workflow::Setup
+                            version: 0.0.13
+                            ondemandTrigger: true
+                            calloutTrigger: true
+                            scheduledTrigger: false
+                            interval: null
+                            timezone: null
+                            createdAt: '2022-08-21T10:51:22.613-07:00'
+                            updatedAt: '2022-08-21T10:51:22.613-07:00'
+                            priority: Medium
+                            status: Active
+                            created_by:
+                              work_email: rkumar@zuora.com
+                              created_at: '2021-11-22T19:06:54.279-08:00'
+                              updated_at: '2022-09-06T05:16:20.455-07:00'
+                            updated_by:
+                              work_email: N/A
+                              created_at: N/A
+                              updated_at: N/A
+                          latest_inactive_versions:
+                            - id: 689
+                              name: >-
+                                Resume Subscriptions for Accounts with Zero
+                                Balance Limit 1
+                              definitionId: 1
+                              description: ''
+                              type: Workflow::Setup
+                              version: 0.0.10
+                              ondemandTrigger: true
+                              calloutTrigger: true
+                              scheduledTrigger: false
+                              interval: null
+                              timezone: null
+                              createdAt: '2022-05-10T05:21:37.192-07:00'
+                              updatedAt: '2022-05-10T05:21:37.192-07:00'
+                              priority: Medium
+                              status: Inactive
+                              created_by:
+                                work_email: rkumar@zuora.com
+                                created_at: '2021-11-22T19:06:54.279-08:00'
+                                updated_at: '2022-09-06T05:16:20.455-07:00'
+                              updated_by:
+                                work_email: N/A
+                                created_at: N/A
+                                updated_at: N/A
+                        result: DONE
+                        error: '-'
+                        templateId: null
+                    errors: []
+    '201':
+      description: >
+        created.
+
+        The request has been fulfilled and resulted in a new resource being
+        created. The newly created resource can be referenced by the URL(s)
+        returned in the entity of the response, with the most specific URL for
+        the resource given by a Location header field.
+    '401':
+      description: Unauthorized
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. Zuora would return the
+            same tracing identifier if you specified it in the request headers.
+            Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ConfigTemplateErrorResponse.yaml
+    '403':
+      description: Forbidden
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. Zuora would return the
+            same tracing identifier if you specified it in the request headers.
+            Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ConfigTemplateErrorResponse.yaml
+    '404':
+      description: Not Found
+      headers:
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. Zuora would return the
+            same tracing identifier if you specified it in the request headers.
+            Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ConfigTemplateErrorResponse.yaml

@@ -4,7 +4,7 @@ properties:
       Specifies the units to measure usage.
 
 
-      You can update this field only for a sale OLI and only when the sale OLI
+      You can update this field only for a sales OLI and only when the sales OLI
       is in the `Executing` state (when the `itemState` field is set as
       `Executing`).
     type: string
@@ -13,7 +13,7 @@ properties:
       The accountingCode for the Order Line Item (OLI).
 
 
-      You can update this field only for a sale OLI and only when the sale OLI
+      You can update this field only for a sales OLI and only when the sales OLI
       is in the `Executing` state (when the `itemState` field is set as
       `Executing`).
     type: string
@@ -24,7 +24,7 @@ properties:
       Integration](https://knowledgecenter.zuora.com/Zuora_Revenue/Zuora_Billing_-_Revenue_Integration).
 
 
-      You can update this field only for a sale OLI and only when the sale OLI
+      You can update this field only for a sales OLI and only when the sales OLI
       is in the `Executing` state (when the `itemState` field is set as
       `Executing`).
     type: string
@@ -35,7 +35,7 @@ properties:
       Integration](https://knowledgecenter.zuora.com/Zuora_Revenue/Zuora_Billing_-_Revenue_Integration).
 
 
-      You can update this field only for a sale OLI and only when the sale OLI
+      You can update this field only for a sales OLI and only when the sales OLI
       is in the `Executing` state (when the `itemState` field is set as
       `Executing`).
     type: string
@@ -44,7 +44,7 @@ properties:
       The actual charged amount per unit for the Order Line Item (OLI).
 
 
-      You can update this field only for a sale OLI and only when the sale OLI
+      You can update this field only for a sales OLI and only when the sales OLI
       is in the `Executing` state (when the `itemState` field is set as
       `Executing`).
     type: number
@@ -58,8 +58,9 @@ properties:
       the `itemState` field to `SentToBilling`.
 
 
-      You can update this field for a sale or return OLI only when the OLI is in
-      the `Executing` state (when the `itemState` field is set as `Executing`).
+      You can update this field for a sales or return OLI only when the OLI is
+      in the `Executing` state (when the `itemState` field is set as
+      `Executing`).
     format: date
     type: string
   billingRule:
@@ -68,7 +69,7 @@ properties:
       The rule for billing of the Order Line Item (OLI).
 
 
-      You can update this field for a sale or return OLI only when it is in the
+      You can update this field for a sales or return OLI only when it is in the
       `Executing` state (when the `itemState` field is set as `Executing`).
 
 
@@ -85,7 +86,7 @@ properties:
       Integration](https://knowledgecenter.zuora.com/Zuora_Revenue/Zuora_Billing_-_Revenue_Integration).
 
 
-      You can update this field only for a sale OLI and only when the sale OLI
+      You can update this field only for a sales OLI and only when the sales OLI
       is in the `Executing` state (when the `itemState` field is set as
       `Executing`).
     type: string
@@ -96,7 +97,7 @@ properties:
       Integration](https://knowledgecenter.zuora.com/Zuora_Revenue/Zuora_Billing_-_Revenue_Integration).
 
 
-      You can update this field only for a sale OLI and only when the sale OLI
+      You can update this field only for a sales OLI and only when the sales OLI
       is in the `Executing` state (when the `itemState` field is set as
       `Executing`).
     type: string
@@ -107,7 +108,7 @@ properties:
       Integration](https://knowledgecenter.zuora.com/Zuora_Revenue/Zuora_Billing_-_Revenue_Integration).
 
 
-      You can update this field only for a sale OLI and only when the sale OLI
+      You can update this field only for a sales OLI and only when the sales OLI
       is in the `Executing` state (when the `itemState` field is set as
       `Executing`).
     type: string
@@ -118,7 +119,7 @@ properties:
       The deferred revenue accounting code for the Order Line Item (OLI).
 
 
-      You can update this field only for a sale OLI and only when the sale OLI
+      You can update this field only for a sales OLI and only when the sales OLI
       is in the `Executing` state (when the `itemState` field is set as
       `Executing`).
     type: string
@@ -127,12 +128,13 @@ properties:
       The description of the Order Line Item (OLI).
 
 
-      You can update this field for a sale or return OLI only when the OLI is in
-      the `Executing` state (when the `itemState` field is set as `Executing`).
+      You can update this field for a sales or return OLI only when the OLI is
+      in the `Executing` state (when the `itemState` field is set as
+      `Executing`).
     type: string
   inlineDiscountPerUnit:
     description: >
-      You can update this field only for a sale OLI and only when the sale OLI
+      You can update this field only for a sales OLI and only when the sales OLI
       is in the `Executing` state (when the `itemState` field is set as
       `Executing`).
 
@@ -158,7 +160,7 @@ properties:
     type: number
   inlineDiscountType:
     description: >
-      You can update this field only for a sale OLI and only when the sale OLI
+      You can update this field only for a sales OLI and only when the sales OLI
       is in the `Executing` state (when the `itemState` field is set as
       `Executing`).
 
@@ -186,16 +188,18 @@ properties:
       The name of the Order Line Item (OLI).
 
 
-      You can update this field for a sale or return OLI only when the OLI is in
-      the `Executing` state (when the `itemState` field is set as `Executing`).
+      You can update this field for a sales or return OLI only when the OLI is
+      in the `Executing` state (when the `itemState` field is set as
+      `Executing`).
     type: string
   itemNumber:
     description: >
       The number for the Order Line Item (OLI).
 
 
-      You can update this field for a sale or return OLI only when the OLI is in
-      the `Executing` state (when the `itemState` field is set as `Executing`).
+      You can update this field for a sales or return OLI only when the OLI is
+      in the `Executing` state (when the `itemState` field is set as
+      `Executing`).
     type: string
   itemState:
     description: >
@@ -209,9 +213,9 @@ properties:
       and set the `billTargetDate` field .
 
 
-      You can update this field for a sale or return OLI only when the OLI is in
-      the `Executing` or 'Booked' or `SentToBilling`state (when the `itemState`
-      field is set as `Executing` or `SentToBilling`).
+      You can update this field for a sales or return OLI only when the OLI is
+      in the `Executing` or 'Booked' or `SentToBilling`state (when the
+      `itemState` field is set as `Executing` or `SentToBilling`).
     enum:
       - Executing
       - Booked
@@ -224,7 +228,7 @@ properties:
       The type of the Order Line Item (OLI). 
 
 
-      You can update this field only for a sale OLI and only when the sale OLI
+      You can update this field only for a sales OLI and only when the sales OLI
       is in the `Executing` state (when the `itemState` field is set as
       `Executing`).
     enum:
@@ -237,7 +241,7 @@ properties:
       The list price per unit for the Order Line Item (OLI).
 
 
-      You can update this field only for a sale OLI and only when the sale OLI
+      You can update this field only for a sales OLI and only when the sales OLI
       is in the `Executing` state (when the `itemState` field is set as
       `Executing`).
     type: number
@@ -246,7 +250,7 @@ properties:
       The product code for the Order Line Item (OLI).
 
 
-      You can update this field only for a sale OLI and only when the sale OLI
+      You can update this field only for a sales OLI and only when the sales OLI
       is in the `Executing` state (when the `itemState` field is set as
       `Executing`).
     type: string
@@ -256,7 +260,7 @@ properties:
       buyer.
 
 
-      You can update this field only for a sale OLI and only when the sale OLI
+      You can update this field only for a sales OLI and only when the sales OLI
       is in the `Executing` state (when the `itemState` field is set as
       `Executing`).
     type: string
@@ -266,7 +270,7 @@ properties:
       service.
 
 
-      You can update this field for a sale or return OLI only when the OLI in
+      You can update this field for a sales or return OLI only when the OLI in
       the `Executing` state (when the `itemState` field is set as `Executing`).
     type: number
   recognizedRevenueAccountingCode:
@@ -274,7 +278,7 @@ properties:
       The recognized revenue accounting code for the Order Line Item (OLI).
 
 
-      You can update this field only for a sale OLI and only when the sale OLI
+      You can update this field only for a sales OLI and only when the sales OLI
       is in the `Executing` state (when the `itemState` field is set as
       `Executing`).
     type: string
@@ -284,7 +288,7 @@ properties:
       this field to the subscription number of the subscription to relate.
 
 
-      You can update this field only for a sale OLI and only when the sale OLI
+      You can update this field only for a sales OLI and only when the sales OLI
       is in the `Executing` state (when the `itemState` field is set as
       `Executing`).
     type: string
@@ -293,7 +297,7 @@ properties:
       The Revenue Recognition rule for the Order Line Item (OLI).
 
 
-      You can update this field only for a sale OLI and only when the sale OLI
+      You can update this field only for a sales OLI and only when the sales OLI
       is in the `Executing` state (when the `itemState` field is set as
       `Executing`).
     type: string
@@ -304,7 +308,7 @@ properties:
       of an order line item.
 
 
-      You can update this field only for a sale OLI and only when the sale OLI
+      You can update this field only for a sales OLI and only when the sales OLI
       is in the `Executing` state (when the `itemState` field is set as
       `Executing`).
     type: string
@@ -313,7 +317,7 @@ properties:
       The tax code for the Order Line Item (OLI).
 
 
-      You can update this field only for a sale OLI and only when the sale OLI
+      You can update this field only for a sales OLI and only when the sales OLI
       is in the `Executing` state (when the `itemState` field is set as
       `Executing`).
     type: string
@@ -322,7 +326,7 @@ properties:
       The tax mode for the Order Line Item (OLI).
 
 
-      You can update this field only for a sale OLI and only when the sale OLI
+      You can update this field only for a sales OLI and only when the sales OLI
       is in the `Executing` state (when the `itemState` field is set as
       `Executing`).
     enum:
@@ -336,8 +340,9 @@ properties:
       equal or be later than the value of the `transactionStartDate` field.
 
 
-      You can update this field for a sale or return OLI only when the OLI is in
-      the `Executing` state (when the `itemState` field is set as `Executing`).
+      You can update this field for a sales or return OLI only when the OLI is
+      in the `Executing` state (when the `itemState` field is set as
+      `Executing`).
     format: date
     type: string
   transactionStartDate:
@@ -346,8 +351,9 @@ properties:
       order date.
 
 
-      You can update this field for a sale or return OLI only when the OLI is in
-      the `Executing` state (when the `itemState` field is set as `Executing`).
+      You can update this field for a sales or return OLI only when the OLI is
+      in the `Executing` state (when the `itemState` field is set as
+      `Executing`).
     format: date
     type: string
   unbilledReceivablesAccountingCode:
@@ -357,7 +363,7 @@ properties:
       Integration](https://knowledgecenter.zuora.com/Zuora_Revenue/Zuora_Billing_-_Revenue_Integration).
 
 
-      You can update this field only for a sale OLI and only when the sale OLI
+      You can update this field only for a sales OLI and only when the sales OLI
       is in the `Executing` state (when the `itemState` field is set as
       `Executing`).
     type: string
