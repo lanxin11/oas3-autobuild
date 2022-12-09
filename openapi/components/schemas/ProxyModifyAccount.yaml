@@ -117,6 +117,16 @@ allOf:
           this field if you have customer hierarchy enabled. **Character
           limit**: 32 **Values**: a valid account ID 
         type: string
+      PaymentGateway:
+        description: >
+          Gateway used for processing electronic payments and refunds.
+          **Character limit**: 40 **Values**: one of the following:
+
+
+          - a valid configured gateway name
+
+          - null to inherit the default value set in Zuora Payment Settings
+        type: string
       PaymentTerm:
         description: >-
           Indicates when the customer pays for subscriptions. **Character
@@ -236,16 +246,6 @@ allOf:
         description: >-
           Associates the account with a specified communication profile.
           **Character limit**: 32 **Values**: a valid communication profile ID 
-        type: string
-      paymentGateway:
-        description: >
-          Gateway used for processing electronic payments and refunds.
-          **Character limit**: 40 **Values**: one of the following:
-
-
-          - a valid configured gateway name
-
-          - null to inherit the default value set in Zuora Payment Settings
         type: string
     type: object
   - $ref: ./AccountObjectNSFields.yaml

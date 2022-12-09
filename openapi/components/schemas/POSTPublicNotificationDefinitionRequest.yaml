@@ -135,7 +135,7 @@ properties:
 
 
       You can use the [Query
-      Action](https://www.zuora.com/developer/api-reference/#operation/Action_POSTquery)
+      Action](https://www.zuora.com/developer/api-references/api/operation/Action_POSTquery)
       to get the communication profile Id. See the following request sample:
 
 

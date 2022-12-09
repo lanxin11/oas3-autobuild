@@ -12,7 +12,7 @@ allOf:
 
           Setting this field to `true`, you do not need to separately call the
           [Post credit
-          memo](https://www.zuora.com/developer/api-reference/#operation/PUT_PostCreditMemo)
+          memo](https://www.zuora.com/developer/api-references/api/operation/PUT_PostCreditMemo)
           operation to post the credit memo.
         type: boolean
       comment:

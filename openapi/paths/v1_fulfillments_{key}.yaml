@@ -2,14 +2,6 @@ get:
   summary: Retrieve a fulfillment
   operationId: GET_Fulfillment
   description: >
-    **Note:** This operation is only available if you have the Fulfillment and
-    Return feature enabled. The Fulfillment and Return feature is in the **Early
-    Adopter** phase. We are actively soliciting feedback from a small set of
-    early adopters before releasing it as generally available. If you want to
-    join this early adopter program, submit a request at [Zuora Global
-    Support](https://support.zuora.com/).        
-
-
     Retrieves the detailed information about a specified fulfillment. The
     following tutorial demonstrates how to use this operation:
 
@@ -18,6 +10,9 @@ get:
   tags:
     - Fulfillments
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
@@ -38,6 +33,20 @@ get:
   responses:
     '200':
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.
@@ -116,12 +125,6 @@ put:
   summary: Update a fulfillment
   operationId: PUT_Fulfillment
   description: >
-    **Note:** This operation is only available if you have the Fulfillment and
-    Return feature enabled. The Fulfillment and Return feature is in the **Early
-    Adopter** phase. We are actively soliciting feedback from a small set of
-    early adopters before releasing it as generally available. If you want to
-    join this early adopter program, submit a request at [Zuora Global
-    Support](https://support.zuora.com/).        
 
 
     Updates a specified fulfillment. The `state` field of a fulfillment can only
@@ -133,11 +136,14 @@ put:
 
     The following tutorial demonstrates how to use this operation:
 
-    * [Update a
+    * [Update or cancel a
     fulfillment](https://knowledgecenter.zuora.com/Billing/Subscriptions/Orders/Order_Line_Items/H_Update_a_fulfillment)
   tags:
     - Fulfillments
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
@@ -157,6 +163,20 @@ put:
   responses:
     '200':
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.
@@ -211,19 +231,14 @@ delete:
   summary: Delete a fulfillment
   operationId: Delete_Fulfillment
   description: >
-    **Note:** This operation is only available if you have the Fulfillment and
-    Return feature enabled. The Fulfillment and Return feature is in the **Early
-    Adopter** phase. We are actively soliciting feedback from a small set of
-    early adopters before releasing it as generally available. If you want to
-    join this early adopter program, submit a request at [Zuora Global
-    Support](https://support.zuora.com/).         
-
-
     Deletes a specified fulfillment. A fulfillment can only be deleted when it
     is in the `Executing` state.
   tags:
     - Fulfillments
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
@@ -237,6 +252,20 @@ delete:
   responses:
     '200':
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.

@@ -71,12 +71,12 @@ allOf:
         minLength: 0
         type: string
       EffectiveDate:
-        description: >
-          The date when the payment takes effect.
+        description: |
+          The date when the payment takes effect, in `yyyy-mm-dd` format.
 
-
-          **Note:** This is an optional field that only applies to electronic
-          payments. When specified, it must be set to the date of today.
+          **Note:**
+            - This field is required for only electronic payments. It's an optional field for external payments.
+            - When specified, this field must be set to the date of today.
         format: date
         maxLength: 29
         minLength: 0
@@ -252,7 +252,6 @@ allOf:
     required:
       - AccountId
       - PaymentMethodId
-      - EffectiveDate
       - Status
       - Type
     type: object

@@ -1,7 +1,17 @@
 post:
   description: >
-    Retries failed payment schedule items manually. You can specify new payment
-    method or payment gateway for the failed payments.
+    Retries failed payment schedule items. The payment method and payment
+    gateway of the failed payment can be updated to new values before the retry.
+
+
+    Note that a payment schedule item can be retried only when it has met the
+    following conditions:
+
+    - The payment schedule items must be either in the `Error` or `Processed`
+    status.
+
+    - The payment schedule items must haven’t created any payment yet, or the
+    payment gets created is in the `Error` status.
 
 
     **Note:**
@@ -22,6 +32,20 @@ post:
   responses:
     '200':
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.
@@ -115,6 +139,9 @@ post:
                     updatedById: 402881e522cf4f9b0122cf5d82860002
                 success: true
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml

@@ -1,11 +1,80 @@
 description: |
   Information about an order action of type `CreateSubscription`.
 properties:
+  billToContactId:
+    description: >
+      The ID of the bill-to contact associated with the subscription.
+
+
+      **Note**: If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
+    type: string
+  clearingExistingBillToContact:
+    default: false
+    description: >
+      Whether to clear the existing bill-to contact ID at the subscription
+      level. This field is mutually exclusive with the `paymentTerm` field.
+
+
+      **Note**: If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
+    type: boolean
+  clearingExistingInvoiceTemplate:
+    default: false
+    description: >
+      Whether to clear the existing invoice template ID at the subscription
+      level. This field is mutually exclusive with the `invoiceTemplateId`
+      field.
+
+
+      **Note**: If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
+    type: boolean
+  clearingExistingPaymentTerm:
+    default: false
+    description: >
+      Whether to clear the existing payment term at the subscription level. This
+      field is mutually exclusive with the `billToContactId` field.
+
+
+      **Note**: If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
+    type: boolean
+  clearingExistingSequenceSet:
+    default: false
+    description: >
+      Whether to clear the existing sequence set ID at the subscription level.
+      This field is mutually exclusive with the `sequenceSetId` field.
+
+
+      **Note**: If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
+    type: boolean
   invoiceSeparately:
     description: >
       Specifies whether the subscription appears on a separate invoice when
       Zuora generates invoices.
     type: boolean
+  invoiceTemplateId:
+    description: >
+      The ID of the invoice template associated with the subscription.
+
+
+      **Note**: If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
+    type: string
   newSubscriptionOwnerAccount:
     description: >
       Information about a new account that will own the subscription. Only
@@ -166,6 +235,27 @@ properties:
     description: |
       Notes about the subscription. These notes are only visible to Zuora users.
     maxLength: 500
+    type: string
+  paymentTerm:
+    description: >
+      The name of the payment term associated with the subscription. For
+      example, `Net 30`. The payment term determines the due dates of invoices.
+
+
+      **Note**: If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
+    type: string
+  sequenceSetId:
+    description: >
+      The ID of the sequence set associated with the subscription.
+
+
+      **Note**: If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
     type: string
   subscribeToRatePlans:
     description: |

@@ -73,36 +73,12 @@ allOf:
           existing rate plans in a subscription with other rate plans.
 
 
-          **Note**: This feature is in the **Early Adopter** phase. We are
-          actively soliciting feedback from a small set of early adopters before
-          releasing it as generally available. If you want to join this early
-          adopter program, submit a request at [Zuora Global
-          Support](http://support.zuora.com/).
+          **Note**: Changing rate plans is currently not supported for Billing -
+          Revenue Integration. When Billing - Revenue Integration is enabled,
+          changing rate plans will no longer be applicable in Zuora Billing.
         items:
           $ref: ./PUTSrpChangeType.yaml
         type: array
-      clearingExistingBillToContactId:
-        default: false
-        description: >
-          Whether to clear the existing bill-to contact ID at the subscription
-          level. This field is mutually exclusive with the `paymentTerm` field.
-
-
-          **Note**: This field is only available if you have the [Flexible
-          Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
-          feature enabled.
-        type: boolean
-      clearingExistingPaymentTerm:
-        default: false
-        description: >
-          Whether to clear the existing payment term at the subscription level.
-          This field is mutually exclusive with the `billToContactId` field.
-
-
-          **Note**: This field is only available if you have the [Flexible
-          Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
-          feature enabled.
-        type: boolean
       collect:
         default: false
         description: >
@@ -198,7 +174,7 @@ allOf:
           minor versions are 207.0 or later. To use this field in the method,
           you must set the **zuora-version** parameter to the minor version
           number in the request header. See [Zuora REST API
-          Versions](https://www.zuora.com/developer/api-reference/#section/API-Versions)
+          Versions](https://www.zuora.com/developer/api-references/api/overview/#section/API-Versions)
           for more information.
         type: boolean
       includeExistingDraftInvoiceItems:
@@ -218,7 +194,7 @@ allOf:
           **Note:** This field is in Zuora REST API version control. Supported
           minor versions are 186.0, 187.0, 188.0, 189.0, and 196.0. See [Zuora
           REST API
-          Versions](https://www.zuora.com/developer/api-reference/#section/API-Versions)
+          Versions](https://www.zuora.com/developer/api-references/api/overview/#section/API-Versions)
           for more information.
         type: boolean
       invoice:
@@ -346,7 +322,7 @@ allOf:
             The default value is LegalDoc.
 
           See [Zuora REST API
-          Versions](https://www.zuora.com/developer/api-reference/#section/API-Versions)
+          Versions](https://www.zuora.com/developer/api-references/api/overview/#section/API-Versions)
           for more information.
         type: string
       remove:

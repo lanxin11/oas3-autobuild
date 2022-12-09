@@ -586,14 +586,7 @@ properties:
           **Values**: a string of 42 characters or fewer 
         type: string
       IPAddress:
-        description: |2-
-           The IP address of the user when the payment method was created or updated. Some gateways use this field for fraud prevention. If this field is passed to Zuora, then Zuora passes this field to supported gateways. Currently PayPal, CyberSource, Authorize.Net, and Verifi support this field.
-
-
-          **Character limit**: 15
-
-
-          **Values**: a string of 15 characters or fewer 
+        description: ' The IPv4 or IPv6 information of the user when the payment method was created or updated. Gateways use this field for fraud prevention. If this field is passed to Zuora, then Zuora passes this field to supported gateways. If the IP address length is beyond 45 characters, a validation error occurs. '
         type: string
       Id:
         description: |2-
@@ -875,7 +868,13 @@ properties:
           `SecondTokenId` is conditionally required for representing the
           underlying tokenized payment method. When the `Type` field is set to
           `CreditCardReferenceTransaction`, this field is required if the
-          `CreditCardNumber` field is not specified. 
+          `CreditCardNumber` field is not specified.
+
+
+          The values for the `TokenId` and `SecondTokenId` fields differ for
+          gateways. For more information, see the Knowledge Center article
+          specific to each gateway that supports the CC Reference Transaction
+          payment method.
 
 
           **Character limit**: 255

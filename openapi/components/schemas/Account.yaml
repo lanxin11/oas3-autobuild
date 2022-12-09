@@ -187,8 +187,7 @@ allOf:
         type: string
       sequenceSetId:
         description: >
-          The ID of the billing document sequence set to assign to the customer
-          account. 
+          The ID of the sequence set to assign to the customer account. 
 
 
           The billing documents to generate for this account will adopt the

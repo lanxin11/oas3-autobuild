@@ -203,14 +203,9 @@ properties:
       - Customer Acceptance Date
     type: string
   revenueRecognitionRuleName:
-    description: |
-      Specifies the revenue recognition rule.
-
-        * `Recognize upon invoicing` 
-        * `Recognize daily over time`
-    enum:
-      - Recognize upon invoicing
-      - Recognize daily over time
+    description: >
+      Specifies the revenue recognition rule, such as `Recognize upon invoicing`
+      or `Recognize daily over time`.
     type: string
   startDate:
     $ref: ./TriggerParams.yaml

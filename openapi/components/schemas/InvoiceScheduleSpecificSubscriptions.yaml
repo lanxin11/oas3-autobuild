@@ -1,0 +1,12 @@
+properties:
+  orderKey:
+    description: |
+      The unique ID or number of the order associated with the invoice schedule.
+    type: string
+  subscriptionKey:
+    description: >
+      The unique number of the subscription contained in the order associated
+      with the invoice schedule.
+    type: string
+title: specificSubscriptions
+type: object

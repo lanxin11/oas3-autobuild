@@ -279,6 +279,8 @@ allOf:
 
           * `Per_Week`
 
+          * `Per_Year`
+
 
           Available for the following charge type for the Flat Fee, Per Unit,
           Volume Pricing, and Tiered Pricing charge models:

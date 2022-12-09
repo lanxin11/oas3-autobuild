@@ -2,7 +2,6 @@ description: The length of the period for the current subscription term.
 properties:
   period:
     description: Specify only when the termType is 'TERMED'.
-    maximum: 100
     minimum: 0
     type: integer
   periodType:

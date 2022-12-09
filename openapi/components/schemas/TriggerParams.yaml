@@ -37,6 +37,7 @@ properties:
       - ContractEffective
       - ServiceActivation
       - CustomerAcceptance
+      - SpecificDate
     type: string
 title: startDate
 type: object

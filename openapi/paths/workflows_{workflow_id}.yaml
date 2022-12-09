@@ -12,6 +12,9 @@ get:
   tags:
     - Workflows
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
@@ -19,13 +22,27 @@ get:
       in: path
       required: true
       description: |
-        The unique ID of a workflow. For example, 19080.
+        The unique ID of a workflow definition. For example, 19080.
       schema:
         type: string
   responses:
     '200':
       description: ''
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.
@@ -106,6 +123,9 @@ delete:
   tags:
     - Workflows
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
@@ -113,13 +133,27 @@ delete:
       in: path
       required: true
       description: |
-        The unique ID of a workflow. For example, 19080.
+        The unique ID of a workflow definition. For example, 19080.
       schema:
         type: string
   responses:
     '200':
       description: ''
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.
@@ -173,6 +207,20 @@ delete:
     '404':
       description: The workflow for the given id does not exist
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.
@@ -242,13 +290,17 @@ patch:
   tags:
     - Workflows
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
     - name: workflow_id
       in: path
       required: true
       description: |
-        The unique ID of a workflow. For example, 19080.
+        The unique ID of a workflow definition. For example, 19080.
       schema:
         type: string
   requestBody:
@@ -279,6 +331,20 @@ patch:
     '200':
       description: OK
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.
@@ -348,6 +414,20 @@ patch:
     '404':
       description: The workflow for the given id does not exist
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.
@@ -419,6 +499,20 @@ patch:
         * The scheduled_trigger is set to true but a valid timezone and interval
         were not passed.
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.

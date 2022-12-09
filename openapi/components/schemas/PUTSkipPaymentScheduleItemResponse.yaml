@@ -22,6 +22,10 @@ allOf:
               or a invoice.
             type: string
         type: object
+      cancellationReason:
+        description: |
+          The reason for the cancellation of payment schedule item.            
+        type: string
       createdById:
         description: |
           The ID of the user who created the payment schedule item.

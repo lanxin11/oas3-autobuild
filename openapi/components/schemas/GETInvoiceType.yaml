@@ -58,14 +58,14 @@ allOf:
           any file exists; otherwise absent. For example,
           `https://rest.zuora.com/v1/invoices/2c92c095511f5b4401512682dcfd7987/files`.
           If you want to view the invoice file details, call [Get invoice
-          files](https://www.zuora.com/developer/api-reference/#operation/GET_InvoiceFiles)
+          files](https://www.zuora.com/developer/api-references/api/operation/GET_InvoiceFiles)
           with the returned URL.
 
 
           If your tenant was created before Zuora Release 228 (R228), July 2018,
           the value of this field is an array of invoice file details. For more
           information about the array, see the response body of [Get invoice
-          files](https://www.zuora.com/developer/api-reference/#operation/GET_InvoiceFiles). 
+          files](https://www.zuora.com/developer/api-references/api/operation/GET_InvoiceFiles). 
 
 
           Zuora recommends that you use the latest behavior to retrieve invoice
@@ -80,14 +80,14 @@ allOf:
           example,
           `https://rest.zuora.com/v1/invoices/2c92c095511f5b4401512682dcfd7987/items`.
           If you want to view the invoice item details, call [Get invoice
-          items](https://www.zuora.com/developer/api-reference/#operation/GET_InvoiceItems)
+          items](https://www.zuora.com/developer/api-references/api/operation/GET_InvoiceItems)
           with the returned URL.
 
 
           If your tenant was created before Zuora Release 228 (R228), July 2018,
           the value of this field is an array of invoice item details. For more
           information about the array, see the response body of [Get invoice
-          items](https://www.zuora.com/developer/api-reference/#operation/GET_InvoiceItems). 
+          items](https://www.zuora.com/developer/api-references/api/operation/GET_InvoiceItems). 
 
 
           Zuora recommends that you use the latest behavior to retrieve invoice

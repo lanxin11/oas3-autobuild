@@ -1,0 +1,39 @@
+allOf:
+  - properties:
+      amount:
+        description: >
+          The amount of the invoice generated during the processing of the
+          invoice schedule item.
+        format: number
+        type: string
+      creditMemoId:
+        description: >
+          The ID of the credit memo that is generated during the processing of
+          the invoice schedule item.
+        type: string
+      id:
+        description: |
+          The unique ID of the invoice schedule item.
+        type: string
+      invoiceId:
+        description: >
+          The ID of the invoice that is generated during the processing of the
+          invoice schedule item.
+        type: string
+      runDate:
+        description: >
+          The date in the tenant’s time zone when the invoice schedule item is
+          processed to generate an invoice.
+        format: date
+        type: string
+      status:
+        description: |
+          The status of the invoice schedule item.
+        enum:
+          - Pending
+          - Executing
+          - Processed
+        type: string
+    type: object
+  - {}
+title: scheduleItems

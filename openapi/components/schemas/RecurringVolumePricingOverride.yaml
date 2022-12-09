@@ -8,6 +8,7 @@ allOf:
           - Per_Billing_Period
           - Per_Month
           - Per_Week
+          - Per_Year
         type: string
       quantity:
         description: |

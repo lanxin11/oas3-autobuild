@@ -15,6 +15,20 @@ post:
   responses:
     '200':
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.
@@ -72,6 +86,9 @@ post:
                   - id: 402890555c33b44b015c33bfe93c003a
                 success: true
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml

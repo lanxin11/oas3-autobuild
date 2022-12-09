@@ -71,10 +71,6 @@ properties:
 
       You can update this field for a sales or return OLI only when it is in the
       `Executing` state (when the `itemState` field is set as `Executing`).
-
-
-      **Note**: This field is only available if you have the Fulfillment and
-      Return feature enabled.
     enum:
       - TriggerWithoutFulfillment
       - TriggerAsFulfillmentOccurs

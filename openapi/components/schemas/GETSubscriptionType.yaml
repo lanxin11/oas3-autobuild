@@ -107,6 +107,15 @@ allOf:
           other subscriptions. If the value is `false`, the subscription is
           included with other subscriptions in the account invoice.
         type: string
+      invoiceTemplateId:
+        description: >
+          The ID of the invoice template associated with the subscription.
+
+
+          **Note**: The value of this field is `null` if you have the [Flexible
+          Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+          feature disabled.
+        type: string
       isLatestVersion:
         description: If `true`, the current subscription object is the latest version.
         type: boolean
@@ -201,6 +210,15 @@ allOf:
           is created, the revision value will be increased by 1. Also, the
           revision value is always incremental regardless of deletion of
           subscription versions.
+        type: string
+      sequenceSetId:
+        description: >
+          The ID of the sequence set associated with the subscription.
+
+
+          **Note**: The value of this field is `null` if you have the [Flexible
+          Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+          feature disabled.
         type: string
       serviceActivationDate:
         description: >

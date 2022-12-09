@@ -1,0 +1,15 @@
+allOf:
+  - properties:
+      scheduleItemId:
+        description: >
+          The ID of the invoice schedule item to be executed.
+
+
+          The item must be the earliest pending schedule item. If all the
+          invoice schedule items have been processed and credit is needed to be
+          generated, do not specify this field in the request.
+        type: string
+    type: object
+  - {}
+example:
+  scheduleItemId: 8ad09b7d82b5c62f0182c5cd16944f73

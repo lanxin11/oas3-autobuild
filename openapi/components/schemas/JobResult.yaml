@@ -150,13 +150,13 @@ allOf:
 description: >
   **Note:** The schema of the `result` nested field is the same as the response
   body schema of either the ["Create an
-  order"](https://www.zuora.com/developer/api-reference/#operation/POST_Order)
+  order"](https://www.zuora.com/developer/api-references/api/operation/POST_Order)
   or the ["Preview an
-  order"](https://www.zuora.com/developer/api-reference/#operation/POST_PreviewOrder)
+  order"](https://www.zuora.com/developer/api-references/api/operation/POST_PreviewOrder)
   operation, depending on the purpose of the job.
 
 
   The following schema for the nested `result` field is defined as the response
   body schema of "Create an order". See [Preview an
-  Order](https://www.zuora.com/developer/api-reference/#operation/POST_PreviewOrder)
+  Order](https://www.zuora.com/developer/api-references/api/operation/POST_PreviewOrder)
   for the response body schema of "Preview an order". 

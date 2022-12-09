@@ -7,6 +7,9 @@ post:
   tags:
     - Configuration Templates
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
@@ -25,6 +28,61 @@ post:
     required: true
   responses:
     '200':
+      headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
       description: Successfully migrated from source to target.
       content:
         application/json; charset=utf-8:
@@ -48,6 +106,61 @@ post:
                 status: DONE
                 type: Tenant
     '201':
+      headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
       description: >
         created.
 
@@ -58,6 +171,20 @@ post:
     '400':
       description: Bad request
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.
@@ -105,6 +232,20 @@ post:
     '401':
       description: Unauthorized
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.
@@ -152,6 +293,20 @@ post:
     '403':
       description: Forbidden
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.
@@ -199,6 +354,20 @@ post:
     '404':
       description: Not Found
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.

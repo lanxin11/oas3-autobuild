@@ -87,9 +87,69 @@ properties:
           this order will be created under.
         type: string
     type: object
+  refund:
+    description: >
+      Indicates whether to refund after subscription cancellation. Default is
+      `false`.      
+    type: boolean
+  refundAmount:
+    description: >
+      Indicates the amount to be refunded. Required if the `refund` field is
+      `true`.
+    type: number
   runBilling:
     description: >
       Indicates if the current request needs to generate an invoice. The invoice
       will be generated against all subscriptions included in this order.
     type: boolean
+  writeOff:
+    description: >
+      Indicates whether to write off the outstanding balance on the invoice
+      after refund. Default is `false`.
+    type: boolean
+  writeOffBehavior:
+    description: >
+      The financial information of the credit memo items generated to write off
+      the invoice balance. 
+
+
+      **Note:** 
+        - All the credit memo items that are used to write off the invoice will be applied with the same financial information.
+        - Credit memo items generated from the unconsumed services of the canceled subscription will not be applied with the finance information specified here.
+    properties:
+      financeInformation:
+        description: >
+          Container for the finance information related to the credit memo items
+          that are created for invoice write-off.
+        properties:
+          deferredRevenueAccountingCode:
+            description: >
+              The accounting code for the deferred revenue, such as Monthly
+              Recurring Liability.
+            maxLength: 100
+            minLength: 0
+            type: string
+          onAccountAccountingCode:
+            description: >
+              The accounting code that maps to an on account in your accounting
+              system.
+            maxLength: 100
+            minLength: 0
+            type: string
+          recognizedRevenueAccountingCode:
+            description: >
+              The accounting code for the recognized revenue, such as Monthly
+              Recurring Charges or Overage Charges.
+            maxLength: 100
+            minLength: 0
+            type: string
+          revenueRecognitionRuleName:
+            description: >
+              The name of the revenue recognition rule governing the revenue
+              schedule.
+            maxLength: 100
+            minLength: 0
+            type: string
+        type: object
+    type: object
 type: object

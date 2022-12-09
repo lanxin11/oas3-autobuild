@@ -22,12 +22,21 @@ allOf:
           fields are specified, the two values must match each other.          
         type: string
       amount:
-        description: |
+        description: >
           The amount of each payment schedule item in the payment schedule.
 
+
           **Note:**
+
           - This field is required when `items` is not specified.
+
           - This field will be ignored when `items` is specified.
+
+          - When creating recurring payment schedules, there are 2 options to
+          specify amounts:  
+            - Specify `totalAmount` and `occurrences`, `amount` will be calculated.
+            - Specify `amount` and `occurrences`, `totalAmount` will be calculated.
+            You must specify either `totalAmount` or `amount`. Specifying both fields at the same time is not allowed.
         type: number
       billingDocument:
         description: >

@@ -7,7 +7,7 @@ properties:
       If the error message is "Authentication error", ensure that the
       `Authorization` request header contains valid authentication credentials,
       then retry the request. See
-      [Authentication](https://www.zuora.com/developer/api-reference/#section/Authentication)
+      [Authentication](https://www.zuora.com/developer/rest-api/general-concepts/authentication/)
       for more information.
 
 

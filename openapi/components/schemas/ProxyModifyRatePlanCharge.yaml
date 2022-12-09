@@ -66,6 +66,8 @@ allOf:
           - `Per Billing Period`
 
           - `Per Week`
+
+          - `Per Year`
         type: string
       PriceChangeOption:
         description: |2

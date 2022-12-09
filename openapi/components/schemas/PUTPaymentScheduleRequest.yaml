@@ -13,6 +13,12 @@ allOf:
         description: >
           Indicates the updated number of payment schedule items that are
           created by the payment schedule.
+
+
+          **Note:**
+            - If "updated `occurrences` > existing `occurrences`", the following number of pending payment schedule item will be added to the payment schedule: “updated `occurrences` - existing `occurrences`”.
+            - If "existing `occurrences` > updated `occurrences` >= the number of `processed`/`errored`/`canceled` payment schedule items", the following number of pending items will be removed by descending order of the schedule dates: "existing `occurrences` - updated `occurrences`".
+            - If "updated `occurrences` < the number of `processed`/`erroed`/`canceled` payment schedule items", a validation error will be returned.
         type: integer
       paymentGatewayId:
         description: >

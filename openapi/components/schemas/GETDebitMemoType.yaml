@@ -101,7 +101,6 @@ allOf:
           The value of this field is `null` if you have the [Flexible
           Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
           feature disabled.
-                       
         type: string
       postedById:
         description: |
@@ -125,6 +124,16 @@ allOf:
       referredInvoiceId:
         description: |
           The ID of a referred invoice.
+        type: string
+      sequenceSetId:
+        description: >
+          The ID of the sequence set associated with the debit memo.
+
+
+          The value of this field is `null` if you have the [Flexible
+          Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+          feature disabled.
+                       
         type: string
       sourceType:
         description: |

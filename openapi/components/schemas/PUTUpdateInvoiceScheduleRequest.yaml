@@ -1,0 +1,68 @@
+allOf:
+  - properties:
+      notes:
+        description: |
+          Comments on the invoice schedule.
+        maxLength: 255
+        type: string
+      orders:
+        description: >
+          A list of the IDs or numbers of the orders associated with the invoice
+          schedule. One invoice schedule can be associated with at most 10
+          orders.
+
+
+          The orders specified in this fied override all the existing orders
+          associated with the invoice schedule.
+        items:
+          type: string
+        type: array
+      scheduleItems:
+        description: >
+          Container for invoice schedule items. The maximum number of schedule
+          items is 50.
+
+
+          The invoice schedule items specified in this fied override all the
+          existing invoice schedule items.
+        items:
+          $ref: ./UpdateScheduleItems.yaml
+        type: array
+      specificSubscriptions:
+        description: >
+          A list of the numbers of specific subscriptions associated with the
+          invoice schedule.
+
+
+          - If the subsriptions specified in this field belong to the orders
+          specified in the `orders` field, only the specific subscriptions
+          instead of the orders are associated with the invoice schedule. 
+
+          - If only the `orders` field is specified, all the subscriptions from
+          the order are associated with the invoice schedule.
+            
+          The specific subscriptions specified in this fied override all the
+          existing specific subscriptions associated with the invoice schedule.
+        items:
+          $ref: ./InvoiceScheduleSpecificSubscriptions.yaml
+        type: array
+    type: object
+  - {}
+example:
+  notes: 2022 Billing Schedule - V2
+  orders:
+    - O-00000007
+    - O-00000008
+  scheduleItems:
+    - amount: 54000
+      id: 8a8881aa82118bec018211daf9f01680
+      runDate: '2022-02-24'
+    - amount: 10000
+      id: 8a8881aa82118bec018211daf9f11681
+      runDate: '2022-10-17'
+    - amount: 6200
+      id: 8a8881aa82118bec018211daf9f11682
+      runDate: '2022-11-14'
+  specificSubscriptions:
+    - orderKey: O-00000008
+      subscriptionKey: S-00000008

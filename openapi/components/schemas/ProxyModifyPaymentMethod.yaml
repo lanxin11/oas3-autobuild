@@ -311,10 +311,7 @@ allOf:
           fewer 
         type: string
       IPAddress:
-        description: >2-
-           The IP address of the user when the payment method was created or updated. Some gateways use this field for fraud prevention. If this field is passed to Zuora, then Zuora passes this field to supported gateways. Currently PayPal, CyberSource, Authorize.Net, Verifi, and WorldPay support this field.
-          **Character limit**: 15 **Values**: a string of 15 characters or
-          fewer 
+        description: ' The IPv4 or IPv6 information of the user when the payment method was created or updated. Gateways use this field for fraud prevention. If this field is passed to Zuora, then Zuora passes this field to supported gateways. If the IP address length is beyond 45 characters, a validation error occurs. '
         type: string
       IdentityNumber:
         description: >

@@ -46,6 +46,20 @@ post:
   responses:
     '200':
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.
@@ -132,6 +146,7 @@ post:
                     sourceType: Invoice
                     taxMessage: null
                     billToContactId: null
+                    sequenceSetId: null
                     success: true
                   - success: false
                     processId: 0356073CB721291A
@@ -140,6 +155,9 @@ post:
                         message: Cannot find a Invoice instance with id test.
                     objectIndex: 1
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
@@ -149,7 +167,7 @@ post:
       description: >
 
         The minor version of the Zuora REST API. See [Minor
-        Version](https://www.zuora.com/developer/api-reference/#section/API-Versions/Minor-Version)
+        Version](https://www.zuora.com/developer/api-references/api/overview/#section/API-Versions/Minor-Version)
         for information about REST API version control.
       schema:
         type: string
@@ -188,6 +206,20 @@ put:
   responses:
     '200':
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.
@@ -274,6 +306,7 @@ put:
                     sourceType: Invoice
                     taxMessage: null
                     billToContactId: null
+                    sequenceSetId: null
                     success: true
                   - success: false
                     id: ff8080817fe9d7b9017fe9e41732030f
@@ -283,6 +316,9 @@ put:
                         message: Cannot find a Invoice instance with id.
                     objectIndex: 1
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
@@ -292,7 +328,7 @@ put:
       description: >
 
         The minor version of the Zuora REST API. See [Minor
-        Version](https://www.zuora.com/developer/api-reference/#section/API-Versions/Minor-Version)
+        Version](https://www.zuora.com/developer/api-references/api/overview/#section/API-Versions/Minor-Version)
         for information about REST API version control.
       schema:
         type: string

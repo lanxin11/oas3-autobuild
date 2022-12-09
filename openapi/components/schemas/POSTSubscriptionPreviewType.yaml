@@ -48,7 +48,7 @@ allOf:
           minor versions are 207.0 or later. To use this field in the method,
           you must set the **zuora-version** parameter to the minor version
           number in the request header. See [Zuora REST API
-          Versions](https://www.zuora.com/developer/api-reference/#section/API-Versions)
+          Versions](https://www.zuora.com/developer/api-references/api/overview/#section/API-Versions)
           for more information.
         type: boolean
       includeExistingDraftInvoiceItems:
@@ -67,7 +67,7 @@ allOf:
           **Note:** This field is in Zuora REST API version control. Supported
           minor versions are 186.0, 187.0, 188.0, 189.0, and 196.0. See [Zuora
           REST API
-          Versions](https://www.zuora.com/developer/api-reference/#section/API-Versions)
+          Versions](https://www.zuora.com/developer/api-references/api/overview/#section/API-Versions)
           for more information.
         type: boolean
       initialTerm:
@@ -110,7 +110,7 @@ allOf:
           **Note:** This field is in Zuora REST API version control. Supported
           minor versions are 186.0, 187.0, 188.0, 189.0, and 196.0. See [Zuora
           REST API
-          Versions](https://www.zuora.com/developer/api-reference/#section/API-Versions)
+          Versions](https://www.zuora.com/developer/api-references/api/overview/#section/API-Versions)
           for more information.
         format: date
         type: string
@@ -158,7 +158,7 @@ allOf:
             The default value is LegalDoc.
 
           See [Zuora REST API
-          Versions](https://www.zuora.com/developer/api-reference/#section/API-Versions)
+          Versions](https://www.zuora.com/developer/api-references/api/overview/#section/API-Versions)
           for more information.
         type: string
       serviceActivationDate:
@@ -188,7 +188,7 @@ allOf:
           minor versions are 207.0 or later. To use this field in the method,
           you must set the **zuora-version** parameter to the minor version
           number in the request header. See [Zuora REST API
-          Versions](https://www.zuora.com/developer/api-reference/#section/API-Versions)
+          Versions](https://www.zuora.com/developer/api-references/api/overview/#section/API-Versions)
           for more information.
         format: date
         type: string

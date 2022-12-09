@@ -8,8 +8,12 @@ allOf:
         minLength: 0
         type: string
       items:
-        description: |
-          Container for items.
+        description: >
+          Container for items. This field is optional. 
+
+          **Note:** If specified, you must specify ALL the items of the invoice.
+          The entire balance of the invoice will be written off, you cannot just
+          write off some items of the invoice.
         items:
           $ref: ./CreditMemoItemFromWriteOffInvoice.yaml
         type: array

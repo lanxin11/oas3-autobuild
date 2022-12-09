@@ -1,0 +1,34 @@
+allOf:
+  - properties:
+      currency:
+        description: >
+          The currency code for either Reporting or Home currency.
+
+
+          **Note**: This field is not available if you set the `zuora-version`
+          request header to `224.0` or later.
+        type: string
+      customFxRate:
+        description: >
+          The Custom FX conversion rate between Home/Reporting and Transactional
+          currency items.
+
+
+          **Note**: This field is only available if you set the `zuora-version`
+          request header to `224.0` or later.
+        format: decimal
+        type: number
+      rateDate:
+        description: >
+          The date on which a particular currency rate is fixed or obtained on.
+
+
+          **Note**: This field is not available if you set the `zuora-version`
+          request header to `224.0` or later.
+        format: date
+        type: string
+    required:
+      - currency
+      - customFxRate
+    type: object
+title: customRates

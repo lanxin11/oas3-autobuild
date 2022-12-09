@@ -1,0 +1,158 @@
+allOf:
+  - properties:
+      autoEmail:
+        description: |
+          Whether to automatically send an email after Auto-Post is complete.
+        type: boolean
+      autoPost:
+        description: >
+          Whether to automatically post the bill run after the bill run is
+          created.
+        type: boolean
+      autoRenewal:
+        description: >
+          Whether to automatically renew auto-renew subscriptions that are up
+          for renewal.
+        type: boolean
+      batches:
+        description: >
+          A list of the batches of accounts for this bill run. 
+
+
+          This field cannot exist with the `billRunFilters` field.
+
+
+          **Values:** `AllBatches` or Batch*n* where *n* is a number between 1
+          and 50, for example, `Batch7`.
+        items:
+          type: string
+        type: array
+      billCycleDay:
+        description: >
+          The day of the bill cycle, this field is only valid when `batches` is
+          specified.
+
+
+          **Values:** 
+
+          - `AllBillCycleDays` or 1 - 31 for an ad-hoc bill run 
+
+          - `AllBillCycleDays` or 1 - 31 or `AsRunDay` for a scheduled bill run
+        type: string
+      billRunFilters:
+        description: |
+          A list of the target account or subscriptions for this bill run.
+
+          This field cannot exist with the `batches` field.
+        items:
+          $ref: ./BillRunFilters.yaml
+        type: array
+      billRunNumber:
+        description: |
+          The number of bill run.
+        type: string
+      chargeTypeToExclude:
+        description: >
+          The types of the charges to be excluded from the generation of billing
+          documents.
+        items:
+          enum:
+            - OneTime
+            - Recurring
+            - Usage
+          type: string
+        type: array
+      createdById:
+        description: |
+          The ID of the user who created the bill run.
+        type: string
+      createdDate:
+        description: |
+          The date and time when the bill run was created.
+        format: date-time
+        type: string
+      id:
+        description: |
+          The unique ID of the bill run.
+        type: string
+      invoiceDate:
+        description: |
+          The invoice date for this bill run, only valid for ad-hoc bill runs.
+        format: date
+        type: string
+      invoiceDateOffset:
+        description: >
+          The offset compared to bill run execution date, only valid for
+          scheduled bill runs.
+        type: integer
+      noEmailForZeroAmountInvoice:
+        description: >
+          Whether to suppress emails for invoices with the total amount of zero
+          or not for this bill run after the bill run is complete. 
+
+
+          **Note**: Do not email invoices with the total amount of zero.
+        type: boolean
+      scheduledExecutionTime:
+        description: |
+          The scheduled execution time for a bill run.
+        format: date-time
+        type: string
+      status:
+        description: |
+          The status of the bill run.
+        enum:
+          - Pending
+          - Processing
+          - Completed
+          - Error
+          - Canceled
+          - Posted
+          - PostInProgress
+          - CancelInProgress
+          - RemoveInProgress
+          - Paused
+        type: string
+      targetDate:
+        description: |
+          The target date for this bill run, only valid for ad-hoc bill run.
+        format: date
+        type: string
+      targetDateOffset:
+        description: >
+          The offset compared to bill run execution date, only valid for
+          scheduled bill run.
+        type: integer
+      updatedById:
+        description: |
+          The ID of the user who updated the bill run.
+        type: string
+      updatedDate:
+        description: |
+          The date and time when the bill run was updated.
+        format: date-time
+        type: string
+    type: object
+  - {}
+example:
+  autoEmail: false
+  autoPost: false
+  autoRenewal: false
+  billRunFilters:
+    - accountId: 2c9081a03c63c94c013c66688a2c00bf
+      filterType: Subscription
+      subscriptionId: 402882297e387c51017e38a245c313db
+  billRunNumber: BR-00000016
+  chargeTypeToExclude:
+    - OneTime
+    - Usage
+  createdById: ff808081298c6e5401298c7274a40005
+  createdDate: '2022-01-24 19:58:27'
+  id: 2c9890077e8a8490017e8bf3a5171a43
+  invoiceDate: '2020-02-01'
+  noEmailForZeroAmountInvoice: false
+  status: Pending
+  success: true
+  targetDate: '2020-02-01'
+  updatedById: ff808081298c6e5401298c7274a40005
+  updatedDate: '2022-01-24 19:58:27'

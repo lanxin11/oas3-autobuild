@@ -96,7 +96,6 @@ allOf:
           for more information. 
         enum:
           - TimeBased
-          - ConsumptionBased
           - FullCreditBack
         type: string
       defaultQuantity:
@@ -342,6 +341,20 @@ allOf:
           Indicates whether this charge is a prepayment (topup) charge or a
           drawdown charge. Values: `true` or `false`.
         type: boolean
+      isRollover:
+        description: >
+          **Note**: This field is only available if you have the [Prepaid with
+          Drawdown](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown)
+          feature enabled.
+
+
+          To use this field, you must set the `X-Zuora-WSDL-Version` request
+          header to 114 or higher. Otherwise, an error occurs.
+
+
+          The value is either "True" or "False". It determines whether the
+          rollover fields are needed.
+        type: boolean
       listPriceBase:
         description: |
           The list price base for the product rate plan charge.
@@ -350,6 +363,7 @@ allOf:
           - Month
           - Billing Period
           - Per_Week
+          - Per_Year
         type: string
       maxQuantity:
         description: >
@@ -657,6 +671,37 @@ allOf:
           The name of the revenue recognition rule governing the revenue
           schedule.
         type: string
+      rolloverApply:
+        description: >
+          **Note**: This field is only available if you have the [Prepaid with
+          Drawdown](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown)
+          feature enabled.
+
+
+          To use this field, you must set the `X-Zuora-WSDL-Version` request
+          header to 114 or higher. Otherwise, an error occurs.
+
+
+          This field defines the priority of rollover, which is either first or
+          last.
+        enum:
+          - ApplyFirst
+          - ApplyLast
+        type: string
+      rolloverPeriods:
+        description: >
+          **Note**: This field is only available if you have the [Prepaid with
+          Drawdown](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown)
+          feature enabled.
+
+
+          To use this field, you must set the `X-Zuora-WSDL-Version` request
+          header to 114 or higher. Otherwise, an error occurs.
+
+
+          This field defines the number of rollover periods, it is restricted to
+          3.
+        type: number
       smoothingModel:
         description: >
           Specifies the smoothing model for an overage smoothing charge model or

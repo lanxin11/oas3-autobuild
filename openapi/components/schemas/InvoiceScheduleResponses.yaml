@@ -1,0 +1,75 @@
+allOf:
+  - properties:
+      accountId:
+        description: |
+          The ID of the customer account that the invoice schedule belongs to.
+        type: string
+      billedAmount:
+        description: >
+          The amount that has been billed during the processing of the invoice
+          schedule.
+        format: number
+        type: string
+      id:
+        description: |
+          The unique ID of the invoice schedule.
+        type: string
+      nextRunDate:
+        description: >
+          The run date of the next invoice schedule item waiting to be
+          processed.
+        format: date
+        type: string
+      notes:
+        description: |
+          Comments on the invoice schedule.
+        maxLength: 255
+        type: string
+      number:
+        description: |
+          The sequence number of the invoice schedule.
+        type: string
+      orders:
+        description: >
+          A list of the IDs or numbers of the orders associated with the invoice
+          schedule. One invoice schedule can be associated with at most 10
+          orders.
+        items:
+          type: string
+        type: array
+      scheduleItems:
+        description: >
+          Container for schedule items. One invoice schedule can have at most 50
+          invoice schedule items.
+        items:
+          $ref: ./ScheduleItemsResponse.yaml
+        type: array
+      specificSubscriptions:
+        description: >
+          A list of the numbers of specific subscriptions associated with the
+          invoice schedule.
+        items:
+          $ref: ./InvoiceScheduleSpecificSubscriptions.yaml
+        type: array
+      status:
+        description: |
+          The status of the invoice schedule.
+        enum:
+          - Pending
+          - PartiallyProcessed
+          - FullyProcessed
+        type: string
+      totalAmount:
+        description: >
+          The total amount that needs to be billed during the processing of the
+          invoice schedule.
+        format: number
+        type: string
+      unbilledAmount:
+        description: >
+          The amount that is waiting to be billed during the processing of the
+          invoice schedule.
+        format: number
+        type: string
+    type: object
+  - {}

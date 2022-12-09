@@ -3,11 +3,11 @@ post:
     Enables you to authorize the availability of funds for a transaction but
     delay the capture of funds until a later time. Subsequently, use [CRUD:
     Create a
-    payment](https://www.zuora.com/developer/api-reference/#operation/Object_POSTPayment)
+    payment](https://www.zuora.com/developer/api-references/api/operation/Object_POSTPayment)
     or [Create a
-    payment](https://www.zuora.com/developer/api-reference/#operation/POST_CreatePayment)
+    payment](https://www.zuora.com/developer/api-references/api/operation/POST_CreatePayment)
     to capture the authorized funds, or use [Cancel
-    authorization](https://www.zuora.com/developer/api-reference/#operation/POST_CancelAuthorization)
+    authorization](https://www.zuora.com/developer/api-references/api/operation/POST_CancelAuthorization)
     to cancel the authorization. 
 
 
@@ -34,6 +34,9 @@ post:
     *
     [SlimPay](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/M_Payment_Gateways/Supported_Payment_Gateways/SlimPay_Payment_Gateway)
 
+    * [Stripe
+    v2](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/M_Payment_Gateways/Supported_Payment_Gateways/Stripe_Payment_Gateway)
+
     * [Verifi Global Payment
     Gateway](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/M_Payment_Gateways/Supported_Payment_Gateways/Verifi_Global_Payment_Gateway)
 
@@ -42,9 +45,9 @@ post:
 
 
     If you have the Invoice Settlement feature enabled, use the [Create
-    payment](https://www.zuora.com/developer/api-reference/#operation/POST_CreatePayment)
+    payment](https://www.zuora.com/developer/api-references/api/operation/POST_CreatePayment)
     operation to capture the funds instead of the [CRUD: Create
-    payment](https://www.zuora.com/developer/api-reference/#operation/Object_POSTPayment)
+    payment](https://www.zuora.com/developer/api-references/api/operation/Object_POSTPayment)
     operation.
           
   summary: Create authorization
@@ -52,6 +55,9 @@ post:
   tags:
     - Payment Methods
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
@@ -71,6 +77,20 @@ post:
   responses:
     '200':
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.

@@ -311,6 +311,8 @@ properties:
               - `Per Billing Period`
 
               - `Per Week`
+
+              - `Per Year`
             type: string
           MRR:
             description: >-

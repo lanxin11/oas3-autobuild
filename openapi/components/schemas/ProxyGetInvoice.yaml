@@ -66,6 +66,22 @@ allOf:
 
         format: double
         type: number
+      CreditMemoAmount:
+        description: >
+          The currency amount of all credit memos applied to this invoice.
+
+
+          **Note:** This field is only available if you have [Invoice
+          Settlement](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement)
+          enabled. The Invoice Settlement feature is generally available as of
+          Zuora Billing Release 296 (March 2021). This feature includes
+          Unapplied Payments, Credit and Debit Memo, and Invoice Item
+          Settlement. If you want to enable Invoice Settlement, see [Invoice
+          Settlement Enablement and Checklist
+          Guide](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Invoice_Settlement/Invoice_Settlement_Migration_Checklist_and_Guide)
+          for more information.
+        format: double
+        type: number
       DueDate:
         description: |2-
            The date by which the payment for this invoice is due.
@@ -145,6 +161,18 @@ allOf:
           **Character limit**: 16 **Values**: automatically generated 
         format: double
         type: number
+      SequenceSetId:
+        description: >
+          The ID of the sequence set associated with the invoice.
+
+
+          **Note**: This field is available only if you set the
+          `X-Zuora-WSDL-Version` request header to `127` or later. The value of
+          this field is `null` if you have the [Flexible
+          Billing](https://knowledgecenter.zuora
+
+          .com/Billing/Subscriptions/Flexible_Billing) feature disabled.
+        type: string
       SourceType:
         description: |2
            The type of the invoice source. **Note**: To use this field, you must set the `X-Zuora-WSDL-Version` request header to `118` or later. Otherwise, an error occurs. **Character limit**: 16 **Values**: one of the following enum values:

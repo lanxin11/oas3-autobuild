@@ -86,7 +86,7 @@ description: >
   Payment method to create for this new account. Supports all the payment
   methods that are supported in the "Create a payment method" operation. See
   [Create a payment
-  method](https://www.zuora.com/developer/api-reference/#operation/POST_PaymentMethods)
+  method](https://www.zuora.com/developer/api-references/api/operation/POST_PaymentMethods)
   for more information.
 
 

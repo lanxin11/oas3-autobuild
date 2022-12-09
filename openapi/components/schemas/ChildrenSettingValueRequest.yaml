@@ -24,7 +24,7 @@ properties:
     description: >
       The relative URL of the setting. It is the same as in the `pathPattern`
       field in the response body of [Listing all
-      settings](https://www.zuora.com/developer/api-reference/#operation/GET_ListAllSettings).
+      settings](https://www.zuora.com/developer/api-references/api/operation/GET_ListAllSettings).
       For example, `/billing-rules`.
     type: string
 title: childSettingsRequest

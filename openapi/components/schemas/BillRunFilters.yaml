@@ -1,0 +1,27 @@
+allOf:
+  - properties:
+      accountId:
+        description: |
+          The target account of the bill run.
+        type: string
+      filterType:
+        description: >
+          The type of the filter to determine whether to create a bill run at
+          the account level or subscription level.
+        enum:
+          - Account
+          - Subscription
+          - InvoiceSchedule
+        type: string
+      subscriptionId:
+        description: >
+          The unique ID of the target subscription belonged to the target
+          account. 
+
+
+          This field is required if you set the `filterType` field to
+          `Subscription`.
+        type: string
+    type: object
+  - {}
+title: billRunFilters

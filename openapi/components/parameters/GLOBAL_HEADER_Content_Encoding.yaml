@@ -1,0 +1,9 @@
+name: Content-Encoding
+in: header
+required: false
+description: >
+  Include the `Content-Encoding: gzip` header to compress a request. With this
+  header specified, you should upload a gzipped file for the request payload
+  instead of sending the JSON payload.
+schema:
+  type: string

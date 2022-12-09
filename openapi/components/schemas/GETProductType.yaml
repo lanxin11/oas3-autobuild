@@ -52,7 +52,7 @@ allOf:
           `/v1/rateplan/40289f466463d683016463ef8b7301a0/productRatePlan`. If
           you want to view the product rate plan details, call [List all product
           rate plans of a
-          product](https://www.zuora.com/developer/api-reference/#operation/GET_ProductRatePlans)
+          product](https://www.zuora.com/developer/api-references/api/operation/GET_ProductRatePlans)
           with the returned URL.
 
 
@@ -66,7 +66,7 @@ allOf:
           header to `229.0` or earlier, the value of this field is an array of
           product rate plan details. For more information about the array, see
           the response body of [List all product rate plans of a
-          product](https://www.zuora.com/developer/api-reference/#operation/GET_ProductRatePlans).
+          product](https://www.zuora.com/developer/api-references/api/operation/GET_ProductRatePlans).
           **Note**: The array contains a maximum of 300 product rate plans.
           Additionally, across all product rate plans, at most 300 product rate
           plan charges are returned.

@@ -1,0 +1,366 @@
+put:
+  tags:
+    - Invoice Schedules
+  summary: Update an invoice schedule
+  description: >
+    Updates a pending invoice schedule.
+
+
+    You can use this API operation to update invoice schedules in the following
+    aspects:
+
+    - Update notes and pending invoice schedule items
+
+    - Update orders associated with invoice schedules
+
+    - Remove or add invoice schedule items
+
+
+    For more samples, see [Edit invoice
+    schedules](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Billing_Schedule/Billing_Schedule_tutorials/Edit_invoice_schedules).
+
+
+    ## Restrictions and limitations 
+
+
+    When updating invoice schedules through the REST API, keep the following
+    restrictions and limitations in mind:
+
+    - You can only update invoice schedule items in Pending status.
+
+    - You can only add orders or specific subscriptions to pending invoice
+    schedules, and remove orders or specific subscriptions from pending invoice
+    schedules.
+
+    - For the invoice schedule items that you want to update, you must include
+    the new values for these items in the request.
+
+    - For the invoice schedule items that you want to keep unchanged, you must
+    include all the existing information about these items in the request.
+    Otherwise, the existing invoice schedule items that you do not mention in
+    the request are deleted.
+
+    - For the orders that you want to keep unchanged for an invoice schedule,
+    you must include all the existing order numbers associated with the invoice
+    schedule in the request. Otherwise, the existing orders that you do not
+    mention in the request are removed.
+  operationId: PUT_UpdateInvoiceSchedule
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: scheduleKey
+      in: path
+      description: >
+        The unique ID or number of the invoice schedule to be updated. For
+        example, 2c92c8955bd63cc1015bd7c151af02ab or IS-0000001.
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/PUTUpdateInvoiceScheduleRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: ''
+      headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/InvoiceScheduleResponses.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: e2441b3e24eb42859194be7da2403b38
+                number: IS-00000004
+                status: Pending
+                nextRunDate: '2022-02-24'
+                totalAmount: 70200
+                billedAmount: 0
+                unbilledAmount: 70200
+                notes: 2022 Billing Schedule
+                scheduleItems:
+                  - id: 8a8881aa82118bec018211daf9f01680
+                    amount: 54000
+                    status: Pending
+                    runDate: '2022-02-24'
+                  - id: 8a8881aa82118bec018211daf9f11681
+                    amount: 10000
+                    status: Pending
+                    runDate: '2022-10-17'
+                  - id: 8a8881aa82118bec018211daf9f11682
+                    amount: 6200
+                    status: Pending
+                    runDate: '2022-11-14'
+                orders:
+                  - O-00000007
+                  - O-00000008
+                specificSubscriptions:
+                  - orderKey: O-00000008
+                    subscriptionKey: S-00000008
+                success: true
+get:
+  tags:
+    - Invoice Schedules
+  summary: Retrieve an invoice schedule
+  description: |
+    Retrieves detailed information about an invoice schedule.
+  operationId: GET_InvoiceSchedule
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_page.yaml
+    - $ref: ../components/parameters/GLOBAL_REQUEST_pageSize.yaml
+    - name: scheduleKey
+      in: path
+      description: >
+        The unique ID or number of the invoice schedule to be retrieved. For
+        example, 2c92c8955bd63cc1015bd7c151af02ab or IS-0000001.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: ''
+      headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/InvoiceScheduleResponses.yaml
+        application/json:
+          examples:
+            response:
+              value:
+                id: e2441b3e24eb42859194be7da2403b38
+                number: IS-00000004
+                status: PartiallyProcessed
+                nextRunDate: '2022-10-17'
+                totalAmount: 70200
+                billedAmount: 50000
+                unbilledAmount: 20200
+                notes: 2022 Billing Schedule
+                scheduleItems:
+                  - id: 8a8881aa82118bec018211daf9f01680
+                    amount: 50000
+                    status: Processed
+                    invoiceId: 8a8881aa82118bec018211dafc1e1695
+                    runDate: '2022-02-24'
+                  - id: 8a8881aa82118bec018211daf9f11681
+                    amount: 14000
+                    status: Pending
+                    runDate: '2022-10-17'
+                  - id: 8a8881aa82118bec018211daf9f11682
+                    amount: 6200
+                    status: Pending
+                    runDate: '2022-11-14'
+                orders:
+                  - O-00000007
+                  - O-00000008
+                specificSubscriptions:
+                  - orderKey: O-00000008
+                    subscriptionKey: S-00000008
+                success: true
+delete:
+  tags:
+    - Invoice Schedules
+  summary: Delete an invoice schedule
+  description: >
+    Deletes an invoice scheddule in Pending status. The status of the invoice
+    schedule to be deleleted must be `Pending`.
+  operationId: DELETE_InvoiceSchedule
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: scheduleKey
+      in: path
+      description: >
+        The unique ID or number of the invoice schedule to be deleted. For
+        example, 2c92c8955bd63cc1015bd7c151af02ab or IS-0000001.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: ''
+      headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/CommonResponseType.yaml

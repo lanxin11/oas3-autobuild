@@ -40,7 +40,12 @@ properties:
       method.
 
 
-      When creating an ACH payment method, if you need to pass in tokenized
-      information, use the `mandateId` instead of `tokenId` field.
+      The values for the `tokenId` and `secondTokenId` fields differ for
+      gateways. For more information, see the Knowledge Center article specific
+      to each gateway that supports the CC Reference Transaction payment method.
+
+
+      **Note:** When creating an ACH payment method, if you need to pass in
+      tokenized information, use the `mandateId` instead of `tokenId` field.
     type: string
 type: object

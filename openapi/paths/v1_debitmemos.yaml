@@ -32,6 +32,20 @@ post:
   responses:
     '200':
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.
@@ -114,8 +128,12 @@ post:
                 taxMessage: null
                 billToContactId: null
                 paymentTerm: null
+                sequenceSetId: null
                 success: true
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
@@ -125,7 +143,7 @@ post:
       description: >
 
         The minor version of the Zuora REST API. See [Minor
-        Version](https://www.zuora.com/developer/api-reference/#section/API-Versions/Minor-Version)
+        Version](https://www.zuora.com/developer/api-references/api/overview/#section/API-Versions/Minor-Version)
         for information about REST API version control. 
 
 
@@ -142,6 +160,12 @@ post:
         * `charges` > `comment`
 
         * `charges` > `description`
+
+        * `customRates` > `currency`
+
+        * `customRates` > `customFxRate` 
+
+        * `customRates` > `rateDate`
       schema:
         type: string
   requestBody:
@@ -166,13 +190,16 @@ put:
 
 
     This API operation will be deprecated. You can use the [Update debit
-    memos](https://www.zuora.com/developer/api-reference/#operation/PUT_BulkUpdateDebitMemos)
+    memos](https://www.zuora.com/developer/api-references/api/operation/PUT_BulkUpdateDebitMemos)
     instead, which provides more flexible functionality.
   summary: Update due dates for debit memos
   operationId: PUT_UpdateDebitMemosDueDates
   tags:
     - Debit Memos
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
@@ -185,6 +212,20 @@ put:
   responses:
     '200':
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.
@@ -280,6 +321,20 @@ get:
   responses:
     '200':
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.
@@ -361,6 +416,7 @@ get:
                     taxMessage: null
                     billToContactId: null
                     paymentTerm: null
+                    sequenceSetId: null
                   - id: 402890555a87d7f5015a89251edc0045
                     number: DM00000003
                     accountId: 402890555a7d4022015a7dabf5f60088
@@ -392,6 +448,7 @@ get:
                     taxMessage: null
                     billToContactId: null
                     paymentTerm: null
+                    sequenceSetId: null
                   - id: 402890555a87d7f5015a8919e4fe002e
                     number: DM00000002
                     accountId: 402890555a7d4022015a7dabf5f60088
@@ -424,6 +481,7 @@ get:
                     taxMessage: null
                     billToContactId: null
                     paymentTerm: null
+                    sequenceSetId: null
                   - id: 402890555a7e9791015a87b082940067
                     number: DM00000001
                     accountId: 402890555a7e9791015a7f15fe44001c
@@ -456,8 +514,12 @@ get:
                     taxMessage: null
                     billToContactId: null
                     paymentTerm: null
+                    sequenceSetId: null
                 success: true
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml

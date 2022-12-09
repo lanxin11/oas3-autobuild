@@ -1,0 +1,17 @@
+allOf:
+  - properties:
+      amount:
+        description: >
+          The amount of the invoice to be generated during the processing of the
+          invoice schedule item.
+        format: number
+        type: string
+      runDate:
+        description: >
+          The date in the tenant’s time zone when the invoice schedule item is
+          planned to be processed to generate an invoice.
+        format: date
+        type: string
+    type: object
+  - {}
+title: scheduleItems

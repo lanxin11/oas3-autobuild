@@ -1,7 +1,12 @@
 post:
   description: >
     Creates multiple payment schedules at once. You can create both recurring
-    payment schedules and custom payment schedules in one request.
+    payment schedules and custom payment schedules in one request. The maximum
+    number of payment schedules that can be created by a single request is 50.
+    The maximum number of payment schedule items that each payment schedule can
+    contain is 1000, i.e., you must specify less than 1000 items for a custom
+    payment schedule, and the `occurrences` field must be less than 1000 for a
+    recurring payment schedule.
 
 
     **Note:**
@@ -35,6 +40,9 @@ post:
   tags:
     - Payment Schedules
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
@@ -55,6 +63,20 @@ post:
   responses:
     '200':
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.

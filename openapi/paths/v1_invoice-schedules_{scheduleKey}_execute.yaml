@@ -1,0 +1,172 @@
+post:
+  tags:
+    - Invoice Schedules
+  summary: Execute an invoice schedule
+  description: >
+    Executes an invoice schedule immediately.
+
+
+    During the execution, a bill run is created and generates an invoice or a
+    credit memo asynchronously.
+
+
+    When you use this API operation to execute an invoice schedule item, you
+    have the flexibility to decide whether to specify a specific item ID.
+
+
+    - If you specify the unique ID of an invoice schedule item to be executed in
+    the request, the corresponding invoice schedule item is executed.
+
+    - If you do not specify the ID of any invoice schedule item in the request,
+    the subscription end date is used as the target date to determine the next
+    pending schedule item to be executed. 
+
+
+    For more samples, see [Execute invoice
+    schedules](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/Billing_Schedule/Billing_Schedule_tutorials/Execute_invoice_schedules).
+  operationId: POST_ExecuteInvoiceSchedule
+  parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
+    - name: scheduleKey
+      in: path
+      description: >
+        The unique ID or number of the schedule to be executed. For example,
+        2c92c8955bd63cc1015bd7c151af02ab or IS-0000001.
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../components/schemas/POSTExecuteInvoiceScheduleRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: ''
+      headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
+        RateLimit-Limit:
+          description: >
+            The request limit quota for the time window closest to exhaustion.
+            See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: string
+        RateLimit-Remaining:
+          description: >
+            The number of requests remaining in the time window closest to quota
+            exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        RateLimit-Reset:
+          description: >
+            The number of seconds until the quota resets for the time window
+            closest to quota exhaustion. See [rate
+            limits](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Policies/Concurrent_Request_Limits#Rate_limits)
+            for more information.
+          schema:
+            type: number
+        Zuora-Request-Id:
+          description: >
+            The Zuora internal identifier of the API call. You cannot control
+            the value of this header.
+          schema:
+            type: string
+            minLength: 36
+            maxLength: 36
+        Zuora-Track-Id:
+          description: >
+            A custom identifier for tracing the API call. If you specified a
+            tracing identifier in the request headers, Zuora returns the same
+            tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            maxLength: 64
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../components/schemas/ExecuteInvoiceScheduleBillRunResponse.yaml
+        id:
+          examples:
+            response:
+              value: 8ad0823f82b5b2520182c5cec5fe40fb
+        autoEmail:
+          examples:
+            response:
+              value: false
+        autoPost:
+          examples:
+            response:
+              value: false
+        autoRenewal:
+          examples:
+            response:
+              value: false
+        billRunNumber:
+          examples:
+            response:
+              value: BR-00001017
+        invoiceDate:
+          examples:
+            response:
+              value: '2022-02-24'
+        noEmailForZeroAmountInvoice:
+          examples:
+            response:
+              value: false
+        status:
+          examples:
+            response:
+              value: Pending
+        targetDate:
+          examples:
+            response:
+              value: '2022-02-24'
+        createdById:
+          examples:
+            response:
+              value: 2c92c0f84298ac5901429dea196212be
+        createdDate:
+          examples:
+            response:
+              value: '2022-08-22 06:47:18'
+        updatedById:
+          examples:
+            response:
+              value: 2c92c0f84298ac5901429dea196212be
+        updatedDate:
+          examples:
+            response:
+              value: '2022-08-22 06:47:18'
+        billRunFilters:
+          examples:
+            response:
+              value:
+                - filterType: InvoiceSchedule
+                  accountId: 8ad09c4b82b5c6330182c5ccab3570e6
+        success:
+          examples:
+            response:
+              value: true

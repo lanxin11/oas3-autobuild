@@ -1,0 +1,13 @@
+name: Accept-Encoding
+in: header
+required: false
+description: >
+  Include the `Accept-Encoding: gzip` header to compress responses as a gzipped
+  file. It can significantly reduce the bandwidth required for a response. 
+
+
+  If specified, Zuora automatically compresses responses that contain over 1000
+  bytes of data, and the response contains a `Content-Encoding` header with the
+  compression algorithm so that your client can decompress it.
+schema:
+  type: string

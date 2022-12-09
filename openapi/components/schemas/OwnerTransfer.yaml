@@ -23,11 +23,36 @@ properties:
       feature disabled, this field is unavailable in the request body and the
       value of this field is `null` in the response body.
     type: boolean
+  clearingExistingInvoiceTemplate:
+    default: false
+    description: >
+      Whether to clear the existing invoice template ID at the subscription
+      level. This field is mutually exclusive with the `invoiceTemplateId`
+      field.
+
+
+      **Note**: If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
+    type: boolean
   clearingExistingPaymentTerm:
     default: false
     description: >
       Whether to clear the existing payment term at the subscription level. This
       field is mutually exclusive with the `billToContactId` field.
+
+
+      **Note**: If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
+    type: boolean
+  clearingExistingSequenceSet:
+    default: false
+    description: >
+      Whether to clear the existing sequence set ID at the subscription level.
+      This field is mutually exclusive with the `sequenceSetId` field.
 
 
       **Note**: If you have the [Flexible
@@ -45,10 +70,30 @@ properties:
       The account number of the invoice owner account that the subscription is
       being transferred to.
     type: string
+  invoiceTemplateId:
+    description: >
+      The ID of the invoice template associated with the subscription.
+
+
+      **Note**: If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
+    type: string
   paymentTerm:
     description: >
       Name of the payment term associated with the account. For example, "Net
       30". The payment term determines the due dates of invoices.
+    type: string
+  sequenceSetId:
+    description: >
+      The ID of the sequence set associated with the subscription.
+
+
+      **Note** : If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
     type: string
 title: ownerTransfer
 type: object

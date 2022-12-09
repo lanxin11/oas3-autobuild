@@ -18,7 +18,7 @@ allOf:
         description: >
           File IDs of the reports available for the accounting period. You can
           retrieve the reports by specifying the file ID in a [Get
-          Files](https://www.zuora.com/developer/api-reference/#operation/GET_Files)
+          Files](https://www.zuora.com/developer/api-references/api/operation/GET_Files)
           REST API call.
         properties:
           accountsReceivableAccountAgingDetailExportFileId:

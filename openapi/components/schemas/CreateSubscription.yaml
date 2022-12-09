@@ -16,6 +16,16 @@ properties:
       Specifies whether the subscription appears on a separate invoice when
       Zuora generates invoices.
     type: boolean
+  invoiceTemplateId:
+    description: >
+      The ID of the invoice template associated with the subscription.
+
+
+      **Note**: If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
+    type: string
   newSubscriptionOwnerAccount:
     description: >
       Information about a new account that will own the subscription. Only
@@ -184,6 +194,16 @@ properties:
 
 
       **Note**: If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
+    type: string
+  sequenceSetId:
+    description: >
+      The ID of the sequence set associated with the subscription.
+
+
+      **Note** : If you have the [Flexible
       Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
       feature disabled, this field is unavailable in the request body and the
       value of this field is `null` in the response body.

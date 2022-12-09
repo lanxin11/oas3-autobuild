@@ -28,7 +28,7 @@ allOf:
           When you create a payment for capturing the authorized funds, it is
           highly recommended to pass in the gatewayOrderId that you used when
           authorizing the funds by using the [Create
-          authorization](https://www.zuora.com/developer/api-reference/#operation/POST_CreateAuthorization)
+          authorization](https://www.zuora.com/developer/api-references/api/operation/POST_CreateAuthorization)
           operation, together with the `authTransactionId` field.
 
 
@@ -63,6 +63,15 @@ allOf:
           be summed up to the account balance or key metrics regardless of
           currency.
         type: string
+      customRates:
+        description: >
+          It contains Home currency and Reporting currency custom rates
+          currencies. The maximum number of items is 2 (you can pass the Home
+          currency item or Reporting currency item or both)
+        items:
+          $ref: ./PaymentWithCustomRatesType.yaml
+        maxItems: 2
+        type: array
       debitMemos:
         description: |
           Container for debit memos. The maximum number of debit memos is 1,000.
@@ -70,12 +79,12 @@ allOf:
           $ref: ./PaymentDebitMemoApplicationCreateRequestType.yaml
         type: array
       effectiveDate:
-        description: >
+        description: |
           The date when the payment takes effect, in `yyyy-mm-dd` format.
 
-
-          **Note:** This is an optional field that only applies to electronic
-          payments. When specified, it must be set to the date of today.
+          **Note:**
+            - This field is required for only electronic payments. It's an optional field for external payments.
+            - When specified, this field must be set to the date of today.
         format: date
         type: string
       financeInformation:
@@ -159,7 +168,7 @@ allOf:
           When you create a payment for capturing the authorized funds, it is
           highly recommended to pass in the gatewayOrderId that you used when
           authorizing the funds by using the [Create
-          authorization](https://www.zuora.com/developer/api-reference/#operation/POST_CreateAuthorization)
+          authorization](https://www.zuora.com/developer/api-references/api/operation/POST_CreateAuthorization)
           operation, together with the `authTransactionId` field.
         maxLength: 50
         type: string
@@ -268,6 +277,13 @@ example:
   amount: 44.1
   comment: normal payment
   currency: USD
+  customRates:
+    - currency: CAD
+      customFxRate: 2.22
+      rateDate: '2022-10-21'
+    - currency: EUR
+      customFxRate: 1.5
+      rateDate: '2022-10-21'
   debitMemos:
     - amount: 4.1
       debitMemoId: 4028905f5a87c0ff015a87e49e6b0062

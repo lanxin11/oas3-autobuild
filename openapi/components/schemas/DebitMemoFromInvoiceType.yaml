@@ -15,7 +15,7 @@ allOf:
 
           Setting this field to `true`, you do not need to separately call the
           [Post debit
-          memo](https://www.zuora.com/developer/api-reference/#operation/PUT_PostDebitMemo)
+          memo](https://www.zuora.com/developer/api-references/api/operation/PUT_PostDebitMemo)
           operation to post the debit memo.
         type: boolean
       comment:

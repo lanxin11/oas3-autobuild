@@ -15,6 +15,73 @@ properties:
       will have to associate this ID with your order ID by yourself if needed.
       It is recommended to specify an ID for this field.
     type: string
+  paymentGatewayResponse:
+    description: >
+      The response data returned from the gateway. This field is available only
+      if the `success` field is `false` and the support for returning additional
+      error information from the gateway is enabled.
+    properties:
+      additionalInfo:
+        description: >
+          The additional information returned from the gateway. The returned
+          fields vary for gateways. Here is an example.
+
+
+          ```
+
+          "additionalInfo": {
+            "ProcessorName": "MasterCard Saferpay Test",
+            "ProcessorResult": "51",
+            "ProcessorMessage": "Insufficient funds",
+            "ErrorName": "TRANSACTION_DECLINED"
+          }
+
+          ```
+        type: object
+      gatewayResponseCode:
+        description: |
+          The HTTP response code.
+        type: string
+      gatewayResponseMessage:
+        description: |
+          The error message returned from the gateway.
+        type: string
+      gatewayType:
+        description: |
+          The gateway type.
+        type: string
+      gatewayVersion:
+        description: |
+          The gateway version.
+        type: string
+    type: object
+  processId:
+    description: >
+      The ID of the running process when the exception occurs. This field is
+      available only if the `success` field is `false`.
+    type: string
+  reasons:
+    description: >
+      The container of the error code and message. This field is available only
+      if the `success` field is `false`.
+    items:
+      properties:
+        code:
+          description: |
+            Error code.
+          type: string
+        message:
+          description: >
+            Error message. It usually contains a combination of gateway response
+            code and response message.
+          type: string
+      type: object
+    type: array
+  requestId:
+    description: >
+      The ID of the request. This field is available only if the `success` field
+      is `false`
+    type: string
   resultCode:
     description: >
       The result code of the request. 

@@ -52,20 +52,12 @@ allOf:
           The quantity that has been fulfilled by fulfillments for the order
           line item. This field will be updated automatically when related
           fulfillments become 'SentToBilling' or 'Complete' state.
-
-
-          **Note**: This field is only available if you have the Fulfillment and
-          Return feature enabled.
         type: number
       quantityPendingFulfillment:
         description: >
           The quantity that's need to be fulfilled by fulfillments for the order
           line item. This field will be updated automatically when related
           fulfillments become 'SentToBilling' or 'Complete' state.
-
-
-          **Note**: This field is only available if you have the Fulfillment and
-          Return feature enabled.
         type: number
     type: object
   - $ref: ./OrderLineItemCommonRetrieveOrder.yaml

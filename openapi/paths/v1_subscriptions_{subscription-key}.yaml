@@ -9,7 +9,7 @@ put:
       * Add a new product rate plan
       * Remove an existing subscription rate plan
       * Change the quantity or price of an existing subscription rate plan
-      * Change rate plans - to replace the existing rate plans in a subscription with other rate plans. Note that this feature is in the **Early Adopter** phase. We are actively soliciting feedback from a small set of early adopters before releasing it as generally available. If you want to join this early adopter program, submit a request at [Zuora Global Support](http://support.zuora.com/).
+      * Change rate plans - to replace the existing rate plans in a subscription with other rate plans. Changing rate plans is currently not supported for Billing - Revenue Integration. When Billing - Revenue Integration is enabled, changing rate plans will no longer be applicable in Zuora Billing.
 
     ## Notes
 
@@ -65,6 +65,9 @@ put:
   tags:
     - Subscriptions
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
@@ -100,7 +103,7 @@ put:
 
 
         See [Zuora REST API
-        Versions](https://www.zuora.com/developer/api-reference/#section/API-Versions)
+        Versions](https://www.zuora.com/developer/api-references/api/overview/#section/API-Versions)
         for more information.
       schema:
         type: string
@@ -124,6 +127,20 @@ put:
   responses:
     '200':
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.
@@ -186,6 +203,9 @@ get:
   tags:
     - Subscriptions
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
@@ -221,6 +241,20 @@ get:
   responses:
     '200':
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.
@@ -323,6 +357,8 @@ get:
                   workEmail: contact@example.com
                   workPhone: ''
                   zipCode: ''
+                invoiceTemplateId: 2c9081a03c638994013c63978baf002b
+                sequenceSetId: 6abcc30846de11e990900242ac1f0003
                 ratePlans:
                   - id: 8a8082c45aa81b51015ad68744030fe3
                     productId: 8a8082c45aa81b51015ad5a2d07d0e89
@@ -353,7 +389,7 @@ get:
                         applyDiscountTo: null
                         discountLevel: null
                         discountClass: null
-                        discountApplyDetails: []
+                        discountApplyDetails: null
                         billingDay: DefaultFromCustomer
                         listPriceBase: Per_Billing_Period
                         billingPeriod: Annual

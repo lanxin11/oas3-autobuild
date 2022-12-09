@@ -6,6 +6,15 @@ allOf:
         maxLength: 255
         minLength: 0
         type: string
+      customRates:
+        description: >
+          It contains Home currency and Reporting currency custom rates
+          currencies. The maximum number of items is 2 (you can pass the Home
+          currency item, Reporting currency item, or both).
+        items:
+          $ref: ./CreditMemoFromChargeCustomRatesType.yaml
+        maxItems: 2
+        type: array
       financeInformation:
         description: |
           Container for the finance information related to the refund.
@@ -175,6 +184,13 @@ allOf:
   - $ref: ./RefundObjectNSFields.yaml
   - $ref: ./RefundObjectCustomFields.yaml
 example:
+  customRates:
+    - currency: CAD
+      customFxRate: 2.22
+      rateDate: '2022-10-21'
+    - currency: EUR
+      customFxRate: 1.5
+      rateDate: '2022-10-21'
   gatewayOptions:
     Comments: test
     IPAddress: 192.168.1.1

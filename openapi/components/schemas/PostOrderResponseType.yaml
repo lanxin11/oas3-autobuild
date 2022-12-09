@@ -106,6 +106,20 @@ allOf:
               type: string
           type: object
         type: array
+      refunds:
+        items:
+          properties:
+            number:
+              description: The refund number. For example, `R-00009564`.
+              type: string
+            status:
+              description: The status of the refund.
+              enum:
+                - Success
+                - Error
+              type: string
+          type: object
+        type: array
       status:
         description: >-
           Status of the order. `Pending` is only applicable for an order that
@@ -153,6 +167,28 @@ allOf:
               type: string
             subscriptionNumber:
               description: Subscription number of the subscription included in this order.
+              type: string
+          type: object
+        type: array
+      writeOff:
+        items:
+          properties:
+            amount:
+              description: The amount written off from the invoice balance.
+              type: number
+            failedReason:
+              description: The reason of write-off failure.
+              type: string
+            invoiceNumber:
+              description: >-
+                The number of the invoice that is written off. For example,
+                `INV00051208`.
+              type: string
+            status:
+              description: The status of the write-off.
+              enum:
+                - Success
+                - Failed
               type: string
           type: object
         type: array

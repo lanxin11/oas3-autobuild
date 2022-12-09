@@ -136,6 +136,20 @@ properties:
     type: number
   endDate:
     $ref: ./EndConditions.yaml
+  isRollover:
+    description: >
+      **Note**: This field is only available if you have the [Prepaid with
+      Drawdown](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown)
+      feature enabled.
+
+
+      To use this field, you must set the `X-Zuora-WSDL-Version` request header
+      to 114 or higher. Otherwise, an error occurs.
+
+
+      The value is either "True" or "False". It determines whether the rollover
+      fields are needed.
+    type: boolean
   prepaidQuantity:
     description: >
       **Note**: This field is only available if you have the [Prepaid with
@@ -207,15 +221,40 @@ properties:
       - Customer Acceptance Date
     type: string
   revenueRecognitionRuleName:
-    description: |
-      Specifies the revenue recognition rule.
-
-        * `Recognize upon invoicing` 
-        * `Recognize daily over time`
-    enum:
-      - Recognize upon invoicing
-      - Recognize daily over time
+    description: >
+      Specifies the revenue recognition rule, such as `Recognize upon invoicing`
+      or `Recognize daily over time`.
     type: string
+  rolloverApply:
+    description: >
+      **Note**: This field is only available if you have the [Prepaid with
+      Drawdown](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown)
+      feature enabled.
+
+
+      To use this field, you must set the `X-Zuora-WSDL-Version` request header
+      to 114 or higher. Otherwise, an error occurs.
+
+
+      This field defines the priority of rollover, which is either first or
+      last.
+    enum:
+      - ApplyFirst
+      - ApplyLast
+    type: string
+  rolloverPeriods:
+    description: >
+      **Note**: This field is only available if you have the [Prepaid with
+      Drawdown](https://knowledgecenter.zuora.com/Billing/Billing_and_Payments/J_Billing_Operations/Prepaid_with_Drawdown)
+      feature enabled.
+
+
+      To use this field, you must set the `X-Zuora-WSDL-Version` request header
+      to 114 or higher. Otherwise, an error occurs.
+
+
+      This field defines the number of rollover periods, it is restricted to 3.
+    type: number
   startDate:
     $ref: ./PreviewOrderTriggerParams.yaml
   uniqueToken:

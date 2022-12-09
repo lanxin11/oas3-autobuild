@@ -7,7 +7,7 @@ post:
     Creates a bearer token that enables an OAuth client to authenticate with the
     Zuora REST API. The OAuth client must have been created using the Zuora UI.
     See
-    [Authentication](https://www.zuora.com/developer/api-reference/#section/Authentication)
+    [Authentication](https://www.zuora.com/developer/rest-api/general-concepts/authentication/)
     for more information.
 
 

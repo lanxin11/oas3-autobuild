@@ -37,7 +37,9 @@ example:
     - orderActions:
         - createSubscription:
             billToContactId: efbff07e6290dfb8016291003bd00dda
+            invoiceTemplateId: 2c9081a03c638994013c63978baf002b
             paymentTerm: Net 30
+            sequenceSetId: 6abcc30846de11e990900242ac1f0003
             subscribeToRatePlans:
               - productRatePlanId: efbff07e6290dfb8016291003bd00dda
             subscriptionNumber: SM-00001
@@ -159,14 +161,6 @@ properties:
     description: >
       Category of the order to indicate a product sale or return. Default value
       is `NewSales`.
-
-
-      **Note:** This field is only available if you have the Fulfillment and
-      Return feature enabled. The Fulfillment and Return feature is in the
-      **Early Adopter** phase. We are actively soliciting feedback from a small
-      set of early adopters before releasing it as generally available. If you
-      want to join this early adopter program, submit a request at [Zuora Global
-      Support](https://support.zuora.com/).
     enum:
       - NewSales
       - Return
@@ -252,14 +246,6 @@ properties:
       Values of reason code configured in **Billing Settings** > **Configure
       Reason Codes** through Zuora UI. Indicates the reason when a return order
       line item occurs.
-
-
-      **Note:** This field is only available if you have the Fulfillment and
-      Return feature enabled. The Fulfillment and Return feature is in the
-      **Early Adopter** phase. We are actively soliciting feedback from a small
-      set of early adopters before releasing it as generally available. If you
-      want to join this early adopter program, submit a request at [Zuora Global
-      Support](https://support.zuora.com/).
     maxLength: 255
     type: string
   subscriptions:

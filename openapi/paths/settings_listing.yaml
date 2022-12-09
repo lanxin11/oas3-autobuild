@@ -37,8 +37,9 @@ get:
        * [Update a specific Invoice Template](https://knowledgecenter.zuora.com/Central_Platform/API/BB_C_Settings_API/Update_a_specific_Invoice_Template)
        * [Delete a specific Invoice Template](https://knowledgecenter.zuora.com/Central_Platform/API/BB_C_Settings_API/Delete_a_specific_Invoice_Template)
      * Communications Profiles:
-       * [Get all Communication Profiles](https://knowledgecenter.zuora.com/DC_Developers/BB_C_Settings_API/Settings_API_tutorials/Get_all_Communication_Profiles)
        * [Create a new Communication Profile](https://knowledgecenter.zuora.com/DC_Developers/BB_C_Settings_API/Settings_API_tutorials/Create_a_new_Communication_Profile)
+       * [Get a Communication Profile](https://knowledgecenter.zuora.com/Central_Platform/API/BB_C_Settings_API/Settings_API_tutorials/Get_a_Communication_Profile)
+       * [Get all Communication Profiles](https://knowledgecenter.zuora.com/DC_Developers/BB_C_Settings_API/Settings_API_tutorials/Get_all_Communication_Profiles)
        * [Modify a Communication Profile](https://knowledgecenter.zuora.com/DC_Developers/BB_C_Settings_API/Settings_API_tutorials/Modify_a_Communication_Profile)
        * [Get all Notifications under a particular Communication Profile](https://knowledgecenter.zuora.com/DC_Developers/BB_C_Settings_API/Settings_API_tutorials/Get_all_Notifications_under_a_particular_Communication_Profile)
      * Chart of Accounts:
@@ -48,12 +49,26 @@ get:
        * [Get all Quote Templates](https://knowledgecenter.zuora.com/Central_Platform/API/BB_C_Settings_API/Settings_API_tutorials/Get_all_Quote_Templates)
        * [Get a specific Quote Template](https://knowledgecenter.zuora.com/Central_Platform/API/BB_C_Settings_API/Settings_API_tutorials/Get_a_specific_Quote_Template)
        * [Create a new Quote Template](https://knowledgecenter.zuora.com/Central_Platform/API/BB_C_Settings_API/Settings_API_tutorials/Create_a_new_Quote_Template)
+     * Connect Tax Engines:
+       * [Create a Connect Tax Engine](https://knowledgecenter.zuora.com/Central_Platform/API/BB_C_Settings_API/Connect_Tax_Engines_Settings#Create_a_Connect_Tax_Engine)
+       * [Get a Connect Tax Engine](https://knowledgecenter.zuora.com/Central_Platform/API/BB_C_Settings_API/Connect_Tax_Engines_Settings#Get_a_Connect_Tax_Engine)
+       * [Update a Connect Tax Engine](https://knowledgecenter.zuora.com/Central_Platform/API/BB_C_Settings_API/Connect_Tax_Engines_Settings#Update_a_Connect_Tax_Engine)
+       * [Delete a Connect Tax Engine](https://knowledgecenter.zuora.com/Central_Platform/API/BB_C_Settings_API/Connect_Tax_Engines_Settings#Delete_a_Connect_Tax_Engine)
      * Custom Fields:
        * [View all custom fields](https://knowledgecenter.zuora.com/Central_Platform/API/BB_C_Settings_API/Settings_API_tutorials/View_all_custom_fields)
        * [View custom fields of a specific object](https://knowledgecenter.zuora.com/Central_Platform/API/BB_C_Settings_API/Settings_API_tutorials/View_custom_fields_of_a_specific_object)
        * [Update custom fields of a specific object](https://knowledgecenter.zuora.com/Central_Platform/API/BB_C_Settings_API/Settings_API_tutorials/Update_custom_fields_of_a_specific_object)
+     * Units of Measure:
+       * [Create a Unit of Measure](https://knowledgecenter.zuora.com/Central_Platform/API/BB_C_Settings_API/Settings_API_tutorials/Create_a_Unit_of_Measure)
+       * [Get a Unit of Measure](https://knowledgecenter.zuora.com/Central_Platform/API/BB_C_Settings_API/Settings_API_tutorials/Get_a_Unit_of_Measure)
+       * [Get all Units of Measure](https://knowledgecenter.zuora.com/Central_Platform/API/BB_C_Settings_API/Settings_API_tutorials/Get_all_Units_of_Measure)
+       * [Update a Unit of Measure](https://knowledgecenter.zuora.com/Central_Platform/API/BB_C_Settings_API/Settings_API_tutorials/Update_a_Unit_of_Measure)
+       * [Delete a Unit of Measure](https://knowledgecenter.zuora.com/Central_Platform/API/BB_C_Settings_API/Settings_API_tutorials/Delete_a_Unit_of_Measure)
   operationId: GET_ListAllSettings
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
@@ -72,6 +87,20 @@ get:
     '200':
       description: OK
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.

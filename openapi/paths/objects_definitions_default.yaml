@@ -5,12 +5,15 @@ get:
     all the existing custom objects from an old tenant to a new tenant, you can
     call this operation in your old tenant and then use its response directly as
     the request of the [Create custom object
-    definitions](https://www.zuora.com/developer/api-reference/#operation/POST_CustomObjectDefinitions)
+    definitions](https://www.zuora.com/developer/api-references/api/operation/POST_CustomObjectDefinitions)
     call in the new tenant to import all the custom objects from the old tenant.
   operationId: GET_AllCustomObjectDefinitionsInNamespace
   tags:
     - Custom Object Definitions
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
@@ -38,6 +41,20 @@ get:
     '200':
       description: OK
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.
@@ -86,10 +103,13 @@ get:
 post:
   summary: Create custom object definitions
   operationId: POST_CustomObjectDefinitions
-  description: "You can post custom object definitions with the request body schema described below. \n\nThis operation also allows you to use the [List custom object definitions](https://www.zuora.com/developer/api-reference/#operation/GET_AllCustomObjectDefinitionsInNamespace) response schema as its request schema. If you want to copy all the existing custom objects from an old tenant to a new tenant, you can make a [List custom object definitions](https://www.zuora.com/developer/api-reference/#operation/GET_AllCustomObjectDefinitionsInNamespace) call in your old tenant and then use its response directly as the request of this operation in the new tenant to import all the custom objects from the old tenant.\n\nThe `label` field is the UI label of the custom object. The `object` field contains the API Name of the custom object.\n\n## Limitations \n\nThis custom object definition has the following limitations:\n\n* The maximum number of characters for the Custom Object API Name (`object`) is 64.\n* The maximum number of characters for the Custom Object Label (`label`) is\t64.\n* The maximum number of characters for the Custom Object Description 250.\n* The maximum number of custom fields in an custom object\tis 50.\n* The maximum number of characters for the custom field API name is\t64.\n* The maximum number of characters for the custom field label (`label`) is\t64.\n* The maximum number of characters for the custom field Description\tis 250.\n* The maximum number of picklist options is 250.\n* The default maximum number of characters for the Text field is 512. You can configure the max length up to 8,192 characters when creating or updating the custom object definition via API.\n  However, if the Text field is filterable, the max length must be 512 or less.\n* The maximum number of digits to the left of the decimal point for the Number field is 13, and to the right is 9.\n"
+  description: "You can post custom object definitions with the request body schema described below. \n\nThis operation also allows you to use the [List custom object definitions](https://www.zuora.com/developer/api-references/api/operation/GET_AllCustomObjectDefinitionsInNamespace) response schema as its request schema. If you want to copy all the existing custom objects from an old tenant to a new tenant, you can make a [List custom object definitions](https://www.zuora.com/developer/api-references/api/operation/GET_AllCustomObjectDefinitionsInNamespace) call in your old tenant and then use its response directly as the request of this operation in the new tenant to import all the custom objects from the old tenant.\n\nThe `label` field is the UI label of the custom object. The `object` field contains the API Name of the custom object.\n\n## Limitations \n\nThis custom object definition has the following limitations:\n\n* The maximum number of characters for the Custom Object API Name (`object`) is 64.\n* The maximum number of characters for the Custom Object Label (`label`) is\t64.\n* The maximum number of characters for the Custom Object Description 250.\n* The maximum number of custom fields in an custom object\tis 50.\n* The maximum number of characters for the custom field API name is\t64.\n* The maximum number of characters for the custom field label (`label`) is\t64.\n* The maximum number of characters for the custom field Description\tis 250.\n* The maximum number of picklist options is 250.\n* The default maximum number of characters for the Text field is 512. You can configure the max length up to 8,192 characters when creating or updating the custom object definition via API.\n  However, if the Text field is filterable, the max length must be 512 or less.\n* The maximum number of digits to the left of the decimal point for the Number field is 13, and to the right is 9.\n"
   tags:
     - Custom Object Definitions
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth.yaml
@@ -114,6 +134,20 @@ post:
     '200':
       description: OK
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.
@@ -162,6 +196,20 @@ post:
     '400':
       description: Bad request
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.

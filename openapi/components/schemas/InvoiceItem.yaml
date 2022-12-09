@@ -44,6 +44,12 @@ allOf:
           is inclusive or exclusive.
         format: decimal
         type: string
+      chargeDate:
+        description: >
+          The date when the invoice item is charged, in `yyyy-mm-dd hh:mm:ss`
+          format.
+        format: date-time
+        type: string
       chargeDescription:
         description: The description of the charge.
         type: string
@@ -52,6 +58,14 @@ allOf:
         type: string
       chargeName:
         description: The name of the charge.
+        type: string
+      chargeType:
+        description: |
+          The type of the charge. 
+        enum:
+          - OneTime
+          - Recurring
+          - Usage
         type: string
       contractAssetAccountingCode:
         description: >
@@ -99,6 +113,16 @@ allOf:
       itemType:
         description: |
           The type of the invoice item.
+        type: string
+      processingType:
+        description: |
+          The kind of the charge for the invoice item. 
+        enum:
+          - Charge
+          - Discount
+          - Prepayment
+          - Tax
+          - Rounding
         type: string
       productName:
         description: Name of the product associated with this item.

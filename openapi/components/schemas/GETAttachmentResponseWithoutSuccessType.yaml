@@ -19,7 +19,7 @@ properties:
   fileId:
     description: >
       File ID of the attached file. Use this file ID with [Get
-      files](https://www.zuora.com/developer/api-reference/#operation/GET_Files)
+      files](https://www.zuora.com/developer/api-references/api/operation/GET_Files)
       to download the file.
     type: string
   fileName:

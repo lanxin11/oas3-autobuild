@@ -1,0 +1,14 @@
+name: Idempotency-Key
+in: header
+required: false
+description: >
+  Specify a unique idempotency key if you want to perform an idempotent POST or
+  PATCH request. Do not use this header in other request types. 
+
+
+  With this header specified, the Zuora server can identify subsequent retries
+  of the same request using this value, which prevents the same operation from
+  being performed multiple times by accident. 
+schema:
+  type: string
+  maxLength: 255

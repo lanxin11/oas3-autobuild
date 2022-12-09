@@ -11,6 +11,9 @@ get:
   tags:
     - Accounts
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
@@ -23,6 +26,20 @@ get:
   responses:
     '200':
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.
@@ -146,10 +163,13 @@ get:
 put:
   summary: Update an account
   operationId: PUT_Account
-  description: "Updates a customer account by specifying the account-key.\n\n## Notes\n1. Only the fields to be changed should be specified.  Any field that is not included in the request body will not be changed.\n2. If an empty field is submitted with this operation, the corresponding field in the account is emptied.\n3. Email addresses: If no email addresses are specified, no change is made to the email addresses on file or to the email delivery preference. If either the **personalEmail** or **workEmail** is specified (or both), the system updates the corresponding email address(es) on file and the email delivery preference is set to `true`. (In that case, emails go to the **workEmail** address, if it exists, or else the **personalEmail**.) On the other hand, if as a result of this call both of the email addresses for the account are empty, the email delivery preference is set to `false`.\n4. The bill-to and sold-to contacts are separate data entities.\_If you select the\_**Same as Bill To Contact**\_check box during account creation, both the Bill To and Sold To contacts are updated upon updating either one\_because they point to the same contact record. In this case, if you want to update only one of them, you have to first create another contact and update the Bill To or Sold To\_contact\_of\_the customer account to be the newly created one.\n\nFor a use case of this operation, see [Configure payment methods](https://www.zuora.com/developer/api-guides/#Configure-payment-methods).\n"
+  description: "Updates a customer account by specifying the account-key.\n\n## Notes\n1. Only the fields to be changed should be specified.  Any field that is not included in the request body will not be changed.\n2. If an empty field is submitted with this operation, the corresponding field in the account is emptied.\n3. Email addresses: If no email addresses are specified, no change is made to the email addresses on file or to the email delivery preference. If either the **personalEmail** or **workEmail** is specified (or both), the system updates the corresponding email address(es) on file and the email delivery preference is set to `true`. (In that case, emails go to the **workEmail** address, if it exists, or else the **personalEmail**.) On the other hand, if as a result of this call both of the email addresses for the account are empty, the email delivery preference is set to `false`.\n4. The bill-to and sold-to contacts are separate data entities.\_If you select the\_**Same as Bill To Contact**\_check box during account creation, both the Bill To and Sold To contacts are updated upon updating either one\_because they point to the same contact record. In this case, if you want to update only one of them, you have to first create another contact and update the Bill To or Sold To\_contact\_of\_the customer account to be the newly created one.\n\nFor a use case of this operation, see [Configure payment methods](https://www.zuora.com/developer/rest-api/api-guides/upload-usage-records/).\n"
   tags:
     - Accounts
   parameters:
+    - $ref: ../components/parameters/GLOBAL_HEADER_Idempotency_Key.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Accept_Encoding.yaml
+    - $ref: ../components/parameters/GLOBAL_HEADER_Content_Encoding.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Authorization_OAuth_optional.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Track_Id.yaml
     - $ref: ../components/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single.yaml
@@ -168,6 +188,20 @@ put:
   responses:
     '200':
       headers:
+        Content-Encoding:
+          description: >
+            This header is returned if you specify the `Accept-Encoding: gzip`
+            request header and the response contains over 1000 bytes of data.
+
+
+            Note that only the following MIME types support gzipped responses:
+              - `application/json`
+              - `application/xml`
+              - `text/html`
+              - `text/csv`
+              - `text/plain`
+          schema:
+            type: string
         RateLimit-Limit:
           description: >
             The request limit quota for the time window closest to exhaustion.

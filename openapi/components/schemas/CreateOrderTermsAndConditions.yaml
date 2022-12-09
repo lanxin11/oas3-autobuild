@@ -25,6 +25,19 @@ properties:
       feature disabled, this field is unavailable in the request body and the
       value of this field is `null` in the response body.
     type: boolean
+  clearingExistingInvoiceTemplate:
+    default: false
+    description: >
+      Whether to clear the existing invoice template ID at the subscription
+      level. This field is mutually exclusive with the `invoiceTemplateId`
+      field.
+
+
+      **Note**: If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
+    type: boolean
   clearingExistingPaymentTerm:
     default: false
     description: >
@@ -37,6 +50,28 @@ properties:
       feature disabled, this field is unavailable in the request body and the
       value of this field is `null` in the response body.
     type: boolean
+  clearingExistingSequenceSet:
+    default: false
+    description: >
+      Whether to clear the existing sequence set ID at the subscription level.
+      This field is mutually exclusive with the `sequenceSetId` field.
+
+
+      **Note**: If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
+    type: boolean
+  invoiceTemplateId:
+    description: >
+      The ID of the invoice template associated with the subscription.
+
+
+      **Note**: If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
+    type: string
   lastTerm:
     $ref: ./LastTerm.yaml
   paymentTerm:
@@ -59,5 +94,15 @@ properties:
     items:
       $ref: ./RenewalTerm.yaml
     type: array
+  sequenceSetId:
+    description: >
+      The ID of the sequence set associated with the subscription.
+
+
+      **Note**: If you have the [Flexible
+      Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+      feature disabled, this field is unavailable in the request body and the
+      value of this field is `null` in the response body.
+    type: string
 title: termsAndConditions
 type: object

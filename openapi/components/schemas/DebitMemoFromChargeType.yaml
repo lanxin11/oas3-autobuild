@@ -37,7 +37,7 @@ allOf:
 
           Setting this field to `true`, you do not need to separately call the
           [Post a debit
-          memo](https://www.zuora.com/developer/api-reference/#operation/PUT_PostDebitMemo)
+          memo](https://www.zuora.com/developer/api-references/api/operation/PUT_PostDebitMemo)
           operation to post the debit memo.
         type: boolean
       charges:
@@ -54,6 +54,15 @@ allOf:
         maxLength: 255
         minLength: 0
         type: string
+      customRates:
+        description: >
+          It contains Home currency and Reporting currency custom rates
+          currencies. The maximum number of items is 2 (you can pass the Home
+          currency item or Reporting currency item or both)
+        items:
+          $ref: ./DebitMemoFromChargeCustomRatesType.yaml
+        maxItems: 2
+        type: array
       dueDate:
         description: >
           The date by which the payment for the debit memo is due, in
@@ -87,6 +96,13 @@ example:
       chargeId: 402890555a87d7f5015a892dff7f0053
       comment: this is comment2
   comment: the comment
+  customRates:
+    - currency: CAD
+      customFxRate: 2.22
+      rateDate: '2022-10-21'
+    - currency: EUR
+      customFxRate: 2.22
+      rateDate: '2022-10-21'
   effectiveDate: '2017-10-17'
   reasonCode: Correcting invoice error
 title: charges

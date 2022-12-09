@@ -2,11 +2,10 @@ description: >
   Information about an order action of type `ChangePlan`.
 
 
-  **Note**: The change plan type of order action is in the **Early Adopter**
-  phase. We are actively soliciting feedback from a small set of early adopters
-  before releasing it as generally available. If you want to join this early
-  adopter program, submit a request at [Zuora Global
-  Support](http://support.zuora.com/).
+  **Note**: The change plan type of order action is currently not supported for
+  Billing - Revenue Integration. When Billing - Revenue Integration is enabled,
+  the change plan type of order action will no longer be applicable in Zuora
+  Billing.
 properties:
   effectivePolicy:
     description: >

@@ -87,7 +87,7 @@ allOf:
         type: string
       paymentTerm:
         description: >
-          The name of the payment term assoicated with the debit memo.
+          The name of the payment term associated with the debit memo.
 
 
           The value of this field is `null` if you have the [Flexible
@@ -116,6 +116,15 @@ allOf:
       referredInvoiceId:
         description: |
           The ID of a referred invoice.
+        type: string
+      sequenceSetId:
+        description: >
+          The ID of the sequence set associated with the debit memo.
+
+
+          The value of this field is `null` if you have the [Flexible
+          Billing](https://knowledgecenter.zuora.com/Billing/Subscriptions/Flexible_Billing)
+          feature disabled.
         type: string
       sourceType:
         description: |

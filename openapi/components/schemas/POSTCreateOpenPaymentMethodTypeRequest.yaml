@@ -44,7 +44,7 @@ properties:
 
 
       You can get the entity ID through the [Multi-entity: List
-      entities](https://www.zuora.com/developer/api-reference/#operation/GET_Entities)
+      entities](https://www.zuora.com/developer/api-references/api/operation/GET_Entities)
       API operation or the **Manage Entity Profile** administration setting in
       the UI. To convert the format of the entity ID to UUID, separate the
       entity ID string in five groups with hyphens, in the form

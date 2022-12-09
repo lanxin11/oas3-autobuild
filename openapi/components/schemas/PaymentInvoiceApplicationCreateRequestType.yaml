@@ -1,12 +1,14 @@
 properties:
   amount:
-    description: |
-      The amount of the payment associated with the invoice.
+    description: >
+      The amount of the payment associated with the invoice. This amount must be
+      equal to or lesser than the balance of the invoice.
     format: double
     type: number
   invoiceId:
-    description: |
-      The unique ID of the invoice that the payment is created on.
+    description: >
+      The unique ID of the invoice that the payment is created on. The balance
+      of the invoice specified must not be `0`.
     type: string
   items:
     description: >

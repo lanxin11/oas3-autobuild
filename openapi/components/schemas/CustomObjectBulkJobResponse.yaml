@@ -92,7 +92,7 @@ properties:
 
       - `pending` - The job is waiting for your input. You can use [Upload a
       file for a custom object bulk
-      job](https://www.zuora.com/developer/api-reference/#operation/POST_UploadFileForCustomObjectBulkJob)
+      job](https://www.zuora.com/developer/api-references/api/operation/POST_UploadFileForCustomObjectBulkJob)
       to upload a file so that the job can start creating records.
 
       - `in_progress` - The job is processing.
@@ -101,7 +101,7 @@ properties:
 
       - `failed` - The job was unable to complete. You can use [List all errors
       for a custom object bulk
-      job](https://www.zuora.com/developer/api-reference/#operation/GET_CustomObjectBulkJobErrors)
+      job](https://www.zuora.com/developer/api-references/api/operation/GET_CustomObjectBulkJobErrors)
       to list the errors.
 
       - `cancelled` - The job was cancelled by the server.

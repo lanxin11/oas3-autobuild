@@ -355,6 +355,17 @@ properties:
       **Values**: automatically generated 
     format: date-time
     type: string
+  bookingDate:
+    description: >
+      The date when the amendment is signed.
+
+
+      This field is to standardize the booking date information to increase
+      audit ability and traceability of data between Zuora Billing and Zuora
+      Revenue. It is mapped as the booking date for a sale order line in Zuora
+      Revenue.
+    format: date
+    type: string
 required:
   - SubscriptionId
   - Type

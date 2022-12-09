@@ -9,7 +9,7 @@ allOf:
 
           A product rate plan to be added to a Grading catalog group must have
           one grade. You can specify a grade for a product rate plan in this
-          request or update the product rate plan indvidually. 
+          request or update the product rate plan individually. 
         type: number
       id:
         description: |
